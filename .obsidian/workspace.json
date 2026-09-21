@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "7dd4961df2c60b24",
+    "type": "split",
+    "children": [
+      {
+        "id": "90ce6fc233fa493d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "feb34b04d1c365b3",
+            "type": "leaf",
+            "state": {
+              "type": "split-diff-view",
+              "state": {
+                "aFile": ".obsidian/plugins/easy-typing-obsidian/data.json",
+                "bFile": ".obsidian/plugins/easy-typing-obsidian/data.json",
+                "aRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: data.json  (Working Tree)"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "44b079342233ee7c",
+    "type": "split",
+    "children": [
+      {
+        "id": "35eac5e978057e9c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c1467e7ef2db6b6c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "65b6d15ea0dd70af",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9b039906e528f979",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "1cc9c87d106f4b1d",
+    "type": "split",
+    "children": [
+      {
+        "id": "4d16c67dd9dbfb69",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e24a33838dc2b565",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {
+                "tabWorkspace": {
+                  "version": 1,
+                  "openTabs": [
+                    {
+                      "tabId": "tab-1789989536846-jurcbwt",
+                      "conversationId": null,
+                      "draftModel": "opus"
+                    }
+                  ],
+                  "activeTabId": "tab-1789989536846-jurcbwt"
+                }
+              },
+              "icon": "bot",
+              "title": "Claudian"
+            }
+          },
+          {
+            "id": "68e090842c966e8c",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 844.8333740234375
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "audio-recorder:Start/stop recording": false,
+      "markdown-importer:Open format converter": false,
+      "zk-prefixer:Create new unique note": false,
+      "workspaces:Manage workspace layouts": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "remotely-save:Remotely Save": false,
+      "omnisearch:Omnisearch": false,
+      "obsidian-importer:Import notes": false,
+      "tasknotes:Open mini calendar view": false,
+      "tasknotes:Open calendar view": false,
+      "realclaudian:Open Claudian": false,
+      "tasknotes:Open tasks view": false,
+      "tasknotes:Open agenda view": false,
+      "tasknotes:Open Kanban board": false,
+      "tasknotes:Open Pomodoro timer": false,
+      "tasknotes:Open Pomodoro statistics": false,
+      "tasknotes:Create new task": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "68e090842c966e8c",
+  "lastOpenFiles": [
+    "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
+    "202609211311.md",
+    "Basi di dati e sistemi informativi con laboratorio/Images/Pasted image 20260921123252.png",
+    "Basi di dati e sistemi informativi con laboratorio/Images",
+    "Basi di dati e sistemi informativi con laboratorio",
+    "202609211243.md",
+    "TaskNotes/Start Here.md",
+    "TaskNotes/Views/relationships.base",
+    "TaskNotes/Views/pomodoro-stats.base",
+    "TaskNotes/Views/agenda-default.base",
+    "TaskNotes/Views/calendar-default.base",
+    "TaskNotes/Views/tasks-default.base",
+    "TaskNotes/Views/kanban-default.base",
+    "TaskNotes/Views/mini-calendar-default.base",
+    "TaskNotes/Views",
+    "BASI DI DATI E SISTEMI INFORMATIVI CON LABORATORIO/Untitled.md"
+  ]
+}

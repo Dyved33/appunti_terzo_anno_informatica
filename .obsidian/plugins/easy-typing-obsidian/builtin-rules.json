@@ -1,0 +1,172 @@
+[
+  {
+    "id": "builtin-autopair-input",
+    "trigger": "[（《「『“”‘’《]",
+    "replacement": "const p={'【':'【$0】','（':'（$0）','《':'《$0》','「':'「$0」','『':'『$0』','“':'“$0”','”':'“$0”','‘':'‘$0’','’':'‘$0’','《':'《$0》'}; return p[leftMatches[0]];",
+    "options": "rF",
+    "priority": 10,
+    "description": "Auto-complete paired full-width brackets/quotes"
+  },
+  {
+    "id": "builtin-autopair-jump",
+    "trigger": "《》|“”|““|‘’|‘‘|（）",
+    "trigger_right": "》|”|’|）",
+    "replacement": "const map = {\n  \"《》\": [\"》\", \"《》\"],\n  \"（）\": [\"）\", \"（）\"],\n  \"“”\": [\"”\", \"“”\"],\n  \"““\": [\"”\", \"“”\"],\n  \"‘’\": [\"’\", \"‘’\"],\n  \"‘‘\": [\"’\", \"‘’\"]\n}\nif(map[leftMatches[0]][0]==rightMatches[0]){\n  return map[leftMatches[0]][1];\n}\nreturn undefined;",
+    "options": "rF",
+    "priority": 5,
+    "description": "Skip over closing paired symbol to avoid duplicates"
+  },
+  {
+    "id": "builtin-autopair-delete",
+    "trigger": "[【（《「『“‘]",
+    "trigger_right": "[】）》」』”’]",
+    "replacement": "const p={'【':'】','（':'）','《':'》','「':'」','『':'』','“':'”','‘':'’'}; return p[leftMatches[0]]===rightMatches[0] ? '' : undefined;",
+    "options": "drF",
+    "priority": 10,
+    "description": "Delete both sides of full-width bracket/quote pairs"
+  },
+  {
+    "id": "builtin-conv-backtick",
+    "trigger": "··",
+    "replacement": "`$0`",
+    "priority": 10,
+    "description": "Double middle dot ·· converts to inline code"
+  },
+  {
+    "id": "builtin-conv-codeblock",
+    "trigger": "(?<=^|\\n)([ \\t]*)`·",
+    "trigger_right": "`",
+    "replacement": "[[1]]```$0\n[[1]]```",
+    "options": "r",
+    "priority": 10,
+    "description": "Type · inside inline code to upgrade to code block"
+  },
+  {
+    "id": "builtin-conv-formula",
+    "trigger": "(￥￥|¥¥|\\$￥|\\$¥|\\$\\$)",
+    "trigger_right": "\\$?",
+    "replacement": "return rightMatches[0] === '$' ? '$$\\n$0\\n$$' : '$$0$';",
+    "options": "rF",
+    "priority": 10,
+    "description": "￥/$ combinations convert to inline or block formula"
+  },
+  {
+    "id": "builtin-conv-linestart",
+    "trigger": "(^|\\n)([》、])",
+    "replacement": "const m = {'》': '[[1]]> $0', '、': '[[1]]/$0'}; return m[leftMatches[2]];",
+    "options": "rF",
+    "priority": 10,
+    "description": "》 at line start → blockquote, 、 at line start → slash"
+  },
+  {
+    "id": "builtin-conv-hw2fw",
+    "trigger": "([一-龥぀-ゟ゠-ヿ가-힯])([,.:?!;(])",
+    "trigger_right": "\\)?",
+    "replacement": "const m={',':'，','.':'。','?':'？','!':'！',':':'：',';':'；','(':'（$0）'}; return leftMatches[1] + m[leftMatches[2]];",
+    "options": "rF",
+    "priority": 15,
+    "enabled": false,
+    "description": "Convert half-width punctuation to full-width after CJK characters"
+  },
+  {
+    "id": "builtin-fw2hw-double",
+    "trigger": "([。！；，：？》｜（《])\\1",
+    "trigger_right": "[）》]?",
+    "replacement": "const p={'（':['）','($0)'],'《':['》','<$0']};\nconst m={'。':'.$0','！':'!$0','；':';$0','，':',$0','：':':$0','？':'?$0','》':'>$0','｜':'|$0','（':'($0)','《':'<$0'};\nconst c=leftMatches[1],r=rightMatches[0]||'',e=p[c]; \nreturn e&&e[0]===r?e[1]:m[c];",
+    "options": "rF",
+    "priority": 3,
+    "description": "Double identical full-width punctuation converts to half-width"
+  },
+  {
+    "id": "builtin-del-inline-formula",
+    "trigger": "$",
+    "trigger_right": "$",
+    "replacement": "",
+    "options": "d",
+    "priority": 30,
+    "description": "Delete inline formula $...$ pair"
+  },
+  {
+    "id": "builtin-del-highlight",
+    "trigger": "==",
+    "trigger_right": "==",
+    "replacement": "",
+    "options": "d",
+    "priority": 30,
+    "description": "Delete highlight ==...== pair"
+  },
+  {
+    "id": "builtin-del-block-formula",
+    "trigger": "$$\n",
+    "trigger_right": "\n$$",
+    "replacement": "",
+    "options": "d",
+    "priority": 30,
+    "description": "Delete block formula $$...$$ pair"
+  },
+  {
+    "id": "builtin-del-codeblock",
+    "trigger": "(?<=^|\\n)([ \\t]*)```",
+    "trigger_right": "[ \\t]*\\n([ \\t]*)```",
+    "replacement": "[[1]]",
+    "options": "dr",
+    "priority": 30,
+    "description": "Quickly delete empty code block"
+  },
+  {
+    "id": "builtin-del-wikilink",
+    "trigger": " ?!?\\[\\[[^\\n\\[\\]]*\\]\\]",
+    "replacement": "",
+    "options": "dr",
+    "priority": 30,
+    "description": "Quickly delete wikilink and embed (![[]])"
+  },
+  {
+    "id": "builtin-sel-wrap-backtick",
+    "trigger": "·",
+    "replacement": "`${0:${SEL}}`",
+    "options": "s",
+    "priority": 40,
+    "description": "Wrap selection with backticks using ·"
+  },
+  {
+    "id": "builtin-sel-wrap-symbols",
+    "trigger": "【¥￥",
+    "replacement": "const m={'¥': ['$', '$'], '￥': ['$', '$'], '【': ['[', ']']}; \nreturn m[key][0] + '${0:${SEL}}' + m[key][1];",
+    "options": "sF",
+    "priority": 40,
+    "description": "Wrap selection with []/$ using 【/¥/￥"
+  },
+  {
+    "id": "builtin-sel-wrap-quotes",
+    "trigger": "“”‘’",
+    "replacement": "const m={'“': ['“','”'], '”': ['“','”'], '‘': ['‘','’'], '’': ['‘','’']}; return m[key][0] + '${0:${SEL}}' + m[key][1];",
+    "options": "sF",
+    "priority": 40,
+    "description": "Wrap selection with paired full-width quotes"
+  },
+  {
+    "id": "builtin-sel-wrap-cjk-brackets",
+    "trigger": "《（",
+    "replacement": "const m={'《': ['《','》'], '（': ['（','）']}; return m[key][0] + '${0:${SEL}}' + m[key][1];",
+    "options": "sF",
+    "priority": 40,
+    "description": "Wrap selection with 《》 or （） brackets"
+  },
+  {
+    "id": "builtin-quote-convert",
+    "trigger": "((?:^|\\n)\\s*>*) ?[>》]",
+    "replacement": "[[1]]> $0",
+    "options": "r",
+    "priority": 50,
+    "description": "Convert > or 》 to Markdown blockquote marker"
+  },
+  {
+    "id": "builtin-quote-space",
+    "trigger": "((?:^|\\n)\\s*>+)([^ >》]+)",
+    "replacement": "[[1]] [[2]]$0",
+    "options": "r",
+    "priority": 50,
+    "description": "Auto-insert space after blockquote marker >"
+  }
+]
