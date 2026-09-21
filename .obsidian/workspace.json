@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "90ce6fc233fa493d",
+        "id": "c928b55367f6409f",
         "type": "tabs",
         "children": [
           {
-            "id": "feb34b04d1c365b3",
+            "id": "dfbc49fb9375e62e",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": ".obsidian/plugins/easy-typing-obsidian/data.json",
-                "bFile": ".obsidian/plugins/easy-typing-obsidian/data.json",
-                "aRef": ""
+                "file": "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: data.json  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "Appunti programmazione web e mobile con laboratorio"
             }
           }
         ]
@@ -124,13 +124,100 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "84c742988562bf59",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "216ffc653aec4345",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "d391409ade92d0b1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7a62b02ca8f6e242",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "4b78c039a3a47018",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dbc0f855d2e45f6d",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
           }
         ],
         "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 844.8333740234375
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -143,27 +230,20 @@
       "bases:Create new base": false,
       "audio-recorder:Start/stop recording": false,
       "markdown-importer:Open format converter": false,
-      "zk-prefixer:Create new unique note": false,
       "workspaces:Manage workspace layouts": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "remotely-save:Remotely Save": false,
       "omnisearch:Omnisearch": false,
       "obsidian-importer:Import notes": false,
-      "tasknotes:Open mini calendar view": false,
-      "tasknotes:Open calendar view": false,
       "realclaudian:Open Claudian": false,
-      "tasknotes:Open tasks view": false,
-      "tasknotes:Open agenda view": false,
-      "tasknotes:Open Kanban board": false,
-      "tasknotes:Open Pomodoro timer": false,
-      "tasknotes:Open Pomodoro statistics": false,
-      "tasknotes:Create new task": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "68e090842c966e8c",
+  "active": "dfbc49fb9375e62e",
   "lastOpenFiles": [
+    "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+    "Programmazione web e mobile con laboratorio",
     "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
     "202609211311.md",
     "Basi di dati e sistemi informativi con laboratorio/Images/Pasted image 20260921123252.png",
@@ -178,7 +258,6 @@
     "TaskNotes/Views/tasks-default.base",
     "TaskNotes/Views/kanban-default.base",
     "TaskNotes/Views/mini-calendar-default.base",
-    "TaskNotes/Views",
     "BASI DI DATI E SISTEMI INFORMATIVI CON LABORATORIO/Untitled.md"
   ]
 }
