@@ -240,8 +240,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "68e090842c966e8c",
+  "active": "dfbc49fb9375e62e",
   "lastOpenFiles": [
+    "prompt.md",
+    "Unconfirmed 167043.crdownload",
     "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
     "Programmazione web e mobile con laboratorio",
     "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
@@ -257,7 +259,6 @@
     "TaskNotes/Views/calendar-default.base",
     "TaskNotes/Views/tasks-default.base",
     "TaskNotes/Views/kanban-default.base",
-    "TaskNotes/Views/mini-calendar-default.base",
     "BASI DI DATI E SISTEMI INFORMATIVI CON LABORATORIO/Untitled.md"
   ]
 }
