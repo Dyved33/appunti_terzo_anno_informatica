@@ -137,6 +137,3 @@ Una volta ricevuta la risposta HTTP dal server, il motore del browser avvia la p
 > 
 > Mantenere questi tre ambiti disaccoppiati è fondamentale per garantire manutenibilità, modularità e pulizia del codice.
 
----
-## ⏭️ Navigazione Lezioni
-- **Index Corso :** [[00_Index_Programmazione_Web_e_Mobile]]

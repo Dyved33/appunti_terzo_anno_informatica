@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "694d731925238694",
+        "id": "70127a1fd187f07d",
         "type": "tabs",
         "children": [
           {
-            "id": "3c09f1b9fe6bd0c4",
+            "id": "d11e1f295dd80cdb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Appunti basi di dati e sistemi informativi con laboratorio"
+              "title": "New tab"
             }
           }
         ]
@@ -240,10 +236,13 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "3c09f1b9fe6bd0c4",
+  "active": "d11e1f295dd80cdb",
   "lastOpenFiles": [
     "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
     "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
+    "conflict-files-obsidian-git.md",
+    "Architettura reti e internet/Appunti architettura reti e internet.md",
+    "Architettura reti e internet",
     "00_Index_Basi_di_Dati.md",
     "prompt.md",
     "Unconfirmed 167043.crdownload",
@@ -259,7 +258,6 @@
     "TaskNotes/Views/agenda-default.base",
     "TaskNotes/Views/calendar-default.base",
     "TaskNotes/Views/tasks-default.base",
-    "TaskNotes/Views/kanban-default.base",
     "BASI DI DATI E SISTEMI INFORMATIVI CON LABORATORIO/Untitled.md"
   ]
 }

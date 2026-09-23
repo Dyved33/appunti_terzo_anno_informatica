@@ -137,6 +137,3 @@ L'approccio basato su DBMS comporta costi vivi e un sovraccarico (*overhead*) si
 > [!NOTE] Nota del Prof
 > Al termine della lezione è stata illustrata una panoramica storica sull'evoluzione dei sistemi di gestione delle informazioni: dai file system gerarchici e reticolari degli anni '60 alla teorizzazione del modello relazionale (Codd, 1970), fino ai moderni sistemi distribuiti, a oggetti e NoSQL.
 
----
-## ⏭️ Navigazione Lezioni
-- **Index Corso :** [[00_Index_Basi_di_Dati]]
