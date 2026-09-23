@@ -1,146 +1,142 @@
-Libro: sistemi di basi di dati (fondamenti)
+---
+date: 2026-09-21
+tags:
+  - basi-di-dati
+  - sistemi-informativi
+  - introduzione-dbms
+  - architettura-dbms
+  - lezione
+type: lezione
+---
+# Introduzione alle Basi di Dati e ai DBMS
 
-1 compito: 9/11 -> 11:30, 13:30
-2 compito: 18/12 -> 8:30, 10:30
+> [!INFO] Informazioni sul Corso ed Esami
+> - **Testo di riferimento:** R. Elmasri, S. B. Navathe, *Sistemi di basi di dati - Fondamenti*.
+> - **1° Compitino:** 09/11 (ore 11:30 – 13:30)
+> - **2° Compitino:** 18/12 (ore 08:30 – 10:30)
 
-# Lezione 1: introduzione alle BD e utenti di BD
-Una base di dati è una collezionee di dati correlati. I dati sono fatti noti che possono essere memorizzati (aventi significato implicito). Una base di dati ha le seguenti proprietà implicite:
-1. Rappresenta un certo aspetto del mondo reale (mini-mondo o universo del discorso)
-2. è una collezione di dati logicamente coerenti con un significato intrinseco
-3. è progettata, costruita e popolata con dati per uno scopo specifico. Ha un determinato gruppo di utenti, e applicazione di interessi per gli utenti
+## 1. Concetti Fondamentali e Definizioni
 
-DBSM: sistema software che facilita il processo di definire, costruire, manipolare e condivide BD per varie applicazioni
+Una **Base di Dati (BD)** è una collezione organizzata di dati logicamente correlati. I dati rappresentano fatti noti che possono essere registrati e che possiedono un significato implicito.
 
-![[Pasted image 20260921123252.png|200]]
+Una base di dati presenta le seguenti proprietà intrinseche:
+1. **Rappresentazione del Mini-Mondo:** rappresenta un determinato aspetto del mondo reale, noto anche come **mini-mondo** o **universo del discorso**. Le modifiche che avvengono nel mini-mondo si riflettono puntualmente nella base di dati.
+2. **Coerenza Logica:** costituisce una collezione di dati logicamente coerenti con un significato intrinseco ben definito; insiemi disgiunti di dati privi di legami concettuali non configurano una base di dati.
+3. **Finalità Specifica:** viene progettata, costruita e popolata con dati per uno scopo ben preciso, rivolgendosi a un gruppo identificabile di utenti e ad applicazioni di specifico interesse.
 
-Funzioni principale di un DBMS:
-- Definire BD indicandone i tipi di dati, la relativa struttura ed i vincoli coinvolti 
-- Costruire BD, immagazzinandone i dati su supporto di memoria adeguato 
-- Manipolare BD 
-	-  Interrogare BD per reperire dati specifici e generare prospetti (report) a partire dai dati 
-	- Aggiornare BD per rispecchiare cambiamenti nel mini-mondo 
-	- Accedere alla BD attraverso applicazioni WEB 
-- Condividere BD, permettendo a più utenti ed applicazioni di accedere a BD, senza violare la consistenza dei dati.
+Il **DBMS (Database Management System)** è il sistema software deputato a facilitare i processi di definizione, costruzione, manipolazione e condivisione di basi di dati tra molteplici utenti e applicazioni.
 
-Altre funzioni di un DBSM:
-- Protezione e manutenzione BD
-	- Protezione di sistema da crash
-	- Protezione da accessi di utenti malintenzionati (sicurezza)
-	- Manutenzione BD ed applicazioni relative nel corso di vita del sistema di BD
-- Processing attivo dei dati, per attivare automaticamente insiemi di azioni sui dati in seguito a determinati eventi (DBMS attivi)
-- Funzioni di presentazione e visualizzazione dei dati
+![[Pasted image 20260921123252.png|350]]
 
-Caratteriste dell'approccio con BD: le principali caratteristiche dell'approccio con BD rispetto all'approccio basato sulla gestione di file sono:
-1. Natura autodescrittiva di un sistema di BD
-2. Separazione tra programmi e dati ed astrazione dei dati
-3. Supporto con viste multiple dei dati
-4. Condivisione dei dati e gestione delle transazione in ambiente multiutente
+## 2. Funzionalità di un DBMS
 
-Natura autodescrittiva sistema BD:
-- Oltre ai dati stessi, un sistema di BD contiene anche una descrizione completa della sua struttura e dei suoi vincoli. 
-- Tale definizione e’ memorizzata nel catalogo di sistema, dove sono mantenute informazioni quali: 
-	- la struttura di ciascun file 
-	- il tipo ed il formato di memorizzazione di ogni dato
-	- i vincoli sui dati 
-- Le informazioni memorizzate nel catalogo sono dette metadati 
-- In virtù della natura autodescrittiva di un sistema di BD, i pacchetti software di un DBMS possono interagire con diverse applicazioni di BD 
-- In particolare, il software del DBMS può accedere a diverse basi di dati estraendone le definizioni dal catalogo.
+### 2.1 Funzionalità Principali
+* **Definire la BD:** specificare i tipi di dati, le strutture concettuali/logiche e i vincoli di integrità da imporre sui dati.
+* **Costruire la BD:** memorizzare fisicamente i dati su supporti di memoria secondaria gestiti dal software.
+* **Manipolare la BD:**
+  * *Interrogare (Querying):* reperire dati specifici e produrre reportistica strutturata.
+  * *Aggiornare:* inserire, modificare o eliminare dati per allineare lo stato della base di dati al mini-mondo.
+  * *Accesso applicativo:* consentire l'accesso e l'interazione tramite applicazioni desktop e web.
+* **Condividere la BD:** permettere l'accesso simultaneo a più utenti e processi applicativi, prevenendo corruzioni e garantendo costantemente la consistenza dei dati.
 
-Separazione tra dati e programmi, ed astrazione sui dati:
-- Un DBMS fornisce agli utenti una rappresentazione concettuale dei dati, senza dettagli sulla loro effettiva memorizzazione 
-- Tale rappresentazione concettuale e’ detta modello dei dati 
-- Programmi si riferiscono ai concetti logici del modello dei dati, piuttosto che all'effettiva memorizzazione dei dati
+### 2.2 Funzionalità Avanzate e Gestionali
+* **Protezione e Manutenzione:**
+  * Tolleranza ai guasti e protezione da crash hardware o software (sottosistema di recovery).
+  * Controllo degli accessi e politiche di sicurezza contro intrusioni o accessi non autorizzati.
+  * Manutenzione evolutiva della BD e dell'ambiente operativo lungo tutto il ciclo di vita del sistema.
+* **Processing Attivo dei Dati:** capacità di attivare automaticamente sequenze di azioni al verificarsi di specifici eventi o condizioni (DBMS attivi mediante *trigger* e *regole ECA*).
+* **Presentazione e Visualizzazione:** fornitura di strumenti avanzati di formattazione grafica e generazione di report per gli utenti finali.
 
-> [!note] Separazione tra dati e programmi
-> La struttura dei file di dati è memorizzata nel catalogo del DBMS separatamente dai programmi di accesso. Tale proprietà è detta ==indipendenza tra programmi e dati==. In virtù dell’indipendenza tra dati e programmi e dell’astrazione dei dati è possibile modificare le strutture dati e la loro organizzazione in memoria senza modificare i relativi programmi di accesso.
+## 3. Caratteristiche dell'Approccio a Basi di Dati vs File System
 
-Supporto di viste multiple sui dati:
-- L’approccio con BD fornisce supporto per la gestione di viste multiple sui dati 
-- Una BD ha infatti molti utenti, ciascuno dei quali può richiedere una diversa prospettiva o vista 
-- Una vista può essere: 
-	- un sottoinsieme della BD 
-	- un insieme di dati virtuali, i.e. non esplicitamente memorizzati nella BD ma piuttosto derivati dai dati nella BD.
+L'approccio basato su DBMS differisce radicalmente dalla gestione tradizionale basata su file piatti (*file processing*) per quattro caratteristiche cardine:
 
-Condivisione dati e gestione transazioni in ambienti multi-utente:
-- Un DBMS multiutente deve consentire a più utenti di accedere contemporaneamente alla BD 
-- A tale scopo, un DBMS deve contenere una porzione di software per il controllo della concorrenza: ⇒ garantisce che le transazioni concorrenti operino correttamente ed efficacemente
+### 3.1 Natura Autodescrittiva del Sistema
+A differenza dell'approccio basato su file, in cui la struttura dei record è codificata internamente nei singoli programmi applicativi, un sistema di BD contiene sia i dati sia una descrizione esaustiva della loro struttura e dei relativi vincoli.
+* Tale definizione formale risiede nel **catalogo di sistema** (o dizionario dati), che contiene:
+  * La struttura di ciascun file o tabella.
+  * Il tipo di dato e il formato di memorizzazione di ogni attributo.
+  * I vincoli di integrità imposti.
+* Le informazioni conservate nel catalogo prendono il nome di **metadati**.
+* Questa proprietà consente ai moduli del DBMS di interagire con basi di dati eterogenee, ricavandone dinamicamente lo schema direttamente dal catalogo.
 
-> [!note] Transazioni
-> - Processo o programma in esecuzione che esegue uno o più accessi alla BD (e.g per la lettura e l’aggiornamento di dati). 
-> - Il DBMS deve garantire alcune proprietà fondamentali delle transazioni, come: 
-> 	- isolamento: Ogni transazione sembra eseguita in isolamento rispetto alle altre, nonostante possano essere in esecuzione centinaia di transazioni contemporaneamente. 
-> 	- atomicità: Le operazioni di una transazione vengono eseguite nella loro interezza, oppure non vengono eseguite affatto.
+### 3.2 Separazione tra Programmi e Dati ed Astrazione dei Dati
+Il DBMS fornisce agli utenti un'astrazione concettuale dei dati (**modello dei dati**), nascondendo i dettagli implementativi e fisici relativi all'allocazione sui dispositivi di memoria secondaria.
 
-Utenti di una BD: Gli utenti di una BD si possono classificare in due categorie principali: 
-1. Coloro che progettano, usano oppure amministrano direttamente una BD (gli ’attori in scenà). 
-2. Coloro che collaborano al disegno, allo sviluppo ed al funzionamento dell’ambiente software e di sistema del DBMS, pur non essendo interessate alla BD in se’ (gli ’attori dietro le quinte’)
+> [!NOTE] Separazione tra Dati e Programmi
+> La struttura dei file di dati è memorizzata nel catalogo del DBMS separatamente dai programmi applicativi di accesso. Tale proprietà è detta **indipendenza tra programmi e dati**. In virtù dell’indipendenza tra dati e programmi e dell’astrazione dei dati, è possibile modificare le strutture di memorizzazione interne e l'organizzazione fisica dei dati senza dover ricompilare o riscrivere i relativi programmi di accesso.
 
-- Progettisti: 
-	- Hanno la responsabilità di individuare i dati da memorizzare nella BD e di scegliere le strutture adeguate per rappresentarli e memorizzarli. 
-	- Interagiscono con gli utenti finali della BD per definirne i requisiti in base alle esigenze degli utenti stessi. 
-- Amministratori Tra i compiti di un DBA (DB administrator) vi sono quelli di: 
-	- autorizzare accesso alla BD 
-	- coordinare e monitorare uso BD 
-	- rispondere a problemi quali violazioni di sistema o tempi di risposte scadenti da parte di quest’ultimo.
-- Utenti Finali: Coloro la cui attività lavorativa richiede l’accesso alla BD per interrogazioni, aggiornamenti... Ci sono diverse sotto-categorie di utenti finali:   
-	 1. Occasionali: Accedono occasionalmente a BD. Possono aver bisogno ogni volta di informazioni diverse. 
-	 2.  Non Esperti Interagiscono abitualmente con la BD via tipi standard di interrogazioni/aggiornamenti (’canned transactions’). 
-	 3.  Esperti. Comprendono categorie di persone (ingegneri, scienziati...) che acquisiscono completa familiarità con le funzionalità del DBMS. 
-	 4.  Indipendenti. Mantengono BD a uso personale usando pacchetti di programmi con interfacce e menu di facile uso
-- Analisti di Sistema e Programmatori (Ingegneri del SW) 
-	- Analisti di Sistema. Determinano le esigenze degli utenti finali. Sviluppano specifiche di transazioni standard in accordo con tali esigenze. 
-	- Programmatori di Applicazioni. Implementano le specifiche di cui sopra. Si occupano del test e della manutenzione delle transazioni standard.
+### 3.3 Supporto di Viste Multiple sui Dati
+Una base di dati conta una molteplicità di utenti con privilegi ed esigenze differenti. Il DBMS deve offrire a ciascun utente una prospettiva personalizzata:
+* Una **vista** (*view*) può essere un sottoinsieme specifico della base di dati.
+* Può trattarsi di una collezione di dati virtuali, ossia dati non memorizzati fisicamente ma derivati dinamicamente dai dati persistenti al momento della richiesta.
 
-Vantaggi uso DBMS:
-1. Controllo della Ridondanza 
-	- Problema: La ridondanza dei dati (tipica dello sviluppo tradizionale di BD mediante gestione di files) genera rischi di inconsistenza e tuttavia può essere utile a migliorare le prestazioni delle interrogazioni
-	- Soluzione: Ridondanza Controllata. L’approccio con DBMS permette di controllare l’eventuale introduzione di ridondanza dei dati, al fine di garantirne la consistenza 
-	- Opportune verifiche di consistenza dei dati possono essere: 
-		- specificate al DBMS durante la progettazione 
-		- imposte automaticamente al DBMS in seguito ad operazioni di aggiornamento
-2. Divieto all'accesso non autorizzato
-	- Problema quando più utenti condividono una BD sorge il problema di impedire l’accesso di alcune informazioni a determinate classi di utenti. 
-	- Soluzione Tipicamente, un DBMS fornisce un sottosistema per la sicurezza e l’autorizzazione, utilizzato dal DBA per definire account ed autorizzazioni.
-3. Memorizzazione persistente oggetti di un programma 
-	- Le BD possono essere utilizzate per fornire memorizzazione persistente di oggetti di programmi e strutture dati. 
-	- Problema: Conflitto di impedenza. I sistemi di basi di dati tradizionali hanno spesso sofferto del cosidetto problema del conflitto di impedenza, dal momento che le strutture dati fornite dal DBMS erano incompatibili con le strutture dati del linguaggio di programmazione. 
-	- Questa e’ una della ragioni principali per cui sono stati sviluppati i sistemi di BD ad oggetti 
-	- Soluzione I sistemi di BD ad oggetti sono compatibili con linguaggi di programmazione come C++ e Java: il software del DBMS esegue automaticamente ogni conversione di dato necessarie.
-4. Strutture di memorizzazione per l’esecuzione efficiente di interrogazioni 
-	- DBMS forniscono adeguate strutture dati (indici) per velocizzare la ricerca sul disco, i.e. per eseguire efficientemente interrogazioni ed aggiornamenti 
-	- Gli indici si basano generalmente su strutture dati ad albero o su tabelle hash 
-	- Scelta degli indici da creare e mantenere: fa parte del progetto fisico e dell’ottimizzazione della BD (tra i compiti del DBA). 
-	- Modulo elaborazione/ottimizzazione interrogazioni del DBMS: responsabile scelta piano efficiente esecuzione interrogazioni, date strutture dati esistenti 
-	- Modulo di buffering: mantiene porzioni della BD nei buffer della memoria principale
-5. Backup & Recovery 
-	- Sottosistema backup/recovery del DBMS: Fornisce funzioni di ripristino del DBMS da guasti hardware e software 
-6.  Interfacce Utente 
-	- DBMS forniscono una molteplicità di interfacce utente (form e moduli per utenti non esperti, interfacce a linguaggi di programmazione per programmatori di applicazioni . . .) 
-7. Rappresentazione di associazioni complesse fra dati 
-	- DBMS deve essere in grado di rappresentare una varietà di associazioni complesse fra i dati, e di reperire ed aggiornare facilmente ed efficientemente i dati correlati
-8. Impostazione di vincoli di integrità 
-	- Un DBMS dovrebbe fornire servizi per definire ed imporre opportuni vincoli di Integrità, specifici delle applicazioni di interesse. 
-9. Permesseo eseguire inferenze e azioni tramite regole 
-	- Sistemi di basi di dati deduttive: Forniscono la capacità di definire regole di deduzione per inferire nuove informazioni dai fatti memorizzati nella BD.
-	- Sistemi di basi di dati attive: Forniscono la possibilità di definire regole in grado di attivare automaticamente un insieme di azioni come conseguenza del verificarsi di determinati eventi e condizioni (trigger, stored procedures)
-10. Potenziale per imporre standard 
-11. Tempo ridotto per lo sviluppo di applicazioni 
-	- Una volta che un DBMS e’ realizzato ed in funzione, e’ richiesto decisamente meno tempo per creare nuove applicazioni utilizzando i servizi del DBMS.
-12. Flessibilità 
-	- I DBMS moderni consentono alcuni cambiamenti alla struttura della BD senza coinvolgere i dati memorizzati ed i programmi applicativi esistenti.
-13. Disponibilità di Informazioni Aggiornate 
-	- Un DBMS rende la BD disponibile a tutti gli utenti. Non appena in essa viene effettuato un aggiornamento da parte di un utente, tutti gli altri possono immediatamente vederlo. 
-14. Economie di scala 
-	- L’approccio con DBMS permette l’unificazione dei dati e delle applicazioni, riducendo l’ammontare di una dispendiosa sovrapposizione tra le attività del personale di elaborazione dei dati in diversi progetti/dipartimenti.
+### 3.4 Condivisione dei Dati e Gestione delle Transazioni Multiutente
+Un DBMS multiutente implementa un sottosistema specializzato per il **controllo della concorrenza**, assicurando che transazioni simultanee non interferiscano reciprocamente producendo anomalie o stati incoerenti.
 
-Quando non usare in DBMS: Ci sono alcune situazioni nelle quali l’approccio con DBMS può comportare spese generali non necessarie, a cui non ci si esporrebbe nella tradizionale gestione file. 
-- alti investimenti in hw, sw, e formazione 
-- spese generali per assicurare le funzioni di sicurezza, controllo della concorrenza, ripristino e integrità
+> [!NOTE] Transazioni e Proprietà Fondamentali
+> Una **transazione** è un programma o processo in esecuzione che esegue uno o più accessi alla base di dati (lettura e/o scrittura). Il DBMS garantisce proprietà fondamentali (ACID), tra cui:
+> * **Isolamento:** Ogni transazione viene eseguita in isolamento logico rispetto alle altre; gli effetti intermedi di una transazione non sono visibili alle transazioni concorrenti finché essa non viene confermata (*commit*).
+> * **Atomicità:** Le operazioni di una transazione vengono eseguite nella loro interezza (*all-or-nothing*); in caso di guasto o interruzione anomala, ogni modifica parziale viene rollbackata.
 
-Può essere conveniente usare solo file, piuttosto che un approccio basato su DBMS, nelle seguenti circostanze: 
-- BD e applicazioni semplici, ben definite, e non si prevedono aggiornamenti/modifiche
-- stringenti necessità di tempo reale per alcuni programmi, che non possono essere soddisfatte a causa dell’elaborazione aggiuntiva dovuta al DBMS
-- non vi e’ accesso ai dati multiutente
+## 4. Classificazione degli Utenti di una Base di Dati
 
-> [!note] 
-> Alla fine della lezione c'è un po di storia
+L'ambiente di una base di dati coinvolge due macro-categorie di attori:
+
+### 4.1 Attori sulla Scena (Attori Diretti)
+Coloro la cui attività quotidiana è rivolta all'amministrazione, progettazione ed effettivo utilizzo della base di dati:
+1. **Progettisti della BD:** responsabili dell'individuazione dei dati da memorizzare e della selezione delle strutture concettuali e logiche idonee. Dialogano con gli utenti finali per formalizzarne i requisiti.
+2. **Amministratori della Base di Dati (DBA - Database Administrator):** responsabili della gestione operativa della risorsa dati. Tra i loro compiti primari:
+   * Autorizzare e revocare gli accessi e i privilegi alla BD.
+   * Coordinare, monitorare e ottimizzare l'uso delle risorse hardware e software.
+   * Risolvere violazioni di sicurezza, malfunzionamenti o decadimenti prestazionali.
+3. **Utenti Finali:** soggetti che accedono alla base di dati per compiti operativi o analitici:
+   * *Occasionali:* accedono saltuariamente richiedendo informazioni eterogenee tramite linguaggi di interrogazione complessi.
+   * *Non Esperti (Parametrici):* costituiscono la maggioranza; interagiscono mediante transazioni predefinite (*canned transactions*) attraverso interfacce guidate (es. cassieri, operatori di sportello).
+   * *Esperti:* figure tecniche (analisti, ingegneri, scienziati) che sfruttano appieno le potenzialità analitiche del DBMS.
+   * *Indipendenti:* gestiscono basi di dati a uso personale tramite software applicativi autonomi con interfacce visuali.
+
+### 4.2 Attori Dietro le Quinte
+Figure che sviluppano e mantengono l'infrastruttura software e di sistema del DBMS:
+* **Analisti di Sistema:** determinano i requisiti degli utenti finali e definiscono le specifiche per le transazioni predefinite.
+* **Programmatori di Applicazioni:** traducono le specifiche in codice sorgente (es. Java, Python, C#), occupandosi del test e della manutenzione delle transazioni parametriche.
+* Progettisti e costruttori del software DBMS, sviluppatori di tool di supporto e operatori di sistema.
+
+## 5. Vantaggi dell'Adozione di un DBMS
+
+1. **Controllo della Ridondanza dei Dati:** nei sistemi basati su file ciascun gruppo sviluppa propri file, causando duplicazioni e stati incoerenti. Il DBMS implementa la **ridondanza controllata**, integrando i dati ed eseguendo controlli automatici di consistenza al momento delle modifiche.
+2. **Restrizione degli Accessi Non Autorizzati:** sottosistemi di sicurezza gestiti dal DBA consentono la profilazione degli account e l'applicazione puntuale di privilegi di lettura, scrittura e modifica su singoli dati o tabelle.
+3. **Memorizzazione Persistente degli Oggetti di Programma:**
+   > [!INFO] Conflitto di Impedenza (*Impedance Mismatch*)
+   > I sistemi tradizionali soffrono della discrepanza tra le strutture dati tabellari/relazionali del DBMS e i paradigmi ad oggetti dei linguaggi di programmazione. I sistemi di BD a oggetti (OODBMS) e i framework ORM moderni colmano questa lacuna convertendo automaticamente le strutture in memoria.
+4. **Strutture di Ottimizzazione delle Query:** introduzione di indici su memoria di massa (basati su alberi B-Tree o tabelle hash), moduli di *query optimization* per la formulazione del piano di esecuzione più efficiente e moduli di buffering in RAM.
+5. **Sottosistema di Backup e Ripristino:** recupero automatico e consistente dello stato del database a fronte di guasti hardware o crash software improvvisi.
+6. **Molteplicità di Interfacce Utente:** disponibilità simultanea di interfacce grafiche/web per utenti non esperti, interfacce a riga di comando (CLI) per amministratori e API/driver (JDBC, ODBC) per sviluppatori.
+7. **Rappresentazione di Associazioni Complesse:** capacità di modellare relazioni articolate tra entità e di navigare le associazioni tramite operazioni di giunzione (*join*) ottimizzate.
+8. **Imposizione di Vincoli di Integrità:** il DBMS verifica nativamente vincoli di dominio, vincoli di unicità, integrità della chiave primaria e vincoli di integrità referenziale (chiavi esterne).
+9. **Inferenze e Processing Attivo mediante Regole:**
+   * *Basi di dati deduttive:* applicazione di regole logiche formali per derivare nuova conoscenza a partire dai dati memorizzati.
+   * *Basi di dati attive:* esecuzione di azioni scatenate da eventi specifici tramite **trigger** e **stored procedure**.
+10. **Imposizione di Standard Aziendali:** uniformazione della nomenclatura, dei formati e delle regole di documentazione su scala organizzativa.
+11. **Riduzione dei Tempi di Sviluppo Applicativo:** rapido sviluppo di nuove applicazioni grazie alla delega al DBMS di funzionalità critiche (concorrenza, recovery, sicurezza).
+12. **Flessibilità ed Evoluzione dello Schema:** possibilità di alterare lo schema o l'organizzazione fisica dei dati senza impattare i programmi applicativi preesistenti.
+13. **Disponibilità di Informazioni Sempre Aggiornate:** propagazione istantanea degli aggiornamenti a tutte le transazioni e agli utenti concorrenti.
+14. **Economie di Scala:** riduzione dei costi globali di gestione grazie al consolidamento infrastrutturale e all'eliminazione delle sovrapposizioni gestionali tra dipartimenti.
+
+## 6. Quando Non Conviene Utilizzare un DBMS
+
+L'approccio basato su DBMS comporta costi vivi e un sovraccarico (*overhead*) sistemico non sempre giustificato:
+* Elevati costi iniziali di investimento in licenze software, requisiti hardware aggiuntivi e formazione del personale.
+* Overhead prestazionale introdotto dai meccanismi di controllo della concorrenza, sicurezza, integrità e gestione del registro di log (*recovery*).
+
+È opportuno preferire la tradizionale architettura basata su file nelle seguenti condizioni:
+* Applicazioni semplici, circoscritte e stabili, per le quali non sono previsti aggiornamenti evolutivi o estensioni future.
+* Requisiti di calcolo in tempo reale (*hard real-time*) così stringenti da risultare incompatibili con le latenze introdotte dai moduli del DBMS.
+* Contesti operativi con accesso strettamente monoutente, in cui non sussiste alcuna necessità di condivisione simultanea o concorrenza sui dati.
+
+> [!NOTE] Nota del Prof
+> Al termine della lezione è stata illustrata una panoramica storica sull'evoluzione dei sistemi di gestione delle informazioni: dai file system gerarchici e reticolari degli anni '60 alla teorizzazione del modello relazionale (Codd, 1970), fino ai moderni sistemi distribuiti, a oggetti e NoSQL.
+
+---
+## ⏭️ Navigazione Lezioni
+- **Index Corso :** [[00_Index_Basi_di_Dati]]
