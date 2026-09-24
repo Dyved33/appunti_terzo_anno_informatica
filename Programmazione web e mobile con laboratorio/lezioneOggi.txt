@@ -1,0 +1,107 @@
+html5 è stato sviluppato e viene mantenuto da W3C e WHATWG. ha nuovi tag semantici, supporto multimediale (audio e video), senza 
+plugin esterni. è progettato per esserer compativile con dispositivi mobili e touch
+
+- tag contenitori = racchiudono contenuti e si riconoscono sia un tag di apertura che uno di chiusura
+1. div  = contenitore generico per contenuti
+2. p = paragrafo (solo per il testo)
+3. section = sezione di una pagina (di solito ha un'intestazione, contenuto e separatori dal resto come una linea)
+
+N.B. la differenza essenziale tra questi (fanno la stessa cosa) riguarda il modo in cui vengono usati
+Ricorda = Google fa molta attenzione ai tag al punto che può non renderizzare una pagina
+
+- tag vuoti = non racchiudono contenuti e non hanno un tag di chiusura (hanno attributi obbligatori e in certi casi anche opzionali)
+1. img = per le immagini (<img src="fiore.jpg" alt = "Girasole"). gli attributi obbligatori sono src = path per raggiungere il file e alt = descrizione alternativa dell'immagine
+2. input = usato nei form (modello da compilare) in cui l'utente inserisce informazioni
+3. hr = riga orizzontale
+
+- tag di blocco = occupano l'intera larghezza disponibile e iniziano su un anuova riga, possono contenere altri elementi di blocco o inline:
+1. div
+2. h1-h6 (per i titoli)
+3. p
+
+N.B. il browser va a capo quando un tag di blocco termina
+
+-tag di linea = non iniziano su una nuova riga e occupano solo lo spazio necessario per il loro contenuto
+1. span = è un contenitore inline generico e privo di significato semantico, utilizzato per raggruppare porzioni di testo o elementi inline 
+2. a =  definisce un collegamento ipertestuale (link) o un'ancora all'interno di una pagina web
+3. img (di default non va a capo e potrebbe rimanere accanto al testo)
+
+STRUTTURA DI UNA PAGINA
+- <!DOCTYPE> = definisce il tipo di documento (scritto in html5)
+- <html lang = "it"> = inizio di documento che prende come parametro la lingua
+- <head> = metadati e informazioni invisibili
+- <title> = mostrato nella scheda del browser (nella label della scheda del browser)
+- <meta charset="utf-8"> = codifica (charset è un parametro obbligatorio e utf-8 è lo standard)
+- <body> = contiene tutti gli elementi visibili della pagina
+
+ATTRIBUTI
+sono informazioni aggiuntive che forniscno dettagli csu un elementeo HTML. servono per configurare o personalizzare il comportamento e l'aspetto degli elementi. Hanno 
+un nome e un valore e vengono scritti all'interno del tad di apertura di un elemento
+
+N.B. nel codice html è possibile ma è sbagliato inserire elementi di stile (vanno solo nel css per la separazione dei compiti). lo stesso vale per javascript
+
+N.B. il tag strong implica che il contenuto del tag è molto importante (chrome lo interpreta con il grassetto)
+
+LISTE = per organizzare e preserntare informazioni in modo strutturato
+- liste ordinate: <ol> (ordered list) i cui elementi sono i <li>. questi li vengono interpretati con un numero davanti
+- non ordinate: <ul> (unordered list). interpretata con pallino davanti
+- di descrizione (non si usa mai)
+
+Nesting = posso mettere una lista dentro un'altra. alcuni browser li interpretano mettendo pallino pieno per la lista esterna e il vuoto per l'interna
+
+tag <q> = è un tag di linea (non va a capo) che viene utilizzato per citazioni brevi. viene interpretato mettendo automaticamente le virgolette
+
+tag <blockquote> = un tag di blocco utilizzato per citazioni più lunghe o intere. viene rappresentato con un rietro e piò includere attribuzioni tramite l'attributo cite
+
+tag <br> = va a capo. VA USATO SOLO PER LE POESIE (altrimenti decide il browser o al massimo tramite css). 
+
+CSS3 = cascding style sheets level 3 (rilasciata con html 5)
+serve a migliorare l'esperienza dell'utente / presentare meglio i contenuti. riduce il tempo e lo sforzo necessario per creare design complessi.
+facilita l'adattamento dei layout a diverse dimensioni di schermo.
+
+nel css io scrivo delle regole e ogni regola funziona come segue:
+- selettore = identifica gli elementi a cui si applica la regola (es h1{} significa selezionare tutti gli elementi h1 della pagina)
+- blocco di dichiarazione = tra {} si inseriscono una o più dichiarazioni di stile, ognuna composta da una proprietà e un valore. le dichiarazioni sono separati da ; (sennò non lo legge)
+
+color = cambia colore del testo di un elemento che può essere specificato in vari formati: esadecimale (con # davanti), valore RGB o parola chiave del colore
+
+FONT:
+- font-family = cambia tipo di font. ci sono famiglie serif (senza grazie), sans-serif (con grazie) e monospace (in cui ogni carattere ha la stessa dimensione)
+- font-style = cambia tra normale e italic (corsivo). c'è anche oblique ma renderizza come italic
+- font-size = cambia dimensione testo (prende valore in pixel)
+- font-weigth = quanto è in grassetto il testo (va da 100 e 900 a salti di 100)
+
+N.B. non tutti i font hanno tutte queste proprietà (se manca qualcosa il browser adatta alla cosa più vicina)
+
+text-align = dove mette il testo (center, left, right)
+
+per collegare html e css nel head si aggiunge <link rel="..." href="...">. il link prende 2 parametri obbligatori: rel è il tipo di file linkato (in questo caso stylesheet), 
+href inserisce il path per il file in questione
+
+UNITÀDI MISURA
+- pixel = unità assoluta di dimensione fissa non scalabile che garantisce maggiore precisione ma meno flessibilità (si usano poco)
+- em = unità relativa usata per regolare la dimensione dei font (dimensione dell'elemento corrente). scala in base alla dimensione del font corrente. può causare un aumento
+esponenziale quando usato in annidamenti (maggiore flessibilità e scalabilità)
+- % = unità relativa che da la dimensione del font dall'elemento genitore. scala in base alla dimensione del font genitore (con questo mantiene un rapporto diretto). più intuitivo
+
+EREDITARIETÀ DI CSS
+un meccanismo che consente ad alcuni stili di essere trasmessi dagli elementi genitori ai loro figli. ciò implica che se un elemento non ha un proprio stile specificato, 
+utilizzerà lo stile ereditato dal suo genitore. altrimenti lo stile specifico del figlio sovrascrive quello del genitore
+
+N.B se un elemento figlio ha una dimensione specifica, questa va calcolata su quella del body. se per esempio il body ha un font-style di 2em => scrivere che il p ha un font-style
+di 0.5 em implica che la dimensione finale di questo sia di 1em
+
+il browser applica le regole nell'ordine in cui le trova. se trova che un p prima è rosso e poi la regola è che sia blu => il browser applica blu.
+
+TESTO
+- text-align = specifica l’allineamento orizzontale del testo in un elemento
+- text-decoration = sppecifica la decorazione del testo. dopo i : si aggiungono delle proprietà tipo underline (per i siti) e overline
+- text-transform = controlla la capitalizzazione del testo
+
+BACKGROUND = proprietà sfondo di un elemento
+- background-color = colore di sfondo dell'elemento (stessi valori di color)
+- background-image = imposta un'immagine come sfondo 
+- background-repeat = definisce se e come l'immagine di sfondo si ripete
+- background-position = specifica la posizione dell'imamgine di sfondo
+
+aggiungi roba delle slides 26 e 27

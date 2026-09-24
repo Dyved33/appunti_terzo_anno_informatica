@@ -1,14 +1,3 @@
----
-date: 2026-09-21
-tags:
-  - programmazione-web-e-mobile
-  - architettura-web
-  - protocollo-http
-  - dns
-  - browser
-  - lezione
-type: lezione
----
 # Architettura del Web e Fondamenti del Protocollo HTTP
 
 ## 1. Il World Wide Web (WWW) e gli Standard di Rete

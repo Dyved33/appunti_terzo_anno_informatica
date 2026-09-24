@@ -1,13 +1,3 @@
----
-date: 2026-09-21
-tags:
-  - basi-di-dati
-  - sistemi-informativi
-  - introduzione-dbms
-  - architettura-dbms
-  - lezione
-type: lezione
----
 # Introduzione alle Basi di Dati e ai DBMS
 
 > [!INFO] Informazioni sul Corso ed Esami

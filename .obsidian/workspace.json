@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "70127a1fd187f07d",
+        "id": "8af508322da5cf3b",
         "type": "tabs",
         "children": [
           {
-            "id": "d11e1f295dd80cdb",
+            "id": "3453783ec80273f4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Appunti introduzione alla sicurezza informatica"
             }
           }
         ]
@@ -79,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -107,8 +112,8 @@
                   "activeTabId": "tab-1789989536846-jurcbwt"
                 }
               },
-              "icon": "lucide-ghost",
-              "title": "claudian-view"
+              "icon": "bot",
+              "title": "Claudian"
             }
           },
           {
@@ -204,8 +209,8 @@
             "state": {
               "type": "calendar",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "calendar"
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
             }
           }
         ],
@@ -213,7 +218,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -232,18 +238,21 @@
       "remotely-save:Remotely Save": false,
       "omnisearch:Omnisearch": false,
       "obsidian-importer:Import notes": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "realclaudian:Open Claudian": false
+      "realclaudian:Open Claudian": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d11e1f295dd80cdb",
+  "active": "3453783ec80273f4",
   "lastOpenFiles": [
-    "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+    "Excalidraw/Drawing 2026-09-24 15.08.55.excalidraw.md",
+    "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
+    "Excalidraw",
+    "Introduzione alla sicurezza informatica/Untitled",
+    "Introduzione alla sicurezza informatica",
     "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
-    "conflict-files-obsidian-git.md",
+    "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
     "Architettura reti e internet/Appunti architettura reti e internet.md",
     "Architettura reti e internet",
-    "00_Index_Basi_di_Dati.md",
     "prompt.md",
     "Unconfirmed 167043.crdownload",
     "Programmazione web e mobile con laboratorio",
@@ -255,9 +264,6 @@
     "TaskNotes/Start Here.md",
     "TaskNotes/Views/relationships.base",
     "TaskNotes/Views/pomodoro-stats.base",
-    "TaskNotes/Views/agenda-default.base",
-    "TaskNotes/Views/calendar-default.base",
-    "TaskNotes/Views/tasks-default.base",
     "BASI DI DATI E SISTEMI INFORMATIVI CON LABORATORIO/Untitled.md"
   ]
 }
