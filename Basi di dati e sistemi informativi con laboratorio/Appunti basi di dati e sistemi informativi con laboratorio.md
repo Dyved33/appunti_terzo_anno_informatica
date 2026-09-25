@@ -1,4 +1,4 @@
-# Introduzione alle Basi di Dati e ai DBMS
+# Lezione 1
 
 > [!INFO] Informazioni sul Corso ed Esami
 > - **Testo di riferimento:** R. Elmasri, S. B. Navathe, *Sistemi di basi di dati - Fondamenti*.
@@ -127,3 +127,160 @@ L'approccio basato su DBMS comporta costi vivi e un sovraccarico (*overhead*) si
 > [!NOTE] Nota del Prof
 > Al termine della lezione è stata illustrata una panoramica storica sull'evoluzione dei sistemi di gestione delle informazioni: dai file system gerarchici e reticolari degli anni '60 alla teorizzazione del modello relazionale (Codd, 1970), fino ai moderni sistemi distribuiti, a oggetti e NoSQL.
 
+---
+# Lezione 2
+
+## Modelli di dati
+
+Definizione: un modello di dati è un insieme di concetti per descrivere la struttura di una BD e le operazioni di manipolazione dei dati
+
+> [!note]
+> Per struttura di una BD si intendono i tipi di dato, le associazioni tra i dati, ed i vincoli che dovrebbero valere sui dati
+
+La maggior parte dei modelli dei dati comprende anche un insieme di operazioni di base per specificare reperimenti ed aggiornamenti sulla BD. Oltre alle operazioni di base (inserimenti, aggiornamenti, cancellazioni...) il modello dei dati può includere inoltre concetti per specificare l’aspetto dinamico di una BD. Ciò consente al progettista della BD di specificare un insieme di operazioni definite dall'utente (ad esempio, operazione calcola media applicata a studente). Nel modello relazionale dei dati esiste la possibilità di associare il comportamento alle relazioni (triggers, stored procedures)
+
+Categorie di modelli di dati:
+- **Alto livello o concettuali**: forniscono concetti che sono vicini alle modalità di percezione dei dati degli utenti finali
+- **Basso livello o fisici**: Forniscono concetti che descrivono dettagli sulla memorizzazione fisica dei dati
+- **Implementabili**: Forniscono concetti che possono essere compresi dagli utenti finali ma che non sono troppo lontani dal modo in cui i dati sono organizzati all'interno del calcolatore. Nascondono alcuni dettagli di memorizzazione dei dati, ma si possono implementare direttamente sul calcolatore
+
+## Schemi vs istanze
+Qualsiasi sia il modello dei dati è importante distinguere tra la descrizione della BD e la BD stessa
+
+Schema di una BD:
+- Descrizione della BD
+- Viene specificata durante la fase di progettazione della BD
+
+Diagramma di schema:
+- Rappresentazione grafica di uno schema di BD
+- Descrive solo alcuni aspetti di uno schema
+
+Il costrutto di schema è ciascun oggetto dello schema (studente, corso,...)
+
+Stato di una BD:
+- Dati della BD in un particolare istante di tempo
+- Si parla anche di istanze di BD
+
+> [!note]
+> Nella BD, ciascun costrutto dello schema ha un proprio insieme corrente di istanze 
+>> [!example]
+>> Il costrutto studente conterrà l’insieme delle singole entità (record) di ciascun studente come sue istanze
+
+Quindi lo stato di una BD si riferisce al contenuto della BD in un particolare istante temporale:
+- Stato iniziale di una BD = Si riferisce allo stato di una BD, nel momento in cui la BD viene per la prima volta popolata o caricata con i dati iniziali
+- Stato valido di una BD = stato della BD che soddisfa la struttura ed i vincoli specificati nello schema della BD.
+
+
+| Schema                       | Stato                                        |
+| ---------------------------- | -------------------------------------------- |
+| Non cambia frequentemente    | Cambia ogni volta che la BD viene aggiornata |
+| Viene anche detto intensione | Viene anche detto estensione                 |
+
+## Architettura a 3 livelli
+Proposta per supportare le caratteristiche di un DBMS di: 
+- Indipendenza dei dati
+- Viste multiple sui dati 
+
+È utile per illustrare e spiegare l'organizzazione di un sistema di BD
+
+Definisce schemi DBMS in 3 livelli:
+1. **Schema interno**: (livello interno) per descrivere la memorizzazione fisica dei dati e le strutture di accesso (es. Gli indici). Usa tipicamente un modelli dei dati fisico
+2. **Schema concettuale**: (livello concettuale) per descrivere le strutture ed i vincoli sulla BD per una classe di utenti. Usa un modello dei dati concettuale oppure implementabile
+3. **Schema esterno**: (livello esterno) per descrivere le varie viste degli utenti. Si utilizzano gli stessi modelli dei dati usati per lo schema concettuale
+
+![[Pasted image 20260925091712.png]]
+
+Questa è un'opera di mappatura necessaria per trasformare le richieste ed i dati tra i livelli di schema:
+- Programmi fanno riferimento a schema esterno, e sono mappati dal DBMS verso lo schema interno per essere eseguiti 
+- Dati estratti dal livello del DBMS interno vengono riformattati per corrispondere alle viste esterne degli utenti (ad esempio, formattazione del risultato di una query SQL per una pagina WEB)
+
+## Indipendenza dei dati
+Si divide in:
+- Indipendenza dei dati **Logica**: è la capacità di apporre cambiamenti a schema concettuale senza dover cambiare gli schemi esterni ed i programmi applicativi associati
+- Indipendenza dei dati **Fisica**: è la capacità di apporre cambiamenti allo schema interno senza dover cambiare lo schema concettuale. Ad esempio, lo schema interno potrebbe essere modificato in seguito alla creazione di nuovi indici per ottimizzare le performance del DBMS
+
+In un DBMS che supporta l’indipendenza dei dati: 
+- Quando uno schema viene modifica ad un livello più basso, è necessario modificare soltanto il mapping con i livelli di schema più alti; 
+- i livelli di schema più alti rimangono invece inalterati. 
+- Ciò consente di preservare intatti anche i programmi che fanno riferimento agli schemi esterni
+
+## Linguaggi DBMS
+Data Definition Language (DDL):
+- Utilizzato dai DBA e dai progettisti della BD per specificare lo schema concettuale della BD 
+- In molti DBMS, il DDL viene utilizzato anche per definire schemi interni ed esterni 
+- In alcuni DBMS, vi sono linguaggi speciali per definire schemi interni (storage definition language–SDL) e schemi esterni (view definition language—VDL)
+
+Data Manipulation Language (DML):
+- Utilizzato per specificare interrogazioni ed aggiornamenti 
+- I comandi del DML possono essere applicati direttamente alla BD (query language) 
+- Alternativamente, i comandi del DML possono essere integrati in un linguaggio di programmazione (linguaggio ospite)
+- È possibile anche avere a disposizione apposite librerie per accedere ad UN DBMS da un linguaggio di programmazione
+
+### Tipi di DML
+- Linguaggi di alto livello o Non-Procedurali:
+	- SQL
+	- Sono dichiarativi = specificano quali dati reperire
+	- Set-oriented
+- Linguaggi di basso livello o Procedurali:
+	- Reperiscono i dati procedendo record per record
+	- Sono necessari costrutti di loop e puntatori per reperire insiemi di record
+
+### Modelli di dati
+Classificazione in base al modello dei dati:
+- *Tradizionali*: relazionali, gerarchico, reticolari
+- *Emergenti*: ad oggetti, relazionale ad oggetti
+
+#### Modello gerarchico
+- Rappresenta i dati come strutture gerarchiche ad albero 
+- A partire da un dato padre, si accede ai dati figli da cui essi dipendono 
+- Definito durante la prima fase di sviluppo dei DBMS (anni 60) ed implementato da IBM e North American Rockwell intorno al 1965 
+- Non esiste linguaggio standard per il modello gerarchico. Un DML diffuso e’ il linguaggio DL/1 del sistema IMS.
+
+**Vantaggi**:
+- Rispecchia natura gerarchica di una molteplicità di domini
+
+**Svantaggi**: 
+- Struttura gerarchica impone regole rigide sull'esecuzione di aggiornamenti ed interrogazioni 
+- Scarso spazio per l’ottimizzazione automatica delle query 
+- Dipendenza dei programmi dalle strutture 
+- Non si presta a rappresentare in modo efficiente relazioni N:M 
+- La definizione di relazioni più generiche richiede l’introduzione di duplicati
+
+#### Modello reticolare
+- Primo DBMS reticolare implementato da Honeywell nel 1965 (IDS System) 
+- Alla base di una varietà di sistemi in voga fino a metà degli anni 80: IDMS (Cullinet, oggi Computer Associates), DMS 1100 (Unisys), IMAGE (HP), VAX-DBMS (Digital Equipment Corporation, poi COMPAQ, oggi HP) 
+- Supportato dalla CODASYL (Conference on Data Systems Languages/CDASYL–DBTG Report del 1971) 
+- Rappresenta dati come tipi di record 
+- Record sono legati tra loro tramite puntatori che permettono all'utente di accedere ai dati più facilmente, senza i vincoli imposti dal modello gerarchico
+
+<div style="text-align: center;">
+  <img src="Pasted image 20260925093710.png" alt="Immagine" />
+  <p>Base di dati relativa all'università in versione come modello reticolare</p>
+</div> 
+
+**Vantaggi**:
+- Un record può avere uno o più record padri, evitando problemi di ridondanza 
+- Ogni nodo può essere il punto di partenza per raggiungere un determinato campo 
+- Permette di modellare relazioni N:M
+
+**Svantaggi**:
+- Complesso reticolo di puntatori nella BD 
+- Scarso spazio per l’ottimizzazione automatica delle query
+
+#### Modello relazionale
+- Proposto nel 1970 da E. F. Codd (IBM), primi sistemi commerciali nel 1981-82 
+- Oggi in molteplici prodotti commerciali (DB 2, ORACLE, MS SQL Server, INFORMIX, SYBASE) 
+- Processo standardizzazione SQL: SQL-89 (SQL 1), SQL-92 (SQL 2), SQL 99...
+- Ad oggi il prodotto dominante nel mercato dello sviluppo di BD
+
+#### Modello ad oggetti
+- Definisce BD in termini di oggetti, delle loro proprietà, e delle operazioni associate 
+- Incorporano molte caratteristiche del paradigma ad oggetti (tipi di dati astratti, incapsulamento, ereditarietà ...) 
+- OODBMS iniziano a diffondersi alla fine degli anni 80 
+- Inizialmente considerate concorrenti alle BD relazionali, oggi la loro penetrazione complessiva nel mercato dei prodotti BD rimane sotto al 5
+
+#### Modello Ibrido Relazionale ad Oggetti
+- Trend piu’ recente. Inizia con l’avvento di Informix Universal Server 
+- RDBMS incorporano concetti relativi ai BD ad oggetti, portando al modello relazionale ad oggetti 
+- Tra gli altri, ultime versioni di Oracle-10i, DB2, PostgreSQL
+- Standard inclusi in SQL 99
