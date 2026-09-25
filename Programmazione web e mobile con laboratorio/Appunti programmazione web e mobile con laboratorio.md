@@ -65,6 +65,7 @@ Accept: application/json
 > [!IMPORTANT] Il Concetto di Idempotenza
 > Un metodo HTTP è definito **idempotente** se l'esecuzione ripetuta della medesima richiesta produce il medesimo effetto collaterale sullo stato del server rispetto a una singola esecuzione. I metodi `GET`, `PUT` e `DELETE` sono idempotenti, mentre `POST` non è idempotente (richieste duplicate generano risorse duplicate).
 
+![[Pasted image 20260925163437.png]]
 ### 3.4 Anatomia di una Risposta HTTP
 La risposta restituita dal server si articola in:
 1. **Status Code e Status Message:** codice numerico a tre cifre indicante l'esito dell'operazione, accompagnato da un testo descrittivo:

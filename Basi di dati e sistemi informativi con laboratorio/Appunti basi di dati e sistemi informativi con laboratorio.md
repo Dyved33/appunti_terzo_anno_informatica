@@ -125,162 +125,234 @@ L'approccio basato su DBMS comporta costi vivi e un sovraccarico (*overhead*) si
 * Contesti operativi con accesso strettamente monoutente, in cui non sussiste alcuna necessità di condivisione simultanea o concorrenza sui dati.
 
 > [!NOTE] Nota del Prof
-> Al termine della lezione è stata illustrata una panoramica storica sull'evoluzione dei sistemi di gestione delle informazioni: dai file system gerarchici e reticolari degli anni '60 alla teorizzazione del modello relazionale (Codd, 1970), fino ai moderni sistemi distribuiti, a oggetti e NoSQL.
 
 ---
-# Lezione 2
 
-## Modelli di dati
+# Lezione 2: Modelli dei Dati, Architettura a Tre Livelli e Classificazione dei DBMS
 
-Definizione: un modello di dati è un insieme di concetti per descrivere la struttura di una BD e le operazioni di manipolazione dei dati
+## 1. I Modelli dei Dati
 
-> [!note]
-> Per struttura di una BD si intendono i tipi di dato, le associazioni tra i dati, ed i vincoli che dovrebbero valere sui dati
+### 1.1 Definizione e Componenti di un Modello
+Un **modello dei dati** è una collezione strutturata di concetti e formalismi impiegata per descrivere la struttura di una base di dati e le operazioni di manipolazione ammesse su di essa.
 
-La maggior parte dei modelli dei dati comprende anche un insieme di operazioni di base per specificare reperimenti ed aggiornamenti sulla BD. Oltre alle operazioni di base (inserimenti, aggiornamenti, cancellazioni...) il modello dei dati può includere inoltre concetti per specificare l’aspetto dinamico di una BD. Ciò consente al progettista della BD di specificare un insieme di operazioni definite dall'utente (ad esempio, operazione calcola media applicata a studente). Nel modello relazionale dei dati esiste la possibilità di associare il comportamento alle relazioni (triggers, stored procedures)
+> [!NOTE] Struttura della Base di Dati
+> Per **struttura** di una base di dati si intendono congiuntamente:
+> * I **tipi di dato** e i domini ammissibili.
+> * Le **associazioni e relazioni** logiche intercorrenti tra i dati.
+> * I **vincoli di integrità** che devono essere costantemente soddisfatti dai dati memorizzati.
 
-Categorie di modelli di dati:
-- **Alto livello o concettuali**: forniscono concetti che sono vicini alle modalità di percezione dei dati degli utenti finali
-- **Basso livello o fisici**: Forniscono concetti che descrivono dettagli sulla memorizzazione fisica dei dati
-- **Implementabili**: Forniscono concetti che possono essere compresi dagli utenti finali ma che non sono troppo lontani dal modo in cui i dati sono organizzati all'interno del calcolatore. Nascondono alcuni dettagli di memorizzazione dei dati, ma si possono implementare direttamente sul calcolatore
+La totalità dei modelli dei dati include un nucleo di **operazioni fondamentali** preposte all'interrogazione e all'aggiornamento della base di dati (inserimento, cancellazione e modifica dei record).
 
-## Schemi vs istanze
-Qualsiasi sia il modello dei dati è importante distinguere tra la descrizione della BD e la BD stessa
+Oltre alle operazioni di base, un modello può fornire costrutti per modellare l'**aspetto dinamico e comportamentale** del sistema informativo:
+* Consente al progettista di formalizzare un insieme di **operazioni definite dall'utente** (ad esempio, l'operazione `calcola_media` associata all'entità `Studente`).
+* Nel modello relazionale moderno, questo paradigma si concretizza associando logica attiva direttamente allo schema mediante **trigger**, **stored procedure** e funzioni di dominio.
 
-Schema di una BD:
-- Descrizione della BD
-- Viene specificata durante la fase di progettazione della BD
+### 1.2 Tassonomia dei Modelli dei Dati
+I modelli dei dati si classificano in tre categorie a seconda del livello di astrazione offerto:
 
-Diagramma di schema:
-- Rappresentazione grafica di uno schema di BD
-- Descrive solo alcuni aspetti di uno schema
+1. **Modelli di Alto Livello o Concettuali:**
+   * Forniscono concetti e costrutti molto vicini alle modalità di percezione e ragionamento degli utenti finali del dominio applicativo.
+   * Il principale esponente è il **Modello Entità-Relazione (ER)** e le sue estensioni concettuali.
+2. **Modelli Implementabili o Logici:**
+   * Costituiscono il livello intermedio: presentano concetti comprensibili per gli utenti finali ma non eccessivamente distanti dalle modalità di memorizzazione e rappresentazione del calcolatore.
+   * Mascherano i dettagli fisici di basso livello (blocchi, tracce, allocazione di memoria), risultando direttamente implementabili e gestibili dai moderni motori DBMS.
+   * Includono i modelli tradizionali (relazionale, reticolare, gerarchico) e orientati agli oggetti.
+3. **Modelli di Basso Livello o Fisici:**
+   * Descrivono le modalità e i dettagli tecnici con cui i dati sono fisicamente allocati e formattati sui supporti di memoria secondaria.
+   * Specificano le strutture di accesso, l'ordinamento dei record, la formattazione dei blocchi e i percorsi di scansione su disco.
 
-Il costrutto di schema è ciascun oggetto dello schema (studente, corso,...)
+## 2. Schemi, Istanze e Stati della Base di Dati
 
-Stato di una BD:
-- Dati della BD in un particolare istante di tempo
-- Si parla anche di istanze di BD
+Una distinzione teorica essenziale nella disciplina delle basi di dati separa la descrizione concettuale della base di dati dalla base di dati fisica effettivamente memorizzata.
 
-> [!note]
-> Nella BD, ciascun costrutto dello schema ha un proprio insieme corrente di istanze 
->> [!example]
->> Il costrutto studente conterrà l’insieme delle singole entità (record) di ciascun studente come sue istanze
+### 2.1 Schema della Base di Dati (Intensione)
+Lo **schema** è la descrizione formale e globale della base di dati, specificata e validata durante la fase di progettazione iniziale.
+* **Stabilità Temporale:** Lo schema non muta frequentemente nel corso del tempo; definisce la struttura invariante dell'applicazione.
+* **Costrutto di Schema:** Ciascun singolo elemento componente dello schema (es. l'entità `Studente`, l'entità `Corso`, o l'attributo `Matricola`).
+* **Diagramma di Schema:** Rappresentazione grafica che illustra alcuni aspetti strutturali salienti dello schema (es. nomi dei record, attributi primari e associazioni), omettendone i dettagli esaustivi come vincoli di integrità avanzati o tipi di memorizzazione fisica.
 
-Quindi lo stato di una BD si riferisce al contenuto della BD in un particolare istante temporale:
-- Stato iniziale di una BD = Si riferisce allo stato di una BD, nel momento in cui la BD viene per la prima volta popolata o caricata con i dati iniziali
-- Stato valido di una BD = stato della BD che soddisfa la struttura ed i vincoli specificati nello schema della BD.
+### 2.2 Stato o Istanze della Base di Dati (Estensione)
+Lo **stato** (o **insieme delle istanze**) di una base di dati rappresenta la totalità dei dati effettivamente memorizzati nella base di dati in un preciso istante temporale.
 
+> [!NOTE] Corrispondenza Schema-Istanze
+> All'interno della base di dati, ciascun costrutto di schema possiede un proprio insieme corrente di istanze.
+> 
+> > [!EXAMPLE] Istanza di Costrutto
+> > Il costrutto di schema `Studente` conterrà, in un dato momento, l'insieme dei record (o tuple) corrispondenti a ciascun singolo studente iscritto e registrato nel sistema.
 
-| Schema                       | Stato                                        |
-| ---------------------------- | -------------------------------------------- |
-| Non cambia frequentemente    | Cambia ogni volta che la BD viene aggiornata |
-| Viene anche detto intensione | Viene anche detto estensione                 |
+### 2.3 Stati Iniziali e Stati Validi
+La natura dello stato è intrinsecamente dinamica e si articola in:
+* **Stato Iniziale:** La configurazione assunta dalla base di dati nel momento in cui essa viene popolata o caricata per la prima volta con i dati di partenza.
+* **Stato Valido (Consistente):** Uno stato che soddisfa rigorosamente la struttura formale e l'integralità dei vincoli definiti nello schema:
+  $$\text{Stato } S \text{ è valido} \iff \forall v \in \text{Vincoli}(\text{Schema}), \; S \models v$$
+* Ogni operazione di aggiornamento (scrittura, modifica o cancellazione) determina una transizione di stato della base di dati, che il DBMS deve validare per preservarne la consistenza.
 
-## Architettura a 3 livelli
-Proposta per supportare le caratteristiche di un DBMS di: 
-- Indipendenza dei dati
-- Viste multiple sui dati 
+| Dimensione di Confronto | Schema (Intensione) | Stato / Istanze (Estensione) |
+| :--- | :--- | :--- |
+| **Dinamica Temporale** | Statico: non cambia frequentemente nel tempo | Dinamico: muta ad ogni aggiornamento o transazione |
+| **Fase di Definizione** | Specificato durante la fase di progettazione | Popolato e manipolato durante la fase di esercizio |
+| **Ruolo Semantico** | Rappresenta la struttura, le regole e i vincoli | Rappresenta i dati effettivi registrati |
+| **Denominazione Logica** | **Intensione** del sistema informativo | **Estensione** del sistema informativo |
 
-È utile per illustrare e spiegare l'organizzazione di un sistema di BD
+## 3. L'Architettura a Tre Livelli (ANSI/SPARC)
 
-Definisce schemi DBMS in 3 livelli:
-1. **Schema interno**: (livello interno) per descrivere la memorizzazione fisica dei dati e le strutture di accesso (es. Gli indici). Usa tipicamente un modelli dei dati fisico
-2. **Schema concettuale**: (livello concettuale) per descrivere le strutture ed i vincoli sulla BD per una classe di utenti. Usa un modello dei dati concettuale oppure implementabile
-3. **Schema esterno**: (livello esterno) per descrivere le varie viste degli utenti. Si utilizzano gli stessi modelli dei dati usati per lo schema concettuale
+L'**architettura a tre livelli** (formalizzata dal comitato ANSI/SPARC) è stata teorizzata per supportare in modo sistematico due caratteristiche cardine dei moderni DBMS:
+1. L'**indipendenza dei dati**.
+2. Il supporto a **viste multiple e personalizzate** per classi eterogenee di utenti.
 
-![[Pasted image 20260925091712.png]]
+L'architettura separa la gestione del sistema in tre livelli gerarchici di schema:
 
-Questa è un'opera di mappatura necessaria per trasformare le richieste ed i dati tra i livelli di schema:
-- Programmi fanno riferimento a schema esterno, e sono mappati dal DBMS verso lo schema interno per essere eseguiti 
-- Dati estratti dal livello del DBMS interno vengono riformattati per corrispondere alle viste esterne degli utenti (ad esempio, formattazione del risultato di una query SQL per una pagina WEB)
+```
+                  ┌──────────────────────┐   ┌──────────────────────┐
+   Livello        │ Vista Esterna 1      │...│ Vista Esterna n      │
+   Esterno        └──────────┬───────────┘   └──────────┬───────────┘
+                             │                          │
+                 ════════════╪══════════════════════════╪═════════════  Mappatura Esterno/Concettuale
+                             └───────────┬──────────────┘
+                                         ▼
+   Livello                       ┌────────────────┐
+   Concettuale                   │Schema Concettuale│
+                                 └───────┬────────┘
+                 ════════════════════════╪════════════════════════════  Mappatura Concettuale/Interno
+                                         ▼
+   Livello                       ┌────────────────┐
+   Interno                       │ Schema Interno │
+                                 └───────┬────────┘
+                                         ▼
+                               [ Base di Dati Fisica ]
+```
 
-## Indipendenza dei dati
-Si divide in:
-- Indipendenza dei dati **Logica**: è la capacità di apporre cambiamenti a schema concettuale senza dover cambiare gli schemi esterni ed i programmi applicativi associati
-- Indipendenza dei dati **Fisica**: è la capacità di apporre cambiamenti allo schema interno senza dover cambiare lo schema concettuale. Ad esempio, lo schema interno potrebbe essere modificato in seguito alla creazione di nuovi indici per ottimizzare le performance del DBMS
+1. **Schema Interno (Livello Interno o Fisico):**
+   * Descrive la struttura di memorizzazione fisica dei dati e le strutture di accesso rapido (es. puntatori fisici, indici B-Tree o tabelle hash).
+   * Impiega un modello dei dati fisico di basso livello.
+2. **Schema Concettuale (Livello Concettuale o Logico Globale):**
+   * Descrive l'intera struttura, le entità, i tipi di dato, le associazioni e i vincoli di integrità della base di dati per una collettività di utenti.
+   * Nasconde integralmente i dettagli implementativi fisici; adotta un modello concettuale o un modello implementabile.
+3. **Schema Esterno (Livello Esterno o delle Viste):**
+   * Descrive le prospettive parziali o le viste ritagliate su misura per specifiche comunità di utenti o applicazioni.
+   * Adotta il medesimo modello dei dati impiegato per il livello concettuale, isolando le informazioni non pertinenti o riservate.
 
-In un DBMS che supporta l’indipendenza dei dati: 
-- Quando uno schema viene modifica ad un livello più basso, è necessario modificare soltanto il mapping con i livelli di schema più alti; 
-- i livelli di schema più alti rimangono invece inalterati. 
-- Ciò consente di preservare intatti anche i programmi che fanno riferimento agli schemi esterni
+![[Pasted image 20260925091712.png|450]]
 
-## Linguaggi DBMS
-Data Definition Language (DDL):
-- Utilizzato dai DBA e dai progettisti della BD per specificare lo schema concettuale della BD 
-- In molti DBMS, il DDL viene utilizzato anche per definire schemi interni ed esterni 
-- In alcuni DBMS, vi sono linguaggi speciali per definire schemi interni (storage definition language–SDL) e schemi esterni (view definition language—VDL)
+> [!NOTE] Architettura a Tre Schemi
+> Il diagramma sopra riportato illustra le interconnessioni tra gli utenti finali (*End Users*), i livelli di schema (*External*, *Conceptual*, *Internal*) e il database persistente memorizzato (*Stored Database*), evidenziando il ruolo pivotale delle mappature intermedie.
 
-Data Manipulation Language (DML):
-- Utilizzato per specificare interrogazioni ed aggiornamenti 
-- I comandi del DML possono essere applicati direttamente alla BD (query language) 
-- Alternativamente, i comandi del DML possono essere integrati in un linguaggio di programmazione (linguaggio ospite)
-- È possibile anche avere a disposizione apposite librerie per accedere ad UN DBMS da un linguaggio di programmazione
+### Processi di Mappatura (Mapping)
+La trasformazione delle richieste e dei dati attraverso i tre livelli architetturali richiede un'esplicita opera di **mappatura**:
+* **Dall'alto verso il basso (Risoluzione delle Richieste):** I programmi applicativi e gli utenti interagiscono con il proprio schema esterno. Il DBMS intercetta le richieste e le mappa verso lo schema concettuale, traducendole successivamente nello schema interno affinché i moduli di I/O possano reperire i blocchi di memoria su disco.
+* **Dal basso verso l'alto (Composizione dei Risultati):** I dati grezzi estratti dal livello interno vengono rielaborati e formattati dal DBMS per risalire la gerarchia fino a conformarsi alla vista esterna dell'utente richiedente (ad esempio, la conversione del risultato di una query relazionale in una struttura tabellare su interfaccia web).
 
-### Tipi di DML
-- Linguaggi di alto livello o Non-Procedurali:
-	- SQL
-	- Sono dichiarativi = specificano quali dati reperire
-	- Set-oriented
-- Linguaggi di basso livello o Procedurali:
-	- Reperiscono i dati procedendo record per record
-	- Sono necessari costrutti di loop e puntatori per reperire insiemi di record
+## 4. L'Indipendenza dei Dati
 
-### Modelli di dati
-Classificazione in base al modello dei dati:
-- *Tradizionali*: relazionali, gerarchico, reticolari
-- *Emergenti*: ad oggetti, relazionale ad oggetti
+L'**indipendenza dei dati** è la proprietà dei sistemi DBMS che consente di modificare la definizione dello schema a un dato livello architetturale senza dover alterare gli schemi ai livelli gerarchici superiori né i programmi applicativi associati.
 
-#### Modello gerarchico
-- Rappresenta i dati come strutture gerarchiche ad albero 
-- A partire da un dato padre, si accede ai dati figli da cui essi dipendono 
-- Definito durante la prima fase di sviluppo dei DBMS (anni 60) ed implementato da IBM e North American Rockwell intorno al 1965 
-- Non esiste linguaggio standard per il modello gerarchico. Un DML diffuso e’ il linguaggio DL/1 del sistema IMS.
+Si articola rigorosamente in due forme:
 
-**Vantaggi**:
-- Rispecchia natura gerarchica di una molteplicità di domini
+### 4.1 Indipendenza Logica dei Dati
+È la capacità di apportare modifiche allo **schema concettuale** senza dover modificare gli schemi esterni né i programmi applicativi preesistenti:
+* Si manifesta quando si espande la base di dati introducendo nuove tabelle, nuove relazioni o nuovi attributi facoltativi.
+* Le applicazioni preesistenti continuano a operare regolarmente; è sufficiente aggiornare la sola **mappatura esterno/concettuale** per garantire l'allineamento.
 
-**Svantaggi**: 
-- Struttura gerarchica impone regole rigide sull'esecuzione di aggiornamenti ed interrogazioni 
-- Scarso spazio per l’ottimizzazione automatica delle query 
-- Dipendenza dei programmi dalle strutture 
-- Non si presta a rappresentare in modo efficiente relazioni N:M 
-- La definizione di relazioni più generiche richiede l’introduzione di duplicati
+### 4.2 Indipendenza Fisica dei Dati
+È la capacità di apportare modifiche allo **schema interno** senza dover modificare lo schema concettuale né, a cascata, gli schemi esterni o i programmi applicativi:
+* Si manifesta quando si riorganizzano i file di memorizzazione su disco, si modificano i percorsi di allocazione fisica o si creano/eliminano strutture ausiliarie (come indici su chiavi primarie o secondarie) per ottimizzare le prestazioni (*tuning* prestazionale).
+* È sufficiente aggiornare la **mappatura concettuale/interna**, mantenendo invariata la logica dei livelli superiori.
 
-#### Modello reticolare
-- Primo DBMS reticolare implementato da Honeywell nel 1965 (IDS System) 
-- Alla base di una varietà di sistemi in voga fino a metà degli anni 80: IDMS (Cullinet, oggi Computer Associates), DMS 1100 (Unisys), IMAGE (HP), VAX-DBMS (Digital Equipment Corporation, poi COMPAQ, oggi HP) 
-- Supportato dalla CODASYL (Conference on Data Systems Languages/CDASYL–DBTG Report del 1971) 
-- Rappresenta dati come tipi di record 
-- Record sono legati tra loro tramite puntatori che permettono all'utente di accedere ai dati più facilmente, senza i vincoli imposti dal modello gerarchico
+> [!IMPORTANT] Meccanismo Operativo dell'Indipendenza dei Dati
+> Quando uno schema subisce variazioni a un livello più basso, il DBMS richiede esclusivamente la ricalibrazione del modulo di **mapping** verso i livelli sovrastanti. I livelli superiori rimangono inalterati, preservando l'integrità del software applicativo e azzerando i costi di ricompilazione o refactoring del codice.
 
-<div style="text-align: center;">
-  <img src="Pasted image 20260925093710.png" alt="Immagine" />
-  <p>Base di dati relativa all'università in versione come modello reticolare</p>
-</div> 
+## 5. Linguaggi e Interfacce per DBMS
 
-**Vantaggi**:
-- Un record può avere uno o più record padri, evitando problemi di ridondanza 
-- Ogni nodo può essere il punto di partenza per raggiungere un determinato campo 
-- Permette di modellare relazioni N:M
+Per interagire con i vari livelli architetturali, i sistemi di basi di dati mettono a disposizione linguaggi specializzati:
 
-**Svantaggi**:
-- Complesso reticolo di puntatori nella BD 
-- Scarso spazio per l’ottimizzazione automatica delle query
+### 5.1 Linguaggi di Definizione (DDL, SDL e VDL)
+* **Data Definition Language (DDL):**
+  * Utilizzato dal DBA e dai progettisti per specificare formalmente lo schema concettuale della base di dati.
+  * Nella maggior parte dei DBMS commerciali moderni, il DDL viene adoperato anche per definire gli schemi interni ed esterni.
+* **Storage Definition Language (SDL):**
+  * Linguaggio specifico (presente in sistemi ad architettura avanzata o pura) preposto alla definizione dettagliata dello schema interno e dei parametri fisici di memorizzazione.
+* **View Definition Language (VDL):**
+  * Linguaggio deputato a specificare le viste dello schema esterno e la relativa mappatura concettuale.
+  * Nei sistemi contemporanei basati su standard SQL, le funzionalità di DDL, SDL e VDL sono unificate all'interno dei costrutti di definizione (`CREATE TABLE`, `CREATE INDEX`, `CREATE VIEW`).
 
-#### Modello relazionale
-- Proposto nel 1970 da E. F. Codd (IBM), primi sistemi commerciali nel 1981-82 
-- Oggi in molteplici prodotti commerciali (DB 2, ORACLE, MS SQL Server, INFORMIX, SYBASE) 
-- Processo standardizzazione SQL: SQL-89 (SQL 1), SQL-92 (SQL 2), SQL 99...
-- Ad oggi il prodotto dominante nel mercato dello sviluppo di BD
+### 5.2 Linguaggi di Manipolazione dei Dati (DML)
+Il **Data Manipulation Language (DML)** è impiegato per specificare le interrogazioni (*retrieval*) e gli aggiornamenti dello stato della base di dati (inserimenti, modifiche, cancellazioni).
 
-#### Modello ad oggetti
-- Definisce BD in termini di oggetti, delle loro proprietà, e delle operazioni associate 
-- Incorporano molte caratteristiche del paradigma ad oggetti (tipi di dati astratti, incapsulamento, ereditarietà ...) 
-- OODBMS iniziano a diffondersi alla fine degli anni 80 
-- Inizialmente considerate concorrenti alle BD relazionali, oggi la loro penetrazione complessiva nel mercato dei prodotti BD rimane sotto al 5
+I comandi DML possono essere eseguiti:
+1. **In modalità stand-alone (*Query Language*):** Eseguiti direttamente in modo interattivo da terminale o interfaccia grafica.
+2. **In modalità integrata (*Embedded DML*):** Annidati all'interno di un linguaggio di programmazione generico a scopo generale (**linguaggio ospite**, come Java, C, Python).
+3. **Mediante API e librerie dedicate:** Connessione e manipolazione tramite interfacce standardizzate (es. JDBC, ODBC, librerie ORM).
 
-#### Modello Ibrido Relazionale ad Oggetti
-- Trend piu’ recente. Inizia con l’avvento di Informix Universal Server 
-- RDBMS incorporano concetti relativi ai BD ad oggetti, portando al modello relazionale ad oggetti 
-- Tra gli altri, ultime versioni di Oracle-10i, DB2, PostgreSQL
-- Standard inclusi in SQL 99
+### 5.3 Classificazione dei DML: Dichiarativi vs Procedurali
+I linguaggi DML si distinguono operativamente in due paradigmi:
+
+* **Linguaggi di Alto Livello o Non-Procedurali (Dichiarativi / Set-Oriented):**
+  * L'esempio paradigmatico è il linguaggio **SQL**.
+  * Specificano dichiarativamente **quali dati reperire**, demandando completamente al modulo di *Query Optimization* del DBMS la definizione dell'algoritmo di accesso.
+  * Operano su insiemi di tuple (*set-at-a-time*): una singola istruzione estrae o manipola un'intera collezione di record.
+* **Linguaggi di Basso Livello o Procedurali (Record-Oriented):**
+  * Specificano dettagliatamente la sequenza algoritmica di passi necessaria per recuperare i dati.
+  * Operano su singoli record (*record-at-a-time*): richiedono l'utilizzo di strutture iterative (`loop`), puntatori espliciti e costrutti condizionali all'interno del linguaggio ospite per scorrere sequenze di record.
+
+## 6. Evoluzione e Classificazione dei DBMS in base al Modello dei Dati
+
+I sistemi DBMS si classificano in base al paradigma del modello dei dati adottato, distinguendosi in modelli tradizionali e modelli emergenti:
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    Modelli dei Dati                          │
+├──────────────────────────────┬───────────────────────────────┤
+│    Modelli Tradizionali      │      Modelli Emergenti        │
+├──────────────────────────────┼───────────────────────────────┤
+│ • Modello Gerarchico (Anni 60)│ • Modello a Oggetti (OODBMS)  │
+│ • Modello Reticolare (1971)  │ • Modello Relazionale a       │
+│ • Modello Relazionale (1970) │   Oggetti (ORDBMS, SQL:1999)  │
+└──────────────────────────────┴───────────────────────────────┘
+```
+
+### 6.1 Modelli Tradizionali
+
+#### I. Modello Gerarchico
+* **Struttura:** Rappresenta i dati come una collezione di alberi gerarchici rigidi, in cui a partire da un record radice (*padre*) si accede per discendenza ai record *figli* che ne dipendono (relazioni strettamente 1:N).
+* **Contesto Storico:** Sviluppato durante la prima fase dei DBMS (anni '60) ad opera congiunta di IBM e North American Rockwell intorno al 1965 (sviluppato per il programma spaziale Apollo).
+* **Linguaggi:** Assenza di uno standard formale universale. Il DML storicamente più diffuso è stato il linguaggio procedurale **DL/1** del sistema **IMS** (*Information Management System*) di IBM.
+* **Punti di Forza:** Rispecchia fedelmente la natura strettamente gerarchica di domini organizzativi e produttivi verticali.
+* **Limiti:**
+  * La rigida alberatura impone vincoli stringenti su interrogazioni e aggiornamenti.
+  * Assenza di ottimizzazione automatica delle query: la navigazione fisica è a carico del programmatore.
+  * Forte dipendenza dei programmi applicativi dall'organizzazione fisica delle strutture.
+  * Inefficienza nella modellazione di relazioni molti-a-molti ($N:M$): la rappresentazione di associazioni complesse costringe alla duplicazione dei dati, generando ridondanza incontrollata.
+
+#### II. Modello Reticolare
+* **Struttura:** Rappresenta i dati come tipi di record interconnessi mediante una ragnatela di puntatori espliciti (*set types*), permettendo a un record membro di possedere molteplici record proprietari (*padri*).
+* **Contesto Storico:** Il primo prototipo fu l'**IDS** (*Integrated Data Store*), sviluppato da Honeywell nel 1965. Rimase alla base dei principali sistemi commerciali fino alla metà degli anni '80 (IDMS di Cullinet, DMS 1100 di Unisys, IMAGE di HP, VAX-DBMS di Digital/Compaq).
+* **Standardizzazione:** Standardizzato dalla **CODASYL** (*Conference on Data Systems Languages*) nel celebre report **DBTG** (*Database Task Group*) del 1971.
+* **Punti di Forza:**
+  * Un record può avere più genitori, eliminando le anomalie di ridondanza tipiche del modello gerarchico.
+  * Consente la modellazione naturale e diretta di relazioni molti-a-molti ($N:M$).
+  * Qualsiasi nodo del grafo può costituire il punto di ingresso per navigare la base di dati.
+* **Limiti:**
+  * Elevata complessità di gestione: la presenza di un fittissimo reticolo di puntatori rende onerosa la manutenzione.
+  * Navigazione procedurale a carico dello sviluppatore (*record-at-a-time*), con scarso margine di ottimizzazione automatica da parte del sistema.
+
+![[Pasted image 20260925093710.png|500]]
+
+> [!NOTE] Modello Reticolare: Schema Universitario CODASYL
+> Il grafo illustra un'applicazione accademica nel modello reticolare: l'entità `COURSE` agisce come proprietaria verso `SECTION` (tramite `COURSE_OFFERINGS`) e verso `PREREQUISITE` (`HAS_A`/`IS_A`), mentre `GRADE_REPORT` riceve puntatori concorrenti sia da `STUDENT` (`STUDENT_GRADES`) sia da `SECTION` (`SECTION_GRADES`), concretizzando relazioni multilaterali senza duplicazione logica dei record.
+
+#### III. Modello Relazionale
+* **Struttura:** Modella l'intera base di dati come una collezione di **relazioni** matematiche (tabelle bidimensionali composte da righe/tuple e colonne/attributi), svincolando la logica dei dati dai puntatori fisici.
+* **Contesto Storico:** Teorizzato nel 1970 da **Edgar F. Codd** (ricercatore IBM) nell'articolo seminale *"A Relational Model of Data for Large Shared Data Banks"*. I primi sistemi commerciali debuttarono sul mercato nel 1981-1982.
+* **Diffusione e Standard:** Costituisce il paradigma dominante dell'industria del software (IBM DB2, Oracle Database, Microsoft SQL Server, PostgreSQL, MySQL). Ha introdotto lo standard universale **SQL** attraverso le sue successive evoluzioni (SQL-89, SQL-92, SQL:1999 e successive).
+
+### 6.2 Modelli Evoluti ed Emergenti
+
+#### IV. Modello ad Oggetti (OODBMS)
+* **Struttura:** Definisce la base di dati conformemente ai principi dell'Object-Oriented Programming (OOP): classi di oggetti, identità persistente indipendente dal valore (OID - *Object Identifier*), incapsulamento di stato e metodi, tipi di dato astratti e gerarchie di ereditarietà.
+* **Contesto Storico:** Ha iniziato a diffondersi alla fine degli anni '80 con l'obiettivo di abbattere il *conflitto di impedenza* (*impedance mismatch*) tra i linguaggi OOP e i database tabellari.
+* **Penetrazione di Mercato:** Nonostante le elevate potenzialità analitiche e concettuali, la quota complessiva di penetrazione industriale è rimasta confinata al di sotto del 5%, a causa della maturità, robustezza e capillarità degli ecosistemi relazionali.
+
+#### V. Modello Ibrido Relazionale ad Oggetti (ORDBMS)
+* **Struttura:** Modello ibrido che estende l'architettura relazionale classica con le funzionalità del paradigma ad oggetti: supporto a tipi di dato complessi e strutturati definiti dall'utente, costruttori di tipo (array, collezioni), ereditarietà tra tabelle e incapsulamento di funzioni.
+* **Contesto Storico ed Evoluzione:** Trend affermatosi nella seconda metà degli anni '90 a partire dall'avvento di piattaforme pionieristiche quali *Informix Universal Server*.
+* **Adozione Industriale:** Concetti standardizzati formalmente all'interno di **SQL:1999 (SQL3)** e integrati stabilmente nei principali motori DBMS enterprise (Oracle Database a partire da 8i/10g, IBM DB2, PostgreSQL).
