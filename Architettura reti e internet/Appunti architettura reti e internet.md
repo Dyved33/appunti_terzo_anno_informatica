@@ -25,13 +25,13 @@ Un processo comunicativo si realizza unicamente in presenza di tre elementi cost
 3. **Destinatario (*Destination / Ricevitore*):** il dispositivo a cui è destinato il flusso informativo e che acquisisce il segnale (es. server, workstation, attuatore).
 
 ```
-┌──────────┐           Mezzo Trasmissivo (Canale Fisico)          ┌─────────────┐
-│ Sorgente ├─────────────────────────────────────────────────────►│ Destinatario │
-└──────────┘                                                      └─────────────┘
+	          Mezzo Trasmissivo (Canale Fisico)          
+│ Sorgente ├─────────────────────────────────────►│ Destinatario │
+                                                 
 ```
 
 ### 2.2 Definizione di Comunicazione Dati e Sistema di Comunicazione
-La **comunicazione dati** è lo scambio formale di informazioni tra due o più dispositivi realizzato attraverso un idoneo mezzo di trasmissione.
+La **comunicazione dati** è lo scambio formale di informazioni tra due o più dispositivi realizzato attraverso un idoneo mezzo di trasmissione.-
 
 Affinché la comunicazione abbia luogo con successo, i singoli apparati devono integrarsi all'interno di un **sistema di comunicazione** coerente, strutturato in due componenti complementari:
 * **Hardware:** le interfacce fisiche di rete (NIC - *Network Interface Card*), modem, amplificatori, antenne, commutatori (*switch*) e instradatori (*router*).

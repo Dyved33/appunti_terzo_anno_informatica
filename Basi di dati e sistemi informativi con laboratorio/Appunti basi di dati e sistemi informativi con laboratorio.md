@@ -222,7 +222,7 @@ L'architettura separa la gestione del sistema in tre livelli gerarchici di schem
                                [ Base di Dati Fisica ]
 ```
 
-1. **Schema Interno (Livello Interno o Fisico):**
+1. **Schema Interno (Livello Interno o Fisico):** (come i file sono memorizzati e.g file,... E meccanismi di accesso per agevolare scrittura e lettura)
    * Descrive la struttura di memorizzazione fisica dei dati e le strutture di accesso rapido (es. puntatori fisici, indici B-Tree o tabelle hash).
    * Impiega un modello dei dati fisico di basso livello.
 2. **Schema Concettuale (Livello Concettuale o Logico Globale):**
