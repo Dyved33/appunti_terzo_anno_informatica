@@ -1,0 +1,19 @@
+body{
+    /* background-image: url('image.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header{
+    background-color: red;
+    padding: 20px;
+    text-align: center;
+    top: 1em;
+}
+
+footer{
+    background-color: red;
+    padding: 20px;
+    text-align: center;
+    bottom: 1em;
+}
