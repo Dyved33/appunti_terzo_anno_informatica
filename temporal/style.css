@@ -1,0 +1,23 @@
+div{
+    border-left: 5px solid red;
+    border-radius: 10px;
+
+    padding-left: .75em;
+    padding-top: 5em;
+
+    background-image: url('./lightsaber.png');
+    background-size: 5em;
+    background-repeat: no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+
+    box-shadow: 0px 10px 20px grey;
+}
+
+p{
+    margin: 0;
+}
+
+#author{
+    text-align: right;
+}
