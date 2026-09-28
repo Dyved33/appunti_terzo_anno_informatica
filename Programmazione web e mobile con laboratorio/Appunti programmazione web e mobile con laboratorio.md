@@ -335,3 +335,351 @@ Il CSS mette a disposizione un set completo di proprietà per governare lo sfond
 | **Posizionamento** | Segue il normale flusso strutturale del documento (inline) | Flessibile e posizionabile liberamente con `background-position` |
 | **Ripetizione** | Non ripetibile (singola istanza nel DOM) | Configurabile e ripetibile tramite `background-repeat` |
 | **Ruolo nel Layout** | Elemento fisico del DOM che occupa spazio nel flusso | Risiede sullo strato di sfondo, dietro a tutti i contenuti |
+
+---
+
+# Lezione 3: Box Model CSS, Selettori Avanzati, Tabelle e Form HTML5
+
+## 1. Il Box Model in CSS
+
+Nel motore di rendering dei browser, ogni singolo elemento presente all'interno del Document Object Model (DOM) viene rappresentato graficamente come una **scatola rettangolare astratta** (*box*). Il **CSS Box Model** governa la geometria, il dimensionamento e la spaziatura di tale scatola attraverso quattro livelli concentrici:
+
+```
+┌────────────────────────────────────────────────────────┐
+│                        MARGIN                          │
+│  ┌──────────────────────────────────────────────────┐  │
+│  │                     BORDER                       │  │
+│  │  ┌────────────────────────────────────────────┐  │  │
+│  │  │                  PADDING                   │  │  │
+│  │  │  ┌──────────────────────────────────────┐  │  │  │
+│  │  │  │                                      │  │  │  │
+│  │  │  │               CONTENT                │  │  │  │
+│  │  │  │         (width × height)             │  │  │  │
+│  │  │  │                                      │  │  │  │
+│  │  │  └──────────────────────────────────────┘  │  │  │
+│  │  └────────────────────────────────────────────┘  │  │
+│  └──────────────────────────────────────────────────┘  │
+└────────────────────────────────────────────────────────┘
+```
+
+### 1.1 Componenti del Box Model
+1. **Content (Area dei Contenuti):** L'area centrale in cui risiede il contenuto effettivo dell'elemento (testo, immagini o elementi figli). Le sue dimensioni sono determinate dalle proprietà `width` e `height`.
+2. **Padding (Spaziatura Interna):** Lo spazio trasparente interposto tra il perimetro del contenuto e il bordo interno dell'elemento. Viene gestito mediante la proprietà `padding`.
+3. **Border (Bordo):** La linea perimetrale che avvolge il padding e il contenuto. Può essere personalizzata in spessore, stile e colore tramite la proprietà `border`.
+4. **Margin (Margine Esterno):** Lo spazio vuoto esterno al bordo che separa l'elemento da tutti gli altri elementi adiacenti nel flusso della pagina. Viene controllato dalla proprietà `margin`.
+
+### 1.2 Regole di Notazione Shorthand e Senso Orario
+Le proprietà `padding` e `margin` consentono di specificare i valori per i quattro lati secondo una convenzione rigorosa che procede **in senso orario partendo dall'alto** (*Top $\rightarrow$ Right $\rightarrow$ Bottom $\rightarrow$ Left*):
+
+```css
+/* 4 Valori: Top | Right | Bottom | Left */
+padding: 10px 20px 15px 5px;
+
+/* 3 Valori: Top | Horizontal (Left & Right) | Bottom */
+padding: 10px 20px 15px;
+
+/* 2 Valori: Vertical (Top & Bottom) | Horizontal (Left & Right) */
+padding: 10px 20px;
+
+/* 1 Valore: applicato uniformemente a tutti e 4 i lati */
+padding: 10px;
+```
+
+È possibile dichiarare puntualmente le singole direzioni con le proprietà estese: `padding-top`, `padding-right`, `padding-bottom`, `padding-left` (e analogamente per `margin-*`).
+
+### 1.3 Personalizzazione di Bordo e Raggio di Curvatura (`border-radius`)
+* **Proprietà `border`:** Funge da proprietà *shorthand* che raggruppa larghezza, stile di tratto e colore:
+  ```css
+  border: 1px solid #333333;
+  ```
+* **Proprietà `border-radius`:** Consente di arrotondare gli angoli del perimetro esterno. I valori vengono interpretati in senso orario partendo dall'angolo **in alto a sinistra**:
+  ```css
+  /* In alto a sx | In alto a dx | In basso a dx | In basso a sx */
+  border-radius: 8px 8px 0 0;
+  ```
+
+> [!NOTE] Nota del Prof: Percezione Visiva dei Bottoni e Psicologia UI
+> In fase di progettazione delle interfacce utente è prassi consolidata rimuovere i bordi netti o applicare bordi arrotondati ai bottoni (`button`). Gli angoli vivi e le forme spigolose trasmettono all'utente una sensazione inconscia di spigolosità, rigidità o allarme; al contrario, pulsanti con angoli stondati risultano visivamente morbidi, moderni e più rassicuranti all'interazione.
+
+### 1.4 Fenomeno del Margin Collapsing (Fusione dei Margini)
+Nei layout a flusso normale, quando due margini verticali di elementi a livello di blocco entrano in contatto diretto, essi **si fondono** (*margin collapsing*): lo spazio effettivo risultante tra i due elementi non equivale alla somma aritmetica dei margini, bensì al **valore massimo** tra i due.
+
+> [!IMPORTANT] Vincoli di Dimensionamento Orizzontale vs Verticale
+> * **Vincolo Orizzontale:** È una regola d'oro del web design assicurarsi che la somma delle larghezze orizzontali, padding e margini non superi mai il $100\%$ della viewport per evitare la comparsa dello **scorrimento orizzontale (*horizontal scrollbar*)**, considerato un grave difetto di usabilità.
+> * **Vincolo Verticale:** Non sussistono limitazioni rigide per la dimensione verticale, in quanto lo scorrimento verso il basso costituisce il naturale pattern di navigazione dell'utente.
+> * **Best Practice sulle Unità:** Riservare l'uso dei pixel (`px`) quasi esclusivamente per lo spessore dei bordi (`border`); per margini, padding e dimensioni del layout preferire unità percentuali (`%`) o relative (`rem`, `em`, `vw`, `vh`) per assicurare fluidità e piena responsività.
+
+---
+
+## 2. Selettori Avanzati, ID, Classi e Combinatori CSS
+
+### 2.1 Tipologie Fondamentali di Selettori
+* **Selettore di Tipo (Tag):** Seleziona tutti gli elementi HTML di un dato tag (es. `p`, `h1`, `div`).
+* **Selettore di ID (`#id`):** L'attributo `id` identifica in modo **univoco e singolare** un elemento all'interno dell'intero documento. Nel CSS viene richiamato con il prefisso `#`:
+  ```css
+  #header-principale {
+    background-color: #002b49;
+  }
+  ```
+* **Selettore di Classe (`.classe`):** L'attributo `class` associa uno o più elementi a una medesima categoria stilistica. Nel CSS si richiama con il prefisso `.`:
+  ```css
+  .evidenziato {
+    color: #d9534f;
+    font-weight: bold;
+  }
+  ```
+
+### 2.2 Selettori Composti e Specificità
+È possibile combinare tag e identificatori per aumentare la specificità della selezione:
+* `p#quote`: seleziona esclusivamente l'elemento paragrafo `<p>` avente ID `quote`.
+* `div.quote`: seleziona tutti i tag `<div>` appartenenti alla classe `quote`.
+* `p.quote, div.quote`: applica la medesima regola sia ai paragrafi sia ai div dotati della classe `quote`.
+
+### 2.3 Combinatori CSS
+I combinatori definiscono la relazione gerarchica o posizionale tra due o più selettori:
+
+| Combinatore | Sintassi | Nome Tecnico | Descrizione della Selezione |
+| :--- | :--- | :--- | :--- |
+| **Spazio** | `A B` | Discendente (*Descendant*) | Seleziona qualsiasi elemento `B` annidato all'interno di `A` a qualunque livello di profondità. |
+| **Maggiore** | `A > B` | Figlio Diretto (*Child*) | Seleziona esclusivamente gli elementi `B` che sono figli immediati (di primo livello) di `A`. |
+| **Più** | `A + B` | Fratello Adiacente (*Adjacent Sibling*) | Seleziona il primo elemento `B` posizionato immediatamente dopo `A` e avente lo stesso genitore. |
+| **Tilde** | `A ~ B` | Fratello Generale (*General Sibling*) | Seleziona tutti gli elementi `B` posizionati dopo `A` che condividono lo stesso genitore. |
+
+```css
+/* Seleziona tutti i paragrafi all'interno di un div (a qualsiasi livello) */
+div p {
+  line-height: 1.6;
+}
+
+/* Seleziona solo i paragrafi figli diretti di un contenitore */
+section.main-content > p {
+  font-size: 1.1rem;
+}
+```
+
+---
+
+## 3. Stile delle Liste e Gestione delle Citazioni
+
+### 3.1 Proprietà di Stile per le Liste (`list-style`)
+La resa grafica dei marcatori delle liste (`<ul>` e `<ol>`) viene controllata tramite la famiglia di proprietà `list-style`:
+
+* `list-style-type`: Specifica la forma geometrica o il sistema di numerazione del marcatore:
+  * Liste non ordinate: `disc` (pallino pieno), `circle` (pallino vuoto), `square` (quadrato), `none` (rimozione del marcatore).
+  * Liste ordinate: `decimal` (1, 2, 3), `lower-alpha` (a, b, c), `upper-roman` (I, II, III).
+* `list-style-image`: Consente di sostituire il marcatore nativo con una grafica personalizzata:
+  ```css
+  ul.custom-check {
+    list-style-image: url('images/check.png');
+  }
+  ```
+* `list-style-position`: Stabilisce se il marcatore deve risiedere all'interno o all'esterno della scatola di testo dell'elemento `<li>`:
+  * `outside` (default): il marcatore è allineato all'esterno del blocco di testo.
+  * `inside`: il marcatore rientra all'interno del flusso del testo.
+* `list-style`: Proprietà *shorthand* per impostare simultaneamente tipo, posizione e immagine:
+  ```css
+  ul {
+    list-style: square inside none;
+  }
+  ```
+
+### 3.2 Personalizzazione delle Virgolature con `<q>`
+Per l'elemento di citazione breve `<q>`, il browser applica automaticamente i caratteri di virgolettatura tipografica. È possibile personalizzare i glifi di apertura e chiusura mediante la proprietà CSS `quotes`:
+
+```css
+q {
+  quotes: "«" "»" "“" "”";
+}
+```
+
+---
+
+## 4. Tabelle in HTML5 (`<table>`)
+
+Le tabelle HTML consentono di organizzare insiemi di dati complessi in una matrice strutturata di righe e colonne.
+
+### 4.1 Tag Fondamentali
+* `<table>`: Elemento radice che definisce l'inizio e la fine della struttura tabellare.
+* `<tr>` (*Table Row*): Definisce una riga della tabella.
+* `<th>` (*Table Header*): Cella di intestazione per righe o colonne; il testo viene renderizzato di default **in grassetto e centrato**.
+* `<td>` (*Table Data*): Cella standard contenente i dati informativi.
+
+```html
+<table>
+  <tr>
+    <th>Matricola</th>
+    <th>Cognome</th>
+    <th>Voto</th>
+  </tr>
+  <tr>
+    <td>37891</td>
+    <td>Rossi</td>
+    <td>30</td>
+  </tr>
+</table>
+```
+
+### 4.2 Gestione dei Bordi e `border-collapse`
+Se si assegna una regola di bordo al solo elemento `table`, viene tracciata unicamente la cornice perimetrale esterna. Se la si applica congiuntamente alle celle `td` e `th`, il browser genera un doppio bordo separato per ciascuna cella.
+
+Per unificare le linee di divisione in un unico tratto compatto si impiega la direttiva CSS:
+```css
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #cccccc;
+  padding: 8px 12px;
+}
+```
+
+> [!WARNING] Regola Fondamentale sull'Uso delle Tabelle
+> Le tabelle HTML **non devono mai essere impiegate per scopi di impaginazione grafica o layout di pagina** (compito demandato a Flexbox e CSS Grid). Vanno utilizzate unicamente per esporre dati strutturati tabulari.
+
+### 4.3 Unione di Celle: `colspan` e `rowspan`
+È possibile aggregare più celle contigue mediante due attributi specifici:
+* **`colspan="N"` (*Column Span*):** Espande una cella orizzontalmente su $N$ colonne adiacenti.
+* **`rowspan="N"` (*Row Span*):** Espande una cella verticalmente su $N$ righe sottostanti.
+
+```html
+<table border="1">
+  <tr>
+    <th colspan="2">Dati Anagrafici</th>
+    <th>Esito</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Mario Rossi</td>
+    <td>Modulo 1</td>
+    <td>Superato</td>
+  </tr>
+  <tr>
+    <td>Modulo 2</td>
+    <td>In attesa</td>
+  </tr>
+</table>
+```
+
+> [!IMPORTANT] Regole Operative per `rowspan` e `colspan`
+> 1. **Coerenza del Numero di Celle:** Ogni riga logica della tabella deve avere il medesimo numero complessivo di celle (computando la somma di celle singole e span).
+> 2. **Omissione dei `<td>` Eccedenti:** Quando si inserisce un attributo `rowspan="2"`, nelle righe sottostanti interessate dallo span **non devono essere inseriti i tag `<td>` per quella colonna**, poiché lo spazio è già occupato dall'espansione verticale. Analogamente, in presenza di `colspan="2"`, si omette la cella adiacente a destra nella medesima riga.
+
+---
+
+## 5. Moduli di Acquisizione Dati: Form HTML5 (`<form>`)
+
+I moduli interattivi (**form**) costituiscono il meccanismo primario attraverso cui gli utenti inseriscono dati destinati all'elaborazione da parte di un server web.
+
+### 5.1 Il Tag `<form>` e gli Attributi Obbligatori
+L'elemento contenitore `<form>` richiede due attributi fondamentali:
+* **`action`:** Specifica l'URI/endpoint lato server verso cui inoltrare i dati raccolti (es. `/api/login` o `process.php`).
+* **`method`:** Specifica il metodo di trasmissione HTTP:
+  * `GET`: I dati vengono concatenati all'URL sotto forma di *query string* (`?chiave=valore&...`). Indicato per ricerche e operazioni idempotenti; mai da usare per password o dati sensibili.
+  * `POST`: I dati vengono incapsulati all'interno del *Body* (payload) della richiesta HTTP. Indicato per operazioni di creazione, modifica o invio di dati riservati.
+
+### 5.2 Il Ruolo delle Etichette (`<label>`) e Associazione `for`/`id`
+L'elemento `<label>` è un tag **inline** preposto a definire la didascalia testuale di un controllo. 
+* L'attributo `for` della label deve corrispondere esattamente al valore dell'attributo `id` del controllo di input corrispondente.
+* **Vantaggio di Usabilità e Accessibilità:** Cliccando con il cursore sul testo dell'etichetta, il browser sposta automaticamente il focus sul rispettivo campo o attiva/disattiva la relativa casella di spunta (*checkbox* o *radio button*).
+
+```html
+<label for="campo-email">Indirizzo Email:</label>
+<input type="email" id="campo-email" name="user_email" required placeholder="mario.rossi@example.com">
+```
+
+### 5.3 L'Elemento `<input>` e le sue Tipologie
+L'elemento `<input>` è un tag vuoto (*void tag*) governato dall'attributo `type`:
+
+* **Campi Testuali e Specializzati:**
+  * `type="text"`: campo testuale monoriga generico.
+  * `type="password"`: campo con oscuramento automatico dei caratteri digitati.
+  * `type="email"`: campo con validazione sintattica dell'indirizzo email conforme alle specifiche RFC.
+  * `type="tel"`: campo dedicato a recapiti telefonici.
+  * `type="url"`: campo per l'inserimento di percorsi web con validazione del protocollo.
+  * `type="search"`: campo ottimizzato per query di ricerca interna.
+* **Campi Numerici e Temporali:**
+  * `type="number"`: accetta valori numerici; supporta gli attributi `min`, `max` e `step` per regolare gli incrementi ammessi.
+  * `type="range"`: controllo visuale a cursore scorrevole (*slider*) per selezioni numeriche approssimate.
+  * `type="date"`, `type="time"`: selettori visuali di date e orari con calendario nativo integrato.
+* **Campi Speciali e di Selezione:**
+  * `type="color"`: selettore visuale per la scelta di un codice colore esadecimale.
+  * `type="file"`: consente all'utente di selezionare uno o più file dal proprio file system locale per l'upload.
+  * `type="hidden"`: campo invisibile all'utente a schermo; viene impiegato dagli sviluppatori per trasmettere parametri di stato o token al server (ad esempio per tracciare un identificativo articolo quando l'utente clicca su un banner).
+
+### 5.4 Selezione Multipla e Singola: Checkbox e Radio Button
+* **Checkbox (`type="checkbox"`):** Consente selezioni multiple e indipendenti. Tutti gli elementi appartenenti allo stesso gruppo logico devono condividere lo stesso attributo `name`, possedendo valori `value` distinti.
+* **Radio Button (`type="radio"`):** Impone una scelta mutuamente esclusiva all'interno di un gruppo. Condividono il medesimo `name`, ma solo un'opzione per volta può essere attiva.
+
+```html
+<!-- Selezione Singola Esclusiva -->
+<p>Seleziona il corso di laurea:</p>
+<input type="radio" id="inf" name="corso" value="informatica">
+<label for="inf">Informatica</label>
+
+<input type="radio" id="ing" name="corso" value="ingegneria">
+<label for="ing">Ingegneria</label>
+```
+
+### 5.5 Pulsanti di Sottomissione (`submit`), Ripristino (`reset`) e Confronto con `<button>`
+* `<input type="submit" value="Invia Dati">`: Inoltra formalmente i dati del form all'endpoint designato.
+* `<input type="reset" value="Annulla">`: Ripristina tutti i campi del modulo ai loro valori iniziali di default.
+
+> [!NOTE] Best Practice UX: Conferma su Reset
+> È buona prassi di usabilità associare un messaggio o modale di conferma all'azione di reset, per evitare che un clic accidentale dell'utente cancelli moduli lunghi o complessi già compilati.
+
+* **`<button>` vs `<input type="submit">`:** L'elemento `<button type="submit">...</button>` è un tag contenitore che consente di annidare all'interno del pulsante icone, immagini o marcature HTML complesse, risultando preferibile rispetto a `<input type="submit">` nei contesti di interfaccia moderna.
+
+### 5.6 Menu a Tendina (`<select>`, `<option>`, `<optgroup>`) e Datalist (`<datalist>`)
+* **Menu `<select>`:** Genera una tendina a discesa; i singoli elementi sono definiti da tag `<option value="...">`. È possibile raggruppare visivamente categorie correlate tramite il tag `<optgroup label="...">`.
+* **`<datalist>`:** Definisce un insieme invisibile di suggerimenti di completamento automatico collegati a un normale campo `<input>` mediante l'attributo `list="id_datalist"`. A differenza di `<select>`, l'utente mantiene la libertà di digitare un valore personalizzato non compreso nell'elenco.
+
+```html
+<label for="citta">Seleziona o digita una città:</label>
+<input list="elenco-citta" id="citta" name="citta">
+
+<datalist id="elenco-citta">
+  <option value="Perugia">
+  <option value="Roma">
+  <option value="Firenze">
+  <option value="Milano">
+</datalist>
+```
+
+### 5.7 Raggruppamento Semantico: `<fieldset>` e `<legend>`
+L'elemento `<fieldset>` consente di raggruppare logicamente blocchi di campi correlati (es. "Dati di Spedizione", "Dati di Fatturazione"), tracciando una cornice visiva attorno alla sezione. Il tag `<legend>` inserito come primo elemento interno definisce il titolo o la didascalia della cornice.
+
+```html
+<fieldset>
+  <legend>Credenziali di Accesso</legend>
+  <label for="user">Username:</label>
+  <input type="text" id="user" name="username" required>
+  
+  <label for="pwd">Password:</label>
+  <input type="password" id="pwd" name="password" required>
+</fieldset>
+```
+
+### 5.8 Campi di Testo Multilinea (`<textarea>`)
+Per acquisire testi estesi (recensioni, note, messaggi) si impiega il tag contenitore `<textarea>`:
+```html
+<textarea id="messaggio" name="messaggio" rows="4" cols="50" placeholder="Inserisci qui le tue osservazioni..."></textarea>
+```
+
+### 5.9 Attributi di Validazione e Stile Visivo (Gradienti)
+* `required`: Forza il browser a bloccare l'invio del form qualora il campo sia vuoto.
+* `placeholder`: Fornisce un testo guida temporaneo all'interno del campo.
+* **Sfondi Sfumati con CSS:** La proprietà `background: linear-gradient(...)` consente di applicare transizioni di colore eleganti agli elementi dei form e ai contenitori:
+  ```css
+  button.submit-btn {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    cursor: pointer;
+  }
+  ```
+
+---
+

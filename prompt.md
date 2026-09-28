@@ -9,23 +9,56 @@ Questo file contiene le istruzioni e i prompt ottimizzati per trasformare appunt
 Se stai operando come agente autonomo (es. **Antigravity**) all'interno di questo repository, segui questo workflow quando ti viene chiesto di convertire o creare una nuova nota:
 
 ### 1. Rilevamento del Contesto e della Cartella
-1. Identifica la materia/corso di riferimento (es. `2° Anno/Sistemi Operativi`, `2° Anno/Linguaggi Formali`, `2° Anno/Diritto dell'Informatica e Data Protection`, `Erasmus/...`, ecc.).
+1. Identifica la materia/corso di riferimento (es. `3° Anno/Programmazione`, `3° Anno/Base di Dati`, `2° Anno/Sistemi Operativi`, `2° Anno/Linguaggi Formali`, `2° Anno/Diritto dell'Informatica e Data Protection`, `Erasmus/...`, ecc.).
 2. Esamina i file già presenti nella cartella del corso e controlla:
    - Il file indice del corso (es. `00_Index_<Materia>.md`).
    - La convenzione di numerazione e naming (es. `01_Nome_Argomento.md`, `02_...`).
-   - I tag specifici usati abitualmente nel corso.
+   - **Regola Unico Tag per File:** Per garantire un grafo Obsidian pulito e clusterizzato per materia senza nodi ridondanti, assegna sempre e solo **un singolo tag** per file (il tag della materia in formato kebab-case o standard, es. `programmazione-web`, `base-di-dati`, `sistemi-operativi`).
 
 ### 2. Elaborazione e Sintesi del Contenuto
-1. **Fusione Note + Materiale**:
-   - Mappa i riferimenti delle slide presenti negli appunti (es. slide di inizio/fine).
-   - Usa il materiale ufficiale per correggere imprecisioni, completare definizioni o formule omesse e verificare la terminologia tecnica.
-   - Preserva gli approfondimenti a voce del docente, esempi pratici ed eccezioni.
-2. **Conversione dei Simboli Speciali (`//`)**:
-   - Trasforma ogni annotazione contrassegnata da `//` o note a margine nel relativo **Callout Obsidian** (`> [!INFO]`, `> [!NOTE] Nota del Prof`, `> [!EXAMPLE]`, `> [!WARNING]`, `> [!LAW]`, `> [!IMPORTANT]`). Inseriscilo contestualmente subito dopo il paragrafo rilevante.
+1. **Fusione Note + Materiale e Risoluzione dei Placeholder (`// ... //`)**:
+   - **Direttive di Recupero ed Espansione Materiale (`// slide X //`, `// def XYZ //`, `// tabella XYZ //`, `// passaggi slide Y //`)**:
+     - Spesso durante le lezioni veloci l'utente inserisce tra `// ... //` indicazioni sintetiche per delegare all'AI il recupero di definizioni formali, tabelle, passaggi, elenchi o concetti illustrati nelle slide.
+     - L'AI **deve eseguire un vero e proprio check/lookup attivo** nel materiale di riferimento (slide, PDF, dispense), localizzare la sezione/slide indicata, estrarre i contenuti tecnici completi e integrarli approfonditamente nel corpo della nota.
+   - **Correzione e Completamento**:
+     - Usa il materiale ufficiale per correggere imprecisioni, completare definizioni o formule omesse e verificare la terminologia tecnica.
+2. **Conversione dei Simboli Speciali (`//`) in Callout Obsidian**:
+   - Quando `// ... //` racchiude annotazioni a voce del docente, precisazioni a margine, avvisi, eccezioni o esempi pratici spiegati oralmente, trasformalo nel relativo **Callout Obsidian** (`> [!INFO]`, `> [!NOTE] Nota del Prof`, `> [!EXAMPLE]`, `> [!WARNING]`, `> [!LAW]`, `> [!IMPORTANT]`), posizionato contestualmente subito dopo il concetto a cui si riferisce.
 3. **Formule, Codice e Schemi**:
    - Usa blocchi LaTeX per formule matematiche/formali (`$formula$` inline o `$$...$$` per blocchi).
-   - Usa blocchi di codice con sintassi evidenziata (es. ````c`, ````java`, ````python`, ````bash`).
-   - Gestisci immagini con sintassi Obsidian `![[nome_immagine.png]]` collegate alla cartella `images/<Materia>/`.
+   - Usa blocchi di codice con sintassi evidenziata (es. ````c`, ````java`, ````python`, ````bash`, ````http`, ````html`).
+   - Usa tabelle Markdown pulite o schemi concettuali per sintetizzare flussi e confronti.
+4. **Gestione Immagini e Layout Visivo (HTML/CSS & Obsidian)**:
+   - Quando inserisci immagini o schemi (collegati a `images/<Materia>/` o incollati), adotta i seguenti layout HTML/CSS in base alle esigenze grafiche:
+     * **Immagine con testo a destra (Flexbox affiancato):** per diagrammi o figure che necessitano di spiegazione immediata a lato.
+       ```html
+       <div style="display: flex; align-items: flex-start; gap: 20px;">
+         <div style="flex: 1;">
+           <img src="nome_immagine.png" style="width: 100%; border-radius: 8px;">
+         </div>
+         <div style="flex: 1.5;">
+           Spiegazione o testo correlato all'immagine...
+         </div>
+       </div>
+       ```
+     * **Immagine ridimensionata e centrata:** per schemi, grafi o screenshot isolati.
+       ```html
+       <div style="display: flex; justify-content: center;">
+         <img src="nome_immagine.png" width="300">
+       </div>
+       ```
+     * **Immagine con didascalia centrata sotto:** per figure con annotazione o didascalia esplicativa.
+       ```html
+       <div style="text-align: center;">
+         <img src="nome_immagine.png" alt="Descrizione" />
+         <p>Didascalia o commento esplicativo</p>
+       </div>
+       ```
+     * È sempre valida anche la sintassi Obsidian nativa `![[nome_immagine.png]]` o `![[nome_immagine.png|300]]` per inserimenti standard.
+5. **Registro Linguistico e Tono di Voce (Umano, Diretto e Tecnico)**:
+   - Mantieni uno stile **autentico, accademico e pragmatico**, da ottimo studente universitario di informatica/ingegneria.
+   - **Zero "stile AI / fluff":** Evita categoricamente introduzioni retoriche ("Nel dinamico panorama odierno...", "È essenziale notare che..."), aggettivi enfatici superflui o conclusioni prolisse e ripetitive.
+   - Il testo deve risultare naturale, denso di concetti tecnici spiegati chiaramente, con definizioni asciutte e frasi lineari. Ricorda che lo scopo primario è riorganizzare e completare fedelmente gli appunti di lezione dell'utente.
 
 ### 3. Creazione del File e Aggiornamento Indici
 1. Crea il file `.md` nella directory corretta con il relativo frontmatter YAML.
@@ -46,14 +79,13 @@ Trasforma i miei appunti grezzi (ed eventuale materiale del docente allegato) in
 
 REGOLE DI FORMATTAZIONE ED ELABORAZIONE:
 
-1. FRONTMATTER YAML:
-   Inizia la nota rigorosamente con il frontmatter YAML:
+1. FRONTMATTER YAML (UN SOLO TAG PER FILE):
+   Inizia la nota rigorosamente con il frontmatter YAML.
+   **REGOLA IMPORTANTE SUI TAG:** Inserisci **UN SOLO TAG per file** (il tag identificativo della materia in kebab-case/minuscolo, es. `programmazione-web`, `sistemi-operativi`, `base-di-dati`, `linguaggi-formali`), così da mantenere il grafo di Obsidian pulito, leggibile e privo di frammentazione:
    ---
    date: {{DATA o YYYY-MM-DD}}
    tags:
-     - {{materia}}
-     - {{tag-argomento-specifico}}
-     - lezione
+     - {{tag-materia}}
    type: lezione
    ---
 
@@ -62,25 +94,58 @@ REGOLE DI FORMATTAZIONE ED ELABORAZIONE:
    - Struttura gerarchica ordinata con numerazione logica per i capitoli (es. ## I. Introduzione, ## II. ..., oppure ## 1. ..., ## 2. ...) e sottosezioni con H3 (###).
    - Non creare sezioni riassuntive superflue ("Conclusioni", "Concetti chiave") a meno che non siano esplicitamente richieste o presenti nel testo originale.
 
-3. SIMBOLO SPECIALI // E CALLOUT OBSIDIAN:
-   Ogni volta che negli appunti trovi il simbolo "//" (o note a margine/precisazioni del docente a voce), trasformalo in un Callout Obsidian inserito CONTESTUALMENTE (subito sotto il concetto a cui si riferisce):
-   - Approfondimenti generici/note: > [!INFO] o > [!NOTE] Nota del Prof
-   - Esempi pratici: > [!EXAMPLE] Titolo Esempio
-   - Concetti critici o definizioni chiave: > [!IMPORTANT]
-   - Normative, articoli di legge o sanzioni: > [!LAW] o > [!WARNING]
+3. GESTIONE DEL SIMBOLO SPECIALE // (PLACEHOLDER DI RECUPERO VS CALLOUT):
+   Nei miei appunti veloci uso i doppi slash `// ... //` per due scopi distinti:
+   a) **DIRETTIVA DI RECUPERO ED ESPANSIONE (es. `// slide 12 //`, `// def XYZ //`, `// tabella metodi //`, `// passaggi slide 19-21 //`):**
+      - Quando il docente procede velocemente, inserisco questi placeholder per delegarti il compito di cercare e prelevare il contenuto dal materiale allegato.
+      - **DEVI EFFETTUARE UN CHECK ATTIVO NEL MATERIALE:** individua la slide/sezione indicata, estrai definizioni formali, tabelle complete, passaggi o schemi e sviluppali in modo chiaro, approfondito e integrato nel corpo del testo.
+   b) **NOTE A VOCE / CALLOUT CONTESTUALI (es. `// precisazione del prof: ... //` o note a margine):**
+      - Trasformale in un opportuno **Callout Obsidian** inserito CONTESTUALMENTE subito sotto il concetto correlato:
+        * Approfondimenti/Note: `> [!INFO]` o `> [!NOTE] Nota del Prof`
+        * Esempi pratici: `> [!EXAMPLE] Titolo Esempio`
+        * Concetti critici/regole d'oro: `> [!IMPORTANT]`
+        * Normative o avvisi: `> [!LAW]` o `> [!WARNING]`
 
 4. CODICE, FORMULE E LINGUAGGIO TECNICO:
    - Formule matematiche, logiche e grammatiche formali in LaTeX ($...$ inline o $$...$$ a blocco).
-   - Codice sorgente racchiuso in blocchi di codice specificando il linguaggio (es. ```c, ```java, ```bash).
+   - Codice sorgente racchiuso in blocchi di codice specificando il linguaggio (es. ```c, ```java, ```bash, ```http, ```html).
    - Usa il grassetto per evidenziare definizioni e termini chiave.
    - Usa wikilink [[Nome Concetto]] per termini centrali suscettibili di avere una nota dedicata o per riferimenti interni.
 
-5. FUSIONE CON MATERIALE UFFICIALE (se fornito):
-   - Se indico slide/capitoli di riferimento, allinea la trattazione al materiale del docente.
-   - Correggi imprecisioni ed errori presenti negli appunti usando le definizioni rigorose delle slide.
-   - Integra i punti salienti del materiale ufficiale senza perdere esempi, metafore o spiegazioni a voce presenti negli appunti.
+5. GESTIONE IMMAGINI E LAYOUT VISIVO (HTML / CSS):
+   Quando sono presenti immagini, diagrammi o screenshot (estratti da slide, allegati o presenti nel vault), utilizza i blocchi HTML/CSS per una resa grafica elegante e ordinata:
+   - **Immagine con testo a destra (Flexbox affiancato):**
+     <div style="display: flex; align-items: flex-start; gap: 20px;">
+       <div style="flex: 1;">
+         <img src="nome_immagine.png" style="width: 100%; border-radius: 8px;">
+       </div>
+       <div style="flex: 1.5;">
+         Testo / spiegazione correlata all'immagine...
+       </div>
+     </div>
+   - **Immagine ridimensionata e centrata:**
+     <div style="display: flex; justify-content: center;">
+       <img src="nome_immagine.png" width="300">
+     </div>
+   - **Immagine con didascalia centrata sotto:**
+     <div style="text-align: center;">
+       <img src="nome_immagine.png" alt="Descrizione" />
+       <p>Didascalia o annotazione esplicativa</p>
+     </div>
+   - In alternativa, per inserimenti semplici è valida la sintassi nativa `![[nome_immagine.png]]` o `![[nome_immagine.png|300]]`.
 
-6. NAVIGAZIONE:
+6. FUSIONE CON MATERIALE UFFICIALE ED ESPANSIONE:
+   - Allinea rigorosamente la trattazione al materiale del docente allegato.
+   - Sostituisci ogni omissione o abbreviazione rapida con la spiegazione formale ed esaustiva presente nelle slide.
+   - Correggi imprecisioni ed errori presenti negli appunti grezzi usando la terminologia delle slide.
+   - Mantieni ed evidenzia eventuali esempi a voce, analogie o riflessioni del docente non presenti sulle slide.
+
+7. STILE DI SCRITTURA E REGISTRO (UMANO, DIRETTO, TECNICO E SENZA FLUFF AI):
+   - Adotta il registro linguistico naturale di un brillante studente universitario o redattore tecnico: rigoroso, chiaro, pragmatico e compatto.
+   - **Zero cliché da AI:** Evita formule artificiali, giri di parole pomposi, aggettivi altisonanti e frasi di apertura/chiusura stereotipate (es. *"In questa guida esploreremo...", "È fondamentale sottolineare...", "In conclusione..."*).
+   - Privilegia definizioni asciutte, spiegazioni logico-causali dirette, elenchi ben strutturati e frammenti di codice pertinenti. Il risultato finale deve sembrare un'eccellente nota presa a mano e rielaborata da una persona reale.
+
+8. NAVIGAZIONE:
    Concludi sempre la nota con la sezione:
    ---
    ## ⏭️ Navigazione Lezioni
@@ -113,7 +178,6 @@ MATERIALE AGGIUNTIVO / SLIDE (opzionale):
 date: 2026-03-04
 tags:
   - sistemi-operativi
-  - teoriaSO
 type: lezione
 ---
 # Architettura del Sistema di Elaborazione
@@ -146,7 +210,6 @@ while (running) {
 date: 2026-02-26
 tags:
   - linguaggi-formali
-  - compilatori
 type: lezione
 ---
 # Compilatori e Fasi della Compilazione
@@ -170,9 +233,7 @@ L'analisi semantica statica verifica la coerenza dei tipi nell'**Abstract Syntax
 ---
 date: 2026-02-09
 tags:
-  - Diritto
-  - Privacy
-  - GDPR
+  - diritto-informatica
 type: lezione
 ---
 # Ordinamento Giuridico e Gerarchia delle Fonti

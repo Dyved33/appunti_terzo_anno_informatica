@@ -356,3 +356,209 @@ I sistemi DBMS si classificano in base al paradigma del modello dei dati adottat
 * **Struttura:** Modello ibrido che estende l'architettura relazionale classica con le funzionalità del paradigma ad oggetti: supporto a tipi di dato complessi e strutturati definiti dall'utente, costruttori di tipo (array, collezioni), ereditarietà tra tabelle e incapsulamento di funzioni.
 * **Contesto Storico ed Evoluzione:** Trend affermatosi nella seconda metà degli anni '90 a partire dall'avvento di piattaforme pionieristiche quali *Informix Universal Server*.
 * **Adozione Industriale:** Concetti standardizzati formalmente all'interno di **SQL:1999 (SQL3)** e integrati stabilmente nei principali motori DBMS enterprise (Oracle Database a partire da 8i/10g, IBM DB2, PostgreSQL).
+
+---
+
+# Lezione 3: Il Modello Relazionale dei Dati (Origini, Fondamenti Matematici, Schemi ed Istanze)
+
+## 1. Introduzione al Modello Relazionale
+
+Il **modello relazionale** è stato teorizzato nel 1970 da **Edgar F. Codd** (ricercatore presso i laboratori IBM di San Jose) con l'obiettivo primario di garantire una reale e rigorosa **indipendenza dei dati** (sia logica che fisica) rispetto alle applicazioni software.
+
+Commercializzato a partire dai primi anni '80 (con l'avvento di piattaforme pionieristiche quali *System R*, *Oracle* e *IBM DB2*), il modello relazionale rappresenta oggi il paradigma dominante dell'industria del software, sotteso alla totalità dei più diffusi DBMS commerciali e open-source.
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        Fattori del Successo                            │
+├───────────────────────────────────┬────────────────────────────────────┤
+│     Semplicità Concettuale        │       Linguaggi Dichiarativi       │
+├───────────────────────────────────┼────────────────────────────────────┤
+│ La base di dati è percepita dagli │ Interrogazione e manipolazione     │
+│ utenti in modo estremamente       │ ad alto livello (SQL, Algebra      │
+│ intuitivo come un insieme         │ Relazionale): si specifica COSA    │
+│ omogeneo di tabelle bidimensionali│ reperire, demandando al DBMS il    │
+│ composte da righe e colonne.      │ COME eseguire l'accesso fisico.    │
+└───────────────────────────────────┴────────────────────────────────────┘
+```
+
+---
+
+## 2. Modello Relazionale vs Modelli Gerarchico e Reticolare
+
+Il modello relazionale ha introdotto una netta discontinuità rispetto ai modelli precedenti:
+
+1. **Rappresentazione delle Associazioni tra Record:**
+   * **Modelli Gerarchico e Reticolare:** Utilizzano **puntatori fisici espliciti** e indirizzi di memoria incorporati nei record per collegare le strutture dati (*pointer-based*). La navigazione è vincolata ai cammini fisici previsti dal progettista.
+   * **Modello Relazionale:** Le associazioni tra record sono interamente basate sui **valori dei dati** condivisi (*value-based*). I collegamenti logici vengono stabiliti confrontando i valori contenuti in campi correlati (es. corrispondenza tra chiave primaria e chiave esterna), senza alcun ricorso a puntatori fisici esposti.
+2. **Fondamento Formale e Matematico:**
+   * I modelli gerarchico e reticolare derivavano da approcci euristici e soluzioni implementative ad-hoc.
+   * Il modello relazionale poggia su solide basi formali tratte dalla **teoria matematica degli insiemi** e dalla **logica dei predicati del primo ordine**, consentendo la dimostrazione formale di equivalenze tra espressioni e l'ottimizzazione automatica delle query.
+
+---
+
+## 3. Fondamenti Matematici: Dal Prodotto Cartesiano alle Relazioni
+
+La formalizzazione del modello relazionale trae origine dai concetti di **prodotto cartesiano** e **relazione matematica**.
+
+### 3.1 Prodotto Cartesiano
+Siano $D_1, D_2, \dots, D_n$ $n$ insiemi (detti insiemi di supporto o domini, non necessariamente distinti).
+
+> [!NOTE] Definizione di Prodotto Cartesiano
+> Il **prodotto cartesiano** $D_1 \times D_2 \times \dots \times D_n$ è l'insieme di tutte le $n$-uple ordinate $(d_1, d_2, \dots, d_n)$ tali che ciascun elemento $d_i$ appartenga al rispettivo dominio $D_i$:
+> $$D_1 \times D_2 \times \dots \times D_n = \{ (d_1, d_2, \dots, d_n) \mid d_1 \in D_1, d_2 \in D_2, \dots, d_n \in D_n \}$$
+
+### 3.2 Relazione Matematica
+> [!NOTE] Definizione di Relazione Matematica
+> Una **relazione matematica** $R$ definita sugli insiemi $D_1, D_2, \dots, D_n$ è un qualsiasi sottoinsieme del loro prodotto cartesiano:
+> $$R \subseteq D_1 \times D_2 \times \dots \times D_n$$
+
+* **Grado di una Relazione:** È il numero $n$ di insiemi/domini componenti il prodotto cartesiano (ovvero il numero di componenti di ciascuna $n$-upla).
+* **Cardinalità di una Relazione ($|R|$):** È il numero complessivo di elementi ($n$-uple) appartenenti all'insieme $R$.
+
+---
+
+## 4. Dalle Relazioni Matematiche alle Relazioni nel Modello Relazionale
+
+Sebbene il modello relazionale poggi sulla nozione matematica di relazione, esso introduce due importanti adattamenti per rispondere alle esigenze pratiche di memorizzazione e manipolazione dei dati:
+
+```
+┌─────────────────────────────────┐       ┌─────────────────────────────────┐
+│       Relazione Matematica      │       │  Relazione nel Modello dei Dati │
+├─────────────────────────────────┼───────┼─────────────────────────────────┤
+│ • n-uple ordinate: (d1, ..., dn)│  ──►  │ • Tuple NON ordinate            │
+│ • Posizione fissa per indice i  │       │ • Attributi nominati (nomi col.)│
+│ • Nessun valore nullo ammesso   │       │ • Supporto al valore speciale   │
+│                                 │       │   NULL (dato mancante/ignoto)   │
+└─────────────────────────────────┘       └─────────────────────────────────┘
+```
+
+1. **Assenza di Ordinamento Posizionale:** Nelle relazioni matematiche gli elementi di una $n$-upla sono rigidamente ordinati per posizione; nelle basi di dati la sequenza orizzontale delle colonne non deve avere rilevanza semantica.
+2. **Identificazione tramite Attributi:** Risulta conveniente e intuitivo associare a ciascuna componente un **nome simbolico (attributo)** esplicito (es. `Nome`, `Matricola`, `Stipendio`), anziché identificarla tramite il suo indice numerico posizionale $i$.
+
+---
+
+## 5. Domini, Attributi e il Concetto Formale di Tupla
+
+### 5.1 Domini
+> [!NOTE] Definizione di Dominio
+> Un **dominio** $D$ è un insieme non vuoto di valori atomici (indivisibili dal punto di vista del DBMS).
+
+* Con $\text{Dom}(A)$ indichiamo il dominio formalmente associato all'attributo $A$.
+* *Esempio:* $\text{Dom}(\text{Nazione})$ rappresenta l'insieme delle stringhe di caratteri indicanti nomi validi di stati sovrani; $\text{Dom}(\text{Voto})$ rappresenta l'insieme dei numeri interi $\{18, 19, \dots, 30, 30L\}$.
+
+### 5.2 Attributi
+Un **attributo** $A$ è un'etichetta o nome simbolico associato a un determinato dominio con un preciso significato semantico all'interno dello schema.
+
+### 5.3 Il Concetto di Tupla
+Sia $X = \{A_1, A_2, \dots, A_n\}$ un insieme finito di attributi.
+
+> [!NOTE] Definizione di Tupla
+> Una **tupla** $t$ definita sull'insieme di attributi $X$ è una funzione che associa a ogni attributo $A_i \in X$ un valore appartenente al suo dominio $\text{Dom}(A_i)$, oppure lo speciale valore `NULL`:
+> $$t: X \rightarrow \bigcup_{A_i \in X} \text{Dom}(A_i) \cup \{\text{NULL}\} \quad \text{tale che} \quad t[A_i] \in \text{Dom}(A_i) \lor t[A_i] = \text{NULL}$$
+
+* Indichiamo con la notazione $t[A_i]$ (oppure $t.A_i$) il valore assunto dalla tupla $t$ in corrispondenza dell'attributo $A_i$.
+
+> [!INFO] Il Valore Speciale NULL
+> Il valore `NULL` indica l'assenza di un valore reale; viene impiegato per rappresentare tre condizioni semantiche distinte:
+> 1. Valore **sconosciuto** (es. data di nascita non ancora registrata).
+> 2. Valore **inesistente o non applicabile** (es. numero di patente per un cittadino non patentato).
+> 3. Valore **omesso/riservato**.
+
+---
+
+## 6. Relazioni: Schemi ed Istanze
+
+La distinzione tra livello intensionale (statico) ed estensionale (dinamico) si applica puntualmente alle relazioni:
+
+### 6.1 Schema di Relazione
+> [!NOTE] Definizione di Schema di Relazione
+> Dato un insieme di attributi $X = \{A_1, A_2, \dots, A_n\}$, uno **schema di relazione** è costituito da un nome di relazione $R$ e dall'insieme di attributi $X$:
+> $$R(X) \quad \text{oppure} \quad R(A_1, A_2, \dots, A_n)$$
+
+Qualora sia necessario esplicitare i domini di riferimento, si adotta la notazione estesa:
+$$R(A_1: \text{Dom}(A_1), A_2: \text{Dom}(A_2), \dots, A_n: \text{Dom}(A_n))$$
+
+### 6.2 Istanza di Relazione
+> [!NOTE] Definizione di Istanza di Relazione
+> Dato uno schema di relazione $R(X)$, un'**istanza di relazione** $r(R)$ (o semplicemente $r$) su $X$ è un **insieme finito di tuple** su $X$:
+> $$r(R) = \{t_1, t_2, \dots, t_k\}$$
+
+Poiché un'istanza è matematicamente un **insieme** di tuple:
+* Non possono esistere tuple duplicate identiche all'interno della medesima istanza.
+* L'ordine delle tuple (righe) non ha alcuna rilevanza.
+
+---
+
+## 7. Basi di Dati: Schemi ed Istanze
+
+Estendendo il formalismo a livello di sistema globale:
+
+### 7.1 Schema di Base di Dati
+> [!NOTE] Definizione di Schema di Base di Dati
+> Uno **schema di base di dati** $\mathcal{B}$ è una collezione di schemi di relazione con denominazioni distinte:
+> $$\mathcal{B} = \{R_1(X_1), R_2(X_2), \dots, R_m(X_m)\}$$
+> corredato dalla specifica dell'insieme dei relativi **vincoli di integrità** $\mathcal{I}$.
+
+### 7.2 Istanza di Base di Dati
+> [!NOTE] Definizione di Istanza di Base di Dati
+> Un'**istanza di base di dati** $b$ definita sullo schema $\mathcal{B} = \{R_1(X_1), \dots, R_m(X_m)\}$ è un insieme di istanze di relazione:
+> $$b = \{r_1, r_2, \dots, r_m\}$$
+> tale che ciascuna $r_i$ sia un'istanza valida dello schema di relazione $R_i(X_i)$ (per ogni $i \in \{1, \dots, m\}$) e rispetti l'insieme dei vincoli $\mathcal{I}$.
+
+---
+
+## 8. Esempio Pratico di Formalizzazione
+
+Si consideri uno schema universitario $\mathcal{B} = \{\text{Studente}(\text{Matricola}, \text{Nome}), \text{Corso}(\text{Codice}, \text{Nome}), \text{Iscrizione}(\text{Studente}, \text{Corso})\}$:
+
+```
+Istanza Studente (r_Studente):
+┌───────────┬──────────────┐
+│ Matricola │ Nome         │
+├───────────┼──────────────┤
+│ 37891     │ Mario Rossi  │
+│ 5421      │ Luigi Verdi  │
+└───────────┴──────────────┘
+
+Istanza Corso (r_Corso):
+┌────────┬──────────────┐
+│ Codice │ Nome         │
+├────────┼──────────────┤
+│ 1      │ BD           │
+│ 2      │ ASD          │
+└────────┴──────────────┘
+
+Istanza Iscrizione (r_Iscrizione):
+┌──────────┬───────┐
+│ Studente │ Corso │
+├──────────┼───────┤
+│ 37891    │ 1     │
+│ 37891    │ 2     │
+└──────────┴───────┘
+```
+
+Nel formalismo matematico delle funzioni/tuple, l'istanza globale corrisponde all'insieme:
+$$b = \left\{
+\begin{aligned}
+&\{ \{(\text{Matricola}, 37891), (\text{Nome}, \text{"Mario Rossi"})\}, \{(\text{Matricola}, 5421), (\text{Nome}, \text{"Luigi Verdi"})\} \}, \\
+&\{ \{(\text{Codice}, 1), (\text{Nome}, \text{"BD"})\}, \{(\text{Codice}, 2), (\text{Nome}, \text{"ASD"})\} \}, \\
+&\{ \{(\text{Studente}, 37891), (\text{Corso}, 1)\}, \{(\text{Studente}, 37891), (\text{Corso}, 2)\} \}
+\end{aligned}
+\right\}$$
+
+---
+
+## 9. Mappatura Terminologica: Concetto Formale vs Equivalente Informale
+
+| Concetto Formale (Modello Relazionale) | Equivalente Tabellare Informale | Corrispettivo nei File Tradizionali |
+| :--- | :--- | :--- |
+| **Relazione** | Tabella | File |
+| **Attributo** | Intestazione di Colonna / Campo | Campo del record |
+| **Tupla** | Riga della tabella | Singolo Record |
+| **Dominio** | Tipo di dato e vincoli di colonna | Tipo di dato del campo |
+| **Grado** | Numero di colonne della tabella | Numero di campi per record |
+| **Cardinalità** | Numero di righe della tabella | Numero di record nel file |
+| **Schema di Relazione** | Struttura / DDL dell'intestazione | Definizione del tracciato record |
+| **Istanza di Relazione** | Insieme corrente di righe popolate | Contenuto del file su disco |
+
+---
