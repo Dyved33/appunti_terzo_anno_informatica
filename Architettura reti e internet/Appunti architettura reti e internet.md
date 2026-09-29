@@ -108,10 +108,131 @@ Un protocollo specifica in modo deterministico:
 > [!IMPORTANT] Necessità Ineludibile del Protocollo
 > Due o più dispositivi possono essere fisicamente e correttamente collegati tramite cavi o onde radio, ma in assenza di un protocollo comune **non sono assolutamente in grado di comunicare**. Senza regole condivise, i segnali elettrici o ottici ricevuti risultano indecifrabili, analogamente a due individui collegati tramite una linea telefonica impeccabile che parlino due lingue del tutto sconosciute l'uno all'altro.
 
-### 5.2 L'Importanza della Standardizzazione e l'Organizzazione ISO
-Affinché apparati realizzati da produttori indipendenti e basati su architetture differenti possano interoperare senza frizioni su scala mondiale, i protocolli devono essere formalizzati come standard aperti.
+### 5.2 Gli Enti e le Organizzazioni di Standardizzazione Internazionale
+Affinché apparati realizzati da produttori indipendenti e basati su architetture differenti possano interoperare senza frizioni su scala mondiale, i protocolli devono essere formalizzati come standard aperti e condivisi.
+
+I principali organismi internazionali responsabili della definizione degli standard telematici e delle reti sono:
 
 ![[Pasted image 20260925120233.png|180]]
 
-> [!INFO] International Organization for Standardization (ISO)
-> L'**ISO** è la massima organizzazione mondiale indipendente e non governativa per la standardizzazione tecnica internazionale. I suoi standard coprono un vasto spettro di settori industriali, svolgendo un ruolo di riferimento nell'architettura dei sistemi di comunicazione (incluso lo sviluppo del celebre modello di riferimento **ISO/OSI** a 7 livelli) e nelle normative per la sicurezza informatica e la gestione dei dati.
+* **ISO (*International Organization for Standardization*):**
+  * La più grande organizzazione mondiale indipendente e non governativa per la standardizzazione tecnica.
+  * Sviluppa norme in molteplici settori industriali, svolgendo un ruolo cardine nel networking grazie alla definizione del modello di riferimento **ISO/OSI (*Open Systems Interconnection*)** e alle normative internazionali per la sicurezza informatica (es. serie ISO/IEC 27000).
+
+![[standard_organizations.png|500]]
+
+* **IEEE-SA (*Institute of Electrical and Electronics Engineers - Standards Association*):**
+  * Organizzazione leader nella standardizzazione dei livelli fisici e di accesso al mezzo (sottolivelli PHY e MAC).
+  * Responsabile della celebre famiglia di standard **IEEE 802** (es. **IEEE 802.3** per Ethernet cablata, **IEEE 802.11** per il Wi-Fi, **IEEE 802.15** per WPAN/Bluetooth/Zigbee).
+* **IETF (*Internet Engineering Task Force*):**
+  * Comunità internazionale aperta di ingegneri, progettisti e ricercatori incaricata dello sviluppo e dell'evoluzione dell'architettura e dei protocolli della suite Internet.
+  * Gli standard IETF vengono formalizzati attraverso i documenti ufficiali denominati **RFC (*Request for Comments*)**, che regolamentano protocolli fondamentali quali IP, TCP, UDP, DNS, HTTP, BGP e TLS.
+* **ITU (*International Telecommunication Union*, ex CCITT):**
+  * Agenzia specializzata delle Nazioni Unite (ONU) per le tecnologie dell'informazione e della comunicazione.
+  * Il settore **ITU-T** definisce standard globali per le telecomunicazioni, la telefonia, le reti a banda larga e le infrastrutture di trasporto ottico.
+* **ICANN (*Internet Corporation for Assigned Names and Numbers*):**
+  * Ente no-profit responsabile del coordinamento globale degli identificatori univoci di Internet.
+  * Assegna e gestisce lo spazio degli **indirizzi IP** (attraverso la funzione IANA) e coordina il sistema dei nomi di dominio (**DNS**), inclusa la gestione della radice (*Root Zone*) e dei domini di primo livello (*TLD - Top-Level Domains*, sia generici gTLD che nazionali ccTLD).
+* **W3C (*World Wide Web Consortium*):**
+  * Consorzio internazionale guidato storicamente da Tim Berners-Lee per lo sviluppo degli standard aperti del World Wide Web.
+  * Definisce le specifiche di linguaggi e tecnologie web quali **HTML5**, **CSS**, **XML**, standard di accessibilità (**WAI/WCAG**) e linee guida per il Web Semantico.
+
+---
+
+## 6. Modelli Architetturali di Riferimento: ISO/OSI vs TCP/IP
+
+### 6.1 Principi dell'Architettura a Livelli
+I moderni sistemi di telecomunicazione adottano un'**architettura modulare a livelli (*layered architecture*)**, strutturata secondo principi cardine dell'ingegneria del software:
+* **Astrazione e Separazione degli Interessi (*Separation of Concerns*):** ogni livello (*layer*) risolve un sottoinsieme specifico di problematiche comunicative, offrendo servizi ben definiti al livello superiore e nascondendo i dettagli implementativi sottostanti.
+* **Incapsulamento:** ogni livello riceve dati dal livello superiore, aggiunge la propria informazione di controllo sotto forma di intestazione (*header*) o coda (*trailer*), generando la specifica unità di dati di protocollo.
+* **Interoperabilità e Flessibilità:** la modifica interna di un protocollo ad un determinato livello non impatta i livelli adiacenti, purché le interfacce di comunicazione rimangano inalterate.
+
+### 6.2 Struttura dei Livelli: Host Layers vs Media Layers
+I livelli architetturali si dividono in due macro-categorie funzionali:
+
+1. **Host Layers (Livelli Host / End-to-End / Software):**
+   * Operano **esclusivamente sui sistemi terminali (*End Systems / Hosts*)**.
+   * Sono implementati a livello software nel sistema operativo e nelle applicazioni utente, indipendentemente dal mezzo fisico sottostante.
+   * Gestiscono l'interazione con l'utente, la rappresentazione dei formati, il controllo di sessione e l'affidabilità del trasporto da estremo a estremo (*end-to-end*).
+2. **Media Layers (Livelli Media / Subnet / Hardware-Network):**
+   * Governano il trasferimento effettivo delle informazioni attraverso i canali trasmissivi e gli apparati intermedi di rete (router, switch).
+   * Risolvono l'indirizzamento logico, l'instradamento (*routing*), l'indirizzamento fisico (*MAC*), l'accesso al mezzo e la modulazione/trasmissione dei segnali.
+
+### 6.3 Protocol Data Unit (PDU) per Livello
+Ciascun livello elabora e scambia una propria specifica unità di dati denominata **PDU (*Protocol Data Unit*)**:
+
+| Livello OSI | Livello Funzionale | PDU (Data Unit) | Descrizione della PDU |
+| :--- | :--- | :--- | :--- |
+| **7. Application** | Host Layer | **Data (Dati)** | Messaggio o payload applicativo originario |
+| **6. Presentation** | Host Layer | **Data (Dati)** | Dati formattati, cifrati o compressi |
+| **5. Session** | Host Layer | **Data (Dati)** | Flusso dati strutturato all'interno della sessione logica |
+| **4. Transport** | Host Layer | **Segment / Datagram** | Segmento (TCP, con controllo di sequenza) o Datagramma (UDP) |
+| **3. Network** | Media Layer | **Packet (Pacchetto)** | Pacchetto o Datagramma di rete con indirizzi logici IP |
+| **2. Data Link** | Media Layer | **Frame (Trama)** | Trama con indirizzi fisici MAC e codici di controllo errore (CRC) |
+| **1. Physical** | Media Layer | **Bits (Bit / Segnali)** | Sequenza binaria grezza trasmessa sul mezzo fisico |
+
+### 6.4 Confronto Dettagliato: Modello ISO/OSI (7 Livelli) vs Stack TCP/IP (4 Livelli)
+
+![[iso_osi_vs_tcp_ip.png|450]]
+
+#### 1. Livello Fisico (*Physical Layer - Livello 1 OSI*)
+* **Funzione:** Trasmissione di bit grezzi non strutturati lungo il canale di comunicazione.
+* **Competenze:** Specifiche elettriche, ottiche, meccaniche e funzionali; livelli di tensione; durata dei bit; modulazione e codifica del segnale; connettori e cavi fisici.
+* **TCP/IP:** Integrato all'interno del *Network Access Layer*.
+
+#### 2. Livello Collegamento Dati (*Data Link Layer - Livello 2 OSI*)
+* **Funzione:** Trasferimento affidabile e privo di errori di trame (*frame*) tra due nodi direttamente adiacenti sullo stesso canale fisico.
+* **Competenze:**
+  * **Indirizzamento Fisico:** gestione del *MAC Address*.
+  * **Controllo di Flusso e di Errore:** rilevamento (es. CRC / FCS) e correzione/ritrasmissione su singolo link.
+  * **Sottolivelli:** diviso storicamente dallo standard IEEE in **LLC (*Logical Link Control*)** e **MAC (*Medium Access Control*)**.
+* **TCP/IP:** Integrato all'interno del *Network Access Layer*.
+
+#### 3. Livello di Rete (*Network Layer - Livello 3 OSI*)
+* **Funzione:** Determinazione del cammino (*routing / path determination*) e instradamento dei pacchetti attraverso reti eterogenee interconnesse (*Internetworking*).
+* **Competenze:** Indirizzamento logico gerarchico (indirizzi IPv4 e IPv6), tabelle di instradamento, gestione della frammentazione dei pacchetti e controllo della congestione a livello di subnet.
+* **TCP/IP:** Corrisponde al livello **Internet Layer** (protocolli IP, ICMP, ARP).
+
+#### 4. Livello di Trasporto (*Transport Layer - Livello 4 OSI*)
+* **Funzione:** Consegna trasparente, ordinata e affidabile dei dati da processo applicativo a processo applicativo (*End-to-End communication*).
+* **Competenze:** Multiplexing e demultiplexing tramite numeri di porta (*ports*), instaurazione/chiusura connessione, controllo di flusso end-to-end, rilevamento errori con ritrasmissioni e controllo di congestione.
+* **TCP/IP:** Corrisponde al livello **Transport Layer** (protocolli TCP per trasporto affidabile orientato alla connessione, UDP per trasporto non affidabile e privo di connessione).
+
+#### 5. Livello di Sessione (*Session Layer - Livello 5 OSI*)
+* **Funzione:** Instaurazione, gestione, sincronizzazione e terminazione delle sessioni di dialogo tra applicazioni remote.
+* **Competenze:** Gestione dei turni di dialogo (*half-duplex* o *full-duplex*) e inserimento di punti di sincronizzazione (*checkpoints*) per riprendere il trasferimento dati a seguito di interruzioni.
+* **TCP/IP:** Le sue funzioni sono integrate direttamente nel livello **Application**.
+
+#### 6. Livello di Presentazione (*Presentation Layer - Livello 6 OSI*)
+* **Funzione:** Rappresentazione sintattica e semantica dei dati trasferiti tra sistemi eterogenei.
+* **Competenze:** Conversione e normalizzazione dei formati (es. codifiche caratteri UTF-8, ASCII), crittografia/decifratura per la riservatezza e compressione dei dati.
+* **TCP/IP:** Le sue funzioni sono integrate direttamente nel livello **Application**.
+
+#### 7. Livello di Applicazione (*Application Layer - Livello 7 OSI*)
+* **Funzione:** Fornire un'interfaccia di comunicazione diretta ai processi e ai programmi software utilizzati dall'utente.
+* **Competenze:** Protocolli applicativi di rete specializzati (es. HTTP/HTTPS per il web, DNS per la risoluzione dei nomi, SMTP/IMAP per la posta elettronica, SSH per l'accesso remoto sicuro).
+* **TCP/IP:** Corrisponde al livello **Application Layer** (raggruppa le funzioni dei livelli 5, 6 e 7 di OSI).
+
+---
+
+## 7. Meccanismi di Comunicazione nel Modello di Riferimento: Comunicazione End-to-End vs Inoltro di Rete
+
+![[iso_osi_host_communication.png|480]]
+
+> [!NOTE] Principio di Inoltro a Livello di Rete
+> *"Network layer protocols forward encapsulated Transport Layer PDUs between hosts"*
+> I protocolli del livello di trasporto (e dei livelli superiori) operano esclusivamente da estremo a estremo (**End-to-End**) tra i due host terminali. I protocolli del livello di rete inoltrano i pacchetti che incapsulano le PDU di trasporto attraversando la nuvola di rete mediante apparati intermedi di instradamento (**Hop-by-Hop**).
+
+### 7.1 Confronto tra Nodi Terminali (*Hosts*) e Nodi Intermedi (*Routers*)
+1. **End Systems (Hosts Terminali - Sorgente e Destinazione):**
+   * Implementano lo **stack completo a 7 livelli** (o tutti i 4 livelli TCP/IP).
+   * Sul nodo sorgente, il messaggio applicativo discende l'intero stack subendo il processo di **incapsulamento progressivo** fino al livello fisico.
+   * Sul nodo destinatario, il flusso di bit risale lo stack subendo il processo inverso di **decapsulamento** fino al recapito all'applicazione.
+2. **Intermediate Systems (Nodi Intermedi / Nodi di Rete / Routers):**
+   * Appartengono alla sottorete di comunicazione (*cloud di rete*).
+   * Implementano unicamente i **primi 3 livelli inferiori (*Media Layers*)**:
+     * **Livello 1 (Fisico):** riceve e trasmette i segnali e la sequenza di bit grezzi dai collegamenti fisici.
+     * **Livello 2 (Data Link):** acquisisce la trama, verifica l'integrità (CRC) e decapsula il pacchetto di rete rimuovendo header e trailer di livello 2.
+     * **Livello 3 (Network):** esamina l'indirizzo IP di destinazione nell'header del pacchetto, consulta la propria tabella di instradamento (*routing table*), seleziona l'interfaccia di uscita ottimale (*forwarding*) e re-incapsula il pacchetto in una nuova trama di livello 2 adatta al link successivo.
+   * I nodi intermedi sono **del tutto trasparenti rispetto ai livelli 4-7**: non ispezionano né modificano i dati di trasporto o di applicazione, garantendo la netta separazione tra il trasporto dati dell'utente e l'infrastruttura di instradamento.
+

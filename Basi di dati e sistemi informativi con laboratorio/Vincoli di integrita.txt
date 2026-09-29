@@ -1,0 +1,94 @@
+# Vincoli di integrita’ nel modello ralazionale
+Comunemente ci sono vincoli sui valori effettivi che caratterizzano uno stato (o istanza) di base di dati.
+1. Vincoli che sono intrinseci nel modello dei dati detti vincoli intrinseci basati sul modello
+	• il vincolo che una relazione non puo’ avere tuple duplicate è un vincolo  intrinseco al modello
+2. vincoli che possono essere espressi direttamente sugli schemi del modello dei dati (nel linguaggio DDL) detti vincoli basati sullo schema
+3. vincoli che non possono essere espressi negli schemi del modello dei dati e devono essere specificati realizzando programmi applicativi
+4. Un’altra categoria importante di vincoli e’ quella delle dipendenza funzionali, usate principalmente per verificare la qualita’ della progettazione di BD relazionali 
+
+# Vincoli basati sullo schema
+Tratteremo ora in modo sistematico i vincoli di integrita’ basati sullo schema, che si possono suddividere ulteriormente in:
+	• Vincoli Intrarelazionali, che coinvolgono un unico schema di relazione
+	• Vincoli interelazionali, che coinvolgono piu’ schemi di relazioni
+	
+---------------------------------------------------------------------------------------
+
+# Vincoli Intrarelazionali
+I vincoli intrarelazionali piu’ importanti sono:
+• vincoli di tupla, che coinvolgono uno o piu’ valori della stessa tupla. Nello specifico i vincoli di tupla piu’ comuni sono:
+	• vincoli di dominio: restringono i valori attribuibili ad un’attributo
+	• vincoli su piu’ valori della stessa tupla
+	• vincoli di valore non nullo
+• vincoli d’univocita’: restrizioni che vietano a due tuple di una stessa istanza di coincidere sui valori di un dato sottoinsieme di attributi
+
+# Example
+Dato lo schema: ESAME(matricola, corso, voto, lode)
+Alcuni vincoli intrarelazionali sono:
+• il vincolo di dominio 18 ≤ voto ≤ 30
+• il vincolo su piu’ valori della stessa tupla lode = yes solo se voto = 30
+• il vincolo di valore non nullo che specifica che l’attribito matricola non puo’ essere null
+• non esistono due tuple che coincidono contemporaneamente sui valori di matricola e corso (vincolo di univocita’)
+
+# Vincolo d’Univocita’
+Definizione: Sia R(X) uno schema di relazione e sia Y ⊆ X, Y 6= ∅ un insieme di attributi sottoposto a vincolo di univocita’, in simboli UNI : Y . Un’istanza di relazione r su R soddisfa il vincolo di univocita’ su Y se e solo se per ogni coppia di tuple t1,t2 ∈ r, t1 6= t2, esiste un attributa A ∈ Y tale che :
+• t1[A] 6= t2[A]
+• t1[A] ha valore nullo, oppure
+• t2[A] ha valore nullo
+
+I vincoli di valore non nullo ed univocita’ appena definiti ci permettono di introdurre i concetti fondamentali di superchiavi, chiavi (candidate) e chiave primaria.
+
+Definizione: Data R(X), un insieme di attributi K ⊆ X e’:
+• una superchiave sse in ogni istanza ammissibile r di R(X) non esistono due tuple distinte t1,t2 ∈ r tali che t1[K] = t2[K]. Una superchiave e’ pertanto un insieme di attributi sottoposto a vincolo di univocita’.
+• K e’ una chiave candidata sse K e’ una superchiave minimale, ovvero nnon esiste K' ⊂ K, dove K' e’ una superchiave.
+
+# Example
+Dato lo schema: STUDENTI(matricola, codFiscale, cognome, nome, dataNascita)
+• l’insieme di attributi Z = {matricola} e’ una chiave candidata di STUDENTI
+• l’insieme di attributi W = {codFiscale} e’ una chiave candidata di STUDENTI
+• qualsiasi insieme di attributi che contiene Z oppure W e’ una superchiave di STUDENTI
+
+# Vincolo d’Integrita’ dell’Entita’ e Chiavi Primarie
+Per evitare i problemi visti nell’esempio precedente e’ necessario scegliere una chiave candidata che svolga il ruolo di chiave primaria su cui non si ammettono valori nulli.
+Gli attributi di chiave primaria sono convenzionalmente sottolineati. Il vincolo che impone alla chiave primaria di non ammettere attributi nullie e’ detto vincolo di integrita’ dell’entita’.
+
+Vincolo di integrita’ dell’entita’: Il vincolo di integrita’ dell’entita’ stabilisce che nessun attributo facente parte della chiave primaria puo’ assumere valore nullo.
+
+# Vincoli di integrita’ referenziali e chiavi esterne
+Per evitare i problemi visti nell’esempio precedente si introducono i vincoli di integrita’ refernziale , specificati mediante il concetto di chiave esterna. Chiave Esterna (Semplice) Siano R(X), S(Y ) due schemi di relazione in una BD B = {R, S, . . . }. Una chiave esterna (semplice) di R che fa riferimento ad S e’ definita da:
+• un attributo A ∈ X
+• un attributo B ∈ Y tale che:
+	• Dom(A) = Dom(B)
+	• UNI : {B}, i.e. B e’ sottoposto a vincolo di univocita’
+• un vincolo di integrita’ referenziale sulla coppia di attributi (A, B) che definisce quanto segue: per ogni istanza {r,s, . . . } della base di dati B, l’insieme di valori di A in r non nulli e’ un sottoinsieme dei valori di B in s.
+
+Denotiamo una chiave esterna come CE : A → S(B)
+
+# Example
+Lo schema di basi di dati illustrato nelle slide precedenti richiede due chiavi esterne, definite sullo schema di relazione ISCRIZIONE:
+ISCRIZIONE(studente, corso)
+CE : studente → STUDENTE(matricola)
+CE : corso → CORSO(codice)
+
+# Chiavi Esterne Composte
+Definizione: Siano R(X), S(Y ) due schemi di relazione in una BD B = {R, S, . . . }. Una chiave esterna di R che fa riferimento ad S e’ definita da: 
+• una lista ordinata di attributi L = hA1, . . . , Ami, {A1, . . . , Am} ⊆ X
+• una lista ordinata di attributi L' = hB1, . . . , Bmi, {B1, . . . , Bm} ⊆ Y
+tale che:
+	• ∀i = 1 . . . m : Dom(Ai) = Dom(Bi)
+	• UNI : {B1, . . . , Bm}
+• un vincolo di integrita’ referenziale che stabilisce:
+per ogni istanza {r,s, . . . } della BD B, per ogni tupla t ∈ r senza
+valori nulli sugli attributi della lista ordinata L, esiste una tupla
+t' ∈ s tale che:
+∀i = 1 . . . m : t[Ai] = t'[Bi]
+
+# Schemi e Istanze di BD
+Definizione completa delle nozioni di schema/istanza di basi di dati:
+Schema di Basi di Dati = Uno schema di basi di dati e’ definito da:
+• un insieme di schemi di relazioni con nomi diversi
+• la definizine di chiavi primarie (per ogni schema di relazione)
+• un insieme di ulteriori vincoli di integrita’ sullo schema di BD
+Istanza di Basi di Dati = Un’ istanza di BD sullo schema B = {R1(X1), . . . , Rn(Xn)} e’ un insieme di istanze di relazioni {r1, . . .rn} tali che ∀i ∈ {1 . . . n}, ri
+e’ un’istanza di Ri che soddisfa i vincoli di integrita’ associati a Ri.
+
+

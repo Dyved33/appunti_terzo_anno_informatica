@@ -1,19 +1,69 @@
-body{
-    /* background-image: url('image.png'); */
+body {
+    margin: 0;
+
+    min-height: 100vh; /* altezza almeno come la viewport height = altezza finestra browser*/
+    display: flex;/*ciò che è contenuto dentro al body diventa un flex item = item si dividono tutta la lunghezza tra di loro*/
+    flex-direction: column;/*disponi i flex items in verticale*/
+
+}
+
+header {
+    background-color: transparent;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+footer {
+    background-color: transparent;
+    padding: 20px;
+    text-align: right;
+}
+
+table{
+    border: 10px;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid black;
+}
+
+/*scritta di header e footer del form bianca per fare contrasto con lo sfondo*/
+.form-writings{
+    color: white
+}
+
+/*immagine è di background e copre tutta la pagina*/
+#background{
+    flex: 1;/*il main può occupare tutto lo spazio libero disponibile*/
+    /*è un insieme delle proprietà grow, shrink e basis di flex*/
+
+    background-image: url("./sfondoForm.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;    
 }
 
-header{
-    background-color: red;
-    padding: 20px;
-    text-align: center;
-    top: 1em;
+/*voglio fare in modo che il form occupi tutto lo spazio disponibile con 2 elementi per ogni riga*/
+.form-group{
+    display: flex;
+    flex-direction: column;
 }
 
-footer{
-    background-color: red;
-    padding: 20px;
-    text-align: center;
-    bottom: 1em;
+/*modifico gli specifici elementi della classe*/
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+}
+
+input{
+    background-color: transparent;
+    border-bottom: 10px solid white;
+    border: none;
+    outline: none;
+    padding: 10px 5px; 
 }

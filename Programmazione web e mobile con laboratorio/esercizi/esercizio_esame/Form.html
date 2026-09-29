@@ -7,21 +7,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="background">
     <header>
+        <p class="form-writings">LINUX <br> Un sistema. Infinite possibilità.</p>
         <nav>
             <a href="Home.html">Home</a>
-            <a href="Info.html">Chi siamo</a>
+            <a href="Info.html">Info</a>
             <a href="Form.html">Form</a>
         </nav>
     </header>
 
     <main>
-        <p>qui il grande lavoro</p>
+        <form class="form-grid" method="post">
+            <div class="form-group">
+                <label class="form-writings" for="firstname">Firstname:</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+
+            <div>
+                <label class="form-writings" for="lastname">Lastname:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+
+            <div>
+                <label class="form-writings" for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div>
+                <label class="form-writings" for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required></input>
+            </div>
+
+            <label class="form-writings">Topic</label>
+
+            <label class="form-writings">Preferred Slot</label>
+
+            <input type=submit value="Sign me up">
+
+            <button type="reset"
+                onclick="alert('Sei sicuro di voler resettare tutti i campi della form?')">Reset</button>
+        </form>
     </main>
 
     <footer>
-        <p>&copy; 2026 Il mio sito</p>
+        <p class="form-writings">&copy; 2026 Il mio sito</p>
     </footer>
 </body>
 

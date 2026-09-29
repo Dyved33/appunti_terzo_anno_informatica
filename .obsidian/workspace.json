@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f3683c9742102a14",
+        "id": "81929149b8959d12",
         "type": "tabs",
         "children": [
           {
-            "id": "e16b07429ed86f80",
+            "id": "250c1aa2058d126c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Appunti introduzione alla sicurezza informatica"
+              "title": "New tab"
             }
           }
         ]
@@ -193,7 +189,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -240,11 +235,17 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e16b07429ed86f80",
+  "active": "250c1aa2058d126c",
   "lastOpenFiles": [
+    "Architettura reti e internet/images/iso_osi_host_communication.png",
+    "Architettura reti e internet/images/iso_osi_vs_tcp_ip.png",
+    "Architettura reti e internet/images/standard_organizations.png",
+    "Architettura reti e internet/Appunti architettura reti e internet.md",
+    "Architettura reti e internet/parte_1.pdf",
+    "prompt.md",
+    "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
     "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
     "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
-    "Architettura reti e internet/Appunti architettura reti e internet.md",
     "Programmazione web e mobile con laboratorio/esercizi/images/background.png",
     "Programmazione web e mobile con laboratorio/images/background.png",
     "Programmazione web e mobile con laboratorio/images/Unconfirmed 6132.crdownload",
@@ -252,23 +253,18 @@
     "Programmazione web e mobile con laboratorio/esercizi/es4.html",
     "div style.txt",
     "Unconfirmed 505215.crdownload",
-    "prompt.md",
     "Programmazione web e mobile con laboratorio/images",
     "Programmazione web e mobile con laboratorio/images/Pasted image 20260925163437.png",
-    "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
     "Architettura reti e internet/images/Pasted image 20260925120233.png",
     "Architettura reti e internet/images/Pasted image 20260925115953.png",
     "Architettura reti e internet/images/Pasted image 20260925115804.png",
     "Architettura reti e internet/images",
     "images/Pasted image 20260925120233.png",
     "images/Pasted image 20260925115953.png",
-    "images/Pasted image 20260925115804.png",
     "images",
-    "Pasted image 20260925120233.png",
     "Untitled.md",
     "Untitled",
     "Excalidraw/Drawing 2026-09-24 15.08.55.excalidraw.md",
-    "Excalidraw",
     "202609211311.md",
     "202609211243.md",
     "TaskNotes/Start Here.md",
