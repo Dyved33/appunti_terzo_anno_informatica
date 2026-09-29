@@ -562,3 +562,39 @@ $$b = \left\{
 | **Istanza di Relazione** | Insieme corrente di righe popolate | Contenuto del file su disco |
 
 ---
+
+# Lezione 4: Vincoli di Integrità nel Modello Relazionale
+
+## 1. I Vincoli di Integrità e la loro Classificazione
+
+> [!NOTE] Definizione di Vincolo di Integrità
+> I **vincoli di integrità** sono predicati posti sui valori effettivi che caratterizzano uno stato (o istanza) di base di dati: uno stato è ammissibile solo se li soddisfa tutti, e la loro violazione rende lo stato incoerente rispetto al mini-mondo rappresentato.
+
+Si distinguono quattro categorie:
+
+1. **Vincoli intrinseci (basati sul modello):** sono imposti dalla struttura stessa del modello dei dati e non richiedono di essere dichiarati esplicitamente, essendo soddisfatti per costruzione da ogni costruzione consentita dal modello.
+2. **Vincoli basati sullo schema:** sono esprimibili direttamente sugli schemi del modello dei dati, mediante il linguaggio di definizione **DDL** (*Data Definition Language*), e vengono di conseguenza verificati dal DBMS in modo automatico e centralizzato.
+3. **Vincoli non esprimibili sullo schema:** sono vincoli che non possono essere formalizzati negli schemi del modello dei dati e devono essere specificati realizzando programmi applicativi; la loro verifica è quindi demandata al codice applicativo e non è garantita dal DBMS.
+4. **Vincoli di dipendenza funzionale:** costituiscono un ulteriore ed importante insieme di vincoli, impiegati principalmente per verificare la qualità della progettazione di basi di dati relazionali.
+
+> [!EXAMPLE] Il vincolo di assenza di tuple duplicate
+> Il divieto per una relazione di contenere **tuple duplicate** è un vincolo intrinseco al modello relazionale: non è dichiarato in alcun modo, eppure ogni istanza ammissibile lo rispetta. Il motivo è formale e già anticipato nella Lezione 3: poiché un'istanza di relazione è matematicamente un **insieme** di tuple, per definizione non può contenere due elementi identici.
+
+> [!IMPORTANT] Dove viene imposto il vincolo
+> Le quattro categorie si distinguono in funzione del soggetto che assume la responsabilità di fare rispettare il vincolo: il **modello** dei dati, che lo garantisce da solo e senza dichiarazione; lo **schema**, che lo dichiara in DDL e ne affida la verifica al DBMS; i **programmi applicativi**, che devono codificarlo a mano con i margini di errore che ne conseguono. Le dipendenze funzionali, infine, hanno un ruolo diverso da tutti gli altri: non vengono usate per reprimere stati incoerenti, ma per valutare la bontà della progettazione.
+
+## 2. I Vincoli Basati sullo Schema
+
+I **vincoli basati sullo schema**, oggetto di studio sistematico di questa lezione, sono i vincoli che possono essere espressi direttamente negli schemi del modello dei dati tramite il DDL. La loro formalizzazione nello schema ha due conseguenze decisive:
+
+* **Centralizzazione della verifica:** il vincolo diventa parte della descrizione formale della base di dati, anziché logica disseminata nei programmi che la accedono.
+* **Verifica automatica a ogni operazione:** il DBMS può controllare il rispetto del vincolo in corrispondenza di ogni operazione di aggiornamento, impedendo che uno stato non ammissibile venga mai materializzato.
+
+A loro volta, i vincoli basati sullo schema si suddividono ulteriormente in due famiglie, distinte per l'ampiezza dell'ambito che coinvolgono:
+
+| Famiglia | Ambito di coinvolgimento | Portata della verifica |
+| :--- | :--- | :--- |
+| **Vincoli intrarelazionali** | Coinvolgono un unico schema di relazione | Verificabili relazione per relazione, in isolamento |
+| **Vincoli interelazionali** | Coinvolgono più schemi di relazioni | Richiedono di considerare contemporaneamente lo stato di più relazioni della base di dati |
+
+La distinzione è operativamente netta: la verifica di un vincolo intrarelazionale è un controllo *locale*, confinato all'interno di una singola relazione; quella di un vincolo interrelazionale è un controllo *globale*, che deve tenere conto contemporaneamente del contenuto di più istanze di relazione e presuppone quindi un meccanismo di coordinazione tra le strutture coinvolte.

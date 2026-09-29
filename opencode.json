@@ -36,12 +36,12 @@
     "appunti": {
       "description": "Sistema una lezione del vault secondo AGENTS.md: snapshot, piano, esecuzione, verifica",
       "mode": "primary",
-      "prompt": "{file:./.opencode/prompts/appunti.md}"
+      "prompt": "{file:./prompt.md}"
     },
     "materiale": {
       "description": "Cerca in <materia>/_materiale/ il contenuto per placeholder e verifiche. Sola lettura.",
       "mode": "subagent",
-      "model": "PROVIDER/MODELLO-ECONOMICO",
+      "model": "anthropic/claude-haiku-4-5",
       "temperature": 0,
       "prompt": "Ricevi la cartella di una materia e un elenco di placeholder o affermazioni da verificare. Cerca SOLO dentro <materia>/_materiale/ (mai altrove nel vault). Per ogni voce restituisci: il testo trovato citato fedelmente, file e posizione, oppure NON TROVATO. Non inventare, non integrare con conoscenza generale, non proporre modifiche alla nota.",
       "permission": { "edit": "deny", "bash": "deny", "webfetch": "deny", "websearch": "deny" }
@@ -49,11 +49,13 @@
     "revisore": {
       "description": "Controlla una nota modificata contro AGENTS.md usando git diff dal commit raw. Sola lettura.",
       "mode": "subagent",
-      "model": "PROVIDER/MODELLO-ECONOMICO",
+      "model": "anthropic/claude-haiku-4-5",
       "temperature": 0,
       "prompt": "Ricevi il percorso di una nota appena modificata. Trova con git log l'ultimo commit con messaggio che inizia per 'raw:' che tocca quel file e confronta con git diff <commit> -- <file>. Se non esiste, rispondi SOLO 'NESSUNO SNAPSHOT: verifica impossibile' e fermati. Verifica contro AGENTS.md §1 e §3: concetti, esempi o note del docente rimossi; argomenti aggiunti che la lezione non tocca; frontmatter e tag unico; H1 unico e numerazione H2 coerente con la cartella; callout corretti; formule in LaTeX; blocchi di codice con linguaggio; frasi da AI. Restituisci solo l'elenco delle violazioni con riga e motivo. Non modificare nulla.",
       "permission": {
-        "edit": "deny", "webfetch": "deny", "websearch": "deny",
+        "edit": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
         "bash": { "*": "deny", "git diff*": "allow", "git show*": "allow", "git log*": "allow" }
       }
     }

@@ -31,7 +31,7 @@ Un processo comunicativo si realizza unicamente in presenza di tre elementi cost
 ```
 
 ### 2.2 Definizione di Comunicazione Dati e Sistema di Comunicazione
-La **comunicazione dati** è lo scambio formale di informazioni tra due o più dispositivi realizzato attraverso un idoneo mezzo di trasmissione.-
+La **comunicazione dati** è lo scambio formale di informazioni tra due o più dispositivi realizzato attraverso un idoneo mezzo di trasmissione.
 
 Affinché la comunicazione abbia luogo con successo, i singoli apparati devono integrarsi all'interno di un **sistema di comunicazione** coerente, strutturato in due componenti complementari:
 * **Hardware:** le interfacce fisiche di rete (NIC - *Network Interface Card*), modem, amplificatori, antenne, commutatori (*switch*) e instradatori (*router*).
@@ -236,3 +236,221 @@ Ciascun livello elabora e scambia una propria specifica unità di dati denominat
      * **Livello 3 (Network):** esamina l'indirizzo IP di destinazione nell'header del pacchetto, consulta la propria tabella di instradamento (*routing table*), seleziona l'interfaccia di uscita ottimale (*forwarding*) e re-incapsula il pacchetto in una nuova trama di livello 2 adatta al link successivo.
    * I nodi intermedi sono **del tutto trasparenti rispetto ai livelli 4-7**: non ispezionano né modificano i dati di trasporto o di applicazione, garantendo la netta separazione tra il trasporto dati dell'utente e l'infrastruttura di instradamento.
 
+---
+
+# Lezione 2: Codifica dei Dati, Flussi Trasmissivi e Valutazione delle Prestazioni di Rete
+
+## 1. La Codifica dell'Informazione
+
+### 1.1 Dal Carattere ai Codici
+
+In un sistema elaborativo il **carattere** può essere associato al singolo bit: di conseguenza, sequenze significative di caratteri divengono collezioni di bit esistenti all'interno di strutture di codifica denominate **codici**, fra cui:
+
+* **BCD** (*Binary Decimal Code*)
+* **AIKEN**
+* **Gray**
+* **EBCDIC** (*Extended Binary Coded Decimal Code*)
+* **ASCII** (*American Standard Code for Information Interchange*)
+* **UNICODE**
+
+A seconda della natura dell'informazione possiamo associare **diverse quantità di bit** ad ogni singolo elemento. Si consideri un'immagine, rappresentabile tramite una matrice di pixel: se ogni sequenza di bit deve rappresentare un pixel *e* il rispettivo colore, un'immagine a colori richiederà una quantità di bit per pixel superiore rispetto a una in bianco e nero, ove un singolo bit diventa sufficiente a rappresentare il colore del pixel.
+
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+  <div style="flex: 1;">
+    <img src="Architettura reti e internet/images/codifica_pixels_immagine.jpg" style="width: 100%; border-radius: 8px;">
+  </div>
+  <div style="flex: 1.5;">
+    La quantità di bit per elemento non è dunque una proprietà del dato in astratto, ma della sua natura: più l'insieme dei valori distinguibili è ampio, più bit occorrono a ciascun elemento. È la stessa logica che presiede alla scelta dei codici testuali, dove l'ampiezza in bit è determinata dal numero di simboli distinti da rappresentare.
+  </div>
+</div>
+
+### 1.2 I Tre Codici Più Usati
+
+| Codice | Estensione | Note |
+| :--- | :--- | :--- |
+| **ASCII** (*American Standard Code for Information Interchange*) | 7 bit | Codice di base |
+| **ASCII Extended** | 8 bit | Variante che introduce i caratteri accentati |
+| **EBCDIC** (*Extended Binary Coded Decimal Code*) | 8 bit | — |
+| **Unicode** (es. UTF-8) | — | — |
+
+#### Codice ASCII
+
+<div style="display: flex; justify-content: center;">
+  <img src="Architettura reti e internet/images/codice_ascii.jpg" width="420">
+</div>
+
+#### Codice ASCII Extended
+
+In questa variante ci sono i **caratteri accentati**.
+
+<div style="display: flex; justify-content: center;">
+  <img src="Architettura reti e internet/images/codice_ascii_extended.jpg" width="240">
+</div>
+
+#### Codice EBCDIC
+
+<div style="display: flex; justify-content: center;">
+  <img src="Architettura reti e internet/images/codice_ebcdic.jpg" width="420">
+</div>
+
+## 2. I Flussi Trasmissivi
+
+Tra mittente e destinatario il **flusso trasmissivo** può essere istituito secondo tre modalità, che si distinguono per il grado di bidirezionalità consentito:
+
+| Tipo di Flusso | Schema | Comportamento | Esempio |
+| :--- | :---: | :--- | :--- |
+| **Simplex** | ![[flusso_simplex.jpg\|140]] | Solo uno dei dispositivi può spedire informazione, mentre l'altro dispositivo può solo ricevere | Radio |
+| **Half Duplex** | ![[flusso_half_duplex.jpg\|140]] | Ogni dispositivo può sia trasmettere che ricevere, ma **non contemporaneamente** | Walkie-talkie |
+| **Full Duplex** | ![[flusso_full_duplex.jpg\|140]] | Entrambi i dispositivi possono spedire e ricevere contemporaneamente, ottenendo bidirezionalità tramite **2 collegamenti fisici** | — |
+
+La progressione è netta: il *simplex* azzera la bidirezionalità, l'*half duplex* la rende possibile ma mutuamente esclusiva (dato che i due dispositivi non possono operare contemporaneamente), il *full duplex* la rende simultanea su due collegamenti fisici distinti.
+
+## 3. Gli Apparecchi della Comunicazione: DTE, DCE e CPE
+
+Il ruolo svolto da ciascun apparato lungo il canale di comunicazione è definito da una classe di sigle specifica:
+
+* **DTE (*Data Terminal Equipment*):** è il dispositivo informatico che permette la comunicazione dati (es. computer) e nel quale risiede l'applicazione utente.
+* **DCE (*Data Circuit Terminating Equipment*, anche conosciuto come *Data Communication Equipment*):** per connettersi alla linea si rende necessario un DCE, dispositivo che converte i segnali nella forma migliore per l'invio sul canale di comunicazione (es. modem).
+* **CPE (*Customer Premises Equipment*):** qualora sia richiesto un dispositivo di pertinenza dell'utente, solitamente inserito nell'abitazione del medesimo (es. reti ISDN, wireless o *voice over IP*), si parla di CPE.
+
+> [!NOTE] Il ruolo della rete di comunicazione
+> Il percorso tra due DTE non è l'unico elemento in gioco: è identificato dalla **rete di comunicazione**, che si interpone tra i due DTE e ne media il collegamento.
+
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+  <div style="flex: 1.5;">
+    <img src="Architettura reti e internet/images/schema_dte_dce.jpg" style="width: 100%; border-radius: 8px;">
+  </div>
+  <div style="flex: 1;">
+    La distinzione DTE/DCE è ciò che consente all'applicazione utente, ospitata nel DTE, di dialogare attraverso la rete: il DCE è l'apparato che adatta il segnale alla forma migliore per l'invio sul canale di comunicazione, e si colloca quindi fra il terminale e la rete.
+  </div>
+</div>
+
+## 4. Le Reti e il loro Mondo
+
+Si parla di **rete** intendendo un insieme di dispositivi connessi da canali di comunicazione. Una rete presenta uno o più **nodi** capaci di inviare o ricevere dati, generati o ricevuti, da altri dispositivi o da altri nodi.
+
+L'organizzazione delle funzioni computazionali all'interno della rete si articola in due modelli:
+
+* **Reti ad elaborazione concentrata:** è il modello nativo per le reti telematiche; un potente DTE viene messo a disposizione di uno o più DTE che ne sfruttano le capacità di calcolo.
+* **Reti ad elaborazione distribuita:** invece di essere un solo DTE a svolgere un compito, quest'ultimo viene diviso in varie parti, ognuna svolta da un nodo della rete.
+
+### 4.1 Le Tre Procedure di Colloquio
+
+Per entrambi i modelli proposti, il trasferimento dell'informazione tra DTE può dare luogo a tre differenti procedure di colloquio:
+
+1. **Inquiry:** tipica forma di interrogazione ad uno o più servizi messi a disposizione dal sistema elaborativo.
+2. **Conversazionale:** applicazione che permette al DTE di inviare tutte e sole quelle applicazioni previste secondo regole e formati d'immissione preimpostate.
+3. **Interattivo:** risponde ad applicazioni flessibili; al DTE è permesso inviare tutte le applicazioni che consentono pieno sfruttamento di tutte le risorse elaborative.
+
+> [!IMPORTANT] Gradazione del grado di autonomia del DTE
+> Le tre procedure si differenziano per la flessibilità concessa al terminale: nell'*inquiry* il DTE interroga uno o più servizi messi a disposizione dal sistema elaborativo; nel *conversazionale* sceglie tra le applicazioni previste, ma deve rispettare regole e formati d'immissione preimpostati; nell'*interattivo* ha il pieno sfruttamento di tutte le risorse elaborative.
+
+## 5. Gli Aspetti di Valutazione di una Rete
+
+La bontà della rete viene valutata in base a tre aspetti: **Affidabilità**, **Sicurezza** e **Prestazioni**.
+
+### 5.1 Affidabilità
+
+L'affidabilità di una rete è definita come la capacità della rete di:
+* Consegnare l'informazione **priva di errori**.
+* Porre **rimedio a malfunzionamenti**.
+* Essere **robusta in situazioni critiche**.
+
+### 5.2 Sicurezza
+
+La sicurezza di una rete ha come caratteristica principale la **protezione dei dati** che vengono gestiti all'interno della rete, al fine di impedire:
+* Accesso non autorizzato.
+* Modifiche non autorizzate.
+* Perdita di dati.
+
+### 5.3 Prestazioni
+
+Le prestazioni di una rete possono essere valutate misurando:
+
+| Metrica | Definizione |
+| :--- | :--- |
+| **Ritardo** | Tempo di transito dei dati, ovvero tempo necessario a un dato messaggio per raggiungere la destinazione partendo dalla sorgente |
+| **Tempo di risposta** | Tempo intercorrente tra il momento in cui si effettua una richiesta e il momento in cui arriva la risposta |
+| **Throughput** | Quantità effettiva di dati spediti nell'unità di tempo (velocità) |
+
+Le prestazioni dipendono anche da fattori **strutturali**, e non solo dalle misure stesse:
+* **Numero di DTE** presenti sulla rete.
+* **Tipologia dei mezzi trasmissivi** utilizzati.
+* **Efficienza del software** che gestisce la comunicazione.
+
+> [!NOTE] Ritardo e tempo di risposta
+> Le due metriche misurano cose diverse: il **ritardo** è riferito al tempo di transito di un singolo messaggio, mentre il **tempo di risposta** è riferito all'intervallo fra una richiesta e la risposta ad essa corrispondente.
+
+### 5.4 La Banda
+
+La **banda** è la banda passante di frequenze che può essere utilizzata per la trasmissione di segnale attraverso un canale di comunicazione. Essendo collegata alla quantità d'informazione che può essere inviata tramite quel segnale nell'unità di tempo, può essere definita come la **massima velocità** alla quale è possibile trasmettere informazioni.
+
+* **Broadband:** insieme di tecnologie che consentono di fornire all'utente collegamenti di velocità notevolmente superiore rispetto alla normale linea telefonica.
+* **Digital divide:** in presenza di disparità tra zone che dispongono o meno di accesso alla banda larga.
+
+## 6. Gli Strumenti di Valutazione della Velocità
+
+### 6.1 Il Comando `ping`
+
+Il comando **`ping`** indica se un host remoto può essere raggiunto. Può essere utilizzato anche per riportare statistiche sui pacchetti persi e sul tempo di spedizione: fa uso dell'*Echo message* del protocollo **ICMP** (*Internet Control Message Protocol*) per forzare un host remoto a rispedire indietro all'host locale un pacchetto a lui inviato.
+
+> [!EXAMPLE] Ping verso un host raggiungibile
+> 
+> ```bash
+> ping 141.250.5.2
+> PING 141.250.5.2 (141.250.5.2): 56 data bytes
+> 64 bytes from 141.250.5.2: icmp_seq=0 ttl=64 time=0.352 ms
+> 64 bytes from 141.250.5.2: icmp_seq=1 ttl=64 time=0.474 ms
+> ^C
+> --- 141.250.5.2 ping statistics ---
+> 2 packets transmitted, 2 packets received, 0% packet loss
+> round-trip min/avg/max/stddev = 0.352/0.413/0.474/0.061 ms
+> ```
+> 
+> Il comando riporta il tempo di trasmissione in millisecondi (ms) e si interrompe da solo, oppure con i tasti `Ctrl + c` o `Ctrl + z`.
+
+Il comportamento del comando cambia in funzione dello stato dell'host di destinazione: se l'host è situato su una rete inesistente si ottiene un errore immediato, mentre se l'host esiste ma non risponde il pacchetto resta in attesa fino all'interruzione.
+
+```bash
+ping 26.40.0.17
+sendto: Network is unreachable
+```
+
+```bash
+ping 141.250.233.1
+PING 141.250.233.1 (141.250.233.1): 56 data bytes
+^C
+--- 141.250.233.1 ping statistics ---
+131 packets transmitted, 0 packets received, 100% packet loss
+```
+
+> [!IMPORTANT] I Due Parametri da Controllare nel Ping
+> Riprendendo il ping che funziona, è necessario prestare attenzione a due parametri: il **Packet Loss** e il **Round Trip Time**.
+> * **Packet Loss:** dovrebbe sempre essere pari a zero. In caso contrario ci potrebbe essere un problema alla connessione oppure, più probabilmente, che il sito contattato sia congestionato o, al limite, disconnesso dalla rete.
+> * **Round Trip Time:** per una buona connessione Internet dovrebbe essere dell'ordine di qualche millisecondo. Se questo parametro assumesse valori a tre cifre, indicherebbe un problema della vostra connessione Internet o uno più generalizzato sulla rete.
+
+### 6.2 Il Comando `traceroute`
+
+Il comando **`traceroute`** (o **`tracert`**) dice quale instradamento prendono i pacchetti in uscita dal nostro sistema verso un sistema remoto. Mostra tutti i dispositivi di rete attraversati (nome e indirizzo tra parentesi) per arrivare a destinazione e dà l'idea della **"distanza"** (in termini di numero di dispositivi attraversati, *hops*) che ci separa da essa.
+
+> [!EXAMPLE] Traceroute verso un host remoto
+> 
+> ```bash
+> traceroute 141.250.1.3
+> traceroute to 141.250.1.3 (141.250.1.3), 64 hops max, 40 byte packets
+>  1  gw25.dipmat.unipg.it (141.250.25.3)   2.556 ms  3.264 ms  4.534 ms
+>  2  141.250.115.77 (141.250.115.77)       4.220 ms  2.844 ms  2.996 ms
+>  3  fe.r.unipg.it (141.250.253.1)         3.856 ms 17.168 ms  3.464 ms
+>  4  sw-cs.r.unipg.it (141.250.253.21)     3.758 ms  2.281 ms  3.709 ms
+> ```
+> 
+> Ogni riga corrisponde a un *hop*: il numero di righe fino a destinazione è il numero di dispositivi attraversati, e ciascun valore è il round trip verso quel dispositivo.
+
+### 6.3 Speed Test
+
+Per verificare la velocità effettiva della nostra connessione possiamo utilizzare il sito web **www.speedtest.net**.
+
+> [!EXAMPLE] Come funziona Speed Test
+> Sul territorio italiano sono sparsi vari **server di test**: ne viene scelto uno, il più vicino a noi, e si dà avvio alla prova. In un minuto si ottiene il risultato del test, con ping, velocità in download e in upload.
+>
+> Il server di test può essere scelto anche **automaticamente** in base al ping: per farlo basta cliccare su "Inizia Test" e sarà direttamente il sistema a scegliere il server migliore.
