@@ -82,7 +82,7 @@ td {
 }
 
 .form-select select {
-  width: 100%; 
+  width: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -134,49 +134,44 @@ button {
   box-shadow: 0px 10px 35px rgba(126, 118, 118, 0.5);
 }
 
-.card{
-    max-width: 40%;
-    min-height: 50px;
+.card {
+  width: 100%;
+  min-height: 50px;
 
-    margin: 5px;
-    border-radius: 100px;
-    border: 1px solid yellowgreen;
+  margin: 5px;
+  border-radius: 100px;
+  border: 1px solid yellowgreen;
+
+  background-position: left;
 }
 
-#intro{
-
-    background-image: url(./images/intro.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: left center;
-    padding-left: 250px;
+.text-container{
+  margin-left: 200px;
 }
 
-#why{
-    background-image: url(./images/why.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    background-position: right center;
-    padding-right: 235px;
+#intro {
+  background-image: url(./images/intro.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-#how{
-    background-image: url(./images/how.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    background-position: left center;
-    padding-left: 250px;
+#why {
+  background-image: url(./images/why.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-#now{
-    background-image: url(./images/now.png);
-    background-size: contain;
-    background-repeat: no-repeat;
+#how {
+  background-image: url(./images/how.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: -10px;
+}
 
-    background-position: right center;
-    padding-right: 250px;
+#now {
+  background-image: url(./images/now.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* ogni blocco distribuzione: immagine + tabella sulla stessa riga */
@@ -193,11 +188,11 @@ button {
 
 /* immagine e tabella occupano ciascuna metà del blocco, con la stessa altezza */
 .distro a,
-.distro table {
-    /*2 elementi che si dividono lo spazio a metà e se manca spazio l'elemento può restringersi*/
-    /*lo 0 è la larghezza di partenza prima della distribuzione dello spazio*/
-  flex: 1 1 0;      /* stessa larghezza */
-  height: 250px;    /* stessa altezza: cambiala a piacere */
+table {
+  /*2 elementi che si dividono lo spazio a metà e se manca spazio l'elemento può restringersi*/
+  /*lo 0 è la larghezza di partenza prima della distribuzione dello spazio*/
+  flex: 1 1 0; /* stessa larghezza */
+  height: 280px; /* stessa altezza */
 }
 
 .distro img {
