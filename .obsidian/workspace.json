@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "81929149b8959d12",
+        "id": "c43ef8c0ba2f23bc",
         "type": "tabs",
         "children": [
           {
-            "id": "250c1aa2058d126c",
+            "id": "eea8304247c53032",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Introduzione all'intelligenza artificiale/Appunti introduzione all'intelligenza artificiale.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Appunti introduzione all'intelligenza artificiale"
+              "title": "New tab"
             }
           }
         ]
@@ -241,8 +237,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c1467e7ef2db6b6c",
+  "active": "eea8304247c53032",
   "lastOpenFiles": [
+    "Introduzione sicurezza /Appunti introduzione sicurezza.md",
+    "Architettura reti e internet/parte_2.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
+    "Introduzione IA/Appunti introduzione IA.md",
+    "Architettura reti e internet/parte_2_extracted.txt",
+    "Introduzione IA/00_Index_Introduzione_IA.md",
     "Introduzione all'intelligenza artificiale/images/Pasted image 20260930182802.png",
     "Introduzione all'intelligenza artificiale/images/Pasted image 20260930181234.png",
     "p.md",
@@ -257,20 +259,16 @@
     "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/why.png",
     "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/intro.png",
     "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/kali.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/ubuntu.png",
     "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images",
     "Architettura reti e internet/Appunti architettura reti e internet.md",
     "Architettura reti e internet/parte_1.pdf",
     "prompt.md",
     "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
     "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
-    "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
     "Programmazione web e mobile con laboratorio/images/Unconfirmed 6132.crdownload",
     "Programmazione web e mobile con laboratorio/esercizi/es4.css",
     "Programmazione web e mobile con laboratorio/esercizi/es4.html",
     "div style.txt",
-    "Unconfirmed 505215.crdownload",
-    "Programmazione web e mobile con laboratorio/images",
     "Excalidraw/Drawing 2026-09-24 15.08.55.excalidraw.md",
     "202609211311.md",
     "202609211243.md",
