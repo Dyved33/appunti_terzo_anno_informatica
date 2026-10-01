@@ -1,0 +1,53 @@
+SMTP = porta 25 è il protocollo con cui si manda la posta
+
+protocollo per leggere la posta è l'IMAP => l'utente ha replicata la struttura presente nella casella di posta. 
+
+Convenzioni:
+- maiuscolo = urlare
+- faccette = stati d'animo
+- abbreviazioni 
+
+DNS (domain name system):
+ha la funzione di tradurre nomi in indirizzi IP. chiede l'indirizzo IP di un sito ad un server DNS passandogli il nome del sito stesso. 
+indirizzi IP = tantissimi => ho un server DNS radice dal quale si diramano i server DNS per com, org, edu,...cui fanno riferimeno tutti i siti che terminano con com,..
+tutte le richieste del mondo vanno nel DNS radice => è replicato e ogni client usa il DNS radice più vicino
+
+Ogni macchina che manda un pacchetto deve sapere se è nella stessa rete e ha bisogno di un indirizzo IP e una maschera di rete. 
+l'inidirizzo serve per poter ricevere informazioni dalla rete. 
+la maschera mi dice fino a dove controllare la somiglianza tra i numeri dei 2 indirizzi IP
+- sta nella stessa rete => va al livello 2
+- sta in una rete diversa => usa il default getaway per uscire dalla rete locale
+
+N.B. di solito si mettono 2 DNS nella configurazione di rete: uno principale e uno di backup
+
+Record DNS:
+- A = IPv4
+- AAAA = IPv6
+- CNAME = non ho capito
+- NS =
+- MX (mail exachanger) = a chi va il messaggio (i guess) 
+
+protocollo di trasporto di DNS = UDP (no TCP perché ci vuole molto), anche perché si mandano messaggi piccoli
+
+N.B. il DNS deve lavorare anche con il TCP. ogni tot tempo il file di configurazione viene mandato dal dns principale al secondario
+
+livello di trasporto:
+si tratta della pipe virtuale in cui metto il messaggio durante la comunicazione
+
+Protocolli del livello di trasporto in internet:
+ - udp = inaffidabile, consegne senza ordine (estensione del servizio di consegna a massimo sforzo)
+ - tcp= affidabile, consegne nell'ordine originario (controllo di congestioin, controllo di flusso e setup della connessione
+ - servizi non disponibili = garanzia su ritardi, garanzia su ampiezza di banda 
+
+demultiplexing: 
+
+
+udp:
+utilizzato spesso per qualcosa che manca
+
+tcp:
+serve la foto perché non saprei come scrivere con struttura dei segmenti tcp
+
+cause e costi di una congestione che non ho capito da cosa dipenda
+
+

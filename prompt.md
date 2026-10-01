@@ -165,6 +165,7 @@ Immagine con didascalia centrata sotto:
 - Frasi lineari, definizioni asciutte, spiegazioni logico-causali dirette.
 - Zero fluff da AI: niente "In questa guida esploreremo...", "Nel dinamico panorama odierno...", "È fondamentale sottolineare...", "In conclusione...", né aggettivi enfatici superflui.
 - Il risultato deve sembrare una nota di studio rielaborata da una persona reale.
+- Aggiungi dove necessario degli esempi per rendere più chiari i concetti espressi
 
 ### Navigazione
 Ogni nota termina con:

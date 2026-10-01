@@ -33,6 +33,10 @@ header {
   color: white;
 }
 
+nav{
+  text-align: right;
+}
+
 footer {
   background-color: transparent;
   padding: 20px;

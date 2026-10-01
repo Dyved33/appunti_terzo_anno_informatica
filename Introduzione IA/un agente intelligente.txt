@@ -1,0 +1,60 @@
+un agente intelligente ha sensori e attuatori = 
+- sensori: qualcosa che prende dati in input
+- attuatore: qualcosa che un agente chiama sotto certe condizioni
+
+con attuatori viene cambiato l'environment e poi si acquisiscono i cambiamenti .
+
+parole che caratterizzano l'environment:
+- fully/partially observable
+- deterministic/stocastic
+- discrete/continuos
+- benign/adversarial
+
+definizione di agente razionale: per ogni possibile sequenza di percezioni, un agente razionale dovrebbe scegliere un'azione che massimizzi il valore atteso della sua misura di prestazione date le informaizoni fornite dalla sequenza percettiva e da ogni ulteriore conoscenza dell'agente
+
+N.B. posso dire all'agente il comportamento che voglio da lui
+
+search problem (rappresentazione atomica): è una scatola nera priva di struttura interna 
+
+planning (rappresentazione fattorizzata): uno stato è costituito da un vettore di valori di attributi; tali valori possono essere booleani, numeri reali o un simbolo appartenente a un insieme fissato.
+
+Rappresentazione strutturata: uno stato include oggetti, ognuno dei quali può avere attributi propri oltre a relazioni con altri oggetti.
+
+ho due possibili rappresentazioni (non so bene di cosa):
+- state space graph
+- search tree
+
+ogni nodo nel search tree è un intero PATH nello state space graph. vengono costruiti entrambi e il più piccoli possibile
+
+RICERCA NON INFORMATA
+Problema di ricerca: consiste di
+- uno spazio degli stati: S{S1,..., Sn}
+- funzione di transizione (con azioni e costi): f:SxA -> S con A = {a1,.., an}
+- uno stato iniziale e uno stato di goal: S0 appartenente a S e Sg appartenente a S
+
+P= <ai,aj,.., ah-1,an> tali che f(f(f(S0,ai)aj)...ah-1) contenuto (o uguale) in Sg con f(S0,ai) = stato succ di S0
+
+prop che caratterizzano il goal sono valide nell'ultimo stato
+
+una soluzione è una sequenza di azioni (un piano) che trasforma lo stato iniziale in quello di goal
+
+i search model sono modelli perché non ho capito 
+
+foto di esempio con città della romania
+
+cosa c'è dentro ad uno spazio di stati? 
+lo stato mondo include ogni dettaglio dell'environment
+lo stato di ricerca tiene solo i dettagli necessari per il planning (astrazione). Nell'esempio del pacman:
+- pathing: 
+- mangiare tutti i pallini: 
+
+N.B. un problema per il pacman è la dimensione dello spazio degli stati
+
+GRAFI DELLO SPAZIO DEGLI STATI
+servono immagini e informazioni
+
+SEARCH TREES
+servono immagini e informazioni
+
+non sono riuscito a seguire dalla slide 12 alla 16 con immagini da spiegare e aggiungere
+

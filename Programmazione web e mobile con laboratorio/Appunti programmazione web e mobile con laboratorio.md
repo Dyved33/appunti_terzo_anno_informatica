@@ -682,4 +682,145 @@ Per acquisire testi estesi (recensioni, note, messaggi) si impiega il tag conten
   ```
 
 ---
+# Lezione 4
+Video: permette di incorporare video in una pagina web. Gli attributi principali sono:
+- Controls: mostra i controlli (play, pausa, volume)
+- Autoplay: avvia automaticamente la riproduzione del video
+- Loop: riproduce il video in loop continuo
+- Muted: disattiva audio del video
 
+Ha un attributo src come le immagini e type in cui si definisce il formato del video (es. Mp 4)
+
+Audio: permette di incorporare file audio in una pagina web. Gli attributi principali sono:
+- Controls: mostra i controlli (play, pausa, volume)
+- Autoplay: avvia automaticamente la riproduzione dell'audio
+- Loop: riproduce l'audio in loop continuo
+- Muted: disattiva audio 
+
+Anche questo ha gli attributi essenziali src e type
+
+Ancore: ha tag `<a>` e servono per creare collegamenti ipertestuali tra pagine web o sezioni della stessa pagina. I suoi attributi principali sono:
+- Href = URL o ID dell'elemento a cui si collega
+- Target = definisce dove aprire il link (`_blank` per aprire in una nuova scheda)
+
+Link ad un elemento: realizzabile con ancoraggi interni con tag `<a>`. Permette di navidare direttamente ad una specifica sezione della stessa pagin, utilizzando l'attributo id dell'elemento di destinazione (`<a href="sezione1">Va alla sezione 1 <a>`)
+
+N.B. Teoricamente funziona solo con gli id perché la classe non è univoca 
+
+Div VS span
+- Div è un elemento di blocco per raggruppare contenuti
+- Span è un elemento inline usato per assegnare lo stile a porzioni di testo identificate da un id oppure una classe
+
+N.B. Se i div sono uno sotto l'altro nell'html li vedo in colonna, mentre i div, nella stessa situazione, li vedo uno dietro all'altro
+
+Layout multicolonna:
+- Column-count: imposta numero colonne
+- Column-width: larghezza minima delle colonne
+- Column-gap: spazio tra le colonne
+- Column-rule: stile del bordo  tra le colonne
+
+Float: consente di posizionare un elemento a sinistra o a destra all'interno del suo contenitore. Il testo e altri elementi si avvolgono attorno all'elemento galleggiante. Funziona con elementi di blocco 
+
+Nota: questa proprietà funziona solo se l'elemento galleggiante ha dimensione diversa dal 100% 
+
+Position: determina il metodo di posizionamento di un elemento nel flusso del documento. Le proprietà correlate sono: top, bottom, right e left. Ha valori:
+- Static (predefinito)
+- Relative: sposta l'elemento rispetto alla sua posizione originale
+- Absolute: posiziona l'elemento rispetto al suo primo antenato (solitamente il body) e rimuove l'elemento dal flusso normale (sovrapposizione con altri elementi)
+- Fixed: posiziona l'elemento rispetto alla finestra del browser (fisso durante lo scorrimento della pagina)
+- Sticky: l'elemento è trattato come relative fino a quando non supera una certa soglia di scorrimento, quindi diventa fixed
+
+Display: inline: gli elementi con questa proprietà sono disposti  uno accanto all'altro sulla stessa riga. Non interrompono il flusso del layout come gli elementi di blocco. Non rispettano larghezza e altezza impostate, ma seguono la larghezza del loro contenuto
+
+Display: block: gli elementi con con questa proprietà occupano l'intera larghezza disponibile e iniziano su una nuova riga. Accettano proprietà come width, height, margin e padding
+
+Centrare gli elementi
+
+Centratura orizzontale:
+- Elementi inline: text-align: center sul contenitore
+- Elementi di blocco: margin: auto e specificare una width
+
+Centratura verticale:
+- Elementi inline: vertical-align: middle
+- Elementi di blocco: display: flex con align-items: center o display: grid con place-items: center
+
+Display:table
+Simula il comportamento di una tabella HTML con proprietà CSS. I valori correlati sono: 
+- Display: table-row: rappresenta una riga di una tabella
+- Display: table-row: rappresenta una cella della tabella
+
+Per fare ciò uso dei div generici che specializzo con delle classi (es. Tabella, riga, cella)
+
+```css
+.tabella{
+display: table;
+}
+
+.riga{
+display: table-row;
+}
+
+.cella{
+display: table-cell;
+border: ...
+margin: ...
+}
+```
+
+Display: flex
+
+Permette di creare un layout flessibile per gestire facilmente il posizionamento e l'allineamento di elementi figli. Si occuopa di allineare gli elementi lungo la direzione orizzontale e verticale (contenitore si adatta al contenuto)
+
+Proprietà correlate:
+- Flex-direction: definisce la direzione principale in cui gli elementi flessibili sono disposti (row, column) 
+- flex-wrap: determina se gli elementi flessibili devono disporsi su più righe (wrap, nowrap) 
+- align-content: gestisce lo spazio tra le righe quando ci sono più righe • justify-content: controlla l'allineamento degli elementi lungo l'asse principale 
+- align-items: allinea gli elementi figli lungo l'asse trasversale
+
+Display:grid
+
+Crea un layout a griglia per organizzare gli elementi in righe e colonne. Le proprietà correlate sono:
+- grid-template-columns: numero e larghezza delle colonne 
+- grid-template-rows: numero e altezza delle righe 
+- grid-gap: spazio tra righe e colonne 
+- grid-column: definisce in quale colonna inizia e in quale colonna termina un elemento
+
+Differenze 
+
+| Table                                                         | Flex                                                                      | Grid                                                         |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Layout che segue una struttura predefinita di righe e colonne | Gli elementi possono crescere e ridursi in base allo spazio disponibile   | Potente modello di layout bidimensionale con righe e colonne |
+| Non gestisce layout dinamici                                  | Non gestisce bene i layout complessi che richiedono sia righe che colonne | Particolarmente utile per creare layout complessi            |
+
+Sezioni:
+- Tag semantici che migliorano la struttura del codice HTML 
+- Rendono il contenuto più leggibile sia per gli sviluppatori che per i motori di ricerca 
+- L'uso appropriato di questi elementi aiuta a creare pagine web più organizzate ed accessibili 
+- Alcune sezioni: header, nav, section, article, aside, address, footer
+
+`<header>`:
+- Definisce l'intestazione di una pagina o di una sezione 
+- Contiene tipicamente il titolo, il logo, la barra di navigazione o altre informazioni introduttive
+
+`<nav>`:
+- Indica una sezione di navigazione nel sito 
+- Contiene i link di navigazione principali
+
+`<section>`:
+- Rappresenta una sezione tematica di contenuto 
+- Può contenere un titolo e diversi contenuti relativi
+
+`<article>`:
+- Indica un contenuto autonomo e indipendente come un post di un blog o un articolo di notizie 
+- Potrebbe essere distribuito o riutilizzato
+
+`<aside>`:
+- Contiene contenuti secondari o supplementari che possono essere correlati al contenuto principale 
+- È spesso posto a lato della pagina
+
+`<address>`:
+- Rappresenta le informazioni di contatto, come indirizzi fisici, numeri di telefono o indirizzi email 
+- Indica chiaramente ai browser e ai motori di ricerca che il contenuto all'interno di questo tag è correlato a informazioni di contatto
+
+`<footer>`: 
+- Indica le informazioni di chiusura di una pagina o di una sezione 
