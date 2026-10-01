@@ -1,3 +1,5 @@
+tags: [sicurezza-informatica]
+---
 # Fondamenti di Sicurezza Informatica e Protezione dei Sistemi
 
 > [!INFO] Informazioni sul Corso ed Esami
@@ -171,6 +173,15 @@ Le reti telematiche sono sistemi complessi composti da nodi (*host*, router), co
 > [!NOTE] Nota del Prof: Significato del Termine "Pacchetto"
 > Nel gergo informatico comune il termine **"pacchetto"** viene impiegato in modo generico per indicare una qualsiasi unità di dati in transito sulla rete. Formalmente, si tratta della medesima informazione che assume denominazioni tecniche differenti a seconda dello strato della pila in cui viene osservata: **messaggio** (applicazione), **segmento** (trasporto), **datagramma** (rete), **frame** (collegamento).
 
+### 2.2a Multiplexing e Demultiplexing
+
+Il livello di trasporto realizza il trasferimento logico **process-to-process**. Poiché su un singolo host possono essere attivi numerosi processi contemporaneamente, TCP e UDP devono distinguere a quale processo consegnare i dati ricevuti.
+
+* **Multiplexing (dal lato mittente):** Il livello di trasporto raccoglie i dati provenienti da diversi processi applicativi, li incapsula in segmenti (o datagrammi UDP) e assegna a ciascuno un opportuno numero di porta sorgente, in modo da poterli distinguere all'arrivo.
+* **Demultiplexing (dal lato ricevente):** Il livello di trasporto esamina il numero di porta di destinazione presente nell'intestazione del segmento/datagramma e lo consegna al corretto processo applicativo tramite la relativa socket.
+
+Per **UDP** (connectionless) il demultiplexing si basa unicamente sulla coppia `(IP destinazione, porta destinazione)`. Per **TCP** (connection-oriented) la consegna avviene in base all'intera **5-tupla**: `(IP sorgente, porta sorgente, IP destinazione, porta destinazione, protocollo)`, garantendo che connessioni distinte (anche dallo stesso processo client, ma con porte sorgenti diverse) vengano gestite separatamente.
+
 ### 2.3 Meccanismo di Incapsulamento e Decapsulazione
 Ciascun livello aggiunge in testa ai dati ricevuti dal livello superiore una propria intestazione contenente i metadati di controllo di competenza (**incapsulamento** in trasmissione) e ne esegue la rimozione al momento della ricezione (**decapsulazione**):
 
@@ -281,6 +292,18 @@ Le applicazioni di rete presentano requisiti eterogenei su tre parametri critici
 │ • Overhead elevato (header 20 byte)    │ • Overhead minimo (header 8 byte)      │
 └────────────────────────────────────────┴────────────────────────────────────────┘
 ```
+
+### 4.3 Struttura del Segmento TCP e Controllo della Congestione
+
+Il segmento TCP è composto da intestazione e dati. Campi principali: porte sorgente/destinazione, Sequence Number (SEQ), Acknowledgment Number (ACK), Header Length, Flags (SYN, ACK, FIN, RST, PSH, URG), Receive Window (per il **controllo di flusso**), Checksum e Urgent Pointer.
+
+* **Controllo di flusso:** Meccanismo end-to-end tra mittente e ricevente per evitare di sovraccaricare il buffer del ricevente (si basa sulla *Receive Window*).
+* **Controllo della congestione:** Meccanismo volto a evitare che il mittente inondi la rete (collegamenti/router intermedi), riducendo perdite e ritardi. TCP lo gestisce tramite algoritmi (ad es. Slow Start, Congestion Avoidance, Fast Retransmit, Fast Recovery) in risposta a timeout e ACK duplicati.
+
+> [!WARNING] IMMAGINE DA INSERIRE
+> **Struttura del segmento TCP**
+> Descrizione: diagramma dell'header TCP con i principali campi (porte, SEQ, ACK, offset, flags, finestra, checksum, urgent pointer, opzioni e dati).
+> Inserire file: `![[INSERISCI_IMMAGINE_SEGMENTO_TCP.png]]`
 
 > [!INFO] Perché si utilizza UDP se TCP è affidabile?
 > L'affidabilità di TCP introduce latenza inevitabile: handshake a tre vie, attesa di ACK, ritrasmissioni in caso di perdita e riordino dei segmenti nei buffer. Nelle applicazioni *real-time* (VoIP, streaming live, videogiochi competitivi), un pacchetto audio/video che arrivi con 300 ms di ritardo è del tutto inservibile; è preferibile tollerare la perdita di un singolo frame audio piuttosto che bloccare l'intero flusso per richiederne la ritrasmissione. Inoltre, UDP consente al server di gestire un volume di client concorrenti enormemente superiore, riducendo lo stato di memoria allocato.
@@ -527,6 +550,10 @@ Il messaggio è composto da:
 2. **Riga Vuota (CRLF).**
 3. **Body:** Corpo del messaggio in formato testo ASCII a 7 bit.
 
+> [!WARNING] IMMAGINE DA INSERIRE
+> **Rappresentazione del segmento TCP (schema)**
+> Se disponibile nel materiale del corso, inserire lo schema strutturale del segmento TCP. File: `![[INSERISCI_IMMAGINE_SEGMENTO_TCP.png]]`
+
 #### Standard MIME (Multipurpose Internet Mail Extensions - RFC 2045-2049)
 Per consentire il trasporto di caratteri non ASCII (accenti, caratteri orientali) e **allegati binari multimediali** (immagini, PDF, audio, video) all'interno di un canale storicamente limitato all'ASCII a 7 bit, MIME introduce intestazioni supplementari:
 * `MIME-Version: 1.0`
@@ -628,6 +655,18 @@ I dati nel database DNS sono formalizzati come quartine `(Name, Value, Type, TTL
 * **Tipo `CNAME` (*Canonical Name*):** Definisce un alias rispetto al nome canonico reale: `(www.server.com, server-principale.com, CNAME, 3600)`.
 * **Tipo `MX` (*Mail Exchange*):** Specifica il nome del server di posta elettronica di riferimento per il dominio.
 * **TTL (*Time to Live*):** Intervallo temporale in secondi durante il quale il record può essere memorizzato nella cache dei resolver prima della sua rivalidazione obbligatoria.
+
+### 9.4 Indirizzo IP, Maschera di Rete e Default Gateway
+
+Per inviare un pacchetto su una rete IP, ogni host necessita di tre parametri fondamentali:
+
+* **Indirizzo IP:** Identifica univocamente l'interfaccia di rete del dispositivo.
+* **Maschera di rete (Subnet Mask):** Determina quale porzione dell'indirizzo IP rappresenta la **rete** e quale l'**host**. Il confronto bit a bit tra indirizzi IP mediante la maschera consente di stabilire se due host si trovano nella **stessa rete locale** oppure in **reti differenti**.
+* **Default Gateway (Gateway di default):** Indirizzo IP del router di uscita dalla rete locale. Se il destinatario non appartiene alla stessa rete, il pacchetto viene inviato al default gateway per l'inoltro verso altre reti.
+
+### 9.5 UDP e TCP nel Servizio DNS
+
+Il DNS utilizza prevalentemente **UDP sulla porta 53** (query/risposte di dimensioni ridotte). Può ricorrere a **TCP sulla porta 53** per i trasferimenti di zona (zone transfer) tra server primario e secondario o quando la risposta supera i 512 byte (in particolare con DNSSEC). 
 
 ---
 

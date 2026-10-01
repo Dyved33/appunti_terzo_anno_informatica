@@ -11,10 +11,14 @@
             "id": "7662d0813f5ef50d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Introduzione sicurezza /Appunti introduzione sicurezza.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Appunti introduzione sicurezza"
             }
           }
         ]
@@ -237,7 +241,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c1467e7ef2db6b6c",
+  "active": "7662d0813f5ef50d",
   "lastOpenFiles": [
     "prompt.md",
     "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",

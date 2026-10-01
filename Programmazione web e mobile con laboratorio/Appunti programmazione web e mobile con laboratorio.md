@@ -1,3 +1,7 @@
+---
+tags:
+  - programmazione-web
+---
 # Lezione 1: Architettura del Web e Fondamenti del Protocollo HTTP
 
 ## 1. Il World Wide Web (WWW) e gli Standard di Rete
@@ -682,145 +686,392 @@ Per acquisire testi estesi (recensioni, note, messaggi) si impiega il tag conten
   ```
 
 ---
-# Lezione 4
-Video: permette di incorporare video in una pagina web. Gli attributi principali sono:
-- Controls: mostra i controlli (play, pausa, volume)
-- Autoplay: avvia automaticamente la riproduzione del video
-- Loop: riproduce il video in loop continuo
-- Muted: disattiva audio del video
+# Lezione 4: Media Embeddati, Ipertesti, Layout CSS e Tag Semantici
 
-Ha un attributo src come le immagini e type in cui si definisce il formato del video (es. Mp 4)
+## 1. Media Embeddati: `<video>` e `<audio>`
 
-Audio: permette di incorporare file audio in una pagina web. Gli attributi principali sono:
-- Controls: mostra i controlli (play, pausa, volume)
-- Autoplay: avvia automaticamente la riproduzione dell'audio
-- Loop: riproduce l'audio in loop continuo
-- Muted: disattiva audio 
+HTML5 introduce nativamente l'incorporamento di contenuti multimediali, eliminando la necessità di plugin esterni (Flash, Silverlight). I due elementi sono `<video>` e `<audio>` e condividono il medesimo set di attributi.
 
-Anche questo ha gli attributi essenziali src e type
+### 1.1 Attributi Comuni
 
-Ancore: ha tag `<a>` e servono per creare collegamenti ipertestuali tra pagine web o sezioni della stessa pagina. I suoi attributi principali sono:
-- Href = URL o ID dell'elemento a cui si collega
-- Target = definisce dove aprire il link (`_blank` per aprire in una nuova scheda)
+* **`src`:** percorso del file multimediale. Se il file è omesso è possibile elencare più sorgenti alternative tramite tag `<source>` annidati.
+* **`type`:** formato del media dichiarato come MIME type (es. `video/mp4`, `video/webm`, `audio/mpeg`). Consente al browser di saltare immediatamente le sorgenti non supportate senza scaricarle.
+* **`controls`:** visualizza la barra di controllo nativa (play/pausa, volume, linea temporale, schermo intero).
+* **`autoplay`:** avvia la riproduzione appena il file è pronto.
+* **`loop`:** al termine della riproduzione ricomincia da capo.
+* **`muted`:** avvia la riproduzione con audio disattivato.
 
-Link ad un elemento: realizzabile con ancoraggi interni con tag `<a>`. Permette di navidare direttamente ad una specifica sezione della stessa pagin, utilizzando l'attributo id dell'elemento di destinazione (`<a href="sezione1">Va alla sezione 1 <a>`)
+```html
+<video src="presentazione.mp4" type="video/mp4" controls autoplay loop muted width="640"></video>
 
-N.B. Teoricamente funziona solo con gli id perché la classe non è univoca 
+<audio src="brano.mp3" type="audio/mpeg" controls loop></audio>
+```
 
-Div VS span
-- Div è un elemento di blocco per raggruppare contenuti
-- Span è un elemento inline usato per assegnare lo stile a porzioni di testo identificate da un id oppure una classe
+> [!IMPORTANT] Politiche di Autoplay dei Browser
+> I browser moderni **bloccano l'avvio automatico** di un media se questo emette audio: `autoplay` viene applicato solo in combinazione con `muted`. Inoltre, su dispositivi mobili è necessario `playsinline` per impedire che il video passi forzatamente al lettore a schermo intero. L'ordine delle dichiarazioni non è influente: `muted` può precedere `autoplay`.
 
-N.B. Se i div sono uno sotto l'altro nell'html li vedo in colonna, mentre i div, nella stessa situazione, li vedo uno dietro all'altro
+### 1.2 Sorgenti Multiple e Contenuto di Fallback
 
-Layout multicolonna:
-- Column-count: imposta numero colonne
-- Column-width: larghezza minima delle colonne
-- Column-gap: spazio tra le colonne
-- Column-rule: stile del bordo  tra le colonne
+L'elemento `<source>` elenca le varianti disponibili: il browser seleziona la prima sorgente con un `type` supportato, evitando conversioni e codec proprietari.
 
-Float: consente di posizionare un elemento a sinistra o a destra all'interno del suo contenitore. Il testo e altri elementi si avvolgono attorno all'elemento galleggiante. Funziona con elementi di blocco 
+```html
+<video controls poster="locandina.jpg">
+  <source src="video.webm" type="video/webm">
+  <source src="video.mp4" type="video/mp4">
+  <!-- Fallback mostrato solo da browser senza supporto HTML5 -->
+  Il tuo browser non supporta i video HTML5.
+</video>
+```
 
-Nota: questa proprietà funziona solo se l'elemento galleggiante ha dimensione diversa dal 100% 
+* **`poster` (solo `<video>`):** immagine mostrata prima dell'avvio della riproduzione.
+* **`preload`:** comportamento del precaricamento (`auto`, `metadata`, `none`).
+* **`width` / `height` (solo `<video>`):** dimensioni intrinseche del player; non applicabili ad `<audio>`.
 
-Position: determina il metodo di posizionamento di un elemento nel flusso del documento. Le proprietà correlate sono: top, bottom, right e left. Ha valori:
-- Static (predefinito)
-- Relative: sposta l'elemento rispetto alla sua posizione originale
-- Absolute: posiziona l'elemento rispetto al suo primo antenato (solitamente il body) e rimuove l'elemento dal flusso normale (sovrapposizione con altri elementi)
-- Fixed: posiziona l'elemento rispetto alla finestra del browser (fisso durante lo scorrimento della pagina)
-- Sticky: l'elemento è trattato come relative fino a quando non supera una certa soglia di scorrimento, quindi diventa fixed
+## 2. Ipertesti: il Tag `<a>`
 
-Display: inline: gli elementi con questa proprietà sono disposti  uno accanto all'altro sulla stessa riga. Non interrompono il flusso del layout come gli elementi di blocco. Non rispettano larghezza e altezza impostate, ma seguono la larghezza del loro contenuto
+Il tag `<a>` definisce un collegamento ipertestuale verso un'altra pagina, una risorsa esterna o una sezione interna della stessa pagina.
 
-Display: block: gli elementi con con questa proprietà occupano l'intera larghezza disponibile e iniziano su una nuova riga. Accettano proprietà come width, height, margin e padding
+### 2.1 Attributi Fondamentali
 
-Centrare gli elementi
+* **`href`:** URL o identificatore di ancoraggio della destinazione. Se assente, `<a>` non funziona come link ma conserva la semantica di elemento di riserva per la creazione del collegamento.
+* **`target`:** contesto di apertura del documento di destinazione:
+  * `_self` (default): stessa scheda o finestra corrente.
+  * `_blank`: nuova scheda o finestra.
+  * `_parent` e `_top`: salgono rispettivamente di un livello e alla finestra più esterna della gerarchia di frame.
+* **`title`:** tooltip mostrato al passaggio del mouse.
+* **`download`:** forza il download della risorsa indicata in `href` invece della sua visualizzazione.
 
-Centratura orizzontale:
-- Elementi inline: text-align: center sul contenitore
-- Elementi di blocco: margin: auto e specificare una width
+### 2.2 Link Interni e Ancore
 
-Centratura verticale:
-- Elementi inline: vertical-align: middle
-- Elementi di blocco: display: flex con align-items: center o display: grid con place-items: center
+I collegamenti interni sfruttano il **fragment identifier**: il valore di `href` preceduto dal cancelletto `#` punta all'`id` di un elemento della pagina corrente.
 
-Display:table
-Simula il comportamento di una tabella HTML con proprietà CSS. I valori correlati sono: 
-- Display: table-row: rappresenta una riga di una tabella
-- Display: table-row: rappresenta una cella della tabella
+```html
+<a href="#sezione1">Vai alla sezione 1</a>
 
-Per fare ciò uso dei div generici che specializzo con delle classi (es. Tabella, riga, cella)
+<section id="sezione1">
+  <h2>Contenuto della sezione 1</h2>
+</section>
+```
+
+Il fragment può anche puntare a un elemento di una pagina diversa, accodandosi al nome del file: `href="capitolo2.html#sezione1"`.
+
+> [!NOTE] Nota del Prof: Perché Solo gli `id`
+> La navigazione tramite fragment richiede un `id`, perché l'attributo `id` è univoco all'interno del documento, mentre la classe `class` può essere assegnata a più elementi: il fragment non potrebbe sapere quale dei molteplici elementi con la stessa classe deve attivare.
+
+> [!WARNING] Apertura in Nuova Scheda e Reverse Tabnabbing
+> Quando si usa `target="_blank"`, la nuova scheda ottiene un riferimento al documento di origine tramite l'oggetto `window.opener`. Una pagina malevola può redirigerla con `window.opener.location` sostituendo la scheda originale con una pagina di phishing. Il rimedio è l'attributo `rel="noopener noreferrer"`, che inoltre impedisce l'invio del referrer.
+
+```html
+<a href="documentazione.pdf" target="_blank" rel="noopener noreferrer">Apri la documentazione</a>
+```
+
+## 3. `<div>` vs `<span>`: Riepilogo
+
+* **`<div>` (block):** contenitore generico di blocco, occupa l'intera larghezza disponibile e genera un'interruzione di riga. Usato per raggruppare e strutturare blocchi di contenuto.
+* **`<span>` (inline):** contenitore generico inline, privo di semantica propria, dimensionato sul proprio contenuto. Usato per applicare stili mirati a porzioni di testo identificate da `id` o `class`.
+
+Di conseguenza, due `<div>` consecutivi nel flusso si dispongono **in colonna** (uno sotto l'altro), mentre due elementi inline affiancati si dispongono **orizzontalmente** sulla stessa riga.
+
+> [!WARNING] Iperelementi e Differenza Logica
+> `<div>` e `<span>` non sono scelte puramente estetiche: se un insieme di elementi funziona in orizzontale ma si deve visualizzare in verticale, il problema risiede nel modello di box (`display`), non nel tag utilizzato. Sostituire `<div>` con `<span>` non modifica il comportamento del layout.
+
+## 4. Layout a Colonne Multiple
+
+La proprietà `column-count` (o l'alias `columns`) suddivide il contenuto di un blocco in più colonne verticali, con le seguenti direttive correlate:
+
+| Proprietà | Funzione |
+| :--- | :--- |
+| `column-count` | Numero fisso di colonne in cui viene frammentato il contenuto. |
+| `column-width` | Larghezza **minima** desiderata per una colonna: il browser calcola il numero effettivo di colonne che riesce a ricavare dalla larghezza disponibile. |
+| `column-gap` | Spazio orizzontale (gutter) fra colonne adiacenti. |
+| `column-rule` | Tratto di confine fra le colonne; accetta le stesse proprietà di `border`. |
+| `column-span` | Consente a un elemento di estendersi su tutte le colonne (`all` o `none`). |
 
 ```css
-.tabella{
-display: table;
+.articolo {
+  column-count: 3;
+  column-gap: 24px;
+  column-rule: 1px solid #cccccc;
 }
 
-.riga{
-display: table-row;
-}
-
-.cella{
-display: table-cell;
-border: ...
-margin: ...
+.titolo-evidenza {
+  column-span: all;
 }
 ```
 
-Display: flex
+## 5. Float: Galleggiamento e Clear
 
-Permette di creare un layout flessibile per gestire facilmente il posizionamento e l'allineamento di elementi figli. Si occuopa di allineare gli elementi lungo la direzione orizzontale e verticale (contenitore si adatta al contenuto)
+La proprietà `float` stacca un elemento dal normale flusso verticale e lo allinea a sinistra o a destra del contenitore; **il testo circostante si avvolge attorno ad esso**. Opera su elementi di blocco e ammette i valori `left`, `right` e `none`.
 
-Proprietà correlate:
-- Flex-direction: definisce la direzione principale in cui gli elementi flessibili sono disposti (row, column) 
-- flex-wrap: determina se gli elementi flessibili devono disporsi su più righe (wrap, nowrap) 
-- align-content: gestisce lo spazio tra le righe quando ci sono più righe • justify-content: controlla l'allineamento degli elementi lungo l'asse principale 
-- align-items: allinea gli elementi figli lungo l'asse trasversale
+```css
+.immagine-destra {
+  float: right;
+  width: 300px;
+  margin: 0 0 10px 15px;
+}
 
-Display:grid
+.articolo::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+```
 
-Crea un layout a griglia per organizzare gli elementi in righe e colonne. Le proprietà correlate sono:
-- grid-template-columns: numero e larghezza delle colonne 
-- grid-template-rows: numero e altezza delle righe 
-- grid-gap: spazio tra righe e colonne 
-- grid-column: definisce in quale colonna inizia e in quale colonna termina un elemento
+> [!IMPORTANT] Condizioni di Funzionamento del Float
+> Il float produce effetti visibili solo se all'elemento galleggiante è assegnata una **larghezza inferiore al 100%** del contenitore: un elemento flottante largo quanto il contenitore occuperebbe l'intera area e non lascerebbe spazio al testo, vanificando l'avvolgimento. Inoltre la larghezza è necessaria perché il wrapping si disponga correttamente attorno a una forma rettangolare nota.
 
-Differenze 
+La proprietà `clear` (`left`, `right`, `both`) ha il compito di **interrompere l'avvolgimento**: l'elemento che la imposta scende sotto l'ultimo float flottato. Il trucco del pseudo-elemento `::after` con `content: ""` e `clear: both` permette di chiudere il contenitore in modo che i blocchi successivi non gli scorrano attorno.
 
-| Table                                                         | Flex                                                                      | Grid                                                         |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| Layout che segue una struttura predefinita di righe e colonne | Gli elementi possono crescere e ridursi in base allo spazio disponibile   | Potente modello di layout bidimensionale con righe e colonne |
-| Non gestisce layout dinamici                                  | Non gestisce bene i layout complessi che richiedono sia righe che colonne | Particolarmente utile per creare layout complessi            |
+> [!NOTE] Nota del Prof: Float e Modelli Moderni
+> Il galleggiamento è un meccanismo pensato per i layout a due colonne dei primi anni del Web e resta sensibile a problemi di altezza contenitore contenuta nei figli flottanti. Per la strutturazione di pagine moderne è preferibile ricorrere a Flexbox e CSS Grid, che distribuiscono lo spazio senza dipendere dall'avvolgimento del testo.
 
-Sezioni:
-- Tag semantici che migliorano la struttura del codice HTML 
-- Rendono il contenuto più leggibile sia per gli sviluppatori che per i motori di ricerca 
-- L'uso appropriato di questi elementi aiuta a creare pagine web più organizzate ed accessibili 
-- Alcune sezioni: header, nav, section, article, aside, address, footer
+## 6. `position`: I Cinque Schemi di Posizionamento
 
-`<header>`:
-- Definisce l'intestazione di una pagina o di una sezione 
-- Contiene tipicamente il titolo, il logo, la barra di navigazione o altre informazioni introduttive
+La proprietà `position` determina il metodo di posizionamento di un elemento rispetto al flusso del documento. Gli offset `top`, `right`, `bottom` e `left` agiscono solo se l'elemento è posizionato con `relative`, `absolute` o `fixed`.
 
-`<nav>`:
-- Indica una sezione di navigazione nel sito 
-- Contiene i link di navigazione principali
+| Valore | Riferimento di Coordinate | Flusso Normale | Comportamento |
+| :--- | :--- | :--- | :--- |
+| `static` | Nessuno | Rimane nel flusso | Valore predefinito. Gli offset `top`/`bottom`/`left`/`right` sono ignorati. |
+| `relative` | La propria posizione nel flusso | Rimane nel flusso | Sposta l'elemento rispetto alla sua posizione originale **lasciando lo spazio occupato invariato**; funge da contenitore di riferimento per i discendenti `absolute`. |
+| `absolute` | Il primo antenato posizionato (*containing block*) | Esce dal flusso | Viene rimosso dal flusso e sovrapposto agli altri elementi; non occupa spazio e non influenza il layout dei fratelli. |
+| `fixed` | Il viewport (finestra del browser) | Esce dal flusso | Resta fisso durante lo scorrimento della pagina. |
+| `sticky` | Il normale flusso, poi il contenitore di scorrimento | Condizionale | Si comporta come `relative` finché la sua soglia (definita da `top`/`bottom`/`left`/`right`) non viene superata; da quel momento si "incolla" al bordo del contenitore di scorrimento più vicino. |
 
-`<section>`:
-- Rappresenta una sezione tematica di contenuto 
-- Può contenere un titolo e diversi contenuti relativi
+> [!IMPORTANT] Contenitore di Riferimento dell'Absolute
+> Il riferimento geometrico di un elemento `absolute` non è necessariamente il `body`: è **l'antenato posizionato più vicino** (quello che ha `position` diversa da `static`), e in sua assenza la pagina intera. Di conseguenza un contenitore con `position: relative` funge da "scatola di contenimento" per i figli `absolute`, permettendo di ancorarli ai propri bordi interni anziché alla pagina.
 
-`<article>`:
-- Indica un contenuto autonomo e indipendente come un post di un blog o un articolo di notizie 
-- Potrebbe essere distribuito o riutilizzato
+```css
+.contenitore-riferimento {
+  position: relative;
+  height: 300px;
+}
 
-`<aside>`:
-- Contiene contenuti secondari o supplementari che possono essere correlati al contenuto principale 
-- È spesso posto a lato della pagina
+.etichetta {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
 
-`<address>`:
-- Rappresenta le informazioni di contatto, come indirizzi fisici, numeri di telefono o indirizzi email 
-- Indica chiaramente ai browser e ai motori di ricerca che il contenuto all'interno di questo tag è correlato a informazioni di contatto
+.barra-sticky {
+  position: sticky;
+  top: 0;
+}
+```
 
-`<footer>`: 
-- Indica le informazioni di chiusura di una pagina o di una sezione 
+La proprietà `z-index` stabilisce l'ordine di impilamento degli elementi sovrapposti, imponendo un contesto di impilamento per ciascun positioned element e per i suoi discendenti.
+
+> [!WARNING] IMMAGINE DA INSERIRE
+> Schema con i cinque valori di `position` (static, relative, absolute, fixed, sticky) e relativi spostamenti.
+>
+> ![[INSERISCI_IMMAGINE_position.png]]
+
+## 7. La Proprietà `display` e i Suoi Valori
+
+La proprietà `display` determina come il motore di rendering genera la scatola dell'elemento e il suo posizionamento nel flusso.
+
+| Valore | Occupa Riga Intera | Accetta `width`/`height` | Note |
+| :--- | :--- | :--- | :--- |
+| `block` | Si | Si | Occupa la larghezza disponibile e inizia su una nuova riga; accetta `margin`, `padding` e dimensioni. |
+| `inline` | No | No (solo elementi sostituiti come `<img>`) | Si affianca al testo sulla stessa riga e non interrompe il flusso. |
+| `inline-block` | No | Si | Unione di `inline` e `block`: si comporta come inline nel flusso ma dimensiona la propria scatola come un blocco. |
+| `none` | No | No | L'elemento è rimosso dal layout: non genera scatola e non è visibile, diversamente da `visibility: hidden`, che conserva lo spazio occupato. |
+| `list-item` | Si | Si | Genera il marcatore di lista. |
+| `flex` / `inline-flex` | Si / No | Si | Il contenitore stabilisce un contesto di layout flessibile per i figli. |
+| `grid` / `inline-grid` | Si / No | Si | Il contenitore stabilisce un contesto di layout a griglia per i figli. |
+| `table`, `table-row`, `table-cell` | Si | Si | Riproduce il comportamento delle tabelle HTML con elementi generici. |
+
+> [!NOTE] Limiti di Larghezza sugli Elementi Inline
+> Sui elementi inline non sostituiti le dichiarazioni `width` e `height` sono **ignorate**: la dimensione orizzontale è determinata dal contenuto e quella verticale da `line-height` e dal `font-size`. Per ottenere una scatola dimensionabile serve `inline-block`.
+
+## 8. Centrare gli Elementi
+
+### 8.1 Centratura Orizzontale
+
+* **Contenuto inline:** `text-align: center` sul contenitore; allinea testo, immagini e link in linea.
+* **Elemento di blocco:** assegnare una `width` esplicita e impostare `margin-left` e `margin-right` automatici, che assorbono lo spazio residuo.
+  ```css
+  .contenitore-bloccante {
+    width: 60%;
+    margin: 0 auto;
+  }
+  ```
+* **Contenitore flessibile o a griglia:** `justify-content: center` (Flexbox) oppure `place-items: center` (Grid).
+
+### 8.2 Centratura Verticale
+
+* **Testo e immagini inline:** `vertical-align: middle` allinea il contenuto al centro rispetto alla linea di base degli elementi circostanti; per il solo testo in un paragrafo si usa `line-height` uguale all'altezza del contenitore.
+* **Elementi di blocco:** il classico `margin: auto` non ha effetto in verticale, perché l'altezza del contenitore non è determinata in anticipo. Si ricorre a Flexbox o a Grid:
+  ```css
+  .contenitore-centrato {
+    display: flex;
+    justify-content: center;  /* asse orizzontale */
+    align-items: center;      /* asse verticale */
+    height: 300px;
+  }
+  ```
+  In Grid la stessa operazione si esprime in un'unica dichiarazione: `place-items: center`.
+
+## 9. `display: table`, `table-row` e `table-cell`
+
+I valori `table`, `table-row` e `table-cell` riproducono in CSS il comportamento delle tabelle HTML, permettendo di trasformare elementi generici (tipicamente `<div>`) in righe e celle tramite l'attribuzione di classi specializzate.
+
+```html
+<div class="tabella">
+  <div class="riga">
+    <div class="cella">Matricola</div>
+    <div class="cella">Cognome</div>
+  </div>
+  <div class="riga">
+    <div class="cella">37891</div>
+    <div class="cella">Rossi</div>
+  </div>
+</div>
+```
+
+```css
+.tabella {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.riga {
+  display: table-row;
+}
+
+.cella {
+  display: table-cell;
+  border: 1px solid #cccccc;
+  padding: 8px 12px;
+}
+```
+
+In un `table` CSS valgono le stesse proprietà delle tabelle HTML, inclusi `border-collapse`, la larghezza automatica delle colonne e l'allineamento verticale delle celle.
+
+> [!NOTE] Contenitori Anonimi
+> Un elemento con `display: table` genera automaticamente contenitori anonimi di tipo `table-row` e `table-cell` per i figli non classificati, che vengono declassati a blocchi anonimi. È il motivo perché, all'interno di un `table` CSS, i figli diretti devono essere `table-row` (o `table-cell` raggruppati in righe esplicite).
+
+## 10. Flexbox: Layout Unidimensionale
+
+Flexbox (`display: flex` sul contenitore) distribuisce i figli lungo un **asse principale** (*main axis*) e un **asse trasversale** (*cross axis*) perpendicolare al primo. La direzione dell'asse principale è determinata da `flex-direction`; di conseguenza concettualmente le due direzioni non coincidono mai con "orizzontale" e "verticale" in senso assoluto.
+
+| Proprietà | Asse su cui agisce | Valori principali | Funzione |
+| :--- | :--- | :--- | :--- |
+| `flex-direction` | Main axis | `row`, `row-reverse`, `column`, `column-reverse` | Definisce la disposizione degli elementi e quindi il verso dell'asse principale. |
+| `flex-wrap` | - | `nowrap` (default), `wrap`, `wrap-reverse` | Consente il wrapping su più righe quando gli elementi non entrano nel contenitore. |
+| `justify-content` | Main axis | `flex-start`, `center`, `flex-end`, `space-between`, `space-around`, `space-evenly` | Distribuisce lo spazio libero lungo l'asse principale. |
+| `align-items` | Cross axis | `stretch` (default), `flex-start`, `center`, `flex-end`, `baseline` | Allinea i figli lungo l'asse trasversale; `stretch` estende ciascun figlio per riempire l'altezza della riga. |
+| `align-content` | Tra le righe | `stretch`, `flex-start`, `center`, `space-between` | Gestisce la distribuzione dello spazio tra più righe, opera solo se `flex-wrap` è attivo. |
+| `gap` | Entrambi | lunghezza | Spaziatura minima tra i figli, senza ricorrere a `margin`. |
+| `flex` | Flessibilità dei figli | `flex: <grow> <shrink> <basis>` | Fattore di crescita, fattore di compressione e dimensione di base del singolo figlio. |
+
+```css
+.contenitore {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.voce {
+  flex: 1 1 200px;  /* cresce, si comprime, base 200px */
+}
+```
+
+> [!WARNING] IMMAGINE DA INSERIRE
+> Schema di un contenitore Flexbox con evidenza degli assi main e cross, con `flex-direction: row` e con `flex-direction: column`, più l'azione delle proprietà `justify-content` e `align-items`.
+>
+> ![[INSERISCI_IMMAGINE_flexbox_assi.png]]
+
+## 11. CSS Grid: Layout Bidimensionale
+
+La griglia (`display: grid`) organizza i figli su righe e colonne contemporaneamente, con due assi di dimensionamento indipendenti. Le tracce (le linee che separano le celle) sono definite esplicitamente o generate automaticamente.
+
+| Proprietà | Funzione |
+| :--- | :--- |
+| `grid-template-columns` | Definizione delle colonne come elenco di tracce (dimensioni fisse, percentuali, `fr` o funzioni come `minmax()`). |
+| `grid-template-rows` | Definizione delle righe con la stessa sintassi. |
+| `gap` (alias `grid-gap`) | Spaziatura fra le tracce; accetta un valore per entrambe le direzioni o due valori (righe, colonne). |
+| `grid-column` / `grid-row` | Posizionamento esplicito di un elemento: linea di inizio / linea di fine / span. |
+| `grid-area` | Assegnazione dell'elemento a una zona denominata o a un'intera area. |
+| `place-items` | Scorciatoia per `align-items` e `justify-items`. |
+
+```css
+.griglia {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 200px;
+  gap: 12px;
+}
+
+.elemento-a {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+```
+
+La funzione `repeat(n, valore)` evita di elencare `n` tracce identiche; l'unità `fr` (frazione) distribuisce lo spazio libero in proporzioni relative. Le tracce dichiarate ma non occupate sono *piste esplicite vuote*, mentre quelle generate automaticamente dal posizionamento degli elementi sono *piste implicite*.
+
+> [!WARNING] IMMAGINE DA INSERIRE
+> Schema di una griglia CSS con le linee numerate, le tracce esplicite da `grid-template-columns: repeat(3, 1fr)` e l'occupazione di `grid-column` / `grid-row`.
+>
+> ![[INSERISCI_IMMAGINE_griglia.png]]
+
+## 12. Confronto: `table` vs Flexbox vs Grid
+
+| Caratteristica | `display: table` | Flexbox | Grid |
+| :--- | :--- | :--- | :--- |
+| **Dimensioni** | Una sola (righe e celle) | Una sola (main axis) | Due (righe e colonne) |
+| **Governo delle dimensioni** | Le dimensioni delle celle si adattano al contenuto | Il contenitore è dimensionato dal contenuto, i figli si adattano al contenitore | Il contenitore definisce esplicitamente tracce, i figli si adattano alla griglia |
+| **Allineamento** | Verticale sulle celle, limitato | Sull'asse principale e su quello trasversale | Sulla riga e sulla colonna, con controllo indipendente |
+| **Distribuzione dello spazio** | Implicita | `justify-content`, `align-items`, `space-between` | `fr`, `space-between`, `justify-items` |
+| **Comportamento a runtime** | Le celle si adattano dinamicamente al contenuto | I figli crescono e si comprimono in base allo spazio disponibile | Le tracce restano dimensionalmente stabili |
+| **Casi d'uso** | Impostazione allineata di contenuti eterogenei (form, menu) | Distribuzione di componenti su una riga o colonna, toolbar, navigazione | Layout di pagina complessi con zone e aree definite a priori |
+
+## 13. Tag Semantici di Sezione
+
+Gli elementi di sezione non hanno funzione di layout (il loro posizionamento è governato dal CSS) ma attribuiscono **significato strutturale** al documento: rendono il codice leggibile per lo sviluppatore, interpretabile per i crawler e accessibile per le tecnologie assistive.
+
+* **`<header>`:** intestazione di una pagina o di una sezione. Contiene tipicamente titolo, logo, barra di navigazione e informazioni introduttive.
+* **`<nav>`:** sezione dedicata alla navigazione, con i link principali del sito. Se ne inseriscono quanti necessari (tipicamente uno per area di navigazione: principale, secondaria, di pagina).
+* **`<section>`:** sezione tematica di contenuto. Dovrebbe essere accompagnata da un titolo (`<h1>`-`<h6>`) che ne descriva il tema.
+* **`<article>`:** contenuto autonomo e autosufficiente (post di blog, articolo di notizie, commento), destinato a essere distribuito o riutilizzato al di fuori del contesto originale.
+* **`<aside>`:** contenuto secondario o supplementare rispetto al flusso principale, spesso collocato lateralmente (barre laterali, note, pubblicità, glossario).
+* **`<address>`:** informazioni di contatto dell'autore o dell'entità più vicina (indirizzo fisico, telefono, email). Non va usato per l'indirizzo di citazione di un'opera, per il quale esiste `<cite>`.
+* **`<footer>`:** informazioni di chiusura di una pagina o di una sezione: copyright, autore, link di contatto e di navigazione secondaria.
+
+```html
+<body>
+  <header>
+    <h1>Titolo del sito</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#servizi">Servizi</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>Titolo dell'articolo</h2>
+      <section>
+        <h3>Contenuto della sezione</h3>
+        <p>Testo dell'articolo.</p>
+      </section>
+      <aside>Nota correlata al contenuto.</aside>
+    </article>
+  </main>
+
+  <footer>
+    <address>Via Roma 1, Perugia - info@example.com</address>
+  </footer>
+</body>
+```
+
+> [!IMPORTANT] Vincoli di Utilizzo
+> * `<header>` e `<footer>` possono comparire una volta per la pagina e, indipendentemente, una volta per ciascun `<article>` o `<section>`.
+> * `<section>` priva di intestazione propria non introduce un confine tematico riconoscibile: è preferibile usare `<div>`.
+> * `<address>` non va usato per l'indirizzo di una persona citata: in quel caso si usa `<cite>`.
+> * Le sezioni di sezione non sostituiscono `<main>`, che delimita il contenuto primario e univoco della pagina.
+
+--- 
