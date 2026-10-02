@@ -598,3 +598,404 @@ A loro volta, i vincoli basati sullo schema si suddividono ulteriormente in due 
 | **Vincoli interelazionali** | Coinvolgono più schemi di relazioni | Richiedono di considerare contemporaneamente lo stato di più relazioni della base di dati |
 
 La distinzione è operativamente netta: la verifica di un vincolo intrarelazionale è un controllo *locale*, confinato all'interno di una singola relazione; quella di un vincolo interrelazionale è un controllo *globale*, che deve tenere conto contemporaneamente del contenuto di più istanze di relazione e presuppone quindi un meccanismo di coordinazione tra le strutture coinvolte.
+
+---
+# Lezione 5: Introduzione al Linguaggio SQL, DDL (Data Definition Language) e PostgreSQL
+
+## 1. Il Linguaggio SQL e Concetti Fondamentali
+
+### 1.1 Inquadramento Storico ed Evoluzione degli Standard
+Il linguaggio **SQL** (*Structured Query Language*) costituisce il linguaggio standard de facto e de jure per l'interazione con i sistemi di gestione di basi di dati relazionali (RDBMS).
+
+* **Origini Storiche (1974):** Nasce originariamente con il nome di **SEQUEL** (*Structured English QUEry Language*), sviluppato da Donald Chamberlin e Raymond Boyce presso i laboratori IBM Research nell'ambito del progetto prototipale **System R**.
+* **Prime Implementazioni Commerciali (1981):** Introdotto sul mercato da IBM con **SQL/DS** e da **Oracle Corporation** con il proprio RDBMS.
+* **Processo di Standardizzazione:**
+  * **1986 (SQL-86):** Primo standard formale ratificato da ANSI e ISO.
+  * **1992 (SQL-92 o SQL2):** Standard fondamentale che ha introdotto una specifica ricca e articolata, diventando la base di riferimento per tutti i moderni motori relazionali.
+  * **1999 (SQL-99 o SQL3):** Estensione dello standard per includere funzionalità orientate agli oggetti (ORDBMS), trigger e tipi definiti dall'utente.
+  * **2003 (SQL:2003):** Introduzione del supporto nativo a strutture dati XML e sequenze.
+
+> [!INFO] Livelli di Conformità dello Standard SQL-92
+> Data la complessità dello standard SQL-92, sono stati definiti tre livelli incrementali di aderenza:
+> 1. **Entry SQL:** Livello base (molto vicino a SQL-89), supportato dalla totalità dei DBMS.
+> 2. **Intermediate SQL:** Supportato dalla maggior parte dei DBMS commerciali ed enterprise, include le funzionalità operative richieste dal mercato.
+> 3. **Full SQL:** Specifica avanzata completa; i singoli vendor implementano dialetti proprietari ed estensioni non standard che possono comportare leggere incompatibilità tra piattaforme.
+
+### 1.2 Tassonomia delle Funzionalità e Sottolinguaggi di SQL
+SQL integra in un unico formalismo dichiarativo molteplici componenti funzionali:
+
+1. **Data Definition Language (DDL):** Permette di definire, modificare e rimuovere gli schemi, le tabelle, i domini, le viste e i relativi vincoli di integrità.
+   * *Istruzioni principali:* `CREATE`, `ALTER`, `DROP`, `RENAME`, `TRUNCATE`.
+2. **Data Manipulation Language (DML):** Consente di interrogare ed aggiornare i dati memorizzati nelle istanze di relazione.
+   * *Istruzioni principali:* `SELECT` (interrogazione), `INSERT`, `UPDATE`, `DELETE` (manipolazione).
+3. **Data Control Language (DCL):** Regola le politiche di sicurezza, l'accesso concorrente e i privilegi assegnati agli utenti della base di dati.
+   * *Istruzioni principali:* `GRANT`, `REVOKE`.
+4. **Transaction Control Language (TCL):** Governa l'esecuzione delle transazioni, garantendo il consolidamento o l'annullamento delle modifiche apportate alla base di dati.
+   * *Istruzioni principali:* `COMMIT`, `ROLLBACK`, `SAVEPOINT`, `SET TRANSACTION`.
+5. **Embedded SQL (Interfacce con Linguaggi Ospite):** Permette l'incorporamento diretto delle istruzioni SQL all'interno del codice sorgente di linguaggi di programmazione procedurali o a oggetti (C, C++, Java via JDBC/SQLJ, Python).
+
+### 1.3 Architettura e Funzionamento di un DBMS basato su SQL
+Dal punto di vista sistemistico, un DBMS basato su SQL è strutturato come un'architettura **Client-Server**:
+* Il **server DBMS** gestisce l'allocazione su memoria secondaria, il log delle transazioni, la sicurezza e l'esecuzione ottimizzata dei piani di interrogazione.
+* Il **client** stabilisce una connessione specificando l'utente e il database di destinazione su cui operare.
+
+In piena coerenza con i fondamenti del modello relazionale:
+* La base di dati è caratterizzata a livello intensionale dal proprio **schema** e a livello estensionale dall'**istanza corrente** dei dati memorizzati.
+* L'autodescrizione del sistema è garantita dal **catalogo di sistema** (o dizionario dei dati), che conserva i **metadati** descrittivi di tutti gli oggetti del database.
+
+---
+
+## 2. Creazione di una Base di Dati in SQL: Il DDL
+
+### 2.1 Astrazione dei Dati e Concetto di Schema
+Uno **schema** in SQL rappresenta un partizionamento logico della base di dati in namespace distinti e comunicanti.
+
+![[Pasted image 20261002091155.png|450]]
+
+> [!NOTE] Astrazione dei Dati e Catalogo in SQL
+> Il catalogo del DBMS memorizza le definizioni formali dei metadati articolati per schemi, ciascuno dei quali racchiude tabelle, viste, domini, vincoli e privilegi accessibili alle applicazioni.
+
+#### I. Definizione di uno Schema
+La creazione di uno schema avviene mediante l'istruzione:
+```sql
+CREATE SCHEMA <nome_schema> [AUTHORIZATION <nome_proprietario>];
+```
+* Qualora la clausola `AUTHORIZATION` venga omessa, il proprietario dello schema coincide per default con l'utente che ha eseguito il comando.
+* Uno schema può fungere da contenitore per definizioni di tabelle, domini, viste, vincoli di integrità e funzioni.
+
+> [!NOTE] Convenzioni Sintattiche BNF
+> Nelle specifiche sintattiche standard si adottano le seguenti convenzioni formali:
+> * `[ ]` : Il contenuto racchiuso tra parentesi quadre è **opzionale**.
+> * `< >` : Segnaposto indicante un valore a **libera scelta dell'utente** (es. identificatori di schema o tabella).
+> * `{ | }` : Scelta esclusiva tra alternative mutuamente disgiunte.
+> * `...` : Possibilità di **ripetizione** dell'elemento o della sequenza precedente.
+
+#### II. Risoluzione dei Nomi e Qualificazione degli Oggetti
+Per fare riferimento a un oggetto situato all'interno di uno schema specifico si impiega la notazione qualificata con punto (`<nome_schema>.<nome_oggetto>`):
+
+```sql
+CREATE DOMAIN Ditta.dom_stipendio AS NUMERIC(8, 2) CHECK (VALUE >= 900);
+CREATE DOMAIN Ditta.dom_cod_impiegato AS VARCHAR(4);
+
+CREATE TABLE Ditta.Impiegato (
+    cod Ditta.dom_cod_impiegato PRIMARY KEY,
+    nome VARCHAR(40) NOT NULL,
+    stipendio Ditta.dom_stipendio
+);
+```
+
+Se l'ambiente di esecuzione imposta implicitamente uno schema di lavoro attivo, non è necessario qualificare esplicitamente il nome degli oggetti.
+
+> [!INFO] Schema Predefinito `public` in PostgreSQL
+> In PostgreSQL esiste uno schema di default denominato `public`. Qualsiasi oggetto creato o referenziato senza specificare uno schema viene automaticamente associato allo schema `public`:
+> ```sql
+> CREATE TABLE R (a CHAR PRIMARY KEY, b CHAR);
+> -- Equivale a:
+> CREATE TABLE public.R (a CHAR PRIMARY KEY, b CHAR);
+> ```
+
+---
+
+### 2.2 Definizione delle Tabelle (`CREATE TABLE`)
+L'istruzione cardine del DDL per la creazione di una tabella è `CREATE TABLE`. Essa assolve a tre funzioni:
+1. Definisce la struttura dello schema di relazione.
+2. Alloca un'istanza inizialmente vuota della tabella nel database.
+3. Specifica gli attributi, i rispettivi domini, gli eventuali valori di default e l'insieme dei vincoli di integrità.
+
+#### Sintassi Generale dell'Istruzione `CREATE TABLE`
+```sql
+CREATE TABLE <nome_tabella> (
+    <nome_colonna> <dominio> [DEFAULT <valore_default>] [<vincolo_colonna> ...]
+    [, { <nome_colonna> <dominio> [DEFAULT <valore_default>] [<vincolo_colonna> ...] | <vincolo_tabella> } ...]
+);
+```
+
+* **Clausola `DEFAULT`:** Assegna un valore predefinito alla colonna nel caso in cui una tupla venga inserita omettendo il valore per quell'attributo.
+
+> [!EXAMPLE] Creazione di una Tabella Semplice
+> ```sql
+> CREATE TABLE utente (
+>     email VARCHAR(40) NOT NULL,
+>     nome VARCHAR(30) NOT NULL,
+>     cognome VARCHAR(30) NOT NULL,
+>     anno_nascita INTEGER,
+>     PRIMARY KEY (email)
+> );
+> ```
+
+---
+
+### 2.3 I Domini in SQL
+I domini associabili alle colonne si suddividono in **domini elementari predefiniti** dallo standard SQL e **domini definiti dall'utente**.
+
+#### I. Domini Elementari (Standard SQL)
+
+##### 1. Domini Stringa di Caratteri
+| Dominio | Descrizione |
+| :--- | :--- |
+| `CHAR(n)` o `CHARACTER(n)` | Stringhe di testo a lunghezza fissa di $n$ caratteri. Se la stringa inserita ha una lunghezza inferiore a $n$, il sistema aggiunge automaticamente spazi di riempimento (*padding*) in coda. |
+| `CHAR` o `CHARACTER` | Sinonimo compatto di `CHAR(1)` (singolo carattere). |
+| `VARCHAR(n)` o `CHARACTER VARYING(n)` | Stringhe di testo a lunghezza variabile, contenenti al massimo $n$ caratteri (senza aggiunta di spazi in coda). |
+
+##### 2. Domini Numerici Esatti (Fixed-Point ed Interi)
+Rappresentano valori interi o frazionari mediante una notazione in virgola fissa, escludendo errori di arrotondamento binario:
+| Dominio | Descrizione |
+| :--- | :--- |
+| `SMALLINT` | Valore intero memorizzato su 2 byte (16 bit), con intervallo $[-2^{15}, 2^{15}-1] = [-32768, 32767]$. |
+| `INTEGER` (o `INT`) | Valore intero memorizzato su 4 byte (32 bit), con intervallo $[-2^{31}, 2^{31}-1] = [-2147483648, 2147483647]$. |
+| `NUMERIC(prec, scala)` | Numero decimale a virgola fissa con calcolo esatto fino a 1000 cifre significative. `prec` rappresenta la precisione totale (numero complessivo di cifre significative), mentre `scala` definisce il numero di cifre decimali dopo la virgola (es. `22.4454` ha precisione 6 e scala 4; gli interi presentano scala 0). |
+| `DECIMAL(prec, scala)` (o `DEC`) | Analogo a `NUMERIC`, con la specifica che l'implementazione del DBMS può consentire una precisione effettiva uguale o superiore a `prec`. |
+
+##### 3. Domini Numerici Approssimati (Floating-Point)
+Rappresentano numeri reali mediante notazione in virgola mobile ad ampio spettro:
+| Dominio | Descrizione |
+| :--- | :--- |
+| `REAL` | Numero in virgola mobile a precisione singola (4 byte). Tipicamente opera nell'intervallo $[10^{-37}, 10^{37}]$ con almeno 6 cifre decimali di precisione. |
+| `DOUBLE PRECISION` | Numero in virgola mobile a doppia precisione (8 byte). Tipicamente opera nell'intervallo $[10^{-307}, 10^{307}]$ con almeno 15 cifre decimali di precisione. |
+| `FLOAT(prec)` | Numero in virgola mobile in cui `prec` fissa la precisione minima richiesta in termini di bit di mantissa binaria. |
+
+##### 4. Domini Temporali
+| Dominio | Descrizione | Esempio Formale |
+| :--- | :--- | :--- |
+| `DATE` | Memorizza una data calendariale (anno, mese, giorno). Formato canonico raccomandato ISO: `'YYYY-MM-DD'`. | `'2026-10-02'` |
+| `TIME` | Memorizza l'orario (ore, minuti, secondi). | `'14:30:00'` |
+| `TIMESTAMP` | Memorizza data e orario congiunti, includendo frazioni decimali di secondo. | `'2026-10-02 14:30:10.50'` |
+| `INTERVAL` | Rappresenta un lasso o intervallo temporale relativo. | `'1 day 12 hours 50 min'` |
+
+##### 5. Domini Booleani
+| Dominio | Descrizione | Valori Ammessi |
+| :--- | :--- | :--- |
+| `BOOLEAN` | Rappresenta il tipo logico trivalente (`TRUE`, `FALSE`, `UNKNOWN`/`NULL`). | Letterali standard: `TRUE`, `FALSE` (in PostgreSQL sono accettati anche `'t'`, `'f'`, `'true'`, `'false'`, `'1'`, `'0'`, `'yes'`, `'no'`). |
+
+---
+
+#### II. Domini Definiti dall'Utente (`CREATE DOMAIN`)
+In SQL l'utente può formalizzare nuovi domini con vincoli e valori di default specifici tramite il comando `CREATE DOMAIN`.
+
+#### Sintassi di Definizione del Dominio
+```sql
+CREATE DOMAIN <nome_dominio> [AS] <tipo_base>
+    [DEFAULT <valore_default>]
+    [CONSTRAINT <nome_vincolo>] [CHECK (<condizione>)];
+```
+
+All'interno della clausola di `CHECK`, la parola chiave speciale **`VALUE`** indica il valore assunto dall'istanza del dato da validare.
+
+> [!EXAMPLE] Esempi di Domini Utente
+> ```sql
+> -- Dominio per sigla provinciale (esattamente 2 caratteri non nulli)
+> CREATE DOMAIN provincia AS CHAR(2) NOT NULL;
+> 
+> -- Dominio per votazione universitaria d'esame
+> CREATE DOMAIN voto AS INTEGER
+>     CHECK (VALUE BETWEEN 18 AND 30);
+> 
+> -- Dominio con vincoli multipli nominati
+> CREATE DOMAIN nat_pari AS INTEGER
+>     CONSTRAINT positivo CHECK (VALUE >= 0)
+>     CONSTRAINT pari CHECK (VALUE % 2 = 0);
+> ```
+
+---
+
+## 3. Vincoli di Integrità nel DDL di SQL
+
+### 3.1 Vincoli di Integrità Intrarelazionali
+I vincoli intrarelazionali impongono condizioni di consistenza valide all'interno della singola tabella:
+
+1. **`NOT NULL`:** Impedisce che all'attributo venga assegnato il valore speciale `NULL`. Il dato deve essere obbligatoriamente specificato all'inserimento.
+2. **`UNIQUE`:** Impone che i valori dell'attributo (o dell'insieme di attributi) costituiscano una superchiave, vietando la presenza di tuple distinte con gli stessi valori non nulli.
+   * *Su singolo attributo:* `Matricola CHAR(6) UNIQUE` vieta matricole duplicate.
+   * *Su insieme di attributi (vincolo di tabella):* `UNIQUE(Nome, Cognome)` impone che non vi siano due righe che abbiano contemporaneamente lo stesso nome e lo stesso cognome (ammettendo però persone con lo stesso nome o con lo stesso cognome).
+   * *Distinzione:* Dichiarare `Nome VARCHAR(20) UNIQUE, Cognome VARCHAR(20) UNIQUE` vieterebbe invece sia la duplicazione del nome sia la duplicazione del cognome presi singolarmente.
+3. **`PRIMARY KEY`:** Dichiara la chiave primaria della tabella. Ciascuna tabella ammette **una sola** chiave primaria, che per definizione implica le proprietà di unicità (`UNIQUE`) e non nullità (`NOT NULL`).
+   * *Inline su singola colonna:* `matricola CHAR(6) PRIMARY KEY`.
+   * *A livello di tabella (chiave composta):* `PRIMARY KEY(Nome, Cognome)`.
+4. **`CHECK (<condizione>)`:** Impone un predicato booleano generico che ogni tupla deve verificare.
+
+#### Sintassi dei Vincoli Intrarelazionali
+* **Vincoli di Colonna:**
+  ```sql
+  [CONSTRAINT <nome_vincolo>] { NOT NULL | UNIQUE | PRIMARY KEY | CHECK (<condizione>) }
+  ```
+* **Vincoli di Tabella:**
+  ```sql
+  [CONSTRAINT <nome_vincolo>] { PRIMARY KEY (<colonna> [, ...]) | UNIQUE (<colonna> [, ...]) | CHECK (<condizione>) }
+  ```
+
+> [!EXAMPLE] Definizione con Vincoli Intrarelazionali di Colonna e di Tabella
+> ```sql
+> CREATE TABLE Impiegato (
+>     matricola CHAR(6) PRIMARY KEY,
+>     nome VARCHAR(20) NOT NULL,
+>     cognome VARCHAR(20) NOT NULL,
+>     stipendio NUMERIC(8, 2) DEFAULT 1000,
+>     CONSTRAINT impiegato_univoco UNIQUE (cognome, nome),
+>     CONSTRAINT stipendio_minimo CHECK (stipendio >= 1000)
+> );
+> ```
+
+---
+
+### 3.2 Vincoli di Integrità Interrelazionali (Integrità Referenziale)
+I vincoli interrelazionali stabiliscono relazioni di coerenza tra schemi distinti, collegando una **tabella referente (interna)** a una **tabella referenziata (esterna)** mediante il concetto di **Chiave Esterna (*Foreign Key*)**.
+
+* **Semantica del Vincolo:** Per ogni tupla della tabella interna, i valori non nulli presenti negli attributi di chiave esterna devono esistere identici come valori di chiave primaria o superchiave (`UNIQUE`) nella tabella esterna.
+
+> [!IMPORTANT] Vincolo di Unicità sulla Tabella Esterna
+> L'attributo referenziato della tabella esterna **deve** essere obbligatoriamente dichiarato come `PRIMARY KEY` o come `UNIQUE`.
+
+#### Costrutti SQL: `REFERENCES` vs `FOREIGN KEY`
+SQL fornisce due costrutti complementari:
+1. **Costrutto `REFERENCES` (Vincolo di Colonna):** Impiegato quando la chiave esterna è definita su un singolo attributo.
+   ```sql
+   <nome_colonna> <tipo_dato> REFERENCES <tabella_esterna>(<colonna_esterna>)
+   ```
+2. **Costrutto `FOREIGN KEY ... REFERENCES` (Vincolo di Tabella):** Impiegato per chiavi esterne composte da più attributi o per attribuire un nome esplicito al vincolo.
+   ```sql
+   [CONSTRAINT <nome_vincolo>] FOREIGN KEY (<colonna_1>, <colonna_2>) 
+       REFERENCES <tabella_esterna>(<colonna_1_est>, <colonna_2_est>)
+   ```
+
+> [!EXAMPLE] Uso del Costrutto `REFERENCES` su Singola Colonna
+> ```sql
+> CREATE TABLE dipartimento (
+>     nome_dip VARCHAR(15) PRIMARY KEY,
+>     sede VARCHAR(20) NOT NULL
+> );
+> 
+> CREATE TABLE impiegato (
+>     matricola CHAR(6) PRIMARY KEY,
+>     nome VARCHAR(20) NOT NULL,
+>     cognome VARCHAR(20) NOT NULL,
+>     nome_dpt VARCHAR(15) REFERENCES dipartimento(nome_dip)
+> );
+> ```
+
+> [!EXAMPLE] Uso del Costrutto `FOREIGN KEY` su Insieme di Attributi
+> ```sql
+> CREATE TABLE anagrafica (
+>     codice_fiscale CHAR(16) PRIMARY KEY,
+>     nome VARCHAR(20) NOT NULL,
+>     cognome VARCHAR(20) NOT NULL,
+>     UNIQUE (nome, cognome)
+> );
+> 
+> CREATE TABLE impiegato (
+>     matricola CHAR(6) PRIMARY KEY,
+>     nome VARCHAR(20) NOT NULL,
+>     cognome VARCHAR(20) NOT NULL,
+>     nome_dpt VARCHAR(15) REFERENCES dipartimento(nome_dip),
+>     FOREIGN KEY (nome, cognome) REFERENCES anagrafica(nome, cognome)
+> );
+> ```
+
+---
+
+## 4. Introduzione a PostgreSQL e al Client `psql`
+
+### 4.1 Caratteristiche di PostgreSQL
+**PostgreSQL** è un sistema di gestione di basi di dati relazionale a oggetti (**ORDBMS**) open source tra i più avanzati al mondo, derivato dal progetto di ricerca *Postgres* avviato nel 1977 presso l'Università della California a Berkeley.
+
+* **Modello Client-Server:** La comunicazione e l'elaborazione dei dati avvengono tra il motore server e i diversi client applicativi tramite protocolli di rete standard.
+
+### 4.2 Il Client Interattivo da Terminale `psql`
+`psql` è il client a riga di comando distribuito nativamente con PostgreSQL. Permette l'interazione diretta con il server e l'amministrazione completa delle istanze.
+
+#### I. Connessione al Server
+La sintassi di accesso da shell è:
+```bash
+psql -U <nome_utente> -h <hostname> -p <porta> -d <database>
+```
+
+All'avvio della sessione, `psql` fornisce i comandi primari di consultazione:
+* `\h` : Guida in linea sulla sintassi dei comandi SQL.
+* `\?` : Guida in linea sui meta-comandi interni ("Slash Commands") di `psql`.
+* `\q` : Uscita dalla sessione interattiva di `psql`.
+
+#### II. Principali Comandi Slash di `psql`
+
+| Comando Slash | Descrizione e Funzionalità |
+| :--- | :--- |
+| `\l` | Elenca tutti i database presenti nel cluster. |
+| `\c[onnect] [nomedb [utente]]` | Commuta la connessione verso un nuovo database (opzionalmente con un altro utente). |
+| `\d` | Elenca le relazioni (tabelle, viste, sequenze) presenti nello schema corrente. |
+| `\d <tabella>` | Descrive dettagliatamente la struttura della tabella specificata (colonne, tipi, modificatori, indici e vincoli). |
+| `\dt` | Elenca esclusivamente le tabelle. |
+| `\dv` | Elenca le viste (*views*). |
+| `\di` | Elenca gli indici. |
+| `\ds` | Elenca le sequenze. |
+| `\dT` | Elenca i tipi di dato e i domini definiti. |
+| `\df` | Elenca le funzioni memorizzate. |
+| `\do` | Elenca gli operatori disponibili. |
+| `\da` | Elenca le funzioni di aggregazione. |
+| `\dp` (o `\z`) | Mostra i privilegi e i permessi di accesso assegnati alle tabelle. |
+| `\dd [oggetto]` | Mostra la documentazione/commenti associati all'oggetto. |
+| `\e [file]` | Apre l'editor esterno di sistema per modificare il buffer della query corrente o il file specificato. |
+| `\i <file>` | Legge ed esegue i comandi SQL contenuti nel file indicato (*script execution*). |
+| `\p` | Visualizza il contenuto del buffer della query corrente. |
+| `\r` | Cancella il contenuto del buffer della query. |
+| `\g [file]` | Invia la query al server e scrive opzionalmente i risultati nel file indicato. |
+| `\o [file]` | Reindirizza tutti i risultati delle query successive nel file indicato. |
+| `\s [file]` | Stampa la cronologia dei comandi eseguiti e consente di salvarla su file. |
+| `\x` | Attiva o disattiva la modalità di output esteso (visualizzazione record colonna per colonna in verticale). |
+| `\a` | Attiva o disattiva la modalità di allineamento delle colonne nelle tabelle di output. |
+| `\t` | Attiva o disattiva la modalità solo tuple (omette intestazioni di colonna e conteggi finali). |
+| `\H` | Attiva o disattiva la modalità di formattazione tabellare HTML. |
+| `\! [comando]` | Esegue un comando nella shell del sistema operativo ospite senza chiudere `psql`. |
+
+---
+
+### 4.3 Domini ed Estensioni Specifiche in PostgreSQL
+PostgreSQL estende i tipi di dato previsti dallo standard SQL per offrire maggiore flessibilità:
+
+* **Tipi Carattere:**
+  * `VARCHAR` (senza specificare la lunghezza massima $n$): supporta stringhe di testo di lunghezza arbitraria.
+  * `TEXT`: tipo nativo ottimizzato per stringhe di lunghezza indefinita (fino a 1 GB).
+* **Tipi Numerici Interi:**
+  * `BIGINT`: intero a 8 byte (64 bit), con intervallo $[-2^{63}, 2^{63}-1]$.
+* **Tipi Numerici Decimali a Precisione Arbitraria:**
+  * `NUMERIC` e `DECIMAL` sono sinonimi perfetti; memorizzano numeri decimali fino alla massima precisione consentita senza forzare una scala obbligatoria.
+* **Tipi in Virgola Mobile:**
+  * `FLOAT(1)` fino a `FLOAT(24)` equivale nativamente al tipo `REAL` (4 byte).
+  * `FLOAT(25)` fino a `FLOAT(53)` equivale nativamente a `DOUBLE PRECISION` (8 byte).
+
+---
+
+## 5. Esempio Completo di Riepilogo DDL in PostgreSQL
+
+A riepilogo pratico dei costrutti DDL e dei vincoli di integrità esaminati, si consideri la modellazione di una base di dati per la gestione di un'anagrafica di persone e dei rispettivi legami di parentela genitore-figlio.
+
+### 5.1 Specifiche dello Schema e Vincoli
+Lo schema è costituito da due tabelle:
+1. **`persone(id, nome, reddito, eta, sesso)`**:
+   * `id`: stringa di 2 caratteri, costituisce la **chiave primaria**.
+   * `nome`: stringa di 20 caratteri, soggetta a vincolo di obbligatorietà (**`NOT NULL`**).
+   * `reddito`: valore intero in migliaia di euro, con valore predefinito pari a 0 (**`DEFAULT 0`**).
+   * `eta`: intero a 2 byte (`SMALLINT`), soggetto a vincolo di controllo (**`CHECK (eta < 200)`**).
+   * `sesso`: singolo carattere (`CHAR`), vincolato ai soli valori ammessi `'M'` o `'F'` (**`CHECK (sesso = 'M' OR sesso = 'F')`**).
+2. **`genitori(figlio, genitore)`**:
+   * `figlio`: stringa di 2 caratteri, **chiave esterna** referenziante `persone(id)`.
+   * `genitore`: stringa di 2 caratteri, **chiave esterna** referenziante `persone(id)`.
+   * **Chiave primaria composta** costituita dalla coppia `(figlio, genitore)`.
+
+### 5.2 Implementazione DDL in PostgreSQL
+
+```sql
+-- Creazione della tabella delle persone con vincoli intrarelazionali
+CREATE TABLE persone (
+    id CHAR(2) PRIMARY KEY,
+    nome VARCHAR(20) NOT NULL,
+    reddito INT DEFAULT 0,
+    eta SMALLINT,
+    sesso CHAR CHECK (sesso = 'M' OR sesso = 'F'),
+    CONSTRAINT vincolo_eta CHECK (eta >= 0 AND eta < 200)
+);
+
+-- Creazione della tabella delle relazioni di parentela con chiavi esterne e chiave primaria composta
+CREATE TABLE genitori (
+    figlio CHAR(2) REFERENCES persone(id),
+    genitore CHAR(2) REFERENCES persone(id),
+    PRIMARY KEY (figlio, genitore)
+);
+```

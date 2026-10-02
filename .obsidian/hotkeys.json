@@ -22,5 +22,13 @@
       ],
       "key": "T"
     }
+  ],
+  "app:open-vault": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "X"
+    }
   ]
 }

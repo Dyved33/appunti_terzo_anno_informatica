@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "679440bac47cb3aa",
+        "id": "6a2c06ccc29943c2",
         "type": "tabs",
         "children": [
           {
-            "id": "7662d0813f5ef50d",
+            "id": "592f245d7ee2951f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Introduzione sicurezza /Appunti introduzione sicurezza.md",
+                "file": "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Appunti introduzione sicurezza"
+              "title": "Appunti basi di dati e sistemi informativi con laboratorio"
             }
           }
         ]
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 506.5
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -193,7 +193,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+                "file": "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -217,7 +217,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 289.5,
+    "width": 477.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -241,40 +241,45 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "7662d0813f5ef50d",
+  "active": "592f245d7ee2951f",
   "lastOpenFiles": [
-    "prompt.md",
+    "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
+    "Architettura reti e internet/Appunti internet.md",
+    "Architettura reti e internet/Appunti architettura reti.md",
+    "Introduzione IA/Appunti introduzione IA.md",
     "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
+    "Guida_Opencode.md",
+    "AGENTS.md",
+    "Basi di dati e sistemi informativi con laboratorio/lezione1.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Images/Pasted image 20261002091155.png",
+    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 216889.crdownload",
+    "Introduzione IA/images/lec02_romania_tree_search_fringe.png",
+    "Introduzione IA/images/lec02_search_tree_quiz_cycles.png",
+    "Introduzione IA/images/lec02_state_space_vs_search_tree.png",
+    "Introduzione IA/images/lec02_search_tree_concept.png",
+    "Introduzione IA/images/lec02_state_space_graph.png",
+    "Introduzione IA/images/lec02_state_space_pacman.png",
+    "Introduzione IA/images/lec02_romania_graph.png",
+    "Introduzione IA/images/lec02_search_problem_components.png",
+    "Architettura reti e internet/WhatsApp Ptt 2026-10-02 at 09.01.17.ogg",
+    "Architettura reti e internet/Unconfirmed 907240.crdownload",
+    "Architettura reti e internet/ArchitetturaRetiDef_I_b.pdf",
+    "Architettura reti e internet/Unconfirmed 216849.crdownload",
+    "Architettura reti e internet/ArchitetturaRetiDef_I_a.pdf",
+    "Architettura reti e internet/Unconfirmed 517104.crdownload",
+    "Introduzione sicurezza /Appunti introduzione sicurezza.md",
+    "prompts/prompt_materiale.md",
+    "prompts/prompt_appunti.md",
+    "prompts/div style.txt",
+    "prompts",
+    "prompt.md",
     "Internet.md",
     "Untitled.md",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio.zip",
-    "Introduzione sicurezza /Appunti introduzione sicurezza.md",
-    "Architettura reti e internet/parte_2.pdf",
-    "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
-    "Introduzione IA/Appunti introduzione IA.md",
-    "Architettura reti e internet/parte_2_extracted.txt",
     "Introduzione IA/00_Index_Introduzione_IA.md",
     "Introduzione all'intelligenza artificiale/images/Pasted image 20260930182802.png",
-    "Introduzione all'intelligenza artificiale/images/Pasted image 20260930181234.png",
     "p.md",
     "Introduzione all'intelligenza artificiale/Appunti introduzione all'intelligenza artificiale.md",
-    "Introduzione all'intelligenza artificiale/images/Pasted image 20260930175214.png",
-    "Introduzione all'intelligenza artificiale/images",
-    "Introduzione all'intelligenza artificiale/images/Pasted image 20260930174136.png",
-    "Introduzione all'intelligenza artificiale",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/now.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/image.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/how.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/why.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/intro.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images/kali.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercizio_esame/images",
-    "Architettura reti e internet/Appunti architettura reti e internet.md",
-    "Architettura reti e internet/parte_1.pdf",
     "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
-    "Programmazione web e mobile con laboratorio/images/Unconfirmed 6132.crdownload",
-    "Programmazione web e mobile con laboratorio/esercizi/es4.css",
-    "Programmazione web e mobile con laboratorio/esercizi/es4.html",
     "Excalidraw/Drawing 2026-09-24 15.08.55.excalidraw.md",
     "202609211311.md",
     "202609211243.md",
