@@ -41,11 +41,9 @@ La rete delle pubbliche amministrazioni, oggi AgID e in precedenza AIPA e poi Di
 
 ## Banda base, banda larga, collisioni e indirizzo MAC
 
-Le slide I-a e I-b lasciarono vuote le definizioni di banda base e banda larga, richiamate solo implicitamente dove si citano i servizi su SMDS e NSFNET come *backbone*. Le due definizioni sono ora integrate in [[Fondamenti di networking, teoria della comunicazione e standard#La trasmissione fisica del segnale|la trasmissione fisica del segnale]].
+**Collisioni e perdita di pacchetti in Ethernet:**  il meccanismo è questo: su un mezzo condiviso due host che trasmettono nello stesso istante fanno collisione, il frame viene perso e la trasmissione va ritentata, occupando il canale e rallentando tutto il traffico.
 
-**Collisioni e perdita di pacchetti in Ethernet:** l'appunto preso a lezione segnalava che «se mando un pacchetto e questo si perde e per questo la rete rallenta fino a fermarsi», e che Ethernet è comunque regge perché lo switch usa l'indirizzo MAC. Il meccanismo è questo: su un mezzo condiviso due host che trasmettono nello stesso istante fanno collisione, il frame viene perso e la trasmissione va ritentata, occupando il canale e rallentando tutto il traffico. Le slide I-a e I-b citano Ethernet solo come tecnologia di cablaggio per edifici e campus (1985-86) e come causa della crescita degli host (1983), senza entrare nel dominio di collisione.
-
-La precisazione che rende il meccanismo coerente è che a rendere Ethernet scalabile non è l'hub, ma lo **switch**: ogni porta è un dominio di collisione separato e incolla i frame usando l'indirizzo MAC, learns dalla sorgente e inoltra solo sulla porta della destinazione, eliminando di fatto le collisioni fra host. Il confronto fra hub, bridge, switch e router è in [[Fondamenti di networking, teoria della comunicazione e standard#La commutazione|la commutazione]].
+La precisazione che rende il meccanismo coerente è che a rendere Ethernet scalabile non è l'hub, ma lo **switch**: ogni porta è un dominio di collisione separato e incolla i frame usando l'indirizzo MAC, learns dalla sorgente e inoltra solo sulla porta della destinazione, eliminando di fatto le collisioni fra host. Il confronto fra hub, bridge, switch e router è in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#La commutazione|la commutazione]].
 
 ### La logica a bus
 
@@ -57,7 +55,7 @@ La **logica a bus** è il modo di trasmettere di Ethernet prima dello switch: tu
 - **Come si gestisce:** con il protocollo **CSMA/CD**, *Carrier Sense Multiple Access with Collision Detection*: trasmissione 1-persistente, e in caso di collisione un segnale di *jamming* per allertare tutti, un *backoff* casuale con crescita esponenziale e poi un nuovo tentativo.
 - **Conseguenze:** la banda è condivisa, quindi si ripartisce fra le stazioni attive e il throughput cala all'aumentare del carico; anche la distanza massima è limitata dalle attenuazioni del segnale, per esempio circa 500 m nel 10BASE5 su cavo coassiale spesso e 185 m nel 10BASE2 su cavo sottile.
 
-La logica a bus è quindi la spiegazione del limite di Ethernet: un dominio di collisione unico e condiviso. Lo **hub** la conserva, perché ripete il segnale su tutte le porte; lo **switch** la elimina, perché ogni porta diventa un dominio di collisione separato e i frame vengono inoltrati in base all'indirizzo MAC. Il confronto fra hub, bridge, switch e router è in [[Fondamenti di networking, teoria della comunicazione e standard#La commutazione|la commutazione]].
+La logica a bus è quindi la spiegazione del limite di Ethernet: un dominio di collisione unico e condiviso. Lo **hub** la conserva, perché ripete il segnale su tutte le porte; lo **switch** la elimina, perché ogni porta diventa un dominio di collisione separato e i frame vengono inoltrati in base all'indirizzo MAC. Il confronto fra hub, bridge, switch e router è in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#La commutazione|la commutazione]].
 
 ## La storia di Internet
 

@@ -2,7 +2,7 @@
 
 ## L'agente intelligente e il suo ambiente
 
-*Definizione:* un **agente intelligente** è l'entità che interagisce con il mondo esterno (*environment*) attraverso due categorie di interfacce: i sensori, con cui percepisce, e gli attuatori, con cui agisce.
+*Definizione:* un **agente intelligente** è l'entità che interagisce con il mondo esterno (*environment*) attraverso due categorie di interfacce: i ==sensori==, con cui percepisce, e gli ==attuatori==, con cui agisce (es. Aspirapolvere Roomba, termostato intelligente, rilevatori di fumo, Agentic AI che eseguono autonomamente task multi-step)
 
 **Sensori:** dispositivi che acquisiscono dati dall'ambiente e li forniscono all'agente sotto forma di **percezioni**: telecamere, microfoni, lettura di file, messaggi di rete, output di uno strumento.
 
@@ -22,12 +22,12 @@ L'ambiente non deve essere necessariamente digitale: può essere un ambiente fis
 
 **Le quattro proprietà dell'ambiente:** la difficoltà di progettazione e risoluzione di un agente razionale dipende dalla combinazione di quattro dimensioni tassonomiche.
 
-| Proprietà | Classificazione | Definizione e impatto computazionale |
-| :--- | :--- | :--- |
-| **Osservabilità** | *Fully observable* / *Partially observable* | Nell'ambiente completamente osservabile i sensori forniscono in ogni istante l'intero stato del mondo; in quello parzialmente osservabile l'agente deve mantenere uno stato interno e inferire le variabili non visibili. |
-| **Determinismo** | *Deterministic* / *Stochastic* | In un ambiente deterministico l'esito di un'azione a partire da uno stato è univoco e certo; in uno stocastico l'esito è descritto da una distribuzione di probabilità. |
-| **Granularità** | *Discrete* / *Continuous* | In un ambiente discreto l'insieme delle percezioni, degli stati e delle azioni possibili è finito e numerabile (es. mosse negli scacchi); in uno continuo le variabili assumono valori reali infiniti (es. coordinate, velocità, temperatura). |
-| **Ostilità** | *Benign* / *Adversarial* | L'ambiente benigno non agisce con scopi ostili verso l'agente (es. navigazione stradale su mappa statica); l'ambiente ostile o competitivo include altri agenti che contrastano attivamente gli obiettivi dell'agente. |
+| Proprietà         | Classificazione                             | Definizione e impatto computazionale                                                                                                                                                                                                           |
+| :---------------- | :------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Osservabilità** | *Fully observable* / *Partially observable* | Nell'ambiente completamente osservabile i sensori forniscono in ogni istante l'intero stato del mondo (scacchi); in quello parzialmente osservabile l'agente deve mantenere uno stato interno e inferire le variabili non visibili (carte).    |
+| **Determinismo**  | *Deterministic* / *Stochastic*              | In un ambiente deterministico l'esito di un'azione a partire da uno stato è univoco e certo; in uno stocastico l'esito è descritto da una distribuzione di probabilità.                                                                        |
+| **Granularità**   | *Discrete* / *Continuous*                   | In un ambiente discreto l'insieme delle percezioni, degli stati e delle azioni possibili è finito e numerabile (es. mosse negli scacchi); in uno continuo le variabili assumono valori reali infiniti (es. coordinate, velocità, temperatura). |
+| **Ostilità**      | *Benign* / *Adversarial*                    | L'ambiente benigno non agisce con scopi ostili verso l'agente (es. navigazione stradale su mappa statica); l'ambiente ostile o competitivo include altri agenti che contrastano attivamente gli obiettivi dell'agente.                         |
 
 ## L'agente razionale
 
@@ -216,7 +216,7 @@ La scelta della politica di estrazione dalla fringe determina le proprietà algo
 
 ## I criteri di valutazione di un algoritmo di ricerca
 
-Prima di confrontare le strategie servono le quattro proprietà con cui le slide le giudicano. Ogni algoritmo viene valutato su quattro domande: quali nodi espande, quanto tempo richiede, quanto spazio occupa la fringe, e se è completo e ottimale.
+Prima di confrontare le strategie servono quattro proprietà. Ogni algoritmo viene valutato su quattro domande: quali nodi espande, quanto tempo richiede, quanto spazio occupa la fringe, e se è completo e ottimale.
 
 - **Completezza:** l'algoritmo garantisce di trovare una soluzione *se e solo se* una soluzione esiste?
 - **Ottimalità:** l'algoritmo garantisce di trovare il percorso di *minor costo*, non una soluzione qualsiasi?

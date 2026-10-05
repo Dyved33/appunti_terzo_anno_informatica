@@ -4,7 +4,7 @@
 
 Nel sistema elaborativo il **carattere** può essere associato al singolo bit: le sequenze significative di caratteri diventano quindi collezioni di bit dentro strutture di codifica dette **codici**, fra cui BCD (*Binary Decimal Code*), AIKEN, Gray, EBCDIC, ASCII e UNICODE.
 
-A seconda della natura dell'informazione si associano **diverse quantità di bit** a ogni singolo elemento. Un'immagine, per esempio, è una matrice di pixel: se la sequenza di bit deve rappresentare un pixel e il suo colore, un'immagine a colori richiede più bit per pixel di una in bianco e nero, dove un solo bit basta.
+A seconda della ==natura dell'informazione== si associano **diverse quantità di bit** a ogni singolo elemento. Un'immagine, per esempio, è una matrice di pixel: se la sequenza di bit deve rappresentare un pixel e il suo colore, un'immagine a colori richiede più bit per pixel di una in bianco e nero, dove un solo bit basta.
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
@@ -44,11 +44,11 @@ A seconda della natura dell'informazione si associano **diverse quantità di bit
 
 Il **flusso trasmissivo** fra mittente e destinatario si istituisce secondo tre modalità, distinte per il grado di bidirezionalità consentito.
 
-| Tipo | Schema | Comportamento | Esempio |
-| :--- | :---: | :--- | :--- |
-| **Simplex** | <img src="flusso_simplex.jpg" width="140"> | solo uno dei dispositivi può spedire informazione, l'altro può solo ricevere | radio |
-| **Half duplex** | <img src="flusso_half_duplex.jpg" width="140"> | ogni dispositivo può trasmettere e ricevere, ma non contemporaneamente | walkie-talkie |
-| **Full duplex** | <img src="flusso_full_duplex.jpg" width="140"> | entrambi possono spedire e ricevere contemporaneamente, con bidirezionalità tramite due collegamenti fisici | |
+| Tipo            |                     Schema                     | Comportamento                                                                                               | Esempio       |
+| :-------------- | :--------------------------------------------: | :---------------------------------------------------------------------------------------------------------- | :------------ |
+| **Simplex**     |   <img src="flusso_simplex.jpg" width="140">   | solo uno dei dispositivi può spedire informazione, l'altro può solo ricevere                                | radio         |
+| **Half duplex** | <img src="flusso_half_duplex.jpg" width="140"> | ogni dispositivo può trasmettere e ricevere, ma non contemporaneamente                                      | walkie-talkie |
+| **Full duplex** | <img src="flusso_full_duplex.jpg" width="140"> | entrambi possono spedire e ricevere contemporaneamente, con bidirezionalità tramite due collegamenti fisici |               |
 
 La progressione è netta: il *simplex* azzera la bidirezionalità, l'*half duplex* la rende possibile ma mutuamente esclusiva, il *full duplex* la rende simultanea su due collegamenti fisici distinti.
 
@@ -73,12 +73,12 @@ Il ruolo di ciascun apparato lungo il canale è definito da una classe di sigle 
 
 ## Le reti e il loro mondo
 
-Si parla di **rete** intendendo un insieme di dispositivi connessi da canali di comunicazione. Una rete presenta uno o più **nodi** capaci di inviare o ricevere dati, generati o ricevuti, da altri dispositivi o da altri nodi.
+==Si parla di **rete** intendendo un insieme di dispositivi connessi da canali di comunicazione.== Una rete presenta uno o più **nodi** capaci di inviare o ricevere dati, generati o ricevuti, da altri dispositivi o da altri nodi.
 
 L'organizzazione delle funzioni computazionali si articola in due modelli:
 
-- **Reti ad elaborazione concentrata:** è il modello nativo per le reti telematiche; un potente DTE viene messo a disposizione di uno o più DTE che ne sfruttano le capacità di calcolo.
-- **Reti ad elaborazione distribuita:** invece di essere un solo DTE a svolgere un compito, questo viene diviso in varie parti, ognuna svolta da un nodo della rete.
+- **Reti ad elaborazione concentrata:** è il modello nativo per le reti telematiche; un potente DTE viene messo a disposizione di uno o più DTE che ne sfruttano le capacità di calcolo (es client-server)
+- **Reti ad elaborazione distribuita:** invece di essere un solo DTE a svolgere un compito, questo viene diviso in varie parti, ognuna svolta da un nodo della rete (es internet)
 
 **Le tre procedure di colloquio**, possibili in entrambi i modelli per il trasferimento dell'informazione fra DTE:
 
@@ -90,7 +90,7 @@ Le tre procedure si differenziano per la flessibilità concessa al terminale, ch
 
 ## Gli aspetti di valutazione di una rete
 
-La bontà di una rete si valuta su tre aspetti: affidabilità, sicurezza e prestazioni.
+La bontà di una rete si valuta su tre aspetti: ==affidabilità, sicurezza e prestazioni.==
 
 **Affidabilità:** capacità della rete di consegnare l'informazione priva di errori, porre rimedio ai malfunzionamenti e restare robusta nelle situazioni critiche.
 
@@ -109,7 +109,7 @@ La bontà di una rete si valuta su tre aspetti: affidabilità, sicurezza e prest
 
 Le prestazioni dipendono anche da fattori strutturali e non solo dalle misure stesse: il numero di DTE presenti sulla rete, la tipologia dei mezzi trasmissivi utilizzati e l'efficienza del software che gestisce la comunicazione.
 
-**La banda:** banda passante di frequenze utilizzabile per la trasmissione di segnale su un canale. Essendo legata alla quantità d'informazione inviabile nell'unità di tempo, si può definire come la velocità massima alla quale è possibile trasmettere informazioni. Da qui i due termini:
+**La banda:** banda passante di frequenze utilizzabile per la trasmissione di segnale su un canale. Essendo legata alla quantità d'informazione inviabile nell'unità di tempo, si può definire come ==la velocità massima alla quale è possibile trasmettere informazioni==. Da qui i due termini:
 
 - **Broadband:** tecnologie che forniscono collegamenti di velocità notevolmente superiore alla normale linea telefonica.
 - **Digital divide:** la disparità fra zone che dispongono o meno di accesso alla banda larga.

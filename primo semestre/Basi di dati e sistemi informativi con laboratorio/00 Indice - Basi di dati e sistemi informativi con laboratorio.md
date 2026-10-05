@@ -1,7 +1,7 @@
 # Indice - Basi di dati e sistemi informativi con laboratorio
 
-- [[Concetti fondamentali, utenti e vantaggi di un DBMS|Concetti fondamentali, utenti e vantaggi di un DBMS]]
-- [[Modelli dei dati, architettura a tre livelli e classificazione dei DBMS|Modelli dei dati, architettura a tre livelli e classificazione dei DBMS]]
-- [[Il modello relazionale: origini, fondamenti matematici, schemi e istanze|Il modello relazionale: origini, fondamenti matematici, schemi e istanze]]
-- [[Vincoli di integrità nel modello relazionale|Vincoli di integrità nel modello relazionale]]
-- [[Il linguaggio SQL, il DDL e PostgreSQL|Il linguaggio SQL, il DDL e PostgreSQL]]
+- [[Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS|Concetti fondamentali, utenti e vantaggi di un DBMS]]
+- [[Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS|Modelli dei dati, architettura a tre livelli e classificazione dei DBMS]]
+- [[Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze|Il modello relazionale: origini, fondamenti matematici, schemi e istanze]]
+- [[Lezione 4-Vincoli di integrità nel modello relazionale|Vincoli di integrità nel modello relazionale]]
+- [[Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL|Il linguaggio SQL, il DDL e PostgreSQL]]

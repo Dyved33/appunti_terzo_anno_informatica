@@ -1,4 +1,4 @@
-# Fondamenti di intelligenza artificiale, machine learning e modelli generativi
+E# Fondamenti di intelligenza artificiale, machine learning e modelli generativi
 
 ## Che cos'è l'intelligenza artificiale
 
@@ -39,7 +39,7 @@ $$\text{Dati di Input} + \text{Risposte Attese} \xrightarrow{\text{Algoritmo di 
 L'algoritmo opera in modo **iterativo**: aggiorna progressivamente i parametri passo dopo passo e termina al raggiungimento della convergenza numerica, cioè quando l'errore non diminuisce più, oppure quando si verifica una condizione di arresto prefissata (*early stopping*).
 
 > [!important] Generalizzazione, non memorizzazione
-> L'obiettivo del machine learning è la **generalizzazione**, non la pura memorizzazione dei dati. Per questo il modello si addestra sul *training set*, ma le prestazioni vanno verificate su un insieme disgiunto di dati mai visti durante il training, il **test set**: è ciò che previene l'**overfitting**, il sovradattamento.
+> L'obiettivo del machine learning è la **generalizzazione**, non la pura memorizzazione dei dati. Per questo il modello si addestra sul *training set*, ma ==le prestazioni vanno verificate su un insieme disgiunto di dati mai visti durante il training==, il **test set**: è ciò che previene l'**overfitting**, il sovradattamento.
 
 **Complessità del modello:** per risolvere compiti complessi servono modelli con un elevato numero di parametri, cioè una *capacità rappresentativa* elevata, che richiedono però moli massicce di dati di addestramento per evitare l'instabilità o il sottoadattamento (*underfitting*).
 
@@ -182,7 +182,7 @@ La discriminante fra un'architettura documentale convenzionale e un sistema agen
 3. *Osservazione* (*observation*): riceve e interpreta il risultato prodotto dallo strumento.
 4. *Valutazione e decisione* (*reflect and decide*): valuta se i dati raccolti sono sufficienti e decide se iterare il ciclo invocando ulteriori strumenti o formulare la risposta finale.
 
-<u>Un sistema informativo con accesso a basi di dati o documenti non costituisce necessariamente un agente.</u> La natura agentica è determinata dalla capacità del modello di scegliere in autonomia percorsi, strumenti e criteri di arresto su più passi iterativi.
+<u>Un sistema informativo con accesso a basi di dati o documenti non costituisce necessariamente un agente.</u> ==La natura agentica è determinata dalla capacità del modello di scegliere in autonomia percorsi, strumenti e criteri di arresto su più passi iterativi.==
 
 > [!info] Sintesi:
 > - L'IA comprende il machine learning, che comprende il deep learning, che comprende l'IA generativa: la differenza è chi fornisce le regole, il programmatore o i dati.
@@ -190,4 +190,5 @@ La discriminante fra un'architettura documentale convenzionale e un sistema agen
 > - La loss misura la discrepanza fra predizione e target; con la cross-entropy $-\ln(P)$ una $P \to 1$ dà loss 0 e una $P \to 0$ la fa divergere.
 > - L'ottimizzazione segue la direzione opposta al gradiente, con passo determinato dal learning rate, in quattro fasi: predizione, loss, gradiente, aggiornamento.
 > - Un LLM è un classificatore multi-classe il cui target è il token successivo, appreso per auto-supervisione; embedding e Transformer rendono possibile il parallelismo.
-> - Il generare è scegliere un token dalla distribuzione di probabilità, in modo greedy o per campionamento; RAG e sistemi agentici aggiungono fonti esterne e autonomia sui passi.
+> - Il fatto di generare si ottiene dallo scegliere un token dalla distribuzione di probabilità, in modo greedy o per campionamento; RAG e sistemi agentici aggiungono fonti esterne e autonomia sui passi.
+

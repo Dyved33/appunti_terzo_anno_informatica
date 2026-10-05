@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "6a2c06ccc29943c2",
+        "id": "511cc6808750d5de",
         "type": "tabs",
         "children": [
           {
-            "id": "592f245d7ee2951f",
+            "id": "a6cafbeca9ada22d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Appunti basi di dati e sistemi informativi con laboratorio"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 506.5
+    "width": 270.5
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -193,7 +189,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
+                "file": "primo semestre/Architettura reti e internet/internet/Lezione 1-Internetworking, il villaggio globale e la storia di Internet.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -211,9 +207,19 @@
               "icon": "calendar-with-checkmark",
               "title": "Calendar"
             }
+          },
+          {
+            "id": "77d2d34a22868633",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -241,15 +247,35 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "592f245d7ee2951f",
+  "active": "c1467e7ef2db6b6c",
   "lastOpenFiles": [
+    "primo semestre/Programmazione web e mobile con laboratorio/00 Indice - Programmazione web e mobile con laboratorio.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 3-Box model CSS, selettori avanzati, tabelle e form HTML5.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 2-Struttura HTML5, tag semantici e fondamenti di CSS3.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 1-Architettura del Web e il protocollo HTTP.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/00 Indice - Basi di dati e sistemi informativi con laboratorio.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
+    "primo semestre/Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+    "primo semestre/Introduzione sicurezza /Lezione 1-Fondamenti di sicurezza informatica e protezione dei sistemi.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
+    "primo semestre/Architettura reti e internet/internet/Lezione 1-Internetworking, il villaggio globale e la storia di Internet.md",
+    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "primo semestre/Architettura reti e internet/protocolli/00 Indice - Architettura reti e internet.md",
+    "primo semestre/Introduzione sicurezza /00 Indice - Introduzione sicurezza.md",
+    "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
+    "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
+    "primo semestre/00 Indice Generale.md",
+    "Introduzione sicurezza /Appunti introduzione sicurezza.md",
+    "Introduzione IA/Appunti introduzione IA.md",
+    "Introduzione IA/lec02-uninformedSearch.pdf",
     "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
     "Architettura reti e internet/Appunti internet.md",
     "Architettura reti e internet/Appunti architettura reti.md",
-    "Introduzione IA/Appunti introduzione IA.md",
-    "Programmazione web e mobile con laboratorio/Appunti programmazione web e mobile con laboratorio.md",
-    "Guida_Opencode.md",
-    "AGENTS.md",
     "Basi di dati e sistemi informativi con laboratorio/lezione1.pdf",
     "Basi di dati e sistemi informativi con laboratorio/Images/Pasted image 20261002091155.png",
     "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 216889.crdownload",
@@ -267,23 +293,7 @@
     "Architettura reti e internet/Unconfirmed 216849.crdownload",
     "Architettura reti e internet/ArchitetturaRetiDef_I_a.pdf",
     "Architettura reti e internet/Unconfirmed 517104.crdownload",
-    "Introduzione sicurezza /Appunti introduzione sicurezza.md",
-    "prompts/prompt_materiale.md",
-    "prompts/prompt_appunti.md",
     "prompts/div style.txt",
-    "prompts",
-    "prompt.md",
-    "Internet.md",
-    "Untitled.md",
-    "Introduzione IA/00_Index_Introduzione_IA.md",
-    "Introduzione all'intelligenza artificiale/images/Pasted image 20260930182802.png",
-    "p.md",
-    "Introduzione all'intelligenza artificiale/Appunti introduzione all'intelligenza artificiale.md",
-    "Introduzione alla sicurezza informatica/Appunti introduzione alla sicurezza informatica.md",
-    "Excalidraw/Drawing 2026-09-24 15.08.55.excalidraw.md",
-    "202609211311.md",
-    "202609211243.md",
-    "TaskNotes/Start Here.md",
-    "BASI DI DATI E SISTEMI INFORMATIVI CON LABORATORIO/Untitled.md"
+    "Introduzione all'intelligenza artificiale/images/Pasted image 20260930182802.png"
   ]
 }

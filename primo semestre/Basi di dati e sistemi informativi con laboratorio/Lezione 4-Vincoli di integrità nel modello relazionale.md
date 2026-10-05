@@ -6,7 +6,7 @@
 
 Si distinguono quattro categorie:
 
-1. **Vincoli intrinseci, basati sul modello:** imposti dalla struttura stessa del [[Il modello relazionale: origini, fondamenti matematici, schemi e istanze|modello relazionale]], non richiedono di essere dichiarati esplicitamente e sono soddisfatti per costruzione da ogni costruzione consentita dal modello.
+1. **Vincoli intrinseci, basati sul modello:** imposti dalla struttura stessa del [[Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze|modello relazionale]], non richiedono di essere dichiarati esplicitamente e sono soddisfatti per costruzione da ogni costruzione consentita dal modello.
 2. **Vincoli basati sullo schema:** esprimibili direttamente sugli schemi del modello dei dati mediante il linguaggio di definizione **DDL** (*data definition language*), e quindi verificati dal DBMS in modo automatico e centralizzato.
 3. **Vincoli non esprimibili sullo schema:** non possono essere formalizzati negli schemi del modello dei dati e devono essere specificati realizzando programmi applicativi; la loro verifica è quindi demandata al codice applicativo e non è garantita dal DBMS.
 4. **Vincoli di dipendenza funzionale:** costituiscono un ulteriore e importante insieme di vincoli, impiegati principalmente per verificare la qualità della progettazione di basi di dati relazionali.
@@ -86,7 +86,7 @@ Per evitare i problemi dell'esempio precedente è necessario scegliere una chiav
 *Definizione:* il **vincolo di integrità dell'entità** stabilisce che nessun attributo facente parte della chiave primaria può assumere valore nullo.
 
 > [!important] I due vincoli che definiscono la chiave primaria
-> Una chiave primaria è, insieme, un insieme di attributi con `UNI` (che rende identificata ciascuna tupla) e sottoposto a vincolo di integrità dell'entità (che impedisce che l'identificazione venga persa perché un suo attributo sia `NULL`). Per questo ogni tabella ammette una sola chiave primaria, che implica le proprietà di `UNIQUE` e `NOT NULL` (cfr. [[Il linguaggio SQL, il DDL e PostgreSQL#Vincoli intrarelazionali|la sintassi DDL]]).
+> Una chiave primaria è, insieme, un insieme di attributi con `UNI` (che rende identificata ciascuna tupla) e sottoposto a vincolo di integrità dell'entità (che impedisce che l'identificazione venga persa perché un suo attributo sia `NULL`). Per questo ogni tabella ammette una sola chiave primaria, che implica le proprietà di `UNIQUE` e `NOT NULL` (cfr. [[Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL#Vincoli intrarelazionali|la sintassi DDL]]).
 
 ## I vincoli interelazionali: le chiavi esterne
 
@@ -124,7 +124,7 @@ Con i vincoli definiti si può dare la definizione completa delle nozioni di sch
 *Definizione:* un'**istanza di base di dati** sullo schema $B = \{R_1(X_1), \dots, R_n(X_n)\}$ è un insieme di istanze di relazione $\{r_1, \dots, r_n\}$ tali che $\forall i \in \{1 \dots n\}$, $r_i$ è un'istanza di $R_i$ che soddisfa i vincoli di integrità associati a $R_i$.
 
 > [!info] In altre parole:
-> Lo schema dice **quali** dati sono ammessi (nomi, domini, chiavi, vincoli); l'istanza dice **quali** dati sono effettivamente presenti, e per essere legittima deve rispettare tutti i vincoli dello schema. La formalizzazione matematica completa è in [[Il modello relazionale: origini, fondamenti matematici, schemi e istanze#Schemi e istanze di base di dati|Schemi e istanze di base di dati]].
+> Lo schema dice **quali** dati sono ammessi (nomi, domini, chiavi, vincoli); l'istanza dice **quali** dati sono effettivamente presenti, e per essere legittima deve rispettare tutti i vincoli dello schema. La formalizzazione matematica completa è in [[Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze#Schemi e istanze di base di dati|Schemi e istanze di base di dati]].
 
 ## Le operazioni nel modello relazionale
 
