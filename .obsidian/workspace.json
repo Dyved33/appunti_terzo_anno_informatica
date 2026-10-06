@@ -11,10 +11,28 @@
             "id": "a6cafbeca9ada22d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 3-Tipi di connessione e topologie di rete"
+            }
+          },
+          {
+            "id": "b36f7581d23ee0e0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi"
             }
           }
         ]
@@ -236,7 +254,6 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "audio-recorder:Start/stop recording": false,
-      "markdown-importer:Open format converter": false,
       "workspaces:Manage workspace layouts": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-excalidraw-plugin:New drawing": false,
@@ -247,8 +264,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "c1467e7ef2db6b6c",
+  "active": "a6cafbeca9ada22d",
   "lastOpenFiles": [
+    "primo semestre/Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
     "primo semestre/Programmazione web e mobile con laboratorio/00 Indice - Programmazione web e mobile con laboratorio.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 3-Box model CSS, selettori avanzati, tabelle e form HTML5.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 2-Struttura HTML5, tag semantici e fondamenti di CSS3.md",
@@ -259,7 +278,6 @@
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
-    "primo semestre/Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
     "primo semestre/Introduzione sicurezza /Lezione 1-Fondamenti di sicurezza informatica e protezione dei sistemi.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
@@ -275,7 +293,6 @@
     "Introduzione IA/lec02-uninformedSearch.pdf",
     "Basi di dati e sistemi informativi con laboratorio/Appunti basi di dati e sistemi informativi con laboratorio.md",
     "Architettura reti e internet/Appunti internet.md",
-    "Architettura reti e internet/Appunti architettura reti.md",
     "Basi di dati e sistemi informativi con laboratorio/lezione1.pdf",
     "Basi di dati e sistemi informativi con laboratorio/Images/Pasted image 20261002091155.png",
     "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 216889.crdownload",
