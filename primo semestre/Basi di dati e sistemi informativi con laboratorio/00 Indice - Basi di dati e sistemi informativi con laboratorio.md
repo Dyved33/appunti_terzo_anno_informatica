@@ -5,3 +5,4 @@
 - [[Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze|Il modello relazionale: origini, fondamenti matematici, schemi e istanze]]
 - [[Lezione 4-Vincoli di integrità nel modello relazionale|Vincoli di integrità nel modello relazionale]]
 - [[Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL|Il linguaggio SQL, il DDL e PostgreSQL]]
+- [[Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione|Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione]]
