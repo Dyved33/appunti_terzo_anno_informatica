@@ -19,7 +19,7 @@ Primo semestre/
 1. **Stile.** Le regole di scrittura sono in `.opencode/stile.md`. OpenCode le carica da solo; con altri strumenti leggile prima di scrivere.
 2. **Non si perde nulla.** Ogni informazione che sta negli appunti dell'utente, negli appunti grezzi o nel materiale del docente deve stare nella nota finale: all'esame va riportato ciò che ha detto il docente. Puoi sistemare lo stile, riordinare, correggere e aggiungere. Puoi togliere solo parole: riempitivi e ripetizioni della stessa informazione. Nel dubbio, tieni.
 3. **Il testo dell'utente comanda.** In una nota esistente modifica solo ciò che è sbagliato, poco chiaro, mancante o indicato da un segnaposto. Non riscrivere ciò che funziona.
-4. **Non creare file.** Le note delle lezioni le crea l'utente, tu le riempi. Puoi creare solo l'indice del corso, se manca.
+4. **Non creare file.** Le note delle lezioni le crea l'utente, tu le riempi. Puoi creare solo l'indice del corso, se manca, e le foto delle slide che l'utente ha chiesto (tabella Strumenti).
 5. **Gli input non si toccano.** Mai modificare, rinominare, spostare o cancellare `.txt`, PDF, slide e immagini.
 6. **Niente frontmatter e niente tag.** La data sta solo nel nome del file.
 7. **Fonti.** Prima il materiale del docente, poi il web per completare. Se si contraddicono vale il docente e lasci un `[!todo]`.
@@ -31,6 +31,7 @@ Primo semestre/
 | Cosa | Come |
 |---|---|
 | Leggere slide e PDF | `python3 .opencode/scripts/leggi-slide.py FILE [pagine]` |
+| Foto di una slide | chiedi all'utente se farla (`pdftoppm*` chiede conferma); se sì: `pdftoppm -png -r 150 -f N -l N "FILE" "images/slide"` e leggi la descrizione con `tesseract "images/slide-NN.png" stdout -l it`; se no: vai oltre |
 | Controllo strutturale | `python3 .opencode/scripts/vault-audit.py [percorso]` |
 | Controllo che non si sia perso nulla | `python3 .opencode/scripts/controlla-perdite.py NOTA [--salva] [--con FONTE]` |
 | Dividere un file unico in lezioni | `python3 .opencode/scripts/dividi-appunti.py FILE` |

@@ -102,6 +102,8 @@ Le immagini le inserisce l'utente e stanno nella cartella `images/` accanto alla
 
 Non puoi vedere le immagini: non descrivere cosa mostrano se non te lo dice il testo dell'utente.
 
+Eccezione: quando la foto la fa l'agent con `pdftoppm` da una pagina del materiale, la descrizione si scrive dal testo che l'OCR (`tesseract`) restituisce. In `src` va il solo nome del file, esempio `slide-06.png`, senza `images/` davanti. Si riporta solo ciò che l'OCR legge: niente dettagli inventati.
+
 Fuori dai callout ogni immagine usa uno di questi layout. Quale usare lo dice il segnaposto che l'utente scrive dopo l'immagine:
 
 | L'utente scrive | Layout |

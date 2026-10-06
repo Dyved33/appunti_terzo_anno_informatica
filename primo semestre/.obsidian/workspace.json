@@ -1,0 +1,267 @@
+{
+  "main": {
+    "id": "c649a66f44101ad1",
+    "type": "split",
+    "children": [
+      {
+        "id": "3ad928ddec64d57c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "052da23d83809d0c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Basi di dati e sistemi informativi con laboratorio/Lezione 6-.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 6-"
+            }
+          },
+          {
+            "id": "3cd572a69fbfa212",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni"
+            }
+          },
+          {
+            "id": "16502dbae0e72909",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Introduzione sicurezza /Fondamenti di sicurezza informatica e protezione dei sistemi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Fondamenti di sicurezza informatica e protezione dei sistemi"
+            }
+          },
+          {
+            "id": "9bac99ca7e3c6766",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Introduzione sicurezza /Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Architettura delle reti, stack TCP-IP e protocolli applicativi"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e9c5fceffeb12c50",
+    "type": "split",
+    "children": [
+      {
+        "id": "8620bbd475cf8d8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "be179a439a2a1fa6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "898e1a57a7d248ba",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "5dcf6a69bf28054e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 432.5
+  },
+  "right": {
+    "id": "046686d2950f5d8c",
+    "type": "split",
+    "children": [
+      {
+        "id": "0f7e3d19cd9e69cd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc0dde0ebfc03327",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "f4aa80d44289597e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "a19f6821e66c9286",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "415e95cc6405d58f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "315d77631106579f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "2842b15c32029bdc",
+            "type": "leaf",
+            "state": {
+              "type": "footnotes",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md"
+              },
+              "icon": "lucide-file-signature",
+              "title": "Footnotes"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "audio-recorder:Start/stop recording": false,
+      "markdown-importer:Open format converter": false,
+      "zk-prefixer:Create new unique note": false,
+      "workspaces:Manage workspace layouts": false
+    }
+  },
+  "active": "052da23d83809d0c",
+  "lastOpenFiles": [
+    "Basi di dati e sistemi informativi con laboratorio/slide_6.png",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 6-.md",
+    "Basi di dati e sistemi informativi con laboratorio/oggi.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 715246.crdownload",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
+    "Architettura reti e internet/protocolli/Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
+    "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md",
+    "Introduzione sicurezza /00 Indice - Introduzione sicurezza.md",
+    "Introduzione sicurezza /Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+    "Introduzione sicurezza /Fondamenti di sicurezza informatica e protezione dei sistemi.md",
+    "Architettura reti e internet/protocolli/00 Indice - Architettura reti e internet.md",
+    "Architettura reti e internet/internet/Internetworking, il villaggio globale e la storia di Internet.md"
+  ]
+}

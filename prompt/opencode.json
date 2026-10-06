@@ -27,6 +27,7 @@
       "pdfinfo*": "allow",
       "pdftotext*": "allow",
       "pdftoppm*": "ask",
+      "tesseract*": "allow",
       "ls*": "allow",
       "wc*": "allow",
       "grep*": "allow",
