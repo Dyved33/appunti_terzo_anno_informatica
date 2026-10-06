@@ -1,0 +1,125 @@
+/* stylelint-disable selector-class-pattern */
+
+/* Settings panel */
+
+.setting-item.hidden {
+    display: none;
+}
+
+.setting-item.setting-item-heading .latex-suite-settings-icon {
+    margin-right: var(--size-4-2);
+    display: inline-flex;
+}
+
+.setting-item.setting-item-heading.latex-suite-settings-heading {
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.latex-suite-confirmation-modal .setting-item {
+    border: none;
+}
+
+.setting-item.setting-item-heading.latex-suite-settings-heading + .setting-item {
+    border-top: none;
+}
+
+.setting-item.setting-item-heading.latex-suite-settings-heading ~ .setting-item:not(.setting-item-heading) {
+    width: calc(100% - 26px);
+    margin-left: 26px;
+}
+
+.snippets-text-area {
+    display: inline-block;
+	width: 100%;
+}
+
+.snippets-text-area .setting-item-info {
+    margin-bottom: 0.75rem;
+}
+
+.snippets-text-area .setting-item-control {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.snippets-editor-wrapper {
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+
+.snippets-editor-wrapper .cm-editor {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    font-size: var(--font-inputs);
+    height: 20em;
+	outline: none;
+    text-align: left;
+}
+
+.snippets-editor-wrapper .cm-line, .snippets-editor-wrapper .cm-lineNumbers {
+    font-family: var(--font-monospace);
+}
+
+.snippets-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.snippets-editor-validity {
+    display: flex;
+    align-items: center;
+}
+
+.snippets-editor-validity-indicator {
+    color: #fff;
+    display: inline-block;
+    border-radius: 1em;
+    margin-right: 10px;
+    cursor: default;
+    visibility: hidden;
+}
+
+.snippets-editor-validity-indicator svg {
+    width: 16px;
+    height: 16px;
+}
+
+.snippets-editor-validity-indicator:hover {
+    color: #fff;
+}
+
+.snippets-editor-validity-indicator.valid {
+    background-color: var(--color-green);
+    visibility: visible;
+}
+
+.snippets-editor-validity-indicator.invalid {
+    background-color: var(--color-red);
+    visibility: visible;
+}
+
+.snippets-editor-validity-text.setting-item-description {
+	padding: 0;
+}
+
+.snippets-editor-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-input-container input.latex-suite-location-input-el {
+    width: initial;
+}
+
+
+.setting-item.latex-suite-keymap-list {
+	display: flex;
+	flex-direction: column;	
+}
+
+.latex-suite-keymap-item {
+	list-style: none;
+	align-self: flex-start;
+}

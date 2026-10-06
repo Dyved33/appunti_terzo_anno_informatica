@@ -49,6 +49,7 @@ sudo apt install tesseract-ocr tesseract-ocr-ita # per installare il lettore di 
 | 5 | git da terminale | la guida usa `git diff` e `git restore` |
 | 6 | dividere i file unici | script `dividi-appunti.py` e command `/dividi`, vedi sotto |
 | 7 | `// adatta //` | sostituisce `// 400 //`: immagine a larghezza piena |
+| 7b | layout di un'immagine senza segnaposto | l'agent fa una domanda `question` per ogni immagine (ridimensionata / adatta / scritta sotto / testo a lato / lascia com'è), testo dall'OCR se disponibile |
 | 9 | immagini nei callout | restano `![[x.png|300]]` |
 | 10 | `→` nelle formule | nessuna conversione, nessun controllo |
 | 11 | solo `// ... //` | tolto `%% ... %%` ovunque |

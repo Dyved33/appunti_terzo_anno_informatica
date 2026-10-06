@@ -27,7 +27,7 @@ Lavori sulle note delle lezioni di questo vault. Le regole di stile sono in `.op
 - correggi gli errori confrontando con il materiale;
 - aggiungi ciò che manca rispetto al materiale: una definizione saltata, un passaggio, un esempio breve;
 - chiarisci le frasi che non si capiscono;
-- applica i layout alle immagini e crea i wikilink verso le altre lezioni del corso.
+- applica i layout alle immagini: per ogni immagine senza segnaposto chiedi all'utente quale layout usare (`.opencode/stile.md`, sezione "Immagini"), una domanda per ogni immagine; poi crea i wikilink verso le altre lezioni del corso.
 
 Il testo dell'utente che è corretto e chiaro resta com'è, parola per parola. Tutto ciò che c'era nella nota deve esserci ancora alla fine.
 
@@ -38,6 +38,8 @@ Il testo dell'utente che è corretto e chiaro resta com'è, parola per parola. T
 **D. L'utente chiede di asciugare o rivedere una nota.** Togli ciò che `.opencode/stile.md` elenca in "Cosa non scrivere", accorcia le frasi, e dove la stessa informazione è scritta identica due volte tieni la versione più completa. Non togliere mai un'informazione: definizioni, teoremi, dimostrazioni, formule, codice, immagini, esempi, elenchi, numeri, casi particolari, osservazioni del docente restano tutti. Non accorciare una spiegazione che serve a capire un passaggio difficile. L'obiettivo è togliere parole, non contenuti e non raggiungere una lunghezza. Se la nota è lunga lavora una sezione `##` (o `###`) alla volta.
 
 In tutti i casi: se un'informazione non è nel materiale puoi cercarla sul web, ma tienila breve e non citare la fonte. Se non sei sicuro di un contenuto, non inventare: lascia un `[!todo]`.
+
+Ogni immagine che inserisci nella nota, compresa una foto che fai con `pdftoppm`, prende il layout dalla domanda in `.opencode/stile.md` (sezione "Immagini") prima che tu la scriva: una domanda per ogni immagine, nessuna domanda se il segnaposto c'è già.
 
 Il tool `parse` (plugin opencode-parser) serve solo per leggere il testo dentro un'immagine di `images/`, con `extractImages: true` e `ocrLang: "ita"`. Non usarlo mai con `save` o `outputPath`, e non usarlo per PDF e slide: lì serve lo script, che legge una pagina alla volta.
 

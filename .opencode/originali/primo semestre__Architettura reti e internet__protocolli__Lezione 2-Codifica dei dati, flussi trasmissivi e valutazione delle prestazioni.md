@@ -1,9 +1,5 @@
 # Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni
 
-## L'informazione e la sua misura
-
-L'informazione è una grandezza misurabile, avente come unità di misura il bit. Se $M$ è il numero degli stati possibili di un dato sistema, $Q$ sono i bit necessari per distinguerli. La finalità di un sistema di comunicazione è il trasferimento dell'informazione fra sistemi remoti sotto il controllo dei programmi applicativi.
-
 ## La codifica dell'informazione
 
 Nel sistema elaborativo il **carattere** può essere associato al singolo bit: le sequenze significative di caratteri diventano quindi collezioni di bit dentro strutture di codifica dette **codici**, fra cui BCD (*Binary Decimal Code*), AIKEN, Gray, EBCDIC, ASCII e UNICODE.
@@ -23,10 +19,8 @@ A seconda della ==natura dell'informazione== si associano **diverse quantità di
 | :--- | :--- | :--- |
 | ASCII (*American Standard Code for Information Interchange*) | 7 bit | codice di base |
 | ASCII extended | 8 bit | introduce i caratteri accentati |
-| EBCDIC (*Extended Binary Coded Decimal Interchange Code*) | 8 bit | |
-| Unicode (per esempio UTF-8) | 8 bit | |
-
-> [!todo] UTF-8 è a lunghezza variabile, il docente indica 8 bit.
+| EBCDIC | 8 bit | |
+| Unicode (per esempio UTF-8) | | |
 
 **ASCII:**
 
@@ -172,16 +166,7 @@ PING 141.250.233.1 (141.250.233.1): 56 data bytes
 >
 > Ogni riga è un *hop*: il numero di righe fino a destinazione è il numero di dispositivi attraversati e ciascun valore è il round trip verso quel dispositivo.
 
-**Speed test:** per verificare la velocità effettiva della connessione si usa il sito **www.speedtest.net**. Sul territorio italiano sono sparsi vari server di test: ne viene scelto uno, il più vicino, e si avvia la prova, che in un minuto restituisce ping, velocità in download e in upload. Il server può anche essere scelto automaticamente in base al ping, scegliendo direttamente quello migliore: con il server più vicino il ping resta al di sotto dei 60-80 ms e la velocità della connessione ne risente meno.
-
-**speed.cloudflare.com:** oltre al ping ci sono altri fattori che influenzano la qualità della connessione, per esempio il *jitter*. Il sito **https://speed.cloudflare.com/**, sulla falsariga di SpeedTest, offre un test gratuito della rete che misura anche questi parametri.
-
-**NetIndex:** Ookla Net Media, proprietario di speedtest.net, fornisce anche **NetIndex**, una delle migliori fonti per le statistiche sulla banda larga, realizzate con dati raccolti dallo stesso Speedtest.net.
-
-**Ne.Me.Sys di Agcom:** i test degli strumenti visti non sono riconosciuti ufficialmente dai gestori telefonici (*Internet Service Provider*) e non hanno alcun valore legale. Agcom, l'autorità Garante per le Telecomunicazioni, ha realizzato **MisuraInternet**, un sistema di tool e software gratuiti fra cui **Ne.Me.Sys**, che permette di misurare la velocità e altri parametri della rete: in questo caso il test ha valore ufficiale e può essere usato come "prova" per recedere dal contratto per giusta causa.
-
-> [!warning] Attenzione:
-> il test di Ne.Me.Sys non si può fare se si è connessi a una VPN (rete privata virtuale).
+**Speed test:** per verificare la velocità effettiva della connessione si usa il sito **www.speedtest.net**. Sul territorio italiano sono sparsi vari server di test: ne viene scelto uno, il più vicino, e si avvia la prova, che in un minuto restituisce ping, velocità in download e in upload. Il server può anche essere scelto automaticamente in base al ping, scegliendo direttamente quello migliore.
 
 > [!info] Sintesi:
 > - Il numero di bit per elemento dipende dalla natura del dato: un'immagine a colori ne richiede più di una in bianco e nero.
@@ -189,4 +174,4 @@ PING 141.250.233.1 (141.250.233.1): 56 data bytes
 > - I flussi trasmissivi sono simplex, half duplex e full duplex, secondo il grado di bidirezionalità consentito.
 > - DTE è il terminale, DCE l'apparato che adatta il segnale al canale, CPE l'apparato di pertinenza dell'utente.
 > - Una rete si valuta su affidabilità, sicurezza e prestazioni; ritardo, tempo di risposta e throughput misurano le prestazioni.
-> - `ping` verifica la raggiungibilità e il packet loss, `traceroute` mostra il cammino dei pacchetti, gli speed test misurano la velocità reale: speedtest.net, speed.cloudflare.com che misura anche il jitter, NetIndex per le statistiche e Ne.Me.Sys di Agcom, l'unico a valore ufficiale.
+> - `ping` verifica la raggiungibilità e il packet loss, `traceroute` mostra il cammino dei pacchetti, speed test misura la velocità reale.

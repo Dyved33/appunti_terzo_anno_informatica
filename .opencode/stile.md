@@ -104,14 +104,28 @@ Non puoi vedere le immagini: non descrivere cosa mostrano se non te lo dice il t
 
 Eccezione: quando la foto la fa l'agent con `pdftoppm` da una pagina del materiale, la descrizione si scrive dal testo che l'OCR (`tesseract`) restituisce. In `src` va il solo nome del file, esempio `slide-06.png`, senza `images/` davanti. Si riporta solo ciò che l'OCR legge: niente dettagli inventati.
 
-Fuori dai callout ogni immagine usa uno di questi layout. Quale usare lo dice il segnaposto che l'utente scrive dopo l'immagine:
+Fuori dai callout ogni immagine usa uno di questi layout. Quale usare lo dice il segnaposto che l'utente scrive dopo l'immagine; senza segnaposto a decidere è la domanda qui sotto:
 
 | L'utente scrive | Layout |
 |---|---|
-| `![[x.png]]` | ridimensionata a 300 |
+| `![[x.png]]` (senza segnaposto) | prima si chiede, vedi sotto; ridimensionata a 300 se l'utente non sceglie un altro layout |
 | `![[x.png]] // adatta //` | adattata alla larghezza della pagina |
 | `![[x.png]] // sotto: testo //` | con scritta sotto |
 | `![[x.png]] // lato: testo //` | con testo a lato. Con `// lato //` senza testo, a lato va il paragrafo che segue |
+
+Se l'immagine non ha un segnaposto, prima di scrivere l'HTML chiedi all'utente quale layout usare con il tool `question`, una domanda per ogni immagine, nell'ordine in cui compaiono:
+
+- ridimensionata a 300
+- adattata alla larghezza della pagina
+- con scritta sotto
+- con testo a lato
+- lasciala com'è
+
+Per "con scritta sotto" e "con testo a lato" il testo viene dall'OCR quando restituisce qualcosa di utile (`parse` con `extractImages: true` su un'immagine di `images/`, `tesseract` su una foto di slide). Se l'OCR non restituisce niente, chiedi all'utente di scrivere il testo nella stessa domanda; se non lo fa, ripiega su un ridimensionamento. Non inventare mai cosa mostra l'immagine.
+
+Fai la stessa domanda per una foto che fai tu con `pdftoppm`, prima di inserirla: il layout si sceglie allora, con le stesse opzioni.
+
+Nessuna domanda per le immagini dentro un callout e per le immagini già in un `<div>`: il loro layout è già deciso (vedi sotto).
 
 Ridimensionata:
 

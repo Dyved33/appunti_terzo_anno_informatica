@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3c1d43397e9c7032",
+        "id": "b53674d760498caf",
         "type": "tabs",
         "children": [
           {
-            "id": "1df40118d1fee06f",
+            "id": "489c50d022fc7314",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -95,7 +95,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -199,14 +198,17 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "be179a439a2a1fa6",
+  "active": "489c50d022fc7314",
   "lastOpenFiles": [
-    "00 Indice Generale.md",
     "Architettura reti e internet/protocolli/00 Indice - Architettura reti.md",
+    "Architettura reti e internet/protocolli/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
+    "Architettura reti e internet/protocolli/Lezione 3-.md",
+    "Architettura reti e internet/protocolli/oggi.pdf",
+    "Architettura reti e internet/protocolli/Unconfirmed 810930.crdownload",
+    "00 Indice Generale.md",
     "Architettura reti e internet/internet/00 Indice - Internetworking.md",
     "Architettura reti e internet/00 Indice - Architettura reti e internet.md",
     "Basi di dati e sistemi informativi con laboratorio/00 Indice - Basi di dati e sistemi informativi con laboratorio.md",
-    "Architettura reti e internet/protocolli/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
     "Basi di dati e sistemi informativi con laboratorio/esercizi/esercizio.txt",
     "Basi di dati e sistemi informativi con laboratorio/esercizi",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",

@@ -124,14 +124,16 @@ Il segnaposto sparisce quando è stato eseguito. Se l'agent non ci riesce lo sos
 **Immagini.** Dopo l'immagine si indica il layout:
 
 ```
-![[x.png]]                        ridimensionata a 300
+![[x.png]]                        senza segnaposto: l'agent chiede (ridimensionata a 300 se non ti importa)
 ![[x.png]] // adatta //           adattata alla larghezza della pagina
 ![[x.png]] // sotto: testo //     con scritta sotto
 ![[x.png]] // lato: testo //      con testo a lato
 ![[x.png]] // lato //             a lato va il paragrafo che segue
 ```
 
-Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le immagini: il testo da mettere sotto o a lato lo scrivi tu.
+Se non scrivi un segnaposto, l'agent ti chiede quale layout usare, una domanda per ogni immagine, prima di sistemarla. Il testo per la scritta sotto o per il testo a lato viene dall'OCR quando restituisce qualcosa di utile; altrimenti te lo chiede, e se non lo scrivi ripiega su un ridimensionamento.
+
+Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le immagini: non descrive mai cosa mostrano, a meno che non lo dica il tuo testo o l'OCR.
 
 **Todo.** `> [!todo] cosa va rivisto` segna un punto da controllare. L'agent prova a chiuderli a ogni passata e ne lascia di nuovi quando non è sicuro di qualcosa. `/revisione` li elenca tutti.
 
