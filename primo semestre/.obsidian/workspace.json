@@ -11,13 +11,28 @@
             "id": "489c50d022fc7314",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
+                "mode": "source",
+                "source": true
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS"
+            }
+          },
+          {
+            "id": "4ca1cdf21e7d4c3b",
+            "type": "leaf",
+            "state": {
+              "type": "mindmap",
+              "state": {},
+              "icon": "dot-network",
+              "title": "Mind Map of Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -79,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 432.5
+    "width": 432.5,
+    "collapsed": true
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -95,6 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md",
+                "file": "Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -177,7 +194,8 @@
               "title": "Footnotes"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
