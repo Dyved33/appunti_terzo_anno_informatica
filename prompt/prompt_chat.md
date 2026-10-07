@@ -41,7 +41,8 @@ Regole:
 - segui stile.md alla lettera; se i miei appunti e stile.md dicono cose diverse, valgono i miei appunti;
 - all'esame devo riportare ciò che ha detto il docente: tutto ciò che sta nei miei appunti e nel materiale deve restare nella nota. Puoi sistemare la forma, correggere e aggiungere; puoi togliere solo parole che non portano informazione. Nel dubbio, tieni;
 - se non sei sicuro di un contenuto non inventare: lascia > [!todo] con cosa manca;
-- i nomi dei file delle immagini vanno copiati identici.
+- i nomi dei file delle immagini vanno copiati identici;
+- il codice che serve alla teoria resta nella nota in un blocco; un esercizio o una soluzione completa vanno in un blocco a parte con il percorso esercizi/ in cui salvarlo.
 
 Rispondi solo con la nota in un blocco markdown, seguita da un riepilogo di 5 righe al massimo: cosa hai aggiunto, corretto, tolto, e i todo lasciati.
 

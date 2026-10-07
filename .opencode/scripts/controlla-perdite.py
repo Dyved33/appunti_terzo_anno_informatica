@@ -11,6 +11,10 @@ Uso:
 Cosa cerca nella fonte e non trova più nella nota: formule, righe di codice, immagini,
 numeri, e le righe (o le slide) che non ritrova.
 
+I file di testo collegati dalla nota con un wikilink (per esempio il codice in esercizi/)
+vengono letti e contati come se fossero dentro la nota: un esercizio spostato in un file
+non risulta perso.
+
 È un controllo sulle parole, non sul significato: ogni voce è "da controllare", non un
 errore certo. Una frase riscritta con altre parole può essere segnalata; una frase
 segnalata va riletta nella fonte e, se l'informazione manca davvero, rimessa nella nota.
@@ -89,6 +93,31 @@ def immagini(testo):
     nomi = set(re.findall(r"!\[\[([^\]\|#\n]+)", testo))
     nomi |= set(re.findall(r"<img\b[^>]*?\bsrc\s*=\s*[\"']([^\"']+)[\"']", testo, re.I))
     return {os.path.basename(n.strip()).lower() for n in nomi}
+
+
+RE_LINK_FILE = re.compile(r"(?<!\!)\[\[([^\]\|#\n]+\.[A-Za-z0-9]+)(?:#[^\]\|\n]*)?(?:\|[^\]\n]*)?\]\]")
+ESTENSIONI_TESTO = {
+    ".py", ".c", ".h", ".cpp", ".cc", ".java", ".js", ".ts", ".html", ".css", ".sql",
+    ".sh", ".r", ".tex", ".xml", ".json", ".yml", ".yaml", ".php", ".rb", ".go", ".rs",
+    ".kt", ".swift", ".hs", ".ml", ".scala", ".asm", ".pl", ".txt",
+}
+
+
+def allegati(nota_testo, cartella):
+    """Testo dei file collegati dalla nota (codice in esercizi/): contano come parte della nota."""
+    pezzi = []
+    for target in RE_LINK_FILE.findall(nota_testo):
+        if os.path.splitext(target)[1].lower() not in ESTENSIONI_TESTO:
+            continue
+        percorso = os.path.join(cartella, target.strip())
+        if not os.path.isfile(percorso):
+            continue
+        try:
+            with open(percorso, encoding="utf-8") as f:
+                pezzi.append(f.read())
+        except (OSError, UnicodeDecodeError):
+            continue
+    return "".join(f"\n```\n{p}\n```\n" for p in pezzi)
 
 
 def pulisci_markdown(riga):
@@ -232,16 +261,18 @@ def main():
         print(f"Copia salvata: {len(nota_testo.split())} parole, {nota_testo.count(chr(10)) + 1} righe.")
         return
 
+    estesa = nota_testo + allegati(nota_testo, os.path.dirname(os.path.abspath(nota)) or ".")
+
     if con:
         if not os.path.isfile(con):
             esci(f"file non trovato: {con}")
         est = os.path.splitext(con)[1].lower()
         print(f"Confronto: {os.path.basename(nota)}  <-  {os.path.basename(con)}")
         if est in (".pdf", ".pptx", ".ppt"):
-            tot = confronta_slide(pagine_materiale(con), nota_testo)
+            tot = confronta_slide(pagine_materiale(con), estesa)
         else:
             with open(con, encoding="utf-8", errors="replace") as f:
-                tot = confronta_testo(f.read(), nota_testo, "appunti")
+                tot = confronta_testo(f.read(), estesa, "appunti")
     else:
         if os.path.isfile(copia):
             with open(copia, encoding="utf-8") as f:
@@ -256,7 +287,7 @@ def main():
         prima, dopo = len(fonte.split()), len(nota_testo.split())
         print(f"Confronto: {os.path.basename(nota)}  <-  {origine}")
         print(f"Parole: {prima} -> {dopo} ({(dopo - prima) / max(prima, 1) * 100:+.0f}%)")
-        tot = confronta_testo(fonte, nota_testo, "testo")
+        tot = confronta_testo(fonte, estesa, "testo")
 
     if tot == 0:
         print("\nNessuna perdita rilevata.")

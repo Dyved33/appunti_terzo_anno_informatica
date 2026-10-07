@@ -22,6 +22,7 @@ Dopo ogni modifica a `opencode.json` o a un file in `.opencode/` va riavviato: l
 | `.opencode/scripts/` | i 4 script: lettura slide, controllo strutturale, controllo perdite, divisione dei file unici |
 | `opencode.json` | permessi |
 | `prompt_chat.md` | prompt da usare fuori da OpenCode (Antigravity, chat web) |
+| `<Corso>/esercizi/` | il codice scritto da te (input): l'agent non lo tocca |
 
 Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
 
@@ -34,15 +35,13 @@ Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
 
 ## Niente si perde
 
-All'esame va riportato ciò che ha detto il docente, quindi la regola è: tutto ciò che sta nei tuoi appunti, negli appunti grezzi e nelle slide resta nella nota. L'agent può sistemare la forma, correggere e aggiungere; può togliere solo parole (riempitivi, la stessa informazione scritta due volte).
-
-Una regola scritta però non è una garanzia, perché un modello può sbagliare. Per questo c'è un controllo fatto da uno script, non dal modello:
+La regola è la 2 di `AGENTS.md`: tutto ciò che sta nei tuoi appunti, negli appunti grezzi e nelle slide resta nella nota; l'agent toglie solo parole. Una regola scritta però non basta, perché un modello può sbagliare: per questo il controllo lo fa uno script.
 
 1. prima di modificare una nota l'agent ne salva una copia in `.opencode/originali/`;
-2. alla fine `controlla-perdite.py` confronta la nota con la copia, con gli appunti grezzi e con le slide, ed elenca ciò che non ritrova: formule, righe di codice, immagini, numeri, righe di testo, pagine delle slide;
+2. alla fine `controlla-perdite.py` confronta la nota con la copia, con gli appunti grezzi e con le slide, ed elenca ciò che non ritrova: formule, righe di codice, immagini, numeri, righe di testo, pagine delle slide. Anche il codice collegato da un wikilink (in `esercizi/`) conta come parte della nota;
 3. per ogni voce l'agent rilegge la fonte e rimette ciò che manca.
 
-Lo script confronta parole, non significati: una frase riscritta bene può essere segnalata, e una frase stravolta mantenendo le stesse parole no. Le slide fatte di sole immagini non sono controllabili. Dopo `/rivedi` conviene quindi lanciarlo anche a mano, e guardare `git diff` sulle note importanti.
+Lo script confronta parole, non significati, e non controlla le slide fatte di sole immagini: dopo `/rivedi` conviene lanciarlo anche a mano e guardare `git diff` sulle note importanti.
 
 ## Gli agent
 
@@ -131,7 +130,7 @@ Il segnaposto sparisce quando è stato eseguito. Se l'agent non ci riesce lo sos
 ![[x.png]] // lato //             a lato va il paragrafo che segue
 ```
 
-Se non scrivi un segnaposto, l'agent ti chiede quale layout usare, una domanda per ogni immagine, prima di sistemarla. Il testo per la scritta sotto o per il testo a lato viene dall'OCR quando restituisce qualcosa di utile; altrimenti te lo chiede, e se non lo scrivi ripiega su un ridimensionamento.
+Se non scrivi un segnaposto, l'agent ti chiede quale layout usare, una domanda per immagine. Il testo per la scritta sotto o per il testo a lato viene dall'OCR o te lo chiede lui, e se non lo scrivi ripiega su un ridimensionamento.
 
 Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le immagini: non descrive mai cosa mostrano, a meno che non lo dica il tuo testo o l'OCR.
 
@@ -139,11 +138,13 @@ Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le imma
 
 **Sintesi.** Ogni nota si chiude con `> [!info] Sintesi:`, da 3 a 6 punti. La scrive l'agent con `/lezione` e `/rivedi`.
 
+**Codice.** Lo snippet che serve alla teoria resta nella nota, in un blocco ```` ``` ````. Gli esercizi e le soluzioni complete stanno in `esercizi/`, col nome che dai tu: nella nota resta solo il pezzo rilevante con il wikilink `[[esercizi/es3.py|es3]]`. I file di `esercizi/` sono tuoi: l'agent non li apre in scrittura e, se gli chiedi un esercizio, te lo dà nella risposta e lo salvi tu.
+
 ## Cosa OpenCode può fare e cosa no
 
-- Scrive solo file `.md`. Non può modificare `AGENTS.md` né i file in `.opencode/`.
+- Scrive solo file `.md`. Non può modificare `AGENTS.md`, i file in `.opencode/` né nulla in `esercizi/`.
 - Non crea note: le crei tu e lui le riempie. Può creare solo l'indice del corso. L'unica eccezione è `/dividi`, che chiede conferma.
-- Non tocca `.txt`, PDF, slide e immagini.
+- Non tocca `.txt`, PDF, slide, immagini e i file in `esercizi/`. Non esegue codice.
 - Non esce dal vault.
 - Nel terminale può eseguire solo i quattro script, `ls`, `grep`, `rg`, `wc`, `pdfinfo`, `pdftotext` e i comandi git di sola lettura. Per `pdftoppm` (che crea immagini) chiede conferma.
 - Può cercare sul web.

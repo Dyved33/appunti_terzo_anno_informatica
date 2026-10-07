@@ -121,10 +121,10 @@ La proprietà `float` stacca un elemento dal normale flusso verticale e lo allin
   margin: 0 0 10px 15px;
 }
 
-.articolo::after {
-  content: "";
-  display: block;
-  clear: both;
+.articolo::after { /*CSS crea un elemento virtuale alla fine del contenuto di .articolo*/
+  content: "";/*elemento creato vuoto*/
+  display: block;/*pseudo-elemento si comporta come un blocco*/
+  clear: both;/*elemento viene posto sotto ad eventuali elementi flottanti e non affiancato*/
 }
 ```
 
@@ -170,26 +170,20 @@ La proprietà `position` determina il metodo di posizionamento di un elemento ri
 ```
 
 La proprietà `z-index` stabilisce l'ordine di impilamento degli elementi sovrapposti, imponendo un contesto di impilamento per ciascun positioned element e per i suoi discendenti.
-
-> [!warning] IMMAGINE DA INSERIRE
-> Schema con i cinque valori di `position` (static, relative, absolute, fixed, sticky) e relativi spostamenti.
->
-> [!todo] immagine mancante: schema dei cinque valori di `position` con gli offset `top`, `right`, `bottom` e `left`, da inserire con `![[...]]`
-
 ## La proprietà `display` e i suoi valori
 
 La proprietà `display` determina come il motore di rendering genera la scatola dell'elemento e il suo posizionamento nel flusso.
 
-| Valore | Occupa Riga Intera | Accetta `width`/`height` | Note |
-| :--- | :--- | :--- | :--- |
-| `block` | Si | Si | Occupa la larghezza disponibile e inizia su una nuova riga; accetta `margin`, `padding` e dimensioni. |
-| `inline` | No | No (solo elementi sostituiti come `<img>`) | Si affianca al testo sulla stessa riga e non interrompe il flusso. |
-| `inline-block` | No | Si | Unione di `inline` e `block`: si comporta come inline nel flusso ma dimensiona la propria scatola come un blocco. |
-| `none` | No | No | L'elemento è rimosso dal layout: non genera scatola e non è visibile, diversamente da `visibility: hidden`, che conserva lo spazio occupato. |
-| `list-item` | Si | Si | Genera il marcatore di lista. |
-| `flex` / `inline-flex` | Si / No | Si | Il contenitore stabilisce un contesto di layout flessibile per i figli. |
-| `grid` / `inline-grid` | Si / No | Si | Il contenitore stabilisce un contesto di layout a griglia per i figli. |
-| `table`, `table-row`, `table-cell` | Si | Si | Riproduce il comportamento delle tabelle HTML con elementi generici. |
+| Valore                             | Caratteristiche                                                                                                                              | Occupa Riga Intera | Accetta `width`/`height`                   |
+| :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- | :----------------- | :----------------------------------------- |
+| `block`                            | Occupa la larghezza disponibile e inizia su una nuova riga; accetta `margin`, `padding` e dimensioni.                                        | Si                 | Si                                         |
+| `inline`                           | Si affianca al testo sulla stessa riga e non interrompe il flusso.                                                                           | No                 | No (solo elementi sostituiti come `<img>`) |
+| `inline-block`                     | Unione di `inline` e `block`: si comporta come inline nel flusso ma dimensiona la propria scatola come un blocco.                            | No                 | Si                                         |
+| `none`                             | L'elemento è rimosso dal layout: non genera scatola e non è visibile, diversamente da `visibility: hidden`, che conserva lo spazio occupato. | No                 | No                                         |
+| `list-item`                        | Genera il marcatore di lista.                                                                                                                | Si                 | Si                                         |
+| `flex` / `inline-flex`             | Il contenitore stabilisce un contesto di layout flessibile per i figli.                                                                      | Si / No            | Si                                         |
+| `grid` / `inline-grid`             | Il contenitore stabilisce un contesto di layout a griglia per i figli.                                                                       | Si / No            | Si                                         |
+| `table`, `table-row`, `table-cell` | Riproduce il comportamento delle tabelle HTML con elementi generici.                                                                         | Si                 | Si                                         |
 
 > [!info] Limiti di Larghezza sugli Elementi Inline
 > Sui elementi inline non sostituiti le dichiarazioni `width` e `height` sono **ignorate**: la dimensione orizzontale è determinata dal contenuto e quella verticale da `line-height` e dal `font-size`. Per ottenere una scatola dimensionabile serve `inline-block`.
@@ -290,10 +284,7 @@ Flexbox (`display: flex` sul contenitore) distribuisce i figli lungo un **asse p
 }
 ```
 
-> [!warning] IMMAGINE DA INSERIRE
-> Schema di un contenitore Flexbox con evidenza degli assi main e cross, con `flex-direction: row` e con `flex-direction: column`, più l'azione delle proprietà `justify-content` e `align-items`.
->
-> [!todo] immagine mancante: schema di un contenitore Flexbox con main axis e cross axis, da inserire con `![[...]]`
+![[Pasted image 20261007092448.png]] ``
 
 ## CSS Grid: layout bidimensionale
 
@@ -324,10 +315,7 @@ La griglia (`display: grid`) organizza i figli su righe e colonne contemporaneam
 
 La funzione `repeat(n, valore)` evita di elencare `n` tracce identiche; l'unità `fr` (frazione) distribuisce lo spazio libero in proporzioni relative. Le tracce dichiarate ma non occupate sono *piste esplicite vuote*, mentre quelle generate automaticamente dal posizionamento degli elementi sono *piste implicite*.
 
-> [!warning] IMMAGINE DA INSERIRE
-> Schema di una griglia CSS con le linee numerate, le tracce esplicite da `grid-template-columns: repeat(3, 1fr)` e l'occupazione di `grid-column` / `grid-row`.
->
-> [!todo] immagine mancante: schema di una griglia CSS con le linee numerate e le tracce esplicite, da inserire con `![[...]]`
+![[Pasted image 20261007092543.png]]
 
 ## Il confronto fra table, Flexbox e Grid
 

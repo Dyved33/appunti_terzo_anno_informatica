@@ -9,6 +9,7 @@
     "edit": {
       "*": "deny",
       "*.md": "allow",
+      "*/esercizi/*": "deny",
       "AGENTS.md": "deny",
       ".opencode/*": "deny"
     },

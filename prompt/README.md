@@ -39,7 +39,9 @@ sudo apt install tesseract-ocr tesseract-ocr-ita # per installare il lettore di 
 
 **Tolti:** tabella dei tag, anni e Erasmus, frontmatter, footer di navigazione, `raw_notes/`, `attachments/`, numerazione `NN_`, divieto dei caratteri non ASCII, callout `[!NOTE]` e `[!LAW]`, modelli di esempio dei vecchi prompt.
 
-**Permessi.** L'agent non può modificare `AGENTS.md` né `.opencode/`. Tolti `find`, `head`, `tail`, `sed`, `unzip`, `file`. Chiedono conferma `pdftoppm` (crea immagini) e `dividi-appunti.py --scrivi` (crea note).
+**`esercizi/` è tuo.** La cartella `esercizi/` di ogni corso contiene il codice scritto da te (`.py`, `.html`, `.sql`, sottocartelle per l'esame). È un input quanto le slide: l'agent la legge per collegarla dalle note ma non la modifica, e non esegue codice. Se gli chiedi un esercizio te lo dà nella risposta e lo salvi tu. `vault-audit.py` salta la cartella (i `.md` lì dentro non sono note) e `controlla-perdite.py` legge i file collegati dalla nota, così il codice spostato in `esercizi/` non risulta perso.
+
+**Permessi.** L'agent non può modificare `AGENTS.md` né `.opencode/`, né nulla dentro `esercizi/` (`"*/esercizi/*": "deny"`, dopo `*.md` perché vinca l'ultima regola che combina). Tolti `find`, `head`, `tail`, `sed`, `unzip`, `file`. Chiedono conferma `pdftoppm` (crea immagini) e `dividi-appunti.py --scrivi` (crea note).
 
 ## Particolari implementativi
 

@@ -16,8 +16,8 @@ import sys
 
 CALLOUT_AMMESSI = {"example", "info", "important", "warning", "tip", "todo"}
 ESTENSIONI_IMG = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".bmp"}
-CARTELLE_ESCLUSE = {".git", ".obsidian", ".opencode", ".trash", "node_modules", "images"}
-FILE_ESCLUSI = {"AGENTS.md", "Guida_Opencode.md", "prompt_chat.md", "README.md", "LEGGIMI.md"}
+CARTELLE_ESCLUSE = {".git", ".obsidian", ".opencode", ".trash", "node_modules", "images", "esercizi"}
+FILE_ESCLUSI = {"AGENTS.md", "Guida_Opencode.md", "Opencode_Guide.md", "prompt_chat.md", "README.md", "LEGGIMI.md"}
 PARAGRAFO_LUNGO = 150  # parole
 
 FRASI_IA = [

@@ -48,7 +48,7 @@ L'architettura di rete odierna si fonda su tre principi cardine.
 > [!info] Significato del termine "pacchetto":
 > Nel gergo informatico comune il termine **"pacchetto"** viene impiegato in modo generico per indicare una qualsiasi unità di dati in transito sulla rete. Formalmente si tratta della medesima informazione, che assume denominazioni tecniche differenti a seconda dello strato della pila in cui viene osservata: **messaggio** (applicazione), **segmento** (trasporto), **datagramma** (rete), **frame** (collegamento).
 
-**Multiplexing e demultiplexing:** il livello di trasporto realizza il trasferimento logico **process-to-process**. Poiché su un singolo host possono essere attivi numerosi processi contemporaneamente, TCP e UDP devono distinguere a quale processo consegnare i dati ricevuti.
+**Multiplexing e demultiplexing:** il livello di trasporto realizza il trasferimento logico **process-to-process**. Poiché ==su un singolo host possono essere attivi numerosi processi contemporaneamente, TCP e UDP devono distinguere a quale processo consegnare i dati ricevuti.==
 
 - **Multiplexing (dal lato mittente):** il livello di trasporto raccoglie i dati provenienti da diversi processi applicativi, li incapsula in segmenti (o datagrammi UDP) e assegna a ciascuno un opportuno numero di porta sorgente, in modo da poterli distinguere all'arrivo.
 - **Demultiplexing (dal lato ricevente):** il livello di trasporto esamina il numero di porta di destinazione presente nell'intestazione del segmento o datagramma e lo consegna al corretto processo applicativo tramite la relativa socket.
@@ -131,7 +131,7 @@ Un protocollo applicativo definisce formalmente:
 
 I protocolli si distinguono in due famiglie:
 
-- **Protocolli di pubblico dominio:** disciplinati da RFC aperte (HTTP, FTP, SMTP, DNS), garantiscono interoperabilità tra fornitori differenti. L'apertura dello standard garantisce trasparenza e possibilità di audit di sicurezza continuo, secondo il principio di Kerckhoffs: la sicurezza deve risiedere nell'algoritmo o nella chiave e non nell'occultamento del protocollo.
+- **Protocolli di pubblico dominio:** disciplinati da RFC aperte (HTTP, FTP, SMTP, DNS), garantiscono interoperabilità tra fornitori differenti. L'apertura dello standard garantisce trasparenza e possibilità di audit di sicurezza continuo, secondo il principio di Kerckhoffs: ==la sicurezza deve risiedere nell'algoritmo o nella chiave e non nell'occultamento del protocollo.==
 - **Protocolli proprietari:** sviluppati da singoli vendor, come vecchi sistemi di streaming o gaming; l'assenza di specifiche pubbliche (*security through obscurity*) costituisce una protezione debole e illusoria.
 
 **Requisiti delle applicazioni e scelta del livello di trasporto:** le applicazioni di rete presentano requisiti eterogenei su tre parametri critici.
@@ -474,7 +474,7 @@ S: +OK POP3 server signing off
 
 ## Il sistema dei nomi di dominio (DNS)
 
-Il **DNS** [RFC 1034, 1035] è il servizio di directory fondamentale di Internet, operante a livello applicativo su protocollo di trasporto **UDP (porta 53)**, con fallback su TCP per trasferimenti di zona o risposse che superano il limite trasportabile in UDP (512 byte senza EDNS0, fino a 4096 byte con EDNS0). Traduce gli hostname mnemonici, per esempio `www.unipg.it`, negli indirizzi IP numerici instradabili, per esempio `141.250.x.x`.
+Il **DNS** [RFC 1034, 1035] è il servizio di directory fondamentale di Internet, operante a livello applicativo su protocollo di trasporto **UDP (porta 53)**, con fallback su TCP per trasferimenti di zona o risposte che superano il limite trasportabile in UDP (512 byte senza EDNS0, fino a 4096 byte con EDNS0). Traduce gli hostname mnemonici, per esempio `www.unipg.it`, negli indirizzi IP numerici instradabili, per esempio `141.250.x.x`.
 
 **Architettura del database distribuito e gerarchico:** la sua architettura è scalabile e distribuita per scongiurare singoli punti di vulnerabilità (*single point of failure*).
 

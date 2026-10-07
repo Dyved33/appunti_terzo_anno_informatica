@@ -68,7 +68,7 @@ Le reti wireless sono reti di comunicazione mobili private o reti di comunicazio
   <img src="slide-10.png" width="300">
 </div>
 
-Nello schema della slide le tecnologie wireless sono riportate con le rispettive bande di frequenza: WAN a 400 e 800 MHz, IEEE 802.20 a 900 MHz, 2,5 e 3,6 GHz proposti, MAN, Wi-Fi mesh, WiMAX (802.16), MeshNetworks, wireless LAN Wi-Fi, Ethernet e UWB.
+Nello schema  le tecnologie wireless sono riportate con le rispettive bande di frequenza: WAN a 400 e 800 MHz, IEEE 802.20 a 900 MHz, 2,5 e 3,6 GHz proposti, MAN, Wi-Fi mesh, WiMAX (802.16), MeshNetworks, wireless LAN Wi-Fi, Ethernet e UWB.
 
 ## Topologia delle reti
 La topologia di una rete è la configurazione geometrica dei collegamenti fra i vari componenti della rete. Le varie topologie sono volte al conseguimento dei seguenti obiettivi: 

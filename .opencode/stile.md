@@ -6,9 +6,9 @@ Unica fonte per lo stile. Vale per ogni nota di lezione. Se una regola qui e una
 
 Sono appunti di uno studente che ha capito la lezione, non una dispensa. Servono a studiare per l'esame, dove va riportato ciò che ha detto il docente.
 
-Per questo il contenuto non si perde mai. Tutto ciò che sta negli appunti dell'utente, negli appunti grezzi e nel materiale del docente resta nella nota: definizioni, teoremi, dimostrazioni, formule, codice, immagini, ma anche esempi, elenchi completi, numeri, casi particolari, osservazioni e precisazioni fatte a voce. Non decidi tu cosa è secondario. Il tuo lavoro è sistemare la forma, correggere gli errori e aggiungere ciò che manca.
+Per questo il contenuto non si perde mai: resta nella nota tutto ciò che sta negli appunti dell'utente, negli appunti grezzi e nel materiale del docente — definizioni, teoremi, dimostrazioni, formule, codice, immagini, esempi, elenchi completi, numeri, casi particolari, osservazioni e precisazioni fatte a voce. Non decidi tu cosa è secondario: il tuo lavoro è sistemare la forma, correggere gli errori e aggiungere ciò che manca.
 
-Si tolgono solo le parole che non portano informazione. Se togliendo una frase non si perde nessuna informazione, la frase va tolta; se si perde anche solo un dettaglio, la frase resta e al massimo si accorcia. Nel dubbio, tieni.
+Si tolgono solo le parole che non portano informazione: se togliendo una frase perdi anche un solo dettaglio, la frase resta e al massimo si accorcia. Nel dubbio, tieni.
 
 La lunghezza non ha un limite: la decide il contenuto. Una lezione lunga o un concetto difficile producono una nota lunga, ed è giusto così. Quello che conta è la densità:
 
@@ -16,8 +16,6 @@ La lunghezza non ha un limite: la decide il contenuto. Una lezione lunga o un co
 - un concetto difficile merita tutta la spiegazione che serve per capirlo; uno semplice una riga;
 - gli esempi del docente e dell'utente restano tutti; di tuo ne aggiungi al massimo uno per concetto, e solo se aiuta;
 - se un paragrafo si può dire in metà delle parole senza perdere informazioni, va detto in metà delle parole.
-
-Per accorciare si tolgono parole, mai contenuti.
 
 Tre tipi di testo, e solo questi:
 
@@ -93,6 +91,7 @@ Un callout non ripete il testo che lo precede. `[!info] Sintesi:` è riservato a
 - `$...$` nel testo. `$$...$$` su righe proprie per le formule lunghe o che meritano risalto.
 - Nelle formule segui la notazione già usata nella nota e dal docente. Non convertire le formule esistenti.
 - Codice e pseudocodice sempre in un blocco ` ``` `. L'etichetta dopo i tre apici è quella che mette l'utente: il linguaggio (`c`, `java`) oppure un nome (`Algoritmo_di_Dekker`). Non cambiarla. Nei blocchi nuovi metti il linguaggio se è codice vero, altrimenti un nome senza spazi.
+- Lo snippet che serve alla teoria resta nella nota. L'esercizio intero o la soluzione completa no: stanno in `esercizi/<nome>.<ext>`, nella cartella del corso, e nella nota resta solo il pezzo rilevante con il wikilink `[[esercizi/es3.py|es3]]`.
 - Nomi di funzioni e variabili nel testo tra apici singoli: `` `fork()` ``.
 - Tabelle solo per confronti con almeno due colonne di dati.
 
@@ -113,7 +112,7 @@ Fuori dai callout ogni immagine usa uno di questi layout. Quale usare lo dice il
 | `![[x.png]] // sotto: testo //` | con scritta sotto |
 | `![[x.png]] // lato: testo //` | con testo a lato. Con `// lato //` senza testo, a lato va il paragrafo che segue |
 
-Se l'immagine non ha un segnaposto, prima di scrivere l'HTML chiedi all'utente quale layout usare con il tool `question`, una domanda per ogni immagine, nell'ordine in cui compaiono:
+Se l'immagine non ha un segnaposto — o se la stai inserendo tu con `pdftoppm` — chiedi quale layout usare con il tool `question`, una domanda per immagine, nell'ordine in cui compaiono. Nessuna domanda per le immagini dentro un callout e per le immagini già in un `<div>`: il loro layout è già deciso (vedi sotto).
 
 - ridimensionata a 300
 - adattata alla larghezza della pagina
@@ -122,10 +121,6 @@ Se l'immagine non ha un segnaposto, prima di scrivere l'HTML chiedi all'utente q
 - lasciala com'è
 
 Per "con scritta sotto" e "con testo a lato" il testo viene dall'OCR quando restituisce qualcosa di utile (`parse` con `extractImages: true` su un'immagine di `images/`, `tesseract` su una foto di slide). Se l'OCR non restituisce niente, chiedi all'utente di scrivere il testo nella stessa domanda; se non lo fa, ripiega su un ridimensionamento. Non inventare mai cosa mostra l'immagine.
-
-Fai la stessa domanda per una foto che fai tu con `pdftoppm`, prima di inserirla: il layout si sceglie allora, con le stesse opzioni.
-
-Nessuna domanda per le immagini dentro un callout e per le immagini già in un `<div>`: il loro layout è già deciso (vedi sotto).
 
 Ridimensionata:
 
@@ -167,7 +162,7 @@ Con testo a lato:
 
 Dentro un `<div>` il Markdown non funziona: corsivo con `<i>`, grassetto con `<b>`, niente `$...$`. Se il testo a lato ha formule, usa il layout ridimensionato e metti il testo sotto, fuori dal div.
 
-Dentro un callout l'immagine resta `![[x.png|300]]`. Le immagini già in un `<div>` non si toccano.
+Dentro un callout l'immagine resta `![[x.png|300]]`.
 
 ## Segnaposto dell'utente
 

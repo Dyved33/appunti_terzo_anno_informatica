@@ -27,7 +27,7 @@ Lavori sulle note delle lezioni di questo vault. Le regole di stile sono in `.op
 - correggi gli errori confrontando con il materiale;
 - aggiungi ciò che manca rispetto al materiale: una definizione saltata, un passaggio, un esempio breve;
 - chiarisci le frasi che non si capiscono;
-- applica i layout alle immagini: per ogni immagine senza segnaposto chiedi all'utente quale layout usare (`.opencode/stile.md`, sezione "Immagini"), una domanda per ogni immagine; poi crea i wikilink verso le altre lezioni del corso.
+- applica i layout alle immagini: per ogni immagine senza segnaposto, anche una foto che fai con `pdftoppm`, chiedi all'utente quale layout usare (`.opencode/stile.md`, sezione "Immagini"), una domanda per immagine e nessuna se il segnaposto c'è già; poi crea i wikilink verso le altre lezioni del corso.
 
 Il testo dell'utente che è corretto e chiaro resta com'è, parola per parola. Tutto ciò che c'era nella nota deve esserci ancora alla fine.
 
@@ -35,11 +35,11 @@ Il testo dell'utente che è corretto e chiaro resta com'è, parola per parola. T
 
 **C. La nota è vuota e c'è solo il materiale del docente.** Scrivi la nota da zero. Le slide sono elenchi di parole chiave: trasformale in frasi, senza scegliere cosa tenere. Ogni slide di contenuto va coperta per intero: definizioni, teoremi, algoritmi, tutti gli esempi, tutti i punti degli elenchi, numeri e casi particolari. Puoi saltare solo le slide di titolo, di indice e di chiusura. Non ricopiare il testo delle slide parola per parola e non aggiungere contorno: è la forma che cambia, non il contenuto.
 
-**D. L'utente chiede di asciugare o rivedere una nota.** Togli ciò che `.opencode/stile.md` elenca in "Cosa non scrivere", accorcia le frasi, e dove la stessa informazione è scritta identica due volte tieni la versione più completa. Non togliere mai un'informazione: definizioni, teoremi, dimostrazioni, formule, codice, immagini, esempi, elenchi, numeri, casi particolari, osservazioni del docente restano tutti. Non accorciare una spiegazione che serve a capire un passaggio difficile. L'obiettivo è togliere parole, non contenuti e non raggiungere una lunghezza. Se la nota è lunga lavora una sezione `##` (o `###`) alla volta.
+**D. L'utente chiede di asciugare o rivedere una nota.** Togli ciò che `.opencode/stile.md` elenca in "Cosa non scrivere" e le ripetizioni, accorcia le frasi. Non togliere mai informazioni: vale la regola 2 di `AGENTS.md`, e le spiegazioni che servono a capire un passaggio difficile restano. L'obiettivo è togliere parole, non contenuti, e non raggiungere una lunghezza. Se la nota è lunga lavora una sezione alla volta.
+
+**E. L'utente chiede di scrivere codice** (esercizio, soluzione, script). Il codice va nella risposta, in un blocco con l'etichetta del linguaggio, con il percorso `esercizi/` in cui salvarlo. Non creare né modificare file in `esercizi/`: sono dell'utente. Se il codice serve alla teoria di una lezione, nella nota resta solo il pezzo rilevante, con il wikilink al file.
 
 In tutti i casi: se un'informazione non è nel materiale puoi cercarla sul web, ma tienila breve e non citare la fonte. Se non sei sicuro di un contenuto, non inventare: lascia un `[!todo]`.
-
-Ogni immagine che inserisci nella nota, compresa una foto che fai con `pdftoppm`, prende il layout dalla domanda in `.opencode/stile.md` (sezione "Immagini") prima che tu la scriva: una domanda per ogni immagine, nessuna domanda se il segnaposto c'è già.
 
 Il tool `parse` (plugin opencode-parser) serve solo per leggere il testo dentro un'immagine di `images/`, con `extractImages: true` e `ocrLang: "ita"`. Non usarlo mai con `save` o `outputPath`, e non usarlo per PDF e slide: lì serve lo script, che legge una pagina alla volta.
 
@@ -61,6 +61,6 @@ Questi due passi si fanno una volta sola per nota: quando lo chiede un command (
 
 ## Limiti
 
-- Non creare, rinominare, spostare o cancellare file: la nota la crea l'utente, tu la riempi. Unica eccezione: l'indice.
-- Non modificare `.txt`, PDF, slide, immagini.
+- Non creare, rinominare, spostare o cancellare file: la nota la crea l'utente, tu la riempi. Unica eccezione: l'indice. Il codice è il caso E.
+- Non modificare `.txt`, PDF, slide, immagini e i file in `esercizi/`.
 - La data non va scritta nella nota. Se il nome del file non la contiene, segnalalo nel riepilogo.
