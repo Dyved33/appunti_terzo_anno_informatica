@@ -4,35 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "b53674d760498caf",
+        "id": "f259b3db2739f7ef",
         "type": "tabs",
         "children": [
           {
-            "id": "489c50d022fc7314",
+            "id": "3870cd1b8d1be509",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS"
-            }
-          },
-          {
-            "id": "4ca1cdf21e7d4c3b",
-            "type": "leaf",
-            "state": {
-              "type": "mindmap",
+              "type": "empty",
               "state": {},
-              "icon": "dot-network",
-              "title": "Mind Map of Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +96,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -173,7 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
+                "file": "Untitled.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -216,8 +200,19 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "489c50d022fc7314",
+  "active": "3870cd1b8d1be509",
   "lastOpenFiles": [
+    "Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "Introduzione IA/oggi.pdf",
+    "Introduzione IA/Unconfirmed 735252.crdownload",
+    "Architettura reti e internet/protocolli/Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
+    "Introduzione IA/images/Pasted image 20261007164115.png",
+    "Introduzione IA/images/Pasted image 20261007163920.png",
+    "Introduzione IA/images/Pasted image 20261007162652.png",
+    "Introduzione IA/images/Pasted image 20261007162205.png",
+    "Introduzione IA/Lezione 3-.md",
+    "Untitled.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
     "Architettura reti e internet/protocolli/00 Indice - Architettura reti.md",
     "Architettura reti e internet/protocolli/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
     "Architettura reti e internet/protocolli/Lezione 3-.md",

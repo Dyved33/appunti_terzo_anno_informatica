@@ -2,7 +2,7 @@
 
 ## L'agente intelligente e il suo ambiente
 
-*Definizione:* un **agente intelligente** è l'entità che interagisce con il mondo esterno (*environment*) attraverso due categorie di interfacce: i ==sensori==, con cui percepisce, e gli ==attuatori==, con cui agisce (es. Aspirapolvere Roomba, termostato intelligente, rilevatori di fumo, [[Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi#Sistemi basati su documenti e sistemi agentici|Agentic AI]] che eseguono autonomamente task multi-step)
+*Definizione:* un **agente intelligente** è l'entità che interagisce con il mondo esterno (*environment*) attraverso due categorie di interfacce: i ==sensori==, con cui percepisce, e gli ==attuatori==, con cui agisce (es. Aspirapolvere Roomba, termostato intelligente, rilevatori di fumo, Agentic AI che eseguono autonomamente task multi-step)
 
 **Sensori:** dispositivi che acquisiscono dati dall'ambiente e li forniscono all'agente sotto forma di **percezioni**: telecamere, microfoni, lettura di file, messaggi di rete, output di uno strumento.
 
@@ -235,13 +235,11 @@ La strategia è espandere **prima il nodo più profondo** (*expand a deepest nod
 
 - **Quali nodi espande:** un **prefisso sinistro** dell'albero (*some left prefix of the tree*); potrebbe arrivare a processare l'albero intero.
 - **Complessità temporale:** se $m$ è finita, impiega $O(b^m)$.
-- **Complessità spaziale:** la fringe contiene solo i fratelli lungo il cammino che porta alla radice, cioè al massimo $b$ nodi per ciascuno dei $m$ livelli, quindi $O(bm)$. Questo è il vantaggio rispetto a BFS: memoria contenuta anche su alberi enormi.
+- **Complessità spaziale:** la fringe contiene solo i fratelli lungo il cammino che porta alla radice, quindi $O(b^m) (1+b+b^{2}+\dots+b^{m})$. Questo è il vantaggio rispetto a BFS: memoria contenuta anche su alberi enormi.
 - **Completezza:** $m$ potrebbe essere infinita, quindi l'algoritmo è completo **solo se si impediscono i cicli**, gestendo gli stati già visitati (cfr. il ciclo $a \leftrightarrow b$).
 - **Ottimalità:** **no.** Trova la soluzione "più a sinistra", cioè la prima incontrata, **indipendentemente dalla profondità e dal costo**.
 
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261007162205.png" width="300">
-</div>
+![[Pasted image 20261007162205.png]]
 
 > [!warning] DFS non è completo in presenza di cicli
 > Su uno spazio di stati finito ma ciclico l'albero di ricerca è infinito, e il DFS può restare intrappolato nel ciclo senza mai raggiungere il goal. Senza il controllo degli stati già visitati non c'è garanzia di terminare con una soluzione.
@@ -256,9 +254,7 @@ La strategia è espandere **prima il nodo più superficiale** (*expand a shallow
 - **Completezza:** $s$ deve essere finita se esiste una soluzione, quindi **sì, è completo**.
 - **Ottimalità:** **solo se tutti i costi sono 1.** Con costi diversi trova la soluzione con meno *azioni*, non necessariamente quella più economica.
 
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261007162652.png" width="300">
-</div>
+![[Pasted image 20261007162652.png]]
 
 > [!example] La differenza tra "meno azioni" e "minore costo"
 > Nell'esempio *cost-sensitive* della lezione il BFS trova il cammino più corto **in termini di numero di azioni**, e la slide avverte che con costi diversi esso **non** trova il cammino di minor costo. Il controesempio minimo: un percorso di 2 azioni da 10 punti l'una costa 20, mentre un percorso di 3 azioni da 1 punto costa 3. Il BFS restituisce il primo, cioè il più economico in numero di passi ma il più caro in valore.
@@ -270,70 +266,34 @@ L'idea è ottenere il **vantaggio di spazio del DFS** (la fringe piccola) con il
 - Si esegue un DFS con **limite di profondità 1**: se non si trova una soluzione, si esegue un DFS con limite 2; poi con limite 3, e così via fino a trovare il goal.
 - **Obiezione:** non è uno spreco ridondante? In generale **no**, perché la maggior parte del lavoro di ciascun giro avviene al livello più profondo cercato, e quel livello non è mai stato esplorato prima. I livelli superiori vengono riesplorati, ma sono economici rispetto all'ultimo.
 
-### L'algoritmo: iterative deepening e depth-limited search
-
-Iterative deepening non è che una ripetizione di una ricerca *depth-limited*: a ogni giro chiama la stessa subroutine con un limite di profondità crescente.
-
-```Iterative_Deepening
-function ITERATIVE-DEEPENING-SEARCH(problem) returns a solution node or failure
-    for depth = 0 to ∞ do
-        result ← DEPTH-LIMITED-SEARCH(problem, depth)
-        if result ≠ cutoff then return result
-
-function DEPTH-LIMITED-SEARCH(problem, ℓ) returns a node or failure or cutoff
-    frontier ← a LIFO queue (stack) with NODE(problem.INITIAL) as an element
-    result ← failure
-    while not IS-EMPTY(frontier) do
-        node ← POP(frontier)
-        if problem.IS-GOAL(node.STATE) then return node
-        if DEPTH(node) > ℓ then
-            result ← cutoff
-        else if not IS-CYCLE(node) do
-            for each child in EXPAND(problem, node) do
-                add child to frontier
-    return result
-```
-
-*Osservazione:* `DEPTH-LIMITED-SEARCH` è la DFS a cui si è aggiunto un tetto sulla profondità: appena estrae un nodo più profondo di $\ell$ segnala `cutoff` invece di espanderlo, senza per questo aver esaurito la frontiera.
-
-> [!info] In altre parole:
-> `DEPTH-LIMITED-SEARCH` restituisce tre valori diversi: un **nodo soluzione** se trova il goal; **failure** se svuota la frontiera senza trovare nulla, cioè ha provato che a quella profondità non c'è soluzione; **cutoff** se ha solo toccato il tetto $\ell$, cioè la soluzione potrebbe essere più in basso. Iterative deepening ripete finché non riceve un nodo o un `failure`.
-
-*Osservazione:* è una *tree-like search*: non tiene traccia degli stati già raggiunti, per questo occupa poca memoria, ma corre il rischio di visitare più volte lo stesso stato su cammini diversi; e se il controllo `IS-CYCLE` non copre tutti i cicli, l'algoritmo può restare intrappolato in un loop.
-
-## Uniform Cost Search (UCS)
-
 <div style="text-align: center;">
   <img src="Pasted image 20261007163920.png" alt="Immagine" />
   <p>BFS finds the shortest path in terms of number of actions. It does not find the least-cost path. We will now cover a similar algorithm which does find the least-cost path.</p>
-</div>
+</div> 
+
+> [!note]
+> Gli algoritmi greedy non garantiscono l'ottimalità in quanto ad ogni passo si sceglie l'arco che costa di meno e questo può portare a percorsi molto lunghi ma non ottimizzati
+
+## Uniform Cost Search (UCS)
+
+Prima di UCS il problema è messo in evidenza: il BFS trova il percorso più corto **in termini di numero di azioni**, ma non il percorso a **minor costo**. UCS è l'algoritmo che trova invece il percorso economico.
 
 - **Strategia:** espandere **prima il nodo più economico** (*expand a cheapest node first*). 
 - **Fringe:** una **coda di priorità**, con priorità data dal **costo cumulato** del piano rappresentato da ciascun nodo.
 - **Quali nodi espande:** processa **tutti i nodi con costo inferiore a quello della soluzione più economica**. Nell'esempio le etichette di costo $1$, $2$, $3$ si dispongono a **contorni concentrici** (*cost contours*) attorno allo stato iniziale: l'algoritmo esplora espandendosi a cerchi di costo crescente.
 - **Profondità efficace:** se la soluzione ottima ha costo $C^*$ e ogni arco ha costo almeno $\varepsilon$, allora la profondità effettiva è circa $C^*/\varepsilon$. In altre parole, le "tiers" da esplorare sono $C^*/\varepsilon$ anziché $m$.
-- **Complessità temporale:** $O(b^{1+\lfloor C^*/\varepsilon\rfloor})$, **esponenziale nella profondità efficace**.
-- **Complessità spaziale:** la fringe contiene circa l'ultimo livello, quindi $O(b^{1+\lfloor C^*/\varepsilon\rfloor})$.
+- **Complessità temporale:** $O(b^{C^*/\varepsilon})$, **esponenziale nella profondità efficace**.
+- **Complessità spaziale:** la fringe contiene circa l'ultimo livello, quindi $O(b^{C^*/\varepsilon})$.
 - **Completezza:** **sì**, purché la soluzione migliore abbia costo finito e il costo minimo di un arco sia positivo.
 - **Ottimalità:** **sì**, è garantita (la dimostrazione si dà nella lezione successiva con $A^*$).
 
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261007164115.png" width="300">
-</div>
-
-> [!info] I passi di UCS:
-> 1. Gli archi a costo negativo non sono ammessi: il minimo si regge sul fatto che scendendo nell'albero il costo cumulato non può diminuire.
-> 2. Si parte dallo stato iniziale con una **coda di priorità** in cui la priorità di ogni nodo è il costo cumulato del piano che ci porta fin lì.
-> 3. A ogni passo si estrae il nodo a costo cumulato **più basso** e lo si espande: ogni figlio eredita il costo del padre più il costo dell'arco, e rientra in coda.
-> 4. L'estrazione procede quindi per contorni di costo crescente (*cost contours*): appena un nodo estratto supera il goal test, il suo piano è il più economico e l'algoritmo si ferma. Se la coda si svuota, non esiste percorso.
-> 5. Avendo estratto i nodi in ordine crescente di costo, alla fine UCS ha visto tutti i nodi raggiungibili (completo) e conosce il percorso di costo minore da nodo di partenza a nodo di arrivo (ottimale).
-
-> [!warning] Gli algoritmi greedy non sono ottimali:
-> Ad ogni passo scelgono l'arco che costa di meno in quel momento, e questo può portare a percorsi molto lunghi ma non ottimizzati.
+![[Pasted image 20261007164115.png]]
 
 > [!warning] I limiti di UCS
 > Il *good* è che UCS è completo e ottimale. Il *bad* è che **esplora opzioni in ogni direzione** e **non ha alcuna informazione sulla posizione del goal**: mancando un'informazione che guidi la ricerca, è costretto a espandere tutti i nodi più economici prima di arrivare alla soluzione, anche quando il goal è vicino. È il problema che $A^*$ risolverà con l'euristica.
 
+> [!note]
+> L'algoritmo UCS non ammette archi a costo negativo. Crea la coda di priorità ed espande in nodi in ordine crescente di costo cumulato. Alla fine avrà visto tutti i nodi (completo) e conoscerà il percorso di costo minore (ottimo) da nodo di partenza a nodo di arrivo
 ## Un'unica coda per tutti gli algoritmi (*The One Queue*)
 
 Tutti questi algoritmi sono **identici tranne che per la strategia sulla fringe**:
@@ -342,38 +302,26 @@ Tutti questi algoritmi sono **identici tranne che per la strategia sulla fringe*
 - **In pratica**, per DFS e BFS si può evitare il costo $\log(n)$ di una coda di priorità vera usando rispettivamente uno stack e una coda, perché l'ordine di estrazione è già determinato dalla struttura.
 - Si può persino scrivere **una sola implementazione** che accetti come parametro un oggetto coda variabile: cambia la struttura dati, cambia l'algoritmo.
 
-## Il confronto fra gli algoritmi di ricerca
+> [!info] La ricerca opera su modelli
+> La ricerca lavora sopra **modelli** del mondo: l'agente non prova davvero tutti i piani nel mondo reale, il *planning* avviene interamente "in simulazione". La qualità della ricerca è quindi limitata dalla qualità dei modelli che le si forniscono.
 
-La tabella riassume tutti gli algoritmi su uno stesso insieme di criteri. Simboli: $b$ è il fattore di ramificazione, $m$ la profondità massima dell'albero, $d$ la profondità della soluzione più superficiale (la $s$ usata in BFS, o $m$ se non c'è soluzione), $\ell$ il limite di profondità, $C^*$ il costo della soluzione ottima, $\varepsilon$ il costo minimo di un arco.
-
-| Criterio | Breadth-First | Uniform-Cost | Depth-First | Depth-Limited | Iterative Deepening | Bidirectional |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Completo? | Sì¹ | Sì² | No | No | Sì¹ | Sì⁴ |
-| Ottimale? | Sì³ | Sì | No | No | Sì³ | Sì⁴ |
-| Tempo | $O(b^d)$ | $O(b^{1+\lfloor C^*/\varepsilon\rfloor})$ | $O(b^m)$ | $O(b^\ell)$ | $O(b^d)$ | $O(b^{d/2})$ |
-| Spazio | $O(b^d)$ | $O(b^{1+\lfloor C^*/\varepsilon\rfloor})$ | $O(bm)$ | $O(b\ell)$ | $O(bd)$ | $O(b^{d/2})$ |
-
-Note a piè di pagina:
-
-1. completo se $b$ è finito e lo spazio degli stati o ammette una soluzione o è finito.
-2. completo se tutti i costi delle azioni sono $>\varepsilon > 0$.
-3. cost-ottimale se tutti i costi delle azioni sono identici.
-4. vale se entrambe le direzioni sono *breadth-first* o *uniform-cost*.
-
-*Osservazione:* **Depth-Limited** è la DFS con tetto di profondità $\ell$ (la subroutine `DEPTH-LIMITED-SEARCH` di iterative deepening): è incompleta e non ottimale da sola, serve come ciclo interno. **Iterative Deepening** la ripete con $\ell$ crescente e recupera completezza e ottimalità di BFS restando $O(bd)$ in spazio. **Bidirectional** parte contemporaneamente dallo stato iniziale e dal goal e i due fronti si incontrano a metà strada, per questo il tempo scende a $O(b^{d/2})$.
-
-## Questione della stima
-
-$f = g + h$, con $h$ l'euristica. La funzione $f$ quindi dipende da:
-
-- dal problema
-- da una buona stima (possono esistere diverse euristiche)
-- dal costo: deve essere poco costosa da calcolare
+# Questione della stima
+$f = g + h$ con h è l'euristica
+Funzione quindi dipende da:
+- Dipende dal problema
+- Buona stima (possono esistere diverse euristiche)
+- Poco costosa
 
 > [!info] Sintesi:
-> - L'agente percepisce con i sensori e agisce con gli attuatori; è razionale se massimizza il valore atteso della misura di prestazione $U$, e l'ambiente si giudica per osservabilità, determinismo, granularità e ostilità.
-> - Lo stato si rappresenta in modo atomico, fattorizzato o strutturato; il problema di ricerca è la quadrupla $(S, f, S_0, \text{goal test})$ e il goal test si verifica solo sullo stato finale del piano.
-> - World state e search state si distinguono per astrazione (Pac-Man: $120 \times 2^{30} \approx 1.29 \times 10^{11}$ contro 120 stati); è l'esplosione combinatoria degli stati il vero collo di bottiglia.
-> - Nel grafo ogni stato compare una volta sola, nell'albero ogni nodo è un intero cammino e gli stessi stati si ripetono: i cicli rendono l'albero infinito, per questo la ricerca tiene una *fringe* e sceglie quale nodo espandere per primo.
-> - DFS espande il nodo più profondo (LIFO, $O(b^m)$ in tempo e $O(bm)$ in spazio, completo solo senza cicli, mai ottimale), BFS il più superficiale (FIFO, $O(b^d)$, ottimale solo con costi unitari); iterative deepening ripete DFS con limiti crescenti per unire spazio di DFS e tempo di BFS.
-> - UCS espande il nodo a costo cumulato minimo con coda di priorità: completo e ottimale, $O(b^{1+\lfloor C^*/\varepsilon\rfloor})$, ma esplora in ogni direzione senza sapere dove sia il goal; la tabella di confronto legge completezza, ottimalità, tempo e spazio di tutti gli algoritmi.
+> - L'agente interagisce con l'ambiente attraverso sensori (percezioni) e attuatori (azioni); il ciclo percezione-decisione-azione è continuo e ricorsivo.
+> - L'ambiente si classifica per osservabilità, determinismo, granularità e ostilità; l'agente razionale massimizza il valore atteso della misura di prestazione $U$ scelta dal progettista.
+> - Lo stato si rappresenta in modo atomico, fattorizzato o strutturato; la scelta del formalismo decide l'efficienza della ricerca.
+> - Un problema di ricerca è la quadrupla $(S, f, S_0, \text{goal test})$, e la sua soluzione è il piano di azioni che porta da $S_0$ a uno stato che supera il goal test; il goal test si verifica solo sullo stato finale del piano.
+> - World state e search state si distinguono per astrazione: nel Pac-Man si passa da 120 a $120 \times 2^{30} \approx 1.29 \times 10^{11}$ stati, ed è la dimensione dello spazio degli stati il vero collo di bottiglia.
+> - Nel grafo ogni stato compare una volta sola, nell'albero un nodo è un intero percorso e gli stessi stati si ripetono: i cicli rendono l'albero infinito.
+> - Il *tree search* mantiene una *fringe* e la domanda che distingue ogni algoritmo è quale nodo della frontiera espandere per primo.
+> - Gli algoritmi si giudicano su quattro proprietà: quali nodi espandono, complessità temporale e spaziale, completezza e ottimalità; tempo e spazio si esprimono in $O(b^m)$ con $b$ fattore di ramificazione e $m$ profondità massima.
+> - DFS espande il nodo più profondo con fringe LIFO: $O(b^m)$ in tempo e spazio, completo solo senza cicli, mai ottimale. BFS espande il più superficiale con fringe FIFO: $O(b^s)$, completo, ottimale solo con costi unitari.
+> - Iterative Deepening ripete il DFS con limiti di profondità crescenti per unire il vantaggio di spazio del DFS a quello di tempo del BFS.
+> - UCS espande il nodo a costo cumulato minimo con coda di priorità: completo e ottimale, con profondità efficace $C^*/\varepsilon$, ma esplora in ogni direzione e ignora dove sia il goal.
+> - Tutti questi algoritmi sono lo stesso a parte la fringe: ogni fringe è concettualmente una coda di priorità e una sola implementazione parametrizzata cambia algoritmo.
