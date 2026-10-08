@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f259b3db2739f7ef",
+        "id": "221ece27f164cace",
         "type": "tabs",
         "children": [
           {
-            "id": "3870cd1b8d1be509",
+            "id": "5b55b95d6f2febab",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -79,8 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 432.5,
-    "collapsed": true
+    "width": 259.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -200,9 +199,10 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "3870cd1b8d1be509",
+  "active": "be179a439a2a1fa6",
   "lastOpenFiles": [
     "Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
     "Introduzione IA/oggi.pdf",
     "Introduzione IA/Unconfirmed 735252.crdownload",
     "Architettura reti e internet/protocolli/Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",

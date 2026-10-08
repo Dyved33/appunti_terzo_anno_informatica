@@ -1,0 +1,5 @@
+.opencode/originals/
+.obsidian/
+.trash/
+__pycache__/
+*.pyc

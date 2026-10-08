@@ -16,7 +16,8 @@ import sys
 
 CALLOUT_AMMESSI = {"example", "info", "important", "warning", "tip", "todo"}
 ESTENSIONI_IMG = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".bmp"}
-CARTELLE_ESCLUSE = {".git", ".obsidian", ".opencode", ".trash", "node_modules", "images", "esercizi"}
+CARTELLE_ESCLUSE = {".git", ".obsidian", ".opencode", ".trash", "node_modules", "images", "esercizi", "rollback"}
+PREFISSI_ESCLUSI = (".opencode-backup",)
 FILE_ESCLUSI = {"AGENTS.md", "Guida_Opencode.md", "Opencode_Guide.md", "prompt_chat.md", "README.md", "LEGGIMI.md"}
 PARAGRAFO_LUNGO = 150  # parole
 
@@ -52,11 +53,15 @@ def trova_radice():
         d = su
 
 
+def cartella_esclusa(nome, escluse):
+    return nome in escluse or nome.startswith(PREFISSI_ESCLUSI)
+
+
 def scansiona(radice):
     """Tutti i file del vault: basename minuscolo -> lista di percorsi."""
     per_nome = {}
     for base, dirs, files in os.walk(radice):
-        dirs[:] = [d for d in dirs if d not in {".git", ".obsidian", ".trash", "node_modules"}]
+        dirs[:] = [d for d in dirs if not cartella_esclusa(d, {".git", ".obsidian", ".trash", "node_modules", "rollback"})]
         for f in files:
             per_nome.setdefault(f.lower(), []).append(os.path.join(base, f))
     return per_nome
@@ -73,7 +78,7 @@ def note_da_controllare(percorsi):
             print(f"ERROR {p}: percorso inesistente")
             continue
         for base, dirs, files in os.walk(p):
-            dirs[:] = sorted(d for d in dirs if d not in CARTELLE_ESCLUSE)
+            dirs[:] = sorted(d for d in dirs if not cartella_esclusa(d, CARTELLE_ESCLUSE))
             for f in sorted(files):
                 if f.lower().endswith(".md") and f not in FILE_ESCLUSI:
                     out.append(os.path.join(base, f))
