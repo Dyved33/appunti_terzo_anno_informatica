@@ -2,15 +2,41 @@
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "appunti",
   "instructions": [".opencode/stile.md"],
+  "small_model": "opencode/minimax-m2.5-free",
+  "lsp": false,
+  "formatter": false,
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "tail_turns": 10
+  },
+  "watcher": {
+    "ignore": [
+      "**/*.png",
+      "**/*.jpg",
+      "**/*.jpeg",
+      "**/*.gif",
+      "**/*.webp",
+      "**/*.pdf",
+      "**/*.ppt",
+      "**/*.pptx",
+      ".git/**",
+      "**/node_modules/**"
+    ]
+  },
   "permission": {
     "external_directory": {
       "*": "deny"
     },
+    "doom_loop": "ask",
     "edit": {
       "*": "deny",
       "*.md": "allow",
       "*/esercizi/*": "deny",
       "AGENTS.md": "deny",
+      "prompt/Guida_Opencode.md": "deny",
+      "prompt/prompt_chat.md": "deny",
+      "opencode.json": "deny",
       ".opencode/*": "deny"
     },
     "read": {

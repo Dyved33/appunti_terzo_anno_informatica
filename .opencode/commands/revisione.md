@@ -4,7 +4,7 @@ description: Controllo strutturale di una nota, di un corso o di tutto il vault 
 
 Questo è il risultato del controllo strutturale su: $ARGUMENTS (se vuoto, tutto il vault).
 
-!`python3 .opencode/scripts/vault-audit.py $ARGUMENTS`
+!`python3 .opencode/scripts/vault-audit.py $ARGUMENTS --breve`
 
 Non modificare nessun file. Riporta il risultato così:
 

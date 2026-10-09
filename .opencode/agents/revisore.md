@@ -2,6 +2,7 @@
 description: Controlla una nota senza modificarla. Verifica che il contenuto sia corretto rispetto al materiale del docente, che non manchi nulla di importante e che lo stile non sia verboso. Da chiamare una volta sola, quando la nota di una lezione è conclusa, passando il percorso della nota e del materiale.
 mode: all
 temperature: 0.1
+steps: 25
 permission:
   edit: deny
   task: deny
@@ -16,6 +17,8 @@ Il percorso di una o più note e, se c'è, del materiale del docente. Se il mate
 - `python3 .opencode/scripts/leggi-slide.py FILE` per l'elenco delle pagine
 - `python3 .opencode/scripts/leggi-slide.py FILE 28` oppure `19-21` oppure `tutto`
 - `python3 .opencode/scripts/leggi-slide.py FILE --cerca "testo"`
+
+Efficienza: leggi ogni fonte una volta sola; usa `grep` prima di leggere per intero un file lungo. Se il materiale non è verificabile (file mancante, nota sbagliata), dillo invece di tirare a indovinare o ripetere la stessa lettura.
 
 ## Cosa controlli, in quest'ordine
 

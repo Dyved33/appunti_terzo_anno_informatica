@@ -112,7 +112,7 @@ Fuori dai callout ogni immagine usa uno di questi layout. Quale usare lo dice il
 | `![[x.png]] // sotto: testo //` | con scritta sotto |
 | `![[x.png]] // lato: testo //` | con testo a lato. Con `// lato //` senza testo, a lato va il paragrafo che segue |
 
-Se l'immagine non ha un segnaposto — o se la stai inserendo tu con `pdftoppm` — chiedi quale layout usare con il tool `question`, una domanda per immagine, nell'ordine in cui compaiono. Nessuna domanda per le immagini dentro un callout e per le immagini già in un `<div>`: il loro layout è già deciso (vedi sotto).
+Se l'immagine non ha un segnaposto — o se la stai inserendo tu con `pdftoppm` — chiedi quale layout usare con il tool `question`: una sola domanda che elenca tutte le immagini, nell'ordine in cui compaiono, ciascuna con le scelte di layout. Nessuna domanda per le immagini dentro un callout e per le immagini già in un `<div>`: il loro layout è già deciso (vedi sotto).
 
 - ridimensionata a 300
 - adattata alla larghezza della pagina

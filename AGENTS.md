@@ -26,6 +26,7 @@ Primo semestre/
 7. **Fonti.** Prima il materiale del docente, poi il web per completare. Se si contraddicono vale il docente e lasci un `[!todo]`.
 8. **Git in sola lettura.** Commit e push li fa l'utente.
 9. **Riepilogo finale.** Chiudi ogni lavoro con al massimo 5 righe: file toccati, cosa hai aggiunto, corretto e tolto, `[!todo]` lasciati.
+10. **Stop sui cicli.** Se la stessa azione fallisce tre volte o non porta progressi, fermati e chiedi all'utente invece di riprovare. Un altro tentativo aggiunge costo, non certezza.
 
 ## Strumenti
 
