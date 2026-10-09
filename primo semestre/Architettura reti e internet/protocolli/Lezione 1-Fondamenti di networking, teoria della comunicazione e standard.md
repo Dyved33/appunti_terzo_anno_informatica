@@ -25,9 +25,9 @@ Un processo comunicativo si realizza unicamente in presenza di tre elementi cost
 3. **Destinatario (*Destination / Ricevitore*):** il dispositivo a cui è destinato il flusso informativo e che acquisisce il segnale (es. server, workstation, attuatore).
 
 ```
-	          Mezzo Trasmissivo (Canale Fisico)          
-│ Sorgente ├─────────────────────────────────────►│ Destinatario │
-                                                 
+┌──────────┐   Mezzo Trasmissivo (Canale Fisico)   ┌──────────────┐
+│ Sorgente ├──────────────────────────────────────►│ Destinatario │
+└──────────┘                                       └──────────────┘
 ```
 
 ### La definizione di comunicazione dati e il sistema di comunicazione
@@ -46,7 +46,7 @@ Affinché la comunicazione abbia luogo con successo, i singoli apparati devono i
 > * **Comunicazione:** Dal latino *cum* ("con", "insieme") e *munire* ("legare", "costruire"), e dal verbo *communico* ("mettere in comune", "rendere partecipe"). Indica il processo e l'insieme delle modalità attraverso cui un'informazione viene trasmessa da un soggetto a un altro (o da un luogo a un altro) tramite lo scambio di un messaggio codificato in accordo con un codice formale prestabilito.
 
 ### Il modello di Shannon-Weaver (1949)
-Formulato originariamente da Claude Shannon e Warren Weaver nei Bell Laboratories, il modello descrive la trasmissione dell'informazione attraverso **7 elementi fondamentali**:
+Formulato originariamente da Claude Shannon dei Bell Laboratories e da Warren Weaver nel 1949, il modello descrive la trasmissione dell'informazione attraverso **7 elementi fondamentali**:
 
 1. **Fonte / Sorgente (*Information Source*):** l'entità che concepisce e genera il messaggio originario.
 2. **Codifica (*Encoding / Trasmettitore*):** l'operazione che converte il messaggio logico in segnali fisici (elettrici, ottici o radio) trasmissibili attraverso il canale.
@@ -67,21 +67,21 @@ Formulato originariamente da Claude Shannon e Warren Weaver nei Bell Laboratorie
 
 **Banda base e banda larga.** In banda base il segnale digitale modula direttamente il canale e il suo spettro comprende le frequenze da zero in su: il mezzo trasmette un solo segnale per volta e serve la linea come conduttore unico, quindi il costo resta basso ma la capacità è limitata dalla banda del mezzo. In banda larga il segnale digitale modula una **portante analogica** sinusoidale e può essere collocato in una banda di frequenze anche lontana da zero: lo stesso mezzo può allora trasportare più canali contemporaneamente, ciascuno nella propria banda, ed è questa la base delle trasmissioni modulate su radio, televisione e telefonia e delle reti via cavo e in fibra ottica.
 
-**! Il teorema di Nyquist-Shannon.** La velocità di trasmissione è limitata da due fattori indipendenti: il **teorema di Nyquist** fissa il massimo numero di simboli trasmissibili al secondo in una banda di larghezza $B$, e con $M$ livelli di ampiezza la velocità è $2B \log_2 M$; il **teorema di Shannon** fissa il limite dovuto al rumore, $C = B \log_2 (1 + S/N)$ con $S/N$ il rapporto segnale/rumore, in bit al secondo.
+**Il teorema di Nyquist-Shannon.** La velocità di trasmissione è limitata da due fattori indipendenti: il **teorema di Nyquist** fissa il massimo numero di simboli trasmissibili al secondo in una banda di larghezza $B$, e con $M$ livelli di ampiezza la velocità è $2B \log_2 M$; il **teorema di Shannon** fissa il limite dovuto al rumore, $C = B \log_2 (1 + S/N)$ con $S/N$ il rapporto segnale/rumore, in bit al secondo.
 
-**! Campionamento e quantizzazione.** Per trasformare un segnale analogico in numeri si campiona il segnale a una frequenza almeno doppia della sua frequenza massima (criterio di Nyquist), si quantizza ogni campione in uno dei $2^b$ livelli di un quantizzatore a $b$ bit e infine si codificano i livelli in bit. La quantizzazione introduce un errore tanto più piccolo quanti più bit si usano, a fronte di una velocità in bit proporzionale a $b$.
+**Campionamento e quantizzazione.** Per trasformare un segnale analogico in numeri si campiona il segnale a una frequenza almeno doppia della sua frequenza massima (criterio di Nyquist), si quantizza ogni campione in uno dei $2^b$ livelli di un quantizzatore a $b$ bit e infine si codificano i livelli in bit. La quantizzazione introduce un errore tanto più piccolo quanti più bit si usano, a fronte di una velocità in bit proporzionale a $b$.
 
-**! Multiplexing.** Su un singolo mezzo ad alta capacità si trasmettono più comunicazioni indipendenti dividendone la capacità:
+**Multiplexing.** Su un singolo mezzo ad alta capacità si trasmettono più comunicazioni indipendenti dividendone la capacità:
 
-- **FDM** (*frequency division multiplexing*) divide la banda in sottoscansioni, una per canale, ciascuna con la propria portante e la propria guardia;
+- **FDM** (*frequency division multiplexing*) divide la banda in sottobande, una per canale, ciascuna con la propria portante e la propria guardia;
 - **TDM** (*time division multiplexing*) divide il tempo in slot, assegnando un slot a ogni canale in modo ciclico;
-- **WDM** (*wavelength division multiplexing*) è un FDM delle fibre ottiche, dove le sottoscansioni sono diverse lunghezze d'onda, separate con filtri ottici;
+- **WDM** (*wavelength division multiplexing*) è un FDM delle fibre ottiche, dove le sottobande sono diverse lunghezze d'onda, separate con filtri ottici;
 - **CDM** (*code division multiplexing*) assegna a ogni canale una sequenza di codice e i segnali viaggiano contemporaneamente, separati al ricevitore tramite correlazione.
 
 > [!warning] Perché il multiplexing
-> Senza multiplexing ogni terminale dovrebbe avere un collegamento fisico dedicato con ogni altro terminale: servirebbero $n(n-1)$ circuiti su $n$ nodi. Il multiplexing trasforma invece un unico canale ad alta velocità in molti canali logici indipendenti, ed è la ragione per cui una reteocale con una sola fibra può servire migliaia di utenti.
+> Senza multiplexing ogni terminale dovrebbe avere un collegamento fisico dedicato con ogni altro terminale: servirebbero $n(n-1)/2$ circuiti su $n$ nodi. Il multiplexing trasforma invece un unico canale ad alta velocità in molti canali logici indipendenti, ed è la ragione per cui una rete locale con una sola fibra può servire migliaia di utenti.
 
-## ! La commutazione
+## La commutazione
 
 Il **commutatore** (*switch*, livello 2) e l'**instradatore** (*router*, livello 3) sono i due apparati che instradano il traffico, e la scelta fra hub, switch e router è una scelta di livello:
 
@@ -90,7 +90,7 @@ Il **commutatore** (*switch*, livello 2) e l'**instradatore** (*router*, livello
 | **Hub** | 1 | nulla | ripete il segnale su tutte le porte; ogni host vede tutto il traffico e nascono collisioni |
 | **Bridge e switch** | 2 | indirizzo MAC | inoltra il frame solo sulla porta della destinazione, mantenendo una tabella di inoltro appresa dal traffico |
 | **Router** | 3 | indirizzo IP | inoltra il pacchetto fra reti diverse scegliendo il percorso e segmentando il dominio di collisione |
-| **Gateway** | 3+ | regole applicative | traduce fra protocoli o applicazioni diversi |
+| **Gateway** | 3+ | regole applicative | traduce fra protocolli o applicazioni diversi |
 
 Lo **switching** può essere *store-and-forward*, che memorizza l'intero frame prima di inoltrarlo e ne verifica il CRC, oppure *cut-through*, che inoltra appena legge l'indirizzo di destinazione, con latenza minore ma senza protezione contro i frame corrotti.
 
@@ -131,7 +131,7 @@ La piramide articola la conoscenza in quattro stadi ascendenti:
 ## I protocolli di rete e gli standard internazionali
 
 ### Il concetto di protocollo
-==Un **protocollo di rete** è un insieme formale di regole, formati e convenzioni condivise che stabiliscono le modalità con cui due o più entità devono comunicare.==
+<u>Un **protocollo di rete** è un insieme formale di regole, formati e convenzioni condivise che stabiliscono le modalità con cui due o più entità devono comunicare.</u>
 
 Un protocollo specifica in modo deterministico:
 - **Cosa si scambia (Sintassi e Semantica):**
@@ -159,7 +159,6 @@ I principali organismi internazionali responsabili della definizione degli stand
 <div style="display: flex; justify-content: center;">
   <img src="standard_organizations.png" width="500">
 </div>
-**!**
 - **IEEE-SA (*Institute of Electrical and Electronics Engineers - Standards Association*):**
   - Organizzazione leader nella standardizzazione dei livelli fisici e di accesso al mezzo (sottolivelli PHY e MAC).
   - Responsabile della celebre famiglia di standard **IEEE 802** (es. **IEEE 802.3** per Ethernet cablata, **IEEE 802.11** per il Wi-Fi, **IEEE 802.15** per WPAN/Bluetooth/Zigbee).
@@ -184,7 +183,7 @@ I moderni sistemi di telecomunicazione adottano un'**architettura modulare a liv
 - **Incapsulamento:** ogni livello riceve dati dal livello superiore, aggiunge la propria informazione di controllo sotto forma di intestazione (*header*) o coda (*trailer*), generando la specifica unità di dati di protocollo.
 - **Interoperabilità e Flessibilità:** la modifica interna di un protocollo ad un determinato livello non impatta i livelli adiacenti, purché le interfacce di comunicazione rimangano inalterate.
 
-### ! La struttura dei livelli: host e apparati intermedi
+### La struttura dei livelli: host e apparati intermedi
 I livelli architetturali si dividono in due macro-categorie funzionali:
 
 1. **Host Layers (Livelli Host / End-to-End / Software):**
@@ -195,7 +194,7 @@ I livelli architetturali si dividono in due macro-categorie funzionali:
    - Governano il trasferimento effettivo delle informazioni attraverso i canali trasmissivi e gli apparati intermedi di rete (router, switch).
    - Risolvono l'indirizzamento logico, l'instradamento (*routing*), l'indirizzamento fisico (*MAC*), l'accesso al mezzo e la modulazione/trasmissione dei segnali.
 
-### ! La PDU di ogni livello
+### La PDU di ogni livello
 Ciascun livello elabora e scambia una propria specifica unità di dati denominata **PDU (*Protocol Data Unit*)**:
 
 | Livello OSI | Livello Funzionale | PDU (Data Unit) | Descrizione della PDU |
@@ -213,7 +212,7 @@ Ciascun livello elabora e scambia una propria specifica unità di dati denominat
 <div style="display: flex; justify-content: center;">
   <img src="iso_osi_vs_tcp_ip.png" width="450">
 </div>
-**!**
+
 **Il livello fisico:**
 - **Funzione:** Trasmissione di bit grezzi non strutturati lungo il canale di comunicazione.
 - **Competenze:** Specifiche elettriche, ottiche, meccaniche e funzionali; livelli di tensione; durata dei bit; modulazione e codifica del segnale; connettori e cavi fisici.
@@ -262,7 +261,7 @@ Ciascun livello elabora e scambia una propria specifica unità di dati denominat
 > *"Network layer protocols forward encapsulated Transport Layer PDUs between hosts"*
 > I protocolli del livello di trasporto (e dei livelli superiori) operano esclusivamente da estremo a estremo (**End-to-End**) tra i due host terminali. I protocolli del livello di rete inoltrano i pacchetti che incapsulano le PDU di trasporto attraversando la nuvola di rete mediante apparati intermedi di instradamento (**Hop-by-Hop**).
 
-### ! Il confronto fra nodi terminali e nodi intermedi
+### Il confronto fra nodi terminali e nodi intermedi
 1. **End Systems (Hosts Terminali - Sorgente e Destinazione):**
    - Implementano lo **stack completo a 7 livelli** (o tutti i 4 livelli TCP/IP).
    - Sul nodo sorgente, il messaggio applicativo discende l'intero stack subendo il processo di **incapsulamento progressivo** fino al livello fisico.

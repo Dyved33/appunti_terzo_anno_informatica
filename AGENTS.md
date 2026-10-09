@@ -7,8 +7,8 @@ Vault Obsidian di appunti universitari. Una nota = una lezione.
 ```
 Primo semestre/
   <Corso>/                     un corso (o <Corso>/<Modulo>/ se il corso ha più moduli)
-    00 Indice - <Corso>.md     indice: una riga per lezione, con data e titolo
-    AAAA-MM-GG Titolo.md       una nota per lezione, creata dall'utente
+    00 Indice - <Corso>.md     indice: una riga per lezione, con titolo
+    Titolo.md                  una nota per lezione, creata dall'utente
     *.txt                      appunti grezzi, uno per lezione (input)
     *.pdf, *.ppt, *.pptx       materiale del docente (input)
     images/                    immagini delle note (input)
@@ -22,7 +22,7 @@ Primo semestre/
 3. **Il testo dell'utente comanda.** In una nota esistente modifica solo ciò che è sbagliato, poco chiaro, mancante o indicato da un segnaposto. Non riscrivere ciò che funziona.
 4. **Non creare file.** Le note delle lezioni le crea l'utente, tu le riempi: né note né codice. Unica eccezione l'indice del corso, se manca, e le foto delle slide che l'utente ha chiesto (tabella Strumenti). Se ti chiedono di scrivere un esercizio, il codice va nella risposta, in un blocco con l'etichetta del linguaggio, con il percorso `esercizi/` in cui salvarlo: tu non aprire quei file in scrittura.
 5. **Gli input non si toccano.** Mai modificare, rinominare, spostare o cancellare `.txt`, PDF, slide, immagini e i file in `esercizi/`.
-6. **Niente frontmatter e niente tag.** La data sta solo nel nome del file.
+6. **Niente frontmatter e niente tag.**
 7. **Fonti.** Prima il materiale del docente, poi il web per completare. Se si contraddicono vale il docente e lasci un `[!todo]`.
 8. **Git in sola lettura.** Commit e push li fa l'utente.
 9. **Riepilogo finale.** Chiudi ogni lavoro con al massimo 5 righe: file toccati, cosa hai aggiunto, corretto e tolto, `[!todo]` lasciati.

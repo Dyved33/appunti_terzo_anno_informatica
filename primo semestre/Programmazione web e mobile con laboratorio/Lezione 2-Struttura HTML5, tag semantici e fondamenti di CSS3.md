@@ -2,7 +2,7 @@
 
 ## Lo standard HTML5
 
-**HTML5** è la quinta revisione del linguaggio standard per la strutturazione dei documenti sul Web, standardizzata inizialmente dal **W3C** (*world wide web consortium*) e oggi mantenuta come *HTML Living Standard* dal **WHATWG** (*web hypertext application technology working group*), che ha rilevato l'attività del W3C nel 2019. Le innovazioni cardine sono:
+**HTML5** è la quinta revisione del linguaggio standard per la strutturazione dei documenti sul Web, nata nel **WHATWG** (*web hypertext application technology working group*) e poi adottata dal **W3C** (*world wide web consortium*); oggi è mantenuta come *HTML Living Standard* dal WHATWG, che dal 2019 ha ripreso in carico l'attività di standardizzazione. Le innovazioni cardine sono:
 
 - **Tag semantici avanzati:** elementi specifici per descrivere la struttura del documento in modo significativo per macchine e motori di ricerca.
 - **Supporto multimediale nativo:** integrazione diretta di audio e video tramite i tag `<audio>` e `<video>`, senza plugin proprietari esterni come Flash o Silverlight.
@@ -12,11 +12,11 @@
 
 Gli elementi HTML si classificano in base al loro comportamento sintattico e al loro posizionamento nel flusso del documento.
 
-**Tag contenitori** (*container*, *paired tags*): racchiudono contenuto testuale o altri elementi annidati e richiedono obbligatoriamente sia il tag di apertura sia quello di chiusura, `<tag>...</tag>`.
+**Tag contenitori** (*container*, *paired tags*): racchiudono contenuto testuale o altri elementi annidati e richiedono di norma sia il tag di apertura sia quello di chiusura, `<tag>...</tag>` (per alcuni elementi, come `<p>`, il tag di chiusura può però essere omesso).
 
 - `<div>`: contenitore generico a livello di blocco, privo di valore semantico proprio.
 - `<p>`: paragrafo destinato esclusivamente a blocchi di testo.
-- `<section>`: sezione tematica e logica di una pagina web, solitamente correlata da un'intestazione (`<h1>`-`<h6>`), contenuti dedicati ed elementi di separazione.
+- `<section>`: sezione tematica e logica di una pagina web, solitamente corredata da un'intestazione (`<h1>`-`<h6>`), contenuti dedicati ed elementi di separazione.
 
 > [!info] Semantica e indicizzazione SEO:
 > Sebbene a livello visivo elementi come `<div>`, `<p>` e `<section>` possano apparire simili o assolvere funzioni visive analoghe, la differenza essenziale risiede nel loro **significato semantico**. Crawler e motori di ricerca, incluso Google, analizzano minuziosamente la struttura semantica: una marcatura scorretta o priva di gerarchia logica può penalizzare l'accessibilità e compromettere l'indicizzazione o la corretta resa della pagina.
@@ -32,7 +32,7 @@ Gli elementi HTML si classificano in base al loro comportamento sintattico e al 
 - `<input>`: elemento impiegato all'interno dei moduli di acquisizione (*form*) in cui l'utente digita o seleziona dati.
 - `<hr>`: linea orizzontale di separazione tematica (*horizontal rule*).
 
-**Tag di blocco** (*block-level elements*): occupano l'intera larghezza orizzontale disponibile nel contenitore genitore e generano automaticamente un'interruzione di riga prima e dopo l'elemento; possono contenere elementi inline e altri elementi di blocco. Esempi: `<div>`, titoli `<h1>`-`<h6>`, `<p>`, `<section>`.
+**Tag di blocco** (*block-level elements*): occupano l'intera larghezza orizzontale disponibile nel contenitore genitore e generano automaticamente un'interruzione di riga prima e dopo l'elemento; possono contenere elementi inline e altri elementi di blocco, con le eccezioni del content model (per esempio `<p>` non può contenere elementi di blocco). Esempi: `<div>`, titoli `<h1>`-`<h6>`, `<p>`, `<section>`.
 
 **Tag di linea** (*inline elements*): non generano un ritorno a capo e occupano unicamente lo spazio orizzontale strettamente indispensabile al loro contenuto.
 
@@ -117,7 +117,7 @@ selettore {
 }
 ```
 
-Il **selettore** individua i nodi del DOM a cui applicare le direttive, per esempio `h1` seleziona tutti i titoli di primo livello della pagina. Il **blocco di dichiarazione**, racchiuso tra parentesi graffe `{ ... }`, contiene una sequenza di coppie `proprietà: valore;` tassativamente terminate dal punto e virgola.
+Il **selettore** individua i nodi del DOM a cui applicare le direttive, per esempio `h1` seleziona tutti i titoli di primo livello della pagina. Il **blocco di dichiarazione**, racchiuso tra parentesi graffe `{ ... }`, contiene una sequenza di coppie `proprietà: valore;` terminate dal punto e virgola (facoltativo sull'ultima dichiarazione del blocco).
 
 ### Colori
 
@@ -125,7 +125,7 @@ La proprietà `color` determina il colore del testo di un elemento e supporta mo
 
 ### Tipografia
 
-- `font-family`: specifica la famiglia di caratteri da applicare. Le macro-famiglie generiche sono `serif` (font con grazie o terminali sui tratti), `sans-serif` (font lineari privi di grazie) e `monospace` (font a spaziatura fissa, in cui ogni carattere occupa la medesima larghezza).
+- `font-family`: specifica la famiglia di caratteri da applicare. Le macro-famiglie generiche sono `serif` (font con grazie o terminali sui tratti), `sans-serif` (font lineari privi di grazie), `monospace` (font a spaziatura fissa, in cui ogni carattere occupa la medesima larghezza), `cursive` (font corsivi, con tratti simili alla scrittura a mano) e `fantasy` (font decorativi).
 - `font-style`: stile del testo (`normal`, `italic`, `oblique`).
 - `font-size`: dimensione del carattere, espressa in `px`, `em`, `%`, `rem`.
 - `font-weight`: spessore del tratto, con valori numerici da `100` a `900` a passi di 100 oppure keyword come `normal` e `bold`.

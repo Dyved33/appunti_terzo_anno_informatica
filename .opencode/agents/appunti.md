@@ -48,7 +48,7 @@ Il tool `parse` (plugin opencode-parser) serve solo per leggere il testo dentro 
 
 Fai questi passi ogni volta, senza che l'utente lo chieda:
 
-1. **Indice.** Se nella cartella c'è un file che inizia con `00`, controlla che contenga la riga della lezione, nel formato `- GG/MM/AAAA - [[nome del file|titolo]]`, in ordine di data. La data è quella nel nome del file. Se l'indice manca, crealo come `00 Indice - <nome della cartella>.md` con un titolo `#` e l'elenco.
+1. **Indice.** Se nella cartella c'è un file che inizia con `00`, controlla che contenga la riga della lezione, nel formato `- [[nome del file|titolo]]`. Se l'indice manca, crealo come `00 Indice - <nome della cartella>.md` con un titolo `#` e l'elenco.
 2. **Controllo perdite.** Esegui `python3 .opencode/scripts/controlla-perdite.py "percorso della nota"` (confronto con la copia salvata all'inizio) e poi, per ogni fonte usata, `python3 .opencode/scripts/controlla-perdite.py "percorso della nota" --con "appunti grezzi o materiale"`. Per ogni voce segnalata rileggi la fonte: se l'informazione nella nota manca, rimettila; se c'è con altre parole, va bene. Non chiudere il lavoro con informazioni mancanti.
 3. **Controllo strutturale.** Esegui `python3 .opencode/scripts/vault-audit.py "percorso della nota"` e correggi tutti gli ERROR e i WARN che dipendono da te. Le immagini mancanti e il nome del file non dipendono da te: segnalali.
 4. **Riepilogo.** Al massimo 5 righe: file toccati, cosa hai aggiunto e corretto, cosa hai tolto e perché, esito del controllo perdite, `[!todo]` lasciati.
@@ -69,4 +69,4 @@ Questi due passi si fanno una volta sola per nota: quando lo chiede un command (
 
 ## Limiti
 
-- La data non va scritta nella nota. Se il nome del file non la contiene, segnalalo nel riepilogo.
+- La data non va scritta né nel nome del file né nella nota.

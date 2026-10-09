@@ -37,7 +37,14 @@
       "prompt/Guida_Opencode.md": "deny",
       "prompt/prompt_chat.md": "deny",
       "opencode.json": "deny",
-      ".opencode/*": "deny"
+      ".opencode/*": "deny",
+      "AGENTS.md": "allow",
+".opencode/stile.md": "allow",
+".opencode/agents/appunti.md": "allow",
+".opencode/scripts/vault-audit.py": "allow",
+".opencode/scripts/dividi-appunti.py": "allow",
+".opencode/commands/dividi.md": "allow",
+"prompt/Guida_Opencode.md": "allow"
     },
     "read": {
       "*": "allow",

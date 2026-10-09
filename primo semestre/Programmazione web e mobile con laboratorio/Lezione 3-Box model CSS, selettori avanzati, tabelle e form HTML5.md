@@ -58,7 +58,7 @@ border-radius: 8px 8px 0 0;
 **Margin collapsing:** nei layout a flusso normale, quando due margini verticali di elementi a blocco entrano in contatto diretto essi **si fondono**: lo spazio effettivo tra i due elementi non è la somma aritmetica dei margini, ma il **valore massimo** tra i due.
 
 > [!important] Vincoli di dimensionamento (valori calcolati con il modello predefinito `content-box`):
-> - **Orizzontale:** la somma di larghezze, padding e margini non deve superare mai il $100\%$ della viewport, altrimenti compare lo **scorrimento orizzontale** (*horizontal scrollbar*), considerato un grave difetto di usabilità.
+> - **Orizzontale:** la somma di larghezze, padding, bordi e margini non deve superare mai il $100\%$ della viewport, altrimenti compare lo **scorrimento orizzontale** (*horizontal scrollbar*), considerato un grave difetto di usabilità.
 > - **Verticale:** non sussistono limiti rigidi, perché lo scorrimento verso il basso è il naturale pattern di navigazione.
 > - **Unità:** riservare i pixel (`px`) quasi solo allo spessore dei bordi; per margini, padding e dimensioni del layout preferire unità percentuali (`%`) o relative (`rem`, `em`, `vw`, `vh`), così da garantire fluidità e responsività.
 
@@ -83,7 +83,7 @@ Tag e identificatori si combinano per aumentare la specificità: `p#quote` selez
 
 **I combinatori** definiscono la relazione gerarchica o posizionale fra due o più selettori.
 
-| Combinatore | Sintassi | Nome Tecnico | Selezione |
+| Combinatore | Sintassi | Nome tecnico | Selezione |
 | :--- | :--- | :--- | :--- |
 | **Spazio** | `A B` | Discendente (*Descendant*) | Qualunque elemento `B` annidato in `A`, a qualunque profondità. |
 | **Maggiore** | `A > B` | Figlio Diretto (*Child*) | Solo gli elementi `B` figli immediati di `A`. |
@@ -196,10 +196,11 @@ th, td {
 
 I **form** sono il meccanismo primario con cui gli utenti inseriscono dati destinati all'elaborazione da parte di un server web.
 
-**Il tag `<form>`** richiede due attributi:
+**Il tag `<form>`** usa tre attributi principali:
 
 - `action`: l'URI o endpoint lato server verso cui inoltrare i dati (`/api/login`, `process.php`).
 - `method`: il metodo di trasmissione HTTP. `GET` concatena i dati all'URL come *query string* (`?chiave=valore&...`) ed è indicato per ricerche e operazioni idempotenti, mai per password o dati sensibili; `POST` incapsula i dati nel *body* della richiesta ed è indicato per creazione, modifica o invio di dati riservati.
+- `enctype`: la codifica dei dati inviati; va impostato a `multipart/form-data` quando il form invia file (per esempio con `<input type="file">`).
 
 **Le etichette `<label>`** sono tag inline che definiscono la didascalia di un controllo: l'attributo `for` della label deve corrispondere al valore dell'attributo `id` del controllo. Cliccando sul testo dell'etichetta il browser sposta il focus sul campo o attiva e disattiva la relativa casella di spunta, con un vantaggio di usabilità e accessibilità.
 
@@ -212,7 +213,7 @@ I **form** sono il meccanismo primario con cui gli utenti inseriscono dati desti
 
 - *Campi testuali e specializzati:* `text` (monoriga generico), `password` (oscuramento dei caratteri), `email` (validazione sintattica conforme alle specifiche RFC), `tel` (recapiti telefonici), `url` (percorsi web con validazione del protocollo), `search` (query di ricerca interna).
 - *Campi numerici e temporali:* `number`, che supporta `min`, `max` e `step` per regolare gli incrementi ammessi; `range`, cursore scorrevole (*slider*) per selezioni numeriche approssimate; `date` e `datetime-local`, che presentano un calendario nativo integrato; `time`, che presenta un campo orario con selettore a tendina sulle piattaforme che lo supportano.
-- *Campi speciali e di selezione:* `color` (scelta di un codice colore esadecimale), `file` (selezione di uno o più file dal file system locale per l'upload), `hidden` (invisibile a schermo, usato per trasmettere parametri di stato o token al server, per esempio l'identificativo dell'articolo quando l'utente clicca su un banner).
+- *Campi speciali e di selezione:* `color` (scelta di un codice colore esadecimale), `file` (selezione di un file dal file system locale; con l'attributo `multiple` se ne possono selezionare più di uno), `hidden` (invisibile a schermo, usato per trasmettere parametri di stato o token al server, per esempio l'identificativo dell'articolo quando l'utente clicca su un banner).
 
 **Checkbox e radio button:** le checkbox consentono selezioni multiple e indipendenti e gli elementi dello stesso gruppo logico devono condividere l'attributo `name`, con valori `value` distinti; i radio button impongono una scelta mutuamente esclusiva, condividono il medesimo `name` e solo un'opzione per volta può essere attiva.
 

@@ -2,7 +2,7 @@
 
 ## L'agente intelligente e il suo ambiente
 
-*Definizione:* un **agente intelligente** è l'entità che interagisce con il mondo esterno (*environment*) attraverso due categorie di interfacce: i ==sensori==, con cui percepisce, e gli ==attuatori==, con cui agisce (es. Aspirapolvere Roomba, termostato intelligente, rilevatori di fumo, [[Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi#Sistemi basati su documenti e sistemi agentici|Agentic AI]] che eseguono autonomamente task multi-step)
+*Definizione:* un **agente intelligente** è l'entità che interagisce con il mondo esterno (*environment*) attraverso due categorie di interfacce: i <u>sensori</u>, con cui percepisce, e gli <u>attuatori</u>, con cui agisce (es. Aspirapolvere Roomba, termostato intelligente, rilevatori di fumo, [[Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi#Sistemi basati su documenti e sistemi agentici|Agentic AI]] che eseguono autonomamente task multi-step)
 
 **Sensori:** dispositivi che acquisiscono dati dall'ambiente e li forniscono all'agente sotto forma di **percezioni**: telecamere, microfoni, lettura di file, messaggi di rete, output di uno strumento.
 
@@ -87,7 +87,7 @@ Un esempio classico è la ricerca del percorso ottimale tra città sulla rete st
 - **Spazio degli stati:** le città della rete stradale.
 - **Funzione di successore:** percorrere una strada verso una città adiacente, con **costo dell'azione pari alla distanza chilometrica**.
 - **Stato iniziale:** Arad.
-- **Goal test:** $\text{stato} == \text{Bucharest}$.
+- **Goal test:** $\text{stato} = \text{Bucharest}$.
 
 <div style="display: flex; justify-content: center;">
   <img src="lec02_romania_graph.png" width="600">

@@ -32,7 +32,6 @@ FRASI_IA = [
 ]
 TITOLI_VIETATI = {"conclusioni", "conclusione", "concetti chiave", "riepilogo", "riassunto", "introduzione"}
 
-RE_DATA = re.compile(r"\b(\d{1,2}[/.\-_]\d{1,2}[/.\-_]\d{2,4}|\d{4}[/.\-_]\d{1,2}[/.\-_]\d{1,2})\b")
 RE_WIKILINK = re.compile(r"(!?)\[\[([^\]\|#\n]*)(#[^\]\|\n]*)?(\|[^\]\n]*)?\]\]")
 RE_IMG_HTML = re.compile(r"<img\b[^>]*?\bsrc\s*=\s*[\"']([^\"']+)[\"']", re.I)
 RE_CALLOUT = re.compile(r"^\s*(?:[-*]\s+|\d+\.\s+)?(?:>\s*)+\[!([^\]]*)\]")
@@ -223,8 +222,6 @@ def controlla(path, per_nome, radice):
         out.append(("WARN", 1, "manca il titolo # in testa"))
     elif len(h1) > 1:
         out.append(("WARN", h1[1][0], "più di un titolo #: ne serve uno solo"))
-    if not indice and not RE_DATA.search(os.path.basename(path)):
-        out.append(("WARN", 0, "il nome del file non contiene la data della lezione (AAAA-MM-GG Titolo.md)"))
 
     # riga per riga
     div_aperti = 0

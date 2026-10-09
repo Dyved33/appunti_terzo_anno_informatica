@@ -7,9 +7,10 @@
 **Origini e standardizzazione:**
 
 - **1974:** nasce come **SEQUEL** (*structured English QUEry language*), sviluppato da Donald Chamberlin e Raymond Boyce presso i laboratori IBM Research nell'ambito del progetto prototipale **System R**.
-- **1981:** prime implementazioni commerciali, con **SQL/DS** di IBM e il proprio RDBMS di Oracle Corporation.
+- **1979:** Oracle Corporation (allora Relational Software Inc.) commercializza il primo RDBMS basato su SQL.
+- **1981:** IBM lo segue con **SQL/DS**.
 - **Dal 1983** è uno standard di fatto, recepito solo in parte dai vendor:
-  - **1986 (SQL-86):** primo standard formale ratificato da ANSI e ISO.
+  - **1986 (SQL-86):** primo standard formale, ratificato da ANSI e, nel 1987, da ISO come **ISO 9075**.
   - **1992 (SQL-92 o SQL2):** standard ricco e articolato, base di riferimento per tutti i moderni motori relazionali.
   - **1999 (SQL-99 o SQL3):** estensione con funzionalità orientate agli oggetti (ORDBMS), trigger e tipi definiti dall'utente.
   - **2003 (SQL:2003):** supporto nativo a strutture dati XML e sequenze.
@@ -158,6 +159,7 @@ I domini associabili alle colonne si suddividono in **domini elementari predefin
 ```sql
 CREATE DOMAIN <nome_dominio> [AS] <tipo_base>
     [DEFAULT <valore_default>]
+    [NOT NULL]
     [CONSTRAINT <nome_vincolo>] [CHECK (<condizione>)];
 ```
 
@@ -272,7 +274,7 @@ SQL fornisce due costrutti complementari:
 
 ## PostgreSQL e il client `psql`
 
-**PostgreSQL** è un sistema di gestione di basi di dati relazionale a oggetti (**ORDBMS**) open source tra i più avanzati al mondo, derivato dal progetto di ricerca *Postgres* avviato nel 1977 presso l'Università della California a Berkeley. La comunicazione e l'elaborazione dei dati avvengono tra il motore server e i diversi client applicativi tramite protocolli di rete standard.
+**PostgreSQL** è un sistema di gestione di basi di dati relazionale a oggetti (**ORDBMS**) open source tra i più avanzati al mondo, derivato dal progetto di ricerca *Postgres* avviato nel 1986 presso l'Università della California a Berkeley. La comunicazione e l'elaborazione dei dati avvengono tra il motore server e i diversi client applicativi tramite protocolli di rete standard.
 
 `psql` è il client a riga di comando distribuito nativamente con PostgreSQL: permette l'interazione diretta con il server e l'amministrazione completa delle istanze. La sintassi di accesso da shell è:
 
@@ -292,7 +294,8 @@ All'avvio della sessione fornisce i comandi primari di consultazione: `\h` per l
 | `\dv` | Elenca le viste (*views*). |
 | `\di` | Elenca gli indici. |
 | `\ds` | Elenca le sequenze. |
-| `\dT` | Elenca i tipi di dato e i domini definiti. |
+| `\dT` | Elenca i tipi di dato. |
+| `\dD` | Elenca i domini definiti. |
 | `\df` | Elenca le funzioni memorizzate. |
 | `\do` | Elenca gli operatori disponibili. |
 | `\da` | Elenca le funzioni di aggregazione. |

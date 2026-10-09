@@ -128,9 +128,9 @@ Con i vincoli definiti si può dare la definizione completa delle nozioni di sch
 
 ## Le operazioni nel modello relazionale
 
-Un'**operazione** sul modello relazionale è una trasformazione che produce una relazione modificata a partire dalle relazioni della base di dati. La lezione mostra che lo stesso effetto viene descritto in formalismi diversi: l'**algebra relazionale**, linguaggio dichiarativo i cui operatori ricevono relazioni e restituiscono relazioni, e le **procedure dichiarative** con cui lo stesso risultato viene richiesto, che in SQL trovano espressione con le istruzioni `INSERT`, `DELETE` e `UPDATE`.
+Un'**operazione** sul modello relazionale è una trasformazione che produce una relazione modificata a partire dalle relazioni della base di dati. La lezione mostra che lo stesso effetto viene descritto in formalismi diversi: l'**algebra relazionale**, linguaggio procedurale i cui operatori ricevono relazioni e restituiscono relazioni, e le **procedure dichiarative** con cui lo stesso risultato viene richiesto, che in SQL trovano espressione con le istruzioni `INSERT`, `DELETE` e `UPDATE`.
 
-Gli operatori fondamentali dell'algebra relazionale sono:
+Gli operatori dell'algebra relazionale sono:
 
 | Operatore | Effetto |
 | :--- | :--- |
@@ -164,8 +164,8 @@ La lezione introduce le **dipendenze funzionali** fra le categorie di vincoli, c
 *Definizione:* su uno schema $R$ una dipendenza funzionale $X \rightarrow Y$ afferma che, per ogni istanza $r$ valida, due tuple che coincidono su $X$ coincidono anche su $Y$.
 
 - Una dipendenza è **triviale** se $Y \subseteq X$, cioè se non dice nulla; le altre sono **non triviali**.
-- Gli assiomi derivano le dipendenze implicite: **riflessività**, **aumento** e **transitività**; da $X \rightarrow Y$ con $Z \subseteq Y$ si ricava $X \cup Z \rightarrow Z$.
-- L'**involucro** di $X$ rispetto all'insieme $F$ di dipendenze, $X^{+}_F$, è l'insieme degli attributi raggiungibili da $X$ applicando le dipendenze in $F$; $K$ è superchiave se e solo se $X \subseteq K^{+}_F$ per qualche attributo $X \subseteq K$.
+- Gli assiomi derivano le dipendenze implicite: **riflessività**, **aumento** e **transitività**; da $X \rightarrow Y$ si ricava $X \cup Z \rightarrow Y \cup Z$.
+- L'**involucro** di $X$ rispetto all'insieme $F$ di dipendenze, $X^{+}_F$, è l'insieme degli attributi raggiungibili da $X$ applicando le dipendenze in $F$; $K$ è superchiave se e solo se $K^{+}_F$ contiene tutti gli attributi dello schema, cioè $K^{+}_F = R$.
 
 La decomposizione di uno schema serve a ridurre la duplicazione e le anomalie di aggiornamento, mantenendo due proprietà: la **perdita di join** nulla, cioè la relazione ricostruita con una join naturale coincide con quella originaria, e la **preservazione delle dipendenze**, cioè ogni dipendenza dello schema decomposto è implicata da quelle dello schema di partenza.
 
@@ -174,7 +174,7 @@ Le forme normali si susseguono per inclusione:
 - **1FN:** ogni attributo ha valore atomico e non ulteriormente scomponibile.
 - **2NF:** in 1FN e nessun attributo non primario dipende funzionalmente da una parte propria di una chiave candidata.
 - **3FN:** in 2FN e per ogni dipendenza funzionale non triviale $X \rightarrow A$ vale che $X$ è superchiave oppure $A$ è attributo primo, cioè appartenente a una chiave candidata.
-- **BCNF:** in 3NF e per ogni dipendenza funzionale non triviale $X \rightarrow A$, $X$ è sempre superchiave; elimina le dipendenze parziali che la 3FN tollera quando la chiave candidata è composta.
+- **BCNF:** in 3NF e per ogni dipendenza funzionale non triviale $X \rightarrow A$, $X$ è sempre superchiave; elimina le dipendenze funzionali non banali il cui determinante non è superchiave, che la 3FN tollera quando l'attributo determinato è primo.
 
 > [!info] Sintesi:
 > - I vincoli di integrità si distinguono in intrinseci al modello, basati sullo schema (DDL), non esprimibili sullo schema e dipendenze funzionali.

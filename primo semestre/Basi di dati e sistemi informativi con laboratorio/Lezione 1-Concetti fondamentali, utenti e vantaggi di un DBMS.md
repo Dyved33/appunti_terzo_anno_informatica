@@ -58,6 +58,8 @@ L'approccio basato su DBMS differisce radicalmente dalla gestione tradizionale b
 > Una **transazione** è un programma o processo in esecuzione che esegue uno o più accessi alla base di dati, in lettura e/o scrittura. Il DBMS garantisce proprietà fondamentali (ACID), tra cui:
 > - **Isolamento:** ogni transazione viene eseguita in isolamento logico rispetto alle altre; gli effetti intermedi di una transazione non sono visibili alle transazioni concorrenti finché essa non viene confermata (*commit*).
 > - **Atomicità:** le operazioni di una transazione vengono eseguite nella loro interezza (*all-or-nothing*); in caso di guasto o interruzione anomala ogni modifica parziale viene annullata (*rollback*).
+> - **Consistenza:** una transazione porta la base di dati da uno stato consistente a un altro stato consistente, rispettando i vincoli di integrità.
+> - **Durabilità:** gli effetti di una transazione confermata (*commit*) sono permanenti, anche in caso di guasto del sistema.
 
 ## Gli utenti di una base di dati
 

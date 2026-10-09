@@ -28,7 +28,7 @@ Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
 
 ## Il flusso di una lezione
 
-1. Crei tu la nota, con la data nel nome: `2026-10-02 Automi a pila.md`. Nella stessa cartella metti gli appunti grezzi (`.txt`, uno per lezione), le slide e, in `images/`, le immagini.
+1. Crei tu la nota nella cartella del corso (es. `Lezione 3-Automi a pila.md`). Nella stessa cartella metti gli appunti grezzi (`.txt`, uno per lezione), le slide e, in `images/`, le immagini.
 2. Scrivi nella nota quello che hai, con i segnaposto `// ... //` dove serve.
 3. Durante il lavoro puoi chiedere modifiche a parole: l'agent scrive, aggiorna l'indice e controlla la struttura. Non chiama il revisore.
 4. A lezione conclusa lanci `/lezione`: completa la nota, scrive la sintesi finale, fa passare il revisore una volta e applica le correzioni.
@@ -55,8 +55,8 @@ Lo script confronta parole, non significati, e non controlla le slide fatte di s
 **`/lezione`** chiude la nota di una lezione. Il primo percorso è la nota, gli altri sono appunti grezzi o materiale; se mancano li cerca nella stessa cartella.
 
 ```
-/lezione "Primo semestre/Linguaggi/2026-10-02 Automi a pila.md"
-/lezione "Primo semestre/Linguaggi/2026-10-02 Automi a pila.md" "Primo semestre/Linguaggi/automi.pdf"
+/lezione "Primo semestre/Linguaggi/Lezione 3-Automi a pila.md"
+/lezione "Primo semestre/Linguaggi/Lezione 3-Automi a pila.md" "Primo semestre/Linguaggi/automi.pdf"
 ```
 
 Capisce da solo in quale caso si trova:
@@ -67,8 +67,8 @@ Capisce da solo in quale caso si trova:
 **`/rivedi`** fa revisionare una nota e applica le correzioni: errori, parti mancanti, tagli. È il comando per asciugare le note verbose: toglie parole, non contenuti, e non ha un limite di lunghezza da raggiungere. Su una cartella lavora una nota alla volta e si ferma dopo ognuna.
 
 ```
-/rivedi "Primo semestre/SO/2026-03-19 Semafori, Messaggi.md"
-/rivedi "Primo semestre/SO/2026-03-19 Semafori, Messaggi.md" solo report     # non modifica nulla
+/rivedi "Primo semestre/SO/Lezione 5-Semafori, Messaggi.md"
+/rivedi "Primo semestre/SO/Lezione 5-Semafori, Messaggi.md" solo report     # non modifica nulla
 /rivedi diff                                            # le note modificate e non ancora in un commit
 ```
 
@@ -79,7 +79,7 @@ Capisce da solo in quale caso si trova:
 /revisione "Primo semestre/Linguaggi"   # un corso
 ```
 
-Trova: link rotti, immagini mancanti, formule e blocchi di codice non chiusi, `<div>` non bilanciati, callout sbagliati, segnaposto non risolti, lezioni che mancano nell'indice, nome del file senza data, sintesi finale mancante, frontmatter e tag, titoli fuori convenzione, frasi tipiche da IA, `[!todo]` aperti, paragrafi molto lunghi.
+Trova: link rotti, immagini mancanti, formule e blocchi di codice non chiusi, `<div>` non bilanciati, callout sbagliati, segnaposto non risolti, lezioni che mancano nell'indice, sintesi finale mancante, frontmatter e tag, titoli fuori convenzione, frasi tipiche da IA, `[!todo]` aperti, paragrafi molto lunghi.
 
 **`/slide`** mostra il testo di una pagina del materiale, per controllare con i propri occhi.
 
@@ -102,10 +102,10 @@ I percorsi con spazi vanno sempre tra virgolette.
 
 ## Passare i vecchi appunti al nuovo formato
 
-1. `/dividi "percorso/Appunti corso.md"`. Lo script taglia il file sui titoli `###`, ricava la data di ogni sezione dal nome della sua prima immagine e mette nella stessa nota le sezioni consecutive con la stessa data. Il testo viene copiato identico, non passa dal modello.
-2. Controlla il piano. Le date sono quelle degli screenshot, quindi indicative. Le prime sezioni di solito non hanno immagini e restano senza data: va aggiunta a mano al nome del file.
+1. `/dividi "percorso/Appunti corso.md"`. Lo script taglia il file sui titoli `###` e usa la data nascosta nei nomi delle immagini solo per raggruppare le sezioni consecutive: la data non finisce nei nomi dei file né nell'indice. Il testo viene copiato identico, non passa dal modello.
+2. Controlla il piano. I gruppi seguono le immagini, quindi sono indicativi: le sezioni senza immagini restano gruppi a sé e vanno unite a mano se serve.
 3. Conferma: crea le note e l'indice nella stessa cartella. Il file unico resta intatto: archivialo o cancellalo tu quando hai controllato.
-4. Se una data o un titolo è sbagliato, rinomina il file da Obsidian: i link dell'indice si aggiornano da soli.
+4. Se un titolo o un nome non ti va, rinomina il file da Obsidian: i link dell'indice si aggiornano da soli.
 5. `/rivedi` su una nota alla volta. Ogni passata asciuga, aggiunge la sintesi finale e riporta le parole prima e dopo.
 
 ## Cosa scrivere nelle note

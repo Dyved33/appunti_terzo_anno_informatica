@@ -23,7 +23,7 @@ La totalità dei modelli dei dati include un nucleo di **operazioni fondamentali
 **Stati iniziali e stati validi.** La natura dello stato è intrinsecamente dinamica e si articola in:
 
 - *Stato iniziale:* la configurazione assunta dalla base di dati nel momento in cui viene popolata o caricata per la prima volta con i dati di partenza.
-- *Stato valido (consistente):* uno stato che soddisfa rigorosamente la struttura formale e l'integralità dei vincoli definiti nello schema:
+- *Stato valido (consistente):* uno stato che soddisfa rigorosamente la struttura formale e l'integrità dei vincoli definiti nello schema:
 
 $$
 \text{Stato } S \text{ è valido} \iff \forall v \in \text{Vincoli}(\text{Schema}), \; S \models v
@@ -92,7 +92,7 @@ L'**indipendenza dei dati** è la proprietà dei sistemi DBMS che consente di mo
 
 - *Data Definition Language (DDL):* utilizzato dal DBA e dai progettisti per specificare formalmente lo schema concettuale della base di dati; nella maggior parte dei DBMS commerciali moderni viene adoperato anche per definire gli schemi interni ed esterni.
 - *Storage Definition Language (SDL):* linguaggio specifico, presente in sistemi ad architettura avanzata o pura, preposto alla definizione dettagliata dello schema interno e dei parametri fisici di memorizzazione.
-- *View Definition Language (VDL):* deputato a specificare le viste dello schema esterno e la relativa mappazione concettuale. Nei sistemi contemporanei basati su standard SQL, le funzionalità di DDL, SDL e VDL sono unificate all'interno dei costrutti di definizione (`CREATE TABLE`, `CREATE INDEX`, `CREATE VIEW`).
+- *View Definition Language (VDL):* deputato a specificare le viste dello schema esterno e la relativa mappatura concettuale. Nei sistemi contemporanei basati su standard SQL, le funzionalità di DDL, SDL e VDL sono unificate all'interno dei costrutti di definizione (`CREATE TABLE`, `CREATE INDEX`, `CREATE VIEW`).
 
 **Linguaggi di manipolazione dei dati (DML).** Il **DML** è impiegato per specificare le interrogazioni (*retrieval*) e gli aggiornamenti dello stato della base di dati (inserimenti, modifiche, cancellazioni). I comandi DML possono essere eseguiti:
 
@@ -133,7 +133,7 @@ I sistemi DBMS si classificano in base al paradigma del modello dei dati adottat
 - forte dipendenza dei programmi applicativi dall'organizzazione fisica delle strutture;
 - inefficienza nella modellazione di relazioni molti-a-molti ($N:M$): la rappresentazione di associazioni complesse costringe alla duplicazione dei dati, generando ridondanza incontrollata.
 
-**Modello reticolare.** Rappresenta i dati come tipi di record interconnessi mediante una ragnatela di puntatori espliciti (*set types*), permettendo a un record membro di possedere molteplici record proprietari (*padri*). Il primo prototipo fu l'**IDS** (*Integrated Data Store*), sviluppato da Honeywell nel 1965, che rimase alla base dei principali sistemi commerciali fino alla metà degli anni '80: IDMS di Cullinet, DMS 1100 di Unisys, IMAGE di HP, VAX-DBMS di Digital/Compaq. Fu standardizzato dalla **CODASYL** (*Conference on Data Systems Languages*) nel celebre report **DBTG** (*Database Task Group*) del 1971.
+**Modello reticolare.** Rappresenta i dati come tipi di record interconnessi mediante una ragnatela di puntatori espliciti (*set types*), permettendo a un record membro di possedere molteplici record proprietari (*padri*). Il primo prototipo fu l'**IDS** (*Integrated Data Store*), sviluppato da Charles Bachman alla General Electric nel 1964, che rimase alla base dei principali sistemi commerciali fino alla metà degli anni '80: IDMS di Cullinet, DMS 1100 di Unisys, IMAGE di HP, VAX-DBMS di Digital/Compaq. Fu standardizzato dalla **CODASYL** (*Conference on Data Systems Languages*) nel celebre report **DBTG** (*Database Task Group*) del 1971.
 
 *Punti di forza:* un record può avere più genitori, eliminando le anomalie di ridondanza tipiche del modello gerarchico; consente la modellazione naturale e diretta di relazioni molti-a-molti ($N:M$); qualsiasi nodo del grafo può costituire il punto di ingresso per navigare la base di dati.
 
@@ -145,7 +145,7 @@ I sistemi DBMS si classificano in base al paradigma del modello dei dati adottat
 
 Il grafo illustra un'applicazione accademica nel modello reticolare: l'entità `COURSE` agisce come proprietaria verso `SECTION` (tramite `COURSE_OFFERINGS`) e verso `PREREQUISITE` (`HAS_A`/`IS_A`), mentre `GRADE_REPORT` riceve puntatori concorrenti sia da `STUDENT` (`STUDENT_GRADES`) sia da `SECTION` (`SECTION_GRADES`), concretizzando relazioni multilaterali senza duplicazione logica dei record.
 
-**Modello relazionale.** Modella l'intera base di dati come una collezione di **relazioni** matematiche, cioè tabelle bidimensionali composte da righe (tuple) e colonne (attributi), svincolando la logica dei dati dai puntatori fisici. Teorizzato nel 1970 da **Edgar F. Codd**, ricercatore IBM, nell'articolo seminale *"A Relational Model of Data for Large Shared Data Banks"*; i primi sistemi commerciali debuttarono sul mercato nel 1981-1982. Costituisce il paradigma dominante dell'industria del software (IBM DB2, Oracle Database, Microsoft SQL Server, PostgreSQL, MySQL) e ha introdotto lo standard universale **SQL** attraverso le sue successive evoluzioni (SQL-89, SQL-92, SQL:1999 e successive).
+**Modello relazionale.** Modella l'intera base di dati come una collezione di **relazioni** matematiche, cioè tabelle bidimensionali composte da righe (tuple) e colonne (attributi), svincolando la logica dei dati dai puntatori fisici. Teorizzato nel 1970 da **Edgar F. Codd**, ricercatore IBM, nell'articolo seminale *"A Relational Model of Data for Large Shared Data Banks"*; i primi sistemi commerciali debuttarono sul mercato nel 1979. Costituisce il paradigma dominante dell'industria del software (IBM DB2, Oracle Database, Microsoft SQL Server, PostgreSQL, MySQL) e ha introdotto lo standard universale **SQL** attraverso le sue successive evoluzioni (SQL-89, SQL-92, SQL:1999 e successive).
 
 ### Modelli evoluti ed emergenti
 

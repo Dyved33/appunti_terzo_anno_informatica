@@ -2,13 +2,13 @@
 
 ## L'informazione e la sua misura
 
-L'informazione è una grandezza misurabile, avente come unità di misura il bit. Se $M$ è il numero degli stati possibili di un dato sistema, $Q$ sono i bit necessari per distinguerli. La finalità di un sistema di comunicazione è il trasferimento dell'informazione fra sistemi remoti sotto il controllo dei programmi applicativi.
+L'informazione è una grandezza misurabile, avente come unità di misura il bit. Se $M$ è il numero degli stati possibili di un dato sistema, $Q$ sono i bit necessari per distinguerli, cioè $M = 2^Q$. La finalità di un sistema di comunicazione è il trasferimento dell'informazione fra sistemi remoti sotto il controllo dei programmi applicativi.
 
 ## La codifica dell'informazione
 
-Nel sistema elaborativo il **carattere** può essere associato al singolo bit: le sequenze significative di caratteri diventano quindi collezioni di bit dentro strutture di codifica dette **codici**, fra cui BCD (*Binary Decimal Code*), AIKEN, Gray, EBCDIC, ASCII e UNICODE.
+Nel sistema elaborativo il **carattere** può essere associato al singolo bit: le sequenze significative di caratteri diventano quindi collezioni di bit dentro strutture di codifica dette **codici**, fra cui BCD (*Binary Coded Decimal*), AIKEN, Gray, EBCDIC, ASCII e UNICODE.
 
-A seconda della ==natura dell'informazione== si associano **diverse quantità di bit** a ogni singolo elemento. Un'immagine, per esempio, è una matrice di pixel: se la sequenza di bit deve rappresentare un pixel e il suo colore, un'immagine a colori richiede più bit per pixel di una in bianco e nero, dove un solo bit basta.
+A seconda della <u>natura dell'informazione</u> si associano **diverse quantità di bit** a ogni singolo elemento. Un'immagine, per esempio, è una matrice di pixel: se la sequenza di bit deve rappresentare un pixel e il suo colore, un'immagine a colori richiede più bit per pixel di una in bianco e nero, dove un solo bit basta.
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
@@ -79,7 +79,7 @@ Il ruolo di ciascun apparato lungo il canale è definito da una classe di sigle 
 
 ## Le reti e il loro mondo
 
-==Si parla di **rete** intendendo un insieme di dispositivi connessi da canali di comunicazione.== Una rete presenta uno o più **nodi** capaci di inviare o ricevere dati, generati o ricevuti, da altri dispositivi o da altri nodi.
+<u>Si parla di **rete** intendendo un insieme di dispositivi connessi da canali di comunicazione.</u> Una rete presenta uno o più **nodi** capaci di inviare o ricevere dati, generati o ricevuti, da altri dispositivi o da altri nodi.
 
 L'organizzazione delle funzioni computazionali si articola in due modelli:
 
@@ -96,7 +96,7 @@ Le tre procedure si differenziano per la flessibilità concessa al terminale, ch
 
 ## Gli aspetti di valutazione di una rete
 
-La bontà di una rete si valuta su tre aspetti: ==affidabilità, sicurezza e prestazioni.==
+La bontà di una rete si valuta su tre aspetti: <u>affidabilità, sicurezza e prestazioni.</u>
 
 **Affidabilità:** capacità della rete di consegnare l'informazione priva di errori, porre rimedio ai malfunzionamenti e restare robusta nelle situazioni critiche.
 
@@ -115,7 +115,7 @@ La bontà di una rete si valuta su tre aspetti: ==affidabilità, sicurezza e pre
 
 Le prestazioni dipendono anche da fattori strutturali e non solo dalle misure stesse: il numero di DTE presenti sulla rete, la tipologia dei mezzi trasmissivi utilizzati e l'efficienza del software che gestisce la comunicazione.
 
-**La banda:** banda passante di frequenze utilizzabile per la trasmissione di segnale su un canale. Essendo legata alla quantità d'informazione inviabile nell'unità di tempo, si può definire come ==la velocità massima alla quale è possibile trasmettere informazioni==. Da qui i due termini:
+**La banda:** banda passante di frequenze utilizzabile per la trasmissione di segnale su un canale. Essendo legata alla quantità d'informazione inviabile nell'unità di tempo, si può definire come <u>la velocità massima alla quale è possibile trasmettere informazioni</u>. Da qui i due termini:
 
 - **Broadband:** tecnologie che forniscono collegamenti di velocità notevolmente superiore alla normale linea telefonica.
 - **Digital divide:** la disparità fra zone che dispongono o meno di accesso alla banda larga.
@@ -136,7 +136,7 @@ Le prestazioni dipendono anche da fattori strutturali e non solo dalle misure st
 > round-trip min/avg/max/stddev = 0.352/0.413/0.474/0.061 ms
 > ```
 >
-> Il tempo è riportato in millisecondi; il comando si interrompe da solo oppure con `Ctrl + c` o `Ctrl + z`.
+> Il tempo è riportato in millisecondi; il comando continua finché non lo si interrompe con `Ctrl + c`, mentre `Ctrl + z` lo sospende.
 
 Il comportamento cambia in funzione dello stato dell'host di destinazione: se l'host è su una rete inesistente si ottiene subito un errore, mentre se l'host esiste ma non risponde il pacchetto resta in attesa fino all'interruzione.
 

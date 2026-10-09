@@ -1,8 +1,10 @@
+# Indice Generale
+
 ![[00 Indice - Architettura reti]]
 
 ![[00 Indice - Internetworking]]
 
-![[Architettura reti e internet/00 Indice - Architettura reti e internet]]
+![[00 Indice - Basi di dati e sistemi informativi con laboratorio]]
 
 ![[00 Indice - Introduzione IA]]
 

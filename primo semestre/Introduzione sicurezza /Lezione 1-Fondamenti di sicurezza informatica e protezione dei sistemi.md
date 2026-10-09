@@ -6,7 +6,7 @@
 
 ## Definizioni e concetti fondamentali
 
-==La **sicurezza** in senso generale è definibile come l'assenza di rischio, pericolo o minaccia. In ambito informatico il concetto si specializza nella protezione attiva e preventiva delle risorse digitali.==
+<u>La **sicurezza** in senso generale è definibile come l'assenza di rischio, pericolo o minaccia. In ambito informatico il concetto si specializza nella protezione attiva e preventiva delle risorse digitali.</u>
 
 *Sicurezza informatica:* l'insieme delle misure, delle tecnologie e delle procedure volte a prevenire o proteggere le risorse hardware, software e le informazioni da accessi non autorizzati, alterazioni, sottrazioni o distruzione.
 
@@ -28,16 +28,16 @@ La sicurezza informatica si articola storicamente attorno alla **Triade CIA**, a
 
 **Triade CIA:**
 
-1. ==**Confidenzialità (*Confidentiality*)==:** garanzia che i dati, le comunicazioni e le risorse di sistema siano accessibili e leggibili esclusivamente dai soggetti, utenti o processi, esplicitamente autorizzati.
-2. **==Integrità (*Integrity*)==:** garanzia che le informazioni, il software e le configurazioni non subiscano alterazioni, manomissioni o cancellazioni non autorizzate, preservando la correttezza e la completezza del dato originale.
-3. ==**Disponibilità (*Availability*)==:** garanzia che i sistemi, le reti e le informazioni siano tempestivamente accessibili e pienamente operativi ogni qualvolta un utente o servizio autorizzato ne faccia richiesta.
+1. **Confidenzialità (*Confidentiality*):** garanzia che i dati, le comunicazioni e le risorse di sistema siano accessibili e leggibili esclusivamente dai soggetti, utenti o processi, esplicitamente autorizzati.
+2. **Integrità (*Integrity*):** garanzia che le informazioni, il software e le configurazioni non subiscano alterazioni, manomissioni o cancellazioni non autorizzate, preservando la correttezza e la completezza del dato originale.
+3. **Disponibilità (*Availability*):** garanzia che i sistemi, le reti e le informazioni siano tempestivamente accessibili e pienamente operativi ogni qualvolta un utente o servizio autorizzato ne faccia richiesta.
 
 **Proprietà estese:**
 
-- **==Autenticità (*Authenticity*)==:** capacità di verificare e accertare con certezza la genuinità di una comunicazione, di un documento o l'identità dichiarata da un'entità mittente.
-- **==Tracciabilità e imputabilità (*Accountability / Non-Repudiation*)==:** capacità di correlare in modo univoco e non contestabile ogni singola operazione compiuta nel sistema al soggetto specifico che l'ha eseguita, impedendo a chiunque di negare le proprie azioni.
-- ==**Possesso o controllo (*Possession / Control*)==:** capacità del legittimo proprietario di esercitare il pieno controllo logico e fisico sui propri dati e sulle infrastrutture.
-- **==Utilità (*Utility*)==:** garanzia che le informazioni conservino la loro forma utile e fruibile: dati cifrati la cui chiave di decifratura è andata perduta rimangono confidenziali e integri, ma perdono totalmente la loro utilità. Help other people, be able to sacrifice your free time or know
+- **Autenticità (*Authenticity*):** capacità di verificare e accertare con certezza la genuinità di una comunicazione, di un documento o l'identità dichiarata da un'entità mittente.
+- **Tracciabilità e imputabilità (*Accountability / Non-Repudiation*):** capacità di correlare in modo univoco e non contestabile ogni singola operazione compiuta nel sistema al soggetto specifico che l'ha eseguita, impedendo a chiunque di negare le proprie azioni.
+- **Possesso o controllo (*Possession / Control*):** capacità del legittimo proprietario di esercitare il pieno controllo logico e fisico sui propri dati e sulle infrastrutture.
+- **Utilità (*Utility*):** garanzia che le informazioni conservino la loro forma utile e fruibile: dati cifrati la cui chiave di decifratura è andata perduta rimangono confidenziali e integri, ma perdono totalmente la loro utilità.
 
 ## Il modello IAAA
 
@@ -96,15 +96,15 @@ La protezione di un'organizzazione o infrastruttura richiede un approccio difens
 4. **Crittografia e canali sicuri:**
    - applicazione di algoritmi e protocolli crittografici per cifrare i dati prima della loro trasmissione su canali non protetti: **SSH** per l'amministrazione remota sicura, **TLS/SSL** per il traffico web, **PGP/GPG** per email e file, **VPN** con IPsec/OpenVPN per tunnel cifrati.
 
-## ! Le funzioni hash
+## Le funzioni hash
 
-Una **funzione hash** $h$ trasforma un messaggio di lunghezza arbitraria in una stringa di lunghezza fissa, il **digest**. Le proprietà richieste sono l'irriducibilità (*one-way*: da $h(m)$ non si ricava $m$), la resistenza alle collisioni e la sensibilità all'avversario (*preimage resistance*, *second-preimage resistance*, *collision resistance*), per cui un attaccante che conosce il digest non può costruire un altro messaggio con lo stesso digest.
+Una **funzione hash** $h$ trasforma un messaggio di lunghezza arbitraria in una stringa di lunghezza fissa, il **digest**. Le proprietà richieste sono: la resistenza alla preimmagine (*one-way*: da $h(m)$ non si ricava $m$), la resistenza alla seconda preimmagine e la resistenza alle collisioni (due messaggi diversi non devono produrre lo stesso digest).
 
 Non serve una chiave: per questo l'hash non è cifratura, non è reversibile e non fornisce riservatezza. Nelle password l'hash non basta, perché l'attaccante può risalire al valore originale provando tutti gli input possibili: si usa quindi un **salt**, stringa casuale unica per utente che si antepone alla password nel calcolo dell'hash e rende inutili le tabelle di hash precomputate (*rainbow tables*).
 
 L'**HMAC** (RFC 2104) combina una funzione hash con una chiave segreta e garantisce autenticità e integrità nello stesso tempo.
 
-## ! La crittografia simmetrica e asimmetrica
+## La crittografia simmetrica e asimmetrica
 
 **Cifratura simmetrica:** la stessa chiave segreta, o chiave condivisa, cifra e decifra. Offre prestazioni elevate ed è adatta a grossi volumi di dati, ma soffre del **problema della distribuzione delle chiavi**: ogni coppia di comunicanti deve condividere una chiave senza che questa viaggi in chiaro.
 
@@ -119,9 +119,9 @@ L'**HMAC** (RFC 2104) combina una funzione hash con una chiave segreta e garanti
 
 Il protocollo **TLS** usato da HTTPS combina le due: un cifrario asimmetrico autentica il server e concorda la chiave di sessione, poi il traffico vero e proprio è cifrato con un cifrario simmetrico.
 
-## ! La firma digitale e la PKI
+## La firma digitale e la PKI
 
-La **firma digitale** realizza l'autenticità, l'integrità e la non disdenegabilità senza cifrare nulla. Il mittente calcola l'hash del documento e lo cifra con la propria chiave privata; il destinatario la decifra con la chiave pubblica del mittente e ricalcola l'hash: se i due digest coincidono, il documento è integro e la firma non può essere stata prodotta da altri.
+La **firma digitale** realizza l'autenticità, l'integrità e la non ripudiabilità senza cifrare nulla. Il mittente calcola l'hash del documento e lo cifra con la propria chiave privata; il destinatario la decifra con la chiave pubblica del mittente e ricalcola l'hash: se i due digest coincidono, il documento è integro e la firma non può essere stata prodotta da altri.
 
 La **PKI** (*public key infrastructure*) è l'infrastruttura che distribuisce e certifica le chiavi pubbliche, evitando che ogni utente debba fidarsi direttamente di ogni altro:
 
@@ -143,7 +143,7 @@ Le violazioni si classificano in due grandi famiglie: **attacchi passivi**, che 
 | Attacco attivo | inserimento o alterazione di messaggi | integrità con hash e firma digitale |
 | Attacco a testo noto | ricostruzione della chiave da testo cifrato e noto | crittografia autenticata (AEAD), non ECB con chiave corta |
 | Forza bruta su password | tentativi esaustivi su tutte le combinazioni | password lunghe, salt, limitazione dei tentativi, MFA |
-| Phishing e ingegneria sociale | furto di credenziali tramite fiduia umana | formazione, verifica del dominio, MFA |
+| Phishing e ingegneria sociale | furto di credenziali tramite fiducia umana | formazione, verifica del dominio, MFA |
 | Malware | virus, worm, trojan, ransomware, rootkit | antivirus, aggiornamenti, backup, principio del minimo privilegio |
 | Denial of service | saturazione delle risorse | rate limiting, firewall, IDS/IPS |
 | SQL injection | codice malevolo iniettato in una query SQL | query parametrizzate (cfr. [[Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL]]) |

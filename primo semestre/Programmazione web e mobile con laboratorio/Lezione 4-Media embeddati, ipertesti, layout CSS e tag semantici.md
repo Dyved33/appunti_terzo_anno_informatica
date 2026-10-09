@@ -6,19 +6,19 @@ HTML5 introduce nativamente l'incorporamento di contenuti multimediali, eliminan
 ### Gli attributi comuni
 
 - **`src`:** percorso del file multimediale. Se il file è omesso è possibile elencare più sorgenti alternative tramite tag `<source>` annidati.
-- **`type`:** formato del media dichiarato come MIME type (es. `video/mp4`, `video/webm`, `audio/mpeg`). Consente al browser di saltare immediatamente le sorgenti non supportate senza scaricarle.
+- **`type` (dichiarato su `<source>`, non sul media):** formato del media dichiarato come MIME type (es. `video/mp4`, `video/webm`, `audio/mpeg`). Consente al browser di saltare immediatamente le sorgenti non supportate senza scaricarle.
 - **`controls`:** visualizza la barra di controllo nativa (play/pausa, volume, linea temporale, schermo intero).
 - **`autoplay`:** avvia la riproduzione appena il file è pronto.
 - **`loop`:** al termine della riproduzione ricomincia da capo.
 - **`muted`:** avvia la riproduzione con audio disattivato.
 
 ```html
-<video src="presentazione.mp4" type="video/mp4" controls autoplay loop muted width="640"></video>
+<video src="presentazione.mp4" controls autoplay loop muted width="640"></video>
 
-<audio src="brano.mp3" type="audio/mpeg" controls loop></audio>
+<audio src="brano.mp3" controls loop></audio>
 ```
 
-> [!important] Politiche di Autoplay dei Browser
+> [!important] Politiche di autoplay dei browser
 > I browser moderni **bloccano l'avvio automatico** di un media se questo emette audio: `autoplay` viene applicato solo in combinazione con `muted`. Inoltre, su dispositivi mobili è necessario `playsinline` per impedire che il video passi forzatamente al lettore a schermo intero. L'ordine delle dichiarazioni non è influente: `muted` può precedere `autoplay`.
 
 ### Le sorgenti multiple e il fallback
@@ -69,7 +69,7 @@ Il fragment può anche puntare a un elemento di una pagina diversa, accodandosi 
 > [!info] Perché servono gli `id`
 > La navigazione tramite fragment richiede un `id`, perché l'attributo `id` è univoco all'interno del documento, mentre la classe `class` può essere assegnata a più elementi: il fragment non potrebbe sapere quale dei molteplici elementi con la stessa classe deve attivare.
 
-> [!warning] Apertura in Nuova Scheda e Reverse Tabnabbing
+> [!warning] Apertura in nuova scheda e reverse tabnabbing
 > Quando si usa `target="_blank"`, la nuova scheda ottiene un riferimento al documento di origine tramite l'oggetto `window.opener`. Una pagina malevola può redirigerla con `window.opener.location` sostituendo la scheda originale con una pagina di phishing. Il rimedio è l'attributo `rel="noopener noreferrer"`, che inoltre impedisce l'invio del referrer.
 
 ```html
@@ -83,7 +83,7 @@ Il fragment può anche puntare a un elemento di una pagina diversa, accodandosi 
 
 Di conseguenza, due `<div>` consecutivi nel flusso si dispongono **in colonna** (uno sotto l'altro), mentre due elementi inline affiancati si dispongono **orizzontalmente** sulla stessa riga.
 
-> [!warning] Iperelementi e Differenza Logica
+> [!warning] div, span e modello di box
 > `<div>` e `<span>` non sono scelte puramente estetiche: se un insieme di elementi funziona in orizzontale ma si deve visualizzare in verticale, il problema risiede nel modello di box (`display`), non nel tag utilizzato. Sostituire `<div>` con `<span>` non modifica il comportamento del layout.
 
 ## Il layout a colonne multiple
@@ -112,7 +112,7 @@ La proprietà `column-count` (o l'alias `columns`) suddivide il contenuto di un 
 
 ## Float: galleggiamento e clear
 
-La proprietà `float` stacca un elemento dal normale flusso verticale e lo allinea a sinistra o a destra del contenitore; **il testo circostante si avvolge attorno ad esso**. Opera su elementi di blocco e ammette i valori `left`, `right` e `none`.
+La proprietà `float` stacca un elemento dal normale flusso verticale e lo allinea a sinistra o a destra del contenitore; **il testo circostante si avvolge attorno ad esso**. Opera su qualunque elemento (un elemento inline flottato diventa di blocco) e ammette i valori `left`, `right` e `none`.
 
 ```css
 .immagine-destra {
@@ -128,7 +128,7 @@ La proprietà `float` stacca un elemento dal normale flusso verticale e lo allin
 }
 ```
 
-> [!important] Condizioni di Funzionamento del Float
+> [!important] Condizioni di funzionamento del float
 > Il float produce effetti visibili solo se all'elemento galleggiante è assegnata una **larghezza inferiore al 100%** del contenitore: un elemento flottante largo quanto il contenitore occuperebbe l'intera area e non lascerebbe spazio al testo, vanificando l'avvolgimento. Inoltre la larghezza è necessaria perché il wrapping si disponga correttamente attorno a una forma rettangolare nota.
 
 La proprietà `clear` (`left`, `right`, `both`) ha il compito di **interrompere l'avvolgimento**: l'elemento che la imposta scende sotto l'ultimo float flottato. Il trucco del pseudo-elemento `::after` con `content: ""` e `clear: both` permette di chiudere il contenitore in modo che i blocchi successivi non gli scorrano attorno.
@@ -138,7 +138,7 @@ La proprietà `clear` (`left`, `right`, `both`) ha il compito di **interrompere 
 
 ## `position`: i cinque schemi di posizionamento
 
-La proprietà `position` determina il metodo di posizionamento di un elemento rispetto al flusso del documento. Gli offset `top`, `right`, `bottom` e `left` agiscono solo se l'elemento è posizionato con `relative`, `absolute` o `fixed`.
+La proprietà `position` determina il metodo di posizionamento di un elemento rispetto al flusso del documento. Gli offset `top`, `right`, `bottom` e `left` agiscono solo se l'elemento è posizionato con `relative`, `absolute`, `fixed` o `sticky`.
 
 | Valore | Riferimento di Coordinate | Flusso Normale | Comportamento |
 | :--- | :--- | :--- | :--- |
@@ -148,7 +148,7 @@ La proprietà `position` determina il metodo di posizionamento di un elemento ri
 | `fixed` | Il viewport (finestra del browser) | Esce dal flusso | Resta fisso durante lo scorrimento della pagina. |
 | `sticky` | Il normale flusso, poi il contenitore di scorrimento | Condizionale | Si comporta come `relative` finché la sua soglia (definita da `top`/`bottom`/`left`/`right`) non viene superata; da quel momento si "incolla" al bordo del contenitore di scorrimento più vicino. |
 
-> [!important] Contenitore di Riferimento dell'Absolute
+> [!important] Contenitore di riferimento dell'absolute
 > Il riferimento geometrico di un elemento `absolute` non è necessariamente il `body`: è **l'antenato posizionato più vicino** (quello che ha `position` diversa da `static`), e in sua assenza la pagina intera. Di conseguenza un contenitore con `position: relative` funge da "scatola di contenimento" per i figli `absolute`, permettendo di ancorarli ai propri bordi interni anziché alla pagina.
 
 ```css
@@ -185,7 +185,7 @@ La proprietà `display` determina come il motore di rendering genera la scatola 
 | `grid` / `inline-grid`             | Il contenitore stabilisce un contesto di layout a griglia per i figli.                                                                       | Si / No            | Si                                         |
 | `table`, `table-row`, `table-cell` | Riproduce il comportamento delle tabelle HTML con elementi generici.                                                                         | Si                 | Si                                         |
 
-> [!info] Limiti di Larghezza sugli Elementi Inline
+> [!info] Limiti di larghezza sugli elementi inline
 > Sui elementi inline non sostituiti le dichiarazioni `width` e `height` sono **ignorate**: la dimensione orizzontale è determinata dal contenuto e quella verticale da `line-height` e dal `font-size`. Per ottenere una scatola dimensionabile serve `inline-block`.
 
 ## Centrare gli elementi
@@ -284,11 +284,13 @@ Flexbox (`display: flex` sul contenitore) distribuisce i figli lungo un **asse p
 }
 ```
 
-![[Pasted image 20261007092448.png]] ``
+<div style="display: flex; justify-content: center;">
+  <img src="Pasted image 20261007092448.png" width="300">
+</div>
 
 ## CSS Grid: layout bidimensionale
 
-La griglia (`display: grid`) organizza i figli su righe e colonne contemporaneamente, con due assi di dimensionamento indipendenti. Le tracce (le linee che separano le celle) sono definite esplicitamente o generate automaticamente.
+La griglia (`display: grid`) organizza i figli su righe e colonne contemporaneamente, con due assi di dimensionamento indipendenti. Le tracce (*grid track*, cioè lo spazio fra due linee adiacenti della griglia) sono definite esplicitamente o generate automaticamente.
 
 | Proprietà | Funzione |
 | :--- | :--- |
@@ -315,7 +317,9 @@ La griglia (`display: grid`) organizza i figli su righe e colonne contemporaneam
 
 La funzione `repeat(n, valore)` evita di elencare `n` tracce identiche; l'unità `fr` (frazione) distribuisce lo spazio libero in proporzioni relative. Le tracce dichiarate ma non occupate sono *piste esplicite vuote*, mentre quelle generate automaticamente dal posizionamento degli elementi sono *piste implicite*.
 
-![[Pasted image 20261007092543.png]]
+<div style="display: flex; justify-content: center;">
+  <img src="Pasted image 20261007092543.png" width="300">
+</div>
 
 ## Il confronto fra table, Flexbox e Grid
 
@@ -357,6 +361,7 @@ L'approccio **mobile first** scrive le regole di base per lo schermo più strett
 
 Gli elementi di sezione non hanno funzione di layout (il loro posizionamento è governato dal CSS) ma attribuiscono **significato strutturale** al documento: rendono il codice leggibile per lo sviluppatore, interpretabile per i crawler e accessibile per le tecnologie assistive.
 
+- **`<main>`:** contenuto primario e univoco della pagina; ce n'è uno solo per documento.
 - **`<header>`:** intestazione di una pagina o di una sezione. Contiene tipicamente titolo, logo, barra di navigazione e informazioni introduttive.
 - **`<nav>`:** sezione dedicata alla navigazione, con i link principali del sito. Se ne inseriscono quanti necessari (tipicamente uno per area di navigazione: principale, secondaria, di pagina).
 - **`<section>`:** sezione tematica di contenuto. Dovrebbe essere accompagnata da un titolo (`<h1>`-`<h6>`) che ne descriva il tema.
@@ -392,18 +397,16 @@ Gli elementi di sezione non hanno funzione di layout (il loro posizionamento è 
 </body>
 ```
 
-> [!important] Vincoli di Utilizzo
-> * `<header>` e `<footer>` possono comparire una volta per la pagina e, indipendentemente, una volta per ciascun `<article>` o `<section>`.
+> [!important] Vincoli di utilizzo
+> * `<header>` e `<footer>` possono comparire più volte: una per la pagina e una per ciascun `<article>` o `<section>`.
 > * `<section>` priva di intestazione propria non introduce un confine tematico riconoscibile: è preferibile usare `<div>`.
 > * `<address>` non va usato per l'indirizzo di una persona citata: in quel caso si usa `<cite>`.
-> * Le sezioni di sezione non sostituiscono `<main>`, che delimita il contenuto primario e univoco della pagina.
+> * I tag di sezione non sostituiscono `<main>`, che delimita il contenuto primario e univoco della pagina.
 
 > [!info] Sintesi:
-> - `<video>` e `<audio>` condividono `src`, `controls`, `autoplay`, `loop` e `muted`, mentre `poster`, `width` e `height` sono propri di `<video>` e il MIME type si dichiara su `<source>`; l'autoplay con audio è bloccato senza `muted`, e su mobile serve `playsinline`.
-> - `<source>` permette sorgenti alternative con fallback, `poster` mostra la locandina, `preload` governa il precaricamento.
+> - `<video>` e `<audio>` condividono `src`, `controls`, `autoplay`, `loop` e `muted` (`poster`, `width` e `height` sono propri di `<video>`); il MIME type si dichiara su `<source>`, l'autoplay con audio è bloccato senza `muted` e su mobile serve `playsinline`. `<source>` dà sorgenti alternative con fallback e `preload` governa il precaricamento.
 > - `<a>` usa `href`, `target`, `title` e `download`; i fragment puntano agli `id` e `target="_blank"` va protetto da `rel="noopener noreferrer"`.
 > - `<div>` è block e `<span>` inline, ma il layout si governa con `display`, non con il tag.
-> - `column-*` crea colonne, `float` avvolge il testo e `clear` interrompe l'avvolgimento; `position` distingue `static`, `relative`, `absolute`, `fixed` e `sticky`, con `z-index` per l'impilamento.
-> - `display` determina la scatola generata; `table`, Flexbox e Grid si distinguono per numero di assi e governo delle dimensioni, e `place-items`/`justify-content`/`align-items` centrano il contenuto.
-> - Il layout responsive si ottiene con `<meta name="viewport">` e media query: l'approccio mobile first scrive lo stile base e aggiunge i breakpoint, con `rem`, `%`, `vw` e `clamp()` al posto dei pixel fissi.
-> - I tag semantici di sezione (`header`, `nav`, `section`, `article`, `aside`, `address`, `footer`) danno struttura a crawler e tecnologie assistive e non sostituiscono `<main>`.
+> - `column-*` crea colonne, `float` avvolge il testo e `clear` interrompe l'avvolgimento; `position` distingue `static`, `relative`, `absolute`, `fixed` e `sticky`, con `z-index` per l'impilamento; `table`, Flexbox e Grid si distinguono per numero di assi e governo delle dimensioni, e `place-items`/`justify-content`/`align-items` centrano il contenuto.
+> - Il layout responsive si ottiene con `<meta name="viewport">` e media query, con approccio mobile first e `rem`, `%`, `vw` e `clamp()` al posto dei pixel fissi.
+> - I tag semantici di sezione (`header`, `nav`, `main`, `section`, `article`, `aside`, `address`, `footer`) danno struttura a crawler e tecnologie assistive.

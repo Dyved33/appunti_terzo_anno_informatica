@@ -45,7 +45,7 @@ sudo apt install tesseract-ocr tesseract-ocr-ita # per installare il lettore di 
 
 ## Particolari implementativi
 
-| 1 | data solo nel nome del file | il titolo `#` non ha la data; l'audit segnala i file senza data nel nome; formato consigliato `2026-05-07 Automi a pila.md` |
+| 1 | niente data nella nota | il titolo `#` e il nome del file non hanno la data; nome consigliato `Lezione 3-Automi a pila.md` |
 | 2 | indice e moduli | `00 Indice - <Corso>.md` in ogni cartella di corso o di modulo |
 | 4 | un `.txt` per lezione | l'agent cerca il `.txt` con lo stesso nome o la stessa data della nota, altrimenti chiede |
 | 5 | git da terminale | la guida usa `git diff` e `git restore` |

@@ -50,7 +50,7 @@ Testo.
 > - punto chiave
 ```
 
-- Un solo `#`, con il titolo. La data sta solo nel nome del file (`2026-05-07 Automi a pila.md`), mai nel testo. Niente frontmatter, niente tag.
+- Un solo `#`, con il titolo. Niente frontmatter, niente tag.
 - `##` per gli argomenti della lezione. `###` solo se un argomento è davvero lungo. Mai `####`.
 - Dentro una sezione, per separare i sotto-argomenti usa l'etichetta in grassetto a inizio paragrafo (`**Grafo di un automa:**`), non un titolo.
 - Titoli senza numeri, senza grassetto, senza emoji, con la sola iniziale maiuscola.

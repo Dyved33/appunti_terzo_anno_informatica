@@ -56,11 +56,11 @@ Le reti MAN sono reti a livello cittadino:
 
 ## Reti wireless
 Le reti wireless sono reti di comunicazione mobili private o reti di comunicazione mobili pubbliche. Comprendono: 
-- WLAN ([[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard|IEEE 802.11]] – Wireless LAN (Wi-Fi) 
+- WLAN ([[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard|IEEE 802.11]] – Wireless LAN (Wi-Fi)) 
 - WiMax (Worldwide Interoperability for Microwave Access o IEEE 802.16x) 
 - IEEE 802.20 per applicazioni nomadi 
 - CDPD (Cellular Digital Packet Data) per accesso wireless al router di un ISP con i protocolli: 
-	- HSPDA (High Speed Downlink Packet Access) 
+	- HSDPA (High Speed Downlink Packet Access) 
 	- HSUPA (High Speed Uplink Packet Access) 
 	- LTE (Long Term Evolution)
 
@@ -68,7 +68,7 @@ Le reti wireless sono reti di comunicazione mobili private o reti di comunicazio
   <img src="slide-10.png" width="300">
 </div>
 
-Nello schema  le tecnologie wireless sono riportate con le rispettive bande di frequenza: WAN a 400 e 800 MHz, IEEE 802.20 a 900 MHz, 2,5 e 3,6 GHz proposti, MAN, Wi-Fi mesh, WiMAX (802.16), MeshNetworks, wireless LAN Wi-Fi, Ethernet e UWB.
+Nello schema le tecnologie wireless sono riportate con le rispettive bande di frequenza: WAN a 400 e 800 MHz, IEEE 802.20 a 900 MHz, 2,5 e 3,6 GHz proposti, MAN, Wi-Fi mesh, WiMAX (802.16), MeshNetworks, wireless LAN Wi-Fi, Ethernet e UWB.
 
 ## Topologia delle reti
 La topologia di una rete è la configurazione geometrica dei collegamenti fra i vari componenti della rete. Le varie topologie sono volte al conseguimento dei seguenti obiettivi: 

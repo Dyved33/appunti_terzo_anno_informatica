@@ -5,12 +5,13 @@ Uso:
   dividi-appunti.py FILE                    mostra il piano, non scrive nulla
   dividi-appunti.py FILE --scrivi           crea i file nella cartella di FILE
   dividi-appunti.py FILE --scrivi --dest CARTELLA
-  dividi-appunti.py FILE --per-sezione      un file per sezione invece che per data
+  dividi-appunti.py FILE --per-sezione      un file per sezione invece che per gruppo
 
-Come ragiona: ogni titolo di primo livello del file è una sezione. La data di una
-sezione è quella della sua prima immagine (i nomi "Screenshot From 2026-03-05 ..." e
-"Pasted image 20260305..." la contengono). Le sezioni senza immagini prendono la data
-della sezione precedente. Sezioni consecutive con la stessa data formano una lezione.
+Come ragiona: ogni titolo di primo livello del file è una sezione. Per raggruppare le
+sezioni in una lezione usa la data nascosta nei nomi delle immagini ("Screenshot From
+2026-03-05 ..." e "Pasted image 20260305..." la contengono): le sezioni senza immagini
+prendono la data della sezione precedente, e sezioni consecutive con la stessa data
+formano una lezione. La data non finisce mai nel nome del file né nell'indice.
 
 Il file di partenza non viene toccato. Nessun file esistente viene sovrascritto.
 """
@@ -94,7 +95,7 @@ def raggruppa(sezioni, per_sezione):
         titolo = ", ".join(titoli[:3]) + (" ecc" if len(titoli) > 3 else "")
         lez["titolo"] = titolo
         base = nome_file(titolo)
-        lez["file"] = (f"{lez['data']} {base}" if lez["data"] else base) + ".md"
+        lez["file"] = base + ".md"
         lez["righe"] = sum(s["fine"] - s["inizio"] for s in lez["sezioni"])
         lez["dedotta"] = all(s["dedotta"] for s in lez["sezioni"])
     visti = {}
@@ -126,15 +127,9 @@ def componi(lez, righe, livello, annidati):
     return testo if testo.endswith("\n") else testo + "\n"
 
 
-def data_italiana(d):
-    a, m, g = d.split("-")
-    return f"{g}/{m}/{a}"
-
-
 def riga_indice(lez):
     nome = lez["file"][:-3]
-    data = data_italiana(lez["data"]) if lez["data"] else "data da inserire"
-    return f"- {data} - [[{nome}|{lez['titolo']}]]\n"
+    return f"- [[{nome}|{lez['titolo']}]]\n"
 
 
 def main():
@@ -169,14 +164,14 @@ def main():
     for lez in lezioni:
         nota = ""
         if lez["data"] is None:
-            nota = "   <- SENZA DATA: aggiungila al nome del file"
+            nota = "   <- nessuna immagine: gruppo a sé, uniscilo a mano se serve"
         elif lez["dedotta"]:
-            nota = "   <- data presa dalla sezione precedente"
+            nota = "   <- raggruppata con la sezione precedente"
         print(f"{lez['righe']:>5} righe  {lez['file']}{nota}")
 
     esistenti = [lez["file"] for lez in lezioni if os.path.exists(os.path.join(dest, lez["file"]))]
     if not scrivi:
-        print("\nNon ho scritto nulla. Le date vengono dai nomi delle immagini: sono indicative.")
+        print("\nNon ho scritto nulla. I gruppi seguono le immagini di ogni sezione: controllali.")
         if esistenti:
             print(f"ATTENZIONE: {len(esistenti)} di questi file esistono già: con --scrivi mi fermerei senza creare nulla.")
         print("Per creare i file: aggiungi --scrivi. Per un file per sezione: --per-sezione.")
@@ -208,7 +203,7 @@ def main():
         print(f"\nIndice creato: {os.path.basename(indice)}")
 
     print(f"Creati {len(lezioni)} file. Il file di partenza è intatto: quando hai controllato, archivialo o cancellalo tu.")
-    print("Se una data è sbagliata rinomina il file da Obsidian: i link dell'indice si aggiornano da soli.")
+    print("Se un titolo o un nome non ti va, rinomina il file da Obsidian: i link dell'indice si aggiornano da soli.")
 
 
 if __name__ == "__main__":

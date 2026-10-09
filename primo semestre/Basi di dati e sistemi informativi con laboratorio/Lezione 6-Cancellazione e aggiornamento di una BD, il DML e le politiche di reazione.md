@@ -127,7 +127,7 @@ ALTER TABLE <nome_tabella> ADD CONSTRAINT <def_vincolo>;
 > ```sql
 > ALTER TABLE corso DROP CONSTRAINT creditoMax;
 >
-> ALTER TABLE persona DROP UNIQUE (nome, cognome);
+> ALTER TABLE persona DROP CONSTRAINT vincolo_nome_cognome;
 > ```
 
 *Estensioni PostgreSQL:* la rinomina di colonne e la rinomina di tabella sono estensioni di PostgreSQL allo standard SQL:
@@ -180,15 +180,15 @@ VALUES [(<valori> [, ...])];
 > ```
 > Se alcuni valori sono nulli, possono essere omessi. Le due espressioni sono equivalenti:
 > ```sql
-> INSERT INTO prodotto VALUES (123, 3.40);
-> INSERT INTO prodotto VALUES (123, 3.40, NULL);
+> INSERT INTO prodotto(cod, nome) VALUES (123, 'pc');
+> INSERT INTO prodotto VALUES (123, NULL, 'pc');
 > ```
 
 **Inserimento di tuple via query:** è anche possibile inserire in una tabella delle tuple che provengono dal risultato di una query:
 
 ```sql
 INSERT INTO <nome_tab> [(<nome_col> [, ...])]
-VALUES <select_query>;
+<select_query>;
 ```
 
 La scrittura di una query mediante il costrutto `SELECT` del DML sarà trattata più avanti.
@@ -220,7 +220,7 @@ DELETE FROM <nome_tab> [WHERE <predicato>];
 ```sql
 UPDATE <nome_tab>
 SET <nome_col> = {<espressione> | <select_query>} [, ...]
-WHERE <predicato>;
+[WHERE <predicato>];
 ```
 
 - i valori delle colonne specificate sono modificati in tutte le tuple che soddisfano il predicato `<predicato>`;
@@ -337,13 +337,13 @@ A titolo di ricapitolazione, script per la generazione in PostgreSQL della base 
 - si definiscono opportune politiche di reazione alla modifica/cancellazione dei dati.
 
 ```sql
-DROP TABLE persona;
-DROP TABLE corso;
-DROP TABLE frequenza;
+DROP TABLE persona CASCADE;
+DROP TABLE corso CASCADE;
+DROP TABLE frequenza CASCADE;
 
 CREATE TABLE persona (
   idpersona INTEGER PRIMARY KEY,
-  codicefiscale CHAR(11) UNIQUE,
+  codicefiscale CHAR(16) UNIQUE,
   nome VARCHAR(40) NOT NULL,
   cognome VARCHAR(40) NOT NULL,
   datanascita DATE);

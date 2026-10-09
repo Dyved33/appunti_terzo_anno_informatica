@@ -2,7 +2,7 @@
 
 ## Le origini del modello relazionale
 
-Il **modello relazionale** è stato teorizzato nel 1970 da **Edgar F. Codd**, ricercatore presso i laboratori IBM di San Jose, con l'obiettivo primario di garantire una reale e rigorosa **indipendenza dei dati**, sia logica che fisica, rispetto alle applicazioni software. Commercializzato a partire dai primi anni '80, con l'avvento di piattaforme pionieristiche quali *System R*, *Oracle* e *IBM DB2*, rappresenta oggi il paradigma dominante dell'industria del software, sotteso alla totalità dei più diffusi DBMS commerciali e open source.
+Il **modello relazionale** è stato teorizzato nel 1970 da **Edgar F. Codd**, ricercatore presso i laboratori IBM di San Jose, con l'obiettivo primario di garantire una reale e rigorosa **indipendenza dei dati**, sia logica che fisica, rispetto alle applicazioni software. Commercializzato a partire dai primi anni '80, con l'avvento di piattaforme pionieristiche come *Oracle* e *IBM DB2*, dopo i prototipi di ricerca quali *System R*, rappresenta oggi il paradigma dominante dell'industria del software, sotteso alla totalità dei più diffusi DBMS commerciali e open source.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -21,13 +21,13 @@ Il **modello relazionale** è stato teorizzato nel 1970 da **Edgar F. Codd**, ri
 ## La discontinuità rispetto ai modelli precedenti
 
 1. **Rappresentazione delle associazioni tra record.** I modelli gerarchico e reticolare utilizzano **puntatori fisici espliciti** e indirizzi di memoria incorporati nei record per collegare le strutture dati (*pointer-based*): la navigazione è vincolata ai cammini fisici previsti dal progettista. Il modello relazionale basa invece le associazioni interamente sui **valori dei dati** condivisi (*value-based*): i collegamenti logici vengono stabiliti confrontando i valori contenuti in campi correlati, per esempio la corrispondenza tra chiave primaria e chiave esterna, senza alcun ricorso a puntatori fisici esposti.
-2. **Fondamento formale e matematico.** I modelli gerarchico e reticolare derivavano da approcpi euristici e soluzioni implementative *ad hoc*; il modello relazionale poggia su solide basi formali tratte dalla **teoria matematica degli insiemi** e dalla **logica dei predicati del primo ordine**, consentendo la dimostrazione formale di equivalenze tra espressioni e l'ottimizzazione automatica delle query.
+2. **Fondamento formale e matematico.** I modelli gerarchico e reticolare derivavano da approcci euristici e soluzioni implementative *ad hoc*; il modello relazionale poggia su solide basi formali tratte dalla **teoria matematica degli insiemi** e dalla **logica dei predicati del primo ordine**, consentendo la dimostrazione formale di equivalenze tra espressioni e l'ottimizzazione automatica delle query.
 
 ## I fondamenti matematici
 
 Siano $D_1, D_2, \dots, D_n$ $n$ insiemi, detti insiemi di supporto o domini, non necessariamente distinti.
 
-*Definizione:* il **prodotto cartesiano** $D_1 \times D_2 \times \dots \times D_n$ è l'insieme di tutte le $n$-uple ordinate $(d_1, d_2, \dots, d_n)$ tali che ciascun elemento $d_i$ appartenga al rispettimo dominio $D_i$:
+*Definizione:* il **prodotto cartesiano** $D_1 \times D_2 \times \dots \times D_n$ è l'insieme di tutte le $n$-uple ordinate $(d_1, d_2, \dots, d_n)$ tali che ciascun elemento $d_i$ appartenga al rispettivo dominio $D_i$:
 
 $$
 D_1 \times D_2 \times \dots \times D_n = \{ (d_1, d_2, \dots, d_n) \mid d_1 \in D_1, d_2 \in D_2, \dots, d_n \in D_n \}
@@ -167,7 +167,7 @@ $$
 | **Istanza di relazione** | Insieme corrente di righe popolate | Contenuto del file su disco |
 
 > [!info] Sintesi:
-> - Codd teorizza il modello relazionale nel 1970 per ottenere indipendenza logica e fisica dei dati; oggi è il paradigma dominante e ha introdotto SQL.
+> - Codd teorizza il modello relazionale nel 1970 per ottenere indipendenza logica e fisica dei dati; oggi è il paradigma dominante, alla base del linguaggio SQL.
 > - Rispetto a gerarchico e reticolare, le associazioni sono *value-based* e non con puntatori fisici, e il modello ha basi formali in teoria degli insiemi e logica del primo ordine.
 > - La relazione matematica è un sottoinsieme del prodotto cartesiano dei domini: il grado è il numero di domini, la cardinalità il numero di tuple.
 > - Nel modello le tuple non sono ordinate e gli attributi sono nominati; `NULL` indica valore sconosciuto, inesistente o omesso.

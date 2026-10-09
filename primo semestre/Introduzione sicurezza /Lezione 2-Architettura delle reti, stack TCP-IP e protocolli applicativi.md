@@ -21,7 +21,7 @@ L'architettura di rete odierna si fonda su tre principi.
              [ Rete: Router, Switch, Mezzi Fisici di Trasmissione ]
 ```
 
-## La pila di protocoli TCP/IP
+## La pila di protocolli TCP/IP
 
 **Motivazioni della stratificazione:** le reti telematiche sono sistemi complessi composti da nodi (*host*, router), collegamenti fisici eterogenei, protocolli e processi software. La suddivisione in strati risponde a due esigenze:
 
@@ -36,12 +36,12 @@ L'architettura di rete odierna si fonda su tre principi.
 
 **I cinque livelli e le unità dati di protocollo (PDU):**
 
-| Livello TCP/IP | Funzione Primaria | Protocolli Tipici | PDU (*Protocol Data Unit*) |
+| Livello TCP/IP | Funzione primaria | Protocolli tipici | PDU (*Protocol Data Unit*) |
 | :--- | :--- | :--- | :--- |
 | **5. Applicazione** | Supporto e interfaccia per i servizi e le applicazioni distribuite | HTTP, HTTPS, FTP, SMTP, DNS, SSH | **Messaggio (*Message*)** |
 | **4. Trasporto** | Trasferimento logico dei messaggi tra processi (*process-to-process*); multiplexing/demultiplexing | TCP, UDP | **Segmento (*Segment*)** / Datagramma UDP |
 | **3. Rete** | Instradamento (*routing*) e indirizzamento logico dei pacchetti dall'origine al destinatario | IP (IPv4, IPv6), ICMP, OSPF, BGP | **Datagramma (*Datagram / Packet*)** |
-| **2. Collegamento (*Link*)** | Trasferimento affidabile dei dati su singolo collegamento fisico (*hop-by-hop*) tra nodi adiacenti | Ethernet (IEEE 802.3), Wi-Fi (802.11), PPP | **Frame (*Trama*)** |
+| **2. Collegamento (*Link*)** | Trasferimento dei dati su singolo collegamento fisico (*hop-by-hop*) tra nodi adiacenti | Ethernet (IEEE 802.3), Wi-Fi (802.11), PPP | **Frame (*Trama*)** |
 | **1. Fisico** | Trasmissione dei singoli segnali elettrici, ottici o elettromagnetici sul mezzo | Cavi in rame, fibra ottica, onde radio | **Bit** |
 
 > [!info] In altre parole:
@@ -130,7 +130,7 @@ Un protocollo applicativo definisce formalmente:
 
 I protocolli si distinguono in due famiglie:
 
-- **Protocolli di pubblico dominio:** disciplinati da RFC aperte (HTTP, FTP, SMTP, DNS), garantiscono interoperabilità tra fornitori differenti; l'apertura dello standard garantisce trasparenza e permette audit di sicurezza continuo, secondo il principio di Kerckhoffs: <u>la sicurezza deve risiedere nell'algoritmo o nella chiave e non nell'occultamento del protocollo</u>.
+- **Protocolli di pubblico dominio:** disciplinati da RFC aperte (HTTP, FTP, SMTP, DNS), garantiscono interoperabilità tra fornitori differenti; l'apertura dello standard garantisce trasparenza e permette audit di sicurezza continuo, secondo il principio di Kerckhoffs: <u>la sicurezza deve risiedere solo nella chiave e non nell'occultamento dell'algoritmo o del protocollo</u>.
 - **Protocolli proprietari:** sviluppati da singoli vendor, come vecchi sistemi di streaming o gaming; l'assenza di specifiche pubbliche (*security through obscurity*) è una protezione debole e illusoria.
 
 **Requisiti delle applicazioni e scelta del livello di trasporto:** le applicazioni di rete presentano requisiti eterogenei su tre parametri critici.
@@ -157,7 +157,7 @@ I protocolli si distinguono in due famiglie:
 └────────────────────────────────────────┴────────────────────────────────────────┘
 ```
 
-**Il segmento TCP:** è composto da intestazione e dati, con i seguenti campi principali: porte sorgente e destinazione, Sequence Number (SEQ), Acknowledgment Number (ACK), Header Length, Flags (SYN, ACK, FIN, RST, PSH, URG), Receive Window (per il **controllo di flusso**), Checksum e Urgent Pointer.
+**Il segmento TCP:** è composto da intestazione e dati, con i seguenti campi principali: porte sorgente e destinazione, Sequence Number (SEQ), Acknowledgment Number (ACK), Header Length, Flags (SYN, ACK, FIN, RST, PSH, URG), Receive Window (per il **controllo di flusso**), Checksum e Urgent Pointer. L'apertura di una connessione TCP avviene con il ***three-way handshake***: il client invia un segmento SYN, il server risponde SYN-ACK, il client conferma con ACK; la chiusura usa FIN e ACK.
 
 - **Controllo di flusso:** meccanismo end-to-end tra mittente e ricevente per evitare di sovraccaricare il buffer del ricevente; si basa sulla *receive window*.
 - **Controllo della congestione:** meccanismo volto a evitare che il mittente inondi la rete, cioè collegamenti e router intermedi, riducendo perdite e ritardi. TCP lo gestisce tramite algoritmi come Slow Start, Congestion Avoidance, Fast Retransmit e Fast Recovery, in risposta a timeout e ACK duplicati.
@@ -174,13 +174,13 @@ I protocolli si distinguono in due famiglie:
 
 | Applicazione di Rete | Protocollo Applicativo | Protocollo di Trasporto Sottostante |
 | :--- | :--- | :--- |
-| **Posta Elettronica** | SMTP [RFC 5321] | **TCP (Porta 25)** |
-| **Accesso Terminale Remoto** | SSH [RFC 4251] / Telnet | **TCP (Porta 22 / 23)** |
-| **Navigazione Web** | HTTP [RFC 9110] | **TCP (Porta 80)** |
-| **Navigazione Web Sicura** | HTTPS [RFC 9110-9113] | **TCP (Porta 443 via TLS)** |
-| **Trasferimento File** | FTP [RFC 959] | **TCP (Porte 20, 21)** |
-| **Risoluzione Nomi di Dominio** | DNS [RFC 1034, 1035] | **UDP (Porta 53)** (TCP per zone transfer) |
-| **Streaming e Telefonia IP** | RTP / SIP / Proprietari | **Tipicamente UDP** |
+| **Posta elettronica** | SMTP [RFC 5321] | **TCP (Porta 25)** |
+| **Accesso terminale remoto** | SSH [RFC 4251] / Telnet | **TCP (Porta 22 / 23)** |
+| **Navigazione web** | HTTP [RFC 9110] | **TCP (Porta 80)** |
+| **Navigazione web sicura** | HTTPS [RFC 9110-9113] | **TCP (Porta 443 via TLS)** |
+| **Trasferimento file** | FTP [RFC 959] | **TCP (Porte 20, 21)** |
+| **Risoluzione nomi di dominio** | DNS [RFC 1034, 1035] | **UDP (Porta 53)** (TCP per zone transfer) |
+| **Streaming e telefonia IP** | RTP / SIP / Proprietari | **Tipicamente UDP** |
 
 ## Il Web e il protocollo HTTP/HTTPS
 
@@ -503,7 +503,7 @@ Il **DNS** [RFC 1034, 1035] è il servizio di directory fondamentale di Internet
 - **Tipo `A`:** associa un hostname a un indirizzo IPv4, `(sito.com, 192.0.2.1, A, 3600)`.
 - **Tipo `AAAA`:** associa un hostname a un indirizzo IPv6 a 128 bit.
 - **Tipo `NS` (*name server*):** specifica l'hostname del server DNS autoritativo responsabile per il dominio indicato in `Name`.
-- **Tipo `CNAME` (*canonical name*):** alias verso il nome canonico reale, `(www.server.com, server-principale.com, CNAME, 3600)`. È l'unico record che **non contiene un indirizzo**: la risoluzione prosegue con una seconda interrogazione sul nome canonico, mentre l'`A` chiude la catena fornendo l'IP. Un nome con `CNAME` non può ospitare altri record, perché l'alias è solo un puntamento: è il caso di `www.esempio.com` che punta a `esempio.com` o di servizi ospitati su un dominio di terze parti.
+- **Tipo `CNAME` (*canonical name*):** alias verso il nome canonico reale, `(www.server.com, server-principale.com, CNAME, 3600)`. È un record che **non contiene un indirizzo**: la risoluzione prosegue con una seconda interrogazione sul nome canonico, mentre l'`A` chiude la catena fornendo l'IP. Un nome con `CNAME` non può ospitare altri record, perché l'alias è solo un puntamento: è il caso di `www.esempio.com` che punta a `esempio.com` o di servizi ospitati su un dominio di terze parti.
 
 - **Tipo `MX` (*mail exchange*):** specifica il nome del server di posta elettronica di riferimento per il dominio.
 - **TTL (*time to live*):** intervallo temporale in secondi durante il quale il record può essere memorizzato nella cache dei resolver prima della sua rivalidazione obbligatoria.
@@ -541,7 +541,7 @@ Il modello **ISO/OSI** (ISO 7498) costituisce il riferimento concettuale e teori
   └─────────────────────────────────────┘
 ```
 
-| Livello ISO/OSI | Corrispettivo TCP/IP | Responsabilità e Funzioni | Esempi di Protocolli |
+| Livello ISO/OSI | Corrispettivo TCP/IP | Responsabilità e funzioni | Esempi di protocolli |
 | :--- | :--- | :--- | :--- |
 | **7. Applicazione** | **5. Applicazione** | Interfaccia utente e servizi di rete distribuiti | HTTP, FTP, SMTP, DNS |
 | **6. Presentazione** | *(Inglobato in Applicazione)* | Formattazione dati, codifica caratteri, cifratura e compressione | TLS/SSL, MIME, ASCII |
@@ -561,7 +561,7 @@ Il modello **ISO/OSI** (ISO 7498) costituisce il riferimento concettuale e teori
 
 Lo stack a strati consente di mappare con precisione le vulnerabilità e le relative contromisure di difesa, a completamento dei livelli di difesa di [[Lezione 1-Fondamenti di sicurezza informatica e protezione dei sistemi|Lezione 1]].
 
-| Livello Protocollare | Protocolli Target | Debolezze e Vettori di Attacco Tipici | Contromisure e Difese Primarie |
+| Livello protocollare | Protocolli target | Debolezze e vettori di attacco tipici | Contromisure e difese primarie |
 | :--- | :--- | :--- | :--- |
 | **5. Applicazione** | HTTP, FTP, SMTP, DNS | • Trasmissione dati e credenziali in chiaro<br>• Mancata validazione dell'input (SQLi, XSS)<br>• Manipolazione header (`Host`, MIME)<br>• Web Cache Poisoning e DNS Spoofing | • Cifratura applicativa (HTTPS/TLS, SFTP, SMTPS)<br>• Web Application Firewall (WAF) e IPS<br>• Cookie flags (`HttpOnly`, `Secure`, `SameSite`)<br>• Email: DKIM firma il messaggio, SPF autorizza gli IP mittenti, DMARC allinea e applica policy<br>• DNSSEC |
 | **4. Trasporto** | TCP, UDP | • Mancanza di cifratura/integrità nativa<br>• TCP SYN Flood (DoS/DDoS)<br>• TCP Session Hijacking (predizione Seq Number)<br>• UDP Amplification Attack | • Protocolli TLS / DTLS su socket<br>• SYN Cookies a livello kernel del SO<br>• Randomizzazione iniziale dei numeri di sequenza<br>• Rate limiting del traffico UDP sui firewall |

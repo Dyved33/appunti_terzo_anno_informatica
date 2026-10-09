@@ -2,7 +2,7 @@
 
 ## Il World Wide Web e i suoi standard
 
-Il **World Wide Web (WWW)** è un servizio informativo distribuito operante su infrastruttura Internet che permette agli utenti di navigare e usufruire di contenuti eterogenei. Il Web connette i nodi della rete (computer, server, dispositivi mobili) mediante una struttura **ipertestuale**, cioè un sistema di documenti contenenti rimandi e collegamenti bidirezionali (*hyperlink*) ad altre risorse.
+Il **World Wide Web (WWW)** è un servizio informativo distribuito operante su infrastruttura Internet che permette agli utenti di navigare e usufruire di contenuti eterogenei. Il Web connette i nodi della rete (computer, server, dispositivi mobili) mediante una struttura **ipertestuale**, cioè un sistema di documenti contenenti rimandi e collegamenti unidirezionali (*hyperlink*) ad altre risorse.
 
 L'ecosistema web poggia su tre standard cardine:
 
@@ -100,11 +100,12 @@ schema://[sottodominio.]dominio.tld[:porta]/percorso/risorsa[?parametri][#ancora
 Affinché il browser possa aprire il socket di rete, il nome simbolico dell'host deve essere tradotto in un indirizzo IP numerico tramite il **DNS** (*domain name system*):
 
 1. **Controllo della cache locale:** il browser interroga preliminarmente la propria cache e quella del sistema operativo alla ricerca della corrispondenza IP.
-2. **Interrogazione al server TLD:** in caso di assenza locale, il resolver contatta i server di competenza del rispettivo TLD, per esempio quelli del `.it`.
-3. **Risposta con delegazione autoritativa:** il server TLD risponde con l'indirizzo di rete del server DNS autoritativo responsabile di quel dominio.
-4. **Interrogazione al server DNS autoritativo:** viene inoltrata la query specifica per l'intero record, comprensivo di domini secondari e sottodomini.
-5. **Restituzione dell'indirizzo IP:** il server autoritativo restituisce la stringa IP associata al nodo target.
-6. **Apertura del canale di connessione:** il browser utilizza l'IP per instaurare la connessione TCP, con eventuale handshake TLS su porta 443, verso il server web.
+2. **Interrogazione a un server root:** in caso di assenza locale, il resolver contatta uno dei server DNS root, che indirizza al server del TLD competente.
+3. **Interrogazione al server TLD:** il resolver contatta i server di competenza del rispettivo TLD, per esempio quelli del `.it`.
+4. **Risposta con delegazione autoritativa:** il server TLD risponde con l'indirizzo di rete del server DNS autoritativo responsabile di quel dominio.
+5. **Interrogazione al server DNS autoritativo:** viene inoltrata la query specifica per l'intero record, comprensivo di domini secondari e sottodomini.
+6. **Restituzione dell'indirizzo IP:** il server autoritativo restituisce la stringa IP associata al nodo target.
+7. **Apertura del canale di connessione:** il browser utilizza l'IP per instaurare la connessione TCP, con eventuale handshake TLS su porta 443, verso il server web.
 
 ## La pipeline di rendering nel browser
 
@@ -120,12 +121,12 @@ Una volta ricevuta la risposta HTTP dal server, il motore del browser avvia la p
 > - **CSS:** governa la *presentazione visuale*, il layout e la resa grafica.
 > - **JavaScript:** governa il *comportamento dinamico* e la *logica applicativa*.
 >
-> Mantenere i tre ambiti disaccoppiati è fondamentale per garantire manutenibilità, modularità e pulizia del codice.
+> Mantenere i tre ambiti disaccoppiati garantisce manutenibilità, modularità e pulizia del codice.
 
 > [!info] Sintesi:
 > - Il WWW è un servizio informativo distribuito su Internet, costruito su HTML, HTTP e URL, con struttura ipertestuale.
 > - Il Web è client-server: il browser è il client che implementa nativamente HTTP e gestisce il download delle risorse.
-> - HTTP è stateless e gira su TCP; HTTPS aggiunge TLS con cifratura e integrità. Cookie e sessioni soprono il vincolo di statelessness.
+> - HTTP è stateless e gira su TCP; HTTPS aggiunge TLS con cifratura e integrità. Cookie e sessioni sopperiscono al vincolo di statelessness.
 > - La richiesta è metodo, path, header e body; la risposta è status code, header e body; `GET`, `PUT` e `DELETE` sono idempotenti, `POST` no.
 > - L'URL è schema, dominio, porta, path, query string e fragment; il DNS traduce il nome dell'host in IP con cache locale, server TLD e server autoritativo.
 > - Il rendering costruisce DOM, CSSOM e render tree, quindi esegue JavaScript; HTML, CSS e JavaScript restano tre responsabilità separate.

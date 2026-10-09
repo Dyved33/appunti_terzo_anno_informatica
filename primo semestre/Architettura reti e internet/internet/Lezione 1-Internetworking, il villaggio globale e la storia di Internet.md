@@ -2,7 +2,7 @@
 
 ## La rivoluzione di Internet
 
-Internet ha rivoluzionato il mondo dei computer e delle comunicazioni: è la principale rivoluzione tecnologica del XX secolo e il più rivoluzionario mezzo di comunicazione umana. <u>Si tratta di un evento culturale prima ancora che tecnologico.</u>
+Internet ha rivoluzionato il mondo dei computer e delle comunicazioni: è la principale rivoluzione tecnologica del XX secolo e il più rivoluzionario mezzo di comunicazione umana. <u>Si tratta di un evento culturale oltre che tecnologico.</u>
 
 È un'infrastruttura di sviluppo per le istituzioni, le professioni, la gente, i paesi: distrugge il tempo e lo spazio e abolisce le frontiere e le barriere di ogni tipo. Il cambiamento non è stato graduale, ma una trasformazione continua e pervasiva dell'intero ecosistema delle comunicazioni.
 
@@ -41,9 +41,9 @@ La rete delle pubbliche amministrazioni, oggi AgID e in precedenza AIPA e poi Di
 
 ## Banda base, banda larga, collisioni e indirizzo MAC
 
-**Collisioni e perdita di pacchetti in Ethernet:**  il meccanismo è questo: su un mezzo condiviso due host che trasmettono nello stesso istante fanno collisione, il frame viene perso e la trasmissione va ritentata, occupando il canale e rallentando tutto il traffico.
+**Collisioni e perdita di pacchetti in Ethernet:** su un mezzo condiviso due host che trasmettono nello stesso istante fanno collisione, il frame viene perso e la trasmissione va ritentata, occupando il canale e rallentando tutto il traffico.
 
-La precisazione che rende il meccanismo coerente è che a rendere Ethernet scalabile non è l'hub, ma lo **switch**: ogni porta è un dominio di collisione separato e incolla i frame usando l'indirizzo MAC, learns dalla sorgente e inoltra solo sulla porta della destinazione, eliminando di fatto le collisioni fra host. Il confronto fra hub, bridge, switch e router è in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#La commutazione|la commutazione]].
+A rendere Ethernet scalabile non è l'hub, ma lo **switch**: ogni porta è un dominio di collisione separato, lo switch impara gli indirizzi MAC dalla sorgente e inoltra i frame solo sulla porta della destinazione, eliminando di fatto le collisioni fra host.
 
 ### La logica a bus
 

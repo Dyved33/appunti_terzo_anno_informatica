@@ -1,4 +1,4 @@
-E# Fondamenti di intelligenza artificiale, machine learning e modelli generativi
+# Fondamenti di intelligenza artificiale, machine learning e modelli generativi
 
 ## Che cos'è l'intelligenza artificiale
 
@@ -39,9 +39,9 @@ $$\text{Dati di Input} + \text{Risposte Attese} \xrightarrow{\text{Algoritmo di 
 L'algoritmo opera in modo **iterativo**: aggiorna progressivamente i parametri passo dopo passo e termina al raggiungimento della convergenza numerica, cioè quando l'errore non diminuisce più, oppure quando si verifica una condizione di arresto prefissata (*early stopping*).
 
 > [!important] Generalizzazione, non memorizzazione
-> L'obiettivo del machine learning è la **generalizzazione**, non la pura memorizzazione dei dati. Per questo il modello si addestra sul *training set*, ma ==le prestazioni vanno verificate su un insieme disgiunto di dati mai visti durante il training==, il **test set**: è ciò che previene l'**overfitting**, il sovradattamento.
+> L'obiettivo del machine learning è la **generalizzazione**, non la pura memorizzazione dei dati. Per questo il modello si addestra sul *training set*, ma <u>le prestazioni vanno verificate su un insieme disgiunto di dati mai visti durante il training</u>, il **test set**: è ciò che previene l'**overfitting**, il sovradattamento.
 
-**Complessità del modello:** per risolvere compiti complessi servono modelli con un elevato numero di parametri, cioè una *capacità rappresentativa* elevata, che richiedono però moli massicce di dati di addestramento per evitare l'instabilità o il sottoadattamento (*underfitting*).
+**Complessità del modello:** per risolvere compiti complessi servono modelli con un elevato numero di parametri, cioè una *capacità rappresentativa* elevata, che richiedono però moli massicce di dati di addestramento per evitare l'instabilità o il sovradattamento (*overfitting*).
 
 **Distribuzione di probabilità:** il modello assegna una probabilità a ogni possibile risposta dello spazio di output. L'obiettivo dell'addestramento è incrementare progressivamente la massa di probabilità associata alla risposta attesa, il *target*.
 
@@ -135,7 +135,7 @@ $$\text{Testo} \longrightarrow \text{Token} \longrightarrow \text{Vettori} \long
 - *Campionamento probabilistico*: estrazione stocastica pesata sulle probabilità, regolata da parametri come *temperature*, *top-k* e *top-p*: esecuzioni multiple dello stesso prompt possono divergere, introducendo variabilità e creatività.
 
 > [!warning] Attenzione:
-> La fluidità e la coerenza grammaticale del testo generato derivano esclusivamente dal calcolo probabilistico iterativo. L'apparente padronanza linguistica **non implica di per sé comprensione semantica, correttezza fattuale o facoltà cognitive umane**, e espone il sistema a **allucinazioni**.
+> La fluidità e la coerenza grammaticale del testo generato derivano esclusivamente dal calcolo probabilistico iterativo. L'apparente padronanza linguistica **non implica di per sé comprensione semantica, correttezza fattuale o facoltà cognitive umane**, e espone il sistema ad **allucinazioni**.
 
 ## La tassonomia dei modelli generativi
 
@@ -164,7 +164,7 @@ L'incremento del numero di parametri conferisce al modello maggiore capacità di
 L'accesso diretto a documenti e fonti informative esterne, il *Retrieval-Augmented Generation* (RAG), garantisce vantaggi strutturali critici:
 
 - rende la risposta generata **verificabile, ispezionabile e controllabile**;
-- consente l'aggiornamento dinamico delle conoscenze senza richiesti costosi riaddestramenti del modello;
+- consente l'aggiornamento dinamico delle conoscenze senza richiedere costosi riaddestramenti del modello;
 - riduce drasticamente le allucinazioni, ancorando le asserzioni a contesti documentali certi.
 
 La discriminante fra un'architettura documentale convenzionale e un sistema agentico risiede nell'**autonomia decisionale sui passi operativi**.
@@ -182,7 +182,7 @@ La discriminante fra un'architettura documentale convenzionale e un sistema agen
 3. *Osservazione* (*observation*): riceve e interpreta il risultato prodotto dallo strumento.
 4. *Valutazione e decisione* (*reflect and decide*): valuta se i dati raccolti sono sufficienti e decide se iterare il ciclo invocando ulteriori strumenti o formulare la risposta finale.
 
-<u>Un sistema informativo con accesso a basi di dati o documenti non costituisce necessariamente un agente.</u> ==La natura agentica è determinata dalla capacità del modello di scegliere in autonomia percorsi, strumenti e criteri di arresto su più passi iterativi.==
+<u>Un sistema informativo con accesso a basi di dati o documenti non costituisce necessariamente un agente.</u> La natura agentica è determinata dalla capacità del modello di scegliere in autonomia percorsi, strumenti e criteri di arresto su più passi iterativi.
 
 > [!info] Sintesi:
 > - L'IA comprende il machine learning, che comprende il deep learning, che comprende l'IA generativa: la differenza è chi fornisce le regole, il programmatore o i dati.
