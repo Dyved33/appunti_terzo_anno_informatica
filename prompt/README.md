@@ -1,8 +1,14 @@
 # Prerequisiti
 
-npm install -g opencode-ai@latest #per installare l'ultima versione di opencode
-opencode plugin opencode-parser -g #per installare il parser che permette di scattare foto di documenti
-sudo apt install tesseract-ocr tesseract-ocr-ita # per installare il lettore di foto
+npm install -g opencode-ai@latest                             #per installare l'ultima versione di opencode
+opencode plugin opencode-parser -g                            #per installare il parser che permette di scattare foto di documenti
+sudo apt install tesseract-ocr tesseract-ocr-ita              # per installare il lettore di foto
+
+opencode plugin @franlol/opencode-md-table-formatter@latest   # riallinea le tabelle Markdown dopo ogni risposta
+opencode plugin @tarquinen/opencode-dcp@latest                # riduce i token potando output vecchi e chiamate duplicate
+opencode plugin @zenobius/opencode-skillful                   # carica le skill on-demand invece di tenerle tutte in contesto
+opencode plugin @plannotator/opencode@latest                  # revisione interattiva del piano, con annotazioni
+opencode plugin opencode-websearch-cited@1.2.0                # web search con citazioni; da tenere per ultimo nell'elenco plugin
 
 ## Cosa c'è
 
