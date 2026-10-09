@@ -28,7 +28,7 @@
     "external_directory": {
       "*": "deny"
     },
-    "doom_loop": "ask",
+    "doom_loop": "deny",
     "edit": {
       "*": "deny",
       "*.md": "allow",
