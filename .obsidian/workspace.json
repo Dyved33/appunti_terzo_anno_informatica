@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e68233c1e604754e",
+        "id": "393f7b4728bd6946",
         "type": "tabs",
         "children": [
           {
-            "id": "e6f5ab4848298f65",
+            "id": "1cd4a72385db9a80",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "057137f50da96527",
+            "id": "96f6aac15b260f60",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,7 +36,7 @@
             }
           },
           {
-            "id": "62a6fe807f636486",
+            "id": "54256b9d82a55057",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -50,7 +50,7 @@
             }
           },
           {
-            "id": "e50ddd67e3731ddf",
+            "id": "5af3a16d65c0c959",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -64,7 +64,7 @@
             }
           },
           {
-            "id": "ab041d819b7bf5e9",
+            "id": "94a9794bc951a9ad",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,7 +78,7 @@
             }
           },
           {
-            "id": "756a4c9735c23f6c",
+            "id": "0ee7904420333b57",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -89,6 +89,62 @@
               },
               "icon": "lucide-file",
               "title": "Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione"
+            }
+          },
+          {
+            "id": "7eda07a9594e901b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 7-Algebra relazionale"
+            }
+          },
+          {
+            "id": "16e2184060cac88f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 3-Tipi di connessione e topologie di rete"
+            }
+          },
+          {
+            "id": "0e6339de6bd9fad8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 2-Elementi dell'infrastruttura, governance e modello OSI"
+            }
+          },
+          {
+            "id": "c76d6eecd7931786",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi"
             }
           }
         ]
@@ -153,7 +209,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 270.5,
+    "width": 272.5,
     "collapsed": true
   },
   "right": {
@@ -321,39 +377,42 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e6f5ab4848298f65",
+  "active": "1cd4a72385db9a80",
   "lastOpenFiles": [
+    "primo semestre/Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
-    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
-    "eng.traineddata",
-    "ita.traineddata",
-    "primo semestre/Architettura reti e internet/images/slide-089.png",
-    "primo semestre/Architettura reti e internet/images/slide-088.png",
-    "primo semestre/Architettura reti e internet/images/slide-087.png",
-    "primo semestre/Architettura reti e internet/images/slide-086.png",
-    "primo semestre/Architettura reti e internet/images/slide-085.png",
-    "primo semestre/Architettura reti e internet/images/slide-084.png",
-    "primo semestre/Architettura reti e internet/images/slide-083.png",
-    "primo semestre/Architettura reti e internet/images/slide-103.png",
-    "primo semestre/Architettura reti e internet/images/slide-102.png",
-    "primo semestre/Architettura reti e internet/images/slide-101.png",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
+    "primo semestre/Architettura reti e internet/images/slide-147.png",
+    "primo semestre/Architettura reti e internet/images/slide-146.png",
+    "primo semestre/Architettura reti e internet/images/slide-145.png",
+    "primo semestre/Architettura reti e internet/images/slide-144.png",
+    "primo semestre/Architettura reti e internet/images/slide-143.png",
+    "primo semestre/Architettura reti e internet/images/slide-139.png",
+    "primo semestre/Architettura reti e internet/images/slide-138.png",
+    "primo semestre/Architettura reti e internet/images/slide-137.png",
+    "primo semestre/Architettura reti e internet/images/slide-136.png",
+    "primo semestre/Architettura reti e internet/images/slide-131.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/oggi.pdf",
+    "primo semestre/oggi.pdf",
+    "primo semestre/Lezione 7-.md",
+    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "eng.traineddata",
+    "ita.traineddata",
     "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
     "primo semestre/Architettura reti e internet/internet/oggi.pdf",
     "primo semestre/Architettura reti e internet/protocolli/oggi.pdf",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 4-Media embeddati, ipertesti, layout CSS e tag semantici.md",
     "opencode-configuration/configuration/scripts/__pycache__/vault-audit.cpython-313.pyc",
     "opencode-configuration/configuration/scripts/__pycache__/split-notes.cpython-313.pyc",
     "opencode-configuration/configuration/scripts/__pycache__/read-slides.cpython-313.pyc",
     "opencode-configuration/configuration/scripts/__pycache__/check-losses.cpython-313.pyc",
-    "opencode-configuration/configuration/scripts/vault-audit.py",
-    "opencode-configuration/configuration/scripts/split-notes.py",
     "opencode-configuration/configuration/originals/Primo semestre__Linguaggi__2026-10-02 Automi a pila.md",
     "opencode-configuration/configuration/commands/split.md",
     "opencode-configuration/configuration/commands/slide.md",
@@ -364,9 +423,6 @@
     "opencode-configuration/configuration/agents/notes.md",
     "opencode-configuration/opencode agents management/chat_prompt.md",
     "opencode-configuration/opencode agents management/Opencode_Guide.md",
-    "opencode-configuration/opencode agents management/AGENTS.md",
-    "opencode-configuration/configuration/style.md",
-    "opencode-configuration/README.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 3-Box model CSS, selettori avanzati, tabelle e form HTML5.md"
+    "opencode-configuration/opencode agents management/AGENTS.md"
   ]
 }
