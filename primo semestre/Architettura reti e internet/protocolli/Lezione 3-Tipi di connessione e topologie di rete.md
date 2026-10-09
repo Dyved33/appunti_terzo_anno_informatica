@@ -14,9 +14,8 @@ Le reti sono classificate in base alla dimensione fisica:
 - Reti per applicazioni mobili (wireless).
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-04.png" width="300">
+  <img src="slide-04.png" style="width: 30%;">
 </div>
-
 ## Reti wan
 le reti wan hanno le caratteristiche:
 - grandi senza limitazioni 
@@ -46,7 +45,7 @@ le reti WLAN sono LAN wireless (senza fili):
 La banda a 2,4 GHz offre una copertura più ampia ma è più lenta; la banda a 5 GHz è più veloce ma ha una copertura ridotta.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-07.png" width="300">
+  <img src="slide-07.png" style="width: 30%;">
 </div>
 
 ## Reti man
@@ -65,7 +64,7 @@ Le reti wireless sono reti di comunicazione mobili private o reti di comunicazio
 	- LTE (Long Term Evolution)
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-10.png" width="300">
+  <img src="slide-10.png" style="width: 30%;">
 </div>
 
 Nello schema le tecnologie wireless sono riportate con le rispettive bande di frequenza: WAN a 400 e 800 MHz, IEEE 802.20 a 900 MHz, 2,5 e 3,6 GHz proposti, MAN, Wi-Fi mesh, WiMAX (802.16), MeshNetworks, wireless LAN Wi-Fi, Ethernet e UWB.

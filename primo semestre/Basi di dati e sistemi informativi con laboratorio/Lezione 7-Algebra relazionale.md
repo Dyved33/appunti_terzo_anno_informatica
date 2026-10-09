@@ -70,7 +70,7 @@ $$r \setminus s = \{t \mid t \in r \land t \notin s\}$$
 ### Esempio
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261009095408.png" style="width: 100%;">
+  <img src="Pasted image 20261009095408.png" style="width: 30%;">
 </div>
 
 ## Il prodotto cartesiano
@@ -84,7 +84,7 @@ $$r \times s = \{\{(A_1, v_1), \dots, (A_n, v_n)\} \cup \{(B_1, v_1), \dots, (B_
 ### Esempio
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261009095431.png" style="width: 100%;">
+  <img src="Pasted image 20261009095431.png" style="width: 30%;">
 </div>
 
 ## Selezione e proiezione
@@ -95,7 +95,7 @@ Gli operatori di selezione e proiezione sono operatori unari che svolgono funzio
 - la proiezione produce come risultato un'istanza di relazione costituita da un sottoinsieme di colonne della tabella che illustra l'istanza di relazione in input.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261009095505.png" style="width: 100%;">
+  <img src="Pasted image 20261009095505.png" style="width: 30%;">
 </div>
 
 ### La selezione
@@ -121,7 +121,7 @@ $$\sigma_F(r) = \{t \mid t \in r \land t \models F\}$$
 ### Esempio selezione
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261009095736.png" style="width: 100%;">
+  <img src="Pasted image 20261009095736.png" style="width: 30%;">
 </div>
 
 ### La proiezione
@@ -135,7 +135,7 @@ ovvero $\pi_Y(r)$ contiene le tuple su $Y$ ottenute dalle tuple di $r$ considera
 ### Esempio proiezione
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261009095818.png" style="width: 100%;">
+  <img src="Pasted image 20261009095818.png" style="width: 30%;">
 </div>
 
 > [!info] Sintesi:

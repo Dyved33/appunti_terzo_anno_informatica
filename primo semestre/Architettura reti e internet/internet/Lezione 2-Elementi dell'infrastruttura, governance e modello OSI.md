@@ -37,7 +37,7 @@ I protagonisti di questa fase:
 ## Elementi dell'infrastruttura
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-062.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-062.png" style="width: 30%;">
 </div>
 
 Lo schema traccia il percorso completo di una comunicazione: si parte dalla postazione dell'utente (home o dial-in, web client, modem, LAN, apparati di casa) e dal *user's location*, si attraversa il collegamento fino ai POP e al data center dell'ISP e si arriva al lato del contenuto online (enterprise networks, web server, server applicativi con relativo firewall e apparati legacy).
@@ -71,7 +71,7 @@ Nella figura sono etichettate POTS, DSL e ADSL, *leased lines*, wireless, satell
 **ISP backbone:** la dorsale dell'ISP interconnette i POP dell'ISP, ciascun ISP agli altri ISP e al contenuto online. Gli elementi sono *backbone providers*, *large circuits* (circuiti in fibra dei *carrier*), router, switch SONET/SDH, gigaswitch e *network access points*. I **NAP** (Neutral Access Point) sono punti di interconnessione fra ISP diversi per ottimizzare il traffico fra operatori; nella figura compaiono anche i collegamenti in *private peering* fra reti di grande capacità.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-073.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-073.png" style="width: 30%;">
 </div>
 
 **La gerarchia dei provider:** la stessa architettura vista per livelli, dai provider più in alto fino agli utenti in fondo. In alto compaiono i **Tier 1 Networks** e i **Tier 2 Networks**; sotto i **Tier 3 Network**, che la figura divide in *multi-homed ISP*, collegati a più di un provider superiore, e *single-homed ISP*, collegati a un unico provider; in fondo gli **utenti Internet**, business e consumatori.
@@ -88,7 +88,7 @@ Nella figura sono etichettate POTS, DSL e ADSL, *leased lines*, wireless, satell
 ## Internet governance
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-078.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-078.png" style="width: 30%;">
 </div>
 
 Chi c'è dietro Internet e chi la governa? La figura riassume l'evoluzione del governo di Internet dal 1968 al 1996: dall'epoca di ARPANET sotto DARPA e DCA si passa alla fase NSF, poi alla transizione a TCP/IP e a un ambiente multiprotocolare, con i comitati ICCB e ICB, l'IAB, l'IETF e l'IRTF che compaiono negli anni Ottanta, e infine la Internet Society.
@@ -151,7 +151,7 @@ Prerequisiti per l'attivazione di una intranet aziendale:
 *Vantaggi:* con la intranet le tecnologie telematiche e i servizi di Internet si diffondono orizzontalmente e verticalmente nella struttura aziendale, divenendo momento di grande partecipazione, formazione e aggiornamento. Internet ha come periferica un computer e da qui origina la sua straordinaria capacità di trasmettere, integrare e rappresentare qualsiasi tipo di informazione; sono inoltre tecnologie che portano all'ottimizzazione e alla riduzione dei costi di comunicazione e marketing.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-095.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-095.png" style="width: 30%;">
 </div>
 
 Nello schema ci sono tre sedi (LAN sede A, LAN sede B, LAN sede C), ciascuna con il proprio router e il proprio firewall, che si collegano fra loro attraverso Internet usando tunnel **VPN**: è il caso tipico di una organizzazione multi-sede che estende la propria rete privata sopra la rete pubblica.
@@ -169,7 +169,7 @@ Con *extranet* si identificano le risorse hardware e software che realizzano la 
 Normalmente sono servizi posti in un'area in cui il controllo del firewall è più lasco, la **De-Militarized Zone** (DMZ): i server in quest'area non sono ritenuti critici e i servizi sono in genere replicati da server protetti.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-098.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-098.png" style="width: 30%;">
 </div>
 
 Lo schema mostra la posizione della DMZ: la LAN interna, il firewall e il gateway che fanno da confine, e l'area intermedia in cui stanno i server esposti verso l'esterno.
@@ -181,13 +181,13 @@ Il confronto approfondito con TCP/IP e la struttura dei livelli sono in [[Lezion
 *Definizione:* il modello ISO OSI (Open Systems Interconnection) è un modello concettuale che definisce il modo in cui le reti inviano i dati dal mittente al destinatario. È utilizzato per descrivere ogni componente nell'ambito della comunicazione dei dati, in modo da permettere la definizione di regole e standard riguardo alle applicazioni e all'infrastruttura di rete. Il modello contiene sette livelli disposti concettualmente dal basso verso l'alto: **Fisico, Collegamento Dati, Rete, Trasporto, Sessione, Presentazione, Applicazione**.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-101.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-101.png" style="width: 30%;">
 </div>
 
 Lo schema mette in fila **End System A**, un **Transit System** e **End System B**: per ogni livello è disegnato il blocco relativo al protocollo (`Application protocol`, `Presentation protocol`, `Session protocol`, `Transport protocol`, `Network protocol`, `Datalink protocol`, `Physical protocol`) e, fra un livello e l'altro, l'*interface* che li mette in comunicazione sulla stessa macchina. Il transit system si occupa dei livelli di rete, mentre i livelli più alti restano fra i due sistemi terminali.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-102.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-102.png" style="width: 30%;">
 </div>
 
 La tabella grande ha quattro colonne: livello, protocolli ed esempi di funzioni, apparato centrale e il corrispettivo modello DOD. In sintesi, livello per livello:
@@ -201,7 +201,7 @@ La tabella grande ha quattro colonne: livello, protocolli ed esempi di funzioni,
 - **Physical (1)**: la struttura fisica (cavi, hub), codifica dei dati, attacco al mezzo fisico, tecnica di trasmissione, *baseband* o *broadband*, bit e volt.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-103.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-103.png" style="width: 30%;">
 </div>
 
 Il confronto finale fra i due modelli: i livelli Application, Presentation e Session dell'OSI corrispondono alla **Application** del TCP/IP, che raccoglie i protocolli di servizio DHCP, DNS, FTP, HTTP, HTTPS, POP, SMTP, SSH; il Transport OSI si divide in **TCP** e **UDP**; il Network corrisponde alla parte **Internet** con gli indirizzi IPv4 e IPv6; il Data Link e il Physical diventano **Network Access**, basato sull'indirizzo MAC.
