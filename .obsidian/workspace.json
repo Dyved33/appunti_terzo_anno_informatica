@@ -4,17 +4,91 @@
     "type": "split",
     "children": [
       {
-        "id": "183297ab9aaf2e6b",
+        "id": "e68233c1e604754e",
         "type": "tabs",
         "children": [
           {
-            "id": "f20246a080986c4a",
+            "id": "e6f5ab4848298f65",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS"
+            }
+          },
+          {
+            "id": "057137f50da96527",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS"
+            }
+          },
+          {
+            "id": "62a6fe807f636486",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze"
+            }
+          },
+          {
+            "id": "e50ddd67e3731ddf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 4-Vincoli di integrità nel modello relazionale"
+            }
+          },
+          {
+            "id": "ab041d819b7bf5e9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL"
+            }
+          },
+          {
+            "id": "756a4c9735c23f6c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione"
             }
           }
         ]
@@ -79,7 +153,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 270.5
+    "width": 270.5,
+    "collapsed": true
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -246,8 +321,32 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "f20246a080986c4a",
+  "active": "e6f5ab4848298f65",
   "lastOpenFiles": [
+    "primo semestre/Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
+    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "eng.traineddata",
+    "ita.traineddata",
+    "primo semestre/Architettura reti e internet/images/slide-089.png",
+    "primo semestre/Architettura reti e internet/images/slide-088.png",
+    "primo semestre/Architettura reti e internet/images/slide-087.png",
+    "primo semestre/Architettura reti e internet/images/slide-086.png",
+    "primo semestre/Architettura reti e internet/images/slide-085.png",
+    "primo semestre/Architettura reti e internet/images/slide-084.png",
+    "primo semestre/Architettura reti e internet/images/slide-083.png",
+    "primo semestre/Architettura reti e internet/images/slide-103.png",
+    "primo semestre/Architettura reti e internet/images/slide-102.png",
+    "primo semestre/Architettura reti e internet/images/slide-101.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
+    "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
+    "primo semestre/Architettura reti e internet/internet/oggi.pdf",
+    "primo semestre/Architettura reti e internet/protocolli/oggi.pdf",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 4-Media embeddati, ipertesti, layout CSS e tag semantici.md",
     "opencode-configuration/configuration/scripts/__pycache__/vault-audit.cpython-313.pyc",
     "opencode-configuration/configuration/scripts/__pycache__/split-notes.cpython-313.pyc",
@@ -255,9 +354,6 @@
     "opencode-configuration/configuration/scripts/__pycache__/check-losses.cpython-313.pyc",
     "opencode-configuration/configuration/scripts/vault-audit.py",
     "opencode-configuration/configuration/scripts/split-notes.py",
-    "opencode-configuration/configuration/scripts/read-slides.py",
-    "opencode-configuration/configuration/scripts/check-losses.py",
-    "opencode-configuration/configuration/scripts/__pycache__",
     "opencode-configuration/configuration/originals/Primo semestre__Linguaggi__2026-10-02 Automi a pila.md",
     "opencode-configuration/configuration/commands/split.md",
     "opencode-configuration/configuration/commands/slide.md",
@@ -266,32 +362,11 @@
     "opencode-configuration/configuration/commands/review.md",
     "opencode-configuration/configuration/agents/reviewer.md",
     "opencode-configuration/configuration/agents/notes.md",
-    "opencode-configuration/opencode agents management/opencode.json",
     "opencode-configuration/opencode agents management/chat_prompt.md",
     "opencode-configuration/opencode agents management/Opencode_Guide.md",
     "opencode-configuration/opencode agents management/AGENTS.md",
     "opencode-configuration/configuration/style.md",
     "opencode-configuration/README.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/images/Pasted image 20261007092543.png",
-    "primo semestre/Programmazione web e mobile con laboratorio/images/Pasted image 20261007092448.png",
-    "primo semestre/Programmazione web e mobile con laboratorio/Pasted image 20261007092543.png",
-    "primo semestre/Programmazione web e mobile con laboratorio/Pasted image 20261007092448.png",
-    "primo semestre/Pasted image 20261007092543.png",
-    "primo semestre/Pasted image 20261007092448.png",
-    "Pasted image 20261007092543.png",
-    "Pasted image 20261007092448.png",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 3-Box model CSS, selettori avanzati, tabelle e form HTML5.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 2-Struttura HTML5, tag semantici e fondamenti di CSS3.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 1-Architettura del Web e il protocollo HTTP.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/00 Indice - Programmazione web e mobile con laboratorio.md",
-    "primo semestre/Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
-    "Basi di dati e sistemi informativi con laboratorio/Images/Pasted image 20261002091155.png",
-    "Introduzione IA/images/lec02_romania_tree_search_fringe.png"
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 3-Box model CSS, selettori avanzati, tabelle e form HTML5.md"
   ]
 }

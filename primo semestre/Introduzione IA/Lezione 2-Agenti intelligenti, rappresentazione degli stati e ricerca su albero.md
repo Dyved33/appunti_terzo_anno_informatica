@@ -366,7 +366,7 @@ Note a piè di pagina:
 
 Il concetto di **stima** è introdotto per guidare la ricerca verso la soluzione in modo efficiente, evitando l'esplorazione inutile di percorsi non promettenti. A differenza di algoritmi come quello di Dijkstra, che esplora tutte le direzioni, si utilizza una **funzione euristica** che stima il costo rimanente dal nodo corrente all'obiettivo, permettendo all'algoritmo di dare priorità ai nodi che sembrano portare più rapidamente alla meta. 
 
-$f = g + h$, con $h$ l'euristica. La funzione $f$ quindi dipende da:
+$f = g + h$, con $h$ l'euristica. La funzione $f$ quindi dipende:
 
 - dal problema
 - da una buona stima (possono esistere diverse euristiche)
