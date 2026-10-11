@@ -53,7 +53,7 @@ Lo schema traccia il percorso completo di una comunicazione: si parte dalla post
 
 Nello schema il blocco comprende modem, scheda di rete (NIC), il collegamento Ethernet verso casa dell'utente e i *user services* locali (DNS, email, ecc.).
 
-**Local loop (carrier):** è il collegamento che connette la casa dell'utente all'ISP.
+**Local loop (carrier):** è il collegamento che connette la casa dell'utente all'ISP.  Un **ISP** (Internet Service Provider) è un'azienda o organizzazione che fornisce l'**accesso a Internet** agli utenti finali, sia privati che aziendali, dietro pagamento di un abbonamento
 
 - Linee di comunicazione (ADSL)
 - Fibra ottica (FTTH)
@@ -178,7 +178,7 @@ Lo schema mostra la posizione della DMZ: la LAN interna, il firewall e il gatewa
 
 Il confronto approfondito con TCP/IP e la struttura dei livelli sono in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#Modelli architetturali di riferimento: ISO/OSI e TCP/IP|Lezione 1 di protocolli]].
 
-*Definizione:* il modello ISO OSI (Open Systems Interconnection) è un modello concettuale che definisce il modo in cui le reti inviano i dati dal mittente al destinatario. È utilizzato per descrivere ogni componente nell'ambito della comunicazione dei dati, in modo da permettere la definizione di regole e standard riguardo alle applicazioni e all'infrastruttura di rete. Il modello contiene sette livelli disposti concettualmente dal basso verso l'alto: **Fisico, Collegamento Dati, Rete, Trasporto, Sessione, Presentazione, Applicazione**.
+*Definizione:* il modello ISO/OSI (Open Systems Interconnection) è un modello concettuale che definisce il modo in cui le reti inviano i dati dal mittente al destinatario. È utilizzato per descrivere ogni componente nell'ambito della comunicazione dei dati, in modo da permettere la definizione di regole e standard riguardo alle applicazioni e all'infrastruttura di rete. Il modello contiene sette livelli disposti concettualmente dal basso verso l'alto: **Fisico, Collegamento Dati, Rete, Trasporto, Sessione, Presentazione, Applicazione**.
 
 <div style="display: flex; justify-content: center;">
   <img src="slide-101.png" style="width: 30%;">
