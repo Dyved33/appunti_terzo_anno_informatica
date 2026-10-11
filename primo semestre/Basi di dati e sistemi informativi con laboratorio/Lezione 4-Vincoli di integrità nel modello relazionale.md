@@ -19,7 +19,7 @@ Si distinguono quattro categorie:
 
 ## I vincoli basati sullo schema
 
-I **vincoli basati sullo schema**, oggetto di studio sistematico di questa lezione, sono i vincoli esprimibili direttamente negli schemi del modello dei dati tramite il DDL. La loro formalizzazione nello schema ha due conseguenze decisive:
+I **vincoli basati sullo schema** sono i vincoli esprimibili direttamente negli schemi del modello dei dati tramite il DDL. La loro formalizzazione nello schema ha due conseguenze decisive:
 
 - **Centralizzazione della verifica:** il vincolo diventa parte della descrizione formale della base di dati, anziché logica disseminata nei programmi che la accedono.
 - **Verifica automatica a ogni operazione:** il DBMS può controllare il rispetto del vincolo in corrispondenza di ogni operazione di aggiornamento, impedendo che uno stato non ammissibile venga mai materializzato.
@@ -31,7 +31,7 @@ A loro volta i vincoli basati sullo schema si suddividono in due famiglie, disti
 | **Vincoli intrarelazionali** | Coinvolgono un unico schema di relazione | Verificabili relazione per relazione, in isolamento |
 | **Vincoli interelazionali** | Coinvolgono più schemi di relazioni | Richiedono di considerare contemporaneamente lo stato di più relazioni della base di dati |
 
-La distinzione è operativamente netta: la verifica di un vincolo intrarelazionale è un controllo *locale*, confinato all'interno di una singola relazione; quella di un vincolo interelazionale è un controllo *globale*, che deve tenere conto contemporaneamente del contenuto di più istanze di relazione e presuppone quindi un meccanismo di coordinazione tra le strutture coinvolte.
+La distinzione è operativamente netta: la verifica di un vincolo intrarelazionale è un controllo *locale*, confinato all'interno di una singola relazione (una sola tabella); quella di un vincolo interelazionale è un controllo *globale*, che deve tenere conto contemporaneamente del contenuto di più istanze di relazione e presuppone quindi un meccanismo di coordinazione tra le strutture coinvolte (più tabelle).
 
 ## I vincoli intrarelazionali
 
@@ -158,8 +158,6 @@ Ogni operazione di aggiornamento può portare il DBMS a trovarsi davanti a uno s
 **Modifica.** La modifica può essere vista come un'operazione di cancellazione seguita da un'operazione di inserimento: entrano dunque in gioco le politiche viste sinora per inserimento e cancellazione.
 
 ## Le dipendenze funzionali e la normalizzazione
-
-La lezione introduce le **dipendenze funzionali** fra le categorie di vincoli, con l'intento di verificare la qualità della progettazione di una base di dati relazionale; lo sviluppo del metodo che le usa per decomporre lo schema è il completamento dell'argomento.
 
 *Definizione:* su uno schema $R$ una dipendenza funzionale $X \rightarrow Y$ afferma che, per ogni istanza $r$ valida, due tuple che coincidono su $X$ coincidono anche su $Y$.
 

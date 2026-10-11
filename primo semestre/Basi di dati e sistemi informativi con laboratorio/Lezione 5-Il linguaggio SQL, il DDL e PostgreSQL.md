@@ -36,7 +36,7 @@ Un DBMS basato su SQL è strutturato secondo un'architettura **client-server**:
 - il **server DBMS** gestisce l'allocazione su memoria secondaria, il log delle transazioni, la sicurezza e l'esecuzione ottimizzata dei piani di interrogazione;
 - il **client** stabilisce una connessione specificando l'utente e il database di destinazione su cui operare.
 
-In coerenza con i fondamenti del modello relazionale, la base di dati è caratterizzata a livello intensionale dal proprio **schema** e a livello estensionale dall'**istanza corrente**, ed è descritta da un insieme di metadati, il **catalogo**, che conserva la definizione di tutti gli oggetti del database.
+In coerenza con i fondamenti del modello relazionale, la base di dati è caratterizzata a livello intenzionale dal proprio **schema** e a livello estensionale dall'**istanza corrente**, ed è descritta da un insieme di metadati, il **catalogo**, che conserva la definizione di tutti gli oggetti del database.
 
 ## Creare una base di dati: il DDL
 

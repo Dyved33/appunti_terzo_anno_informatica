@@ -157,9 +157,6 @@ Il **Data Manipulation Language (DML)** è l'insieme delle istruzioni di SQL che
 - `DELETE`: cancella tuple del DB;
 - `SELECT`: esegue interrogazioni (query) sul DB (interrogazione).
 
-> [!warning] Attenzione:
-> Nella slide 16 le descrizioni di `UPDATE` e `DELETE` sono scambiate ("UPDATE: Cancella", "DELETE: Modifica"); qui sopra c'è la semantica corretta.
-
 **Inserimento di tuple:**
 
 ```sql
@@ -361,8 +358,6 @@ CREATE TABLE frequenza (
   voto INTEGER CHECK (voto > 0 AND voto ≤ 30),
   PRIMARY KEY (idstudente, idcorso));
 ```
-
-*Approfondimenti:* R.A. Elmasri, S.B. Navathe, *Sistemi di Basi di Dati – Fondamenti*: capitolo 8 (8.2); capitolo 5 (*Data Definition*) e capitolo 6 (*Data Manipulation*) del manuale di PostgreSQL.
 
 > [!info] Sintesi:
 > - `DROP SCHEMA`, `DROP TABLE` e `DROP DOMAIN` cancellano gli oggetti dello schema con `RESTRICT` (default, rifiuta se ci sono dipendenze) o `CASCADE` (cancella le dipendenze).
