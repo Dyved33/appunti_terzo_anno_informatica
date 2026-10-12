@@ -18,7 +18,7 @@ CALLOUT_AMMESSI = {"example", "info", "important", "warning", "tip", "todo"}
 ESTENSIONI_IMG = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".bmp"}
 CARTELLE_ESCLUSE = {".git", ".obsidian", ".opencode", ".trash", "node_modules", "images", "esercizi", "rollback"}
 PREFISSI_ESCLUSI = (".opencode-backup",)
-FILE_ESCLUSI = {"AGENTS.md", "Guida_Opencode.md", "Opencode_Guide.md", "prompt_chat.md", "README.md", "LEGGIMI.md"}
+FILE_ESCLUSI = {"AGENTS.md", "Guida_Opencode.md", "Opencode_Guide.md", "prompt_chat.md", "README.md", "LEGGIMI.md", "CONFIG-CHANGES.md"}
 PARAGRAFO_LUNGO = 150  # parole
 
 FRASI_IA = [

@@ -9,6 +9,10 @@ opencode plugin @tarquinen/opencode-dcp@latest                # riduce i token p
 opencode plugin @zenobius/opencode-skillful                   # carica le skill on-demand invece di tenerle tutte in contesto
 opencode plugin @plannotator/opencode@latest                  # revisione interattiva del piano, con annotazioni
 opencode plugin opencode-websearch-cited@1.2.0                # web search con citazioni; da tenere per ultimo nell'elenco plugin
+opencode plugin @tuanhung303/opencode-acp@latest              # compatta il contesto per tempo, oltre che per dimensione
+
+pip install --user --break-system-packages docling "obsidian-mcp-search[server]" pypdf
+                                                             # OCR delle slide immagine, ricerca semantica delle note, lettura dei libri
 
 ## Cosa c'è
 
@@ -18,12 +22,13 @@ opencode plugin opencode-websearch-cited@1.2.0                # web search con c
 | `.opencode/stile.md` | i due prompt e `div style.txt` | unica fonte per lo stile, caricata a ogni sessione |
 | `.opencode/agents/appunti.md` | `vault`, `appunti`, `materiale`, `indici` | un solo agent che scrive |
 | `.opencode/agents/revisore.md` | `revisore` | controlla correttezza e verbosità, non modifica |
-| `.opencode/commands/` | i 4 command | `/lezione`, `/rivedi`, `/revisione`, `/slide`, più `/dividi` |
+| `.opencode/commands/` | i 4 command | `/lezione`, `/rivedi`, `/revisione`, `/slide`, `/dividi`, `/libro` |
 | `.opencode/scripts/vault-audit.py` | il vecchio script | riscritto: niente tag, frontmatter, indici annuali |
-| `.opencode/scripts/leggi-slide.py` | l'agent `lettore` | legge PDF, PPTX e PPT una pagina alla volta |
+| `.opencode/scripts/leggi-slide.py` | l'agent `lettore` | legge PDF, PPTX e PPT una pagina alla volta; le pagine immagine con Docling |
+| `.opencode/scripts/libri.py` | nuovo | legge i libri di `libri/`: elenco, indice, pagina, ricerca |
 | `.opencode/scripts/dividi-appunti.py` | nuovo | divide un file unico in una nota per lezione |
 | `.opencode/scripts/controlla-perdite.py` | nuovo | verifica che nella nota non si sia perso nulla rispetto alla fonte |
-| `opencode.json` | `opencode.json` | permessi aggiornati |
+| `opencode.json` | `opencode.json` | plugin, server MCP e compattazione del contesto |
 | `Guida_Opencode.md` | `Guida_Opencode.md` | riscritta sulla nuova struttura |
 | `prompt_chat.md` | `prompt_appunti.md`, `prompt_materiale.md` | prompt brevi per Antigravity e chat web |
 
@@ -43,11 +48,13 @@ opencode plugin opencode-websearch-cited@1.2.0                # web search con c
 
 **`stile.md` è sempre caricato** (campo `instructions` di `opencode.json`): un modello debole a volte salta la lettura, e lo stile è proprio la parte che non deve saltare.
 
+**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling (OCR); sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *ACP:* il plugin compatta il contesto anche per tempo, oltre che per dimensione.
+
 **Tolti:** tabella dei tag, anni e Erasmus, frontmatter, footer di navigazione, `raw_notes/`, `attachments/`, numerazione `NN_`, divieto dei caratteri non ASCII, callout `[!NOTE]` e `[!LAW]`, modelli di esempio dei vecchi prompt.
 
 **`esercizi/` è tuo.** La cartella `esercizi/` di ogni corso contiene il codice scritto da te (`.py`, `.html`, `.sql`, sottocartelle per l'esame). È un input quanto le slide: l'agent la legge per collegarla dalle note ma non la modifica, e non esegue codice. Se gli chiedi un esercizio te lo dà nella risposta e lo salvi tu. `vault-audit.py` salta la cartella (i `.md` lì dentro non sono note) e `controlla-perdite.py` legge i file collegati dalla nota, così il codice spostato in `esercizi/` non risulta perso.
 
-**Permessi.** L'agent non può modificare `AGENTS.md` né `.opencode/`, né nulla dentro `esercizi/` (`"*/esercizi/*": "deny"`, dopo `*.md` perché vinca l'ultima regola che combina). Tolti `find`, `head`, `tail`, `sed`, `unzip`, `file`. Chiedono conferma `pdftoppm` (crea immagini) e `dividi-appunti.py --scrivi` (crea note).
+**Permessi.** Il blocco `permission` di `opencode.json` rende tecnico ciò che `AGENTS.md` chiede: `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `*/esercizi/*` (dopo `*.md`, perché vinca l'ultima regola che combina), `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` è in allowlist (i cinque script, `ls`, `grep`, `rg`, `wc`, `pdfinfo`, `pdftotext`, `tesseract`, git in lettura); `external_directory` impedisce di uscire dal vault. Chiedono conferma `pdftoppm` e `dividi-appunti.py --scrivi`.
 
 ## Particolari implementativi
 

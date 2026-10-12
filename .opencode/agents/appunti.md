@@ -20,7 +20,11 @@ Lavori sulle note delle lezioni di questo vault. Le regole di stile sono in `.op
    - `python3 .opencode/scripts/leggi-slide.py FILE` elenca le pagine
    - `python3 .opencode/scripts/leggi-slide.py FILE 28` oppure `19-21` oppure `tutto`
    - `python3 .opencode/scripts/leggi-slide.py FILE --cerca "testo"`
-5. Il libro di testo del corso, se esiste, sta in `libri/<nome del corso>.pdf`: non è una fonte di default, quindi non prenderne nulla senza il consenso dell'utente (regola 11 di `AGENTS.md`).
+   Se un PDF o un PPTX è fatto di pagine immagine, lo script le legge da solo con Docling (OCR); su file lunghi lo salta e te lo segnala, e allora usa la foto della slide.
+5. Il libro di testo del corso, se esiste, sta in `libri/<nome del corso>.pdf`: non è una fonte di default, quindi non prenderne nulla senza il consenso dell'utente (regola 11 di `AGENTS.md`). Si legge sempre con `python3 .opencode/scripts/libri.py` (o il command `/libro`):
+   - `libri.py indice FILE` sommario del libro
+   - `libri.py pagina FILE 28` oppure `19-21`
+   - `libri.py cerca FILE "testo"`
 
 ## Capire cosa ti viene chiesto
 
@@ -45,6 +49,8 @@ In tutti i casi: se un'informazione non è nel materiale puoi cercarla sul web, 
 
 Il tool `parse` (plugin opencode-parser) serve solo per leggere il testo dentro un'immagine di `images/`, con `extractImages: true` e `ocrLang: "ita"`. Non usarlo mai con `save` o `outputPath`, e non usarlo per PDF e slide: lì serve lo script, che legge una pagina alla volta.
 
+Il server MCP `obsidian-search` cerca nelle note del vault, non nel resto. Ha i tool `list_vaults`, `search`, `read_note`, `reindex`. Usalo per trovare le lezioni collegate quando crei i wikilink, o per ritrovare dove è trattato un argomento: `search(query=..., k=...)`. Il file che devi modificare si legge con il tool di lettura, non con `read_note`. Se il server non risponde, ignoralo e vai avanti.
+
 ## Dopo aver scritto
 
 Fai questi passi ogni volta, senza che l'utente lo chieda:
@@ -65,7 +71,7 @@ Fai questi passi ogni volta, senza che l'utente lo chieda:
 
 Questi passi si fanno una volta sola per nota: quando lo chiede un command (`/lezione`, `/rivedi`) o quando l'utente dice che la lezione è finita. Non farli dopo una modifica qualsiasi.
 
-1. **Libro di testo.** Se esiste `libri/<nome del corso>.pdf`, chiedi una volta con il tool `question` se integrarlo come complemento; non prenderne nulla prima del sì (regola 11 di `AGENTS.md`). Se l'utente acconsente, leggi il libro con `leggi-slide.py` e integralo come nel caso A.
+1. **Libro di testo.** Se esiste `libri/<nome del corso>.pdf`, chiedi una volta con il tool `question` se integrarlo come complemento; non prenderne nulla prima del sì (regola 11 di `AGENTS.md`). Se l'utente acconsente, leggi il libro con `libri.py` (o `/libro`) e integralo come nel caso A.
 2. **Sintesi finale.** Scrivi o aggiorna il callout `> [!info] Sintesi:` in fondo alla nota.
 3. **Revisione.** Chiama il subagent `revisore` passandogli il percorso della nota e dei file di materiale usati, il libro compreso se integrato. Applica le correzioni che segnala. Una sola passata: non richiamarlo dopo le correzioni.
 

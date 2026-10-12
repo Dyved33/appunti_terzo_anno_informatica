@@ -9,6 +9,11 @@ Uso:
   leggi-slide.py FILE --cerca "testo"  pagine in cui compare il testo
 
 Non scrive nulla nel vault. I .ppt vengono convertiti in una cartella temporanea.
+
+Se un PDF o un PPTX non hanno testo estraibile (sono pagine immagine), il testo
+viene letto con Docling (OCR), quando il file non è troppo lungo. Per forzare
+Docling su file lunghi: LEGGI_SLIDE_DOCLING_FORZA=1. Per cambiare la soglia di
+pagine: LEGGI_SLIDE_DOCLING_LIMITE=N (default 60).
 """
 import hashlib
 import os
@@ -100,17 +105,70 @@ def pagine_ppt(path):
     return pagine_pdf(pdf)
 
 
+LIMITE_DOCLING = int(os.environ.get("LEGGI_SLIDE_DOCLING_LIMITE", "60"))
+
+
+def pagine_docling(path):
+    try:
+        from docling.document_converter import DocumentConverter
+    except ImportError:
+        print(
+            "docling non installato: esegui 'pip install --user --break-system-packages docling'",
+            file=sys.stderr,
+        )
+        return None
+    doc = DocumentConverter().convert(path).document
+    per_pagina = {}
+    for voce in doc.iterate_items():
+        item = voce[0] if isinstance(voce, tuple) else voce
+        prov = getattr(item, "prov", None)
+        if not prov:
+            continue
+        testo = getattr(item, "text", "") or ""
+        if not testo and hasattr(item, "export_to_markdown"):
+            try:
+                testo = item.export_to_markdown()
+            except Exception:
+                testo = ""
+        if testo.strip():
+            per_pagina.setdefault(prov[0].page_no, []).append(testo.strip())
+    tot = doc.num_pages() if hasattr(doc, "num_pages") else (max(per_pagina) if per_pagina else 0)
+    return ["\n\n".join(per_pagina.get(n, [])) for n in range(1, tot + 1)]
+
+
+def maggior_parte_vuota(pagine):
+    return not pagine or sum(1 for p in pagine if not p.strip()) > len(pagine) / 2
+
+
 def carica(path):
     if not os.path.isfile(path):
         esci(f"file non trovato: {path}")
     ext = os.path.splitext(path)[1].lower()
     if ext == ".pdf":
-        return pagine_pdf(path)
-    if ext == ".pptx":
-        return pagine_pptx(path)
-    if ext == ".ppt":
+        pagine = pagine_pdf(path)
+    elif ext == ".pptx":
+        pagine = pagine_pptx(path)
+    elif ext == ".ppt":
         return pagine_ppt(path)
-    esci(f"formato non supportato: {ext} (ammessi: .pdf, .pptx, .ppt)")
+    else:
+        esci(f"formato non supportato: {ext} (ammessi: .pdf, .pptx, .ppt)")
+
+    if maggior_parte_vuota(pagine):
+        if len(pagine) <= LIMITE_DOCLING or os.environ.get("LEGGI_SLIDE_DOCLING_FORZA") == "1":
+            print(
+                f"[{os.path.basename(path)}] il testo non è estraibile: provo Docling, può richiedere tempo...",
+                file=sys.stderr,
+            )
+            alternativo = pagine_docling(path)
+            if alternativo and not maggior_parte_vuota(alternativo):
+                return alternativo
+        else:
+            print(
+                f"[{os.path.basename(path)}] {len(pagine)} pagine senza testo: Docling saltato (file lungo). "
+                "Usa la foto delle slide oppure forza con LEGGI_SLIDE_DOCLING_FORZA=1.",
+                file=sys.stderr,
+            )
+    return pagine
 
 
 def normalizza(s):

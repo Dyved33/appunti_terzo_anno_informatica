@@ -28,14 +28,15 @@ Primo semestre/
 8. **Git in sola lettura.** Commit e push li fa l'utente.
 9. **Riepilogo finale.** Chiudi ogni lavoro con al massimo 5 righe: file toccati, cosa hai aggiunto, corretto e tolto, `[!todo]` lasciati.
 10. **Stop sui cicli.** Se la stessa azione fallisce dopo due tentativi equivalenti (anche con input diverso) o non porta progressi o dopo un timeout, fermati e chiedi all'utente invece di riprovare. Un altro tentativo aggiunge costo, non certezza. Niente tesseract in parallelo.
-11. **Libri di testo.** I libri stanno in `libri/<Nome corso>.pdf`, uno per corso. Una nota è completa senza il libro: è un complemento, non una fonte di default. Non prendere nulla dal libro senza il consenso dell'utente: a lezione conclusa chiedi una volta, con il tool `question`, se integrarlo come complemento; se dice no, il libro resta fuori. Quando lo usi valgono la regola 2 e la regola 7.
+11. **Libri di testo.** I libri stanno in `libri/<Nome corso>.pdf`, uno per corso, e si leggono con `python3 .opencode/scripts/libri.py` (command `/libro`). Una nota è completa senza il libro: è un complemento, non una fonte di default. Non prendere nulla dal libro senza il consenso dell'utente: a lezione conclusa chiedi una volta, con il tool `question`, se integrarlo come complemento; se dice no, il libro resta fuori. Quando lo usi valgono la regola 2 e la regola 7.
 
 ## Strumenti
 
 | Cosa | Come |
 |---|---|
-| Leggere slide e PDF | `python3 .opencode/scripts/leggi-slide.py FILE [pagine]` |
-| Leggere un libro di testo | `python3 .opencode/scripts/leggi-slide.py libri/<Nome corso>.pdf [pagine]` |
+| Leggere slide e PDF | `python3 .opencode/scripts/leggi-slide.py FILE [pagine]` (le pagine immagine vengono lette con Docling/OCR) |
+| Leggere un libro di testo | `python3 .opencode/scripts/libri.py` con `elenco`, `info FILE`, `indice FILE`, `pagina FILE 28`, `cerca FILE "testo"` (command `/libro`) |
+| Cercare una lezione per argomento | server MCP `obsidian-search` (tool `search`), oppure `python3 .opencode/scripts/vault-audit.py` per la struttura |
 | Foto di una slide | chiedi all'utente se farla (`pdftoppm*` chiede conferma); se sì: `pdftoppm -png -r 150 -f N -l N "FILE" "images/slide"` e leggi la descrizione con `tesseract "images/slide-NN.png" stdout -l it`; se no: vai oltre |
 | Controllo strutturale | `python3 .opencode/scripts/vault-audit.py [percorso]` |
 | Controllo che non si sia perso nulla | `python3 .opencode/scripts/controlla-perdite.py NOTA [--salva] [--con FONTE]` |

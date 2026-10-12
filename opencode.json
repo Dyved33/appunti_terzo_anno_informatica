@@ -31,5 +31,54 @@
       ".git/**",
       "**/node_modules/**"
     ]
+  },
+  "permission": {
+    "external_directory": {
+      "*": "deny"
+    },
+    "doom_loop": "deny",
+    "edit": {
+      "*": "deny",
+      "*.md": "allow",
+      "*/esercizi/*": "deny",
+      "AGENTS.md": "deny",
+      ".opencode/**": "deny",
+      "prompt/Guida_Opencode.md": "deny",
+      "prompt/prompt_chat.md": "deny",
+      "opencode.json": "deny",
+      "CONFIG-CHANGES.md": "deny"
+    },
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny"
+    },
+    "bash": {
+      "*": "deny",
+      "python3 .opencode/scripts/vault-audit.py*": "allow",
+      "python3 .opencode/scripts/leggi-slide.py*": "allow",
+      "python3 .opencode/scripts/libri.py*": "allow",
+      "python3 .opencode/scripts/controlla-perdite.py*": "allow",
+      "python3 .opencode/scripts/dividi-appunti.py*": "allow",
+      "python3 .opencode/scripts/dividi-appunti.py*--scrivi*": "ask",
+      "pdfinfo*": "allow",
+      "pdftotext*": "allow",
+      "pdftoppm*": "ask",
+      "tesseract*": "allow",
+      "ls*": "allow",
+      "wc*": "allow",
+      "grep*": "allow",
+      "rg*": "allow",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git show*": "allow",
+      "obsidian-mcp-search status*": "allow"
+    },
+    "webfetch": "allow",
+    "websearch": "allow",
+    "task": "allow",
+    "question": "allow",
+    "todowrite": "allow"
   }
 }

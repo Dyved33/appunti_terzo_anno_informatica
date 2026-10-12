@@ -18,11 +18,11 @@ Dopo ogni modifica a `opencode.json` o a un file in `.opencode/` va riavviato: l
 | `AGENTS.md` | le poche regole che valgono sempre. Viene letto a ogni sessione |
 | `.opencode/stile.md` | come vanno scritte le note. Viene caricato a ogni sessione |
 | `.opencode/agents/` | i 2 agent |
-| `.opencode/commands/` | i 5 command |
-| `.opencode/scripts/` | i 4 script: lettura slide, controllo strutturale, controllo perdite, divisione dei file unici |
-| `opencode.json` | permessi e compattazione del contesto |
+| `.opencode/commands/` | i 6 command |
+| `.opencode/scripts/` | i 5 script: lettura slide, lettura libri, controllo strutturale, controllo perdite, divisione dei file unici |
+| `opencode.json` | plugin, server MCP e compattazione del contesto |
 | `prompt_chat.md` | prompt da usare fuori da OpenCode (Antigravity, chat web) |
-| `libri/` | i libri di testo, un PDF per corso (`libri/<Nome corso>.pdf`); complemento, non fonte di default |
+| `libri/` | i libri di testo, un PDF per corso (`libri/<Nome corso>.pdf`); si leggono con `libri.py` (command `/libro`); complemento, non fonte di default |
 | `<Corso>/esercizi/` | il codice scritto da te (input): l'agent non lo tocca |
 
 Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
@@ -90,6 +90,15 @@ Trova: link rotti, immagini mancanti, formule e blocchi di codice non chiusi, `<
 /slide "Primo semestre/Linguaggi/automi.pptx" --cerca "pila vuota"
 ```
 
+**`/libro`** legge un libro di testo di `libri/`: elenco dei libri, sommario, una pagina o la ricerca di un testo. Il libro resta un complemento della nota, da usare solo col tuo consenso (regola 11 di `AGENTS.md`).
+
+```
+/libro elenco
+/libro "libri/Introduzione sicurezza.pdf" indice
+/libro "libri/Introduzione sicurezza.pdf" pagina 28
+/libro "libri/Introduzione sicurezza.pdf" cerca "firewall"
+```
+
 **`/dividi`** divide un file unico di appunti in una nota per lezione. Serve una volta sola, per gli appunti scritti finora.
 
 ```
@@ -147,9 +156,11 @@ Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le imma
 - Non crea note: le crei tu e lui le riempie. Può creare solo l'indice del corso. L'unica eccezione è `/dividi`, che chiede conferma.
 - Non tocca `.txt`, PDF, slide, immagini e i file in `esercizi/`. Non esegue codice.
 - Non esce dal vault.
-- Nel terminale può eseguire solo i quattro script, `ls`, `grep`, `rg`, `wc`, `pdfinfo`, `pdftotext` e i comandi git di sola lettura. Per `pdftoppm` (che crea immagini) chiede conferma.
+- Nel terminale può eseguire solo i cinque script (anche `libri.py`), `ls`, `grep`, `rg`, `wc`, `pdfinfo`, `pdftotext`, i comandi git di sola lettura e i comandi di stato del server `obsidian-mcp-search`. Per `pdftoppm` (che crea immagini) chiede conferma. La lettura delle slide immagine con Docling avviene dentro `leggi-slide.py`.
 - Può cercare sul web.
 - Non fa commit né push: restano a te.
+
+Queste restrizioni non sono solo scritte: sono imposte dal blocco `permission` di `opencode.json`. `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `esercizi/`, `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` nega tutto tranne i comandi in allowlist qui sopra; `external_directory` gli impedisce di uscire dal vault.
 
 ## Gli script, anche a mano
 
@@ -157,6 +168,10 @@ Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le imma
 python3 .opencode/scripts/leggi-slide.py FILE              # elenco delle pagine
 python3 .opencode/scripts/leggi-slide.py FILE 28           # una pagina
 python3 .opencode/scripts/leggi-slide.py FILE --cerca "x"  # dove compare x
+python3 .opencode/scripts/libri.py elenco                  # libri presenti e corso associato
+python3 .opencode/scripts/libri.py indice FILE             # sommario del libro
+python3 .opencode/scripts/libri.py pagina FILE 28          # una pagina del libro
+python3 .opencode/scripts/libri.py cerca FILE "x"          # dove compare x nel libro
 python3 .opencode/scripts/vault-audit.py "Primo semestre/Linguaggi"
 python3 .opencode/scripts/vault-audit.py --breve           # solo ERROR e WARN
 python3 .opencode/scripts/controlla-perdite.py NOTA --salva       # copia prima di modificare
@@ -166,11 +181,29 @@ python3 .opencode/scripts/dividi-appunti.py FILE           # piano di divisione
 python3 .opencode/scripts/dividi-appunti.py FILE --scrivi  # crea le note
 ```
 
-`leggi-slide.py` legge PDF, PPTX e PPT (i PPT li converte con LibreOffice in una cartella temporanea). Se un file è fatto di sole immagini lo dice: in quel caso il contenuto va letto a mano.
+`leggi-slide.py` legge PDF, PPTX e PPT (i PPT li converte con LibreOffice in una cartella temporanea). Se un PDF è fatto di pagine immagine, il testo viene letto automaticamente con Docling (OCR); sui file lunghi il fallback viene saltato, per non impiegare troppo tempo, e lo script lo segnala: in quel caso la pagina si guarda come foto. Con `LEGGI_SLIDE_DOCLING_FORZA=1` si forza Docling anche sui file lunghi.
 
 ## Il plugin opencode-parser
 
 Aggiunge il tool `parse`, che estrae il testo da PDF, Word, PowerPoint e, con l'OCR, dalle immagini. Non crea e non inserisce immagini. Qui serve per una cosa sola: leggere il testo dentro uno screenshot (`parse` con OCR in italiano). Per slide e PDF l'agent usa `leggi-slide.py`, perché `parse` restituisce il documento dall'inizio e non una pagina precisa.
+
+## La ricerca semantica (server obsidian-search)
+
+Nelle note c'è anche una ricerca per significato, non solo per parola esatta: chiedendo "dove si parla di protezione del traffico" trova la lezione sui firewall anche se la parola "firewall" non è nella domanda. La fa il server MCP `obsidian-search` (`opencode.json`, sezione `mcp`), che indicizza le note di `primo semestre/` con un modello di embedding multilingua e le cerca su `http://127.0.0.1:8848/mcp`. Espone quattro tool: `list_vaults`, `search`, `read_note`, `reindex`.
+
+Il server è un servizio systemd utente (`~/.config/systemd/user/obsidian-mcp-search.service`), quindi parte da solo all'avvio. Comandi utili:
+
+```bash
+systemctl --user status obsidian-mcp-search     # stato
+systemctl --user restart obsidian-mcp-search    # riavvio (ricarica l'indice)
+obsidian-mcp-search status                      # note e blocchi indicizzati
+```
+
+L'indice si aggiorna da solo quando una nota cambia (watcher). Il modello e le note indicizzate sono nella cartella di cache in `~/.cache/obsidian-mcp-search/`. L'agente lo usa solo per trovare le lezioni collegate, non per leggere il file da modificare.
+
+## Il plugin ACP
+
+Il plugin `@tuanhung303/opencode-acp` compatta il contesto per tempo, non solo per dimensione: quando la conversazione si allunga toglie le parti vecchie mantenendo i vincoli attivi, così il lavoro lungo non si perde. Non richiede configurazione.
 
 ## La compattazione del contesto
 
