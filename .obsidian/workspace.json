@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "92fe13d275f54976",
+        "id": "27a8b6c120cebcdf",
         "type": "tabs",
         "children": [
           {
-            "id": "160499ed5577cd98",
+            "id": "a4960062177f1ee4",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -61,25 +61,12 @@
               "icon": "lucide-search",
               "title": "Search"
             }
-          },
-          {
-            "id": "9b039906e528f979",
-            "type": "leaf",
-            "state": {
-              "type": "bookmarks",
-              "state": {
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-bookmark",
-              "title": "Bookmarks"
-            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 272.5,
+    "width": 325.5,
     "collapsed": true
   },
   "right": {
@@ -248,12 +235,21 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "160499ed5577cd98",
+  "active": "a4960062177f1ee4",
   "lastOpenFiles": [
+    "primo semestre/Introduzione sicurezza /Lezione 3-Firewall.md",
+    "opencode.json",
+    "libri/Introduzione sicurezza.pdf",
+    "libri/Introduzione IA.pdf",
+    "primo semestre/Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/esercitazioni/pwm_esercitazione1.zip",
+    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/esercitazioni/Unconfirmed 558514.crdownload",
+    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/progetto",
+    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/esercitazioni",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
@@ -276,15 +272,8 @@
     "primo semestre/Lezione 7-.md",
     "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
     "eng.traineddata",
-    "ita.traineddata",
     "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
-    "primo semestre/Architettura reti e internet/internet/oggi.pdf",
-    "primo semestre/Architettura reti e internet/protocolli/oggi.pdf",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 4-Media embeddati, ipertesti, layout CSS e tag semantici.md",
-    "opencode-configuration/configuration/scripts/__pycache__/vault-audit.cpython-313.pyc",
-    "opencode-configuration/configuration/scripts/__pycache__/split-notes.cpython-313.pyc",
-    "opencode-configuration/configuration/scripts/__pycache__/read-slides.cpython-313.pyc",
-    "opencode-configuration/configuration/scripts/__pycache__/check-losses.cpython-313.pyc",
     "opencode-configuration/configuration/originals/Primo semestre__Linguaggi__2026-10-02 Automi a pila.md",
     "opencode-configuration/configuration/commands/split.md",
     "opencode-configuration/configuration/commands/slide.md",
@@ -292,9 +281,6 @@
     "opencode-configuration/configuration/commands/lesson.md",
     "opencode-configuration/configuration/commands/review.md",
     "opencode-configuration/configuration/agents/reviewer.md",
-    "opencode-configuration/configuration/agents/notes.md",
-    "opencode-configuration/opencode agents management/chat_prompt.md",
-    "opencode-configuration/opencode agents management/Opencode_Guide.md",
-    "opencode-configuration/opencode agents management/AGENTS.md"
+    "opencode-configuration/configuration/agents/notes.md"
   ]
 }

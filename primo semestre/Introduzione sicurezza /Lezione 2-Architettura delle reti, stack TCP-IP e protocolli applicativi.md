@@ -157,6 +157,15 @@ I protocolli si distinguono in due famiglie:
 └────────────────────────────────────────┴────────────────────────────────────────┘
 ```
 
+**UDP nelle applicazioni multimediali:** UDP è l'estensione essenziale del servizio di consegna *best-effort* di IP ed è usato spesso in streaming, VoIP e giochi online: tollera piccole perdite, ma è sensibile alla frequenza di arrivo dei pacchetti (latenza e *jitter*).
+
+**Servizi non forniti da Internet:** l'architettura a commutazione di pacchetto non garantisce
+- consegna garantita dei segmenti,
+- consegna in ordine,
+- un ritardo massimo (latenza garantita),
+- una banda minima garantita,
+- sicurezza dei dati (confidenzialità e integrità).
+
 **Il segmento TCP:** è composto da intestazione e dati, con i seguenti campi principali: porte sorgente e destinazione, Sequence Number (SEQ), Acknowledgment Number (ACK), Header Length, Flags (SYN, ACK, FIN, RST, PSH, URG), Receive Window (per il **controllo di flusso**), Checksum e Urgent Pointer. L'apertura di una connessione TCP avviene con il ***three-way handshake***: il client invia un segmento SYN, il server risponde SYN-ACK, il client conferma con ACK; la chiusura usa FIN e ACK.
 
 - **Controllo di flusso:** meccanismo end-to-end tra mittente e ricevente per evitare di sovraccaricare il buffer del ricevente; si basa sulla *receive window*.
@@ -167,7 +176,16 @@ I protocolli si distinguono in due famiglie:
 >
 > I costi non si limitano ai pacchetti persi: un pacchetto perso va **ritrasmesso**, quindi si sprecano risorse di rete che avrebbero potuto trasportare altro traffico e l'efficienza cala; il ritardo di accodamento cresce con il carico e un pacchetto semplicemente in ritardo può far scattare un timeout spurio, provocando la ritrasmissione anche di segmenti non persi; infine allo scattare del timeout il mittente **riduce la finestra di congestione** e il throughput crolla finché non ricresce.
 
-> [!todo] immagine mancante: schema dell'header del segmento TCP con i campi principali (porte, SEQ, ACK, offset, flags, finestra, checksum, urgent pointer, opzioni e dati)
+**Approcci al controllo della congestione:** il controllo *punto a punto* (end-to-end) non riceve dalla rete alcuna informazione esplicita sullo stato di congestione: il mittente la deduce dalle perdite e dai ritardi osservati, come fa TCP. Nel controllo *assistito dalla rete* sono i router a segnalare la congestione al mittente, per esempio con un bit dedicato nelle intestazioni (ECN) o con messaggi di controllo.
+
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+  <div style="flex: 1;">
+    <img src="Pasted image 20261012095425.png" style="width: 100%; border-radius: 8px;">
+  </div>
+  <div style="flex: 1.5;">
+  Schema dell'header del segmento TCP, letto come parole da 32 bit: porta sorgente e porta destinazione, numero di sequenza, numero di conferma, lunghezza dell'header e campo riservato con i flag, dimensione della finestra, checksum, puntatore ai dati urgenti, opzioni e dati.
+  </div>
+</div>
 
 > [!info] Perché si utilizza UDP se TCP è affidabile?
 > L'affidabilità di TCP costa latenza: handshake a tre vie, attesa degli ACK, ritrasmissioni e riordino dei segmenti nei buffer. Nelle applicazioni *real-time* (VoIP, streaming live, videogiochi competitivi) un pacchetto audio o video con 300 ms di ritardo è inservibile: meglio tollerare la perdita di un singolo frame che bloccare l'intero flusso per ritrasmetterlo. Inoltre UDP permette al server di gestire molti più client concorrenti, con meno stato di memoria allocato.
@@ -559,7 +577,7 @@ Il modello **ISO/OSI** (ISO 7498) costituisce il riferimento concettuale e teori
 
 ## Dove si attacca la pila dei protocolli
 
-Lo stack a strati consente di mappare con precisione le vulnerabilità e le relative contromisure di difesa, a completamento dei livelli di difesa di [[Lezione 1-Fondamenti di sicurezza informatica e protezione dei sistemi|Lezione 1]].
+Lo stack a strati consente di mappare con precisione le vulnerabilità e le relative contromisure di difesa, a completamento dei livelli di difesa di [[Lezione 1-Fondamenti di sicurezza informatica e protezione dei sistemi|Lezione 1]]. La difesa perimetrale con i firewall è trattata in [[Lezione 3-Firewall|Lezione 3]].
 
 | Livello protocollare | Protocolli target | Debolezze e vettori di attacco tipici | Contromisure e difese primarie |
 | :--- | :--- | :--- | :--- |
@@ -569,10 +587,52 @@ Lo stack a strati consente di mappare con precisione le vulnerabilità e le rela
 | **2. Collegamento** | Ethernet, ARP, Wi-Fi | • Assenza di autenticazione in ARP (ARP Spoofing)<br>• Sniffing su domini broadcast / CAM Table Overflow<br>• Rogue DHCP Server | • Port Security e Dynamic ARP Inspection (DAI)<br>• DHCP Snooping sugli switch gestiti<br>• Segmentazione tramite VLAN e standard 802.1X |
 | **1. Fisico** | Cavi, Wi-Fi | • Intercettazione fisica (cable tapping, sniffing RF)<br>• Manomissione hardware e rogue device | • Protezione fisica dei rack e dei condotti di rete<br>• Cifratura end-to-end a prescindere dal canale |
 
+## Il livello di rete
+
+Il livello di rete ha il compito dell'**instradamento** (*routing*): porta i datagrammi dall'host mittente a quello destinatario attraverso una serie di router.
+
+- Sul lato mittente prende i segmenti dal livello di trasporto e li incapsula in datagrammi.
+- Sul lato destinatario consegna i segmenti al livello di trasporto.
+- I protocolli del livello di rete sono presenti in ogni host e in ogni router.
+- Il router esamina i campi dell'intestazione di tutti i datagrammi IP che lo attraversano.
+
+## Indirizzamento IPv4 e sottoreti
+
+Ogni interfaccia di host e router di Internet ha un **indirizzo IP globalmente univoco**.
+
+Un'**interfaccia** è il confine tra host e collegamento fisico:
+
+- un router deve essere connesso ad almeno due collegamenti, quindi ha almeno due interfacce;
+- un host in genere ha una sola interfaccia;
+- a ciascuna interfaccia sono associati uno o più indirizzi IP.
+
+*Definizione:* una **sottorete** è una rete isolata i cui punti terminali sono le interfacce dei nodi: le interfacce di una stessa sottorete condividono il prefisso di indirizzo e si raggiungono direttamente senza attraversare un router.
+
+## Frammentazione e formato del datagramma IP
+
+L'unità massima di trasmissione (**MTU**) è la massima quantità di dati che un frame a livello di collegamento può trasportare; collegamenti diversi hanno MTU diverse. Un datagramma IP più grande dell'MTU del collegamento su cui deve essere inviato viene frammentato in datagrammi IP più piccoli.
+
+- **Datagramma frammentato:** i frammenti sono datagrammi IP a sé stanti, con i campi Identification, Flags e Fragment Offset che permettono di ricomporre l'originale.
+- I frammenti vengono riassemblati solo una volta raggiunta la destinazione, non dai router intermedi.
+- La frammentazione può avvenire in qualunque router lungo il percorso, ogni volta che il datagramma supera l'MTU del collegamento successivo.
+
+**Formato del datagramma IPv4:** l'intestazione contiene versione, lunghezza dell'intestazione (IHL), tipo di servizio, lunghezza totale, identificazione, flag, offset di frammentazione, *time to live* (TTL), protocollo, checksum dell'intestazione, indirizzo IP sorgente, indirizzo IP destinazione, opzioni ed eventuale padding; segue il payload.
+
+<div style="display: flex; justify-content: center;">
+  <img src="Pasted image 20261012100855.png" width="300">
+</div>
+
+## ARP
+
+**Address Resolution Protocol:** ogni nodo IP di una LAN (host o router) mantiene una **tabella ARP** con le corrispondenze tra indirizzi IP e indirizzi MAC, nella forma $\langle \text{indirizzo IP}, \text{indirizzo MAC}, \text{TTL} \rangle$. Il TTL (*time to live*) indica quando una voce va eliminata dalla tabella; il valore tipico è 20 minuti.
+
+> [!info]
+> La LAN è tipicamente organizzata a stella, con al centro un hub o uno switch.
+
 > [!info] Sintesi:
 > - Un protocollo definisce formato, ordine dei messaggi e azioni dei nodi; TCP/IP astrae un canale logico end-to-end dove la distanza fisica conta solo come latenza.
 > - La pila ha cinque livelli con PDU distinti (messaggio, segmento, datagramma, frame, bit); ogni livello aggiunge o toglie il suo header e i router ispezionano fino al livello link/rete.
 > - Le socket collegano i processi in user space al kernel; una connessione è una 5-tupla e le porte sono well-known, registered o ephemeral.
-> - TCP è affidabile e orientato alla connessione, UDP è best-effort: la scelta dipende da tolleranza alle perdite, banda e latenza richieste.
-> - HTTP è stateless e i cookie (`Secure`, `HttpOnly`, `SameSite`) reintroducono lo stato proteggendo il token; HTTPS aggiunge TLS su porta 443; FTP usa due connessioni e in chiaro è insicuro.
-> - SMTP è push su porta 25 con SPF, DKIM e DMARC, DNS risolve i nomi su UDP 53; checksum e CRC rilevano solo errori accidentali, e ogni livello della pila ha debolezze e contromisure proprie.
+> - TCP è affidabile e orientato alla connessione, UDP è best-effort: la scelta dipende da tolleranza alle perdite, banda e latenza richieste, ma Internet non garantisce consegna, ordine, ritardo massimo né banda.
+> - Il livello di rete instrada i datagrammi: ogni interfaccia ha un IP univoco, le sottoreti condividono un prefisso, i datagrammi grandi sono frammentati secondo l'MTU e riassemblati a destinazione, e ARP risolve gli IP in indirizzi MAC.
+> - HTTP è stateless e i cookie (`Secure`, `HttpOnly`, `SameSite`) reintroducono lo stato proteggendo il token; HTTPS aggiunge TLS su porta 443; FTP usa due connessioni; SMTP è push con SPF, DKIM e DMARC; DNS risolve i nomi su UDP 53 e checksum e CRC rilevano solo errori accidentali.
