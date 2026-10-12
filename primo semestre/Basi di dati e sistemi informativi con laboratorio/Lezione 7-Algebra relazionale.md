@@ -26,13 +26,13 @@ Non tutti i precedenti operatori sono primitivi: l'intersezione, la concatenazio
 
 Inizieremo illustrando gli operatori insiemistici; poiché semplice e utile nel contesto delle operazioni insiemistiche, presentiamo prima l'operatore relazionale di ridenominazione.
 
-*Definizione:* data un'istanza di relazione $r$ sullo schema di relazione $R(A_1, \dots, A_n)$, la ridenominazione
+*Definizione:* data un'[[Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze|istanza di relazione]] $r$ sullo schema di relazione $R(A_1, \dots, A_n)$, la ridenominazione
 
 $$\rho_{S(A_1 \to B_1, \dots, A_n \to B_n)}(r)$$
 
 del nome di relazione $R$ con il nome di relazione $S$ e degli attributi $A_1, \dots, A_n$ con $B_1, \dots, B_n$ è definita dall'istanza di relazione $s$ sullo schema di relazione $S(B_1, \dots, B_n)$, dove:
 
-$$s = \{(B_1, v_1), \dots, (B_n, v_n) \mid (A_1, v_1), \dots, (A_n, v_n) \in r\}$$
+$$s = \{(B_1, v_1), \dots, (B_n, v_n) \mid \{(A_1, v_1), \dots, (A_n, v_n)\} \in r\}$$
 
 Nel seguito utilizzeremo le notazioni:
 
@@ -138,9 +138,48 @@ ovvero $\pi_Y(r)$ contiene le tuple su $Y$ ottenute dalle tuple di $r$ considera
   <img src="Pasted image 20261009095818.png" style="width: 30%;">
 </div>
 
+## La concatenazione (join)
+
+L'operatore derivato di join (concatenazione) è indicato con il simbolo $\bowtie_F$, dove $F$ è la condizione di join. Serve a unire tuple logicamente collegate, provenienti da due relazioni, in tuple singole, e può essere definito mediante gli operatori primitivi (ovvero non derivati) di selezione e prodotto cartesiano.
+
+### Il θ-join
+
+*Definizione:* siano $R(X)$, $S(Y)$ due schemi di relazione tali che $X \cap Y = \emptyset$ e siano $r$, $s$ due istanze di $R(X)$, $S(Y)$. Sia $F$ una formula proposizionale su condizioni atomiche del tipo $A \theta B$, dove $A \in X$, $B \in Y$ e $\theta$ è un operatore di confronto. L'operatore di θ-join $r \bowtie_F s$ produce una relazione formata da tutte le combinazioni di tuple che soddisfano la condizione di join $F$:
+
+$$r \bowtie_F s = \sigma_F(r \times s)$$
+
+### Esempio θ-join
+
+<div style="display: flex; justify-content: center;">
+  <img src="slide-64.png" style="width: 30%;">
+</div>
+
+### L'equijoin
+
+*Definizione:* un equijoin è un θ-join in cui la condizione di join $F$ è una congiunzione di condizioni atomiche di uguaglianza.
+
+### Il join naturale
+
+Il risultato di un'operazione di equijoin è una relazione in cui ogni tupla assume gli stessi valori sugli attributi di equijoin; tali attributi appaiono quindi ripetuti nel risultato. L'operatore (derivato) di join naturale permette di eliminare queste duplicazioni: date due istanze di relazione $r$, $s$, il join naturale produce una relazione le cui tuple sono ottenute concatenando le tuple di $r$ ed $s$ che hanno gli stessi valori sugli attributi comuni.
+
+*Definizione:* siano $R(X)$, $S(Y)$ due schemi di relazione, sia $Z = X \cap Y$ e si considerino due istanze $r$, $s$ di $R(X)$, $S(Y)$. La concatenazione naturale (join naturale) $r \bowtie s$ è definita come:
+
+$$r \bowtie s = \{t \cup t' \mid t \in r \wedge t' \in s \wedge t[Z] = t'[Z]\}$$
+
+### Esempio join naturale
+
+<div style="display: flex; justify-content: center;">
+  <img src="slide-73.png" style="width: 30%;">
+</div>
+
+<div style="display: flex; justify-content: center;">
+  <img src="slide-74.png" style="width: 30%;">
+</div>
+
 > [!info] Sintesi:
 > - L'algebra relazionale è un linguaggio procedurale di operatori unari e binari su istanze di relazioni; è il fondamento formale del modello relazionale e la base per l'ottimizzazione delle interrogazioni nei RDBMS.
 > - Gli operatori si dividono in insiemistici (unione, intersezione, differenza, prodotto cartesiano) e propriamente relazionali (ridenominazione, selezione, proiezione, join, divisione); intersezione, join e divisione sono derivabili dagli altri.
 > - La ridenominazione $\rho$ cambia nome di relazione e attributi; unione, intersezione e differenza richiedono schemi compatibili all'unione (stesso grado e stessi domini).
 > - Il prodotto cartesiano combina ogni tupla di $r$ con ogni tupla di $s$, richiedendo attributi disgiunti.
 > - La selezione $\sigma_F$ estrae le tuple che soddisfano una formula proposizionale $F$; la proiezione $\pi_Y$ estrae i valori su un sottoinsieme di attributi $Y$.
+> - Il θ-join $r \bowtie_F s = \sigma_F(r \times s)$ combina le tuple di due relazioni che soddisfano $F$; l'equijoin è il caso di sole uguaglianze e il join naturale elimina gli attributi comuni ripetuti.

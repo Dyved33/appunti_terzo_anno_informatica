@@ -20,8 +20,9 @@ Dopo ogni modifica a `opencode.json` o a un file in `.opencode/` va riavviato: l
 | `.opencode/agents/` | i 2 agent |
 | `.opencode/commands/` | i 5 command |
 | `.opencode/scripts/` | i 4 script: lettura slide, controllo strutturale, controllo perdite, divisione dei file unici |
-| `opencode.json` | permessi |
+| `opencode.json` | permessi e compattazione del contesto |
 | `prompt_chat.md` | prompt da usare fuori da OpenCode (Antigravity, chat web) |
+| `libri/` | i libri di testo, un PDF per corso (`libri/<Nome corso>.pdf`); complemento, non fonte di default |
 | `<Corso>/esercizi/` | il codice scritto da te (input): l'agent non lo tocca |
 
 Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
@@ -31,7 +32,7 @@ Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
 1. Crei tu la nota nella cartella del corso (es. `Lezione 3-Automi a pila.md`). Nella stessa cartella metti gli appunti grezzi (`.txt`, uno per lezione), le slide e, in `images/`, le immagini.
 2. Scrivi nella nota quello che hai, con i segnaposto `// ... //` dove serve.
 3. Durante il lavoro puoi chiedere modifiche a parole: l'agent scrive, aggiorna l'indice e controlla la struttura. Non chiama il revisore.
-4. A lezione conclusa lanci `/lezione`: completa la nota, scrive la sintesi finale, fa passare il revisore una volta e applica le correzioni.
+4. A lezione conclusa lanci `/lezione`: completa la nota, ti chiede se integrare il libro di testo di `libri/` come complemento, scrive la sintesi finale, fa passare il revisore una volta e applica le correzioni.
 
 ## Niente si perde
 
@@ -170,6 +171,16 @@ python3 .opencode/scripts/dividi-appunti.py FILE --scrivi  # crea le note
 ## Il plugin opencode-parser
 
 Aggiunge il tool `parse`, che estrae il testo da PDF, Word, PowerPoint e, con l'OCR, dalle immagini. Non crea e non inserisce immagini. Qui serve per una cosa sola: leggere il testo dentro uno screenshot (`parse` con OCR in italiano). Per slide e PDF l'agent usa `leggi-slide.py`, perché `parse` restituisce il documento dall'inizio e non una pagina precisa.
+
+## La compattazione del contesto
+
+Quando la conversazione si allunga, OpenCode riassume da solo le parti vecchie per liberare spazio nella finestra di contesto del modello. In `opencode.json` la sezione `compaction` imposta:
+
+- `auto: true` — compatta automaticamente quando il contesto è pieno (default: `true`);
+- `prune: true` — rimuove gli output vecchi dei tool per risparmiare token (default: `false`);
+- `tail_turns: 10` — tiene intatti gli ultimi turni (default: `2`).
+
+Ci sono anche `reserved` (token di riserva per la compattazione) e `preserve_recent_tokens` (token recenti da conservare). Non esiste una cadenza fissa "ogni N messaggi": la compattazione parte quando il contesto si riempie, e un riassunto a intervalli richiederebbe un plugin che chiami `session.summarize`.
 
 ## Quando qualcosa va storto
 

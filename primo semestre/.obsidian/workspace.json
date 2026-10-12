@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "692311dd2b5afb49",
+        "id": "7c70a8813d5bcce2",
         "type": "tabs",
         "children": [
           {
-            "id": "2ba678c12097dd24",
+            "id": "b46cf504e313c157",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Architettura reti e internet/internet/oggi.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "oggi"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -53,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Multiplexing",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -81,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 596.5
+    "width": 217.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -201,8 +199,20 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "2ba678c12097dd24",
+  "active": "b46cf504e313c157",
   "lastOpenFiles": [
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
+    "Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+    "Pasted image 20261012095425.png",
+    "Basi di dati e sistemi informativi con laboratorio/Images/slide-73.png",
+    "Basi di dati e sistemi informativi con laboratorio/Images/slide-74.png",
+    "Basi di dati e sistemi informativi con laboratorio/Images/slide-64.png",
+    "Basi di dati e sistemi informativi con laboratorio/algebraRelazionale2.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 990498.crdownload",
+    "Introduzione sicurezza /Lezione 3.md",
+    "Untitled.md",
+    "Pasted image 20261012100855.png",
+    "Architettura reti e internet/internet/oggi.pdf",
     "oggi.pdf",
     "Pasted image 20261009095818.png",
     "Pasted image 20261009095736.png",
@@ -211,18 +221,11 @@
     "Pasted image 20261009095408.png",
     "Lezione 7-.md",
     "Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
-    "Architettura reti e internet/images/slide-103.png",
-    "Architettura reti e internet/images/slide-102.png",
-    "Architettura reti e internet/images/slide-101.png",
-    "Architettura reti e internet/images/slide-098.png",
-    "Architettura reti e internet/images/slide-095.png",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
-    "Architettura reti e internet/internet/oggi.pdf",
     "Architettura reti e internet/internet/Lezione 1-Internetworking, il villaggio globale e la storia di Internet.md",
     "Architettura reti e internet/internet/00 Indice - Internetworking.md",
     "Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
     "Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
-    "Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
     "Introduzione IA/oggi.pdf",
     "Introduzione IA/Unconfirmed 735252.crdownload",
     "Architettura reti e internet/protocolli/Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
@@ -240,13 +243,8 @@
     "Basi di dati e sistemi informativi con laboratorio/esercizi",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 5-Il linguaggio SQL, il DDL e PostgreSQL.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 6-.md",
-    "Basi di dati e sistemi informativi con laboratorio/oggi.pdf",
-    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 715246.crdownload",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md",
-    "Architettura reti e internet/protocolli/Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
-    "Architettura reti e internet/protocolli/Fondamenti di networking, teoria della comunicazione e standard.md",
-    "Introduzione sicurezza /00 Indice - Introduzione sicurezza.md"
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 4-Vincoli di integrità nel modello relazionale.md"
   ]
 }

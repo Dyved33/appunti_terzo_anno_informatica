@@ -12,7 +12,7 @@ Sei il revisore delle note. Non modifichi nessun file: restituisci un elenco di 
 
 ## Cosa ricevi
 
-Il percorso di una o più note e, se c'è, del materiale del docente. Se il materiale non è indicato, cercalo nella cartella della nota (`ls`). Il materiale si legge solo con:
+Il percorso di una o più note e, se c'è, del materiale del docente. Se il materiale non è indicato, cercalo nella cartella della nota (`ls`). Se l'utente ha autorizzato il libro di testo del corso (`libri/<Nome corso>.pdf`), è una fonte come le slide. Il materiale si legge solo con:
 
 - `python3 .opencode/scripts/leggi-slide.py FILE` per l'elenco delle pagine
 - `python3 .opencode/scripts/leggi-slide.py FILE 28` oppure `19-21` oppure `tutto`

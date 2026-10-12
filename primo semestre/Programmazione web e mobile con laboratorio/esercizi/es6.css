@@ -1,36 +1,73 @@
-#container {
+body {
   background-color: blueviolet;
+  min-height: 100vh;
+  margin: 0px;
+}
+
+#container {
   display: grid;
-  grid-template-columns: 3 auto;
-  grid-template-rows: 2 auto;
-  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 .box {
-  border-radius: 10px;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 200px auto;
+
+    border-radius: 20px;
+    padding: 220px 20px 20px;
 }
 
-#1 {
-    background-image: url("./images/1.png");
+.text-container {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
 }
 
-#2 {
-    background-image: url("./images/2.png");
+.text-container h3 {
+  color: blueviolet;
 }
 
-#3 {
-    background-image: url("./images/3.png");
+.btn {
+  background-color: blueviolet;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 28px;
+  cursor: pointer;
+
+  margin-top: auto;
 }
 
-#4 {
-    background-image: url("./images/4.png");
+#uno {
+  background-image: url("./images/uno.png");
 }
 
-#5 {
-    background-image: url("./images/5.png");
+#due {
+  background-image: url("./images/due.png");
 }
 
-#6 {
-    background-image: url("./images/6.png");
+#tre {
+  background-image: url("./images/tre.png");
+}
+
+#quattro {
+  background-image: url("./images/quattro.png");
+}
+
+#cinque {
+  background-image: url("./images/cinque.png");
+}
+
+#sei {
+  background-image: url("./images/sei.png");
 }

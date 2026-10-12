@@ -66,6 +66,7 @@ opencode plugin opencode-websearch-cited@1.2.0                # web search con c
 | 14 | lunghezza | nessun limite di righe: `stile.md` chiede densità (ogni concetto una volta, spiegazione proporzionata alla difficoltà, tagliare parole e non contenuti). L'audit non segnala la lunghezza della nota, solo i singoli paragrafi oltre le 150 parole, come INFO |
 | 15 | configurazione e creazione dei file | l'agent non modifica la configurazione e non crea note |
 | 16 | revisore | una passata, solo con `/lezione` e `/rivedi` |
+| 17 | compattazione | `auto`+`prune`+`tail_turns` in `opencode.json`; niente cadenza fissa, serve un plugin |
 
 ## Passare i vecchi appunti al nuovo formato (da file unico a file multipli)
 

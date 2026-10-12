@@ -20,6 +20,7 @@ Lavori sulle note delle lezioni di questo vault. Le regole di stile sono in `.op
    - `python3 .opencode/scripts/leggi-slide.py FILE` elenca le pagine
    - `python3 .opencode/scripts/leggi-slide.py FILE 28` oppure `19-21` oppure `tutto`
    - `python3 .opencode/scripts/leggi-slide.py FILE --cerca "testo"`
+5. Il libro di testo del corso, se esiste, sta in `libri/<nome del corso>.pdf`: non è una fonte di default, quindi non prenderne nulla senza il consenso dell'utente (regola 11 di `AGENTS.md`).
 
 ## Capire cosa ti viene chiesto
 
@@ -62,10 +63,11 @@ Fai questi passi ogni volta, senza che l'utente lo chieda:
 
 ## Quando la lezione è conclusa
 
-Questi due passi si fanno una volta sola per nota: quando lo chiede un command (`/lezione`, `/rivedi`) o quando l'utente dice che la lezione è finita. Non farli dopo una modifica qualsiasi.
+Questi passi si fanno una volta sola per nota: quando lo chiede un command (`/lezione`, `/rivedi`) o quando l'utente dice che la lezione è finita. Non farli dopo una modifica qualsiasi.
 
-1. **Sintesi finale.** Scrivi o aggiorna il callout `> [!info] Sintesi:` in fondo alla nota.
-2. **Revisione.** Chiama il subagent `revisore` passandogli il percorso della nota e dei file di materiale usati. Applica le correzioni che segnala. Una sola passata: non richiamarlo dopo le correzioni.
+1. **Libro di testo.** Se esiste `libri/<nome del corso>.pdf`, chiedi una volta con il tool `question` se integrarlo come complemento; non prenderne nulla prima del sì (regola 11 di `AGENTS.md`). Se l'utente acconsente, leggi il libro con `leggi-slide.py` e integralo come nel caso A.
+2. **Sintesi finale.** Scrivi o aggiorna il callout `> [!info] Sintesi:` in fondo alla nota.
+3. **Revisione.** Chiama il subagent `revisore` passandogli il percorso della nota e dei file di materiale usati, il libro compreso se integrato. Applica le correzioni che segnala. Una sola passata: non richiamarlo dopo le correzioni.
 
 ## Limiti
 
