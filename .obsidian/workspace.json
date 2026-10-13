@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "27a8b6c120cebcdf",
+        "id": "b8759d36d68d36d3",
         "type": "tabs",
         "children": [
           {
-            "id": "a4960062177f1ee4",
+            "id": "4721ee6643b8b151",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -61,13 +61,25 @@
               "icon": "lucide-search",
               "title": "Search"
             }
+          },
+          {
+            "id": "825c5471ad591eb0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 325.5,
-    "collapsed": true
+    "width": 325.5
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -235,8 +247,10 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "a4960062177f1ee4",
+  "active": "c1467e7ef2db6b6c",
   "lastOpenFiles": [
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 5-Menu di navigazione, responsive design e validazione.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
     "primo semestre/Introduzione sicurezza /Lezione 3-Firewall.md",
     "opencode.json",
     "libri/Introduzione sicurezza.pdf",
@@ -280,7 +294,6 @@
     "opencode-configuration/configuration/commands/audit.md",
     "opencode-configuration/configuration/commands/lesson.md",
     "opencode-configuration/configuration/commands/review.md",
-    "opencode-configuration/configuration/agents/reviewer.md",
-    "opencode-configuration/configuration/agents/notes.md"
+    "opencode-configuration/configuration/agents/reviewer.md"
   ]
 }

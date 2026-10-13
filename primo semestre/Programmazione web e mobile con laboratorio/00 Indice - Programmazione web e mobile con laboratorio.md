@@ -4,3 +4,4 @@
 - [[Lezione 2-Struttura HTML5, tag semantici e fondamenti di CSS3]] — Tassonomia dei tag, struttura del documento, attributi, liste e le regole base del CSS
 - [[Lezione 3-Box model CSS, selettori avanzati, tabelle e form HTML5]] — Le quattro scatole del box model, i selettori e i combinatori, tabelle e moduli di acquisizione dati
 - [[Lezione 4-Media embeddati, ipertesti, layout CSS e tag semantici]] — Video e audio, collegamenti ipertestuali, layout CSS e i tag di sezione
+- [[Lezione 5-Menu di navigazione, responsive design e validazione]] — Menu di navigazione, responsive design e validazione W3C
