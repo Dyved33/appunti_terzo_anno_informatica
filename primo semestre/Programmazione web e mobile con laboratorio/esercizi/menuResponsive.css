@@ -34,6 +34,10 @@ nav a:hover{
   display: inline-block;
 }
 
+#div1:hover, #div2:hover, #div3:hover{
+    background-color: orange;
+}
+
 #div2 {
   width: 32%;
   height: 30em;
