@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programmazione web e mobile con laboratorio/Lezione 5-.md",
+                "file": "Introduzione IA/Lezione 3-.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 5-"
+              "title": "Lezione 3-"
             }
           }
         ]
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 217.5,
-    "collapsed": true
+    "width": 217.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -206,6 +205,7 @@
   },
   "active": "78082cae2759b999",
   "lastOpenFiles": [
+    "Introduzione IA/Lezione 3-.md",
     "Programmazione web e mobile con laboratorio/esercizi/menuResponsive.css",
     "Programmazione web e mobile con laboratorio/esercizi/menuResponsive.html",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione1/zapping/prova.html",
@@ -246,7 +246,6 @@
     "Architettura reti e internet/protocolli/00 Indice - Architettura reti.md",
     "Architettura reti e internet/protocolli/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
     "Architettura reti e internet/protocolli/Lezione 3-.md",
-    "Architettura reti e internet/protocolli/oggi.pdf",
     "00 Indice Generale.md",
     "Architettura reti e internet/00 Indice - Architettura reti e internet.md",
     "Basi di dati e sistemi informativi con laboratorio/00 Indice - Basi di dati e sistemi informativi con laboratorio.md",
