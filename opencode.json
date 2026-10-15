@@ -1,7 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "appunti",
-  "instructions": [".opencode/stile.md"],
+  "instructions": [
+  ".opencode/stile.md",
+  "~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md",
+  "~/.config/opencode/skills/no-ai-slop/SKILL.md"],
   "small_model": "opencode/minimax-m2.5-free",
   "lsp": false,
   "formatter": false,
@@ -11,7 +14,8 @@
     "@zenobius/opencode-skillful",
     "@plannotator/opencode@latest",
     "@tuanhung303/opencode-acp@latest",
-    "opencode-websearch-cited@1.2.0"
+    "opencode-websearch-cited@1.2.0",
+    "@tarquinen/opencode-dcp@latest"
   ],
   "mcp": {
     "obsidian-search": {
@@ -23,7 +27,7 @@
   "compaction": {
     "auto": true,
     "prune": true,
-    "tail_turns": 10
+    "tail_turns": 10000
   },
   "watcher": {
     "ignore": [
