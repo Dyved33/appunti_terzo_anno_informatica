@@ -51,4 +51,3 @@ CREATE TABLE TitolaritaCC (
 
 #Esercizio 2
 
-
