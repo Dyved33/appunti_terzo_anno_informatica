@@ -41,6 +41,8 @@ INSERT INTO cinema VALUES (04, " Multiplex Giometti", " Strada Centova Perugia")
 
 DELETE FROM persona WHERE nome = 'John' AND cognome = 'Travolta';
 
+
+
 #Esercizio 2
 
 CREATE SCHEMA Europei2012;
