@@ -26,9 +26,6 @@ FROM <nometab> [[AS] <alias>]
 - `ORDER BY`: ordina le tuple del risultato.
 
 `GROUP BY`, `HAVING` e le clausole insiemistiche sono solo introdotte: la loro trattazione e quella della clausola esplicita di `JOIN` vengono rimandate alle lezioni successive.
-
-> [!todo] Nelle slide le istruzioni di modifica sono invertite (`UPDATE` indicata come cancellazione, `DELETE` come modifica): è un refuso. Vale la definizione corretta della [[Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione|Lezione 6]].
-
 ## La clausola SELECT
 
 L'istruzione `SELECT [ALL | DISTINCT] {* | <espressione> [AS <nome>]} [,...]`:
@@ -101,7 +98,7 @@ L'istruzione `FROM <nometab> [[AS] <alias>]`:
 - specifica le tabelle su cui si pone la query;
 - costruisce la tabella intermedia a partire da una o più tabelle, su cui operano le altre clausole (`SELECT`, `WHERE`, …);
 - la tabella intermedia è il risultato del prodotto cartesiano delle tabelle elencate;
-- la sintassi è semplificata: non include la clausola esplicita di `JOIN`, che sarà vista nella lezione successiva.
+- la sintassi è semplificata: non include la clausola esplicita di `JOIN`.
 
 > [!example]
 > 1. Selezionare tutti i corsi con un credito:

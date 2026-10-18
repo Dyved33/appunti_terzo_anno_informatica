@@ -55,6 +55,8 @@ A seconda che la relazione tra stazioni DTE remote sia di tipo primario/secondar
   <img src="slide-75.png" style="width: 50%;">
 </div>
 
+> [!note]
+> Lo stato  ACK sta per acknowledgment e si tratta di  un'informazione dal ricevente al mittente dopo una recezione di dati con successo
 ## Xon-Xoff
 
 Tipicamente usato tra computer e terminali posti vicini tra loro: i codici Xon e Xoff corrispondono a due distinte configurazioni del [[Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni|codice ASCII]] usato dalle stazioni.
@@ -70,8 +72,9 @@ La stazione primaria invia dati a un terminale, che li memorizza per poterli uti
 *Automatic Repeat ReQuest*, noto anche come *Automatic Repeat Query*, è un protocollo full duplex. Utilizzando il concetto di finestra (scorrevole) può migliorare l'efficienza della trasmissione, cioè sfruttare meglio il canale. Il messaggio spedito viene diviso in sequenze di frame: il protocollo prevede di spedire più frame prima di ricevere un qualsiasi riscontro. Quest'ultimo può essere costituito da due numeri di sequenza (0 e 1), poiché è sufficiente distinguere un frame da quello successivo. Nel caso di più frame inviati contemporaneamente occorrono $m$ bit, che permettono di distinguere fino a $2^m$ sequenze (da 0 a $2^m - 1$).
 
 La finestra del mittente specifica i frame che il mittente può spedire in quel momento; la finestra del destinatario specifica i frame che il destinatario può ricevere nel dato momento. Nelle metodologie di gestione dell'errore è possibile adottare:
-- metodo *Go-back-N*: un frame danneggiato implica la ritrasmissione di N frame
-- metodo selettivo: vengono ritrasmessi solo i frame danneggiati
+- **Go-Back-N**: Il mittente invia una finestra di dimensione N; in caso di errore o perdita di un pacchetto, deve **ritrasmettere tutti i pacchetti** dalla posizione dell'errore in poi. Il ricevitore scarta i pacchetti fuori sequenza.
+- **Selective Repeat (SR)**: Il mittente e il ricevitore mantengono finestre di dimensione W. Il ricevitore accetta e memorizza i pacchetti fuori sequenza; in caso di errore, il mittente ritrasmette **solo il pacchetto specifico** perso.
+- **Stop and Wait**: Considerato il caso base con finestra di dimensione **1**, dove si attende l'ACK prima di inviare il frame successivo.
 
 <div style="display: flex; justify-content: center;">
   <img src="slide-80.png" style="width: 50%;">

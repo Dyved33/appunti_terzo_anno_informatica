@@ -66,7 +66,7 @@
 
 *Definizione:* Le operazioni svolte sull'header IP sono:
 - Calcolo del checksum e verifica della sua validità, verifica che i campi dell'header contengano valori validi
-- Analisi della routing table per calcolare il next hop
+- Analisi della routing table per calcolare il next hop (è una struttura dati memorizzata in un router o in un host che funge da mappa della rete, contenente le informazioni necessarie per determinare il percorso ottimale verso le destinazioni di destinazione)
 - Modifica dei campi che richiedono aggiornamento (TTL, header checksum).
 
 ## Indirizzi IPv4
@@ -74,8 +74,8 @@
 *Definizione:* Un indirizzo IP su 32 bit (4 byte) permette di identificare univocamente una rete ed uno specifico host appartenente alla rete: `x.y.z.w` (Es.: 141.250.1.7).
 
 *Definizione:* L'indirizzo si divide in due parti:
-- rete
-- host
+- rete (i primi tre numeri)
+- host (l'ultimo numero)
 
 *Definizione:* Esistono 5 tipi di classi di indirizzi IP.
 
@@ -106,7 +106,7 @@
 
 *Definizione:* Per convenzione, l'hostid 0 non è mai assegnato ad un singolo host: un indirizzo IP in cui i bit della parte host sono pari a 0 denota la rete stessa ed è chiamato indirizzo di rete.
 
-*Definizione:* Gli indirizzi broadcast sono riservati a tutti gli host della rete e si ottengono ponendo a 1 tutti i bit della parte host dell'indirizzo IP.
+*Definizione:* Gli indirizzi broadcast (sono indirizzi IP speciali utilizzati nelle reti di calcolatori per inviare pacchetti di dati a **tutti i dispositivi** presenti in una sottorete specifica contemporaneamente, senza dover conoscere i singoli indirizzi dei destinatari) sono riservati a tutti gli host della rete e si ottengono ponendo a 1 tutti i bit della parte host dell'indirizzo IP.
 
 ## Indirizzi speciali, privati e link-local
 
@@ -144,6 +144,8 @@
 - Se si sbaglia la definizione del default gateway, le applicazioni locali funzionano, mentre quelle verso l'esterno no.
 - Un errore nella subnet mask può generare problemi di connettività. Anche se altamente sconsigliabile, la subnet mask può differire tra host della stessa rete, con effetti non predicibili.
 
+> [!note]
+> Una subnet è una **rete più piccola** all'interno di una rete di dimensioni maggiori, creata mediante la tecnica del **subnetting**. Questa suddivisione logica permette di dividere una singola rete IP in gruppi di host più gestibili, migliorando l'efficienza del routing e riducendo il traffico di broadcast.
 ## Indirizzamento con subnet e subnetting
 
 *Definizione:* L'indirizzamento con subnet introduce un nuovo livello gerarchico negli indirizzi IP.
@@ -174,7 +176,7 @@ Subnet:  141.250.5.0
   <img src="Pasted image 20261016111347.png" width="30%">
 </div>
 
-### Schema per subnetting (i)
+### Schema per subnetting 
 
 *Definizione:* Per subnet più piccole (circa 100 host) si usa una subnet mask più restrittiva: 255.255.255.128 (/25), ottenendo due reti: 141.250.5.0 e 141.250.5.128.
 

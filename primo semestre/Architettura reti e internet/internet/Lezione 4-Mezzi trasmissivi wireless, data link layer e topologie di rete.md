@@ -70,7 +70,7 @@ Tra i protocolli storici del livello di collegamento (*Data Link Control Protoco
 Nelle reti locali ad accesso multiplo (architettura IEEE 802), il livello 2 è suddiviso in due distinti sottolivelli funzionali:
 
 - **LLC (Logical Link Control):** sottolivello superiore, responsabile del controllo d'errore logico, dell'ordinamento dei frame e dell'interfaccia verso il livello di rete;
-- **MAC (Media Access Control):** sottolivello inferiore (che scende a contatto con il livello 1), incaricato della gestione dell'indirizzamento fisico e della contesa per l'accesso al canale condiviso.
+- **MAC (Media Access Control):** sottolivello inferiore (che scende a contatto con il livello 1), incaricato della gestione dell'indirizzamento fisico e della contesa per l'accesso al canale condiviso (serve a **identificare in modo univoco e permanente** ogni scheda di rete di un dispositivo, consentendo la corretta comunicazione all'interno di una **rete locale**)
 
 ## Topologia delle reti
 

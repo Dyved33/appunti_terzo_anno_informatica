@@ -1,6 +1,6 @@
-# Algebra relazionale
+## Algebra relazionale
 
-## L'algebra relazionale
+### L'algebra relazionale
 
 L'algebra relazionale è un linguaggio per l'interrogazione di BD basate sul modello relazionale:
 
@@ -13,7 +13,7 @@ L'algebra relazionale è importante perché:
 - è la base per implementare e ottimizzare le interrogazioni nei RDBMS commerciali;
 - alcuni suoi concetti sono incorporati nel linguaggio di interrogazione SQL, standard per i RDBMS.
 
-## Operatori dell'algebra relazionale
+### Operatori dell'algebra relazionale
 
 Gli operatori possono essere classificati in:
 
