@@ -52,7 +52,7 @@ A seconda che la relazione tra stazioni DTE remote sia di tipo primario/secondar
 *Request-to-Send/Clear-to-Send* si basa sull'interfaccia RS-232 (interfaccia seriale): una stazione che vuole trasmettere invia un'apposita richiesta alla stazione master (attivando il segnale RTS); se il master può servire tale richiesta, autorizza la stazione a trasmettere (risposta CTS) sia il suo primo messaggio sia quelli successivi. Questa procedura, che si basa sulla rispondenza tra segnali con corretta temporizzazione, è chiamata *handshake*. Durante la trasmissione il master conserva la possibilità di interrompere il flusso per una qualsiasi ragione, rimuovendo lo stato RTS.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-75.png" style="width: 100%;">
+  <img src="slide-75.png" style="width: 50%;">
 </div>
 
 ## Xon-Xoff
@@ -62,7 +62,7 @@ Tipicamente usato tra computer e terminali posti vicini tra loro: i codici Xon e
 La stazione primaria invia dati a un terminale, che li memorizza per poterli utilizzare; se la memoria del terminale si riempie, il terminale invia il carattere XOFF, che impedisce l'emissione di nuovi blocchi; appena il DTE torna in grado di memorizzare, invia il carattere XON e la stazione primaria riprende a trasmettere.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-77.png" style="width: 100%;">
+  <img src="slide-77.png" style="width: 50%;">
 </div>
 
 ## ARQ
@@ -74,11 +74,11 @@ La finestra del mittente specifica i frame che il mittente può spedire in quel 
 - metodo selettivo: vengono ritrasmessi solo i frame danneggiati
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-80.png" style="width: 100%;">
+  <img src="slide-80.png" style="width: 50%;">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-81.png" style="width: 100%;">
+  <img src="slide-81.png" style="width: 50%;">
 </div>
 
 ## La trasmissione dati

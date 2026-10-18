@@ -35,7 +35,7 @@ Due filosofie opposte:
 
 **Servizi add-on:** funzioni aggiuntive che il firewall può integrare.
 
-- NAT (*static e hiding translation*): traduce gli indirizzi privati della rete interna in un indirizzo pubblico, così gli host interni non restano visibili direttamente dall'esterno.
+- NAT (*static e hiding translation*): traduce più indirizzi privati della rete interna in un unico indirizzo pubblico, così gli host interni non restano visibili direttamente dall'esterno.
 - DHCP: assegna automaticamente gli indirizzi IP e gli altri parametri di rete agli host interni.
 - Funzionalità di cifratura (VPN): cifra il traffico tra due gateway, garantendo confidenzialità e integrità dei dati scambiati.
 - Filtraggio del contenuto applicativo (*application content filtering*): esamina i dati applicativi (allegati di posta, pagine web) per bloccare virus e codice malevolo.

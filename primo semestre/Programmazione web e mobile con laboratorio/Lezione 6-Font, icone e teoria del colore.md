@@ -32,7 +32,7 @@ I colori comunicano emozioni, identità del brand e influenzano le interazioni d
 **Lightness (Luminosità):** indica quanto il colore è chiaro o scuro, da 0% (nero) a 100% (bianco).
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261015122026.png" width="300">
+  <img src="Pasted image 20261015122026.png" width="30%">
 </div>
 
 **Colori in esadecimale:** ogni coppia di cifre (00-FF) rappresenta uno dei tre canali di colore (rosso, verde, blu).
@@ -43,7 +43,7 @@ I colori comunicano emozioni, identità del brand e influenzano le interazioni d
 ## Ruota dei colori
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261015122219.png" width="300">
+  <img src="Pasted image 20261015122219.png" width="30%">
 </div>
 
 **Armonie cromatiche** = combinazioni di colori scelte per ottenere un qualche effetto visivo.
@@ -83,7 +83,7 @@ I colori comunicano emozioni, identità del brand e influenzano le interazioni d
 - **Verde:** natura e benessere.
 - **Verde scuro:** finanza (i dollari sono verdi).
 - **Rosso:** passione e urgenza. Veicola l'utente a prendere decisioni più affrettate e meno ragionate.
-- **Giallo:** gioia, creatività e facilità la lettura quello un po meno acceso.
+- **Giallo:** gioia, creatività e facilita la lettura quello un po meno acceso.
 - **Arancione:** energia ed entusiasmo.
 - **Rosa:** femminilità, autenticità.
 - **Viola:** lusso, mistero, arte.

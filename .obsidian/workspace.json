@@ -4,17 +4,91 @@
     "type": "split",
     "children": [
       {
-        "id": "20342815a90c6364",
+        "id": "67c1ea5dd2fde1a8",
         "type": "tabs",
         "children": [
           {
-            "id": "d8dfdd15d296ead5",
+            "id": "0da62a264887b971",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 4-Reti mesh, protocolli e segnali"
+            }
+          },
+          {
+            "id": "a9431a5382521aff",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/internet/Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete"
+            }
+          },
+          {
+            "id": "945b66775a7cabf5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/internet/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP)"
+            }
+          },
+          {
+            "id": "d4c88c4fd3f5d5a1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 7-Algebra relazionale"
+            }
+          },
+          {
+            "id": "c08bbc651a45240e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 8-DML di SQL"
+            }
+          },
+          {
+            "id": "33b618cda8a9daf6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni"
             }
           }
         ]
@@ -79,7 +153,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 325.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -247,21 +322,29 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "d8dfdd15d296ead5",
+  "active": "0da62a264887b971",
   "lastOpenFiles": [
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 9-.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/groupBy.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 4614.crdownload",
+    "primo semestre/Architettura reti e internet/internet/Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
     "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/00 Indice - Basi di dati e sistemi informativi con laboratorio.md",
+    "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
     "primo semestre/Introduzione sicurezza /Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS.md",
+    "primo semestre/Introduzione sicurezza /Lezione 3-Firewall.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 6-Font, icone e teoria del colore.md",
+    "primo semestre/00 Indice Generale.md",
     "primo semestre/Introduzione IA/images/Pasted image 20261015180349 1.png",
     "primo semestre/Architettura reti e internet/internet/ArchitetturaRetiDef_I_d.pdf",
     "primo semestre/Architettura reti e internet/internet/oggi.pdf",
-    "primo semestre/Architettura reti e internet/internet/Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete.md",
-    "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
     "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 5-Menu di navigazione, responsive design e validazione.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
-    "primo semestre/Introduzione sicurezza /Lezione 3-Firewall.md",
     "opencode.json",
     "libri/Introduzione sicurezza.pdf",
     "libri/Introduzione IA.pdf",
@@ -269,8 +352,6 @@
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/esercitazioni/pwm_esercitazione1.zip",
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/esercitazioni/Unconfirmed 558514.crdownload",
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/progetto",
-    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/esercitazioni",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
@@ -280,7 +361,6 @@
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 3-Il modello relazionale - origini, fondamenti matematici, schemi e istanze.md",
     "plugin.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 2-Modelli dei dati, architettura a tre livelli e classificazione dei DBMS.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 1-Concetti fondamentali, utenti e vantaggi di un DBMS.md",
     "primo semestre/Architettura reti e internet/images/slide-147.png",
     "primo semestre/Architettura reti e internet/images/slide-146.png",
     "primo semestre/Architettura reti e internet/images/slide-145.png",
@@ -289,11 +369,6 @@
     "primo semestre/Architettura reti e internet/images/slide-139.png",
     "primo semestre/Architettura reti e internet/images/slide-138.png",
     "primo semestre/Architettura reti e internet/images/slide-137.png",
-    "primo semestre/Architettura reti e internet/images/slide-136.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/oggi.pdf",
-    "primo semestre/Lezione 7-.md",
-    "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 4-Media embeddati, ipertesti, layout CSS e tag semantici.md",
-    "opencode-configuration/configuration/originals/Primo semestre__Linguaggi__2026-10-02 Automi a pila.md"
+    "primo semestre/Architettura reti e internet/images/slide-136.png"
   ]
 }

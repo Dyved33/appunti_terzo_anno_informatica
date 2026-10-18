@@ -8,3 +8,4 @@
 - [[Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione|Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione]]
 - [[Lezione 7-Algebra relazionale|Algebra relazionale]]
 - [[Lezione 8-DML di SQL|Il DML di SQL - interrogazione di una BD (la clausola SELECT)]]
+- [[Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni|Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni]]

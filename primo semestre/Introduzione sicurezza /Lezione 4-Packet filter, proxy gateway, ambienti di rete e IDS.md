@@ -37,7 +37,7 @@ Un ruleset di packet filtering definisce l'azione da intraprendere su ciascun pa
 Una generica regola di chiusura (politica di *default deny*) si scrive impostando ogni campo a `Any` e l'azione su `Deny`, in modo da bloccare tutto il traffico non esplicitamente autorizzato dalle regole precedenti.
 
 > [!tip] Ricorda
-> Le prime 1023 porte sono le *well-known ports*, riservate a servizi di rete prestabiliti (come HTTP 80 o Telnet 23). Quando un client contatta un servizio remoto, alloca localmente una porta con numero $> 1023$ a cui il server invierà le risposte.
+> Le prime 1023 porte sono le *well-known ports*, riservate a servizi di rete prestabiliti (come HTTP 80 o Telnet 23). Quando un client contatta un servizio remoto, alloca dinamicamente una porta con numero $> 1023$ a cui il server invierà le risposte. Una volta che la porta non è più necessaria, questa viene chiusa.
 
 ### Limite dei filtri statici e stateful inspection
 

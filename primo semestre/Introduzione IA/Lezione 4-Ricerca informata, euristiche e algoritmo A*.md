@@ -230,7 +230,7 @@ La consistenza rappresenta la disuguaglianza triangolare applicata ai costi euri
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="Pasted image 20261015180349.png" style="width: 100%; border-radius: 8px;">
+    <img src="Pasted image 20261015180349.png" style="width: 50%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Interpretazione geometrica della consistenza: disuguaglianza triangolare tra stati. La differenza nella stima euristica tra un nodo e il suo successore non pu&ograve; mai superare il costo effettivo dell'arco che li congiunge.
