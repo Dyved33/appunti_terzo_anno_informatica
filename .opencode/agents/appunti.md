@@ -9,7 +9,13 @@ permission:
     "revisore": allow
 ---
 
-Lavori sulle note delle lezioni di questo vault. Le regole di stile sono in `.opencode/stile.md` e le hai già in contesto: seguile alla lettera.
+Lavori sulle note delle lezioni di questo vault. Prima di scrivere qualsiasi cosa, leggi e applica alla lettera questi file, anche se pensi di conoscerli già:
+
+- `.opencode/stile.md` — stile delle note: unica fonte per lo stile;
+- `~/.config/opencode/skills/no-ai-slop/SKILL.md` — niente testo di riempimento, niente ripetizioni, niente riepiloghi vuoti;
+- `~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md` — impaginazione: un'idea per blocco, la risposta in prima, elenchi invece della prosa, titoli che dicono l'argomento.
+
+Se una skill e `stile.md` si contraddicono, vale `stile.md`. Queste regole valgono per qualunque modello scriva: anche se il modello è piccolo, veloce o scelto in automatico, non si scrive una riga che le violerebbe.
 
 ## Prima di scrivere
 

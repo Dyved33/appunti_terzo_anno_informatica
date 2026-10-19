@@ -6,3 +6,4 @@
 - [[Lezione 4-Media embeddati, ipertesti, layout CSS e tag semantici]] — Video e audio, collegamenti ipertestuali, layout CSS e i tag di sezione
 - [[Lezione 5-Menu di navigazione, responsive design e validazione]] — Menu di navigazione, responsive design e validazione W3C
 - [[Lezione 6-Font, icone e teoria del colore]] — Font e icone, modelli di colore, ruota dei colori, armonie e palette, significati dei colori
+- [[Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione]] — Audience, sezione aurea e regola dei terzi, metafore visive e affordance, errori da evitare, organizzazione dei contenuti e gerarchia visiva

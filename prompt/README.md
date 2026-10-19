@@ -21,6 +21,8 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 |---|---|---|
 | `AGENTS.md` | `AGENTS.md` | da 84 a 38 righe: struttura, 9 regole, strumenti |
 | `.opencode/stile.md` | i due prompt e `div style.txt` | unica fonte per lo stile, caricata a ogni sessione |
+| `~/.config/opencode/skills/no-ai-slop/SKILL.md` | — | niente testo di riempimento: caricata a ogni sessione |
+| `~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md` | — | impaginazione (un'idea per blocco, elenchi invece della prosa): caricata a ogni sessione |
 | `.opencode/agents/appunti.md` | `vault`, `appunti`, `materiale`, `indici` | un solo agent che scrive |
 | `.opencode/agents/revisore.md` | `revisore` | controlla correttezza e verbosità, non modifica |
 | `.opencode/commands/` | i 4 command | `/lezione`, `/rivedi`, `/revisione`, `/slide`, `/dividi`, `/libro` |
@@ -50,6 +52,8 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 **`stile.md` è sempre caricato** (campo `instructions` di `opencode.json`): un modello debole a volte salta la lettura, e lo stile è proprio la parte che non deve saltare.
 
 **Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti; `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429). Modelli locali con Ollama per `small_model` a costo e token zero.
+
+**Le tre fonti di stile valgono per ogni modello.** `stile.md`, `no-ai-slop` e `i-have-adhd` sono le tre regole di scrittura del vault: la prima sta in `.opencode/stile.md`, le altre due in `~/.config/opencode/`; tutte e tre sono elencate in `opencode.json` (`instructions`), quindi entrano in contesto in ogni sessione, con qualunque modello, anche con `small_model` o con un subagent. Gli agenti `appunti` e `revisore` le richiedono esplicitamente nel proprio prompt: se il modello è piccolo e salta l'istruzione globale, gliele rilegge da sé. Le skill stanno fuori dal vault, in `~/.config/opencode/`, così l'agente non può modificarle (`edit` nega `.opencode/**`).
 
 **Tolti:** tabella dei tag, anni e Erasmus, frontmatter, footer di navigazione, `raw_notes/`, `attachments/`, numerazione `NN_`, divieto dei caratteri non ASCII, callout `[!NOTE]` e `[!LAW]`, modelli di esempio dei vecchi prompt.
 

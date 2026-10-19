@@ -9,3 +9,4 @@
 - [[Lezione 7-Algebra relazionale|Algebra relazionale]]
 - [[Lezione 8-DML di SQL|Il DML di SQL - interrogazione di una BD (la clausola SELECT)]]
 - [[Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni|Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni]]
+- [[Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale|L'operatore di divisione e i valori nulli nell'algebra relazionale]]
