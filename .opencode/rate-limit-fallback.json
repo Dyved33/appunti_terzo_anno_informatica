@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "fallbackMode": "cycle",
+  "cooldownMs": 60000,
+  "otherModels": "wait",
+  "fallbackModels": [
+    { "providerID": "ollama", "modelID": "qwen2.5:7b" },
+    { "providerID": "ollama", "modelID": "qwen2.5-coder:7b" },
+    { "providerID": "ollama", "modelID": "llama3.1:8b" },
+    { "providerID": "ollama", "modelID": "gemma2:9b" }
+  ],
+  "retryPolicy": {
+    "maxRetries": 3,
+    "strategy": "exponential",
+    "baseDelayMs": 1000,
+    "maxDelayMs": 30000,
+    "jitterEnabled": true
+  }
+}

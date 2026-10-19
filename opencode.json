@@ -1,21 +1,59 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen2.5:7b": {
+          "name": "Qwen 2.5 7B (Locale)"
+        },
+        "qwen2.5:3b": {
+          "name": "Qwen 2.5 3B (Locale)"
+        },
+        "qwen2.5:1.5b": {
+          "name": "Qwen 2.5 1.5B (Locale)"
+        },
+        "qwen2.5-coder:7b": {
+          "name": "Qwen 2.5 Coder 7B (Locale)"
+        },
+        "qwen2.5-coder:3b": {
+          "name": "Qwen 2.5 Coder 3B (Locale)"
+        },
+        "llama3.1:8b": {
+          "name": "Llama 3.1 8B (Locale)"
+        },
+        "llama3.2:3b": {
+          "name": "Llama 3.2 3B (Locale)"
+        },
+        "llama3.2:1b": {
+          "name": "Llama 3.2 1B (Locale)"
+        },
+        "gemma2:9b": {
+          "name": "Gemma 2 9B (Locale)"
+        },
+        "gemma2:2b": {
+          "name": "Gemma 2 2B (Locale)"
+        }
+      }
+    }
+  },
   "default_agent": "appunti",
   "instructions": [
-  ".opencode/stile.md",
-  "~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md",
-  "~/.config/opencode/skills/no-ai-slop/SKILL.md"],
-  "small_model": "opencode/minimax-m2.5-free",
+    ".opencode/stile.md",
+    "~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md",
+    "~/.config/opencode/skills/no-ai-slop/SKILL.md"
+  ],
+  "small_model": "ollama/qwen2.5:7b",
   "lsp": false,
   "formatter": false,
   "plugin": [
-    "@franlol/opencode-md-table-formatter@latest",
     "@tarquinen/opencode-dcp@latest",
-    "@zenobius/opencode-skillful",
     "@plannotator/opencode@latest",
-    "@tuanhung303/opencode-acp@latest",
-    "opencode-websearch-cited@1.2.0",
-    "@tarquinen/opencode-dcp@latest"
+    "@azumag/opencode-rate-limit-fallback@2.1.0"
   ],
   "mcp": {
     "obsidian-search": {
@@ -25,9 +63,7 @@
     }
   },
   "compaction": {
-    "auto": true,
-    "prune": true,
-    "tail_turns": 10000
+    "auto": true
   },
   "watcher": {
     "ignore": [

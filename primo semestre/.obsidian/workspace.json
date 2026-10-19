@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architettura reti e internet/internet/Lezione 5-.md",
+                "file": "Programmazione web e mobile con laboratorio/Lezione 7-.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 5-"
+              "title": "Lezione 7-"
             }
           }
         ]
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 217.5,
-    "collapsed": true
+    "width": 217.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -206,37 +205,40 @@
   },
   "active": "f6b2c17a23102d2f",
   "lastOpenFiles": [
-    "Pasted image 20261016120308.png",
-    "Architettura reti e internet/images/Pasted image 20261016111347.png",
+    "Programmazione web e mobile con laboratorio/esercizi/paginaCompleta.css",
+    "Programmazione web e mobile con laboratorio/esercizi/paginaCompleta.html",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019154220.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019151835.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019151745.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019150012.png",
+    "Pasted image 20261019154220.png",
+    "Pasted image 20261019151835.png",
+    "Pasted image 20261019151745.png",
+    "Pasted image 20261019150012.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019145839.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019145753.png",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 10-.md",
+    "Programmazione web e mobile con laboratorio/Lezione 7-.md",
+    "Basi di dati e sistemi informativi con laboratorio/nullAlgebraRel.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 852991.crdownload",
+    "Basi di dati e sistemi informativi con laboratorio/agebraRelDivisione.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 196533.crdownload",
+    "Introduzione sicurezza /Lezione 5-.md",
+    "Introduzione sicurezza /firewalls-22-23.ppt",
+    "firewalls-22-23.ppt",
     "Architettura reti e internet/internet/Lezione 5-.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 9-.md",
-    "Architettura reti e internet/images/Pasted image 20261016111456.png",
-    "Architettura reti e internet/images/Pasted image 20261016111422.png",
-    "Architettura reti e internet/images/Pasted image 20261016111332.png",
-    "Architettura reti e internet/images/Pasted image 20261016111201.png",
-    "Architettura reti e internet/images/Pasted image 20261016111101.png",
-    "Architettura reti e internet/images/Pasted image 20261016111047.png",
-    "Architettura reti e internet/images/Pasted image 20261016111015.png",
-    "Pasted image 20261016111456.png",
-    "Pasted image 20261016111422.png",
     "Introduzione IA/lec03-informedSearch.pdf",
     "Introduzione IA/Unconfirmed 211074.crdownload",
     "Introduzione IA/Lezione 4.md",
     "Introduzione sicurezza /Lezione 4-.md",
-    "Introduzione sicurezza /firewalls-22-23.ppt",
-    "firewalls-22-23.ppt",
     "Programmazione web e mobile con laboratorio/Lezione 6-.md",
     "Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md",
     "Architettura reti e internet/internet/ArchitetturaRetiDef_I_d.pdf",
-    "Architettura reti e internet/internet/Unconfirmed 337141.crdownload",
-    "Architettura reti e internet/protocolli/slide.pdf",
-    "Architettura reti e internet/internet/oggi.pdf",
     "Architettura reti e internet/internet/Lezione 4-.md",
-    "Architettura reti e internet/protocolli/Unconfirmed 439001.crdownload",
     "Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
     "Introduzione IA/Lezione 3-Ricerca su grafo.md",
     "Introduzione IA/Lezione 3-.md",
-    "Programmazione web e mobile con laboratorio/esercizi/menuResponsive.css",
     "Programmazione web e mobile con laboratorio/Lezione 5-.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
@@ -248,9 +250,6 @@
     "Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
     "Architettura reti e internet/internet/Lezione 1-Internetworking, il villaggio globale e la storia di Internet.md",
     "Architettura reti e internet/internet/00 Indice - Internetworking.md",
-    "Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
-    "Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
-    "Architettura reti e internet/protocolli/Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
-    "Introduzione IA/Lezione 3-.md"
+    "Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md"
   ]
 }

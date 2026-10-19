@@ -1,18 +1,19 @@
 # Prerequisiti
 
-npm install -g opencode-ai@latest                             #per installare l'ultima versione di opencode
-opencode plugin opencode-parser -g                            #per installare il parser che permette di scattare foto di documenti
+npm install -g opencode-ai@latest                             # per installare l'ultima versione di opencode
+opencode plugin opencode-parser -g                            # per installare il parser che permette di scattare foto di documenti
 sudo apt install tesseract-ocr tesseract-ocr-ita              # per installare il lettore di foto
 
-opencode plugin @franlol/opencode-md-table-formatter@latest   # riallinea le tabelle Markdown dopo ogni risposta
 opencode plugin @tarquinen/opencode-dcp@latest                # riduce i token potando output vecchi e chiamate duplicate
-opencode plugin @zenobius/opencode-skillful                   # carica le skill on-demand invece di tenerle tutte in contesto
 opencode plugin @plannotator/opencode@latest                  # revisione interattiva del piano, con annotazioni
-opencode plugin opencode-websearch-cited@1.2.0                # web search con citazioni; da tenere per ultimo nell'elenco plugin
-opencode plugin @tuanhung303/opencode-acp@latest              # compatta il contesto per tempo, oltre che per dimensione
+opencode plugin @azumag/opencode-rate-limit-fallback          # fallback automatico su modello secondario in caso di rate limit (429)
+
+# Ollama (modelli locali per small_model a token zero, < 9GB)
+ollama pull qwen2.5:7b                                        # modello bilanciato (~4.7 GB)
+ollama pull qwen2.5:3b                                        # modello ultraleggero per macchine con 8GB RAM (~1.9 GB)
 
 pip install --user --break-system-packages docling "obsidian-mcp-search[server]" pypdf
-                                                             # OCR delle slide immagine, ricerca semantica delle note, lettura dei libri
+                                                              # OCR delle slide immagine, ricerca semantica delle note, lettura dei libri
 
 ## Cosa c'è
 
@@ -28,7 +29,7 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 | `.opencode/scripts/libri.py` | nuovo | legge i libri di `libri/`: elenco, indice, pagina, ricerca |
 | `.opencode/scripts/dividi-appunti.py` | nuovo | divide un file unico in una nota per lezione |
 | `.opencode/scripts/controlla-perdite.py` | nuovo | verifica che nella nota non si sia perso nulla rispetto alla fonte |
-| `opencode.json` | `opencode.json` | plugin, server MCP e compattazione del contesto |
+| `opencode.json` | `opencode.json` | provider Ollama locale, small_model a token zero, fallback rate limit, server MCP |
 | `Guida_Opencode.md` | `Guida_Opencode.md` | riscritta sulla nuova struttura |
 | `prompt_chat.md` | `prompt_appunti.md`, `prompt_materiale.md` | prompt brevi per Antigravity e chat web |
 
@@ -48,7 +49,7 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 
 **`stile.md` è sempre caricato** (campo `instructions` di `opencode.json`): un modello debole a volte salta la lettura, e lo stile è proprio la parte che non deve saltare.
 
-**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *ACP:* il plugin compatta il contesto anche per tempo, oltre che per dimensione.
+**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti; `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429). Modelli locali con Ollama per `small_model` a costo e token zero.
 
 **Tolti:** tabella dei tag, anni e Erasmus, frontmatter, footer di navigazione, `raw_notes/`, `attachments/`, numerazione `NN_`, divieto dei caratteri non ASCII, callout `[!NOTE]` e `[!LAW]`, modelli di esempio dei vecchi prompt.
 
@@ -73,7 +74,7 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 | 14 | lunghezza | nessun limite di righe: `stile.md` chiede densità (ogni concetto una volta, spiegazione proporzionata alla difficoltà, tagliare parole e non contenuti). L'audit non segnala la lunghezza della nota, solo i singoli paragrafi oltre le 150 parole, come INFO |
 | 15 | configurazione e creazione dei file | l'agent non modifica la configurazione e non crea note |
 | 16 | revisore | una passata, solo con `/lezione` e `/rivedi` |
-| 17 | compattazione | `auto`+`prune`+`tail_turns` in `opencode.json`; niente cadenza fissa, serve un plugin |
+| 17 | compattazione | `auto` in `opencode.json` |
 
 ## Passare i vecchi appunti al nuovo formato (da file unico a file multipli)
 
