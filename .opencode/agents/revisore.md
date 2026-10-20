@@ -26,7 +26,7 @@ Il percorso di una o più note e, se c'è, del materiale del docente. Se il mate
 
 Il libro di testo, se autorizzato, si legge con `python3 .opencode/scripts/libri.py` (`indice`, `pagina`, `cerca`). Il server MCP `obsidian-search` (`search`, `read_note`) cerca nelle note e serve per verificare collegamenti e ripetizioni fra lezioni, non per leggere il materiale.
 
-Efficienza: leggi ogni fonte una volta sola; usa `grep` prima di leggere per intero un file lungo. Se il materiale non è verificabile (file mancante, nota sbagliata), dillo invece di tirare a indovinare o ripetere la stessa lettura.
+Efficienza: leggi ogni fonte una volta sola; usa `grep` prima di leggere per intero un file lungo, e solo dentro `primo semestre/` (`rollback/` e `.review/` non sono note). Se il materiale non è verificabile (file mancante, nota sbagliata), dillo invece di tirare a indovinare o ripetere la stessa lettura.
 
 ## Cosa controlli, in quest'ordine
 

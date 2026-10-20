@@ -17,15 +17,91 @@ Dopo ogni modifica a `opencode.json` o a un file in `.opencode/` va riavviato: l
 |---|---|
 | `AGENTS.md` | le poche regole che valgono sempre. Viene letto a ogni sessione |
 | `.opencode/stile.md` | come vanno scritte le note. Viene caricato a ogni sessione |
+| `.opencode/regole.md` | sintesi delle due skill di scrittura, caricata a ogni sessione |
 | `.opencode/agents/` | i 2 agent |
 | `.opencode/commands/` | i 6 command |
 | `.opencode/scripts/` | i 5 script: lettura slide, lettura libri, controllo strutturale, controllo perdite, divisione dei file unici |
-| `opencode.json` | plugin, server MCP e compattazione del contesto |
+| `.opencode/dcp.jsonc` | come il plugin DCP pota il contesto della sessione |
+| `.opencode/rate-limit-fallback.json` | la catena dei modelli di riserva, in ordine di affidabilità |
+| `opencode.json` | modelli, plugin, permessi, server MCP e compattazione del contesto |
 | `prompt_chat.md` | prompt da usare fuori da OpenCode (Antigravity, chat web) |
 | `libri/` | i libri di testo, un PDF per corso (`libri/<Nome corso>.pdf`); si leggono con `libri.py` (command `/libro`); complemento, non fonte di default |
 | `<Corso>/esercizi/` | il codice scritto da te (input): l'agent non lo tocca |
+| `rollback/`, `.review/` | non sono note: i vecchi file monolitici e i lavori di revisione. Le ricerche vanno fatte in `primo semestre/` |
 
 Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
+
+## I modelli
+
+Tutti i modelli in uso sono gratuiti e nessuno richiede un server acceso.
+
+| Modello | A che cosa serve |
+|---|---|
+| `opencode/nemotron-3-ultra-free` | default: scrive e rivede le note |
+| `opencode/minimax-m3.1-flash-free` | titolo della sessione; il più veloce |
+| `openrouter/*:free` | modelli OpenRouter `:free`, integrati nella catena di fallback |
+| `ollama/qwen2.5:7b` | ultima risorsa, offline e senza quota |
+
+Il free tier di OpenCode non chiede credenziali. OpenRouter ne chiede una (già salvata). Gli altri provider gratuiti si possono aggiungere con `bash ~/.config/opencode/scripts/connect-free-providers.sh`: per ogni provider il comando stampa il link per creare la key e poi la chiede.
+
+Su OpenCode 2.x i modelli si cambiano dal selettore `/models`; il modello scelto vale per la sessione.
+
+## Il fallback automatico
+
+Se un provider risponde 429 (quota esaurita) o un errore transitorio, l'agent passa da solo al modello successivo della catena e ci torna quando la quota si libera. La catena è in `.opencode/rate-limit-fallback.json` (nel vault) e in `~/.config/opencode/rate-limit-fallback.json` (in ogni progetto):
+
+```
+opencode/nemotron-3-ultra-free
+opencode/minimax-m3.1-flash-free
+opencode/deepseek-v4.1-flash-free
+openrouter/thinkingmachines/inkling:free
+openrouter/minimax/minimax-m3.1-flash:free
+opencode/glm-5.3-flash-free
+openrouter/liquid/lfm-2.5-2.6b:free
+ollama/qwen2.5:7b
+ollama/qwen2.5-coder:7b
+```
+
+Il passaggio conserva l'agente attivo, la sessione e il contesto: l'agent continua lo stesso lavoro sull'altro modello. Dopo l'ultimo modello della catena il plugin torna al primo e aspetta un tempo che raddoppia a ogni giro (1, 2, 4 minuti, fino a un'ora). Un messaggio dell'utente rimette la sessione sul suo modello.
+
+La catena è in ordine di affidabilità misurata: ogni modello è stato provato su quattro compiti prima di entrarci. Se un modello nuovo fallisce, toglilo dalla catena invece di lasciarlo: un fallback che sbaglia costa più che un 429.
+
+## Token e contesto
+
+Ogni richiesta porta con sé il contesto statico (regole, stile, prompt dell'agente) e lo reinvia a ogni turno; la parte che cresce è la conversazione. I numeri di questo vault:
+
+- contesto statico: ~6,8k token per richiesta (era ~11,9k: le due skill sono state sostituite da `.opencode/regole.md`, 530 token);
+- una sessione lunga (157 messaggi) aveva processato 13M token: adesso il plugin DCP pota la cronologia sopra 120k token e lascia intatti gli ultimi 3 turni.
+
+Regole pratiche:
+
+1. **Una sessione per lezione.** La cronologia è la spesa principale: `/compact` o una sessione nuova taglia più di qualunque altra impostazione.
+2. **Il modello più disciplinato è anche il più economico.** Il default fa 4 chiamate di strumento dove un altro ne fa 22: i token crescono con le chiamate.
+3. **`title` e `compaction` non passano da Ollama.** Su questa macchina non c'è GPU: `qwen2.5:7b` risponde in ~55 secondi, `qwen3:8b` non risponde in 180. Sono l'ultima risorsa, non il posto dove mettere i compiti frequenti.
+
+## I cicli
+
+Un ciclo è l'agente che ripete la stessa cosa e consuma token senza progredire. Tre difese:
+
+- `doom_loop` è negato in `opencode.json`: dopo tre chiamate identiche OpenCode blocca la ripetizione;
+- la regola 10 di `AGENTS.md` impone di fermarsi dopo due tentativi equivalenti e di chiedere, invece di riprovare;
+- DCP avvisa il modello prima che il contesto si riempia (`iterationNudgeThreshold`), e deduplica le chiamate identiche già fatte.
+
+Nella pratica i modelli free non sono andati in loop: zero chiamate identiche ripetute in tutti i test. Il problema reale è un altro: il modello che ripete una ricerca con parole diverse (per esempio `minimax` con 22 chiamate per una ricerca che `nemotron` fa in 4) spende token senza aggiungere nulla. Se lo vedi, scegli il modello più disciplinato per quel task.
+
+## Come si comportano i modelli free
+
+Misurati sugli stessi compiti, i modelli free non sono intercambiabili:
+
+| Modello | Strumenti usati | Qualità | A cosa fare attenzione |
+|---|---|---|---|
+| `opencode/nemotron-3-ultra-free` | 4 | buona, disciplinata | cerca bene, non inventa |
+| `opencode/minimax-m3.1-flash-free` | 22 | buona, verbose | scrive file anche quando non gliel'hai chiesto; aggiunge "Riepilogo" |
+| `opencode/deepseek-v4.1-flash-free` | 9 | buona | cerca nelle cartelle sbagliate |
+| `opencode/glm-5.3-flash-free` | 10 | discreta | si contraddice, ripete un path |
+| `openrouter/thinkingmachines/inkling:free` | 4 | discreta | dice di aver fatto cose che non ha fatto |
+
+Una cosa da tenere presente quando scrivi le richieste: **se chiedi "scrivi il testo di X" a un modello free, può interpretarlo come "scrivi X nel file"**. Il default non lo fa, ma se succede: `git diff` e `git restore "percorso"` per annullare, come al solito.
 
 ## Il flusso di una lezione
 
@@ -160,7 +236,7 @@ Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le imma
 - Può cercare sul web.
 - Non fa commit né push: restano a te.
 
-Queste restrizioni non sono solo scritte: sono imposte dal blocco `permission` di `opencode.json`. `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `esercizi/`, `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` nega tutto tranne i comandi in allowlist qui sopra; `external_directory` gli impedisce di uscire dal vault.
+Queste restrizioni non sono solo scritte: sono imposte dal blocco `permissions` di `opencode.json`. `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `esercizi/`, `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` nega tutto tranne i comandi in allowlist qui sopra; `external_directory` gli impedisce di uscire dal vault.
 
 ## Gli script, anche a mano
 
@@ -210,15 +286,23 @@ Il plugin `@tuanhung303/opencode-acp` compatta il contesto per tempo, non solo p
 Quando la conversazione si allunga, OpenCode riassume da solo le parti vecchie per liberare spazio nella finestra di contesto del modello. In `opencode.json` la sezione `compaction` imposta:
 
 - `auto: true` — compatta automaticamente quando il contesto è pieno (default: `true`);
-- `prune: true` — rimuove gli output vecchi dei tool per risparmiare token (default: `false`);
-- `tail_turns: 10` — tiene intatti gli ultimi turni (default: `2`).
+- `keep.tokens: 30000` — dopo il riassunto restano 30k token di contesto utile, invece di ricominciare da zero.
 
 Ci sono anche `reserved` (token di riserva per la compattazione) e `preserve_recent_tokens` (token recenti da conservare). Non esiste una cadenza fissa "ogni N messaggi": la compattazione parte quando il contesto si riempie, e un riassunto a intervalli richiederebbe un plugin che chiami `session.summarize`.
 
+Il riassunto lo fa il modello indicato in `agents.compaction` (`opencode/nemotron-3-ultra-free`, finestra da 1M token): il modello deve poter tenere la nota in testa, non risumerla a pezzi.
+
+A questo si aggiunge il plugin DCP, che pota il contesto mentre la sessione prosegue invece di aspettare la compattazione. È tarato in `.opencode/dcp.jsonc`: pota anche nelle sessioni dei subagenti, lascia intatti gli ultimi 3 turni, avvisa il modello prima che il contesto si riempia e deduplica le chiamate identiche. I suoi valori hanno la precedenza su quelli globali in `~/.config/opencode/dcp.jsonc`.
+
 ## Quando qualcosa va storto
 
+- **Un plugin non si carica:** controlla la versione di OpenCode e la forma del plugin. I plugin di OpenCode 1.x (forma `{ id, server }`) non si caricano sulla 2.x (che accetta `{ id, effect }` o `{ id, setup }`): è il caso di `@omniroute/opencode-plugin`, tolto da `opencode.json` in attesa della 0.3.x.
+- **Un provider risponde 401 "Missing Authentication header":** la credenziale salvata non è quella giusta. Controlla con `opencode auth list` e ricollega con `opencode auth login <provider>`.
+- **Il 429 non passa al modello successivo:** guarda la catena in `rate-limit-fallback.json`; se il modello che fallisce non è in catena, il plugin lo lascia a OpenCode, che lo riprova da solo.
+- **Un comando con la pipe viene negato:** OpenCode controlla i permessi per ogni comando della catena, anche `| head`. Le regole che mancano si aggiungono in `opencode.json`, sezione `permissions`, come `shell` + `allow`, dopo la regola `deny` generica.
 - **Agent o command non compaiono:** riavvia OpenCode.
 - **OpenCode non parte per un errore di configurazione:** `OPENCODE_DISABLE_PROJECT_CONFIG=1 opencode`, correggi e riavvia. Per vedere la configurazione che OpenCode ha davvero caricato: `opencode debug config`.
 - **L'agent ha scritto troppo o ha rovinato una nota:** `git diff` mostra cosa è cambiato, `git restore "percorso"` riporta la nota all'ultimo commit. Senza git, la versione di prima è in `.opencode/originali/`. Conviene fare un commit prima di `/rivedi` e di `/dividi`.
 - **Un'immagine in un `<div>` non si vede:** controlla che il nome in `src` sia identico a quello del file. Se è giusto e non si vede lo stesso, vedi `LEGGIMI.md`.
 - **Richieste vaghe:** "migliora la nota" produce una riscrittura a caso. Meglio "la sezione sui semafori è troppo lunga, asciugala" oppure un segnaposto nel punto giusto.
+- **Ollama è lentissimo:** su questa macchina non c'è GPU, ogni risposta costa decine di secondi. Non usarlo per compiti frequenti.

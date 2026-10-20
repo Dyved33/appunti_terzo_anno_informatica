@@ -6,7 +6,7 @@ Vault Obsidian di appunti universitari. Una nota = una lezione.
 
 ```
 libri/                         libri di testo, un PDF per corso (input)
-Primo semestre/
+primo semestre/
   <Corso>/                     un corso (o <Corso>/<Modulo>/ se il corso ha più moduli)
     00 Indice - <Corso>.md     indice: una riga per lezione, con titolo
     Titolo.md                  una nota per lezione, creata dall'utente
@@ -14,7 +14,11 @@ Primo semestre/
     *.pdf, *.ppt, *.pptx       materiale del docente (input)
     images/                    immagini delle note (input)
     esercizi/                  codice scritto dall'utente (input), anche in sottocartelle
+rollback/                      vecchi file monolitici, prima della divisione in lezioni: non sono note
+.review/                       lavori di revisione: non sono note
 ```
+
+Le note sono solo dentro `primo semestre/`: cerca, greppa e indicizza lì, non nel resto del vault.
 
 ## Regole che valgono sempre
 

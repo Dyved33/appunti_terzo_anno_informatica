@@ -8,9 +8,12 @@ opencode plugin @tarquinen/opencode-dcp@latest                # riduce i token p
 opencode plugin @plannotator/opencode@latest                  # revisione interattiva del piano, con annotazioni
 opencode plugin @azumag/opencode-rate-limit-fallback          # fallback automatico su modello secondario in caso di rate limit (429)
 
-# Ollama (modelli locali per small_model a token zero, < 9GB)
+# Ollama (ultima risorsa offline: su questa macchina gira solo su CPU, ~55 s per risposta)
 ollama pull qwen2.5:7b                                        # modello bilanciato (~4.7 GB)
-ollama pull qwen2.5:3b                                        # modello ultraleggero per macchine con 8GB RAM (~1.9 GB)
+ollama pull qwen2.5-coder:7b                                  # variante per il codice (~4.7 GB)
+
+# Collegare altri provider gratuiti: stampa il link di signup e chiede la key, uno alla volta
+bash ~/.config/opencode/scripts/connect-free-providers.sh
 
 pip install --user --break-system-packages docling "obsidian-mcp-search[server]" pypdf
                                                               # OCR delle slide immagine, ricerca semantica delle note, lettura dei libri
@@ -21,8 +24,10 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 |---|---|---|
 | `AGENTS.md` | `AGENTS.md` | da 84 a 38 righe: struttura, 9 regole, strumenti |
 | `.opencode/stile.md` | i due prompt e `div style.txt` | unica fonte per lo stile, caricata a ogni sessione |
-| `~/.agents/skills/no-ai-slop/SKILL.md` | — | niente testo di riempimento: caricata a ogni sessione |
-| `~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md` | — | impaginazione (un'idea per blocco, elenchi invece della prosa): caricata a ogni sessione |
+| `.opencode/regole.md` | nuovo | sintesi di `no-ai-slop` e `i-have-adhd` in 530 token, caricata a ogni sessione |
+| `.opencode/dcp.jsonc` | nuovo | taratura del plugin che pota il contesto |
+| `~/.agents/skills/no-ai-slop/SKILL.md` | — | niente testo di riempimento: letta a ogni sessione che scrive |
+| `~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md` | — | impaginazione (un'idea per blocco, elenchi invece della prosa): letta a ogni sessione che scrive |
 | `.opencode/agents/appunti.md` | `vault`, `appunti`, `materiale`, `indici` | un solo agent che scrive |
 | `.opencode/agents/revisore.md` | `revisore` | controlla correttezza e verbosità, non modifica |
 | `.opencode/commands/` | i 4 command | `/lezione`, `/rivedi`, `/revisione`, `/slide`, `/dividi`, `/libro` |
@@ -31,9 +36,47 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 | `.opencode/scripts/libri.py` | nuovo | legge i libri di `libri/`: elenco, indice, pagina, ricerca |
 | `.opencode/scripts/dividi-appunti.py` | nuovo | divide un file unico in una nota per lezione |
 | `.opencode/scripts/controlla-perdite.py` | nuovo | verifica che nella nota non si sia perso nulla rispetto alla fonte |
-| `opencode.json` | `opencode.json` | provider Ollama locale, small_model a token zero, fallback rate limit, server MCP |
+| `opencode.json` | `opencode.json` | modelli free di default, catena di fallback, permessi shell, server MCP |
+| `~/.config/opencode/rate-limit-fallback.json` | — | stessa catena di fallback, valida in ogni progetto |
+| `~/.config/opencode/scripts/connect-free-providers.sh` | nuovo | collega in un colpo solo i provider gratuiti con key |
 | `Guida_Opencode.md` | `Guida_Opencode.md` | riscritta sulla nuova struttura |
 | `prompt_chat.md` | `prompt_appunti.md`, `prompt_materiale.md` | prompt brevi per Antigravity e chat web |
+
+## I modelli: solo free, nessun server
+
+Nessun modello a pagamento, nessun processo da tenere acceso.
+
+| Ruolo | Modello | Perché |
+|---|---|---|
+| default | `opencode/nemotron-3-ultra-free` | il più disciplinato: 4 chiamate di strumento dove `minimax` ne fa 22, scrittura pulita, non scrive file se non richiesto |
+| titolo sessione | `opencode/minimax-m3.1-flash-free` | 5 s, il più veloce |
+| compattazione | `opencode/nemotron-3-ultra-free` | finestra da 1M token, riassume senza perdere i dettagli della nota |
+| ultima risorsa | `ollama/qwen2.5:7b`, `ollama/qwen2.5-coder:7b` | offline e senza quota, ma su CPU |
+
+**Catena di fallback** (`rate-limit-fallback.json`, 9 modelli): su quota esaurita o errore transitorio l'agent passa al successivo, tenendo l'agente attivo, e torna indietro dopo il cooldown. L'ordine completo è nella guida; ogni modello è stato provato su quattro compiti prima di entrare nella catena, e chi ha fallito è stato tolto.
+
+**Provider usati**: il free tier di OpenCode (45 modelli, nessuna key) e OpenRouter (modelli `:free`, una key). Gli altri provider gratuiti si collegano con `connect-free-providers.sh`; ogni key serve per un account separato, non c'è modo di aggirarlo.
+
+**OmniRoute è in pausa.** Il plugin `@omniroute/opencode-plugin` (0.2.1) esporta la forma dei plugin di OpenCode 1.x (`{ id, server }`); OpenCode 2.x accetta solo `{ id, effect }` o `{ id, setup }` e rifiuta il caricamento con *"Plugin must export a default definition with an id and an effect or setup function"*. Il plugin è quindi incompatibile finché upstream non pubblica una 0.3.x, ed è stato tolto da `opencode.json`. Il pacchetto resta installato e il servizio `omniroute` non serve più: il suo archivio non contiene nessuna connessione a provider, quindi non darebbe modelli comunque.
+
+## Token: dove vanno e come sono ridotti
+
+Una richiesta porta con sé tutto il contesto statico, e quel blocco viene reinviato a ogni turno: è la spesa più invisibile.
+
+| | Prima | Adesso |
+|---|---|---|
+| blocco statico in contesto (regole, stile, prompt agente) | ~11,9k token | ~6,8k token |
+| richiesta completa misurata (blocco statico + schema dei tool) | 22.748 token di input | 19.049 token di input |
+| sessione da 157 messaggi | 13M token processati | la cronologia viene potata a 120k |
+
+Le leve usate:
+
+- **`.opencode/regole.md`**: le due skill (`no-ai-slop`, `i-have-adhd`) costavano 4,5k token a ogni richiesta e a ogni subagente; ora in `instructions` c'è una sintesi di 530 token e i file completi restano da leggere solo quando si scrive una nota (il prompt dell'agente lo dice già).
+- **DCP tarato** (`.opencode/dcp.jsonc`): pota anche nelle sessioni dei subagenti (`allowSubAgents`), lascia intatti gli ultimi 3 turni (`turnProtection`), e avvisa il modello prima che entri in un ciclo (`iterationNudgeThreshold` 10 invece di 15).
+- **`compaction.keep.tokens: 30000`**: dopo la compattazione resta il contesto utile invece di ricominciare da zero.
+- **Il modello più disciplinato**: i token crescono col numero di chiamate di strumento, e i modelli free non sono uguali (vedi la guida).
+
+Non è stato fatto, per non perdere qualità: troncare gli output degli strumenti (`tool_output`), togliere `stile.md` dalle `instructions` (il DCP potrebbe comprimerlo via), rinunciare al server MCP `obsidian-search` o al plugin `parse`.
 
 ## Le scelte, e perché
 
@@ -43,6 +86,10 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 
 **Due agent invece di sei.** Con un modello gratuito ogni subagent è una sessione nuova che deve rileggersi tutto. Ho tenuto la sola separazione che serve: chi scrive e chi controlla. Il revisore lavora in un contesto pulito, quindi non è influenzato da ciò che ha appena scritto l'altro. `vault`, `materiale` e `indici` sono diventati casi dentro `appunti`. `lettore` è diventato uno script.
 
+**Il modello di default è il più disciplinato, non il più bravo.** I modelli free sono stati provati su quattro compiti (leggere un file e contare, scrivere ed eseguire Python, probabilità, documento da strutturare) e poi su due prove di comportamento. Risultati: `nemotron-3-ultra-free` risolve tutto e usa 4 strumenti dove `minimax-m3.1-flash-free` ne usa 22; nessuno dei due è andato in loop (zero chiamate identiche ripetute), ma `minimax` ha finito per scrivere dentro una nota vera quando gli era stato chiesto solo un testo, e aggiunge un "Riepilogo" finale; `deepseek-v4.1-flash-free` scrive bene ma cerca nelle cartelle sbagliate; `glm-5.3-flash-free` si contraddice; su OpenRouter `nemotron-3-super-120b:free` e `gemma-4-31b-it:free` hanno fallito tutti i compiti, `nemotron-3-ultra-550b:free` li risolve ma mette 12 minuti. Sul rispetto delle regole di scrittura sono tutti simili (zero parole vietate): sulla conformità alle regole ADHD solo `minimax` usa la lista numerata, e nessuno dei free inizia con l'azione. Da qui il default.
+
+**La key OpenRouter era sbagliata.** In OpenCode era salvata la chiave locale di OmniRoute, non una chiave OpenRouter: le richieste finivano con un 401 "Missing Authentication header" e ogni modello OpenRouter era inutilizzabile. La chiave vera era già sulla macchina (`~/.aider/oauth-keys.env`) ed è stata ricollegata; le credenziali sbagliate sono state cancellate.
+
 **Il revisore passa una volta sola, a lezione conclusa.** Parte con `/lezione` e con `/rivedi`. Dopo una modifica qualsiasi l'agent aggiorna solo l'indice ed esegue il controllo strutturale.
 
 **`/rivedi` modifica.** Fa revisionare e applica. Con `solo report` non tocca nulla. Regola fissa: non toglie mai definizioni, teoremi, dimostrazioni, formule, codice, esempi, immagini.
@@ -51,15 +98,17 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 
 **`stile.md` è sempre caricato** (campo `instructions` di `opencode.json`): un modello debole a volte salta la lettura, e lo stile è proprio la parte che non deve saltare.
 
-**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti; `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429). Modelli locali con Ollama per `small_model` a costo e token zero.
+**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti (tarato in `.opencode/dcp.jsonc`); `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429), con catena di 9 modelli free. I modelli locali con Ollama sono l'ultima risorsa offline: su questa macchina non c'è GPU (`nvidia-smi` fallisce) e `qwen2.5:7b` risponde in ~55 s, `qwen3:8b` non risponde in 180 s, quindi non vanno usati per il titolo o per la compattazione.
 
-**Le tre fonti di stile valgono per ogni modello.** `stile.md`, `no-ai-slop` e `i-have-adhd` sono le tre regole di scrittura del vault: la prima sta in `.opencode/stile.md`, le altre due in `~/.agents/skills/` e `~/.config/opencode/vendor/`; tutte e tre sono elencate in `opencode.json` (`instructions`), quindi entrano in contesto in ogni sessione, con qualunque modello, anche con `small_model` o con un subagent. Gli agenti `appunti` e `revisore` le richiedono esplicitamente nel proprio prompt: se il modello è piccolo e salta l'istruzione globale, gliele rilegge da sé. Le skill stanno fuori dal vault, così l'agente non può modificarle (`edit` nega `.opencode/**`).
+**Le tre fonti di stile valgono per ogni modello.** `stile.md`, `no-ai-slop` e `i-have-adhd` sono le tre regole di scrittura del vault: la prima sta in `.opencode/stile.md`, le altre due in `~/.agents/skills/` e `~/.config/opencode/vendor/`. In `instructions` ci sono `stile.md` e `.opencode/regole.md` (la sintesi delle due skill): costavano 4,5k token a ogni richiesta e a ogni subagente, e i modelli free non sono i più attenti. Le versioni complete delle due skill le legge l'agente quando deve scrivere, perché gliele chiede il prompt; i file restano fuori dal vault, così l'agente non può modificarli (`edit` nega `.opencode/**`). `stile.md` resta sempre in contesto: è la parte che non deve saltare.
 
 **Tolti:** tabella dei tag, anni e Erasmus, frontmatter, footer di navigazione, `raw_notes/`, `attachments/`, numerazione `NN_`, divieto dei caratteri non ASCII, callout `[!NOTE]` e `[!LAW]`, modelli di esempio dei vecchi prompt.
 
 **`esercizi/` è tuo.** La cartella `esercizi/` di ogni corso contiene il codice scritto da te (`.py`, `.html`, `.sql`, sottocartelle per l'esame). È un input quanto le slide: l'agent la legge per collegarla dalle note ma non la modifica, e non esegue codice. Se gli chiedi un esercizio te lo dà nella risposta e lo salvi tu. `vault-audit.py` salta la cartella (i `.md` lì dentro non sono note) e `controlla-perdite.py` legge i file collegati dalla nota, così il codice spostato in `esercizi/` non risulta perso.
 
-**Permessi.** Il blocco `permission` di `opencode.json` rende tecnico ciò che `AGENTS.md` chiede: `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `*/esercizi/*` (dopo `*.md`, perché vinca l'ultima regola che combina), `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` è in allowlist (i cinque script, `ls`, `grep`, `rg`, `wc`, `pdfinfo`, `pdftotext`, `tesseract`, git in lettura); `external_directory` impedisce di uscire dal vault. Chiedono conferma `pdftoppm` e `dividi-appunti.py --scrivi`.
+**Permessi.** Il blocco `permissions` di `opencode.json` rende tecnico ciò che `AGENTS.md` chiede: `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `*/esercizi/*` (dopo `*.md`, perché vinca l'ultima regola che combina), `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` è in allowlist (i cinque script, `ls`, `grep`, `rg`, `wc`, `pdfinfo`, `pdftotext`, `tesseract`, git in lettura); `external_directory` impedisce di uscire dal vault. Chiedono conferma `pdftoppm` e `dividi-appunti.py --scrivi`.
+
+**Il bash non si blocca più a metà catena.** OpenCode controlla i permessi comando per comando, anche in una pipe: `script.py | head -40` valuta `script.py` *e* `head -40`, e se il secondo non è in allowlist la catena intera viene negata. Per questo in allowlist ci sono anche i destinatari delle pipe e gli operatori di una catena (`head`, `tail`, `cat`, `sort`, `uniq`, `cut`, `tr`, `jq`, `diff`, `basename`, `dirname`, `cd`, `pwd`, `which`, `echo`, `find`). Il prezzo è che questi programmi possono scrivere, quindi ci sono tre scudi, messi dopo perche valga l'ultima regola che combacia: `echo*>*` (niente file creati con una redirezione), `find* -delete*` e `find* -exec*` (niente cancellazioni né comandi arbitrari), `*env*` (niente `cat .env`, `printenv`). `sed`, `awk`, `tee`, `xargs` restano fuori: scrivono o eseguono, e gli input del vault non si toccano.
 
 ## Particolari implementativi
 
@@ -78,7 +127,7 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 | 14 | lunghezza | nessun limite di righe: `stile.md` chiede densità (ogni concetto una volta, spiegazione proporzionata alla difficoltà, tagliare parole e non contenuti). L'audit non segnala la lunghezza della nota, solo i singoli paragrafi oltre le 150 parole, come INFO |
 | 15 | configurazione e creazione dei file | l'agent non modifica la configurazione e non crea note |
 | 16 | revisore | una passata, solo con `/lezione` e `/rivedi` |
-| 17 | compattazione | `auto` in `opencode.json` |
+| 17 | compattazione | `auto` e `keep.tokens: 30000` in `opencode.json`; il potatura continua la fa il plugin DCP |
 
 ## Passare i vecchi appunti al nuovo formato (da file unico a file multipli)
 

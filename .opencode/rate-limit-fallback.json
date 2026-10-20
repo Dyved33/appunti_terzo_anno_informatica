@@ -4,16 +4,15 @@
   "cooldownMs": 60000,
   "otherModels": "wait",
   "fallbackModels": [
+    { "providerID": "opencode", "modelID": "nemotron-3-ultra-free" },
+    { "providerID": "opencode", "modelID": "minimax-m3.1-flash-free" },
+    { "providerID": "opencode", "modelID": "deepseek-v4.1-flash-free" },
+    { "providerID": "openrouter", "modelID": "thinkingmachines/inkling:free" },
+    { "providerID": "openrouter", "modelID": "minimax/minimax-m3.1-flash:free" },
+    { "providerID": "opencode", "modelID": "glm-5.3-flash-free" },
+    { "providerID": "openrouter", "modelID": "liquid/lfm-2.5-2.6b:free" },
     { "providerID": "ollama", "modelID": "qwen2.5:7b" },
-    { "providerID": "ollama", "modelID": "qwen2.5-coder:7b" },
-    { "providerID": "ollama", "modelID": "llama3.1:8b" },
-    { "providerID": "ollama", "modelID": "gemma2:9b" }
+    { "providerID": "ollama", "modelID": "qwen2.5-coder:7b" }
   ],
-  "retryPolicy": {
-    "maxRetries": 3,
-    "strategy": "exponential",
-    "baseDelayMs": 1000,
-    "maxDelayMs": 30000,
-    "jitterEnabled": true
-  }
+  "retryPolicy": { "maxRetries": 3, "strategy": "exponential", "baseDelayMs": 1000, "maxDelayMs": 30000, "jitterEnabled": true }
 }

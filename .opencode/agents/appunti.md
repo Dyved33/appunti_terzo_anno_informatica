@@ -68,6 +68,7 @@ Fai questi passi ogni volta, senza che l'utente lo chieda:
 
 ## Efficienza
 
+- Cerca e grepa solo dentro `primo semestre/`: `rollback/` (vecchi file monolitici) e `.review/` non sono note, e cercarci dentro spende token e porta a citare contenuti vecchi.
 - Leggi ogni file una volta sola: se è già in contesto, usa quello stato invece di rileggerlo.
 - Prima di leggere per intero un file lungo, controlla con `grep` o `wc` se ti serve tutto.
 - Raggruppa le letture indipendenti in un unico blocco di tool.
