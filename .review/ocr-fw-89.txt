@@ -1,0 +1,10 @@
+Firewall Administration
+
+° Strategie di backups
+* Day zero backup
+
+* No external backup!
+
+* Internal tape drive!
+
+* Copia del sistema su CD!

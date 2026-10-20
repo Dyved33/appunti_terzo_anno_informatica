@@ -1,0 +1,11 @@
+Firewalls
+
+* Firewall: un metodo
+per prevenire accessi
+non autorizzati alla
+
+rete privata. |
+
+Private Network
+
+External Network(s)

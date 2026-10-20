@@ -1,0 +1,17 @@
+Firewall Administration
+
+* Strategie di disaster recovery
+
+* Swithes con capacità di Balancing/failover
+° Il tutto è trasparente
+
+* Logging
+* Uso di un remote syslog server
+* Centralizzazionedi tutti i log
+* Security incident!
+* Livelli/scala di importanza nella realtà!
+
+* La policy determina quali sono “gravi”
+° Mantenere logs per studi legali sull'attacco
+
+* Importante sincronizzazione con un time server!

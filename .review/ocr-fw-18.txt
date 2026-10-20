@@ -1,0 +1,12 @@
+Cosa può fare un firewall, cont.
+
+© Virtual private networks (VPN)
+
+Crittazione automatica dei dati trai siti
+Fornisce confidentialità dei dati inviati tra i due gateways
+Le 2 reti appaiono come una singola rete, al di qua del firewall
+
+Buono per reti che si localizzano su più siti e collegate da una
+untrusted network (ex; Internet)
+
+VPN permette l'uso remoto dei servizi locali

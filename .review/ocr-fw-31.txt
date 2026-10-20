@@ -1,0 +1,14 @@
+Filtri a livello 3:
+
+Source address del pacchetto (IP address)
+Destination address del pacchetto (IP address)
+
+Tipo del traffico (IP, ICMP, IPX se a livello 3, o anche
+protocolli di livello 2)
+
+Possibilmente, alcune caratteristiche del livello 4 (porta
+sorgente e destinazione)
+
+Talvolta, informazioni interne al router (quali
+informazioni circa l'interfacce sorgente e di destinazione
+del pacchetto, utile per routers con più interfacce)

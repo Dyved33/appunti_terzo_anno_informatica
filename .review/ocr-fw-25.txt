@@ -1,0 +1,16 @@
+Il principio: La difesa perimetrale
+
+1. Proteggi tutti I cammini di ingresso alla rete privata
+
+° Crea una sola porta di ingresso!
+
+2. All'interno della rete gli host si fidano tra loro
+
+‘
+a
+
+N
+
+- Internet 4
+
+no

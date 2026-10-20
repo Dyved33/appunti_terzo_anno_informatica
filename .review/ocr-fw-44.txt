@@ -1,0 +1,17 @@
+Environment 1: DMZ
+
+ISP
+
+Boundary Router
+Packet Filter
+
+External DMZ Network
+
+Main Firewall IF
+(= | External Web Server
+Internal DMZ Network
+Internal [== |
+Firewall |= |
+=| Internal Email Server
+
+Interior Protected Network

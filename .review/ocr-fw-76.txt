@@ -1,0 +1,8 @@
+Firewall Configurations
+
+* Screened host firewall, dual-homed bastion
+configuration
+
+Il traffico tra Internet e gli altri hosts sulla rete
+privata deve fisicamente passare attraverso il bastion
+host

@@ -1,0 +1,13 @@
+Gestione e manutenzione del firewall
+
+* CLI
+* Veloce ©
+
+* A volte errori di battitura se non sono implementati
+dei controlli sintattici ®
+
+° GUI
+
+Usabile anche da un novizio ©
+
+Usabile anche da un novizio ®

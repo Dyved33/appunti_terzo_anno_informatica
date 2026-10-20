@@ -1,0 +1,9 @@
+Algebra Relazionale: L’Operatore Derivato di
+Divisione
+
+Algebra Relazionale e Null
+
+e La presenza di valori nulli nelle istanze di una BD richiede
+un'estensione della semantica degli operatori.
+
+Raffaella Gentilini Basi di Dati 2/12

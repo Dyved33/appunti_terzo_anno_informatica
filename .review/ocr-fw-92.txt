@@ -1,0 +1,15 @@
+Scegliere un firewall
+
+* Con almeno le seguenti funzioni
+* Packet filter
+
+Stateful inspection
+
+* Proxy di selezionate applicazioni(web, posta)
+Funzioni di log
+Authenticazione dell'utente
+Possibilità di controllo di
+* Interfaccia del firewall (sorgente e destinazione)
+° IP (sorgente e destinazione)
+
+° Porte (sorgente e destinazione)

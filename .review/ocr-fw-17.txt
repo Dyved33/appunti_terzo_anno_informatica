@@ -1,0 +1,10 @@
+Cosa può fare un firewall, cont.
+
+* Schermare alcune reti interne e nasconderle agli
+altri
+
+* Bloccare alcuni accessi a servizi 0 ad utenti
+
+* Monitorare!
+
+* Log function importante!!

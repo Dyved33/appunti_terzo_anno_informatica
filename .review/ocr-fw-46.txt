@@ -1,0 +1,20 @@
+Environment 2: VPN
+
+Gateway
+
+U ted Logical Extension
+see tfic of internal network
+
+External Email
+Web Server Server
+
+e
+VPN ° Firewall e VPN server
+° IPSec
+* PPTP (by microsoft)
+* £2TP
+
+insieme?
+° Si, ma
+
+Prestazioni.. ®

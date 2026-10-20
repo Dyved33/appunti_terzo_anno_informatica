@@ -1,0 +1,11 @@
+Definizione
+
+° Network Firewalls are devices or systems that
+control the flow of network traffic between
+networks employing different security postures.
+
+(NIST)
+
+* Firewalls di rete sono apparecchiature o sistemi
+che controllano il flusso del traffico di rete tra due
+reti con differenti livelli di sicurezza.

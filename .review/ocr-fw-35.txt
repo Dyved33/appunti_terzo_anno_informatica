@@ -1,0 +1,17 @@
+Regola 1:
+connessione TCP/UDP lato client
+* Connessione a una porta
+source port: x. .
+host A |_dest- port: 23 server B (23) viene fatta creando
+
+source port:23 nf
+dest. port: x.
+
+port use: simple telnet app
+
+lato cliente una porta
+(x>1023) a cui il server
+risponderà.
+
+* Numeri di porte inseriti
+nel paccheto

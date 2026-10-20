@@ -1,0 +1,10 @@
+Environment 3: Intranet/extranet
+
+Internet Border. VPN » Internet Border
+
+Firewall A =| Firewall B Ss
+f
+LE invenet A A Protected Intranet B
+
+j= B Extranet Bp
+

@@ -1,0 +1,122 @@
+* Accept
+° Deny
+* Discard
+
+Packet filter rulesets
+
+Source
+Address
+
+Source
+Port
+
+Destination
+Address
+
+Destination
+Port
+
+Action
+
+Description
+
+1 Any
+
+Any
+
+192.168.1.0
+
+> 1023
+
+Allow
+
+Rule to allow return
+TCP Connections to
+internal subnet
+
+2|192.168.1.1
+
+Any
+
+Any
+
+Any
+
+Deny
+
+Prevent Firewall sys-
+tem itself from directly
+connecting to anything
+
+3 Any
+
+Any
+
+192.168.1.1
+
+Any
+
+Deny
+
+Prevent External users
+from directly accessing
+the Firewall system
+
+4|192.168.1.0
+
+Any
+
+Any
+
+Any
+
+Allow
+
+Internal Users can
+access External serv-
+ers
+
+5 Any
+
+Any
+
+192.168.1.2
+
+SMTP
+
+Allow
+
+Allow External Users
+to send email in
+
+6 Any
+
+Any
+
+192.168.1.3
+
+HTTP
+
+Allow
+
+Allow External Users
+to access WWW
+server
+
+7 Any
+
+Any
+
+Any
+
+Any
+
+Deny
+
+"Catch-All" Rule - Eve-
+rything not previously
+allowed is explicitly
+denied
+
+“Black hole” = trasparente all’esterno
+

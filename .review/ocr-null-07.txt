@@ -1,0 +1,11 @@
+T,U, N, \ e valori nulli
+
+e Proiezione, unione, intersezione e differenza con
+comportarsi usualmente.
+
+uano a
+
+e L'uguaglianza tra Null e’ a livello sintattico e due tuple sono
+uguali anche se ci sono valori nulli.
+
+3/12

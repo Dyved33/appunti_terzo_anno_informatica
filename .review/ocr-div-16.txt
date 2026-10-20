@@ -1,0 +1,13 @@
+Derivazione della Divisione
+
+% Proietto su Z = X \ Y il primo operando
+T1(Z)  rz(R)
+% Costruisco l'universo U
+U(X) Tx S
+% Individuo le tuple da non ammettere nel risultato
+
+To(Z) + mz(U \ R)
+
+Raffaella Gentilini Basi di Dati si
+
+5

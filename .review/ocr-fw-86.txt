@@ -1,0 +1,8 @@
+Firewall Administration
+
+° Accesso dalla console di gestione
+
+° Via specifici client ed encryption
+° Via SSHe hittp
+
+* Possibilmente anche una user authentication

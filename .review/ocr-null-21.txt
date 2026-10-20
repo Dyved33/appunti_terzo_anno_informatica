@@ -1,0 +1,3 @@
+Concatenazione e valori nulli
+
+Raffaella Gentilini Basi di Dati 11/12

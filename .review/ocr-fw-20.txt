@@ -1,0 +1,9 @@
+Più specificatamente ©
+
+° Non difende contro nuovi bachi non ancora
+documentati nei protocolli
+
+° I filtri sono difficili da settare e da mantenere
+perchè difficile compromesso tra libertà e sicurezza
+
+* Può degradare le performance della rete

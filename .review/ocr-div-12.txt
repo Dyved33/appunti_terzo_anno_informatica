@@ -1,0 +1,18 @@
+La Divisione: Definizione
+
+Siano R(X), S(Y) due schemi di relazione tali che Y C X e siano
+r,s due istanze di R, S.
+
+L'operazione di divisione r + s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+
+ris=
+
+={t|vres:tuter}
+
+={tl{t}xscr}
+
+La divisione r + s e' dunque definita sugli attributi X \ Y J
+
+Basi di Dati 4/5

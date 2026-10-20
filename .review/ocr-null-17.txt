@@ -1,0 +1,14 @@
+o e valori nulli
+
+© per valutare predicati come quello dell'esempio precedente, si
+introduce una logica a tre valori
+
+® In partcolare, oltre ai valori Vero (V) e Falso (F) si ha un terzo
+valore Indefinito (?)
+
+Le tabelle di verita’ sopra possono essere estese ad altri tipi di confronto.
+Se D e' un dominio su cui e' definito un ordinamento < (risp. >,<,>)
+
+<> ? ?
+allora il confronto xby (0 € {<,><,2}) e' EXE oppure y e' n
+

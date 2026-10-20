@@ -1,0 +1,12 @@
+Environment 1: DMZ
+(service leg)
+
+External DMZ Network
+
+Service Leg DMZ Network
+
+Main Firewall = lg le
+
+Appreation proms
+
+Protected Internal Network

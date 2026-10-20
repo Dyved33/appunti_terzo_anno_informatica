@@ -1,0 +1,10 @@
+Firewall Configurations
+
+* Screened host firewall, single-homed bastion
+configuration
+
+* Firewall considte di due sistemi:
+
+un packet-filtering router
+
+un bastion host

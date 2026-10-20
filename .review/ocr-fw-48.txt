@@ -1,0 +1,15 @@
+Environment 4: Hubs/Switches
+
+°* Hubs
+
+* Devices a layer 1
+* Broadcast traffic
+
+° Switches
+* Devices a layer 2
+* (essentially multiport bridges)
+
+* No possibilità di snif/eavesdrop tra porta e porta
+° OK per DMZ e Firewall environment
+
+° Isolamento delle subnets da tenere di conto nell'uso di IDSs

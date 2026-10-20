@@ -1,0 +1,14 @@
+Proxy server dedicati
+
+* Specifici per ogni applicazione
+
+* Aiutano l'application proxy gateway nel lavoro di
+contents-inspection
+
+* Tipico uso:
+* Antivirus
+* Malicius code (applets java, activix, javascript, word)
+
+* Usati spesso per outbound connections
+* Web cache proxy
+* Email proxy

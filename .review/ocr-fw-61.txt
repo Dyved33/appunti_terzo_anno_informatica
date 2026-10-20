@@ -1,0 +1,15 @@
+Firewall Policy: ... bloccare:
+
+Traffico in ingresso da sorgenti esterne non autenticate
+verso il firewall
+
+* Eccezione se proxy-email esterne (ma in questo caso accettare
+solo connessioni su porta 25!)
+
+Traffico in ingresso ... ma con pacchetti che mostrano la
+rete interna come sorgente ©)
+Traffico ICMP in ingresso
+* Firewalking! ©
+Traffico SNMP da sorgenti non authenticate
+* Probing!!®
+

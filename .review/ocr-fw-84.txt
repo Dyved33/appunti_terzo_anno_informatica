@@ -1,0 +1,25 @@
+Miglioramenti ...
+
+External DMZ Network ISP Connection
+dl
+
+Border Router
+External |__| 192.168.1.1
+DNS Server Main Firewall | == | <=
+VPN Gateway aS (AT
+192.168.1.2 [=] N
+
+Internal DMZ Network
+
+{|
+Internal =
+7 =
+Firewall =|
+192.168.1.3
+HTTP SMTP Internal
+192.168.1.4 192.168.1.5 DNS Server
+
+t
+
+Interior Protected Network
+

@@ -1,0 +1,14 @@
+Vivere senza FW, ..., si, ... però
+
+° Riduce le possibilità di un external intruders di
+alterare la rete interna
+
+Password vulnerability
+* Network probes for known flaws in services
+* Address (and other) spoofing
+
+* Details of the file system
+
+Mail problems
+
+* Worms e virus

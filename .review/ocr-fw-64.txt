@@ -1,0 +1,14 @@
+Testing the policy!
+
+Quasi mai effettuato ©
+
+1. Semplice controllo tra quello che volevamo e
+quello che è stato implementato
+
+2. ‘Usando tools o specifici tiger-group che cercano
+di fare qualcosa vietato per policy
+
+Penetration analysis
+
+° Seeded
+° blind

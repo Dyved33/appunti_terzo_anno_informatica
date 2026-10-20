@@ -1,0 +1,8 @@
+La Divisione: Definizione
+
+Siano R(X), S(Y) due schemi di relazione tali che Y C X e siano
+r,s due istanze di R, S.
+
+Raffaella Gentilini
+
+4/5

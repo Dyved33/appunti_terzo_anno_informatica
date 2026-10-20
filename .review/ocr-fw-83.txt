@@ -1,0 +1,38 @@
+possibili regole per il border router ...
+
+Source Ad- | Source | Destination | Destination
+
+dress Port Address Port Action) Description
+
+Rule to allow return
+
+1 Any Any 192.168.1.0 > 1023 Allow TCP Connections to
+internal subnet
+
+Prevent Firewall system
+2 | 192.168.1.1 Any Any Any Deny itself from directly con-
+necting to anything
+
+Allow External users to
+
+3 Any Any 192.168.1.2 VPN Allow connect to VPN server
+Allow External Users to
+
+4 Any Any 192.168.1.2 SMTP Allow send email to proxy
+
+5| Any Any |19216812| HTTP Allow Send inbound HTTP to
+proxy
+Prevent External users
+
+6 Any Any 192.168.1.1 Any Deny from directly accessing
+the Firewall system
+Internal Users can ac-
+
+7 | 192.168.1.0 Any Any Any Allow cess External servers
+"Catch-All" Rule - Eve-
+
+8 Any Any Any Any Deny rything not previously
+
+allowed is explicitly de-
+nied
+

@@ -1,0 +1,28 @@
+Environment 7: Servers
+
+Server esterni su external
+DMZ
+
+Boundary Router Network ga | Dial-in
+Packet Filter Net Server ° DNS >, web, directory
+External DMZ Network Server
+
+ISP Connection
+
+ul Edema scena = Eventualmente su più
+i ene DNS Server . .
+Network = wi Host DS DMZs per isolare i server
+
+Internal DMZ Network ° VPN, Dial-In Server
+
+Network ° Per controllare traffico
+IDS A è
+prima che sia encrypted!
+
+Internal
+Firewall
+
+Email Server Internal Web Proxy
+with Host IDS DNS Server Server
+
+L Protected Network

@@ -1,0 +1,9 @@
+Personal firewalls
+
+* Proteggono solo la macchina dove sono istallate
+
+° Necessario, specie per mobile users
+* Es:
+
+* winXp
+* Zonealarm

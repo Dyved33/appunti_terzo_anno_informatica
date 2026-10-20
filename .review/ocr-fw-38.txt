@@ -1,0 +1,18 @@
+Filtri a livello 7
+
+* Routing tra le due interfacce effettuato a livello
+applicazione dal software del firewall
+
+* Incaso di malfunzionamento del sw, il routing è disabilitato
+
+* Possibilità di authentication
+
+userId and password
+* HW/SW token authentication
+
+* Biometric authentication (remota? Solo in aggiunta ad altri
+strumenti)
+
+* Filtri su specifici comandi
+
+* (es. permetto get ma non put)

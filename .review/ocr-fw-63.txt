@@ -1,0 +1,12 @@
+Firewall Policy: .. bloccare:
+
+* Inbound/outbound traffic per pacchetti contenenti
+directed broadcast address
+
+* Tipico uso per attacchi che implicano una risposta ad
+un diverso source address (DoS)
+
+* Se possibile:
+* sare user authentication
+
+Usare quanto log possibile

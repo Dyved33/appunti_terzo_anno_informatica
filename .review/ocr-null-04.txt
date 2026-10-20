@@ -1,0 +1,14 @@
+Algebra Relazionale: L’Operatore Derivato di
+Divisione
+
+Algebra Relazionale e Null
+
+e La presenza di valori nulli nelle istanze di una BD richiede
+un'estensione della semantica degli operatori.
+
+e L'approccio tradizionale (usato nei DBMS basati sul meodello
+relazionale ed in SQL) e’ quello di considerare una logica a tre
+valori per la valutazione delle formule proposizionali e quindi
+degli operatori di selezione e concatenazione (join)
+
+Raffaella Gentilini Basi di Dati 2/12

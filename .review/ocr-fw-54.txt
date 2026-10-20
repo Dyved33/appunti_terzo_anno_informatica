@@ -1,0 +1,27 @@
+Environment 6: DNSs
+
+Boundary Router
+Packet Filter
+
+Area Served by External DNS Server,
+Visible to Internet
+
+External DMZ Network
+
+Main
+Firewall
+
+External DNS Server Web Server
+
+Internal
+Firewall
+
+Internal DMZ Network
+
+SMTP
+Internal DNS Server
+
+u t
+
+Interior Protected Network
+

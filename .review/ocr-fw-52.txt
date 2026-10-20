@@ -1,0 +1,17 @@
+Environment 5: IDSs
+(Network based IDS)
+
+° Punti Negativi
+* Usualmente non riescono a riassemblare delle signature
+distribuite su più pacchetti
+
+° Necessitano switches con particolari funzionalità (port
+mirroring)
+
+Interfacce in promiscuous mode (necessarie ai network-based
+IDSs) sono facilmente localizzabili e possono poi essere
+
+attaccate inviando grossi quantitativi di traffico inutile
+
+Spesso sono essi stessi oggetto dell'attacco che dovrebbero
+monitorare (Dos)

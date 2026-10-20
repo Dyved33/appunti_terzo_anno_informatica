@@ -1,0 +1,14 @@
+Firewall OS
+
+° Hardening the OS
+
+* Togliere protocolli, servizi e applicazioni di rete non
+usati
+
+* Togliere user/system account non usati
+
+* Applicare tutte le patch!!
+
+° Prima testarle in un ambiente di test
+
+* Disabilitazione interfacce non usate

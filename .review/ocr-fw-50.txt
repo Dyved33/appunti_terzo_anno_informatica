@@ -1,0 +1,11 @@
+Environment 5: IDSs
+(host IDS)
+
+* Istallato sulle singole macchine da proteggere
+° Strettamente dipendente dal OS della macchina
+° Punti negativi:
+
+* Impatto su performance
+
+* Difficile riconoscere DoS
+* Impatto sulla stabilità del OS

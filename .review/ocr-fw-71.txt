@@ -1,0 +1,18 @@
+Firewall Configurations
+
+* Screened host firewall system (single-homed
+bastion host)
+
+filtering
+router
+Private
+network hosts
+
+Bastion
+host
+« tT t >
++
+Packet-
+Information
+
+server

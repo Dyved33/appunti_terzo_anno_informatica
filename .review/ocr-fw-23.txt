@@ -1,0 +1,18 @@
+Default deny
+
+Firewall devono essere creati per bloccare tutto
+
+Servizi sono abilitati caso per caso dopo una attenta
+analisi
+
+Utenti sono molto ristretti e non possono facilmente
+rompere la policy di sicurezza
+
+Entrano solo cose
+
+—_—
+=
+i a
+che noi sappiamo
+
+essere non pericolose

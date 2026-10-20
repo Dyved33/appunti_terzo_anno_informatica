@@ -1,0 +1,17 @@
+Piano di Sicurezza
+
+Risk Avoidance (evitare rischi)
+* Necessitiamo di una connessione Internet permanente?
+
+Deterrence (deterrenza)
+
+* Pubblicizzare strumenti di difesa e di punizione
+Prevention (prevenzione)
+
+* Firewall
+
+* Detection (detection)
+
+° IDS
+
+* Recovery

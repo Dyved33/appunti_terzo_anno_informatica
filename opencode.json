@@ -1,69 +1,41 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama",
-      "options": {
-        "baseURL": "http://localhost:11434/v1"
-      },
-      "models": {
-        "qwen2.5:7b": {
-          "name": "Qwen 2.5 7B (Locale)"
-        },
-        "qwen2.5:3b": {
-          "name": "Qwen 2.5 3B (Locale)"
-        },
-        "qwen2.5:1.5b": {
-          "name": "Qwen 2.5 1.5B (Locale)"
-        },
-        "qwen2.5-coder:7b": {
-          "name": "Qwen 2.5 Coder 7B (Locale)"
-        },
-        "qwen2.5-coder:3b": {
-          "name": "Qwen 2.5 Coder 3B (Locale)"
-        },
-        "llama3.1:8b": {
-          "name": "Llama 3.1 8B (Locale)"
-        },
-        "llama3.2:3b": {
-          "name": "Llama 3.2 3B (Locale)"
-        },
-        "llama3.2:1b": {
-          "name": "Llama 3.2 1B (Locale)"
-        },
-        "gemma2:9b": {
-          "name": "Gemma 2 9B (Locale)"
-        },
-        "gemma2:2b": {
-          "name": "Gemma 2 2B (Locale)"
-        }
-      }
-    }
-  },
   "default_agent": "appunti",
   "instructions": [
     ".opencode/stile.md",
     "~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md",
-    "~/.config/opencode/skills/no-ai-slop/SKILL.md"
+    "~/.agents/skills/no-ai-slop/SKILL.md"
   ],
-  "small_model": "ollama/qwen2.5:7b",
+  "agents": {
+    "title": {
+      "model": "ollama/qwen2.5:7b"
+    },
+    "compaction": {
+      "model": "ollama/qwen2.5:7b"
+    }
+  },
   "lsp": false,
   "formatter": false,
-  "plugin": [
+  "plugins": [
     "@tarquinen/opencode-dcp@latest",
     "@plannotator/opencode@latest",
-    "@azumag/opencode-rate-limit-fallback@2.1.0"
+    "@azumag/opencode-rate-limit-fallback@2.1.0",
+    "@omniroute/opencode-plugin"
   ],
   "mcp": {
-    "obsidian-search": {
-      "type": "remote",
-      "url": "http://127.0.0.1:8848/mcp",
-      "enabled": true
+    "servers": {
+      "obsidian-search": {
+        "type": "remote",
+        "url": "http://127.0.0.1:8848/mcp",
+        "disabled": false
+      }
     }
   },
   "compaction": {
     "auto": true
+  },
+  "experimental": {
+    "todo": true
   },
   "watcher": {
     "ignore": [
@@ -79,53 +51,46 @@
       "**/node_modules/**"
     ]
   },
-  "permission": {
-    "external_directory": {
-      "*": "deny"
-    },
-    "doom_loop": "deny",
-    "edit": {
-      "*": "deny",
-      "*.md": "allow",
-      "*/esercizi/*": "deny",
-      "AGENTS.md": "deny",
-      ".opencode/**": "deny",
-      "prompt/Guida_Opencode.md": "deny",
-      "prompt/prompt_chat.md": "deny",
-      "opencode.json": "deny",
-      "CONFIG-CHANGES.md": "deny"
-    },
-    "read": {
-      "*": "allow",
-      "*.env": "deny",
-      "*.env.*": "deny"
-    },
-    "bash": {
-      "*": "deny",
-      "python3 .opencode/scripts/vault-audit.py*": "allow",
-      "python3 .opencode/scripts/leggi-slide.py*": "allow",
-      "python3 .opencode/scripts/libri.py*": "allow",
-      "python3 .opencode/scripts/controlla-perdite.py*": "allow",
-      "python3 .opencode/scripts/dividi-appunti.py*": "allow",
-      "python3 .opencode/scripts/dividi-appunti.py*--scrivi*": "ask",
-      "pdfinfo*": "allow",
-      "pdftotext*": "allow",
-      "pdftoppm*": "ask",
-      "tesseract*": "allow",
-      "ls*": "allow",
-      "wc*": "allow",
-      "grep*": "allow",
-      "rg*": "allow",
-      "git status*": "allow",
-      "git diff*": "allow",
-      "git log*": "allow",
-      "git show*": "allow",
-      "obsidian-mcp-search status*": "allow"
-    },
-    "webfetch": "allow",
-    "websearch": "allow",
-    "task": "allow",
-    "question": "allow",
-    "todowrite": "allow"
-  }
+  "permissions": [
+    { "action": "external_directory", "resource": "*", "effect": "deny" },
+    { "action": "doom_loop", "resource": "*", "effect": "deny" },
+    { "action": "edit", "resource": "*", "effect": "deny" },
+    { "action": "edit", "resource": "*.md", "effect": "allow" },
+    { "action": "edit", "resource": "*/esercizi/*", "effect": "deny" },
+    { "action": "edit", "resource": "AGENTS.md", "effect": "deny" },
+    { "action": "edit", "resource": ".opencode/**", "effect": "deny" },
+    { "action": "edit", "resource": "prompt/Guida_Opencode.md", "effect": "deny" },
+    { "action": "edit", "resource": "prompt/prompt_chat.md", "effect": "deny" },
+    { "action": "edit", "resource": "prompt/README.md", "effect": "deny" },
+    { "action": "edit", "resource": "CONFIG-CHANGES.md", "effect": "deny" },
+    { "action": "edit", "resource": "opencode.json", "effect": "deny" },
+    { "action": "read", "resource": "*", "effect": "allow" },
+    { "action": "read", "resource": "*.env", "effect": "deny" },
+    { "action": "read", "resource": "*.env.*", "effect": "deny" },
+    { "action": "shell", "resource": "*", "effect": "deny" },
+    { "action": "shell", "resource": "python3 .opencode/scripts/vault-audit.py*", "effect": "allow" },
+    { "action": "shell", "resource": "python3 .opencode/scripts/leggi-slide.py*", "effect": "allow" },
+    { "action": "shell", "resource": "python3 .opencode/scripts/libri.py*", "effect": "allow" },
+    { "action": "shell", "resource": "python3 .opencode/scripts/controlla-perdite.py*", "effect": "allow" },
+    { "action": "shell", "resource": "python3 .opencode/scripts/dividi-appunti.py*", "effect": "allow" },
+    { "action": "shell", "resource": "python3 .opencode/scripts/dividi-appunti.py*--scrivi*", "effect": "ask" },
+    { "action": "shell", "resource": "pdfinfo*", "effect": "allow" },
+    { "action": "shell", "resource": "pdftotext*", "effect": "allow" },
+    { "action": "shell", "resource": "pdftoppm*", "effect": "ask" },
+    { "action": "shell", "resource": "tesseract*", "effect": "allow" },
+    { "action": "shell", "resource": "ls*", "effect": "allow" },
+    { "action": "shell", "resource": "wc*", "effect": "allow" },
+    { "action": "shell", "resource": "grep*", "effect": "allow" },
+    { "action": "shell", "resource": "rg*", "effect": "allow" },
+    { "action": "shell", "resource": "git status*", "effect": "allow" },
+    { "action": "shell", "resource": "git diff*", "effect": "allow" },
+    { "action": "shell", "resource": "git log*", "effect": "allow" },
+    { "action": "shell", "resource": "git show*", "effect": "allow" },
+    { "action": "shell", "resource": "obsidian-mcp-search status*", "effect": "allow" },
+    { "action": "webfetch", "resource": "*", "effect": "allow" },
+    { "action": "websearch", "resource": "*", "effect": "allow" },
+    { "action": "subagent", "resource": "*", "effect": "allow" },
+    { "action": "question", "resource": "*", "effect": "allow" },
+    { "action": "todowrite", "resource": "*", "effect": "allow" }
+  ]
 }

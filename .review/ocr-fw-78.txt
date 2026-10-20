@@ -1,0 +1,7 @@
+Firewall Configurations
+
+* Screened subnet firewall configuration
+* La più sicura delle tre configurazioni
+* Usati due packet-filtering routers
+
+* Creazione di una sub-network isolata

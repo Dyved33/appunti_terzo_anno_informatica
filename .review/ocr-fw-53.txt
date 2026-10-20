@@ -1,0 +1,12 @@
+Environment 6: DNSs
+
+* Servizio critico per ogni ambiente che fa uso
+dell'Internet
+
+* Split DNS
+* Separare su due server DNS la gestione dei nomi
+interni da quella dei nomi esterni
+
+° Gestire traffico UDP/TCP separatamente
+° UDP: user lookup
+* ICP: Zone Transfer (solo dai secondari!)

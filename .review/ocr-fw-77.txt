@@ -1,0 +1,22 @@
+Firewall Configurations
+
+* Screened-subnet firewall system
+
+Bastion
+host
+
+Private
+network
+
+Outside
+router
+
+Inside
+router
+
+a
+
+Modem
+
+Information
+server

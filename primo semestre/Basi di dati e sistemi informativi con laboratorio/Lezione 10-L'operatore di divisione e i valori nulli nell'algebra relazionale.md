@@ -21,7 +21,7 @@ La divisione $r \div s$ è dunque definita sugli attributi $X \setminus Y$.
 > [!info] In altre parole:
 > Il risultato sono i valori del primo operando che valgono per tutte le combinazioni richieste dal secondo.
 
-*Esempio:* si hanno le relazioni Fornisce(F#, P#) e Prodotto(P#):
+*Esempio proprio:* si hanno le relazioni Fornisce(F#, P#) e Prodotto(P#):
 
 | F# | P# |
 | --- | --- |
@@ -73,6 +73,8 @@ La distinzione è essenziale: l'uguaglianza usata da $\cup$, $\cap$ e $\setminus
 Per la selezione il problema è stabilire se, in presenza di null, un predicato è vero oppure meno per una data tupla: per valutare questi predicati si introducono i tre valori Vero (V), Falso (F) e Indefinito (?).
 
 I confronti d'uguaglianza con un valore null danno ?:
+
+Nelle tabelle seguenti le righe sono il valore di $x$, le colonne il valore di $y$.
 
 | $x = y$ | V | F | ? |
 | --- | --- | --- | --- |
@@ -141,6 +143,8 @@ Per il $\theta$-join valgono le stesse regole per la valutazione della condizion
 - la tupla 3 si accoppia con la sede S2: (3, Verdi, S2, ?, Napoli, Neri);
 - la tupla 2 non si accoppia a nulla: il confronto sul valore null è ?, e la condizione di join non risulta vera;
 - nel join naturale, la coppia (2, Bianchi, ?, 2500) con (?, Roma, Verdi) non viene combinata: entrambe hanno null su un attributo in comune.
+
+> [!todo] la slide "Esempio" di agebraRelDivisione.pdf e le slide 4/12, 5/12, 7/12, 10/12, 12/12 di nullAlgebraRel.pdf sono immagini che il PDF non rende: l'esempio Fornisce/Prodotto e le tabelle di verità vanno confrontati con gli appunti cartacei.
 
 > [!info] Sintesi:
 > - La divisione $\div$ è derivata e binaria, la controparte della quantificazione universale: dà le tuple del primo operando valide per tutte le tuple del secondo, ed è definita su $X \setminus Y$.

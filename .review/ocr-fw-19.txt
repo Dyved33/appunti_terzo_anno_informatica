@@ -1,0 +1,8 @@
+Alcuni Commenti negativi sui Firewalls
+
+Firewalls sono l'approccio sbagliato: Non risolvono il problema,
+e rendono impossibile o molto difficile fare molte cose agli utenti
+interni.
+
+... d'altra parte, un responsabile di una rete interna non
+vivrebbe tranquillamente senza un firewall

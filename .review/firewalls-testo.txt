@@ -1,0 +1,1251 @@
+=== pagina 1/94 ===
+Sicurezza Informatica PG
+      a.a. 2007-2008
+
+
+
+
+     Firewalls
+
+  Stefano Bistarelli
+    bista@sci.unich.it
+
+
+
+
+                           Firewalls
+
+=== pagina 2/94 ===
+                       Sommario
+• Introduzione (Sicurezza e Firewall)
+• Firewalls (Da bastion host a rete di difesa)
+• Firewalls (Overview)
+• 2 Filosofie ed 1 Principio
+• Tipi di Firewalls
+• Firewall environments
+• Firewall security policy
+• Tipiche configurazioni
+• Un esempio
+• Firewall Administration
+• Raccomandazioni finali
+
+                                                 Firewalls
+
+=== pagina 3/94 ===
+  Introduzione
+
+Sicurezza e Firewalls
+
+
+
+
+         3              Firewalls
+
+=== pagina 4/94 ===
+                   Come proteggersi?
+• Physical security
+   • Accesso fisico di utenti alle macchine
+• Operational/Procedural security
+   • Policy di sicurezza
+• Personnel Security
+   • …
+• System Security
+   • Acl, log, …
+• Network Security
+   • Firewall, IDS, buon routing e filtri
+
+                                              Firewalls
+
+=== pagina 5/94 ===
+                   Come proteggersi?
+• Physical security
+   • Accesso fisico di utenti alle macchine
+• Operational/Procedural security
+   • Policy di sicurezza
+• Personnel Security
+   • …
+• System Security
+   • Acl, log, …
+• Network Security
+   • Firewall, IDS, buon routing e filtri
+
+                                              Firewalls
+
+=== pagina 6/94 ===
+                  Piano di Sicurezza
+• Risk Avoidance (evitare rischi)
+   • Necessitiamo di una connessione Internet permanente?
+• Deterrence (deterrenza)
+   • Pubblicizzare strumenti di difesa e di punizione
+• Prevention (prevenzione)
+   • Firewall
+• Detection (detection)
+   • IDS
+• Recovery
+
+
+                                                            Firewalls
+
+=== pagina 7/94 ===
+                  Firewalls???
+• Sicurezza non è sinonimo di Firewall!!
+• Insiders and Outsiders!!
+
+
+
+
+                                           Firewalls
+
+=== pagina 8/94 ===
+                  Firewalls???
+• Sicurezza non è sinonimo di Firewall!!
+• Insiders and Outsiders!!
+
+
+
+
+                                           Firewalls
+
+=== pagina 9/94 ===
+          Firewalls
+
+Da bastion host a rete di difesa
+
+
+
+
+               9                   Firewalls
+
+=== pagina 10/94 ===
+                     Firewalls oggi
+• Firewall non è un componente della rete ma un insieme di
+  componenti che cooperano tra loro
+   • Firewall e Intrusion Detection Systems (IDS)
+   • Email/web content scanners per virus e malicious code (worms)
+   • Personal firewalls
+   • … a Policy!!
+• Firewalls non come prima linea di difesa .. ma l’ultima!
+
+
+
+
+                                                                     Firewalls
+
+=== pagina 11/94 ===
+                    Definizione
+• Network Firewalls are devices or systems that
+  control the flow of network traffic between
+  networks employing different security postures.
+  (NIST)
+• Firewalls di rete sono apparecchiature o sistemi
+  che controllano il flusso del traffico di rete tra due
+  reti con differenti livelli di sicurezza.
+
+
+
+                                                           Firewalls
+
+=== pagina 12/94 ===
+                          Firewalls
+• Firewall: un metodo
+  per prevenire accessi
+                                 Private Network
+  non autorizzati alla
+  rete privata.
+
+
+
+                                      Firewall
+
+
+
+
+                                External Network(s)
+
+
+                                                      Firewalls
+
+=== pagina 13/94 ===
+Firewalls
+
+Overview
+
+
+
+
+   13       Firewalls
+
+=== pagina 14/94 ===
+              Cosa può fare un firewall
+• Proteggere le risorse della rete   Private Network
+  privata da attacchi esterni.
+• Prevenire l’esportazione di
+  dati dall’interno verso
+  l’esterno.
+• Importante: usarlo insieme ad           Firewall
+  altri meccanismi di sicurezza!!
+                                        Proprietary    External
+                                           data        Attacks
+
+
+
+
+                                     External Network(s)
+
+
+                                                                  Firewalls
+
+=== pagina 15/94 ===
+      Vivere senza FW, …, si, … però
+• Riduce le possibilità di un external intruders di
+  alterare la rete interna
+   • Password vulnerability
+   • Network probes for known flaws in services
+   • Address (and other) spoofing
+   • Details of the file system
+   • Mail problems
+   • Worms e virus
+
+
+
+
+                                                      Firewalls
+
+=== pagina 16/94 ===
+                     Worms e virus
+• Worms
+   • Codice che si diffonde da un computer ad un altro usando una
+     qualche vulnerabilità. Quando un computer ha un worm si dice
+     “compromesso” (“compromised”). Una volta compromesso un
+     computer inizierà ad infettare gli altri.
+• Virus
+   • Codice eseguito da un utente che fa qualcosa di inaspettato
+     rispetto a quello che l’utente prevedeva. Spesso attachments di
+     posta contengono virus. Un virus non usa una vulnerabilità del
+     sistema, ma fa uso dell’utente!
+
+
+
+                                                                       Firewalls
+
+=== pagina 17/94 ===
+       Cosa può fare un firewall, cont.
+• Schermare alcune reti interne e nasconderle agli
+  altri
+• Bloccare alcuni accessi a servizi o ad utenti
+• Monitorare!
+   • Log function importante!!
+
+
+
+
+                                                     Firewalls
+
+=== pagina 18/94 ===
+        Cosa può fare un firewall, cont.
+• Virtual private networks (VPN)
+   • Crittazione automatica dei dati tra i siti
+   • Fornisce confidentialità dei dati inviati tra i due gateways
+   • Le 2 reti appaiono come una singola rete, al di qua del firewall,
+   • Buono per reti che si localizzano su più siti e collegate da una
+     untrusted network (ex: Internet)
+   • VPN permette l’uso remoto dei servizi locali
+
+
+
+
+                                                                         Firewalls
+
+=== pagina 19/94 ===
+Alcuni Commenti negativi sui Firewalls
+                 
+
+
+
+ • Firewalls sono l’approccio sbagliato: Non risolvono il problema,
+   e rendono impossibile o molto difficile fare molte cose agli utenti
+   interni.
+ • … d’altra parte, un responsabile di una rete interna non
+   vivrebbe tranquillamente senza un firewall
+
+
+
+
+                                                                         Firewalls
+
+=== pagina 20/94 ===
+            Più specificatamente 
+• Non difende contro nuovi bachi non ancora
+  documentati nei protocolli
+• I filtri sono difficili da settare e da mantenere
+  perchè difficile compromesso tra libertà e sicurezza
+• Può degradare le performance della rete
+
+
+
+
+                                                         Firewalls
+
+=== pagina 21/94 ===
+2 Filosofie ed 1 Principio
+
+
+
+
+            21               Firewalls
+
+=== pagina 22/94 ===
+                    Due filosofie
+• Default deny:
+  • Tutto quello che non è espressamente ammesso è
+    proibito
+• Default permit:
+  • Tutto quello che non è espressamente proibito è
+    ammesso
+
+
+
+
+                                                      Firewalls
+
+=== pagina 23/94 ===
+                   Default deny
+• Firewall devono essere creati per bloccare tutto
+• Servizi sono abilitati caso per caso dopo una attenta
+  analisi
+• Utenti sono molto ristretti e non possono facilmente
+  rompere la policy di sicurezza
+
+
+  Internet
+   Internet
+
+                   Entrano solo cose
+                   che noi sappiamo
+                   essere non pericolose
+
+
+                                                          Firewalls
+
+=== pagina 24/94 ===
+                 Default permit
+• System administrator deve reagire prontamente ogni volta
+  che un nuovo baco su un protocollo viene scoperto
+• Servizi sono rimossi/ridotti quando vengono scoperti
+  pericolosi
+• Utenti sono meno ristretti
+
+
+
+
+  Internet
+   Internet
+                  Blocchiamo solo
+                  cose che sospettiamo
+                  essere pericolose
+
+
+                                                             Firewalls
+
+=== pagina 25/94 ===
+     Il principio: La difesa perimetrale
+1.       Proteggi tutti I cammini di ingresso alla rete privata
+     •      Crea una sola porta di ingresso!
+2.       All’interno della rete gli host si fidano tra loro
+
+
+ Internet
+  Internet
+
+
+
+                                                     Trust
+
+
+
+                                                                  Firewalls
+
+=== pagina 26/94 ===
+Tipi di Firewalls
+
+
+
+
+       26           Firewalls
+
+=== pagina 27/94 ===
+Classificazione dei firewalls
+
+                         email clients, web browser
+
+
+
+
+                      sessioni TCP
+                      indirizzamento IP
+                        indirizzamento ethernet
+
+
+
+
+                                                      Firewalls
+
+=== pagina 28/94 ===
+                  Servizi add-on
+• NAT
+  • Static translation
+  • hiding translation
+• DHCP
+• Encryption functionality (VPNs)
+• Application content filtering
+
+
+
+                                    Firewalls
+
+=== pagina 29/94 ===
+              Tipi di Firewalls
+
+• Packet-filtering routers
+• Application-proxy gateways
+
+
+
+
+                                  Firewalls
+
+=== pagina 30/94 ===
+Packet Filter firewalls
+
+
+
+
+          30              Firewalls
+
+=== pagina 31/94 ===
+                  Filtri a livello 3:
+• Source address del pacchetto (IP address)
+• Destination address del pacchetto (IP address)
+• Tipo del traffico (IP,ICMP,IPX se a livello 3, o anche
+  protocolli di livello 2)
+• Possibilmente, alcune caratteristiche del livello 4 (porta
+  sorgente e destinazione)
+• Talvolta, informazioni interne al router (quali
+  informazioni circa l’interfacce sorgente e di destinazione
+  del pacchetto, utile per routers con più interfacce)
+
+
+                                                               Firewalls
+
+=== pagina 32/94 ===
+  Boundary router: vantaggi/svantaggi
+• Vantaggi:
+  • Semplicità
+  • Trasparente per l’utente
+  • Alta velocità
+• Svantaggi:
+  • Nessun controllo per filtrare comandi/funzioni ai
+    livelli più alti
+     • Mancanza di user authentication
+  • Funzioni di log praticamente inefficaci
+  • Difficoltà nel creare buone regole
+                                                        Firewalls
+
+=== pagina 33/94 ===
+                 Packet filter rulesets
+
+
+
+
+• Accept
+• Deny
+• Discard
+   • “Black hole” = trasparente all’esterno
+
+                                              Firewalls
+
+=== pagina 34/94 ===
+          Regola 2:
+Es. spoofing (Ip + TCP port 80)
+
+
+
+
+                                  Firewalls
+
+=== pagina 35/94 ===
+                                   Regola 1:
+          connessione TCP/UDP lato client
+                                         • Connessione a una porta
+           source port: x
+host A     dest. port: 23     server B     (23) viene fatta creando
+                                           lato cliente una porta
+           source port:23                  (x>1023) a cui il server
+            dest. port: x
+                                           risponderà.
+                                         • Numeri di porte inseriti
+     port use: simple telnet app
+                                           nel paccheto
+
+
+
+
+                                                                      Firewalls
+
+=== pagina 36/94 ===
+         Stateful inspection firewalls
+
+
+• Incorpora alcuni controlli a livello 4
+• Crea dinamicamente una “state table” per validare
+  inbound traffic
+
+
+
+
+                                                      Firewalls
+
+=== pagina 37/94 ===
+Application-proxy gateways
+
+
+
+
+            37          Firewalls
+
+=== pagina 38/94 ===
+                    Filtri a livello 7
+• Routing tra le due interfacce effettuato a livello
+  applicazione dal software del firewall
+   • In caso di malfunzionamento del sw, il routing è disabilitato
+• Possibilità di authentication
+   • userId and password
+   • HW/SW token authentication
+   • Biometric authentication (remota? Solo in aggiunta ad altri
+     strumenti)
+• Filtri su specifici comandi
+   • (es. permetto get ma non put)
+
+
+                                                                     Firewalls
+
+=== pagina 39/94 ===
+         Proxi: vantaggi/svantaggi
+• Vantaggi:
+  • Più sicuri dei packet filters
+  • Deve solo controllare un numero limitato di
+    applicazioni (http, ftp, posta)
+  • Facile il log e il controllo del traffico
+• Svantaggi:
+  • Processing overhead su ogni connessione
+  • Può solo controllare un numero limitato di
+    applicazioni (http, ftp, posta)
+                                                  Firewalls
+
+=== pagina 40/94 ===
+               Proxy server dedicati
+• Specifici per ogni applicazione
+• Aiutano l’application proxy gateway nel lavoro di
+  contents-inspection
+• Tipico uso:
+   • Antivirus
+   • Malicius code (applets java, activix, javascript, word)
+   • Usati spesso per outbound connections
+      • Web cache proxy
+      • Email proxy
+
+
+                                                               Firewalls
+
+=== pagina 41/94 ===
+                 Personal firewalls
+• Proteggono solo la macchina dove sono istallate
+• Necessario, specie per mobile users
+• Es:
+   • winXp
+   • Zonealarm
+   • …
+
+
+
+
+                                                    Firewalls
+
+=== pagina 42/94 ===
+Firewall environments
+
+
+
+
+         42             Firewalls
+
+=== pagina 43/94 ===
+   Linea guida per firewall environment
+• KISS principle (Keep It Simple Stupid!)
+• Usa i devices per il loro scopo naturale!
+• Sicurezza a piu’ livelli (se più firewall in cascata
+  possono essere usati, USARLI!)
+• Attenzione agli attacchi dall’interno! 
+
+
+
+
+                                                         Firewalls
+
+=== pagina 44/94 ===
+Environment 1: DMZ
+
+
+
+
+                     Firewalls
+
+=== pagina 45/94 ===
+Environment 1: DMZ
+     (service leg)
+
+
+
+
+                     Firewalls
+
+=== pagina 46/94 ===
+             Environment 2: VPN
+
+
+
+
+• VPN                     • Firewall e VPN server
+  • IPSec
+                            insieme?
+  • PPTP (by microsoft)      • Si, ma
+  • L2TP                     • Prestazioni.. 
+                                                    Firewalls
+
+=== pagina 47/94 ===
+Environment 3: Intranet/extranet
+
+
+
+
+                                   Firewalls
+
+=== pagina 48/94 ===
+       Environment 4: Hubs/Switches
+• Hubs
+   • Devices a layer 1
+   • Broadcast traffic
+• Switches
+   • Devices a layer 2
+   • (essentially multiport bridges)
+   • No possibilità di snif/eavesdrop tra porta e porta
+       • OK per DMZ e Firewall environment
+   • Isolamento delle subnets da tenere di conto nell’uso di IDSs
+
+
+
+
+                                                                    Firewalls
+
+=== pagina 49/94 ===
+              Environment 5: IDSs
+• Per notificare (ed in alcuni casi prevenire) accesso
+  a sistemi di rete
+• Interazione con Firewalls per azioni reattive!!
+   • Se IDS si accorge di un DoS attack, il firewall
+     blocchera quell’accesso
+• Due tipi di IDS
+   • Host based
+   • Network based
+
+                                                         Firewalls
+
+=== pagina 50/94 ===
+              Environment 5: IDSs
+                       (host IDS)
+• Istallato sulle singole macchine da proteggere
+• Strettamente dipendente dal OS della macchina
+• Punti negativi:
+   • Impatto su performance
+   • Difficile riconoscere DoS
+   • Impatto sulla stabilità del OS
+
+
+
+
+                                                   Firewalls
+
+=== pagina 51/94 ===
+Environment 5: IDSs
+ (Network based IDS)
+           • Monitorano il traffico di rete
+             cercando delle “tracce” (attack
+             signature) che indicano un
+             attacco in corso
+           • Più effettivo di un host-based
+             IDS (un solo IDS monitorizza
+             più macchine)
+
+
+
+
+                                               Firewalls
+
+=== pagina 52/94 ===
+               Environment 5: IDSs
+                   (Network based IDS)
+• Punti Negativi
+   • Usualmente non riescono a riassemblare delle signature
+     distribuite su più pacchetti
+   • Necessitano switches con particolari funzionalità (port
+     mirroring)
+   • Interfacce in promiscuous mode (necessarie ai network-based
+     IDSs) sono facilmente localizzabili e possono poi essere
+     attaccate inviando grossi quantitativi di traffico inutile
+   • Spesso sono essi stessi oggetto dell’attacco che dovrebbero
+     monitorare (DoS)
+
+
+                                                                   Firewalls
+
+=== pagina 53/94 ===
+             Environment 6: DNSs
+• Servizio critico per ogni ambiente che fa uso
+  dell’Internet
+• Split DNS
+   • Separare su due server DNS la gestione dei nomi
+     interni da quella dei nomi esterni
+• Gestire traffico UDP/TCP separatamente
+   • UDP: user lookup
+   • TCP: Zone Transfer (solo dai secondari!)
+
+
+                                                       Firewalls
+
+=== pagina 54/94 ===
+Environment 6: DNSs
+
+
+
+
+                      Firewalls
+
+=== pagina 55/94 ===
+               Environment 7: Servers
+• Dove?
+   • Chi deve accedervi?
+   • Quanto sono importanti i dati contenuti?
+• Regole generali
+   • Server esterni protetti da un packet filter router
+   • No server accessibili dall’esterno sulla rete interna!
+   • Servers interni (al di qua del firewall interno) se importanza
+     dati lo richiede (tante service legs?)
+   • Isolare i servers (un attacco non impatta sul resto della rete)
+
+
+
+
+                                                                       Firewalls
+
+=== pagina 56/94 ===
+Environment 7: Servers
+           • Server esterni su external
+             DMZ
+              • DNS, web, directory
+                server
+              • Eventualmente su più
+                DMZs per isolare i server
+              • VPN, Dial-In server
+                  • Per controllare traffico
+                    prima che sia encrypted!
+
+
+
+
+                                               Firewalls
+
+=== pagina 57/94 ===
+Environment 7: Servers
+           • Server interni su internal
+             DMZ
+              • DNS, web, directory
+                server
+              • Protetti anche da attacchi
+                interni
+           • Mail servers
+              • Se richiesto accesso
+                dall’esterno, tramite ssl
+                proxy sul firewall
+
+
+
+                                             Firewalls
+
+=== pagina 58/94 ===
+Firewall security policy
+
+
+
+
+           58              Firewalls
+
+=== pagina 59/94 ===
+                 Firewall Policy
+• Firewall policy è distinta dalla information
+  security policy!
+• Firewall policy descrive come sarà implementata la
+  information security policy
+• Detta le regole per gestire il traffico (web, email,
+  …)
+• Descrive come il firewall è gestito e aggiornato
+
+
+
+                                                         Firewalls
+
+=== pagina 60/94 ===
+                   Firewall Policy
+• Risk analysis
+   • Quali applicazioni?
+   • Chi e da dove saranno usate?
+   • Costi/benefici di ogni singola messa in sicurezza di
+     macchina/servizio!!
+   • Creare matrice traffico
+   • Creare sulla base della matrice di traffico le regole da
+     implementare sui vari firewalls!
+
+
+                                                                Firewalls
+
+=== pagina 61/94 ===
+          Firewall Policy: ... bloccare:
+• Traffico in ingresso da sorgenti esterne non autenticate
+  verso il firewall
+   • Eccezione se proxy-email esterne (ma in questo caso accettare
+     solo connessioni su porta 25!!)
+• Traffico in ingresso … ma con pacchetti che mostrano la
+  rete interna come sorgente 
+• Traffico ICMP in ingresso
+   • Firewalking! 
+• Traffico SNMP da sorgenti non authenticate
+   • Probing!! 
+
+
+                                                                     Firewalls
+
+=== pagina 62/94 ===
+           Firewall Policy: .. bloccare:
+• Inbound/outbound traffic per pacchetti RFC1918-privati
+   • 10.0.0.0 – 10.255.255.255 (classi A)
+   • 172.16.0.0 - 172.16.255.255 (classi B)
+   • 192.168.0.0 - 192.168.255.255 (classi C)
+• Inbound/outbound traffic per pacchetti 127.0.0.1 o
+  0.0.0.0
+   • Attacchi verso il firewall!!
+• Inbound traffic contenente IP source routing
+  informations!
+
+                                                           Firewalls
+
+=== pagina 63/94 ===
+          Firewall Policy: .. bloccare:
+• Inbound/outbound traffic per pacchetti contenenti
+  directed broadcast address
+   • Tipico uso per attacchi che implicano una risposta ad
+     un diverso source address (DoS)
+• Se possibile:
+   • Usare user authentication
+   • Usare quanto log possibile
+
+
+
+                                                             Firewalls
+
+=== pagina 64/94 ===
+                  Testing the policy!
+• Quasi mai effettuato 
+1. Semplice controllo tra quello che volevamo e
+   quello che è stato implementato
+2. Usando tools o specifici tiger-group che cercano
+   di fare qualcosa vietato per policy
+   •   Penetration analysis
+       • Seeded
+       • blind
+
+
+
+                                                      Firewalls
+
+=== pagina 65/94 ===
+   Implementazione del firewall e della
+                policy
+• Appliance-based firewalls
+   • Scatole ad hoc che fanno solo questo
+   • Piu’ stabili e sicure dei firewall implementati on top di
+     un OS
+   • Di solito più performanti perché usano HW specifico
+• OS based
+   • Scalability
+   • Presenza di vulnerabilità dell’OS 
+
+
+                                                                 Firewalls
+
+=== pagina 66/94 ===
+  Gestione e manutenzione del firewall
+• CLI
+  • Veloce 
+  • A volte errori di battitura se non sono implementati
+    dei controlli sintattici 
+• GUI
+  • Usabile anche da un novizio 
+  • Usabile anche da un novizio 
+
+
+
+                                                           Firewalls
+
+=== pagina 67/94 ===
+Tipiche configurazioni
+
+
+
+
+          67             Firewalls
+
+=== pagina 68/94 ===
+           Firewall Configurations
+
+• In aggiunta alla semplice configurazione con un
+  unico sistema (single packet filtering router or
+  single gateway), sono possibili configurazioni più
+  complicate
+• tre tipiche configurazioni
+
+
+
+
+                                                       Firewalls
+
+=== pagina 69/94 ===
+           Firewall Configurations
+
+• Screened host firewall system (single-homed
+  bastion host)
+• Screened host firewall system (dual-homed bastion
+  host)
+• Screened-subnet firewall system
+
+
+
+
+                                                      Firewalls
+
+=== pagina 70/94 ===
+           Firewall Configurations
+
+• Bastion Host
+  • Un sistema identificato dal firewall administrator
+    come un punto cruciale per la sicurezza della rete
+  • il bastion host serve come a piattaform per un
+    application-level o circuit-level gateway
+
+
+
+
+                                                         Firewalls
+
+=== pagina 71/94 ===
+           Firewall Configurations
+
+• Screened host firewall system (single-homed
+  bastion host)
+
+
+
+
+                                                Firewalls
+
+=== pagina 72/94 ===
+            Firewall Configurations
+
+• Screened host firewall, single-homed bastion
+  configuration
+• Firewall considte di due sistemi:
+   • un packet-filtering router
+   • un bastion host
+
+
+
+
+                                                 Firewalls
+
+=== pagina 73/94 ===
+            Firewall Configurations
+
+• Configurazione del packet-filtering router:
+   • Solo I pacchetti da e per il bastion host sono permessi
+• Il bastion host effettua funzioni di authentication
+  and proxy (eventualmente caching)
+
+
+
+
+                                                               Firewalls
+
+=== pagina 74/94 ===
+             Firewall Configurations
+
+• Più sicurezza di una configurazione con una sola
+  macchina:
+   • Implementa sia packet-level che application-level
+     filtering (flessibilità nel definire una security policy)
+   • Un intruder deve generalmente penetrare due sistemi
+     separati
+
+
+
+
+                                                                 Firewalls
+
+=== pagina 75/94 ===
+           Firewall Configurations
+
+• Screened host firewall system (dual-homed bastion
+  host)
+
+
+
+
+                                                      Firewalls
+
+=== pagina 76/94 ===
+            Firewall Configurations
+
+• Screened host firewall, dual-homed bastion
+  configuration
+   • Il traffico tra Internet e gli altri hosts sulla rete
+     privata deve fisicamente passare attraverso il bastion
+     host
+
+
+
+
+                                                              Firewalls
+
+=== pagina 77/94 ===
+           Firewall Configurations
+
+• Screened-subnet firewall system
+
+
+
+
+                                     Firewalls
+
+=== pagina 78/94 ===
+            Firewall Configurations
+
+• Screened subnet firewall configuration
+   • La più sicura delle tre configurazioni
+   • Usati due packet-filtering routers
+   • Creazione di una sub-network isolata
+
+
+
+
+                                              Firewalls
+
+=== pagina 79/94 ===
+            Firewall Configurations
+
+• Vantaggi:
+  • Tre livelli di difesa verso gli intruders
+  • La rete interna è invisible all’Internet
+
+
+• Svantaggi:
+  • I systemi sulla rete interna non possono costruire
+    cammini diretti verso l’esterno
+
+
+
+                                                         Firewalls
+
+=== pagina 80/94 ===
+Un esempio
+
+
+
+
+    80       Firewalls
+
+=== pagina 81/94 ===
+                        La Policy
+• Tutto il traffico dall’interno è permesso
+• Traffico web in uscita permesso tramite un http-proxy
+  (magari cached and content filtered)
+• Servizio SMTP in ingresso è passata ad un SMTP-proxy,
+  e quindi ai client interni (i client interni possono ricevere
+  email solo dal SMTP-proxy, magari dopo un controllo
+  antivirus/antiworms)
+• Traffico dall’esterno permesso sulla porta VPN del
+  firewall (e poi passato all’interno)
+• Tutto il resto è bloccato
+
+
+                                                                  Firewalls
+
+=== pagina 82/94 ===
+La rete
+
+
+
+
+          Firewalls
+
+=== pagina 83/94 ===
+possibili regole per il border router …
+
+
+
+
+                                          Firewalls
+
+=== pagina 84/94 ===
+Miglioramenti …
+
+
+
+            NAT
+
+
+
+
+                  Firewalls
+
+=== pagina 85/94 ===
+Firewall Administration
+
+
+
+
+          85              Firewalls
+
+=== pagina 86/94 ===
+           Firewall Administration
+• Accesso dalla console di gestione
+   • Via specifici client ed encryption
+   • Via SSH e http
+   • Possibilmente anche una user authentication
+
+
+
+
+                                                   Firewalls
+
+=== pagina 87/94 ===
+                     Firewall OS
+• Hardening the OS
+  • Togliere protocolli, servizi e applicazioni di rete non
+    usati
+  • Togliere user/system account non usati
+  • Applicare tutte le patch!!
+     • Prima testarle in un ambiente di test
+  • Disabilitazione interfacce non usate
+
+
+
+                                                              Firewalls
+
+=== pagina 88/94 ===
+              Firewall Administration
+• Strategie di disaster recovery
+   • Swithes con capacità di Balancing/failover
+       • Il tutto è trasparente
+• Logging
+   • Uso di un remote syslog server
+       • Centralizzazionedi tutti i log
+• Security incident!
+   • Livelli/scala di importanza nella realtà!
+   • La policy determina quali sono “gravi”
+       • Mantenere logs per studi legali sull’attacco
+       • Importante sincronizzazione con un time server!
+
+
+                                                           Firewalls
+
+=== pagina 89/94 ===
+            Firewall Administration
+• Strategie di backups
+   • Day zero backup
+   • No external backup!
+      • Internal tape drive!
+   • Copia del sistema su CD!
+
+
+
+
+                                      Firewalls
+
+=== pagina 90/94 ===
+Raccomandazioni finali
+
+
+
+
+          90             Firewalls
+
+=== pagina 91/94 ===
+                         generali
+• Usare un firewall!!
+• Su notebooks e a casa gli utenti devono usare un personal
+  firewall
+• Firewall: ultima linea di difesa! (gestire bene e proteggere
+  singolarmente le macchine)
+• Monitorare incidenti
+• Aggiornare non appena esce una nuova patch
+• Organizzare corsi aggiornamento periodici
+
+
+
+                                                                 Firewalls
+
+=== pagina 92/94 ===
+                   Scegliere un firewall
+• Con almeno le seguenti funzioni
+   • Packet filter
+   • Stateful inspection
+   • Proxy di selezionate applicazioni(web, posta)
+   • Funzioni di log
+   • Authenticazione dell’utente
+   • Possibilità di controllo di
+       • Interfaccia del firewall (sorgente e destinazione)
+       • IP (sorgente e destinazione)
+       • Porte (sorgente e destinazione)
+
+
+                                                              Firewalls
+
+=== pagina 93/94 ===
+Ricapitolando …
+
+
+
+
+                  Firewalls
+
+=== pagina 94/94 ===
+                  Ultima lezione
+• … siete stati bravissimi!!
+• Mi avete fatto lavorare tanto …
+   • Forse troppo!! 
+
+
+• Spero che abbiate imparato tante cose
+• .. E che vi ricorderete che l’avete imparate in
+  questo corso!! …
+
+
+                                                    Firewalls
+

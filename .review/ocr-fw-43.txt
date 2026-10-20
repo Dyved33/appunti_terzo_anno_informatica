@@ -1,0 +1,9 @@
+Linea guida per firewall environment
+
+° KISS principle (Keep It Simple Stupid!)
+* Usai devices per il loro scopo naturale!
+
+* Sicurezza a piu’ livelli (se più firewall in cascata
+possono essere usati, USARLI!)
+
+* Attenzione agli attacchi dall'interno! ©

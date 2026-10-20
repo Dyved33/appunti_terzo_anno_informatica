@@ -1,0 +1,14 @@
+Firewall Policy
+
+° Risk analysis
+* Quali applicazioni?
+
+Chi e da dove saranno usate?
+
+Costi/benefici di ogni singola messa in sicurezza di
+macchina/servizio!!
+
+Creare matrice traffico
+
+Creare sulla base della matrice di traffico le regole da
+implementare sui vari firewalls!

@@ -1,0 +1,37 @@
+Environment 5: IDSs
+(Network based IDS)
+
+ISP Connection
+
+Boundary Router
+
+Packet Filter Network
+IDS
+
+External DMZ Network
+
+I | External
+Main | ==] Web Server
+Network Firewall =| with Host IDS
+ms =
+
+Internal DMZ Network
+Network
+IDS
+
+Internal
+Firewall
+
+Email Server
+with Host IDS
+
+Interior Protected Network
+
+Monitorano il traffico di rete
+cercando delle “tracce” (attack.
+signature) che indicano un
+attacco in corso
+
+Più effettivo di un host-based
+IDS (un solo IDS monitorizza
+più macchine)

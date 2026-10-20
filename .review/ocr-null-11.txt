@@ -1,0 +1,6 @@
+o e valori nulli
+
+e Per la selezione, il problema e' stabilire se, in presenza di Null,
+un predicato e' vero oppure meno per una data tupla.
+
+Basi di Dati 6/12

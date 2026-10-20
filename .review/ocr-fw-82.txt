@@ -1,0 +1,28 @@
+La rete
+
+External DMZ Network
+
+ia ISP Connection
+id
+
+Border Router
+192.168.1.1
+
+Main Firewall
+VPN Gateway Ss
+192.168.1.2 =
+|__|
+Internal =
+Firewall SS
+192.168.1.3
+HTTP
+192.168.1.4
+
+Internal DMZ Network
+
+SMTP
+192.168.1.5
+
+intern Protected Network
+
+Bo

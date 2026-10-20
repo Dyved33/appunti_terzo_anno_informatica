@@ -1,0 +1,16 @@
+Firewall Policy: .. bloccare:
+
+Inbound/outbound traffic per pacchetti RFC1918-privati
+
+* 10.0.0.0— 10.255.255.255 (classi A)
+
+* 172.16.0.0 - 172.16.255.255 (classi B)
+
+° 192.168.0.0 - 192.168.255.255 (classi C)
+Inbound/outbound traffic per pacchetti 127.0.0.1 0
+0.0.0.0
+
+* Attacchi verso il firewall!!
+
+Inbound traffic contenente IP source routing
+informations!

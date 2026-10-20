@@ -1,0 +1,8 @@
+Concatenazione e valori nulli
+
+e Per il 0-join valgono le stesse regole per la valutazione della
+condizione di join F secondo la logica a tre valori.
+
+Raffaella Genti
+
+Basi di Dati 11/12

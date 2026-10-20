@@ -1,0 +1,222 @@
+                               Basi di Dati
+                      Algebra Relazionale: La Divisione
+
+
+                              Raffaella Gentilini
+
+
+
+
+Raffaella Gentilini                             Basi di Dati   1/5
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+La Divisione
+
+
+
+
+    Raffaella Gentilini    Basi di Dati        2/5
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+La Divisione
+  • E’ un operatore derivato dell’algebra relazionale.
+
+
+
+
+    Raffaella Gentilini                   Basi di Dati   2/5
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+La Divisione
+  • E’ un operatore derivato dell’algebra relazionale.
+  • E’ un operatore binario.
+
+
+
+
+    Raffaella Gentilini                   Basi di Dati   2/5
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+La Divisione
+  • E’ un operatore derivato dell’algebra relazionale.
+  • E’ un operatore binario.
+  • Viene indicato con il simbolo ÷.
+
+
+
+
+    Raffaella Gentilini                   Basi di Dati   2/5
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+La Divisione
+  • E’ un operatore derivato dell’algebra relazionale.
+  • E’ un operatore binario.
+  • Viene indicato con il simbolo ÷.
+  • E’ intuitivamente la controparte algebrica della quantificazione
+    universale.
+
+
+
+
+    Raffaella Gentilini                   Basi di Dati                 2/5
+                      Esempio
+
+
+
+
+Raffaella Gentilini             Basi di Dati   3/5
+                          La Divisione: Definizione
+La Divisione ÷
+Siano R(X ), S(Y ) due schemi di relazione tali che Y ⊂ X e siano
+r , s due istanze di R, S.
+
+
+
+
+    Raffaella Gentilini                     Basi di Dati            4/5
+                          La Divisione: Definizione
+La Divisione ÷
+Siano R(X ), S(Y ) due schemi di relazione tali che Y ⊂ X e siano
+r , s due istanze di R, S.
+L’operazione di divisione r ÷ s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+
+
+
+
+    Raffaella Gentilini                     Basi di Dati                 4/5
+                          La Divisione: Definizione
+La Divisione ÷
+Siano R(X ), S(Y ) due schemi di relazione tali che Y ⊂ X e siano
+r , s due istanze di R, S.
+L’operazione di divisione r ÷ s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+
+                                       r ÷s =
+                             = {t | ∀t 0 ∈ s : t ∪ t 0 ∈ r }
+
+
+
+
+    Raffaella Gentilini                               Basi di Dati       4/5
+                          La Divisione: Definizione
+La Divisione ÷
+Siano R(X ), S(Y ) due schemi di relazione tali che Y ⊂ X e siano
+r , s due istanze di R, S.
+L’operazione di divisione r ÷ s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+
+                                       r ÷s =
+                             = {t | ∀t 0 ∈ s : t ∪ t 0 ∈ r }
+
+
+                                = {t | {t} × s ⊆ r }
+
+
+
+
+    Raffaella Gentilini                               Basi di Dati       4/5
+                          La Divisione: Definizione
+La Divisione ÷
+Siano R(X ), S(Y ) due schemi di relazione tali che Y ⊂ X e siano
+r , s due istanze di R, S.
+L’operazione di divisione r ÷ s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+
+                                       r ÷s =
+                             = {t | ∀t 0 ∈ s : t ∪ t 0 ∈ r }
+
+
+                                = {t | {t} × s ⊆ r }
+
+
+La divisione r ÷ s e’ dunque definita sugli attributi X \ Y
+
+    Raffaella Gentilini                               Basi di Dati       4/5
+                      Derivazione della Divisione
+La Divisione: Derivazione dagli operatori dell’algebra relazionale di
+base della divisione.
+
+
+
+
+    Raffaella Gentilini                    Basi di Dati                 5/5
+                      Derivazione della Divisione
+La Divisione: Derivazione dagli operatori dell’algebra relazionale di
+base della divisione.
+% Proietto su Z = X \ Y il primo operando
+
+                             T1 (Z ) ← πZ (R)
+
+
+
+
+    Raffaella Gentilini                         Basi di Dati            5/5
+                      Derivazione della Divisione
+La Divisione: Derivazione dagli operatori dell’algebra relazionale di
+base della divisione.
+% Proietto su Z = X \ Y il primo operando
+
+                             T1 (Z ) ← πZ (R)
+
+ % Costruisco l’universo U
+
+                             U(X ) ← T1 × S
+
+
+
+
+    Raffaella Gentilini                         Basi di Dati            5/5
+                      Derivazione della Divisione
+La Divisione: Derivazione dagli operatori dell’algebra relazionale di
+base della divisione.
+% Proietto su Z = X \ Y il primo operando
+
+                             T1 (Z ) ← πZ (R)
+
+ % Costruisco l’universo U
+
+                             U(X ) ← T1 × S
+
+ % Individuo le tuple da non ammettere nel risultato
+
+                            T2 (Z ) ← πZ (U \ R)
+
+
+
+
+    Raffaella Gentilini                         Basi di Dati            5/5
+                      Derivazione della Divisione
+La Divisione: Derivazione dagli operatori dell’algebra relazionale di
+base della divisione.
+% Proietto su Z = X \ Y il primo operando
+
+                             T1 (Z ) ← πZ (R)
+
+ % Costruisco l’universo U
+
+                             U(X ) ← T1 × S
+
+ % Individuo le tuple da non ammettere nel risultato
+
+                            T2 (Z ) ← πZ (U \ R)
+
+ % Ottengo il risultato
+
+                             Ris(Z ) ← T1 \ T2
+    Raffaella Gentilini                         Basi di Dati            5/5
+

@@ -1,0 +1,21 @@
+Cosa può fare un firewall
+
+* Proteggere le risorse della rete
+
+privata da attacchi esterni.
+
+Prevenire l'esportazione di
+dati dall'interno verso
+l'esterno.
+
+Importante: usarlo insieme ad
+altri meccanismi di sicurezza!!
+
+Private Network
+
+HH
+
+Proprietary External
+data Attacks
+
+External Network(s)

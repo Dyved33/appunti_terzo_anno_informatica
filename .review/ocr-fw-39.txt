@@ -1,0 +1,12 @@
+Proxi: vantaggi/svantaggi
+
+° Vantaggi:
+* Più sicuri dei packet filters
+* Deve solo controllare un numero limitato di
+applicazioni (http, ftp, posta)
+* Facile il log e il controllo del traffico
+* Svantaggi:
+* Processing overhead su ogni connessione
+
+* Può solo controllare un numero limitato di
+applicazioni (http, ftp, posta)

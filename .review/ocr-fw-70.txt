@@ -1,0 +1,9 @@
+Firewall Configurations
+
+* Bastion Host
+
+* Un sistema identificato dal firewall administrator
+come un punto cruciale per la sicurezza della rete
+
+* il bastion host serve come a piattaform per un
+application-level o circuit-level gateway

@@ -1,0 +1,8 @@
+Algebra Relazionale: L’Operatore Derivato di
+Divisione
+
+® E' un operatore derivato dell'algebra relazionale.
+
+Raffaella Gentilini Basi di Dati
+
+2/5

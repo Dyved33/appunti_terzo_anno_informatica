@@ -1,0 +1,24 @@
+Stateful inspection firewalls
+
+Source Source | Destination | Destination
+Address Port Address Port
+
+Action Description
+
+Rule to allow return
+1 Any Any 192.168.1.0 > 1023 Allow | TCP Connections to
+internal subnet
+
+Incorpora alcuni controlli a livello 4
+
+* Crea dinamicamente una “state table” per validare
+
+inbound traffic
+
+Destination Destination .
+Source Address | Source Port Address Port Connection State
+192.168.1.100 1030 210.9.88.29 80 Established
+192.168.1.102 1031 216.32.42.123 80 Established
+
+192.168.1.101 1033 173.66.32.122 25 Established
+

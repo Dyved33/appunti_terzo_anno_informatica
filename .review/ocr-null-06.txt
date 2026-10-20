@@ -1,0 +1,8 @@
+T,U, N, \ e valori nulli
+
+® Proiezione, unione, intersezione e differenza continuano a
+comportarsi usualmente.
+
+Raffaella Gentilini
+
+3/12

@@ -1,0 +1,7 @@
+Firewall Configurations
+
+* Configurazione del packet-filtering router:
+* Solo I pacchetti da e per il bastion host sono permessi
+
+* Il bastion host effettua funzioni di authentication
+and proxy (eventualmente caching)

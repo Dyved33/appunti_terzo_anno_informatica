@@ -49,7 +49,7 @@ Il DNS è un servizio critico per ogni ambiente che fa uso di internet.
 **Regole generali:**
 - i server esterni sono protetti da un packet filter router;
 - nessun server accessibile dall'esterno sulla rete interna;
-- i server interni (al di qua del firewall interno) se l'importanza dei dati lo richiede (tante *service legs*?);
+- i server interni (al di qua del firewall interno) vanno protetti se l'importanza dei dati lo richiede: server su una *service leg* separata, cfr. [[Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS#DMZ e service leg|DMZ e service leg]];
 - isolare i server: un attacco non deve impattare sul resto della rete.
 
 <div style="display: flex; justify-content: center;">
@@ -87,7 +87,8 @@ La firewall policy è distinta dalla information security policy: descrive come 
 - pacchetti RFC 1918-privati in ingresso e in uscita (10.0.0.0-10.255.255.255, 172.16.0.0-172.16.255.255, 192.168.0.0-192.168.255.255);
 - pacchetti con 127.0.0.1 o 0.0.0.0, in ingresso e in uscita: sono attacchi verso il firewall;
 - traffico in ingresso con informazioni di IP source routing;
-- pacchetti con *directed broadcast address*, in ingresso e in uscita: attacchi con risposta a un *source address* diverso (DoS).
+- pacchetti con *directed broadcast address*, in ingresso e in uscita: attacchi con risposta a un *source address* diverso (DoS);
+- se possibile: usare *user authentication* e raccogliere quanto log possibile.
 
 **Testing:** quasi mai effettuato. Un controllo fra quello che si voleva e quello che è stato implementato, oppure tool o gruppi di specialisti (*tiger-group*) che provano a fare ciò che la policy vieta: *penetration analysis*, *seeded* o *blind*.
 
@@ -180,7 +181,7 @@ L'autenticazione non è compito suo: sta nel protocollo di handshake, che autent
 4. cifratura del messaggio compresso più il MAC con la chiave simmetrica (AES, 3DES o RC4);
 5. aggiunta dell'header TLS.
 
-L'HMAC è $HMAC_K(M) = H[(K \oplus opad) \cdot H[(K \oplus ipad) \cdot M]]$, con:
+L'HMAC è $HMAC_{K^+}(M) = H[(K^+ \oplus opad) \cdot H[(K^+ \oplus ipad) \cdot M]]$, con:
 - $H$: la funzione di hash (MD5 o SHA-1);
 - $K^+$: la chiave completata con zeri a sinistra fino alla lunghezza del blocco (512 bit);
 - $ipad = 36$ e $opad = 5C$, ripetuti 64 volte.
@@ -236,7 +237,7 @@ Il master secret nasce dal pre-master secret (48 byte) e dai due random con la p
 
 Dal master secret e dai random si deriva il *key block*: le chiavi e i segreti di scrittura usati dai due lati.
 
-**Heartbeat (opzionale):** verifica che il peer sia ancora vivo e genera traffico nelle connessioni inattive, così un firewall non le chiude; è definito in un RFC separato.
+**Heartbeat (opzionale):** verifica che il peer sia ancora vivo e genera traffico nelle connessioni inattive, così un firewall non le chiude; è definito in un RFC separato (RFC 6250, 2012).
 
 ## SSH
 

@@ -1,0 +1,13 @@
+Environment 7: Servers
+
+* Dove?
+* Chi deve accedervi?
+* Quanto sono importanti i dati contenuti?
+° Regole generali
+* Server esterni protetti da un packet filter router
+° No server accessibili dall'esterno sulla rete interna!
+
+* Servers interni (al di qua del firewall interno) se importanza
+dati lo richiede (tante service legs?)
+
+Isolare i servers (un attacco non impatta sul resto della rete)

@@ -1,0 +1,8 @@
+Firewall Configurations
+
+In aggiunta alla semplice configurazione con un
+unico sistema (single packet filtering router or
+single gateway), sono possibili configurazioni più
+complicate
+
+° tre tipiche configurazioni

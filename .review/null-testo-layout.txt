@@ -1,0 +1,262 @@
+                               Basi di Dati
+                      Algebra Relazionale e Valori Nulli
+
+
+                              Raffaella Gentilini
+
+
+                              October 20, 2020
+
+
+
+
+Raffaella Gentilini                             Basi di Dati   1 / 12
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+Algebra Relazionale e Null
+
+
+
+
+    Raffaella Gentilini      Basi di Dati      2 / 12
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+Algebra Relazionale e Null
+  • La presenza di valori nulli nelle istanze di una BD richiede
+    un’estensione della semantica degli operatori.
+
+
+
+
+    Raffaella Gentilini                   Basi di Dati             2 / 12
+Algebra Relazionale: L’Operatore Derivato di
+                 Divisione
+
+
+Algebra Relazionale e Null
+  • La presenza di valori nulli nelle istanze di una BD richiede
+    un’estensione della semantica degli operatori.
+  • L’approccio tradizionale (usato nei DBMS basati sul meodello
+     relazionale ed in SQL) e’ quello di considerare una logica a tre
+     valori per la valutazione delle formule proposizionali e quindi
+     degli operatori di selezione e concatenazione (join)
+
+
+
+
+    Raffaella Gentilini                    Basi di Dati             2 / 12
+                          π, ∪, ∩, \ e valori nulli
+
+
+
+
+π, ∪, ∩, \ e valori nulli
+
+
+
+
+    Raffaella Gentilini                     Basi di Dati   3 / 12
+                          π, ∪, ∩, \ e valori nulli
+
+
+
+
+π, ∪, ∩, \ e valori nulli
+  • Proiezione, unione, intersezione e differenza continuano a
+    comportarsi usualmente.
+
+
+
+
+    Raffaella Gentilini                     Basi di Dati         3 / 12
+                          π, ∪, ∩, \ e valori nulli
+
+
+
+
+π, ∪, ∩, \ e valori nulli
+  • Proiezione, unione, intersezione e differenza continuano a
+    comportarsi usualmente.
+  • L’uguaglianza tra Null e’ a livello sintattico e due tuple sono
+    uguali anche se ci sono valori nulli.
+
+
+
+
+    Raffaella Gentilini                     Basi di Dati              3 / 12
+                      π, ∪, ∩, \ e valori nulli
+
+
+
+
+Raffaella Gentilini                     Basi di Dati   4 / 12
+                      π, ∪, ∩, \ e valori nulli
+
+
+
+
+Raffaella Gentilini                     Basi di Dati   5 / 12
+                          σ e valori nulli
+
+
+
+
+σ e valori nulli
+
+
+
+
+    Raffaella Gentilini                 Basi di Dati   6 / 12
+                          σ e valori nulli
+
+
+
+
+σ e valori nulli
+  • Per la selezione, il problema e’ stabilire se, in presenza di Null,
+     un predicato e’ vero oppure meno per una data tupla.
+
+
+
+
+    Raffaella Gentilini                     Basi di Dati              6 / 12
+                          σ e valori nulli
+
+
+
+
+σ e valori nulli
+  • Per la selezione, il problema e’ stabilire se, in presenza di Null,
+     un predicato e’ vero oppure meno per una data tupla.
+  • Guardiamo l’esempio che segue per capire meglio . . .
+
+
+
+
+    Raffaella Gentilini                     Basi di Dati              6 / 12
+                      σ e valori nulli
+
+
+
+
+Raffaella Gentilini                 Basi di Dati   7 / 12
+                          σ e valori nulli
+σF e valori nulli: Valutazione delle formule atomiche in F
+
+
+
+
+    Raffaella Gentilini                       Basi di Dati   8 / 12
+                          σ e valori nulli
+σF e valori nulli: Valutazione delle formule atomiche in F
+  • per valutare predicati come quello dell’esempio precedente, si
+    introduce una logica a tre valori
+
+
+
+
+    Raffaella Gentilini                       Basi di Dati           8 / 12
+                          σ e valori nulli
+σF e valori nulli: Valutazione delle formule atomiche in F
+  • per valutare predicati come quello dell’esempio precedente, si
+    introduce una logica a tre valori
+  • In partcolare, oltre ai valori Vero (V) e Falso (F) si ha un terzo
+    valore Indefinito (?)
+
+
+
+
+    Raffaella Gentilini                       Basi di Dati               8 / 12
+                          σ e valori nulli
+σF e valori nulli: Valutazione delle formule atomiche in F
+  • per valutare predicati come quello dell’esempio precedente, si
+    introduce una logica a tre valori
+  • In partcolare, oltre ai valori Vero (V) e Falso (F) si ha un terzo
+    valore Indefinito (?)
+
+
+
+
+Le tabelle di verita’ sopra possono essere estese ad altri tipi di confronto.
+Se D e’ un dominio su cui e’ definito un ordinamento < (risp. >,≤,≥)
+allora il confronto xθy (θ ∈ {<, >≤, ≥}) e’ ? se x e’ ? oppure y e’ ?.
+    Raffaella Gentilini                         Basi di Dati                8 / 12
+                            σ e valori nulli
+σF e valori nulli: Valutazione della condizione di selezione F
+Infine, la tabella di verita’ le tabelle di verita’ nella logica a tre valori per
+gli operatori booleani sono:
+
+
+
+
+     Raffaella Gentilini                          Basi di Dati                  9 / 12
+                            σ e valori nulli
+σF e valori nulli: Valutazione della condizione di selezione F
+Infine, la tabella di verita’ le tabelle di verita’ nella logica a tre valori per
+gli operatori booleani sono:
+
+
+
+
+σF e valori nulli
+La selezione σF produce le sole tuple per cui la condizione di selezione F
+risulta vera (V).
+Per lavorare esplicitamente con i valori nulli si introducono inoltre le con-
+dizioni atomiche ’a IS NULL’ ed ’a IS NOT NULL’
+     Raffaella Gentilini                          Basi di Dati                  9 / 12
+                      Esempio
+
+
+
+
+Raffaella Gentilini             Basi di Dati   10 / 12
+                   Concatenazione e valori nulli
+
+
+
+
+Concatenazione e valori nulli
+
+
+
+
+    Raffaella Gentilini                Basi di Dati   11 / 12
+                   Concatenazione e valori nulli
+
+
+
+
+Concatenazione e valori nulli
+  • Per il θ-join valgono le stesse regole per la valutazione della
+    condizione di join F secondo la logica a tre valori.
+
+
+
+
+    Raffaella Gentilini                        Basi di Dati           11 / 12
+                   Concatenazione e valori nulli
+
+
+
+
+Concatenazione e valori nulli
+  • Per il θ-join valgono le stesse regole per la valutazione della
+    condizione di join F secondo la logica a tre valori.
+  • il join naturale non combina due tuple se queste hanno entrambe
+    valore nullo su un attributo in comune.
+
+
+
+
+    Raffaella Gentilini                        Basi di Dati           11 / 12
+                      Esempio
+
+
+
+
+Raffaella Gentilini             Basi di Dati   12 / 12
+

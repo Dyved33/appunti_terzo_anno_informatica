@@ -1,0 +1,1001 @@
+.review/ocr-div-01.txt:Raffaella Gentilini
+Basi di Dati
+Algebra Relazionale: La Divisione
+Raffaella Gentilini
+Basi di Dati
+1/5
+.review/ocr-div-02.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+Raffaella Gentilini Basi di Dati
+2/5
+.review/ocr-div-03.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+® E' un operatore derivato dell'algebra relazionale.
+Raffaella Gentilini Basi di Dati
+2/5
+.review/ocr-div-04.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+® E' un operatore derivato dell'algebra relazionale.
+® E' un operatore binario.
+Raffaella Gentilini Basi di Dati
+2/5
+.review/ocr-div-05.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+® E' un operatore derivato dell'algebra relazionale.
+® E' un operatore binario.
+® Viene indicato con il simbolo +.
+Raffaella Gentilini Basi di Dati
+2/5
+.review/ocr-div-06.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+E' un operatore derivato dell'algebra relazionale.
+® E' un operatore binario.
+® Viene indicato con il simbolo +.
+® E' intuitivamente la controparte algebrica della quantificazione
+universale.
+Raffaella Gentilini Basi di Dati
+2/5
+.review/ocr-div-07.txt:Esempio
+Raffaella Gentilini Basi di Dati 3/5
+.review/ocr-div-08.txt:La Divisione: Definizione
+Siano R(X), S(Y) due schemi di relazione tali che Y C X e siano
+r,s due istanze di R, S.
+Raffaella Gentilini
+4/5
+.review/ocr-div-09.txt:La Divisione: Definizione
+Siano R(X), S(Y) due schemi di relazione tali che Y C X e siano
+r,s due istanze di R, S.
+L'operazione di divisione r + s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+Raffaella Genti
+B
+.review/ocr-div-10.txt:La Divisione: Definizione
+Siano R(X), S(Y) due schemi di relazione tali che Y C X e siano
+r,s due istanze di R, S.
+L'operazione di divisione r + s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+io =
+={t|Vt'es:tU
+.review/ocr-div-11.txt:La Divisione: Definizione
+Siano R(X), S(Y) due schemi di relazione tali che Y C X e siano
+r,s due istanze di R, S.
+L'operazione di divisione r + s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+io =
+={t|Vt'es:tU
+.review/ocr-div-12.txt:La Divisione: Definizione
+Siano R(X), S(Y) due schemi di relazione tali che Y C X e siano
+r,s due istanze di R, S.
+L'operazione di divisione r + s produce una relazione le cui tuple, se
+estese con una qualunque tupla del secondo operando, producono
+una tupla del primo operando:
+ris=
+={t|vres:tut
+.review/ocr-div-13.txt:Derivazione della Divisione
+Raffaella Gentilini Basi di Dati 5/5
+.review/ocr-div-14.txt:Derivazione della Divisione
+% Proietto su Z = X \ Y il primo operando
+Ti(Z) — mz(R)
+Raffaella Gentilini
+.review/ocr-div-15.txt:Derivazione della Divisione
+% Proietto su Z = X \ Y il primo operando
+Ti(Z) — 72(R)
+% Costruisco l'universo U
+U(X) E Tx S
+Raffaella Gentilini
+.review/ocr-div-16.txt:Derivazione della Divisione
+% Proietto su Z = X \ Y il primo operando
+T1(Z)  rz(R)
+% Costruisco l'universo U
+U(X) Tx S
+% Individuo le tuple da non ammettere nel risultato
+To(Z) + mz(U \ R)
+Raffaella Gentilini Basi di Dati si
+5
+.review/ocr-div-17.txt:Derivazione della Divisione
+% Proietto su Z = X \ Y il primo operando
+Ti(Z) — 72(R)
+% Costruisco l'universo U
+U(X) Tx S
+% Individuo le tuple da non ammettere nel risultato
+Ta(Z) az(U\R)
+% Ottengo il risultato
+Ris(Z) < Th \ To
+Raffaella Gentilini Basi di Dati
+5
+.review/ocr-fw-01.txt:Sicurezza Informatica PG
+a.a. 2007-2008
+Firewalls
+Stefano Bistarelli
+bista@sci.unich.it
+.review/ocr-fw-02.txt:Sommario
+Introduzione (Sicurezza e Firewall)
+Firewalls (Da bastion host a rete di difesa)
+Firewalls (Overview)
+2 Filosofie ed 1 Principio
+Tipi di Firewalls
+Firewall environments
+Firewall security policy
+Tipiche configurazioni
+Un esempio
+Firewall Administration
+* Raccomandazioni finali
+.review/ocr-fw-03.txt:Introduzione
+Sicurezza e Firewalls
+.review/ocr-fw-04.txt:Come proteggersi?
+Physical security
+* Accesso fisico di utenti alle macchine
+* Operational/Procedural security
+* Policy di sicurezza
+Personnel Security
+System Security
+* Acl, log...
+Network Security
+* Firewall, IDS, buon routing e filtri
+.review/ocr-fw-05.txt:Come proteggersi?
+Physical security
+* Accesso fisico di utenti alle macchine
+* Operational/Procedural security
+* Policy di sicurezza
+Personnel Security
+System Security
+* Acl, log...
+Network Security
+* Firewall, IDS, buon routing e filtri
+.review/ocr-fw-06.txt:Piano di Sicurezza
+Risk Avoidance (evitare rischi)
+* Necessitiamo di una connessione Internet permanente?
+Deterrence (deterrenza)
+* Pubblicizzare strumenti di difesa e di punizione
+Prevention (prevenzione)
+* Firewall
+* Detection (detection)
+° IDS
+* Recovery
+.review/ocr-fw-07.txt:Firewalls???
+* Sicurezza non è sinonimo di Firewall!!
+* Insiders and Outsiders!!
+.review/ocr-fw-08.txt:Firewalls???
+* Sicurezza non è sinonimo di Firewall!!
+* Insiders and Outsiders!!
+.review/ocr-fw-09.txt:Firewalls
+Da bastion host a rete di difesa
+.review/ocr-fw-10.txt:Firewalls oggi
+* Firewall non è un componente della rete ma un insieme di
+componenti che cooperano tra loro
+* Firewall e Intrusion Detection Systems (IDS)
+Email/web content scanners per virus e malicious code (worms)
+* Personal firewalls
+... a Policy!!
+* Firewalls non come prima linea di difesa
+.review/ocr-fw-11.txt:Definizione
+° Network Firewalls are devices or systems that
+control the flow of network traffic between
+networks employing different security postures.
+(NIST)
+* Firewalls di rete sono apparecchiature o sistemi
+che controllano il flusso del traffico di rete tra due
+reti con differenti livelli di s
+.review/ocr-fw-12.txt:Firewalls
+* Firewall: un metodo
+per prevenire accessi
+non autorizzati alla
+rete privata. |
+Private Network
+External Network(s)
+.review/ocr-fw-13.txt:Firewalls
+Overview
+.review/ocr-fw-14.txt:Cosa può fare un firewall
+* Proteggere le risorse della rete
+privata da attacchi esterni.
+Prevenire l'esportazione di
+dati dall'interno verso
+l'esterno.
+Importante: usarlo insieme ad
+altri meccanismi di sicurezza!!
+Private Network
+HH
+Proprietary External
+data Attacks
+External Network(s)
+.review/ocr-fw-15.txt:Vivere senza FW, ..., si, ... però
+° Riduce le possibilità di un external intruders di
+alterare la rete interna
+Password vulnerability
+* Network probes for known flaws in services
+* Address (and other) spoofing
+* Details of the file system
+Mail problems
+* Worms e virus
+.review/ocr-fw-16.txt:Worms e virus
+* Worms
+Codice che si diffonde da un computer ad un altro usando una
+qualche vulnerabilità. Quando un computer ha un worm si dice
+“compromesso” (“compromised”). Una volta compromesso un
+computer inizierà ad infettare gli altri.
+° Virus
+Codice eseguito da un utente che fa qualcosa di
+.review/ocr-fw-17.txt:Cosa può fare un firewall, cont.
+* Schermare alcune reti interne e nasconderle agli
+altri
+* Bloccare alcuni accessi a servizi 0 ad utenti
+* Monitorare!
+* Log function importante!!
+.review/ocr-fw-18.txt:Cosa può fare un firewall, cont.
+© Virtual private networks (VPN)
+Crittazione automatica dei dati trai siti
+Fornisce confidentialità dei dati inviati tra i due gateways
+Le 2 reti appaiono come una singola rete, al di qua del firewall
+Buono per reti che si localizzano su più siti e collegate da un
+.review/ocr-fw-19.txt:Alcuni Commenti negativi sui Firewalls
+Firewalls sono l'approccio sbagliato: Non risolvono il problema,
+e rendono impossibile o molto difficile fare molte cose agli utenti
+interni.
+... d'altra parte, un responsabile di una rete interna non
+vivrebbe tranquillamente senza un firewall
+.review/ocr-fw-20.txt:Più specificatamente ©
+° Non difende contro nuovi bachi non ancora
+documentati nei protocolli
+° I filtri sono difficili da settare e da mantenere
+perchè difficile compromesso tra libertà e sicurezza
+* Può degradare le performance della rete
+.review/ocr-fw-21.txt:2 Filosofie ed 1 Principio
+21 Firewalls
+.review/ocr-fw-22.txt:Due filosofie
+° Default deny:
+* Tutto quello che non è espressamente ammesso è
+proibito
+° Default permit:
+* Tutto quello che non è espressamente proibito è
+ammesso
+.review/ocr-fw-23.txt:Default deny
+Firewall devono essere creati per bloccare tutto
+Servizi sono abilitati caso per caso dopo una attenta
+analisi
+Utenti sono molto ristretti e non possono facilmente
+rompere la policy di sicurezza
+Entrano solo cose
+—_—
+=
+i a
+che noi sappiamo
+essere non pericolose
+.review/ocr-fw-24.txt:Default permit
+System administrator deve reagire prontamente ogni volta
+che un nuovo baco su un protocollo viene scoperto
+Servizi sono rimossi/ridotti quando vengono scoperti
+pericolosi
+Utenti sono meno ristretti
+= Mi
+—_—_—_—
+o 2
+>
+Blocchiamo solo
+cose che sospettiamo
+essere pericolose
+.review/ocr-fw-25.txt:Il principio: La difesa perimetrale
+1. Proteggi tutti I cammini di ingresso alla rete privata
+° Crea una sola porta di ingresso!
+2. All'interno della rete gli host si fidano tra loro
+‘
+a
+N
+- Internet 4
+no
+.review/ocr-fw-26.txt:Tipi di Firewalls
+26 Firewalls
+.review/ocr-fw-27.txt:Classificazione dei firewalls
+Firewalls
+.review/ocr-fw-28.txt:Servizi add-on
+* NAT
+* Static translation
+* hiding translation
+* DHCP
+° Encryption functionality (VPNs)
+° Application content filtering
+.review/ocr-fw-29.txt:Tipi di Firewalls
+* Packet-filtering routers
+* Application-proxy gateways
+.review/ocr-fw-30.txt:Packet Filter firewalls
+Security Perimeter
+. Private
+Network
+Packet- i
+filtering «------------------ +
+router
+.review/ocr-fw-31.txt:Filtri a livello 3:
+Source address del pacchetto (IP address)
+Destination address del pacchetto (IP address)
+Tipo del traffico (IP, ICMP, IPX se a livello 3, o anche
+protocolli di livello 2)
+Possibilmente, alcune caratteristiche del livello 4 (porta
+sorgente e destinazione)
+Talvolta, informazion
+.review/ocr-fw-32.txt:Boundary router: vantaggi/svantaggi
+° Vantaggi:
+* Semplicità
+* Trasparente per l'utente
+* Alta velocità
+° Svantaggi:
+* Nessun controllo per filtrare comandi/funzioni ai
+livelli più alti
+* Mancanza di user authentication
+* Funzioni di log praticamente inefficaci
+* Difficoltà nel creare buone reg
+.review/ocr-fw-33.txt:* Accept
+° Deny
+* Discard
+Packet filter rulesets
+Source
+Address
+Source
+Port
+Destination
+Address
+Destination
+Port
+Action
+Description
+1 Any
+Any
+192.168.1.0
+> 1023
+Allow
+Rule to allow return
+TCP Connections to
+internal subnet
+2|192.168.1.1
+Any
+Any
+Any
+Deny
+Prevent Firewall sys-
+tem i
+.review/ocr-fw-34.txt:Regola 2:
+Es. spoofing (Ip + ICP port 80)
+Richiesta di j
+do nin d
+Browser Richiesta di
+documento Prelevamento
+del
+- = documento
+2 a Ir
+Copia del
+documento
+falsificata Attacco “Web-spoofing”
+= ee
+.review/ocr-fw-35.txt:Regola 1:
+connessione TCP/UDP lato client
+* Connessione a una porta
+source port: x. .
+host A |_dest- port: 23 server B (23) viene fatta creando
+source port:23 nf
+dest. port: x.
+port use: simple telnet app
+lato cliente una porta
+(x>1023) a cui il server
+risponderà.
+* Numeri di porte inseriti
+nel 
+.review/ocr-fw-36.txt:Stateful inspection firewalls
+Source Source | Destination | Destination
+Address Port Address Port
+Action Description
+Rule to allow return
+1 Any Any 192.168.1.0 > 1023 Allow | TCP Connections to
+internal subnet
+Incorpora alcuni controlli a livello 4
+* Crea dinamicamente una “state table” per val
+.review/ocr-fw-37.txt:Application-proxy gateways
+Application-level
+gateway
+Inside
+Inside host
+Outside host
+.review/ocr-fw-38.txt:Filtri a livello 7
+* Routing tra le due interfacce effettuato a livello
+applicazione dal software del firewall
+* Incaso di malfunzionamento del sw, il routing è disabilitato
+* Possibilità di authentication
+userId and password
+* HW/SW token authentication
+* Biometric authentication (remota? Solo
+.review/ocr-fw-39.txt:Proxi: vantaggi/svantaggi
+° Vantaggi:
+* Più sicuri dei packet filters
+* Deve solo controllare un numero limitato di
+applicazioni (http, ftp, posta)
+* Facile il log e il controllo del traffico
+* Svantaggi:
+* Processing overhead su ogni connessione
+* Può solo controllare un numero limitato di
+applic
+.review/ocr-fw-40.txt:Proxy server dedicati
+* Specifici per ogni applicazione
+* Aiutano l'application proxy gateway nel lavoro di
+contents-inspection
+* Tipico uso:
+* Antivirus
+* Malicius code (applets java, activix, javascript, word)
+* Usati spesso per outbound connections
+* Web cache proxy
+* Email proxy
+.review/ocr-fw-41.txt:Personal firewalls
+* Proteggono solo la macchina dove sono istallate
+° Necessario, specie per mobile users
+* Es:
+* winXp
+* Zonealarm
+.review/ocr-fw-42.txt:Firewall environments
+42 Firewalls
+.review/ocr-fw-43.txt:Linea guida per firewall environment
+° KISS principle (Keep It Simple Stupid!)
+* Usai devices per il loro scopo naturale!
+* Sicurezza a piu’ livelli (se più firewall in cascata
+possono essere usati, USARLI!)
+* Attenzione agli attacchi dall'interno! ©
+.review/ocr-fw-44.txt:Environment 1: DMZ
+ISP
+Boundary Router
+Packet Filter
+External DMZ Network
+Main Firewall IF
+(= | External Web Server
+Internal DMZ Network
+Internal [== |
+Firewall |= |
+=| Internal Email Server
+Interior Protected Network
+.review/ocr-fw-45.txt:Environment 1: DMZ
+(service leg)
+External DMZ Network
+Service Leg DMZ Network
+Main Firewall = lg le
+Appreation proms
+Protected Internal Network
+.review/ocr-fw-46.txt:Environment 2: VPN
+Gateway
+U ted Logical Extension
+see tfic of internal network
+External Email
+Web Server Server
+e
+VPN ° Firewall e VPN server
+° IPSec
+* PPTP (by microsoft)
+* £2TP
+insieme?
+° Si, ma
+Prestazioni.. ®
+.review/ocr-fw-47.txt:Environment 3: Intranet/extranet
+Internet Border. VPN » Internet Border
+Firewall A =| Firewall B Ss
+f
+LE invenet A A Protected Intranet B
+j= B Extranet Bp
+.review/ocr-fw-48.txt:Environment 4: Hubs/Switches
+°* Hubs
+* Devices a layer 1
+* Broadcast traffic
+° Switches
+* Devices a layer 2
+* (essentially multiport bridges)
+* No possibilità di snif/eavesdrop tra porta e porta
+° OK per DMZ e Firewall environment
+° Isolamento delle subnets da tenere di conto nell'uso di IDSs
+.review/ocr-fw-49.txt:Environment 5: IDSs
+* Per notificare (ed in alcuni casi prevenire) accesso
+a sistemi di rete
+° Interazione con Firewalls per azioni reattive!!
+* Se IDS si accorge di un DoS attack, il firewall
+blocchera quell’accesso
+° Due tipi di IDS
+* Host based
+* Network based
+.review/ocr-fw-50.txt:Environment 5: IDSs
+(host IDS)
+* Istallato sulle singole macchine da proteggere
+° Strettamente dipendente dal OS della macchina
+° Punti negativi:
+* Impatto su performance
+* Difficile riconoscere DoS
+* Impatto sulla stabilità del OS
+.review/ocr-fw-51.txt:Environment 5: IDSs
+(Network based IDS)
+ISP Connection
+Boundary Router
+Packet Filter Network
+IDS
+External DMZ Network
+I | External
+Main | ==] Web Server
+Network Firewall =| with Host IDS
+ms =
+Internal DMZ Network
+Network
+IDS
+Internal
+Firewall
+Email Server
+with Host IDS
+Interior Protected Ne
+.review/ocr-fw-52.txt:Environment 5: IDSs
+(Network based IDS)
+° Punti Negativi
+* Usualmente non riescono a riassemblare delle signature
+distribuite su più pacchetti
+° Necessitano switches con particolari funzionalità (port
+mirroring)
+Interfacce in promiscuous mode (necessarie ai network-based
+IDSs) sono facilmente loc
+.review/ocr-fw-53.txt:Environment 6: DNSs
+* Servizio critico per ogni ambiente che fa uso
+dell'Internet
+* Split DNS
+* Separare su due server DNS la gestione dei nomi
+interni da quella dei nomi esterni
+° Gestire traffico UDP/TCP separatamente
+° UDP: user lookup
+* ICP: Zone Transfer (solo dai secondari!)
+.review/ocr-fw-54.txt:Environment 6: DNSs
+Boundary Router
+Packet Filter
+Area Served by External DNS Server,
+Visible to Internet
+External DMZ Network
+Main
+Firewall
+External DNS Server Web Server
+Internal
+Firewall
+Internal DMZ Network
+SMTP
+Internal DNS Server
+u t
+Interior Protected Network
+.review/ocr-fw-55.txt:Environment 7: Servers
+* Dove?
+* Chi deve accedervi?
+* Quanto sono importanti i dati contenuti?
+° Regole generali
+* Server esterni protetti da un packet filter router
+° No server accessibili dall'esterno sulla rete interna!
+* Servers interni (al di qua del firewall interno) se importanza
+dati lo r
+.review/ocr-fw-56.txt:Environment 7: Servers
+Server esterni su external
+DMZ
+Boundary Router Network ga | Dial-in
+Packet Filter Net Server ° DNS >, web, directory
+External DMZ Network Server
+ISP Connection
+ul Edema scena = Eventualmente su più
+i ene DNS Server . .
+Network = wi Host DS DMZs per isolare i server
+Intern
+.review/ocr-fw-57.txt:ISP Connection
+Boundary Router
+Packet Filter
+Environment 7: Servers
+Dial-in
+Server
+External DMZ Network
+L, E] External ==
+sal =] Web Server FEE) ONS server
+Network Firewall =] withHostips =
+& VPN |= = =
+IDS
+Server
+| Internal DMZ Network
+LI Network ,
+— IDS = — S
+Internal = = = —
+Firewall | = =| 
+.review/ocr-fw-58.txt:Firewall security policy
+58 Firewalls
+.review/ocr-fw-59.txt:Firewall Policy
+° Firewall policy è distinta dalla information
+security policy!
+° Firewall policy descrive come sarà implementata la
+information security policy
+° Detta le regole per gestire il traffico (web, email,
+..)
+* Descrive come il firewall è gestito e aggiornato
+.review/ocr-fw-60.txt:Firewall Policy
+° Risk analysis
+* Quali applicazioni?
+Chi e da dove saranno usate?
+Costi/benefici di ogni singola messa in sicurezza di
+macchina/servizio!!
+Creare matrice traffico
+Creare sulla base della matrice di traffico le regole da
+implementare sui vari firewalls!
+.review/ocr-fw-61.txt:Firewall Policy: ... bloccare:
+Traffico in ingresso da sorgenti esterne non autenticate
+verso il firewall
+* Eccezione se proxy-email esterne (ma in questo caso accettare
+solo connessioni su porta 25!)
+Traffico in ingresso ... ma con pacchetti che mostrano la
+rete interna come sorgente ©)
+Traffico
+.review/ocr-fw-62.txt:Firewall Policy: .. bloccare:
+Inbound/outbound traffic per pacchetti RFC1918-privati
+* 10.0.0.0— 10.255.255.255 (classi A)
+* 172.16.0.0 - 172.16.255.255 (classi B)
+° 192.168.0.0 - 192.168.255.255 (classi C)
+Inbound/outbound traffic per pacchetti 127.0.0.1 0
+0.0.0.0
+* Attacchi verso il firewall!
+.review/ocr-fw-63.txt:Firewall Policy: .. bloccare:
+* Inbound/outbound traffic per pacchetti contenenti
+directed broadcast address
+* Tipico uso per attacchi che implicano una risposta ad
+un diverso source address (DoS)
+* Se possibile:
+* sare user authentication
+Usare quanto log possibile
+.review/ocr-fw-64.txt:Testing the policy!
+Quasi mai effettuato ©
+1. Semplice controllo tra quello che volevamo e
+quello che è stato implementato
+2. ‘Usando tools o specifici tiger-group che cercano
+di fare qualcosa vietato per policy
+Penetration analysis
+° Seeded
+° blind
+.review/ocr-fw-65.txt:Implementazione del firewall e della
+policy
+° Appliance-based firewalls
+* Scatole ad hoc che fanno solo questo
+* Piu’ stabili e sicure dei firewall implementati on top di
+un OS
+* Di solito più performanti perché usano HW specifico
+* OS based
+* Scalability
+* Presenza di vulnerabilità dell’0S ©
+.review/ocr-fw-66.txt:Gestione e manutenzione del firewall
+* CLI
+* Veloce ©
+* A volte errori di battitura se non sono implementati
+dei controlli sintattici ®
+° GUI
+Usabile anche da un novizio ©
+Usabile anche da un novizio ®
+.review/ocr-fw-67.txt:Tipiche configurazioni
+67 Firewalls
+.review/ocr-fw-68.txt:Firewall Configurations
+In aggiunta alla semplice configurazione con un
+unico sistema (single packet filtering router or
+single gateway), sono possibili configurazioni più
+complicate
+° tre tipiche configurazioni
+.review/ocr-fw-69.txt:Firewall Configurations
+* Screened host firewall system (single-homed
+bastion host)
+* Screened host firewall system (dual-homed bastion
+host)
+* Screened-subnet firewall system
+.review/ocr-fw-70.txt:Firewall Configurations
+* Bastion Host
+* Un sistema identificato dal firewall administrator
+come un punto cruciale per la sicurezza della rete
+* il bastion host serve come a piattaform per un
+application-level o circuit-level gateway
+.review/ocr-fw-71.txt:Firewall Configurations
+* Screened host firewall system (single-homed
+bastion host)
+filtering
+router
+Private
+network hosts
+Bastion
+host
+« tT t >
++
+Packet-
+Information
+server
+.review/ocr-fw-72.txt:Firewall Configurations
+* Screened host firewall, single-homed bastion
+configuration
+* Firewall considte di due sistemi:
+un packet-filtering router
+un bastion host
+.review/ocr-fw-73.txt:Firewall Configurations
+* Configurazione del packet-filtering router:
+* Solo I pacchetti da e per il bastion host sono permessi
+* Il bastion host effettua funzioni di authentication
+and proxy (eventualmente caching)
+.review/ocr-fw-74.txt:Firewall Configurations
+° Più sicurezza di una configurazione con una sola
+macchina:
+Implementa sia packet-level che application-level
+filtering (flessibilità nel definire una security policy)
+* Un intruder deve generalmente penetrare due sistemi
+separati
+.review/ocr-fw-75.txt:Firewall Configurations
+* Screened host firewall system (dual-homed bastion
+host)
+/ Bastion
+Packet-
+filtering
+router
+Private
+network hosts
+2 Information
+server
+.review/ocr-fw-76.txt:Firewall Configurations
+* Screened host firewall, dual-homed bastion
+configuration
+Il traffico tra Internet e gli altri hosts sulla rete
+privata deve fisicamente passare attraverso il bastion
+host
+.review/ocr-fw-77.txt:Firewall Configurations
+* Screened-subnet firewall system
+Bastion
+host
+Private
+network
+Outside
+router
+Inside
+router
+a
+Modem
+Information
+server
+.review/ocr-fw-78.txt:Firewall Configurations
+* Screened subnet firewall configuration
+* La più sicura delle tre configurazioni
+* Usati due packet-filtering routers
+* Creazione di una sub-network isolata
+.review/ocr-fw-79.txt:Firewall Configurations
+° Vantaggi:
+* Tre livelli di difesa verso gli intruders
+* La rete interna è invisible all'Internet
+* Svantaggi:
+I systemi sulla rete interna non possono costruire
+cammini diretti verso l'esterno
+.review/ocr-fw-80.txt:Un esempio
+80 Firewalls
+.review/ocr-fw-81.txt:La Policy
+Tutto il traffico dall'interno è permesso
+Traffico web in uscita permesso tramite un http-proxy
+(magari cached and content filtered)
+* Servizio SMTP in ingresso è passata ad un SMTP-proxy,
+e quindi ai client interni (i client interni possono ricevere
+email solo dal SMTP-proxy, magari do
+.review/ocr-fw-82.txt:La rete
+External DMZ Network
+ia ISP Connection
+id
+Border Router
+192.168.1.1
+Main Firewall
+VPN Gateway Ss
+192.168.1.2 =
+|__|
+Internal =
+Firewall SS
+192.168.1.3
+HTTP
+192.168.1.4
+Internal DMZ Network
+SMTP
+192.168.1.5
+intern Protected Network
+Bo
+.review/ocr-fw-83.txt:possibili regole per il border router ...
+Source Ad- | Source | Destination | Destination
+dress Port Address Port Action) Description
+Rule to allow return
+1 Any Any 192.168.1.0 > 1023 Allow TCP Connections to
+internal subnet
+Prevent Firewall system
+2 | 192.168.1.1 Any Any Any Deny itself from d
+.review/ocr-fw-84.txt:Miglioramenti ...
+External DMZ Network ISP Connection
+dl
+Border Router
+External |__| 192.168.1.1
+DNS Server Main Firewall | == | <=
+VPN Gateway aS (AT
+192.168.1.2 [=] N
+Internal DMZ Network
+{|
+Internal =
+7 =
+Firewall =|
+192.168.1.3
+HTTP SMTP Internal
+192.168.1.4 192.168.1.5 DNS Server
+t
+Interi
+.review/ocr-fw-85.txt:Firewall Administration
+85 Firewalls
+.review/ocr-fw-86.txt:Firewall Administration
+° Accesso dalla console di gestione
+° Via specifici client ed encryption
+° Via SSHe hittp
+* Possibilmente anche una user authentication
+.review/ocr-fw-87.txt:Firewall OS
+° Hardening the OS
+* Togliere protocolli, servizi e applicazioni di rete non
+usati
+* Togliere user/system account non usati
+* Applicare tutte le patch!!
+° Prima testarle in un ambiente di test
+* Disabilitazione interfacce non usate
+.review/ocr-fw-88.txt:Firewall Administration
+* Strategie di disaster recovery
+* Swithes con capacità di Balancing/failover
+° Il tutto è trasparente
+* Logging
+* Uso di un remote syslog server
+* Centralizzazionedi tutti i log
+* Security incident!
+* Livelli/scala di importanza nella realtà!
+* La policy determina quali 
+.review/ocr-fw-89.txt:Firewall Administration
+° Strategie di backups
+* Day zero backup
+* No external backup!
+* Internal tape drive!
+* Copia del sistema su CD!
+.review/ocr-fw-90.txt:Raccomandazioni finali
+90 Firewalls
+.review/ocr-fw-91.txt:generali
+Usare un firewall!!
+* Su notebooks e a casa gli utenti devono usare un personal
+firewall
+* Firewall: ultima linea di difesa! (gestire bene e proteggere
+singolarmente le macchine)
+* Monitorare incidenti
+e n
+Aggiornare non appena esce una nuova patch
+* Organizzare corsi aggiornamento per
+.review/ocr-fw-92.txt:Scegliere un firewall
+* Con almeno le seguenti funzioni
+* Packet filter
+Stateful inspection
+* Proxy di selezionate applicazioni(web, posta)
+Funzioni di log
+Authenticazione dell'utente
+Possibilità di controllo di
+* Interfaccia del firewall (sorgente e destinazione)
+° IP (sorgente e destinazione)
+.review/ocr-fw-93.txt:Ricapitolando ...
+ISP Connection
+Boundary Router
+Packet Filter Network
+IDS
+Dial-in
+Server
+External DMZ Network
+External
+Web Server
+with Host IDS
+External
+DNS Server
+Main
+Firewall
+& VPN
+Server
+Internal DMZ Network
+F
+Email Server Internal Web Proxy
+with Host IDS DNS Server Server
+Internal
+.review/ocr-fw-94.txt:Ultima lezione
+*... siete stati bravissimi!!
+° Mi avete fatto lavorare tanto...
+* Forse troppo!! ©
+* Spero che abbiate imparato tante cose
+° .. E che vi ricorderete che l'avete imparate in
+questo corso!!®...
+.review/ocr-null-01.txt:Basi di Dati
+Algebra Relazionale e Valori Nulli
+Raffaella Gentilini
+October 20, 2020
+Raffaella Gentilini Basi di Dati
+1/12
+.review/ocr-null-02.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+Algebra Relazionale e Null
+Raffaella Gentilini
+2/12
+.review/ocr-null-03.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+Algebra Relazionale e Null
+e La presenza di valori nulli nelle istanze di una BD richiede
+un'estensione della semantica degli operatori.
+Raffaella Gentilini Basi di Dati 2/12
+.review/ocr-null-04.txt:Algebra Relazionale: L’Operatore Derivato di
+Divisione
+Algebra Relazionale e Null
+e La presenza di valori nulli nelle istanze di una BD richiede
+un'estensione della semantica degli operatori.
+e L'approccio tradizionale (usato nei DBMS basati sul meodello
+relazionale ed in SQL) e’ quello di consid
+.review/ocr-null-05.txt:T,U, N, \ e valori nulli
+Raffaella Gentilini Basi di Dati 3/12
+.review/ocr-null-06.txt:T,U, N, \ e valori nulli
+® Proiezione, unione, intersezione e differenza continuano a
+comportarsi usualmente.
+Raffaella Gentilini
+3/12
+.review/ocr-null-07.txt:T,U, N, \ e valori nulli
+e Proiezione, unione, intersezione e differenza con
+comportarsi usualmente.
+uano a
+e L'uguaglianza tra Null e’ a livello sintattico e due tuple sono
+uguali anche se ci sono valori nulli.
+3/12
+.review/ocr-null-08.txt:Raffaella Gentilini Basi di Dati 4/12
+.review/ocr-null-09.txt:Raffaella Gentilini Basi di Dati 5/12
+.review/ocr-null-10.txt:o e valori nulli
+Raffaella Gentilini
+6/12
+.review/ocr-null-11.txt:o e valori nulli
+e Per la selezione, il problema e' stabilire se, in presenza di Null,
+un predicato e' vero oppure meno per una data tupla.
+Basi di Dati 6/12
+.review/ocr-null-12.txt:o e valori nulli
+e Per la selezione, il problema e' stabilire se, in presenza di Null,
+un predicato e' vero oppure meno per una data tupla.
+e Guardiamo l'esempio che segue per capire meglio ...
+Dati 6/12
+.review/ocr-null-13.txt:o e valor sull
+Raffaella Gentilini
+1/12
+.review/ocr-null-14.txt:o e valori nulli
+Raffaella Gentilini Basi di Dati 8/12
+.review/ocr-null-15.txt:o e valori nulli
+© per valutare predicati come quello dell'esempio precedente, si
+introduce una logica a tre valori
+Raffaella Gentilini
+8/12
+.review/ocr-null-16.txt:o e valori nulli
+© per valutare predicati come quello dell'esempio precedente, si
+introduce una logica a tre valori
+® In partcolare, oltre ai valori Vero (V) e Falso (F) si ha un terzo
+valore Indefinito (?)
+Dati 8/12
+.review/ocr-null-17.txt:o e valori nulli
+© per valutare predicati come quello dell'esempio precedente, si
+introduce una logica a tre valori
+® In partcolare, oltre ai valori Vero (V) e Falso (F) si ha un terzo
+valore Indefinito (?)
+Le tabelle di verita’ sopra possono essere estese ad altri tipi di confronto.
+Se D e' un d
+.review/ocr-null-18.txt:o e valori nulli
+Infine, la tabella di verita' le tabelle di verita’ nella logica a tre valori per
+gli operatori booleani sono:
+Raffaella Gentilini
+9/12
+.review/ocr-null-19.txt:o e valori nulli
+Infine, la tabella di verita' le tabelle di verita’ nella logica a tre valori per
+gli operatori booleani sono:
+La selezione of produce le sole tuple per cui la condizione di selezione F
+risulta vera (V).
+Per lavorare esplicitamente con i valori nulli si introducono inoltre le con
+.review/ocr-null-20.txt:Esempio
+Raffaella Gentilini
+10/12
+.review/ocr-null-21.txt:Concatenazione e valori nulli
+Raffaella Gentilini Basi di Dati 11/12
+.review/ocr-null-22.txt:Concatenazione e valori nulli
+e Per il 0-join valgono le stesse regole per la valutazione della
+condizione di join F secondo la logica a tre valori.
+Raffaella Genti
+Basi di Dati 11/12
+.review/ocr-null-23.txt:Concatenazione e valori nulli
+e Per il 0-join valgono le stesse regole per la valutazione della
+condizione di join F secondo la logica a tre valori.
+e il join naturale non combina due tuple se queste hanno entrambe
+valore nullo su un attributo in comune.
+11/12
+.review/ocr-null-24.txt:Raffaella Gentilini Basi di Dati 12/12

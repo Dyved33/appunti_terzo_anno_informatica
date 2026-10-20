@@ -1,0 +1,10 @@
+Firewall Configurations
+
+° Più sicurezza di una configurazione con una sola
+macchina:
+
+Implementa sia packet-level che application-level
+filtering (flessibilità nel definire una security policy)
+
+* Un intruder deve generalmente penetrare due sistemi
+separati

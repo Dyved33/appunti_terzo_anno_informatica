@@ -1,0 +1,16 @@
+Come proteggersi?
+
+Physical security
+
+* Accesso fisico di utenti alle macchine
+
+* Operational/Procedural security
+
+* Policy di sicurezza
+Personnel Security
+System Security
+
+* Acl, log...
+
+Network Security
+* Firewall, IDS, buon routing e filtri

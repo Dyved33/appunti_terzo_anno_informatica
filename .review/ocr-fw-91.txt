@@ -1,0 +1,15 @@
+generali
+
+Usare un firewall!!
+* Su notebooks e a casa gli utenti devono usare un personal
+
+firewall
+
+* Firewall: ultima linea di difesa! (gestire bene e proteggere
+singolarmente le macchine)
+
+* Monitorare incidenti
+e n
+Aggiornare non appena esce una nuova patch
+
+* Organizzare corsi aggiornamento periodici

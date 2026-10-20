@@ -1,0 +1,15 @@
+Derivazione della Divisione
+
+% Proietto su Z = X \ Y il primo operando
+Ti(Z) — 72(R)
+% Costruisco l'universo U
+U(X) Tx S
+% Individuo le tuple da non ammettere nel risultato
+Ta(Z) az(U\R)
+% Ottengo il risultato
+
+Ris(Z) < Th \ To
+
+Raffaella Gentilini Basi di Dati
+
+5

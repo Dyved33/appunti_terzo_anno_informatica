@@ -1,0 +1,16 @@
+La Policy
+
+Tutto il traffico dall'interno è permesso
+
+Traffico web in uscita permesso tramite un http-proxy
+(magari cached and content filtered)
+
+* Servizio SMTP in ingresso è passata ad un SMTP-proxy,
+e quindi ai client interni (i client interni possono ricevere
+email solo dal SMTP-proxy, magari dopo un controllo
+antivirus/antiworms)
+
+* Traffico dall'esterno permesso sulla porta VPN del
+firewall (e poi passato all'interno)
+
+* Tutto il resto è bloccato

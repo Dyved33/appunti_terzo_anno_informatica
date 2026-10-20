@@ -1,0 +1,16 @@
+Worms e virus
+
+* Worms
+
+Codice che si diffonde da un computer ad un altro usando una
+qualche vulnerabilità. Quando un computer ha un worm si dice
+“compromesso” (“compromised”). Una volta compromesso un
+computer inizierà ad infettare gli altri.
+
+° Virus
+Codice eseguito da un utente che fa qualcosa di inaspettato
+
+rispetto a quello che l'utente prevedeva. Spesso attachments di
+posta contengono virus. Un virus non usa una vulnerabilità del
+
+sistema, ma fa uso dell'utente!

@@ -1,0 +1,49 @@
+ISP Connection
+
+Boundary Router
+Packet Filter
+
+Environment 7: Servers
+
+Dial-in
+Server
+
+External DMZ Network
+
+L, E] External ==
+sal =] Web Server FEE) ONS server
+Network Firewall =] withHostips =
+& VPN |= = =
+IDS
+Server
+| Internal DMZ Network
+LI Network ,
+— IDS = — S
+Internal = = = —
+Firewall | = =| = => —
+== = Email Server _ Internal Web Proxy
+—
+
+:
+
+with Host IDS DNS Server
+
+Interior Protected Network
+
+Server
+
+° Server interni su internal
+DMZ
+
+° DNS, web, directory
+
+server
+
+Protetti anche da attacchi
+interni
+
+* Mail servers
+
+° Serichiesto accesso
+dall'esterno, tramite ssl
+proxy sul firewall

@@ -1,0 +1,16 @@
+Boundary router: vantaggi/svantaggi
+
+° Vantaggi:
+* Semplicità
+* Trasparente per l'utente
+* Alta velocità
+
+° Svantaggi:
+
+* Nessun controllo per filtrare comandi/funzioni ai
+livelli più alti
+* Mancanza di user authentication
+
+* Funzioni di log praticamente inefficaci
+
+* Difficoltà nel creare buone regole

@@ -1,0 +1,11 @@
+Servizi add-on
+
+* NAT
+* Static translation
+
+* hiding translation
+
+* DHCP
+
+° Encryption functionality (VPNs)
+° Application content filtering

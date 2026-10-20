@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "a228761d7668292b",
+        "id": "4ace7579d42b6c4b",
         "type": "tabs",
         "children": [
           {
-            "id": "f6b2c17a23102d2f",
+            "id": "e9fe946c11d0dd6a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Programmazione web e mobile con laboratorio/Lezione 7-.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 7-"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 217.5
+    "width": 392.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -203,8 +199,12 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "f6b2c17a23102d2f",
+  "active": "be179a439a2a1fa6",
   "lastOpenFiles": [
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
+    "Introduzione sicurezza /Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
+    "Programmazione web e mobile con laboratorio/Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione.md",
     "Programmazione web e mobile con laboratorio/esercizi/paginaCompleta.css",
     "Programmazione web e mobile con laboratorio/esercizi/paginaCompleta.html",
     "Programmazione web e mobile con laboratorio/images/Pasted image 20261019154220.png",
@@ -234,7 +234,6 @@
     "Introduzione sicurezza /Lezione 4-.md",
     "Programmazione web e mobile con laboratorio/Lezione 6-.md",
     "Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md",
-    "Architettura reti e internet/internet/ArchitetturaRetiDef_I_d.pdf",
     "Architettura reti e internet/internet/Lezione 4-.md",
     "Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
     "Introduzione IA/Lezione 3-Ricerca su grafo.md",
@@ -247,9 +246,6 @@
     "Introduzione sicurezza /Lezione 3.md",
     "Lezione 7-.md",
     "Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
-    "Architettura reti e internet/internet/Lezione 1-Internetworking, il villaggio globale e la storia di Internet.md",
-    "Architettura reti e internet/internet/00 Indice - Internetworking.md",
-    "Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md"
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md"
   ]
 }

@@ -1,0 +1,37 @@
+Ricapitolando ...
+
+ISP Connection
+
+Boundary Router
+
+Packet Filter Network
+IDS
+
+Dial-in
+Server
+
+External DMZ Network
+
+External
+Web Server
+with Host IDS
+
+External
+DNS Server
+
+Main
+Firewall
+& VPN
+Server
+
+Internal DMZ Network
+
+F
+
+Email Server Internal Web Proxy
+with Host IDS DNS Server Server
+
+Internal
+Firewall
+
+Interior Protected Network

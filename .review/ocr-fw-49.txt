@@ -1,0 +1,12 @@
+Environment 5: IDSs
+
+* Per notificare (ed in alcuni casi prevenire) accesso
+a sistemi di rete
+° Interazione con Firewalls per azioni reattive!!
+
+* Se IDS si accorge di un DoS attack, il firewall
+blocchera quell’accesso
+
+° Due tipi di IDS
+* Host based
+* Network based

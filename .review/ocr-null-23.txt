@@ -1,0 +1,10 @@
+Concatenazione e valori nulli
+
+e Per il 0-join valgono le stesse regole per la valutazione della
+condizione di join F secondo la logica a tre valori.
+
+e il join naturale non combina due tuple se queste hanno entrambe
+valore nullo su un attributo in comune.
+
+11/12
+

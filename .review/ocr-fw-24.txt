@@ -1,0 +1,20 @@
+Default permit
+
+System administrator deve reagire prontamente ogni volta
+che un nuovo baco su un protocollo viene scoperto
+
+Servizi sono rimossi/ridotti quando vengono scoperti
+pericolosi
+
+Utenti sono meno ristretti
+
+= Mi
+
+—_—_—_—
+
+o 2
+>
+
+Blocchiamo solo
+cose che sospettiamo
+essere pericolose

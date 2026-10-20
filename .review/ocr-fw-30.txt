@@ -1,0 +1,12 @@
+Packet Filter firewalls
+
+Security Perimeter
+
+. Private
+Network
+
+Packet- i
+
+filtering «------------------ +
+
+router

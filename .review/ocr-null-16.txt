@@ -1,0 +1,9 @@
+o e valori nulli
+
+© per valutare predicati come quello dell'esempio precedente, si
+introduce una logica a tre valori
+
+® In partcolare, oltre ai valori Vero (V) e Falso (F) si ha un terzo
+valore Indefinito (?)
+
+Dati 8/12

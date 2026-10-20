@@ -1,0 +1,8 @@
+o e valori nulli
+
+© per valutare predicati come quello dell'esempio precedente, si
+introduce una logica a tre valori
+
+Raffaella Gentilini
+
+8/12

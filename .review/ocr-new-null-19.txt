@@ -1,0 +1,15 @@
+o e valori nulli
+
+Infine, la tabella di verita' le tabelle di verita’ nella logica a tre valori per
+gli operatori booleani sono:
+
+La selezione of produce le sole tuple per cui la condizione di selezione F
+
+risulta vera (V).
+Per lavorare esplicitamente con i valori nulli si introducono inoltre le con-
+
+dizioni atomiche ‘a IS NULL’ ed 'a IS NOT NULL’
+
+9/12
+
+Raffaella Genti

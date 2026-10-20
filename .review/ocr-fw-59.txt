@@ -1,0 +1,12 @@
+Firewall Policy
+
+° Firewall policy è distinta dalla information
+security policy!
+
+° Firewall policy descrive come sarà implementata la
+information security policy
+
+° Detta le regole per gestire il traffico (web, email,
+..)
+
+* Descrive come il firewall è gestito e aggiornato

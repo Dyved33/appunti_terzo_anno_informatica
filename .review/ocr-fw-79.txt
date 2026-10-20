@@ -1,0 +1,11 @@
+Firewall Configurations
+
+° Vantaggi:
+* Tre livelli di difesa verso gli intruders
+
+* La rete interna è invisible all'Internet
+
+* Svantaggi:
+
+I systemi sulla rete interna non possono costruire
+cammini diretti verso l'esterno

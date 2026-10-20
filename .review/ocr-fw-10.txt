@@ -1,0 +1,13 @@
+Firewalls oggi
+
+* Firewall non è un componente della rete ma un insieme di
+componenti che cooperano tra loro
+
+* Firewall e Intrusion Detection Systems (IDS)
+
+Email/web content scanners per virus e malicious code (worms)
+* Personal firewalls
+
+... a Policy!!
+
+* Firewalls non come prima linea di difesa .. ma l'ultima!

@@ -1,0 +1,15 @@
+Implementazione del firewall e della
+policy
+° Appliance-based firewalls
+
+* Scatole ad hoc che fanno solo questo
+
+* Piu’ stabili e sicure dei firewall implementati on top di
+un OS
+
+* Di solito più performanti perché usano HW specifico
+* OS based
+
+* Scalability
+
+* Presenza di vulnerabilità dell’0S ©
