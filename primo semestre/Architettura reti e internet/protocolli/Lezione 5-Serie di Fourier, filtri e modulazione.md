@@ -26,7 +26,11 @@ Utilizzando un numero sempre maggiore di opportuni segnali sinusoidali, si ottie
   <img src="slide-05.png" width="30%">
 </div>
 
-Nel caso che il segnale sia una pura sinusoide, quest'ultimo viene rappresentato nel dominio delle frequenze da un'unica armonica. Il numero di armoniche utilizzate varia a seconda della potenza del segnale da rappresentare: generalmente si tende a considerare l'armonica sino a che la sua ampiezza sia un decimo della componente fondamentale.
+Nel caso in cui il segnale sia una pura sinusoide, quest'ultimo viene rappresentato nel dominio delle frequenze da un'unica armonica: utilizzando un numero maggiore di segnali sinusoidali possiamo ottenere una più accurata rappresentazione del segnale originale. Il numero di armoniche utilizzate varia a seconda della potenza del segnale da rappresentare: generalmente si tende a considerare l'armonica sino a che la sua ampiezza sia un decimo della componente fondamentale.
+
+> [!note] Ricorda: differenza tra segnale analogico e digitale:
+> - il **segnale analogico** è **continuo** nel tempo e può assumere **infiniti valori** all'interno di un intervallo, variando in modo fluido (spesso rappresentato da onde sinusoidali)
+> - il **segnale digitale** è **discreto**, assumendo solo **valori specifici e limitati** (tipicamente **0 e 1** in codice binario) in istanti predeterminati (spesso rappresentato da onde quadre)
 
 *Osservazione:* l'analisi di Fourier ricorda che un segnale digitale è un segnale analogico composto da banda teoricamente infinita. Il problema è come trasmettere una digitalizzazione del segnale analogico tra due punti. Le possibilità sono sostanzialmente due:
 - Trasmissione del segnale di base (in banda base)

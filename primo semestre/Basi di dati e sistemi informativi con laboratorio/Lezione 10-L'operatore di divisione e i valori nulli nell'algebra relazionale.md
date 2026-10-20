@@ -121,6 +121,12 @@ Per lavorare esplicitamente con i null si introducono le condizioni atomiche `a 
 - $\sigma_{\text{Città} \text{ IS NULL}}$ dà le tuple 2 e 4, $\sigma_{\text{Stipendio} \text{ IS NOT NULL}}$ dà le tuple 1 e 2;
 - $\sigma_{\text{Città} = \text{Milano} \vee \text{Stipendio} > 2200}$ dà le tuple 1 e 2: per la tupla 1 vale V $\vee$ F = V, per la 2 ? $\vee$ V = V, per la 3 F $\vee$ ? = ? e per la 4 ? $\vee$ ? = ?, quindi 3 e 4 restano fuori.
 
+> [!example] Esempio aggiuntivo: condizioni complesse con `IS NULL`
+> Sulla stessa tabella `Impiegati`, consideriamo:
+> - $\sigma_{\text{Città IS NULL} \wedge \text{Stipendio IS NOT NULL}}$ → tuple 2 (Bianchi): ? $\wedge$ V = ? per la 2? No: Città IS NULL è V per 2 e 4, Stipendio IS NOT NULL è V per 1 e 2. Quindi V $\wedge$ V = V solo per la 2.
+> - $\sigma_{\text{Città = Milano} \vee \text{Stipendio IS NULL}}$ → tuple 1, 3, 4: per 1 V $\vee$ F = V; per 2 ? $\vee$ F = ?; per 3 F $\vee$ V = V; per 4 ? $\vee$ V = V.
+> - $\sigma_{\neg(\text{Stipendio} > 2000)}$ → tuple 3, 4: per 1 $\neg$V = F; per 2 $\neg$V = F; per 3 $\neg$? = ? (scartata); per 4 $\neg$? = ? (scartata). *Attenzione:* $\neg$? = ?, non V, quindi le tuple con stipendio null non passano nemmeno la negazione.
+
 ### Concatenazione e valori nulli
 
 Per il $\theta$-join valgono le stesse regole per la valutazione della condizione di join $F$ secondo la logica a tre valori. Il join naturale non combina due tuple se queste hanno entrambe valore nullo su un attributo in comune.
@@ -144,7 +150,13 @@ Per il $\theta$-join valgono le stesse regole per la valutazione della condizion
 - la tupla 2 non si accoppia a nulla: il confronto sul valore null è ?, e la condizione di join non risulta vera;
 - nel join naturale, la coppia (2, Bianchi, ?, 2500) con (?, Roma, Verdi) non viene combinata: entrambe hanno null su un attributo in comune.
 
-> [!todo] la slide "Esempio" di agebraRelDivisione.pdf e le slide 4/12, 5/12, 7/12, 10/12, 12/12 di nullAlgebraRel.pdf sono immagini che il PDF non rende: l'esempio Fornisce/Prodotto e le tabelle di verità vanno confrontati con gli appunti cartacei.
+> [!example] Esempio aggiuntivo: θ-join con confronto su null
+> Consideriamo un θ-join tra `Dipendenti` e `Sedi` sulla condizione `Dipendenti.Stipendio > Sedi.CodiceSede` (assurdo ma illustra il punto):
+> - Tupla (1, Rossi, S1, 2000) con S1: confronto `2000 > 'S1'` → errore di tipo, ma se fosse numerico `2000 > 1` = V → si unisce.
+> - Tupla (3, Verdi, S2, ?) con S2: confronto `? > 2` = ? → **non** si unisce (la condizione non è V).
+> - Tupla (2, Bianchi, ?, 2500) con qualunque sede: `2500 > ?` = ? → mai vero.
+>
+> In generale: **qualsiasi confronto θ (<, >, ≤, ≥, =, ≠) dove uno degli operandi è null restituisce ?**, e la tupla viene esclusa dal join perché la condizione non risulta vera.
 
 > [!info] Sintesi:
 > - La divisione $\div$ è derivata e binaria, la controparte della quantificazione universale: dà le tuple del primo operando valide per tutte le tuple del secondo, ed è definita su $X \setminus Y$.
