@@ -14,7 +14,10 @@
   "formatter": false,
   "plugins": [
     "@tarquinen/opencode-dcp@latest",
-    "@plannotator/opencode@latest",
+    {
+      "package": "@plannotator/opencode@latest",
+      "options": { "workflow": "plan-agents" }
+    },
     "@azumag/opencode-rate-limit-fallback@2.1.0"
   ],
   "mcp": {

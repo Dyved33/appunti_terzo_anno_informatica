@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,200;0,300;0,400;0,700;0,900;1,400&display=swap');
+
+::selection {
+    background-color: #efbb88;
+    color: #222;
+}
+
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: poppins, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-image: url(../immagini/landscape.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 40em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: pacifico;
+    font-size: 6em;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    padding: 1em;
+    width: calc(100% - 2em);
+    text-align: right;
+    background-image: url(../immagini/landscape.jpg);
+    background-size: cover;
+    z-index: 1;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 1em;
+    transition: 0.3s;
+    border-bottom: 2px solid #ffffff00;
+}
+
+nav ul li:hover, .current {
+    border-color: #fff;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+p {
+    font-weight: 100;
+    text-align: justify;
+    line-height: 1.8em;
+}
+
+strong {
+    text-transform: uppercase;
+}
+
+#sec1, #sec2, #sec3 {
+    padding: 6em 10%;
+}
+
+#sec1 {
+    background-color: #fff;
+    color: #222;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 5em;
+}
+
+#sec1 h2 {
+    font-size: 3em;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+#sec1 p {
+    font-size: 1.2em;
+    text-align: justify;
+    line-height: 1.5em;
+    margin-bottom: 0.4em;
+}
+
+#sec1 img {
+    width: 38.2%;
+    border: 3px dashed #222;
+    border-radius: 50%;
+    padding: 0.4em;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: 0.3s ease-out;
+}
+
+#sec1 img:hover {
+    object-position: left;
+}
+
+#sec2 h2 {
+    text-align: center;
+    font-size: 3em;
+}
+
+.gallery {
+    margin-top: 4em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3em;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+#sec2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 100%;
+    background-color: #22222294;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-out;
+}
+
+.image-container:hover .overlay-text {
+    top: 0;
+}
+
+.overlay-text q {
+    margin: 1em;
+    text-align: center;
+    font-weight: 300;
+}
+
+.overlay-text a {
+    background-color: #fff;
+    color: #222;
+    padding: 0.2em 0.8em;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.overlay-text a:hover {
+    background-color: #ffffff00;
+    color: #fff;
+}
+
+#sec3 {
+    background-color: #fff;
+    color: #222;
+}
+
+#sec3 h2 {
+    font-size: 3em;
+}
+
+#sec3 p {
+    font-weight: 300;
+    margin: 2em 0;
+}
+
+#panel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease-out;
+}
+
+#panel img:hover {
+    transform: scale(1.05);
+}
+
+#el1, #el6 {
+    grid-column: span 2;
+}
+
+#el2, #el5 {
+    overflow: hidden;
+}
+
+#el3 {
+    margin-left: 2.5em;
+}
+
+#el4 {
+    margin-right: 2.5em;
+}
+
+footer {
+    padding: 2em;
+}
+
+footer p {
+    text-align: center;
+}
+
+.social-icons {
+    text-align: center;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    margin: 0.3em;
+}
+
+.social-icons img {
+    width: 100%;
+    transition: 0.3s ease-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+
+@media screen and (max-width:800px) {
+
+    nav {
+        text-align: center;
+    }
+
+    header {
+        height: 25em;
+    }
+
+    h1 {
+        font-size: 5em;
+        text-align: center;
+        line-height: 1em;
+    }
+
+    #sec1, #sec2, #sec3 {
+        padding: 6em 5%;
+    }
+
+    #sec1 {
+        flex-direction: column;
+    }
+
+    #sec1 img {
+        width: 61.8%;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #panel {
+        display: block;
+    }
+
+    #el3, #el4 {
+        margin: 0;
+    }
+
+}

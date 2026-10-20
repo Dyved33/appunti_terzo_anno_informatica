@@ -17,6 +17,18 @@ Lavori sulle note delle lezioni di questo vault. Prima di scrivere qualsiasi cos
 
 Se una skill e `stile.md` si contraddicono, vale `stile.md`. Queste regole valgono per qualunque modello scriva: anche se il modello è piccolo, veloce o scelto in automatico, non si scrive una riga che le violerebbe.
 
+## Piano e revisione
+
+Prima di toccare i file, fai il piano e mandalo in revisione con il tool `submit_plan`: l'utente lo legge nel browser, lo annota e approva o chiede modifiche. Aspetta la decisione prima di scrivere.
+
+`edits` è un array JSON di oggetti, non una stringa:
+
+```
+{"edits": [{"start": 1, "content": "il piano completo"}]}
+```
+
+Se l'utente chiede modifiche, il piano torna con i numeri di riga: manda solo le righe da cambiare (`start`, `end`, `content`).
+
 ## Prima di scrivere
 
 1. Leggi la nota indicata. Se l'utente non dice quale, chiedilo. Se la nota ha già del testo, salvane subito una copia: `python3 .opencode/scripts/controlla-perdite.py "percorso della nota" --salva`. Serve a verificare alla fine che non si sia perso nulla.

@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  margin: 0;
+}
+
+.menu {
+  text-align: right;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-image: url("immagini/paesaggio-montano-ponta-delgada-isola-azzorre.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  padding: 1em 2em;
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: inline;
+  margin: 0.6em;
+}
+
+.current {
+  border-bottom: 2px solid black; /* ricorda che underline è sempre appiccicato alla scritta */
+}
+
+.menu li a {
+  text-decoration: none;
+  padding: 1em 2em;
+  color: black;
+  padding: 0.6em 0;
+}
+
+header {
+  background-image: url("immagini/paesaggio-montano-ponta-delgada-isola-azzorre.jpg");
+  height: 40em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+}
+
+header h1 {
+  color: white;
+  font-size: 6em;
+  font-family: Pacifico, cursive;
+}
+
+#sec1 {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 6em 10%;
+  gap: 5em;
+}
+
+#sec1 img {
+  width: 100%;
+  border-radius: 50%;
+  border: 3px dashed #222;
+  padding: 0.4em;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: 1s ease-out;/*senza interazione non serve a nulla*/
+}
+
+#sec1 img:hover{
+    object-position: left;
+}

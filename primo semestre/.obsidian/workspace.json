@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architettura reti e internet/protocolli/Lezione 5-.md",
+                "file": "Architettura reti e internet/protocolli/Lezione 5-Serie di Fourier, filtri e modulazione.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 5-"
+              "title": "Lezione 5-Serie di Fourier, filtri e modulazione"
             }
           }
         ]
@@ -205,8 +205,8 @@
   },
   "active": "cefb2e2acf5ec61a",
   "lastOpenFiles": [
-    "Architettura reti e internet/protocolli/parte_5.pdf",
     "Architettura reti e internet/protocolli/Lezione 5-.md",
+    "Architettura reti e internet/protocolli/parte_5.pdf",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
     "Introduzione sicurezza /Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
@@ -235,7 +235,6 @@
     "Architettura reti e internet/internet/Lezione 5-.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 9-.md",
     "Introduzione IA/lec03-informedSearch.pdf",
-    "Introduzione IA/Unconfirmed 211074.crdownload",
     "Introduzione IA/Lezione 4.md",
     "Introduzione sicurezza /Lezione 4-.md",
     "Programmazione web e mobile con laboratorio/Lezione 6-.md",

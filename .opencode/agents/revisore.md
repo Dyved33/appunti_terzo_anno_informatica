@@ -1,6 +1,6 @@
 ---
 description: Controlla una nota senza modificarla. Verifica che il contenuto sia corretto rispetto al materiale del docente, che non manchi nulla di importante e che lo stile non sia verboso. Da chiamare una volta sola, quando la nota di una lezione è conclusa, passando il percorso della nota e del materiale.
-mode: all
+mode: subagent
 temperature: 0.1
 steps: 25
 permission:
