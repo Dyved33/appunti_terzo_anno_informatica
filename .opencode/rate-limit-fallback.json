@@ -11,8 +11,8 @@
     { "providerID": "openrouter", "modelID": "minimax/minimax-m3.1-flash:free" },
     { "providerID": "opencode", "modelID": "glm-5.3-flash-free" },
     { "providerID": "openrouter", "modelID": "liquid/lfm-2.5-2.6b:free" },
-    { "providerID": "ollama", "modelID": "qwen2.5:7b" },
-    { "providerID": "ollama", "modelID": "qwen2.5-coder:7b" }
+    { "providerID": "ollama", "modelID": "qwen2.5:3b" },
+    { "providerID": "ollama", "modelID": "qwen2.5-coder:3b" }
   ],
   "retryPolicy": { "maxRetries": 3, "strategy": "exponential", "baseDelayMs": 1000, "maxDelayMs": 30000, "jitterEnabled": true }
 }

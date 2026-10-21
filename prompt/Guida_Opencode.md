@@ -40,7 +40,7 @@ Tutti i modelli in uso sono gratuiti e nessuno richiede un server acceso.
 | `opencode/nemotron-3-ultra-free` | default: scrive e rivede le note |
 | `opencode/minimax-m3.1-flash-free` | titolo della sessione; il più veloce |
 | `openrouter/*:free` | modelli OpenRouter `:free`, integrati nella catena di fallback |
-| `ollama/qwen2.5:7b` | ultima risorsa, offline e senza quota |
+| `ollama/qwen2.5:3b` | ultima risorsa, offline e senza quota, gira sulla GPU (GTX 1050) |
 
 Il free tier di OpenCode non chiede credenziali. OpenRouter ne chiede una (già salvata). Gli altri provider gratuiti si possono aggiungere con `bash ~/.config/opencode/scripts/connect-free-providers.sh`: per ogni provider il comando stampa il link per creare la key e poi la chiede.
 
@@ -58,8 +58,8 @@ openrouter/thinkingmachines/inkling:free
 openrouter/minimax/minimax-m3.1-flash:free
 opencode/glm-5.3-flash-free
 openrouter/liquid/lfm-2.5-2.6b:free
-ollama/qwen2.5:7b
-ollama/qwen2.5-coder:7b
+ollama/qwen2.5:3b
+ollama/qwen2.5-coder:3b
 ```
 
 Il passaggio conserva l'agente attivo, la sessione e il contesto: l'agent continua lo stesso lavoro sull'altro modello. Dopo l'ultimo modello della catena il plugin torna al primo e aspetta un tempo che raddoppia a ogni giro (1, 2, 4 minuti, fino a un'ora). Un messaggio dell'utente rimette la sessione sul suo modello.
@@ -77,7 +77,7 @@ Regole pratiche:
 
 1. **Una sessione per lezione.** La cronologia è la spesa principale: `/compact` o una sessione nuova taglia più di qualunque altra impostazione.
 2. **Il modello più disciplinato è anche il più economico.** Il default fa 4 chiamate di strumento dove un altro ne fa 22: i token crescono con le chiamate.
-3. **`title` e `compaction` non passano da Ollama.** Su questa macchina non c'è GPU: `qwen2.5:7b` risponde in ~55 secondi, `qwen3:8b` non risponde in 180. Sono l'ultima risorsa, non il posto dove mettere i compiti frequenti.
+3. **`title` e `compaction` possono usare Ollama.** Su questa macchina c'è una GPU NVIDIA GTX 1050: `qwen2.5:3b` risponde in pochi secondi. Restano l'ultima risorsa per i compiti frequenti, ma sono utilizzabili per titolo e compattazione senza rallentare la sessione.
 
 ## I cicli
 
@@ -305,4 +305,4 @@ A questo si aggiunge il plugin DCP, che pota il contesto mentre la sessione pros
 - **L'agent ha scritto troppo o ha rovinato una nota:** `git diff` mostra cosa è cambiato, `git restore "percorso"` riporta la nota all'ultimo commit. Senza git, la versione di prima è in `.opencode/originali/`. Conviene fare un commit prima di `/rivedi` e di `/dividi`.
 - **Un'immagine in un `<div>` non si vede:** controlla che il nome in `src` sia identico a quello del file. Se è giusto e non si vede lo stesso, vedi `LEGGIMI.md`.
 - **Richieste vaghe:** "migliora la nota" produce una riscrittura a caso. Meglio "la sezione sui semafori è troppo lunga, asciugala" oppure un segnaposto nel punto giusto.
-- **Ollama è lentissimo:** su questa macchina non c'è GPU, ogni risposta costa decine di secondi. Non usarlo per compiti frequenti.
+- **Ollama:** su questa macchina c'è una GPU NVIDIA GTX 1050; i modelli piccoli (`qwen2.5:3b`, `qwen2.5:1.5b`) rispondono in pochi secondi. Non usare i modelli 7b per compiti frequenti: non entrano nei 4 GB di VRAM e restano su CPU.

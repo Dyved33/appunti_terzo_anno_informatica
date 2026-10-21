@@ -8,9 +8,9 @@ opencode plugin @tarquinen/opencode-dcp@latest                # riduce i token p
 opencode plugin @plannotator/opencode@latest                  # revisione interattiva del piano, con annotazioni
 opencode plugin @azumag/opencode-rate-limit-fallback          # fallback automatico su modello secondario in caso di rate limit (429)
 
-# Ollama (ultima risorsa offline: su questa macchina gira solo su CPU, ~55 s per risposta)
-ollama pull qwen2.5:7b                                        # modello bilanciato (~4.7 GB)
-ollama pull qwen2.5-coder:7b                                  # variante per il codice (~4.7 GB)
+# Ollama (ultima risorsa offline: gira sulla GPU NVIDIA GTX 1050, pochi secondi per risposta con i modelli piccoli)
+ollama pull qwen2.5:3b                                        # modello bilanciato (~2 GB, entra nei 4 GB di VRAM)
+ollama pull qwen2.5-coder:3b                                  # variante per il codice (~2 GB, entra nei 4 GB di VRAM)
 
 # Collegare altri provider gratuiti: stampa il link di signup e chiede la key, uno alla volta
 bash ~/.config/opencode/scripts/connect-free-providers.sh
@@ -51,7 +51,7 @@ Nessun modello a pagamento, nessun processo da tenere acceso.
 | default | `opencode/nemotron-3-ultra-free` | il più disciplinato: 4 chiamate di strumento dove `minimax` ne fa 22, scrittura pulita, non scrive file se non richiesto |
 | titolo sessione | `opencode/minimax-m3.1-flash-free` | 5 s, il più veloce |
 | compattazione | `opencode/nemotron-3-ultra-free` | finestra da 1M token, riassume senza perdere i dettagli della nota |
-| ultima risorsa | `ollama/qwen2.5:7b`, `ollama/qwen2.5-coder:7b` | offline e senza quota, ma su CPU |
+| ultima risorsa | `ollama/qwen2.5:3b`, `ollama/qwen2.5-coder:3b` | offline e senza quota, gira sulla GPU GTX 1050 |
 
 **Catena di fallback** (`rate-limit-fallback.json`, 9 modelli): su quota esaurita o errore transitorio l'agent passa al successivo, tenendo l'agente attivo, e torna indietro dopo il cooldown. L'ordine completo è nella guida; ogni modello è stato provato su quattro compiti prima di entrare nella catena, e chi ha fallito è stato tolto.
 
@@ -98,7 +98,7 @@ Non è stato fatto, per non perdere qualità: troncare gli output degli strument
 
 **`stile.md` è sempre caricato** (campo `instructions` di `opencode.json`): un modello debole a volte salta la lettura, e lo stile è proprio la parte che non deve saltare.
 
-**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti (tarato in `.opencode/dcp.jsonc`); `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429), con catena di 9 modelli free. I modelli locali con Ollama sono l'ultima risorsa offline: su questa macchina non c'è GPU (`nvidia-smi` fallisce) e `qwen2.5:7b` risponde in ~55 s, `qwen3:8b` non risponde in 180 s, quindi non vanno usati per il titolo o per la compattazione.
+**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti (tarato in `.opencode/dcp.jsonc`); `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429), con catena di 9 modelli free. I modelli locali con Ollama sono l'ultima risorsa offline: su questa macchina c'è una GPU NVIDIA GTX 1050 (`nvidia-smi` funziona) e i modelli piccoli (`qwen2.5:3b`, `qwen2.5:1.5b`) rispondono in pochi secondi. I modelli 7b non entrano nei 4 GB di VRAM e restano su CPU, quindi non vanno usati per il titolo o per la compattazione.
 
 **Le tre fonti di stile valgono per ogni modello.** `stile.md`, `no-ai-slop` e `i-have-adhd` sono le tre regole di scrittura del vault: la prima sta in `.opencode/stile.md`, le altre due in `~/.agents/skills/` e `~/.config/opencode/vendor/`. In `instructions` ci sono `stile.md` e `.opencode/regole.md` (la sintesi delle due skill): costavano 4,5k token a ogni richiesta e a ogni subagente, e i modelli free non sono i più attenti. Le versioni complete delle due skill le legge l'agente quando deve scrivere, perché gliele chiede il prompt; i file restano fuori dal vault, così l'agente non può modificarli (`edit` nega `.opencode/**`). `stile.md` resta sempre in contesto: è la parte che non deve saltare.
 
