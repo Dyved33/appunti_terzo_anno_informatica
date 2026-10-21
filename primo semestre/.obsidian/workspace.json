@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "b4bd72fe4488165b",
+        "id": "64e166d4bb8978d2",
         "type": "tabs",
         "children": [
           {
-            "id": "cefb2e2acf5ec61a",
+            "id": "530eae59ed358ec4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architettura reti e internet/protocolli/Lezione 5-Serie di Fourier, filtri e modulazione.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 5-Serie di Fourier, filtri e modulazione"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 392.5
+    "width": 392.5,
+    "collapsed": true
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -203,8 +200,23 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "cefb2e2acf5ec61a",
+  "active": "530eae59ed358ec4",
   "lastOpenFiles": [
+    "Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
+    "Introduzione IA/images/slide5--10.png",
+    "Introduzione IA/IDA_RBFS_SMA.pdf",
+    "Introduzione IA/images/slide5--08.png",
+    "Introduzione IA/images/slide5--06.png",
+    "Introduzione IA/images/slide5--04.png",
+    "Introduzione IA/images/slide5--03.png",
+    "Introduzione IA/images/slide5--02.png",
+    "Introduzione IA/images/slide5--07.png",
+    "Introduzione IA/images/slide5--12.png",
+    "Introduzione IA/images/slide5--11.png",
+    "Introduzione IA/images/slide5--09.png",
+    "Introduzione IA/Unconfirmed 99280.crdownload",
+    "Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
+    "Architettura reti e internet/protocolli/Lezione 5-Serie di Fourier, filtri e modulazione.md",
     "Architettura reti e internet/protocolli/Lezione 5-.md",
     "Architettura reti e internet/protocolli/parte_5.pdf",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md",
@@ -213,16 +225,6 @@
     "Programmazione web e mobile con laboratorio/Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione.md",
     "Programmazione web e mobile con laboratorio/esercizi/paginaCompleta.css",
     "Programmazione web e mobile con laboratorio/esercizi/paginaCompleta.html",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019154220.png",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019151835.png",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019151745.png",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019150012.png",
-    "Pasted image 20261019154220.png",
-    "Pasted image 20261019151835.png",
-    "Pasted image 20261019151745.png",
-    "Pasted image 20261019150012.png",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019145839.png",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261019145753.png",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 10-.md",
     "Programmazione web e mobile con laboratorio/Lezione 7-.md",
     "Basi di dati e sistemi informativi con laboratorio/nullAlgebraRel.pdf",
@@ -231,10 +233,8 @@
     "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 196533.crdownload",
     "Introduzione sicurezza /Lezione 5-.md",
     "Introduzione sicurezza /firewalls-22-23.ppt",
-    "firewalls-22-23.ppt",
     "Architettura reti e internet/internet/Lezione 5-.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 9-.md",
-    "Introduzione IA/lec03-informedSearch.pdf",
     "Introduzione IA/Lezione 4.md",
     "Introduzione sicurezza /Lezione 4-.md",
     "Programmazione web e mobile con laboratorio/Lezione 6-.md",
@@ -246,9 +246,6 @@
     "Programmazione web e mobile con laboratorio/Lezione 5-.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
-    "Untitled 1.md",
-    "Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
-    "Introduzione sicurezza /Lezione 3.md",
-    "Lezione 7-.md"
+    "Untitled 1.md"
   ]
 }
