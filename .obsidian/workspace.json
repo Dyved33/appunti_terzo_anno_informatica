@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4040fc9d106142ae",
+        "id": "80b0a5ad05a1f9b6",
         "type": "tabs",
         "children": [
           {
-            "id": "6907091c7c7426a7",
+            "id": "e4d303348dc53ca5",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -74,13 +74,26 @@
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
+          },
+          {
+            "id": "cae09393cb54f3dc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00 Indice - Introduzione IA"
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -248,8 +261,17 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "6907091c7c7426a7",
+  "active": "c1467e7ef2db6b6c",
   "lastOpenFiles": [
+    "primo semestre/Introduzione IA/6-Games.pdf",
+    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+    "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
+    "primo semestre/Introduzione IA/images/Pasted image 20261022181244.png",
+    "primo semestre/Introduzione IA/images/Pasted image 20261022182119.png",
+    "Pasted image 20261022222339.png",
+    "primo semestre/Introduzione IA/images/Pasted image 20261022180017.png",
+    "primo semestre/Introduzione sicurezza /Lezione 6-Esercitazione Wireshark.md",
+    "primo semestre/Introduzione sicurezza /Lezione 6- esercitazione wireshark.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/nullAlgebraRel.pdf",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 266755.crdownload",
@@ -281,19 +303,11 @@
     "opencode.json",
     "libri/Introduzione sicurezza.pdf",
     "libri/Introduzione IA.pdf",
-    "primo semestre/Introduzione sicurezza /Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/esercitazioni/pwm_esercitazione1.zip",
-    "primo semestre/Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
-    "primo semestre/Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 3-Tipi di connessione e topologie di rete.md",
     "primo semestre/Architettura reti e internet/images/slide-147.png",
     "primo semestre/Architettura reti e internet/images/slide-146.png",
     "primo semestre/Architettura reti e internet/images/slide-145.png",
     "primo semestre/Architettura reti e internet/images/slide-144.png",
-    "primo semestre/Architettura reti e internet/images/slide-143.png",
-    "primo semestre/Architettura reti e internet/images/slide-139.png",
-    "primo semestre/Architettura reti e internet/images/slide-138.png",
-    "primo semestre/Architettura reti e internet/images/slide-137.png",
-    "primo semestre/Architettura reti e internet/images/slide-136.png"
+    "primo semestre/Architettura reti e internet/images/slide-143.png"
   ]
 }
