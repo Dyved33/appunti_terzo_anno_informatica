@@ -16,7 +16,7 @@
     "@tarquinen/opencode-dcp@latest",
     {
       "package": "@plannotator/opencode@latest",
-      "options": { "workflow": "plan-agents" }
+      "options": { "workflow": "all-agents" }
     },
     "@azumag/opencode-rate-limit-fallback@2.1.0"
   ],
