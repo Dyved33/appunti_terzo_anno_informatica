@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
+::selection{ /*proprietà assegnate alla selezione*/
+  background-color: red;
+  color: black;
+}
+
 body {
   background-color: #222;
   color: #fff;
@@ -73,7 +78,7 @@ header h1 {
   padding: 0.4em;
   aspect-ratio: 1;
   object-fit: cover;
-  transition: 1s ease-out; /*senza interazione non serve a nulla*/
+  transition: 0.3s ease-out; /*senza interazione non serve a nulla*/
 }
 
 #sec1 img:hover {
@@ -101,49 +106,66 @@ header h1 {
   height: 100%;
   object-fit: cover; /*ricorda che questa è la proprietà necessaria se lavori con le images*/
 }
-/*********************************************************/
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 4em;
+  gap: 3em;
+}
+
 .image-container {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden; /*come devono comparire gli elementi al di fuori del contenitore*/
 }
 
 .overlay-text {
-    position: absolute;
-    top: 100%;
-    background-color: #22222294;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s ease-out;
+  position: absolute;
+  top: 100%;
+  background-color: #22222294; /*grigio scuro ma trasparente per vedere sotto*/
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-out;
 }
 
-.image-container:hover .overlay-text {
-    top: 0;
+/*senza quanto segue non si vedrebbe l'effetto di hover*/
+
+.image-container:hover .overlay-text{ /*modifica le proprietà di uno dei figli quando interagisco con il padre*/
+  top: 0;
 }
 
 .overlay-text q {
-    margin: 1em;
-    text-align: center;
-    font-weight: 300;
+  margin: 1em;
+  text-align: center;
+  font-weight: 300;
 }
 
 .overlay-text a {
-    background-color: #fff;
-    color: #222;
-    padding: 0.2em 0.8em;
-    border: 2px solid #fff;
-    cursor: pointer;
-    transition: 0.3s ease-out;
+  background-color: white;
+  color: black;
+  padding: 0.2em 0.8em;
+  border: 2px solid #222;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  border-radius: 10px;
+  text-decoration: none;
 }
 
 .overlay-text a:hover {
-    background-color: #ffffff00;
-    color: #fff;
+  background-color: #ffffff00;
+  color: #fff;
 }
-/*********************************************************/
+
+#sec2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 #sec3 {
   background-color: #fff;
 }
@@ -155,28 +177,32 @@ header h1 {
   font-size: 3em;
 }
 
-#sec3 p{
+#sec3 p {
   color: #222;
 }
 
 #panel {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);/*l comportamento standard di CSS Grid è riempire le celle in ordine sequenziale, da sinistra a destra e dall'alto verso il basso*/
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /*l comportamento standard di CSS Grid è riempire le celle in ordine sequenziale, da sinistra a destra e dall'alto verso il basso*/
 }
 
 #panel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.3s ease-out;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s ease-out;
 }
 
 #panel img:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-#el2, #el5 {
-    overflow: hidden;/*l'overflow dell'immagine che esce dai suoi bordi abituali non si vede e non sovrasta il testo*/
+#el2,
+#el5 {
+  overflow: hidden; /*l'overflow dell'immagine che esce dai suoi bordi abituali non si vede e non sovrasta il testo*/
 }
 
 footer p {
@@ -194,11 +220,11 @@ footer p {
   margin: 0.3em;
 }
 
-.social-icons img{
+.social-icons img {
   width: 100%;
   transition: 0.3s ease-out;
 }
 
-.social-icons:hover{
+.social-icons:hover {
   transform: scale(1.5);
 }
