@@ -46,4 +46,4 @@ Le note sono solo dentro `primo semestre/`: cerca, greppa e indicizza lì, non n
 | Controllo che non si sia perso nulla | `python3 .opencode/scripts/controlla-perdite.py NOTA [--salva] [--con FONTE]` |
 | Dividere un file unico in lezioni | `python3 .opencode/scripts/dividi-appunti.py FILE` |
 | Scrivere e integrare note | agent `appunti` |
-| Verifica di correttezza e stile | agent `revisore`: non modifica nulla, una passata a lezione conclusa |
+| Verifica di correttezza e stile | agent `revisore` e command `/revisore`: non modifica nulla, report-only; una passata a lezione conclusa |

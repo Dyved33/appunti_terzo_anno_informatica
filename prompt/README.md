@@ -30,7 +30,7 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 | `~/.config/opencode/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md` | — | impaginazione (un'idea per blocco, elenchi invece della prosa): letta a ogni sessione che scrive |
 | `.opencode/agents/appunti.md` | `vault`, `appunti`, `materiale`, `indici` | un solo agent che scrive |
 | `.opencode/agents/revisore.md` | `revisore` | controlla correttezza e verbosità, non modifica |
-| `.opencode/commands/` | i 4 command | `/lezione`, `/rivedi`, `/revisione`, `/slide`, `/dividi`, `/libro` |
+| `.opencode/commands/` | i 7 command | `/lezione`, `/rivedi`, `/revisione`, `/revisore`, `/slide`, `/dividi`, `/libro` |
 | `.opencode/scripts/vault-audit.py` | il vecchio script | riscritto: niente tag, frontmatter, indici annuali |
 | `.opencode/scripts/leggi-slide.py` | l'agent `lettore` | legge PDF, PPTX e PPT una pagina alla volta; le pagine immagine con Docling e OCR Tesseract (ita) |
 | `.opencode/scripts/libri.py` | nuovo | legge i libri di `libri/`: elenco, indice, pagina, ricerca |

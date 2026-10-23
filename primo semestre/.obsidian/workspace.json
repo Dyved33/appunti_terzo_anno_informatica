@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "430d25e36460ff04",
+        "id": "9cafe3eb6779aaa2",
         "type": "tabs",
         "children": [
           {
-            "id": "eef3fa51d0511a8a",
+            "id": "0e734c7b4ee80c8d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Introduzione IA/Lezione 6-.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 6-"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 392.5,
+    "width": 895.5,
     "collapsed": true
   },
   "right": {
@@ -204,8 +200,18 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "eef3fa51d0511a8a",
+  "active": "0e734c7b4ee80c8d",
   "lastOpenFiles": [
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md",
+    "Basi di dati e sistemi informativi con laboratorio/calcoloRelazionale.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 11-.md",
+    "Basi di dati e sistemi informativi con laboratorio/Images/slide-09.png",
+    "Basi di dati e sistemi informativi con laboratorio/Images/slide-08.png",
+    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 662759.crdownload",
+    "Introduzione IA/esercitazioni/aima.zip",
+    "Introduzione IA/esercitazioni/aimaLAB_lezione1_TODO.ipynb",
+    "Introduzione IA/esercitazioni/aimaLAB_lezione2__TODO.ipynb",
+    "Introduzione IA/esercitazioni",
     "Introduzione IA/6-Games.pdf",
     "Introduzione IA/Unconfirmed 849085.crdownload",
     "Introduzione IA/images/Pasted image 20261022182119.png",
@@ -216,19 +222,10 @@
     "Introduzione IA/images/Pasted image 20261022171346.png",
     "Introduzione IA/images/Pasted image 20261022171326.png",
     "Introduzione IA/images/Pasted image 20261022171311.png",
-    "Introduzione IA/images/Pasted image 20261022171253.png",
-    "Introduzione IA/images/Pasted image 20261022171217.png",
     "Introduzione sicurezza /Lezione 6- esercitazione wireshark.md",
     "Introduzione IA/Lezione 6-.md",
     "Introduzione sicurezza /wireshark/03_conversazione_http.pcap",
     "Introduzione sicurezza /wireshark/02_estrai_immagine.pcap",
-    "Introduzione sicurezza /wireshark/01_credenziali_ftp.pcap",
-    "Introduzione sicurezza /wireshark",
-    "Introduzione sicurezza /esercizi/03_conversazione_http.pcap",
-    "Introduzione sicurezza /esercizi/02_estrai_immagine.pcap",
-    "Introduzione sicurezza /esercizi/01_credenziali_ftp.pcap",
-    "Introduzione sicurezza /esercizi",
-    "Introduzione sicurezza /esercizi.zip",
     "Programmazione web e mobile con laboratorio/Lezione 8.md",
     "Architettura reti e internet/internet/Lezione 6-UDP e TCP.md",
     "Architettura reti e internet/internet/Lezione 6-.md",
@@ -249,8 +246,6 @@
     "Introduzione sicurezza /Lezione 4-.md",
     "Programmazione web e mobile con laboratorio/Lezione 6-.md",
     "Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md",
-    "Architettura reti e internet/internet/Lezione 4-.md",
-    "Architettura reti e internet/internet/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
-    "Introduzione IA/Lezione 3-Ricerca su grafo.md"
+    "Architettura reti e internet/internet/Lezione 4-.md"
   ]
 }

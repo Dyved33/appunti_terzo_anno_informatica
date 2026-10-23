@@ -125,7 +125,7 @@ Lo script confronta parole, non significati, e non controlla le slide fatte di s
 | Agent | Cosa fa | Come si usa |
 |---|---|---|
 | `appunti` | scrive e modifica le note. È quello attivo all'avvio | basta scrivere la richiesta |
-| `revisore` | controlla una nota (correttezza, completezza, verbosità) e restituisce l'elenco delle correzioni. Non modifica nulla | parte da solo con `/lezione` e `/rivedi`; a mano con `@revisore` |
+| `revisore` | controlla una nota (correttezza, completezza, verbosità) e restituisce l'elenco delle correzioni. Non modifica nulla | parte da solo con `/lezione` e `/rivedi`; a mano con `@revisore` o con il command `/revisore` |
 
 ## I command
 
@@ -147,6 +147,12 @@ Capisce da solo in quale caso si trova:
 /rivedi "Primo semestre/SO/Lezione 5-Semafori, Messaggi.md"
 /rivedi "Primo semestre/SO/Lezione 5-Semafori, Messaggi.md" solo report     # non modifica nulla
 /rivedi diff                                            # le note modificate e non ancora in un commit
+```
+
+**`/revisore`** lancia il revisore su una nota senza modificarla: restituisce l'elenco delle correzioni (report-only). Utile per far controllare una nota in qualsiasi momento.
+
+```
+/revisore "Primo semestre/SO/Lezione 5-Semafori, Messaggi.md"
 ```
 
 **`/revisione`** esegue il controllo strutturale e ne riporta il risultato. Non modifica nulla.
