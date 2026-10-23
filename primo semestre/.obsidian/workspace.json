@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "9cafe3eb6779aaa2",
+        "id": "353dfb62d90405cc",
         "type": "tabs",
         "children": [
           {
-            "id": "0e734c7b4ee80c8d",
+            "id": "734da41c18d83014",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/internet/Lezione 7.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 7"
             }
           }
         ]
@@ -79,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 895.5,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -200,13 +203,25 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "0e734c7b4ee80c8d",
+  "active": "734da41c18d83014",
   "lastOpenFiles": [
+    "Architettura reti e internet/internet/Lezione 6-UDP e TCP.md",
+    "Architettura reti e internet/images/slide-107.png",
+    "Architettura reti e internet/images/slide-100.png",
+    "Architettura reti e internet/images/slide-099.png",
+    "Architettura reti e internet/images/slide-097.png",
+    "Architettura reti e internet/images/slide-096.png",
+    "Architettura reti e internet/images/slide-32-032.png",
+    "Architettura reti e internet/images/slide-31-031.png",
+    "Architettura reti e internet/images/slide-035.png",
+    "Architettura reti e internet/images/slide-032.png",
+    "Architettura reti e internet/images/slide-034.png",
+    "Architettura reti e internet/internet/Lezione 7.md",
+    "Architettura reti e internet/internet/ArchitetturaRetiDef_I_i.pdf",
+    "Architettura reti e internet/internet/Unconfirmed 167530.crdownload",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md",
     "Basi di dati e sistemi informativi con laboratorio/calcoloRelazionale.pdf",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 11-.md",
-    "Basi di dati e sistemi informativi con laboratorio/Images/slide-09.png",
-    "Basi di dati e sistemi informativi con laboratorio/Images/slide-08.png",
     "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 662759.crdownload",
     "Introduzione IA/esercitazioni/aima.zip",
     "Introduzione IA/esercitazioni/aimaLAB_lezione1_TODO.ipynb",
@@ -214,20 +229,9 @@
     "Introduzione IA/esercitazioni",
     "Introduzione IA/6-Games.pdf",
     "Introduzione IA/Unconfirmed 849085.crdownload",
-    "Introduzione IA/images/Pasted image 20261022182119.png",
-    "Introduzione IA/images/Pasted image 20261022181244.png",
-    "Introduzione IA/images/Pasted image 20261022180017.png",
-    "Introduzione IA/images/Pasted image 20261022173717.png",
-    "Introduzione IA/images/Pasted image 20261022172323.png",
-    "Introduzione IA/images/Pasted image 20261022171346.png",
-    "Introduzione IA/images/Pasted image 20261022171326.png",
-    "Introduzione IA/images/Pasted image 20261022171311.png",
     "Introduzione sicurezza /Lezione 6- esercitazione wireshark.md",
     "Introduzione IA/Lezione 6-.md",
-    "Introduzione sicurezza /wireshark/03_conversazione_http.pcap",
-    "Introduzione sicurezza /wireshark/02_estrai_immagine.pcap",
     "Programmazione web e mobile con laboratorio/Lezione 8.md",
-    "Architettura reti e internet/internet/Lezione 6-UDP e TCP.md",
     "Architettura reti e internet/internet/Lezione 6-.md",
     "Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
     "Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
@@ -245,7 +249,6 @@
     "Introduzione IA/Lezione 4.md",
     "Introduzione sicurezza /Lezione 4-.md",
     "Programmazione web e mobile con laboratorio/Lezione 6-.md",
-    "Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md",
-    "Architettura reti e internet/internet/Lezione 4-.md"
+    "Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md"
   ]
 }
