@@ -18,11 +18,12 @@ Dopo ogni modifica a `opencode.json` o a un file in `.opencode/` va riavviato: l
 | `AGENTS.md` | le poche regole che valgono sempre. Viene letto a ogni sessione |
 | `.opencode/stile.md` | come vanno scritte le note. Viene caricato a ogni sessione |
 | `.opencode/regole.md` | sintesi delle due skill di scrittura, caricata a ogni sessione |
-| `.opencode/agents/` | i 2 agent |
+| `.opencode/agents/` | `appunti` per scrittura e `revisore` selezionabile come primario o invocabile come subagent |
+| `.opencode/plugins/free-model-router/` | sceglie all'avvio il modello gratuito attivo con priorità più alta, senza richieste di prova |
 | `.opencode/commands/` | i 6 command |
 | `.opencode/scripts/` | i 5 script: lettura slide, lettura libri, controllo strutturale, controllo perdite, divisione dei file unici |
 | `.opencode/dcp.jsonc` | come il plugin DCP pota il contesto della sessione |
-| `.opencode/rate-limit-fallback.json` | la catena dei modelli di riserva, in ordine di affidabilità |
+| `~/.config/opencode/rate-limit-fallback.json` | unica catena dei modelli di riserva, condivisa tra i progetti |
 | `opencode.json` | modelli, plugin, permessi, server MCP e compattazione del contesto |
 | `prompt_chat.md` | prompt da usare fuori da OpenCode (Antigravity, chat web) |
 | `libri/` | i libri di testo, un PDF per corso (`libri/<Nome corso>.pdf`); si leggono con `libri.py` (command `/libro`); complemento, non fonte di default |
@@ -33,38 +34,43 @@ Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
 
 ## I modelli
 
-Tutti i modelli in uso sono gratuiti e nessuno richiede un server acceso.
+Non c'è un modello fisso in `opencode.json`: il plugin locale sceglie all'avvio il primo modello gratuito, attivo e capace di usare tool nella classifica di `.opencode/plugins/free-model-router/index.ts`. Considera i provider presenti nel catalogo corrente e non invia richieste di prova. Il catalogo non espone crediti residui o stato di salute in tempo reale: questi errori dipendono dal fallback.
+Il plugin disabilita i modelli a pagamento, senza tool o non presenti nella sua allowlist, per evitare fallback che possano generare costi.
 
 | Modello | A che cosa serve |
 |---|---|
-| `opencode/nemotron-3-ultra-free` | default: scrive e rivede le note |
+| `opencode/nemotron-3.5-super-vl-free` | preferito se presente: scrive e rivede le note; supporta anche immagini e documenti |
+| `opencode/nemotron-3-ultra-free` | seconda scelta, disciplinata nell'uso dei tool |
 | `opencode/minimax-m3.1-flash-free` | titolo della sessione; il più veloce |
 | `openrouter/*:free` | modelli OpenRouter `:free`, integrati nella catena di fallback |
 | `ollama/qwen2.5:3b` | ultima risorsa, offline e senza quota, gira sulla GPU (GTX 1050) |
 
 Il free tier di OpenCode non chiede credenziali. OpenRouter ne chiede una (già salvata). Gli altri provider gratuiti si possono aggiungere con `bash ~/.config/opencode/scripts/connect-free-providers.sh`: per ogni provider il comando stampa il link per creare la key e poi la chiede.
 
-Su OpenCode 2.x i modelli si cambiano dal selettore `/models`; il modello scelto vale per la sessione.
+I modelli gratuiti e i relativi limiti cambiano. Nemotron 3.5 Super VL Free è temporaneamente gratuito e il suo endpoint NVIDIA può registrare le richieste per migliorare i modelli: non inviare dati personali o riservati.
+
+Il modello scelto vale per la sessione. Puoi cambiarlo con `/models`; l'agente automatico seleziona di nuovo il candidato al riavvio.
 
 ## Il fallback automatico
 
-Se un provider risponde 429 (quota esaurita) o un errore transitorio, l'agent passa da solo al modello successivo della catena e ci torna quando la quota si libera. La catena è in `.opencode/rate-limit-fallback.json` (nel vault) e in `~/.config/opencode/rate-limit-fallback.json` (in ogni progetto):
+Per gli errori riconosciuti dal plugin, la richiesta prova il modello successivo. Quando finisce la catena si ferma, senza ripartire in ciclo. Un `504 Gateway Timeout` generico non è garantito che venga riconosciuto: il timeout limita l'attesa, ma non assicura il passaggio al fallback. La configurazione unica è `~/.config/opencode/rate-limit-fallback.json`; non creare copie nel vault:
 
 ```
+opencode/nemotron-3.5-super-vl-free
 opencode/nemotron-3-ultra-free
 opencode/minimax-m3.1-flash-free
 opencode/deepseek-v4.1-flash-free
+opencode/mimo-v2.6-flash-free
+opencode/glm-5.3-flash-free
+openrouter/free
 openrouter/thinkingmachines/inkling:free
 openrouter/minimax/minimax-m3.1-flash:free
-opencode/glm-5.3-flash-free
-openrouter/liquid/lfm-2.5-2.6b:free
 ollama/qwen2.5:3b
-ollama/qwen2.5-coder:3b
 ```
 
-Il passaggio conserva l'agente attivo, la sessione e il contesto: l'agent continua lo stesso lavoro sull'altro modello. Dopo l'ultimo modello della catena il plugin torna al primo e aspetta un tempo che raddoppia a ogni giro (1, 2, 4 minuti, fino a un'ora). Un messaggio dell'utente rimette la sessione sul suo modello.
+Il passaggio conserva l'agente attivo, la sessione e il contesto e segue l'ordine statico qui sopra. Dopo un passaggio completo senza un modello utilizzabile, la richiesta si ferma: non riparte in ciclo e non resta in attesa fino a un'ora. I modelli scelti manualmente ma assenti dalla catena restano ai retry nativi di OpenCode.
 
-La catena è in ordine di affidabilità misurata: ogni modello è stato provato su quattro compiti prima di entrarci. Se un modello nuovo fallisce, toglilo dalla catena invece di lasciarlo: un fallback che sbaglia costa più che un 429.
+`openrouter/free` sceglie un modello gratuito compatibile solo dentro OpenRouter. La classifica del plugin è una preferenza curata, non una misura di qualità o quota corrente; i modelli locali sono in fondo perché possono essere più lenti.
 
 ## Token e contesto
 
@@ -107,7 +113,7 @@ Una cosa da tenere presente quando scrivi le richieste: **se chiedi "scrivi il t
 
 1. Crei tu la nota nella cartella del corso (es. `Lezione 3-Automi a pila.md`). Nella stessa cartella metti gli appunti grezzi (`.txt`, uno per lezione), le slide e, in `images/`, le immagini.
 2. Scrivi nella nota quello che hai, con i segnaposto `// ... //` dove serve.
-3. Durante il lavoro puoi chiedere modifiche a parole: l'agent scrive, aggiorna l'indice e controlla la struttura. Non chiama il revisore.
+3. Per pianificare senza modifiche seleziona `plan`: Plannotator mostra il piano e l'agente non può modificare le note. Dopo l'approvazione passa ad `appunti` per eseguire il lavoro. Per le richieste normali `appunti` non apre Plannotator.
 4. A lezione conclusa lanci `/lezione`: completa la nota, ti chiede se integrare il libro di testo di `libri/` come complemento, scrive la sintesi finale, fa passare il revisore una volta e applica le correzioni.
 
 ## Niente si perde
@@ -125,7 +131,7 @@ Lo script confronta parole, non significati, e non controlla le slide fatte di s
 | Agent | Cosa fa | Come si usa |
 |---|---|---|
 | `appunti` | scrive e modifica le note. È quello attivo all'avvio | basta scrivere la richiesta |
-| `revisore` | controlla una nota (correttezza, completezza, verbosità) e restituisce l'elenco delle correzioni. Non modifica nulla | parte da solo con `/lezione` e `/rivedi`; a mano con `@revisore` o con il command `/revisore` |
+| `revisore` | controlla una nota (correttezza, completezza, verbosità) e restituisce l'elenco delle correzioni. Non modifica nulla | primario selezionabile e subagent; parte con `/lezione`, oppure a mano con `@revisore` o `/revisore` |
 
 ## I command
 
@@ -267,7 +273,7 @@ python3 .opencode/scripts/dividi-appunti.py FILE --scrivi  # crea le note
 
 ## Il plugin opencode-parser
 
-Aggiunge il tool `parse`, che estrae il testo da PDF, Word, PowerPoint e, con l'OCR, dalle immagini. Non crea e non inserisce immagini. Qui serve per una cosa sola: leggere il testo dentro uno screenshot (`parse` con OCR in italiano). Per slide e PDF l'agent usa `leggi-slide.py`, perché `parse` restituisce il documento dall'inizio e non una pagina precisa.
+Aggiunge il tool `parse`, che estrae il testo da PDF, Word, PowerPoint e, con l'OCR, dalle immagini. È installato globalmente come `opencode-parser@2.0.1`, compatibile con OpenCode 2; non crea né inserisce immagini. Qui serve per leggere il testo dentro uno screenshot (`parse` con OCR in italiano). Per slide e PDF l'agent usa `leggi-slide.py`, perché `parse` restituisce il documento dall'inizio e non una pagina precisa.
 
 ## La ricerca semantica (server obsidian-search)
 
@@ -283,16 +289,12 @@ obsidian-mcp-search status                      # note e blocchi indicizzati
 
 L'indice si aggiorna da solo quando una nota cambia (watcher). Il modello e le note indicizzate sono nella cartella di cache in `~/.cache/obsidian-mcp-search/`. L'agente lo usa solo per trovare le lezioni collegate, non per leggere il file da modificare.
 
-## Il plugin ACP
-
-Il plugin `@tuanhung303/opencode-acp` compatta il contesto per tempo, non solo per dimensione: quando la conversazione si allunga toglie le parti vecchie mantenendo i vincoli attivi, così il lavoro lungo non si perde. Non richiede configurazione.
-
 ## La compattazione del contesto
 
 Quando la conversazione si allunga, OpenCode riassume da solo le parti vecchie per liberare spazio nella finestra di contesto del modello. In `opencode.json` la sezione `compaction` imposta:
 
 - `auto: true` — compatta automaticamente quando il contesto è pieno (default: `true`);
-- `keep.tokens: 30000` — dopo il riassunto restano 30k token di contesto utile, invece di ricominciare da zero.
+- `keep.tokens: 12000` — conserva un riassunto più compatto, riducendo il contesto reinviato nei turni successivi.
 
 Ci sono anche `reserved` (token di riserva per la compattazione) e `preserve_recent_tokens` (token recenti da conservare). Non esiste una cadenza fissa "ogni N messaggi": la compattazione parte quando il contesto si riempie, e un riassunto a intervalli richiederebbe un plugin che chiami `session.summarize`.
 

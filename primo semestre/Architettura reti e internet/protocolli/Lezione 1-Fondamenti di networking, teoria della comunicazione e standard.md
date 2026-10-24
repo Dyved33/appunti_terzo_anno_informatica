@@ -57,7 +57,7 @@ Formulato originariamente da Claude Shannon dei Bell Laboratories e da Warren We
 7. **Destinatario (*Destination*):** la persona o il sistema finale a cui è indirizzata l'informazione.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20260925115804.png" width="450">
+  <img src="images/Pasted image 20260925115804.png" width="450">
 </div>
 
 > [!info] Il Modello di Shannon-Weaver
@@ -99,7 +99,7 @@ Lo **switching** può essere *store-and-forward*, che memorizza l'intero frame p
 La gestione e la trasformazione delle informazioni nei sistemi telematici e decisionali è formalizzata nel modello gerarchico **DIKW** (*Data, Information, Knowledge, Wisdom*):
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20260925115953.png" width="450">
+  <img src="images/Pasted image 20260925115953.png" width="450">
 </div>
 
 > [!info] La Piramide DIKW
@@ -149,7 +149,7 @@ Affinché apparati realizzati da produttori indipendenti e basati su architettur
 I principali organismi internazionali responsabili della definizione degli standard telematici e delle reti sono:
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20260925120233.png" width="180">
+  <img src="images/Pasted image 20260925120233.png" width="180">
 </div>
 
 - **ISO (*International Organization for Standardization*):**
@@ -157,7 +157,7 @@ I principali organismi internazionali responsabili della definizione degli stand
   - Sviluppa norme in molteplici settori industriali, svolgendo un ruolo cardine nel networking grazie alla definizione del modello di riferimento **ISO/OSI (*Open Systems Interconnection*)** e alle normative internazionali per la sicurezza informatica (es. serie ISO/IEC 27000).
 
 <div style="display: flex; justify-content: center;">
-  <img src="standard_organizations.png" width="500">
+  <img src="images/standard_organizations.png" width="500">
 </div>
 - **IEEE-SA (*Institute of Electrical and Electronics Engineers - Standards Association*):**
   - Organizzazione leader nella standardizzazione dei livelli fisici e di accesso al mezzo (sottolivelli PHY e MAC).
@@ -210,7 +210,7 @@ Ciascun livello elabora e scambia una propria specifica unità di dati denominat
 ### Il confronto fra ISO/OSI e TCP/IP
 
 <div style="display: flex; justify-content: center;">
-  <img src="iso_osi_vs_tcp_ip.png" width="450">
+  <img src="images/iso_osi_vs_tcp_ip.png" width="450">
 </div>
 
 **Il livello fisico:**
@@ -254,7 +254,7 @@ Ciascun livello elabora e scambia una propria specifica unità di dati denominat
 ## Comunicazione end-to-end e inoltro di rete
 
 <div style="display: flex; justify-content: center;">
-  <img src="iso_osi_host_communication.png" width="480">
+  <img src="images/iso_osi_host_communication.png" width="480">
 </div>
 
 > [!info] Principio di Inoltro a Livello di Rete

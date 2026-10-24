@@ -12,7 +12,7 @@ A seconda della <u>natura dell'informazione</u> si associano **diverse quantità
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="codifica_pixels_immagine.jpg" style="width: 100%; border-radius: 8px;">
+    <img src="images/codifica_pixels_immagine.jpg" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   I bit per elemento non sono una proprietà del dato in astratto, ma della sua natura: più l'insieme dei valori distinguibili è ampio, più bit servono. È la stessa logica dei codici testuali, dove l'ampiezza in bit è determinata dal numero di simboli distinti da rappresentare.
@@ -31,19 +31,19 @@ A seconda della <u>natura dell'informazione</u> si associano **diverse quantità
 **ASCII:**
 
 <div style="display: flex; justify-content: center;">
-  <img src="codice_ascii.jpg" width="420">
+  <img src="images/codice_ascii.jpg" width="420">
 </div>
 
 **ASCII extended:**
 
 <div style="display: flex; justify-content: center;">
-  <img src="codice_ascii_extended.jpg" width="240">
+  <img src="images/codice_ascii_extended.jpg" width="240">
 </div>
 
 **EBCDIC:**
 
 <div style="display: flex; justify-content: center;">
-  <img src="codice_ebcdic.jpg" width="420">
+  <img src="images/codice_ebcdic.jpg" width="420">
 </div>
 
 ## I flussi trasmissivi
@@ -52,9 +52,9 @@ Il **flusso trasmissivo** fra mittente e destinatario si istituisce secondo tre 
 
 | Tipo            |                     Schema                     | Comportamento                                                                                               | Esempio       |
 | :-------------- | :--------------------------------------------: | :---------------------------------------------------------------------------------------------------------- | :------------ |
-| **Simplex**     |   <img src="flusso_simplex.jpg" width="140">   | solo uno dei dispositivi può spedire informazione, l'altro può solo ricevere                                | radio         |
-| **Half duplex** | <img src="flusso_half_duplex.jpg" width="140"> | ogni dispositivo può trasmettere e ricevere, ma non contemporaneamente                                      | walkie-talkie |
-| **Full duplex** | <img src="flusso_full_duplex.jpg" width="140"> | entrambi possono spedire e ricevere contemporaneamente, con bidirezionalità tramite due collegamenti fisici |               |
+| **Simplex**     |   <img src="images/flusso_simplex.jpg" width="140">   | solo uno dei dispositivi può spedire informazione, l'altro può solo ricevere                                | radio         |
+| **Half duplex** | <img src="images/flusso_half_duplex.jpg" width="140"> | ogni dispositivo può trasmettere e ricevere, ma non contemporaneamente                                      | walkie-talkie |
+| **Full duplex** | <img src="images/flusso_full_duplex.jpg" width="140"> | entrambi possono spedire e ricevere contemporaneamente, con bidirezionalità tramite due collegamenti fisici |               |
 
 La progressione è netta: il *simplex* azzera la bidirezionalità, l'*half duplex* la rende possibile ma mutuamente esclusiva, il *full duplex* la rende simultanea su due collegamenti fisici distinti.
 
@@ -70,7 +70,7 @@ Il ruolo di ciascun apparato lungo il canale è definito da una classe di sigle 
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1.5;">
-    <img src="schema_dte_dce.jpg" style="width: 100%; border-radius: 8px;">
+    <img src="images/schema_dte_dce.jpg" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1;">
   La distinzione DTE/DCE è ciò che permette all'applicazione utente, ospitata nel DTE, di dialogare attraverso la rete: il DCE si colloca fra il terminale e la rete e adatta il segnale al canale.

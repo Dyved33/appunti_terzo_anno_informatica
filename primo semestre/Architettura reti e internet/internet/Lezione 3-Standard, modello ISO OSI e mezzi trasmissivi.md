@@ -26,7 +26,7 @@ Il progetto 802 è concentrato sull'interfaccia fisica degli apparati e sulle pr
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-110.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-110.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   La tabella dei gruppi di lavoro dello standard IEEE 802, con numero, nome e ambito (Topic): Internetworking (routing, bridging e comunicazioni rete-rete), Logical Link Control (controllo d'errore e di flusso sui frame), Ethernet LAN, Token Bus LAN, Token Ring LAN, Metropolitan Area Network (802.6, tecnologie, indirizzamento e servizi MAN), Network Security (controllo degli accessi, cifratura e certificazione), Wireless Networks, High-Speed Networking (tecnologie oltre i 100 Mbps, come 100BASE-VG), Cable Broadband LANs and MANs (reti su connessioni broadband coassiali), Wireless Personal Area Networks (coesistenza con altri dispositivi wireless in bande non licenziate) e Broadband Wireless Access (interfaccia atmosferica e funzioni del Wireless Local Loop, WLL).
@@ -54,7 +54,7 @@ Il modello definisce un impianto concettuale sulla base del quale è possibile d
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-104.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-104.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Lo schema accosta il modello OSI, con hub, switch e router collocati ai livelli bassi che competono loro, ai livelli concettuali del TCP/IP, dove le funzioni dei livelli alti si raccolgono in <i>Application</i> e quelle dei livelli bassi in <i>Network Interface</i>.
@@ -69,7 +69,7 @@ In una tipica struttura di rete i cerchi rappresentano i **nodi** della rete, co
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-115.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-115.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Rappresentazione grafica di nodi, <i>communication path</i> e <i>information path</i>.
@@ -84,7 +84,7 @@ Ad eccezione dei livelli 1 e 7, ciascun livello è collegato ai livelli preceden
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-116.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-116.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   L'elenco dei sette livelli, dalla base al vertice: Physical (Layer 1), Data Link (2), Network (3), Transport (4), Session (5), Presentation (6) e Application (7), secondo la CCITT Recommendation X.200.
@@ -95,7 +95,7 @@ I livelli adiacenti comunicano attraverso le loro interfacce. Ogni livello è co
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-120.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-120.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Lo schema accosta due entità adiacenti: ciascun livello eroga servizi al livello superiore e ne fruisce dal livello inferiore, mentre le entità omologhe dialogano tramite il protocollo di livello N-1.
@@ -104,7 +104,7 @@ I livelli adiacenti comunicano attraverso le loro interfacce. Ogni livello è co
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-121.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-121.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Lo schema dell'interfaccia SAP fra livello N e livello N-1 e il passaggio da (N)-PDU a (N-1)-SDU con l'aggiunta delle informazioni di controllo.
@@ -114,14 +114,14 @@ I livelli adiacenti comunicano attraverso le loro interfacce. Ogni livello è co
 La figura seguente mostra i dati che scendono lungo i livelli fino alla sequenza di bit trasmessa sul mezzo fisico.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-105.png" width="300">
+  <img src="images/slide-105.png" width="300">
 </div>
 
 **PDU, SDU e PCI:** <u>lo scopo di ciascun livello è fornire servizi al livello superiore</u>, con cui comunica attraverso l'interfaccia detta SAP (*Service Access Point*). I dati N-PDU (*Protocol Data Unit*) generati da un protocollo di livello N, una volta attraversata l'interfaccia SAP tra il livello N e il livello N-1, diventano (N-1)-SDU (*Service Data Unit*); ogni livello N-1 aggiunge ai dati N-PDU ricevuti dal livello superiore N le informazioni di controllo (N-1)-PCI (*Protocol Control Information*).
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-106.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-106.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   L'incapsulamento progressivo: il messaggio dei livelli alti diventa messaggio TCP/UDP con l'header di trasporto, poi datagram IP con l'header di rete, infine frame di livello 2 con header e footer.
@@ -134,7 +134,7 @@ End System A e End System B eseguono lo stack completo dei livelli; il **Router*
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-122.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-122.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Lo stack completo dei sette livelli nei due End System e il Router, <i>Intermediate System</i>, che si ferma al livello di rete; i due tratti hanno mezzi fisici distinti.
@@ -146,7 +146,7 @@ End System A e End System B eseguono lo stack completo dei livelli; il **Router*
 Al livello più basso, il **livello fisico**, è un insieme di regole che specificano le connessioni elettriche e fisiche tra i dispositivi. Questo livello specifica le connessioni dei cavi e il tipo di segnale elettrico associato ai vari pin di connessione delle interfacce utilizzate per trasferire dati tra i diversi dispositivi di rete.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-123.png" width="300">
+  <img src="images/slide-123.png" width="300">
 </div>
 
 Il *physical link* corrisponde agli standard di interfaccia dei vari dispositivi; appartengono a questo livello, per esempio, le interfacce **RS232**, **V.24**, **V.35** e **SONET/SDH**. Le regole definiscono la trasmissione dati per i terminali, i modem, le schede di rete e così via.
@@ -159,7 +159,7 @@ Un **doppino ritorto**, detto anche coppia bifilare, è un tipo di linea di tras
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-125.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-125.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   La composizione del doppino: una coppia di conduttori in rame con l'isolante, la schermatura e la guaina esterna che avvolge il cavo in rame.
@@ -170,7 +170,7 @@ Esistono diversi tipi di doppino a seconda della schermatura; l'**UTP** (*Unshie
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-126.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-126.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   I tipi di doppino secondo la schermatura mostrano conduttore, isolante, una coppia o più coppie, schermatura e guaina nelle varianti UTP, FTP, S/FTP e S/STP.
@@ -179,7 +179,7 @@ Esistono diversi tipi di doppino a seconda della schermatura; l'**UTP** (*Unshie
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-127.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-127.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   I cavi di diverse categorie nelle varianti UTP, STP, SFTP e FTP: al crescere della categoria il cavo diventa più rigido e più affidabile.
@@ -212,7 +212,7 @@ Il **cavo coassiale** è un cavo elettrico utilizzato come mezzo trasmissivo di 
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-131.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-131.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   La sezione del cavo coassiale: il conduttore centrale, il dielettrico che lo avvolge, la protezione intrecciata, la protezione laminata e il rivestimento esterno.
@@ -241,7 +241,7 @@ Una **fibra ottica** è una fibra flessibile e trasparente, realizzata trafiland
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-136.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-136.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Lo schema di un collegamento in fibra: box ottico, bretelle ottiche e in rame, transceiver e modulo GBic, con le tratte in rame verso le LAN alle due estremità.
@@ -252,7 +252,7 @@ Una **fibra ottica** è una fibra flessibile e trasparente, realizzata trafiland
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-137.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-137.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   La struttura della fibra ottica: <i>core</i>, <i>cladding</i>, rivestimento primario e guaina protettiva.
@@ -263,7 +263,7 @@ La luce si propaga guidata: un raggio incidente che colpisce la superficie di se
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-138.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-138.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   La propagazione della luce: raggio incidente e raggio rifratto, l'angolo critico e il fenomeno della riflessione totale interna che confina il raggio nel core.
@@ -274,7 +274,7 @@ A seconda di come la luce si propaga si distinguono fibre **multimodali**, in cu
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-139.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-139.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Il confronto fra fibra multimodale e monomodale: nella multimodale più raggi seguono percorsi diversi nel core, nella monomodale ne passa uno solo.
@@ -296,7 +296,7 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-143.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-143.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   La mappa delle applicazioni della comunicazione wireless: aerospazio, trasporti, computer, Internet of Things, GPS, ambito medicale e Bluetooth.
@@ -307,7 +307,7 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-144.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-144.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   La televisione analogica e digitale: canali digitali divisi in bande separate, LNB e ricezione con decoder DTT o SAT verso il televisore.
@@ -318,7 +318,7 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-145.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-145.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Schematizzazione di una rete domestica WiFi.
@@ -329,7 +329,7 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-146.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-146.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Le applicazioni Bluetooth: periferiche del PC, cuffie, stampanti, mouse, navigatori per auto, orologi, domotica, beacon, videocamere digitali, accessori per sport e fitness, glucometri, contapassi, termometri, monitor sanitari, audio portatile e vivavoce.
@@ -340,7 +340,7 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-147.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-147.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   L'evoluzione della telefonia mobile: 1G con voce analogica a 2,4 kbps, 2G con voce digitale e dati semplici a 64 kbps, 3G con mobile broadband a 2.000 kbps, 4G con trasmissione più veloce e migliore a 100.000 kbps, 5G con velocità fino a 1 Gbps per applicazioni nel mondo reale.

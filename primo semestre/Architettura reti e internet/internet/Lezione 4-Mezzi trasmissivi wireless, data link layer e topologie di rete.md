@@ -24,7 +24,7 @@ L'assenza di un'infrastruttura di cablaggio fisico offre benefici operativi ed e
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-44.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-44.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Panoramica delle tecnologie e dei campi applicativi delle comunicazioni wireless: dai sistemi aerospaziali, GPS e trasporti intelligenti, fino alla telemedicina, comunicazioni cellulari, Internet of Things (IoT), reti locali wireless (Wi-Fi) e collegamenti personali a corto raggio (Bluetooth).
@@ -86,7 +86,7 @@ Si distingue nettamente tra:
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-52.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-52.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Tassonomia delle strutture topologiche di rete: collegamento punto-punto (point-to-point), topologia a bus, topologia a stella, topologia ad anello (ring), topologia ad albero (tree), topologia a maglia (mesh) e configurazioni ibride composite.
@@ -97,7 +97,7 @@ Si distingue nettamente tra:
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-53.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-53.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Schema della topologia a bus: un unico cavo funge da dorsale comune a cui sono allacciate tutte le stazioni. Il canale &egrave; condiviso in broadcast e richiede terminatori resistivi a entrambi i capi per presentare la corretta impedenza ed evitare riflessioni distruttive del segnale.
@@ -115,7 +115,7 @@ Nella topologia a bus, un unico segmento di cavo continuo funge da percorso prin
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-54.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-54.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Schema della topologia a stella: ciascuna stazione terminale &egrave; interconnessa tramite una linea punto-punto dedicata a un controllore centrale di rete (hub o switch), che governa e instrada le comunicazioni isolando i guasti dei singoli cavi.
@@ -133,7 +133,7 @@ Ciascuna stazione è connessa direttamente a un dispositivo centrale di controll
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-55.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-55.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Schema della topologia ad anello: le stazioni sono collegate in sequenza chiusa lungo un percorso circolare unidirezionale. Nelle reti moderne l'anello logico &egrave; realizzato mediante concentratori MAU (Multistation Access Unit) interconnessi tramite anello principale e nodi cablati a stella.
@@ -151,7 +151,7 @@ La topologia ad anello può essere considerata concettualmente come una topologi
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-56.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-56.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Schema della topologia ad albero: evoluzione gerarchica a livelli della topologia a stella o bus ramificato. I nodi intermedi instradano i dati lungo la gerarchia fino alle foglie. La comunicazione tra stazioni periferiche su rami distanti risulta inefficiente dovendo risalire la radice.
@@ -167,7 +167,7 @@ Costituisce una variante gerarchica della topologia a stella, estendibile a più
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-57.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-57.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Architettura iniziale delle reti geografiche (WAN) nella seconda met&agrave; degli anni '50: centri EDP altamente centralizzati con elaboratori mainframe, collegamenti remoti punto-punto mediante coppie di modem telefonici e trasmissione periodica a lotti (Remote Batch Transmission).
@@ -184,7 +184,7 @@ Le origini e lo sviluppo delle reti geografiche (*Wide Area Network*, WAN) sono 
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-ret-58.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-ret-58.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Architettura del sistema IBM 3270: mainframe centrale interfacciato a Communication Controller e unit&agrave; di controllo locale. Il collegamento geografico verso la sede remota avviene tramite linea con modem dedicati e Control Unit remota, a cui fanno capo molteplici terminali video e stampanti.

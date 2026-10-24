@@ -34,7 +34,7 @@ def breadth_search_graph(problem: Problem) -> Node:
         return node
     frontier = deque([node])
     explored = set(node.state)
-    print("Frontier BFS:")
+    print("Frontier DFS:")
 
     # scorrimento frontiera
     while frontier:
@@ -76,11 +76,11 @@ def depth_search_graph(problem: Problem) -> Node:
 
     # scorrimento frontiera
     while frontier:
-        node = frontier.pop()  # estrazione del nodo da deque
+        node = frontier.pop()  # estrae l'ultimo nodo inserito (LIFO)
 
         if problem.goal_test(node.state):
             print("Last Expanded: ", node)
-            print("Explored node in BFS: ", len(explored))
+            print("Explored nodes in DFS: ", len(explored))
             return node
 
         # analisi dei figli

@@ -2,7 +2,9 @@
 
 ## Che cos'è l'intelligenza artificiale
 
-L'**intelligenza artificiale** è la disciplina informatica che studia lo sviluppo di sistemi hardware e software capaci di risolvere compiti che richiederebbero intelligenza umana. Le sue radici teoriche sono nei primi anni '50: nel 1950 Alan Turing, nell'articolo *Computing Machinery and Intelligence*, si chiede se una macchina possa pensare e interagire con l'essere umano usando il suo stesso linguaggio naturale, con l'*Imitation Game*, noto come **Test di Turing**.
+L'**intelligenza artificiale** studia come costruire sistemi hardware e software capaci di svolgere compiti che richiedono intelligenza umana.
+
+Le radici teoriche dell'IA risalgono ai primi anni '50. Nel 1950 Alan Turing pose una domanda alla base del campo: una macchina può conversare in modo tale da essere scambiata per una persona? Nell'articolo *Computing Machinery and Intelligence* propose l'*Imitation Game*, poi noto come **Test di Turing**.
 
 L'ecosistema dell'IA moderna è una gerarchia insiemistica:
 
@@ -32,11 +34,13 @@ $$\text{IA Generativa} \subseteq \text{Deep Learning} \subseteq \text{Machine Le
 
 ## L'addestramento
 
-*Definizione:* l'**addestramento** (*training*) è il processo algoritmico che determina i valori ottimali dei parametri interni di un modello, minimizzando l'errore di predizione e garantendo un'accurata capacità di inferenza su dati non ancora osservati.
+L'**addestramento** (*training*) è il processo con cui l'algoritmo modifica i parametri interni del modello per ridurre l'errore di predizione sulle risposte attese.
+
+Il risultato è utile se il modello sa poi fare buone previsioni anche su dati che non ha incontrato durante l'addestramento: questa capacità si chiama **generalizzazione**.
 
 $$\text{Dati di Input} + \text{Risposte Attese} \xrightarrow{\text{Algoritmo di Apprendimento}} \text{Modello Ottimizzato}$$
 
-L'algoritmo opera in modo **iterativo**: aggiorna progressivamente i parametri passo dopo passo e termina al raggiungimento della convergenza numerica, cioè quando l'errore non diminuisce più, oppure quando si verifica una condizione di arresto prefissata (*early stopping*).
+L'algoritmo opera in modo **iterativo**: aggiorna i parametri, ricalcola l'errore e ripete il ciclo. Si ferma quando l'errore non diminuisce più (*convergenza*) o quando raggiunge una condizione di arresto prefissata (*early stopping*).
 
 > [!important] Generalizzazione, non memorizzazione
 > L'obiettivo del machine learning è la **generalizzazione**, non la pura memorizzazione dei dati. Per questo il modello si addestra sul *training set*, ma <u>le prestazioni vanno verificate su un insieme disgiunto di dati mai visti durante il training</u>, il **test set**: è ciò che previene l'**overfitting**, il sovradattamento.
@@ -102,7 +106,9 @@ A ogni passo generativo un **large language model** esegue, a livello fondamenta
 | **Origine delle etichette** | un essere umano, un "oracolo", etichetta esplicitamente ogni esempio | nessun oracolo: il target è la parola successiva già presente nel testo grezzo | esperti umani, con esempi di risposte desiderate e preferenze comparative |
 | **Tipo di apprendimento** | apprendimento supervisionato classico | apprendimento auto-supervisionato (*self-supervised learning*) | *fine-tuning*, *instruction tuning*, RLHF, DPO |
 
-Il modello impara quindi la struttura della lingua e la conoscenza del mondo minimizzando l'errore nella predizione della parola successiva (*next-token prediction*) su miliardi di documenti testuali. La supervisione umana specializzata interviene solo a valle, per allineare e personalizzare il modello verso compiti conversazionali o specifici.
+Nel pre-addestramento l'LLM impara a prevedere il token successivo (*next-token prediction*) a partire da grandi quantità di testo. Così apprende regolarità della lingua e informazioni presenti nei testi.
+
+La supervisione umana può intervenire in seguito per adattare il modello alle istruzioni, alle preferenze e a compiti conversazionali o specifici.
 
 **Dal testo ai numeri:** i modelli elaborano esclusivamente vettori numerici, e il passaggio dal linguaggio naturale alla rappresentazione numerica si articola in tre stadi.
 
@@ -173,9 +179,9 @@ La discriminante fra un'architettura documentale convenzionale e un sistema agen
   <img src="Pasted image 20260930182802.png" width="600">
 </div>
 
-**Architettura a flusso fisso**, pipeline deterministica: i passaggi esecutivi sono rigidamente prefissati dal progettista del software, per esempio cerca nel database, poi inserisci nel prompt, poi genera risposta. Il flusso compie un unico passaggio deterministico, invariante rispetto alla complessità della richiesta.
+**Architettura a flusso fisso:** il progettista stabilisce in anticipo i passaggi, per esempio cercare nel database, inserire i risultati nel prompt e generare la risposta. La sequenza resta la stessa anche se cambia la richiesta.
 
-**Sistema agentico**, agent loop: è il modello stesso a pianificare dinamicamente la sequenza di azioni necessarie per completare un obiettivo articolato.
+**Sistema agentico:** il modello sceglie i passaggi necessari per raggiungere l'obiettivo. Dopo ogni azione valuta il risultato e decide se usare altri strumenti o concludere.
 
 1. *Pianificazione* (*plan*): analizza l'obiettivo e stabilisce il sotto-task immediato, per esempio reperire un dato o eseguire un calcolo.
 2. *Utilizzo di strumenti* (*tool use*, *action*): invoca tool esterni specializzati, motori di ricerca, interpreti Python, calcolatori, API.

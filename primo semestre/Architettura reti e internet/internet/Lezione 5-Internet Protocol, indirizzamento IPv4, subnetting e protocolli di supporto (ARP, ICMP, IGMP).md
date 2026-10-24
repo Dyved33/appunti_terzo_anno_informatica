@@ -1,7 +1,7 @@
 # Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP)
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111015.png" width="30%">
+  <img src="images/Pasted image 20261016111015.png" width="30%">
 </div>
 
 ## Internet protocol (IP)
@@ -36,11 +36,11 @@
 *Definizione:* L'unità fondamentale di trasferimento è detta datagram IP, divisa in area di intestazione (header), campo di controllo dell'header e blocco dei dati.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111047.png" width="30%">
+  <img src="images/Pasted image 20261016111047.png" width="30%">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111101.png" width="30%">
+  <img src="images/Pasted image 20261016111101.png" width="30%">
 </div>
 
 ## Formato del datagram IP
@@ -82,7 +82,7 @@
 ## Classi di indirizzi IP
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111201.png" width="30%">
+  <img src="images/Pasted image 20261016111201.png" width="30%">
 </div>
 
 *Definizione:* Caratteristiche delle classi in base al primo byte $x$ dell'indirizzo `x.y.z.w`:
@@ -155,7 +155,7 @@
 *Definizione:* Si definisce la subnet mask per trovare il numero associato alla rete.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111332.png" width="30%">
+  <img src="images/Pasted image 20261016111332.png" width="30%">
 </div>
 
 ### Schema per subnetting
@@ -173,7 +173,7 @@ Subnet:  141.250.5.0
 ```
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111347.png" width="30%">
+  <img src="images/Pasted image 20261016111347.png" width="30%">
 </div>
 
 ### Schema per subnetting 
@@ -183,7 +183,7 @@ Subnet:  141.250.5.0
 *Definizione:* L'intervallo degli indirizzi host è rappresentato come segue:
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111422.png" width="30%">
+  <img src="images/Pasted image 20261016111422.png" width="30%">
 </div>
 
 *Definizione:* Con subnet mask 255.255.255.128, il primo indirizzo host è 141.250.5.129, l'ultimo 141.250.5.254, l'indirizzo broadcast è 141.250.5.255.
@@ -195,7 +195,7 @@ Subnet:  141.250.5.0
 ### Esempio
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016111456.png" width="30%">
+  <img src="images/Pasted image 20261016111456.png" width="30%">
 </div>
 
 *Osservazione:* Partizionamento della rete di classe C 194.143.128.0 al variare dei bit di subnet mask:
@@ -303,7 +303,7 @@ Esempio:
 ## Famiglia di protocolli TCP/IP
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261016120308.png" width="30%">
+  <img src="images/Pasted image 20261016120308.png" width="30%">
 </div>
 
 ## Address resolution protocol (ARP)

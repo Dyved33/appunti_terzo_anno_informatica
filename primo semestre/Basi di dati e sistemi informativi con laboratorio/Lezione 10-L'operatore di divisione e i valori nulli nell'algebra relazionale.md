@@ -121,13 +121,13 @@ Per lavorare esplicitamente con i null si introducono le condizioni atomiche `a 
 - $\sigma_{\text{Città} \text{ IS NULL}}$ dà le tuple 2 e 4, $\sigma_{\text{Stipendio} \text{ IS NOT NULL}}$ dà le tuple 1 e 2;
 - $\sigma_{\text{Città} = \text{Milano} \vee \text{Stipendio} > 2200}$ dà le tuple 1 e 2: per la tupla 1 vale V $\vee$ F = V, per la 2 ? $\vee$ V = V, per la 3 F $\vee$ ? = ? e per la 4 ? $\vee$ ? = ?, quindi 3 e 4 restano fuori.
 
-> [!example] Esempio aggiuntivo: condizioni complesse con `IS NULL`
+> [!example] Condizioni complesse con `IS NULL`
 > Sulla stessa tabella `Impiegati`, consideriamo:
 > - $\sigma_{\text{Città IS NULL} \wedge \text{Stipendio IS NOT NULL}}$ → tuple 2 (Bianchi): ? $\wedge$ V = ? per la 2? No: Città IS NULL è V per 2 e 4, Stipendio IS NOT NULL è V per 1 e 2. Quindi V $\wedge$ V = V solo per la 2.
 > - $\sigma_{\text{Città = Milano} \vee \text{Stipendio IS NULL}}$ → tuple 1, 3, 4: per 1 V $\vee$ F = V; per 2 ? $\vee$ F = ?; per 3 F $\vee$ V = V; per 4 ? $\vee$ V = V.
 > - $\sigma_{\neg(\text{Stipendio} > 2000)}$ → tuple 3, 4: per 1 $\neg$V = F; per 2 $\neg$V = F; per 3 $\neg$? = ? (scartata); per 4 $\neg$? = ? (scartata). *Attenzione:* $\neg$? = ?, non V, quindi le tuple con stipendio null non passano nemmeno la negazione.
 
-### Concatenazione e valori nulli
+### Concatenazione e valori 3. nulli
 
 Per il $\theta$-join valgono le stesse regole per la valutazione della condizione di join $F$ secondo la logica a tre valori. Il join naturale non combina due tuple se queste hanno entrambe valore nullo su un attributo in comune.
 

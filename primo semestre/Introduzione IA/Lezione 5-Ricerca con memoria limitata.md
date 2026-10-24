@@ -5,7 +5,7 @@ La ricerca A* standard mantiene in memoria l'intera frontiera e il *reached set*
 ## Contorni di f in A*
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide5--01.png" width="300">
+  <img src="slide5--01.png" width="30%">
 </div>
 
 A* espande i nodi in ordine di $f$ crescente: aggiunge progressivamente "contorni di $f$" (insiemi di nodi con lo stesso valore di $f$). Il contorno $i$ contiene tutti i nodi con $f = f_i$, dove $f_i < f_{i+1}$. Questo comportamento a contorni è la base per le varianti a memoria limitata.
@@ -13,17 +13,17 @@ A* espande i nodi in ordine di $f$ crescente: aggiunge progressivamente "contorn
 ## Confronto UCS vs A*: esplorazione dello spazio
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide5--02.png" style="width: 100%;">
+  <img src="slide5--02.png" style="width: 30%;">
 </div>
 
-La ricerca a costo uniforme (UCS) espande nodi lungo curve di livello concentriche di $g$ attorno allo stato iniziale. Per $g=100$ il contorno include {A, Z(75)}; per $g=150$ si aggiungono {O(146), S(140), T(118)}; per $g=250$ si aggiungono {F(249), R(220), L(229)}. I contorni UCS coprono porzioni ampie dello spazio, espandendo nodi anche lontani dal goal.
+La ricerca a costo uniforme (UCS) espande nodi lungo curve di livello concentriche di $g$ attorno allo stato iniziale e questo comporta che i contorni di UCS coprono porzioni ampie dello spazio, espandendo nodi anche lontani dal goal.
 
 A* invece guida l'espansione verso il goal grazie all'euristica $h$, riducendo drasticamente i nodi esplorati: i contorni di $f = g + h$ si allungano nella direzione dell'obiettivo.
 
 ## Potatura e soluzioni soddisfacenti
 
 > [!info] In altre parole:
-> A* con euristica ammissibile è ottimo ma può esplodere in memoria. Se rinunciamo all'ottimalità stretta, possiamo *potare* rami poco promettenti e cercare soluzioni "abbastanza buone" (*satisficing*), risparmiando tempo e spazio.
+> $A^{*}$ con euristica ammissibile è ottimo ma può esplodere in memoria. Se rinunciamo all'ottimalità stretta, possiamo *potare* rami poco promettenti e cercare soluzioni "abbastanza buone" (*satisficing*), risparmiando tempo e spazio.
 
 Proprietà di A*: è completo (salvo infiniti nodi con $f < f(G)$), ottimo e ottimalmente efficiente per l'euristica data (nessun altro algoritmo ottimo espande meno nodi). Tuttavia **espande troppi nodi** (spazio e tempo esponenziali nel caso peggiore). La soluzione: *rilassare i vincoli* e cercare soluzioni *satisficing* (subottime ma "abbastanza buone").
 
@@ -73,7 +73,7 @@ IDA* applica la strategia di *iterative deepening* ad A*: invece di una frontier
 | Requisito di memoria lineare nella profondità massima ($O(bd)$) | Quando riparte, **scarta tutta l'informazione** eccetto la nuova soglia |
 | Non serve il *reached set* | Numero di iterazioni = numero di valori $f$ distinti lungo il cammino ottimo |
 
-## Rbfs
+## RBFS
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
@@ -93,7 +93,7 @@ IDA* applica la strategia di *iterative deepening* ad A*: invece di una frontier
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide5--09.png" style="width: 100%;">
+  <img src="slide5--09.png" style="width: 30%;">
 </div>
 
 Proseguimento della traccia RBFS (slide 9):
@@ -129,7 +129,7 @@ function RBFS(problem, node, f-limit) returns a solution or failure, and a new f
 ### Proprietà di RBFS
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide5--11.png" style="width: 100%;">
+  <img src="slide5--11.png" style="width: 30%;">
 </div>
 
 - **Ottimalità:** come A*, ottimo se $h(n)$ è ammissibile
@@ -139,12 +139,12 @@ function RBFS(problem, node, f-limit) returns a solution or failure, and a new f
 > [!warning] Attenzione
 > RBFS può riespandere molte volte gli stessi nodi perché "dimentica" i rami non correnti, ricordando solo il loro miglior $f$ di backup. Questo costa tempo per risparmiare spazio.
 
-## Sma* (Simplified Memory-Bounded A*)
+## SMA* (Simplified Memory-Bounded A*)
 
 SMA* è una semplificazione di A* a memoria limitata che **sfrutta tutta la memoria disponibile**. Quando la memoria si esaurisce, dimentica i nodi peggiori (con $f$ più alto) per fare spazio a quelli migliori.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide5--12.png" style="width: 100%;">
+  <img src="slide5--12.png" style="width: 30%;">
 </div>
 
 **Principio di funzionamento:**
@@ -154,7 +154,7 @@ SMA* è una semplificazione di A* a memoria limitata che **sfrutta tutta la memo
 - Memorizza il valore $f$ del nodo dimenticato nel suo genitore (*backed-up value*), così se quel ramo diventa di nuovo promettente l'algoritmo sa quanto valeva
 - Se tutti i nodi in memoria sono goal, restituisce il migliore; se la memoria contiene solo nodi con $f = \infty$, fallisce
 
-### Caratteristiche di SMA*
+### Proprietà di SMA*
 
 | Proprietà       | Descrizione                                                                                         |
 | --------------- | --------------------------------------------------------------------------------------------------- |

@@ -5,4 +5,5 @@
 - [[Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi|Standard, modello ISO/OSI e mezzi trasmissivi]]
 - [[Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete|Mezzi trasmissivi wireless, data link layer e topologie di rete]]
 - [[Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP)|IP, indirizzamento IPv4, subnetting e protocolli ARP, ICMP, IGMP]]
-- [[Lezione 6-UDP e TCP|UDP e TCP: protocolli di trasporto]]
+- [[Lezione 6-UDP e TCP e routing|UDP, TCP e routing]]
+- [[Lezione 7-Protocolli di routing|Protocolli di routing: OSPF, RIP e BGP]]

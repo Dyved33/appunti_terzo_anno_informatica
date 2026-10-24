@@ -14,7 +14,7 @@ Le reti sono classificate in base alla dimensione fisica:
 - Reti per applicazioni mobili (wireless).
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-04.png" style="width: 30%;">
+  <img src="images/slide-04.png" style="width: 30%;">
 </div>
 ## Reti wan
 le reti wan hanno le caratteristiche:
@@ -45,7 +45,7 @@ le reti WLAN sono LAN wireless (senza fili):
 La banda a 2,4 GHz offre una copertura più ampia ma è più lenta; la banda a 5 GHz è più veloce ma ha una copertura ridotta.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-07.png" style="width: 30%;">
+  <img src="images/slide-07.png" style="width: 30%;">
 </div>
 
 ## Reti man
@@ -64,7 +64,7 @@ Le reti wireless sono reti di comunicazione mobili private o reti di comunicazio
 	- LTE (Long Term Evolution)
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-10.png" style="width: 30%;">
+  <img src="images/slide-10.png" style="width: 30%;">
 </div>
 
 Nello schema le tecnologie wireless sono riportate con le rispettive bande di frequenza: WAN a 400 e 800 MHz, IEEE 802.20 a 900 MHz, 2,5 e 3,6 GHz proposti, MAN, Wi-Fi mesh, WiMAX (802.16), MeshNetworks, wireless LAN Wi-Fi, Ethernet e UWB.
@@ -78,7 +78,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete ad albero
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-12.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-12.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Stazioni a vari livelli: livello centrale di massima importanza; fornisce struttura semplice ma vulnerabile.
@@ -88,7 +88,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete a dorsale
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-13.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-13.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Collegamento multi punto, ambito LAN, rete broadcast su ethernet, caratterizzata da facilità di installazione. In pratica il cavo formava la spina dorsale fisica (<i>backbone</i>).
@@ -97,7 +97,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-14.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-14.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Esempio di vecchio schema di ethernet LAN con cavo 10BASE-2, dove 10 = 10 Mb/s, chiamato <i>thin-net</i>. Queste reti richiedevano anche che una speciale terminazione (una impedenza da 40 o 50 Ohm) fosse installata alla fine dei segmenti del cavo. Se questi attacchi venivano accidentalmente rimossi o si guastavano, quell'intero segmento di rete smetteva di funzionare. Queste tecnologie cablate richiedevano giunti metallici di discrete dimensioni denominati connettori BNC.
@@ -107,7 +107,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete a stella
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-15.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-15.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Ogni nodo è connesso con un collegamento punto-a-punto ad un dispositivo centrale, è simile alla rete ad albero. Risulta più economica di quella a maglia completa (<i>mesh</i>). Se un collegamento si interrompe, solo il nodo collegato ne subisce le conseguenze.
@@ -116,7 +116,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-16.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-16.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Es.: Ethernet con topologia a stella - 100baseT e 1000baseT. Dove T indica l'introduzione del doppino ritorto non schermato UTP (Unshielded Twisted Pair) e cavi terminati con connettori plastici RJ45, l'hub divenne di fatto il nuovo backbone. Lavorare con i cavi di tipo UTP si dimostrò non solo molto più semplice ma talmente più produttivo, che l'UTP divenne ben presto lo standard indiscusso su tutte le nuove installazioni.
@@ -126,7 +126,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete ad anello
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-17.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-17.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Molto utilizzata in passato in ambito LAN, come <i>token ring</i> IEEE802.5: ogni nodo ha un collegamento punto-a-punto con solo due altri nodi (precedente e successivo). Trasmissione unidirezionale: ogni nodo ha un ripetitore che rigenera segnale; di facile installazione e configurazione, con semplice isolamento guasti; tuttavia se il collegamento principale si interrompe, la rete diventa non utilizzabile. Si noti che si può ovviare a quest'ultima eventualità prevedendo un secondo anello interno.
@@ -136,7 +136,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete a maglia (mesh)
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-18.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-18.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Tutti i nodi sono collegati tra di loro (maglia completa), con un fattore di costo pari a N(N-1)/2, poiché ogni nodo ha collegamento punto-a-punto con gli altri. Ogni apparato è allo stesso tempo in grado di trasmettere, ricevere e inoltrare dati.
@@ -146,7 +146,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Reti mesh
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-20.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-20.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Reti realizzate con combinazione di nodi fissi e mobili interconnessi tra di loro con link wireless per formare una rete auto-configurante multi-hop. Le apparecchiature utente hanno una parte attiva, potendo operare da terminali ma anche come router per altri nodi, estendendo copertura di rete. Grande affidabilità dovuta alla capacità di gestire in maniera dinamica il malfunzionamento sia di collegamenti radio che di componenti hardware della rete. Monitoraggio in tempo reale dei percorsi disponibili per raggiungere una determinata stazione, selezionando in tempo reale il percorso ottimale per raggiungerla.

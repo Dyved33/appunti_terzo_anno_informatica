@@ -106,9 +106,13 @@ Un **processo** è un programma in esecuzione all'interno di un elaboratore.
 
 Lo sviluppatore controlla l'interfaccia socket a livello applicativo, mentre il sistema operativo governa buffer di memoria RAM, code di pacchetti e macchine a stati del protocollo di trasporto.
 
-**Indirizzamento completo: la 5-tupla e le porte.** L'indirizzo IP identifica in modo univoco l'**interfaccia di rete dell'host**, ma su un singolo host operano centinaia di processi: serve anche il **numero di porta** (intero a 16 bit, intervallo $0 - 65535$) per individuare l'esatto socket di destinazione, il cosiddetto **socket address** `IP:porta`. Formalmente una connessione TCP/IP bidirezionale è univocamente identificata dalla **5-tupla**:
+**Indirizzi, porte e connessioni.** L'indirizzo IP identifica l'interfaccia di rete dell'host. Poiché sullo stesso host possono funzionare molti processi, il sistema usa anche un **numero di porta** (16 bit, da $0$ a $65535$) per consegnare i dati al processo corretto.
 
-$$\langle \text{IP Sorgente}, \text{Porta Sorgente}, \text{IP Destinazione}, \text{Porta Destinazione}, \text{Protocollo di Trasporto} \rangle$$
+La coppia `IP:porta` è un **socket address**. Una connessione TCP/IP è identificata dalla **5-tupla**:
+
+$$\langle \text{IP sorgente}, \text{porta sorgente}, \text{IP destinazione}, \text{porta destinazione}, \text{protocollo di trasporto} \rangle$$
+
+Le prime quattro componenti distinguono i due endpoint; la quinta distingue TCP da UDP. Due connessioni possono quindi usare la stessa porta server se differiscono per indirizzo o porta del client.
 
 *Classificazione delle porte logiche:*
 

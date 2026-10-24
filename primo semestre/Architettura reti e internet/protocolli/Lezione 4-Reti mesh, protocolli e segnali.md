@@ -52,7 +52,7 @@ A seconda che la relazione tra stazioni DTE remote sia di tipo primario/secondar
 *Request-to-Send/Clear-to-Send* si basa sull'interfaccia RS-232 (interfaccia seriale): una stazione che vuole trasmettere invia un'apposita richiesta alla stazione master (attivando il segnale RTS); se il master può servire tale richiesta, autorizza la stazione a trasmettere (risposta CTS) sia il suo primo messaggio sia quelli successivi. Questa procedura, che si basa sulla rispondenza tra segnali con corretta temporizzazione, è chiamata *handshake*. Durante la trasmissione il master conserva la possibilità di interrompere il flusso per una qualsiasi ragione, rimuovendo lo stato RTS.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-75.png" style="width: 50%;">
+  <img src="images/slide-75.png" style="width: 50%;">
 </div>
 
 > [!note]
@@ -64,7 +64,7 @@ Tipicamente usato tra computer e terminali posti vicini tra loro: i codici Xon e
 La stazione primaria invia dati a un terminale, che li memorizza per poterli utilizzare; se la memoria del terminale si riempie, il terminale invia il carattere XOFF, che impedisce l'emissione di nuovi blocchi; appena il DTE torna in grado di memorizzare, invia il carattere XON e la stazione primaria riprende a trasmettere.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-77.png" style="width: 50%;">
+  <img src="images/slide-77.png" style="width: 50%;">
 </div>
 
 ## ARQ
@@ -77,11 +77,11 @@ La finestra del mittente specifica i frame che il mittente può spedire in quel 
 - **Stop and Wait**: Considerato il caso base con finestra di dimensione **1**, dove si attende l'ACK prima di inviare il frame successivo.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-80.png" style="width: 50%;">
+  <img src="images/slide-80.png" style="width: 50%;">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-81.png" style="width: 50%;">
+  <img src="images/slide-81.png" style="width: 50%;">
 </div>
 
 ## La trasmissione dati
@@ -108,7 +108,7 @@ $$u = U \sin(\omega t + \varphi)$$
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-84.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-84.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   dove t è il tempo trascorso, ω è la velocità angolare e φ è il cosiddetto sfasamento o fase. La curva descritta dal segnale nel tempo prende il nome di sinusoide.
@@ -119,7 +119,7 @@ Applicando le proprie conoscenze di trigonometria si riconosce che tale curva ra
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-85.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-85.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   U rappresenta l'ampiezza del segmento, quindi l'ampiezza massima del segnale. La quantità φ rappresenta lo sfasamento, cioè l'angolo che il segmento rotante forma con l'asse x all'istante 0. Questo valore determina quanto vale il segnale in quell'istante: all'istante t = 0 avremo
@@ -134,7 +134,7 @@ Dire che un segnale ha una frequenza di un kilohertz significa ad esempio che il
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-87.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-87.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Poiché un angolo completo è pari a 2π, la velocità con cui il segmento percorre la circonferenza è data da 2πf. L'intervallo di tempo che passa prima che il segnale si ripeta identicamente prende il nome di periodo.
@@ -147,7 +147,7 @@ $$T = \frac{1}{f}$$
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="slide-88.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-88.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Ad esempio un segnale con frequenza pari ad 1 kHz ha periodo di 1/1000 secondi = 1 millisecondo. Altra caratteristica fondamentale di un segnale è la sua lunghezza d'onda λ, che mette in relazione la frequenza e la velocità di trasmissione, secondo:

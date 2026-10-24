@@ -135,7 +135,7 @@ Rivede stesse info del packet filter + registra info su connessioni TCP. Alcuni 
 
 Al termine sessione o dopo timeout, la voce viene eliminata dalla tabella.
 
-### Application-Level Gateway (Proxy Applicativo)
+### Application-level gateway (proxy applicativo)
 
 Agisce come relè di traffico application-level. L'utente contatta il gateway via applicazione TCP/IP (Telnet, FTP), il gateway chiede il remote host, l'utente fornisce user ID e autenticazione valida, il gateway contatta l'applicazione sul remote host e rilancia segmenti TCP contenenti dati applicativi tra i due endpoint.
 
@@ -149,9 +149,11 @@ Se il gateway non implementa il proxy code per un'applicazione specifica, il ser
 - Significativo **processing overhead** su ogni connessione: due connessioni splice con il gateway al punto di splice, che deve esaminare e inoltrare tutto il traffico in entrambe le direzioni.
 - Supporto limitato alle sole applicazioni espressamente implementate nel gateway.
 
-### Circuit-Level Gateway (Proxy di Circuito)
+### Circuit-level gateway (proxy di circuito)
 
-Può essere sistema stand-alone o funzione specializzata di un application-level gateway per certe applicazioni. Non permette connessione TCP end-to-end; il gateway stabilisce **due connessioni TCP**: una tra sé e un utente TCP su host interno, una tra sé e un utente TCP su host esterno. Una volta stabilite, rilancia tipicamente segmenti TCP da una connessione all'altra **senza esaminarne il contenuto**. La funzione di sicurezza consiste nel determinare quali connessioni saranno ammesse.
+Può essere un sistema stand-alone o una funzione specializzata di un application-level gateway per alcune applicazioni. Non crea una connessione TCP end-to-end: il gateway apre due connessioni separate, una con l'host interno e una con quello esterno.
+
+Una volta stabilite, inoltra i segmenti TCP da una connessione all'altra **senza esaminarne il contenuto**. La protezione consiste nel decidere quali connessioni ammettere.
 
 Uso tipico: amministratore si fida degli utenti interni. Gateway configurato per application-level/proxy service su connessioni inbound e circuit-level per outbound → overhead di esame dati applicativi in entrata per funzioni proibite, ma non su dati in uscita.
 
@@ -234,7 +236,7 @@ Con distributed firewall può aver senso **both internal and external DMZ**: Web
 
 Aspetto importante: **security monitoring** — log aggregation e analisi, statistiche firewall, fine-grained remote monitoring host individuali se necessario.
 
-### Summary of Firewall Locations and Topologies
+### Riepilogo delle posizioni e topologie dei firewall
 
 Spettro di location e topologie:
 

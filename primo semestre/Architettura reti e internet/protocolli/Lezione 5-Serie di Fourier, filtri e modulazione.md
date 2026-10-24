@@ -11,19 +11,19 @@ Utilizzando un numero sempre maggiore di opportuni segnali sinusoidali, si ottie
 **Approssimazione con 3ª armonica:**
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-03.png" width="30%">
+  <img src="images/slide-03.png" width="30%">
 </div>
 
 **Approssimazione con 5ª armonica:**
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-04.png" width="30%">
+  <img src="images/slide-04.png" width="30%">
 </div>
 
 **Approssimazione con 9ª armonica:**
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-05.png" width="30%">
+  <img src="images/slide-05.png" width="30%">
 </div>
 
 Nel caso in cui il segnale sia una pura sinusoide, quest'ultimo viene rappresentato nel dominio delle frequenze da un'unica armonica: utilizzando un numero maggiore di segnali sinusoidali possiamo ottenere una più accurata rappresentazione del segnale originale. Il numero di armoniche utilizzate varia a seconda della potenza del segnale da rappresentare: generalmente si tende a considerare l'armonica sino a che la sua ampiezza sia un decimo della componente fondamentale.
@@ -51,7 +51,7 @@ $$\frac{V_{out}}{V_{in}} = \frac{1}{\sqrt{2}} \approx 0,707$$
 In uscita, il segnale è attenuato di circa il 30% in tensione (dimezzamento della potenza, −3 dB). È realizzabile con un circuito CR (resistore-condensatore) in serie.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-10.png" width="30%">
+  <img src="images/slide-10.png" width="30%">
 </div>
 
 ### Filtro passa alto
@@ -59,7 +59,7 @@ In uscita, il segnale è attenuato di circa il 30% in tensione (dimezzamento del
 Permette il passaggio di frequenze al di sopra della frequenza di taglio. Realizzabile con un circuito CR (condensatore-resistore) in serie, fa passare tutte le componenti di frequenza comprese tra quella di taglio e la frequenza (in teoria) infinita. Sotto la frequenza di taglio, le componenti del segnale sono attenuate.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-11.png" width="30%">
+  <img src="images/slide-11.png" width="30%">
 </div>
 
 ### Filtro passa banda
@@ -67,7 +67,7 @@ Permette il passaggio di frequenze al di sopra della frequenza di taglio. Realiz
 Fa passare le frequenze all'interno di un dato intervallo (detto *banda passante*) ed attenua le frequenze al di fuori di esso. I più semplici filtri passa banda possono essere realizzati da due filtri passa basso e passa alto opportunamente collegati.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-12.png" width="30%">
+  <img src="images/slide-12.png" width="30%">
 </div>
 
 ### Filtro elimina banda (notch)
@@ -75,7 +75,7 @@ Fa passare le frequenze all'interno di un dato intervallo (detto *banda passante
 Non permette il passaggio di frequenze in un dato intervallo. Il suo funzionamento è l'opposto di un filtro passa banda: elimina una banda di frequenze $[\omega_L, \omega_H]$.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-13.png" width="30%">
+  <img src="images/slide-13.png" width="30%">
 </div>
 
 ## Modulazione di un segnale
@@ -109,7 +109,7 @@ Segnale modulato in ampiezza:
 $$v(t) = [V_p + K_a V_m \cos(\omega_m t)] \cos(\omega_p t)$$
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-18.png" width="30%">
+  <img src="images/slide-18.png" width="30%">
 </div>
 
 > [!warning] Attenzione:
@@ -131,7 +131,7 @@ Indice di modulazione di frequenza ($K_f$ sensibilità, $\Delta f$ deviazione):
 $$m_f = \frac{K_f V_M}{\omega_m} = \frac{K_f V_M}{2\pi f_m} = \frac{\Delta f}{f_m}$$
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-21.png" width="30%">
+  <img src="images/slide-21.png" width="30%">
 </div>
 
 ### PM (Modulazione di fase)
@@ -149,7 +149,7 @@ Dove:
 - $m_p = K_p V_m$: indice di modulazione di fase
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-24.png" width="30%">
+  <img src="images/slide-24.png" width="30%">
 </div>
 
 ## Modulazione impulsiva
@@ -159,19 +159,19 @@ Tipo di modulazione in cui l'informazione è codificata in una serie di impulsi.
 - **PAM** (*Pulse Amplitude Modulation*) – modulazione ad ampiezza di impulso: il segnale analogico modulante varia l'ampiezza del treno di impulsi che costituisce la portante.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-26.png" width="30%">
+  <img src="images/slide-26.png" width="30%">
 </div>
 
 - **PWM** (*Pulse Width Modulation*) – modulazione a larghezza di impulso: l'informazione è codificata sotto forma di durata temporale degli impulsi; il segnale modulante varia la larghezza (durata) degli impulsi.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-27.png" width="30%">
+  <img src="images/slide-27.png" width="30%">
 </div>
 
 - **PPM** (*Pulse Position Modulation*) – modulazione a posizione di impulso: ampiezze e durate degli impulsi sono identiche, ma è modificata la loro posizione in base al segnale della modulante. Quanto più il segnale analogico è positivo, tanto più è ritardata la posizione degli impulsi rispetto a quella di riposo, e viceversa.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-28.png" width="30%">
+  <img src="images/slide-28.png" width="30%">
 </div>
 
 - **PCM** (*Pulse Code Modulation*) – modulazione codificata di impulsi: rappresenta tuttora lo standard per la digitalizzazione dei canali telefonici.
@@ -182,7 +182,7 @@ Intorno agli anni quaranta nacque l'esigenza di aumentare il numero di collegame
 - Le tecniche impulsive furono presto superate dal **PCM**.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-30.png" width="30%">
+  <img src="images/slide-30.png" width="30%">
 </div>
 
 Lo schema del PCM telefonico europeo a 32 canali consente di far transitare su un solo cavo coassiale 30 telefonate contemporaneamente senza che interferiscano fra loro e indirizzarle, in ricezione, ciascuna all'utente richiesto. Dei 32 canali multiplexati, 30 sono canali vocali e 2 sono di servizio.

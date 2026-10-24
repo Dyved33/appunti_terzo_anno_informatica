@@ -16,10 +16,10 @@ Il calcolo relazionale su tuple è un linguaggio di interrogazione formale per i
 L'algebra relazionale è dunque un linguaggio relazionale completo. La maggior parte dei linguaggi di interrogazione per RDBMS commerciali (come SQL) è completa, ma ha **più potere espressivo** dell'algebra relazionale di base (e del calcolo relazionale) — ad esempio per aggregazioni, ordinamento, aggiornamenti.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-08.png" style="width: 100%; border-radius: 8px;">
+  <img src="slide-08.png" style="width: 30%; border-radius: 8px;">
 </div>
 
-*Figure 5.7 – Vincoli di integrità referenziale sullo schema relazionale COMPANY (da Elmasri & Navathe).*
+*Figure 5.7 – Vincoli di integrità referenziale sullo schema relazionale COMPANY.*
 
 ## Esempio
 > [!example] Query in calcolo relazionale su tuple
@@ -48,7 +48,7 @@ dove:
 Per definire le formule, si introduce la nozione di **atomo**. Un atomo del calcolo relazionale è un'espressione appartenente a uno dei tre tipi seguenti:
 
 1.  **R(t)** — dove **R** è un nome di relazione e **t** una variabile di tupla (es. $Employee(t)$). Significa: «la tupla t appartiene alla relazione R».
-2.  **ti.A θ tj.B** — dove **θ ∈ {=, ≠, <, >, ≤, ≥}**, $t_i$ e $t_j$ sono variabili di tupla, $A$ e $B$ attributi delle relazioni su cui prendono valore $t_i$, $t_j$ (es. $t.Fname = s.Fname$ con $t$, $s$ su $Employee$).
+2.  **$ti.A θ tj.B$** — dove **θ ∈ {=, ≠, <, >, ≤, ≥}**, $t_i$ e $t_j$ sono variabili di tupla, $A$ e $B$ attributi delle relazioni su cui prendono valore $t_i$, $t_j$ (es. $t.Fname = s.Fname$ con $t$, $s$ su $Employee$).
 3.  **t.A θ c** — dove **θ ∈ {=, ≠, <, >, ≤, ≥}**, $t$ è una variabile di tupla, $A$ attributo della relazione su cui $t$ prende valore, $c$ è una **costante** (es. $t.Lname = \text{'Bo'}$).
 
 ## Formule del calcolo relazionale

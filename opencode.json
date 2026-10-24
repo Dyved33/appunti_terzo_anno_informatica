@@ -1,14 +1,20 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "appunti",
-  "model": "opencode/nemotron-3-ultra-free",
   "instructions": [
     ".opencode/stile.md",
     ".opencode/regole.md"
   ],
   "agents": {
     "title": { "model": "opencode/minimax-m3.1-flash-free" },
-    "compaction": { "model": "opencode/nemotron-3-ultra-free" }
+    "compaction": { "model": "opencode/nemotron-3-ultra-free" },
+    "plan": {
+      "mode": "primary",
+      "model": "opencode/minimax-m3.1-flash-free",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" }
+      ]
+    }
   },
   "lsp": false,
   "formatter": false,
@@ -16,7 +22,7 @@
     "@tarquinen/opencode-dcp@latest",
     {
       "package": "@plannotator/opencode@latest",
-      "options": { "workflow": "all-agents" }
+      "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
     "@azumag/opencode-rate-limit-fallback@2.1.0"
   ],
@@ -27,7 +33,7 @@
   },
   "compaction": {
     "auto": true,
-    "keep": { "tokens": 30000 }
+    "keep": { "tokens": 12000 }
   },
   "experimental": { "todo": true },
   "watcher": {

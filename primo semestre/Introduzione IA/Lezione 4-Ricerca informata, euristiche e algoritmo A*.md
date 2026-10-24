@@ -1,6 +1,10 @@
 # Ricerca informata, euristiche e algoritmo A*
 
-Tutti gli algoritmi di ricerca condividono la medesima struttura algoritmica generale e differiscono essenzialmente per la strategia di gestione della frontiera (*fringe*). Concettualmente, qualsiasi frontiera è modellabile come una coda di priorità. In pratica, per algoritmi di ricerca non informata come DFS e BFS si evita l'overhead computazionale $O(\log n)$ di una coda di priorità ad albero (heap) impiegando rispettivamente semplici stack LIFO e code FIFO. A livello di codice è possibile progettare un'unica implementazione unificata che accetta un oggetto coda polimorfo (*variable queuing object*).
+Gli algoritmi di ricerca differiscono soprattutto per il criterio con cui scelgono il prossimo nodo dalla **frontiera** (*fringe*).
+
+Una coda di priorità può rappresentare questo criterio in modo generale. Se è implementata con un heap, inserire o estrarre un nodo costa $O(\log n)$. DFS e BFS usano strutture più semplici: rispettivamente uno stack LIFO e una coda FIFO, evitando questo costo aggiuntivo.
+
+Nel codice si può riutilizzare la stessa procedura di ricerca passando strutture di frontiera diverse (*variable queuing object*).
 
 ## Ricerca a costo uniforme
 
@@ -43,7 +47,14 @@ $$f(n) = g(n) + h(n)$$
 
 ## Algoritmo A*
 
-L'algoritmo **A\*** utilizza la funzione di valutazione $f(n) = g(n) + h(n)$. Combina la certezza del costo accumulato proprio di UCS con la guida direzionale fornita dall'euristica.
+L'algoritmo **A\*** assegna a ogni nodo un costo stimato totale:
+
+$$f(n) = g(n) + h(n)$$
+
+- $g(n)$ è il costo già sostenuto per arrivare al nodo.
+- $h(n)$ stima il costo che resta per raggiungere il goal.
+
+A* sceglie dalla frontiera il nodo con $f$ minore. In questo modo combina il costo effettivo usato da UCS con la stima che guida la ricerca verso il goal.
 
 L'algoritmo A\* è ottimo rispetto al costo = garantisce di restituire il cammino a costo minimo dallo stato iniziale al goal, purché la funzione euristica soddisfi la proprietà di **ammissibilità**.
 

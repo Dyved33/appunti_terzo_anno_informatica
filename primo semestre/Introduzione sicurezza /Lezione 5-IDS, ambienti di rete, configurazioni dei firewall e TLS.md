@@ -2,7 +2,7 @@
 
 ## Ambienti di rete: IDS
 
-I *network-based IDS* monitorano il traffico di rete cercando delle "tracce" (*attack signature*) che indicano un attacco in corso: sono più efficaci di un host-based IDS, perché un solo IDS monitorizza più macchine.
+I *network-based IDS* monitorano il traffico di rete cercando delle "tracce" (*attack signature*) che indicano un attacco in corso: sono più efficaci di un host-based IDS, perché un solo IDS monitora più macchine.
 
 <div style="display: flex; justify-content: center;">
   <img src="Pasted image 20261019100622.png" width="30%">
@@ -14,7 +14,7 @@ L'IDS notifica (ed in alcuni casi previene) l'accesso a sistemi di rete e intera
 
 **Numerazione degli ambienti:** 5 = IDS, 6 = DNS, 7 = server (gli ambienti 1-4 sono in [[Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS|Lezione 4]]).
 
-**C'è un IDS per ogni sottorete.** Se si avesse un solo IDS, dove sarebbe meglio metterlo? Tutte e tre le risposte sono giusse, se motivate:
+**C'è un IDS per ogni sottorete.** Se si avesse un solo IDS, dove sarebbe meglio metterlo? Tutte e tre le risposte sono giuste, se motivate:
 
 - **Nell'internal network:** i server più importanti sono lì, e la sonda controlla il traffico che li raggiunge dopo il main firewall ma prima dell'internal firewall;
 - **Nell'interior protected network:** è l'ultima rete prima dei sistemi più sensibili: la sonda vede il traffico esterno già filtrato e quello interno, e intercetta la propagazione laterale fra server;

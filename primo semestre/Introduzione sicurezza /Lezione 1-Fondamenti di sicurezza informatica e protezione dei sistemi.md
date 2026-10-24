@@ -28,9 +28,9 @@ La sicurezza informatica si articola storicamente attorno alla **Triade CIA**, a
 
 **Triade CIA:**
 
-1. **Confidenzialità (*Confidentiality*):** garanzia che i dati, le comunicazioni e le risorse di sistema siano accessibili e leggibili esclusivamente dai soggetti, utenti o processi, esplicitamente autorizzati.
-2. **Integrità (*Integrity*):** garanzia che le informazioni, il software e le configurazioni non subiscano alterazioni, manomissioni o cancellazioni non autorizzate, preservando la correttezza e la completezza del dato originale.
-3. **Disponibilità (*Availability*):** garanzia che i sistemi, le reti e le informazioni siano tempestivamente accessibili e pienamente operativi ogni qualvolta un utente o servizio autorizzato ne faccia richiesta.
+1. **Confidenzialità (*Confidentiality*):** solo soggetti autorizzati possono accedere ai dati, alle comunicazioni e alle risorse di sistema.
+2. **Integrità (*Integrity*):** informazioni, software e configurazioni restano corretti e completi; alterazioni, manomissioni e cancellazioni non autorizzate vengono impedite.
+3. **Disponibilità (*Availability*):** sistemi, reti e informazioni sono accessibili e operativi quando un utente o servizio autorizzato ne ha bisogno.
 
 **Proprietà estese:**
 
@@ -43,10 +43,10 @@ La sicurezza informatica si articola storicamente attorno alla **Triade CIA**, a
 
 Il controllo degli accessi poggia su quattro pilastri logici distinti ma interconnessi:
 
-1. **Autenticazione (*Authentication*):** processo di validazione delle credenziali o delle evidenze fornite da un'entità per dimostrare di essere chi afferma di essere, come l'inserimento di username e password, i certificati digitali, i token OTP o i fattori biometrici.
-2. **Identificazione (*Identification*):** associazione formale tra un'entità logica o account e la reale identità civile e anagrafica nel mondo fisico, come l'esibizione di un documento di riconoscimento, SPID o la verifica notarile.
-3. **Autorizzazione (*Authorization*):** determinazione e attribuzione dei privilegi operativi e dei diritti di accesso a specifiche risorse, cioè la definizione puntuale di *cosa* l'utente autenticato ha il permesso di leggere, modificare o eseguire.
-4. **Tracciabilità e accounting (*Auditing & Accountability*):** monitoraggio e registrazione continuativa delle azioni svolte dagli utenti all'interno del sistema, per *verificare chi fa cosa* tramite registri di audit e log immutabili.
+1. **Autenticazione (*Authentication*):** verifica delle credenziali o delle prove fornite da un'entità. Può usare username e password, certificati digitali, token OTP o dati biometrici.
+2. **Identificazione (*Identification*):** associazione di un account all'identità reale della persona. Può avvenire, per esempio, tramite documento, SPID o verifica notarile.
+3. **Autorizzazione (*Authorization*):** definizione dei privilegi dell'utente autenticato. Stabilisce quali risorse può leggere, modificare o eseguire.
+4. **Tracciabilità e accounting (*Auditing & Accountability*):** registrazione delle azioni degli utenti, per *verificare chi fa cosa*, tramite registri di audit e log immutabili.
 
 ```
 [ Identificazione / Anagrafica ] 
@@ -77,11 +77,11 @@ La protezione di un'organizzazione o infrastruttura richiede un approccio difens
 
 **Le fasi del piano di sicurezza:** un piano di sicurezza organico struttura la difesa in cinque stadi temporali e operativi.
 
-1. **Risk avoidance (evitamento del rischio):** scelte architetturali e di business mirate a eliminare alla radice l'esposizione al rischio, per esempio disconnettere dalla rete pubblica un sistema industriale SCADA critico che non necessita di collegamento a Internet permanente.
-2. **Deterrence (deterrenza):** pubblicizzazione visibile delle misure difensive adottate, dei sistemi di monitoraggio e delle sanzioni disciplinari o legali previste per scoraggiare potenziali malintenzionati.
-3. **Prevention (prevenzione):** meccanismi attivi come firewall, cifratura, controlli di autenticazione forte e antivirus, volti a bloccare sul nascere i tentativi di intrusione.
-4. **Detection (rilevamento):** individuazione tempestiva di violazioni o anomalie in corso tramite sistemi IDS (*Intrusion Detection System*), SIEM e monitoraggio del traffico.
-5. **Reaction (reazione e ripristino):** procedure di risposta all'incidente (*incident response*), contenimento della minaccia, ripristino dell'operatività da backup integri (*disaster recovery*) e conservazione delle prove digitali per il perseguimento legale (*digital forensics* e tribunale).
+1. **Risk avoidance (evitamento del rischio):** scelte architetturali o di business che eliminano l'esposizione al rischio. Per esempio, si può scollegare da Internet un sistema industriale SCADA che non necessita di una connessione permanente.
+2. **Deterrence (deterrenza):** rendere visibili le misure difensive, il monitoraggio e le sanzioni previste, per scoraggiare i potenziali attaccanti.
+3. **Prevention (prevenzione):** bloccare i tentativi di intrusione con firewall, cifratura, autenticazione forte e antivirus.
+4. **Detection (rilevamento):** individuare violazioni o anomalie in corso tramite IDS (*Intrusion Detection System*), SIEM e monitoraggio del traffico.
+5. **Reaction (reazione e ripristino):** avviare le procedure di risposta all'incidente (*incident response*), contenere la minaccia e ripristinare i servizi da backup integri (*disaster recovery*). Comprende anche la conservazione delle prove digitali per eventuali procedimenti legali (*digital forensics*).
 
 ## Soluzioni tecnologiche e contromisure
 
