@@ -97,7 +97,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 293.5
+    "width": 293.5,
+    "collapsed": true
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -267,6 +268,8 @@
   },
   "active": "ba59d2a553f18174",
   "lastOpenFiles": [
+    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.css",
+    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.html",
     "primo semestre/Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 6-UDP e TCP e routing.md",
     "primo semestre/Introduzione sicurezza /Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
@@ -310,8 +313,6 @@
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/groupBy.pdf",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 4614.crdownload",
     "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/00 Indice - Basi di dati e sistemi informativi con laboratorio.md",
-    "primo semestre/Architettura reti e internet/internet/ArchitetturaRetiDef_I_d.pdf",
-    "opencode.json"
+    "primo semestre/Architettura reti e internet/internet/ArchitetturaRetiDef_I_d.pdf"
   ]
 }

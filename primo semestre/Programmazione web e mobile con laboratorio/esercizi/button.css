@@ -1,0 +1,12 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+button {
+  border-radius: 20px;
+  width: 15em;
+  height: 3em;
+}

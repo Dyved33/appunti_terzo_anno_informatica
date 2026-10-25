@@ -6,7 +6,7 @@ sudo apt install tesseract-ocr tesseract-ocr-ita              # per installare i
 
 opencode plugin @tarquinen/opencode-dcp@latest                # riduce i token potando output vecchi e chiamate duplicate
 opencode plugin @plannotator/opencode@latest                  # revisione interattiva del piano, con annotazioni
-opencode plugin @azumag/opencode-rate-limit-fallback          # fallback automatico su modello secondario in caso di rate limit (429)
+opencode plugin @azumag/opencode-rate-limit-fallback@2.1.1    # fallback automatico su modello secondario in caso di rate limit (429)
 
 # Ollama (ultima risorsa offline: gira sulla GPU NVIDIA GTX 1050, pochi secondi per risposta con i modelli piccoli)
 ollama pull qwen2.5:3b                                        # modello bilanciato (~2 GB, entra nei 4 GB di VRAM)
@@ -42,20 +42,21 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 | `Guida_Opencode.md` | `Guida_Opencode.md` | riscritta sulla nuova struttura |
 | `prompt_chat.md` | `prompt_appunti.md`, `prompt_materiale.md` | prompt brevi per Antigravity e chat web |
 
-## I modelli: solo free, nessun server
+## I modelli: solo free, nessun provider a pagamento
 
-Nessun modello a pagamento, nessun processo da tenere acceso.
+Nessun modello a pagamento; per i modelli locali serve solo Ollama, che parte da solo.
 
 | Ruolo | Modello | Perché |
 |---|---|---|
-| default | `opencode/nemotron-3-ultra-free` | il più disciplinato: 4 chiamate di strumento dove `minimax` ne fa 22, scrittura pulita, non scrive file se non richiesto |
-| titolo sessione | `opencode/minimax-m3.1-flash-free` | 5 s, il più veloce |
+| default | `opencode/nemotron-3.5-super-vl-free` | primo della classifica del plugin: scrive e rivede le note e accetta anche immagini; `nemotron-3-ultra-free` è la seconda scelta, la più disciplinata nell'uso dei tool |
+| titolo sessione | `opencode/glm-5.3-flash-free` | modello flash, adatto ai compiti brevi |
+| piano (`plan`) | `opencode/glm-5.3-flash-free` | stesso modello del titolo: pianificazione senza modifiche, con Plannotator |
 | compattazione | `opencode/nemotron-3-ultra-free` | finestra da 1M token, riassume senza perdere i dettagli della nota |
-| ultima risorsa | `ollama/qwen2.5:3b`, `ollama/qwen2.5-coder:3b` | offline e senza quota, gira sulla GPU GTX 1050 |
+| ultima risorsa | `ollama/qwen2.5:3b` (in catena); gli altri modelli Ollama restano selezionabili | offline e senza quota, girano sulla GPU GTX 1050 |
 
-**Catena di fallback** (`rate-limit-fallback.json`, 9 modelli): su quota esaurita o errore transitorio l'agent passa al successivo, tenendo l'agente attivo, e torna indietro dopo il cooldown. L'ordine completo è nella guida; ogni modello è stato provato su quattro compiti prima di entrare nella catena, e chi ha fallito è stato tolto.
+**Catena di fallback** (`rate-limit-fallback.json`, 11 modelli): su quota esaurita o errore transitorio l'agent passa al successivo, tenendo l'agente attivo. Esaurita la catena si ferma (`fallbackMode: "stop"`), senza ripartire in ciclo; un modello scelto fuori dalla catena viene invece ritentato su sé stesso dopo il cooldown (`otherModels: "wait"`). L'ordine completo è nella guida; la catena contiene solo modelli free con supporto ai tool, e i modelli locali stanno in fondo perché più lenti.
 
-**Provider usati**: il free tier di OpenCode (45 modelli, nessuna key) e OpenRouter (modelli `:free`, una key). Gli altri provider gratuiti si collegano con `connect-free-providers.sh`; ogni key serve per un account separato, non c'è modo di aggirarlo.
+**Provider usati**: il free tier di OpenCode (9 modelli, nessuna key), OpenRouter (21 modelli `:free`, una key) e Ollama (15 modelli locali, nessuna key). In totale il plugin locale mostra 45 modelli gratuiti e nessun modello a pagamento. Gli altri provider gratuiti si collegano con `connect-free-providers.sh`; ogni key serve per un account separato, non c'è modo di aggirarlo.
 
 **OmniRoute è in pausa.** Il plugin `@omniroute/opencode-plugin` (0.2.1) esporta la forma dei plugin di OpenCode 1.x (`{ id, server }`); OpenCode 2.x accetta solo `{ id, effect }` o `{ id, setup }` e rifiuta il caricamento con *"Plugin must export a default definition with an id and an effect or setup function"*. Il plugin è quindi incompatibile finché upstream non pubblica una 0.3.x, ed è stato tolto da `opencode.json`. Il pacchetto resta installato e il servizio `omniroute` non serve più: il suo archivio non contiene nessuna connessione a provider, quindi non darebbe modelli comunque.
 
@@ -73,7 +74,7 @@ Le leve usate:
 
 - **`.opencode/regole.md`**: le due skill (`no-ai-slop`, `i-have-adhd`) costavano 4,5k token a ogni richiesta e a ogni subagente; ora in `instructions` c'è una sintesi di 530 token e i file completi restano da leggere solo quando si scrive una nota (il prompt dell'agente lo dice già).
 - **DCP tarato** (`.opencode/dcp.jsonc`): pota anche nelle sessioni dei subagenti (`allowSubAgents`), lascia intatti gli ultimi 3 turni (`turnProtection`), e avvisa il modello prima che entri in un ciclo (`iterationNudgeThreshold` 10 invece di 15).
-- **`compaction.keep.tokens: 30000`**: dopo la compattazione resta il contesto utile invece di ricominciare da zero.
+- **`compaction.keep.tokens: 12000`**: dopo la compattazione resta il contesto utile invece di ricominciare da zero.
 - **Il modello più disciplinato**: i token crescono col numero di chiamate di strumento, e i modelli free non sono uguali (vedi la guida).
 
 Non è stato fatto, per non perdere qualità: troncare gli output degli strumenti (`tool_output`), togliere `stile.md` dalle `instructions` (il DCP potrebbe comprimerlo via), rinunciare al server MCP `obsidian-search` o al plugin `parse`.
@@ -86,7 +87,7 @@ Non è stato fatto, per non perdere qualità: troncare gli output degli strument
 
 **Due agent invece di sei.** Con un modello gratuito ogni subagent è una sessione nuova che deve rileggersi tutto. Ho tenuto la sola separazione che serve: chi scrive e chi controlla. Il revisore lavora in un contesto pulito, quindi non è influenzato da ciò che ha appena scritto l'altro. `vault`, `materiale` e `indici` sono diventati casi dentro `appunti`. `lettore` è diventato uno script.
 
-**Il modello di default è il più disciplinato, non il più bravo.** I modelli free sono stati provati su quattro compiti (leggere un file e contare, scrivere ed eseguire Python, probabilità, documento da strutturare) e poi su due prove di comportamento. Risultati: `nemotron-3-ultra-free` risolve tutto e usa 4 strumenti dove `minimax-m3.1-flash-free` ne usa 22; nessuno dei due è andato in loop (zero chiamate identiche ripetute), ma `minimax` ha finito per scrivere dentro una nota vera quando gli era stato chiesto solo un testo, e aggiunge un "Riepilogo" finale; `deepseek-v4.1-flash-free` scrive bene ma cerca nelle cartelle sbagliate; `glm-5.3-flash-free` si contraddice; su OpenRouter `nemotron-3-super-120b:free` e `gemma-4-31b-it:free` hanno fallito tutti i compiti, `nemotron-3-ultra-550b:free` li risolve ma mette 12 minuti. Sul rispetto delle regole di scrittura sono tutti simili (zero parole vietate): sulla conformità alle regole ADHD solo `minimax` usa la lista numerata, e nessuno dei free inizia con l'azione. Da qui il default.
+**Il modello di default è il primo della classifica del plugin, non il più bravo in assoluto.** I modelli free sono stati provati su quattro compiti (leggere un file e contare, scrivere ed eseguire Python, probabilità, documento da strutturare) e poi su due prove di comportamento. Risultati: `nemotron-3-ultra-free` risolve tutto e usa 4 strumenti dove `minimax-m3.1-flash-free` ne usa 22; nessuno dei due è andato in loop (zero chiamate identiche ripetute), ma `minimax` ha finito per scrivere dentro una nota vera quando gli era stato chiesto solo un testo, e aggiunge un "Riepilogo" finale; `deepseek-v4.1-flash-free` scrive bene ma cerca nelle cartelle sbagliate; `glm-5.3-flash-free` si contraddice; su OpenRouter `nemotron-3-super-120b:free` e `gemma-4-31b-it:free` hanno fallito tutti i compiti, `nemotron-3-ultra-550b:free` li risolve ma mette 12 minuti. Sul rispetto delle regole di scrittura sono tutti simili (zero parole vietate): sulla conformità alle regole ADHD solo `minimax` usa la lista numerata, e nessuno dei free inizia con l'azione. Da qui l'ordine attuale: `nemotron-3.5-super-vl-free` è il default perché accetta anche immagini; `nemotron-3-ultra-free` è la seconda scelta, la più disciplinata. (`minimax-m3.1-flash-free` non è più nel catalogo: resta citato solo come termine di paragone dei test.)
 
 **La key OpenRouter era sbagliata.** In OpenCode era salvata la chiave locale di OmniRoute, non una chiave OpenRouter: le richieste finivano con un 401 "Missing Authentication header" e ogni modello OpenRouter era inutilizzabile. La chiave vera era già sulla macchina (`~/.aider/oauth-keys.env`) ed è stata ricollegata; le credenziali sbagliate sono state cancellate.
 
@@ -98,7 +99,7 @@ Non è stato fatto, per non perdere qualità: troncare gli output degli strument
 
 **`stile.md` è sempre caricato** (campo `instructions` di `opencode.json`): un modello debole a volte salta la lettura, e lo stile è proprio la parte che non deve saltare.
 
-**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti (tarato in `.opencode/dcp.jsonc`); `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429), con catena di 9 modelli free. I modelli locali con Ollama sono l'ultima risorsa offline: su questa macchina c'è una GPU NVIDIA GTX 1050 (`nvidia-smi` funziona) e i modelli piccoli (`qwen2.5:3b`, `qwen2.5:1.5b`) rispondono in pochi secondi. I modelli 7b non entrano nei 4 GB di VRAM e restano su CPU, quindi non vanno usati per il titolo o per la compattazione.
+**Le tre aggiunte.** *Libri:* i libri di `libri/<Nome corso>.pdf` si leggono con `libri.py` (elenco, sommario dai segnalibri, una pagina, ricerca) e col command `/libro`; restano un complemento, mai una fonte di default (regola 11). *Docling:* se un PDF non ha un livello di testo (pagine scansionate o slide esportate come immagini), `leggi-slide.py` lo legge da sé con Docling, che per l'OCR usa Tesseract in italiano e inglese; i modelli di layout si scaricano da HuggingFace in `~/.cache/huggingface` al primo uso, quindi la prima volta serve la rete; sui file lunghi salta, per non impiegare minuti, e lo segnala. *Ricerca semantica:* il server MCP `obsidian-search` indicizza le note di `primo semestre/` e le cerca per significato (modello multilingua `paraphrase-multilingual-MiniLM-L12-v2`, tenuto in `~/.cache/fastembed`), utile per ritrovare dove un argomento è trattato e per creare i wikilink. *Fallback & DCP:* `@tarquinen/opencode-dcp` ottimizza il contesto potando output ridondanti (tarato in `.opencode/dcp.jsonc`); `@azumag/opencode-rate-limit-fallback` evita blocchi passando in automatico a un modello secondario su quota esaurita (429), con catena di 11 modelli free. I modelli locali con Ollama sono l'ultima risorsa offline: su questa macchina c'è una GPU NVIDIA GTX 1050 (`nvidia-smi` funziona) e i modelli piccoli (`qwen2.5:3b`, `qwen2.5:1.5b`) rispondono in pochi secondi. I modelli 7b non entrano nei 4 GB di VRAM e restano su CPU, quindi non vanno usati per il titolo o per la compattazione.
 
 **Le tre fonti di stile valgono per ogni modello.** `stile.md`, `no-ai-slop` e `i-have-adhd` sono le tre regole di scrittura del vault: la prima sta in `.opencode/stile.md`, le altre due in `~/.agents/skills/` e `~/.config/opencode/vendor/`. In `instructions` ci sono `stile.md` e `.opencode/regole.md` (la sintesi delle due skill): costavano 4,5k token a ogni richiesta e a ogni subagente, e i modelli free non sono i più attenti. Le versioni complete delle due skill le legge l'agente quando deve scrivere, perché gliele chiede il prompt; i file restano fuori dal vault, così l'agente non può modificarli (`edit` nega `.opencode/**`). `stile.md` resta sempre in contesto: è la parte che non deve saltare.
 
@@ -127,7 +128,7 @@ Non è stato fatto, per non perdere qualità: troncare gli output degli strument
 | 14 | lunghezza | nessun limite di righe: `stile.md` chiede densità (ogni concetto una volta, spiegazione proporzionata alla difficoltà, tagliare parole e non contenuti). L'audit non segnala la lunghezza della nota, solo i singoli paragrafi oltre le 150 parole, come INFO |
 | 15 | configurazione e creazione dei file | l'agent non modifica la configurazione e non crea note |
 | 16 | revisore | una passata, solo con `/lezione` e `/rivedi` |
-| 17 | compattazione | `auto` e `keep.tokens: 30000` in `opencode.json`; il potatura continua la fa il plugin DCP |
+| 17 | compattazione | `auto` e `keep.tokens: 12000` in `opencode.json`; la potatura continua la fa il plugin DCP |
 
 ## Passare i vecchi appunti al nuovo formato (da file unico a file multipli)
 

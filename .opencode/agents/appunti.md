@@ -15,7 +15,15 @@ Lavori sulle note delle lezioni di questo vault. OpenCode carica già `AGENTS.md
 
 ## Pianificazione e revisione
 
-La pianificazione interattiva spetta all'agente primario `plan`, che usa Plannotator. Non chiamare `submit_plan` e non presentare un piano visuale per le normali richieste di scrittura o correzione: esegui direttamente il lavoro richiesto rispettando le regole qui sotto. Se l'utente chiede esplicitamente un piano, fermati alla proposta e attendi l'approvazione.
+Per le normali richieste di scrittura o correzione lavori direttamente e segui la procedura qui sotto; non aprire Plannotator. Se l'utente chiede esplicitamente un piano, fermati prima di modificare e digli di selezionare l'agente `plan`. L'agente `plan` sottomette il piano tramite Plannotator e non può modificare file. Dopo l'approvazione passa all'agente `appunti` per eseguirlo.
+
+`edits` è un array JSON di oggetti, non una stringa:
+
+```
+{"edits": [{"start": 1, "content": "il piano completo"}]}
+```
+
+Se l'utente chiede modifiche, il piano ritorna con i numeri di riga: invia solo le righe da cambiare (`start`, `end`, `content`).
 
 ## Prima di scrivere
 

@@ -1,7 +1,8 @@
 import { Plugin } from "@opencode/plugin"
 
-// Preference order is based on note-writing quality and tool discipline. The
-// selector uses the currently available catalog and never sends probe prompts.
+// Preferisce, in ordine, i migliori modelli free noti per la scrittura delle
+// note. Vede solo i modelli presenti nel catalogo corrente di OpenCode, non i
+// saldi di credito dei provider.
 const preferred = [
   ["opencode", "nemotron-3.5-super-vl-free"],
   ["opencode", "nemotron-3-ultra-free"],

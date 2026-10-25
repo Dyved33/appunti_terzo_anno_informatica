@@ -94,8 +94,8 @@ I router di una stessa area condividono lo stesso *topological database*. La sud
 
 L'OSPF backbone è responsabile di distribuire informazioni di routing tra aree.
 
-**Esempio di OSPF gerarchico:** le aree 1, 2 e 3 condividono il backbone dell'AS; i router di confine collegano le aree e consentono lo scambio delle informazioni di routing.
-
+> [!example] Esempio di OSPF gerarchico:
+> Le aree 1, 2 e 3 condividono il backbone dell'AS; i router di confine collegano le aree e consentono lo scambio delle informazioni di routing.
 ![[images/Pasted image 20261023111642.png|500]]
 
 Le aree possono essere definite in modo tale che il backbone non sia continuo: in tal caso la continuità può essere realizzata mediante *virtual-links*. Questo permette ai gestori della rete di definire una topologia logica differente da quella fisica. I virtual-links vengono definiti tra i backbone router che condividono link con aree non-backbone e funzionano come se fossero link diretti. OSPF può apprendere informazioni da altri exterior gateway protocol, interior gateway protocol, o mediante istruzioni di configurazione.

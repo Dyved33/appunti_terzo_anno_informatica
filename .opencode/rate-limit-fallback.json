@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "fallbackMode": "stop",
+  "otherModels": "ignore",
+  "fallbackModels": [
+    { "providerID": "opencode", "modelID": "nemotron-3.5-super-vl-free" },
+    { "providerID": "opencode", "modelID": "nemotron-3-ultra-free" },
+    { "providerID": "opencode", "modelID": "deepseek-v4.1-flash-free" },
+    { "providerID": "opencode", "modelID": "mimo-v2.6-flash-free" },
+    { "providerID": "opencode", "modelID": "glm-5.3-flash-free" },
+    { "providerID": "opencode", "modelID": "minimax-m3.1-flash-free" },
+    { "providerID": "openrouter", "modelID": "free" },
+    { "providerID": "openrouter", "modelID": "thinkingmachines/inkling:free" },
+    { "providerID": "openrouter", "modelID": "minimax/minimax-m3.1-flash:free" },
+    { "providerID": "ollama", "modelID": "qwen2.5:3b" }
+  ]
+}

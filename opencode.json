@@ -1,16 +1,21 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "providers": {
+    "opencode": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } },
+    "openrouter": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } },
+    "ollama": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } }
+  },
   "default_agent": "appunti",
   "instructions": [
     ".opencode/stile.md",
     ".opencode/regole.md"
   ],
   "agents": {
-    "title": { "model": "opencode/minimax-m3.1-flash-free" },
+    "title": { "model": "opencode/glm-5.3-flash-free" },
     "compaction": { "model": "opencode/nemotron-3-ultra-free" },
     "plan": {
       "mode": "primary",
-      "model": "opencode/minimax-m3.1-flash-free",
+      "model": "opencode/glm-5.3-flash-free",
       "permissions": [
         { "action": "edit", "resource": "*", "effect": "deny" }
       ]
@@ -19,12 +24,13 @@
   "lsp": false,
   "formatter": false,
   "plugins": [
+    "opencode-parser",
     "@tarquinen/opencode-dcp@latest",
     {
       "package": "@plannotator/opencode@latest",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
-    "@azumag/opencode-rate-limit-fallback@2.1.0"
+    "@azumag/opencode-rate-limit-fallback@2.1.1"
   ],
   "mcp": {
     "servers": {

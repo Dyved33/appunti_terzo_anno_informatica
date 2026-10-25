@@ -9,7 +9,7 @@ cd percorso/della/cartella/appunti
 opencode
 ```
 
-Dopo ogni modifica a `opencode.json` o a un file in `.opencode/` va riavviato: la configurazione viene letta solo all'avvio.
+OpenCode 2 rilegge automaticamente `opencode.json` e i file in `.opencode/` quando cambiano; se un agent, un command o un plugin non si aggiorna, usa `/reload` oppure riavvia.
 
 ## Come è organizzato
 
@@ -19,8 +19,8 @@ Dopo ogni modifica a `opencode.json` o a un file in `.opencode/` va riavviato: l
 | `.opencode/stile.md` | come vanno scritte le note. Viene caricato a ogni sessione |
 | `.opencode/regole.md` | sintesi delle due skill di scrittura, caricata a ogni sessione |
 | `.opencode/agents/` | `appunti` per scrittura e `revisore` selezionabile come primario o invocabile come subagent |
-| `.opencode/plugins/free-model-router/` | sceglie all'avvio il modello gratuito attivo con priorità più alta, senza richieste di prova |
-| `.opencode/commands/` | i 6 command |
+| `.opencode/plugins/free-model-router/` | abilita tutti i modelli gratuiti, disabilita quelli a pagamento e sceglie il default; non invia richieste di prova |
+| `.opencode/commands/` | i 7 command |
 | `.opencode/scripts/` | i 5 script: lettura slide, lettura libri, controllo strutturale, controllo perdite, divisione dei file unici |
 | `.opencode/dcp.jsonc` | come il plugin DCP pota il contesto della sessione |
 | `~/.config/opencode/rate-limit-fallback.json` | unica catena dei modelli di riserva, condivisa tra i progetti |
@@ -34,43 +34,44 @@ Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
 
 ## I modelli
 
-Non c'è un modello fisso in `opencode.json`: il plugin locale sceglie all'avvio il primo modello gratuito, attivo e capace di usare tool nella classifica di `.opencode/plugins/free-model-router/index.ts`. Considera i provider presenti nel catalogo corrente e non invia richieste di prova. Il catalogo non espone crediti residui o stato di salute in tempo reale: questi errori dipendono dal fallback.
-Il plugin disabilita i modelli a pagamento, senza tool o non presenti nella sua allowlist, per evitare fallback che possano generare costi.
+Non c'è un modello fisso in `opencode.json`: il plugin locale abilita tutti i modelli gratuiti del catalogo corrente e disabilita quelli a pagamento. La lista `preferred` in `.opencode/plugins/free-model-router/index.ts` serve solo a scegliere il default: non è più una whitelist. Il plugin non invia richieste di prova. Il catalogo non espone crediti residui o stato di salute in tempo reale: questi errori dipendono dal fallback.
+I modelli free senza supporto ai tool restano visibili, ma non vengono scelti come default.
 
 | Modello | A che cosa serve |
 |---|---|
-| `opencode/nemotron-3.5-super-vl-free` | preferito se presente: scrive e rivede le note; supporta anche immagini e documenti |
-| `opencode/nemotron-3-ultra-free` | seconda scelta, disciplinata nell'uso dei tool |
-| `opencode/minimax-m3.1-flash-free` | titolo della sessione; il più veloce |
-| `openrouter/*:free` | modelli OpenRouter `:free`, integrati nella catena di fallback |
-| `ollama/qwen2.5:3b` | ultima risorsa, offline e senza quota, gira sulla GPU (GTX 1050) |
+| `opencode/nemotron-3.5-super-vl-free` | default: scrive e rivede le note; supporta anche immagini e documenti |
+| `opencode/nemotron-3-ultra-free` | seconda scelta, disciplinata nell'uso dei tool; compattazione del contesto |
+| `opencode/glm-5.3-flash-free` | titolo della sessione e agent `plan`; modello flash, adatto ai compiti brevi |
+| `openrouter/*:free` | 21 modelli OpenRouter `:free`, tutti visibili e selezionabili |
+| `ollama/*` | 15 modelli locali, ultima risorsa offline e senza quota (GPU GTX 1050) |
 
 Il free tier di OpenCode non chiede credenziali. OpenRouter ne chiede una (già salvata). Gli altri provider gratuiti si possono aggiungere con `bash ~/.config/opencode/scripts/connect-free-providers.sh`: per ogni provider il comando stampa il link per creare la key e poi la chiede.
 
 I modelli gratuiti e i relativi limiti cambiano. Nemotron 3.5 Super VL Free è temporaneamente gratuito e il suo endpoint NVIDIA può registrare le richieste per migliorare i modelli: non inviare dati personali o riservati.
 
-Il modello scelto vale per la sessione. Puoi cambiarlo con `/models`; l'agente automatico seleziona di nuovo il candidato al riavvio.
+Il default vale per le nuove sessioni. Puoi cambiare modello con `/models` per la sessione corrente; il plugin riapplica il default alla successiva. Con tutti i free visibili puoi scegliere anche un modello fuori dalla catena di fallback.
 
 ## Il fallback automatico
 
-Per gli errori riconosciuti dal plugin, la richiesta prova il modello successivo. Quando finisce la catena si ferma, senza ripartire in ciclo. Un `504 Gateway Timeout` generico non è garantito che venga riconosciuto: il timeout limita l'attesa, ma non assicura il passaggio al fallback. La configurazione unica è `~/.config/opencode/rate-limit-fallback.json`; non creare copie nel vault:
+Per gli errori riconosciuti dal plugin (429, quota esaurita, errori transitori), la richiesta prova il modello successivo della catena. Quando finisce la catena si ferma, senza ripartire in ciclo (`fallbackMode: "stop"`). Un `504 Gateway Timeout` generico non è garantito che venga riconosciuto: il timeout limita l'attesa, ma non assicura il passaggio al fallback. La configurazione unica è `~/.config/opencode/rate-limit-fallback.json`; non creare copie nel vault:
 
 ```
 opencode/nemotron-3.5-super-vl-free
 opencode/nemotron-3-ultra-free
-opencode/minimax-m3.1-flash-free
+opencode/nemotron-3.5-lightning-free
 opencode/deepseek-v4.1-flash-free
 opencode/mimo-v2.6-flash-free
 opencode/glm-5.3-flash-free
-openrouter/free
 openrouter/thinkingmachines/inkling:free
-openrouter/minimax/minimax-m3.1-flash:free
+openrouter/nvidia/nemotron-3-ultra-550b-a55b:free
+openrouter/nvidia/nemotron-3-super-120b-a12b:free
+openrouter/openrouter/free
 ollama/qwen2.5:3b
 ```
 
-Il passaggio conserva l'agente attivo, la sessione e il contesto e segue l'ordine statico qui sopra. Dopo un passaggio completo senza un modello utilizzabile, la richiesta si ferma: non riparte in ciclo e non resta in attesa fino a un'ora. I modelli scelti manualmente ma assenti dalla catena restano ai retry nativi di OpenCode.
+Il passaggio conserva l'agente attivo, la sessione e il contesto e segue l'ordine statico qui sopra. Dopo un passaggio completo senza un modello utilizzabile, la richiesta si ferma: non riparte in ciclo e non resta in attesa fino a un'ora. I modelli scelti manualmente ma assenti dalla catena vengono ritentati sullo stesso modello dopo il cooldown (`otherModels: "wait"`, 30 secondi, con backoff crescente).
 
-`openrouter/free` sceglie un modello gratuito compatibile solo dentro OpenRouter. La classifica del plugin è una preferenza curata, non una misura di qualità o quota corrente; i modelli locali sono in fondo perché possono essere più lenti.
+`openrouter/openrouter/free` è il router gratuito di OpenRouter: sceglie un modello gratuito compatibile solo dentro OpenRouter. La classifica del plugin è una preferenza curata, non una misura di qualità o quota corrente; i modelli locali sono in fondo perché possono essere più lenti. La catena è gestita dal plugin `@azumag/opencode-rate-limit-fallback@2.1.1`.
 
 ## Token e contesto
 
@@ -83,7 +84,7 @@ Regole pratiche:
 
 1. **Una sessione per lezione.** La cronologia è la spesa principale: `/compact` o una sessione nuova taglia più di qualunque altra impostazione.
 2. **Il modello più disciplinato è anche il più economico.** Il default fa 4 chiamate di strumento dove un altro ne fa 22: i token crescono con le chiamate.
-3. **`title` e `compaction` possono usare Ollama.** Su questa macchina c'è una GPU NVIDIA GTX 1050: `qwen2.5:3b` risponde in pochi secondi. Restano l'ultima risorsa per i compiti frequenti, ma sono utilizzabili per titolo e compattazione senza rallentare la sessione.
+3. **`title` e `compaction` usano modelli free dedicati.** Il titolo usa `glm-5.3-flash-free`, la compattazione `nemotron-3-ultra-free`. Ollama resta l'ultima risorsa: su questa macchina `qwen2.5:3b` risponde in pochi secondi con la GPU GTX 1050, ma i modelli locali sono più lenti dei free hosted.
 
 ## I cicli
 
@@ -93,7 +94,7 @@ Un ciclo è l'agente che ripete la stessa cosa e consuma token senza progredire.
 - la regola 10 di `AGENTS.md` impone di fermarsi dopo due tentativi equivalenti e di chiedere, invece di riprovare;
 - DCP avvisa il modello prima che il contesto si riempia (`iterationNudgeThreshold`), e deduplica le chiamate identiche già fatte.
 
-Nella pratica i modelli free non sono andati in loop: zero chiamate identiche ripetute in tutti i test. Il problema reale è un altro: il modello che ripete una ricerca con parole diverse (per esempio `minimax` con 22 chiamate per una ricerca che `nemotron` fa in 4) spende token senza aggiungere nulla. Se lo vedi, scegli il modello più disciplinato per quel task.
+Nella pratica i modelli free non sono andati in loop: zero chiamate identiche ripetute in tutti i test. Il problema reale è un altro: il modello che ripete una ricerca con parole diverse (per esempio il vecchio `minimax-m3.1-flash-free` faceva 22 chiamate per una ricerca che `nemotron` fa in 4; non è più nel catalogo) spende token senza aggiungere nulla. Se lo vedi, scegli il modello più disciplinato per quel task.
 
 ## Come si comportano i modelli free
 
@@ -102,10 +103,11 @@ Misurati sugli stessi compiti, i modelli free non sono intercambiabili:
 | Modello | Strumenti usati | Qualità | A cosa fare attenzione |
 |---|---|---|---|
 | `opencode/nemotron-3-ultra-free` | 4 | buona, disciplinata | cerca bene, non inventa |
-| `opencode/minimax-m3.1-flash-free` | 22 | buona, verbose | scrive file anche quando non gliel'hai chiesto; aggiunge "Riepilogo" |
 | `opencode/deepseek-v4.1-flash-free` | 9 | buona | cerca nelle cartelle sbagliate |
 | `opencode/glm-5.3-flash-free` | 10 | discreta | si contraddice, ripete un path |
 | `openrouter/thinkingmachines/inkling:free` | 4 | discreta | dice di aver fatto cose che non ha fatto |
+
+`minimax-m3.1-flash-free` non è più nel catalogo: era usato nei primi test e resta citato solo come termine di paragone. I modelli aggiunti dopo (`nemotron-3.5-super-vl-free`, `nemotron-3.5-lightning-free`, i Nemotron free di OpenRouter) non hanno ancora una riga in questa tabella.
 
 Una cosa da tenere presente quando scrivi le richieste: **se chiedi "scrivi il testo di X" a un modello free, può interpretarlo come "scrivi X nel file"**. Il default non lo fa, ma se succede: `git diff` e `git restore "percorso"` per annullare, come al solito.
 
@@ -306,9 +308,9 @@ A questo si aggiunge il plugin DCP, che pota il contesto mentre la sessione pros
 
 - **Un plugin non si carica:** controlla la versione di OpenCode e la forma del plugin. I plugin di OpenCode 1.x (forma `{ id, server }`) non si caricano sulla 2.x (che accetta `{ id, effect }` o `{ id, setup }`): è il caso di `@omniroute/opencode-plugin`, tolto da `opencode.json` in attesa della 0.3.x.
 - **Un provider risponde 401 "Missing Authentication header":** la credenziale salvata non è quella giusta. Controlla con `opencode auth list` e ricollega con `opencode auth login <provider>`.
-- **Il 429 non passa al modello successivo:** guarda la catena in `rate-limit-fallback.json`; se il modello che fallisce non è in catena, il plugin lo lascia a OpenCode, che lo riprova da solo.
+- **Il 429 non passa al modello successivo:** guarda la catena in `rate-limit-fallback.json`; se il modello che fallisce non è in catena, con `otherModels: "wait"` il plugin lo ritenta sullo stesso modello dopo il cooldown, non passa a un altro.
 - **Un comando con la pipe viene negato:** OpenCode controlla i permessi per ogni comando della catena, anche `| head`. Le regole che mancano si aggiungono in `opencode.json`, sezione `permissions`, come `shell` + `allow`, dopo la regola `deny` generica.
-- **Agent o command non compaiono:** riavvia OpenCode.
+- **Agent o command non compaiono:** esegui `/reload`; se non basta, riavvia OpenCode.
 - **OpenCode non parte per un errore di configurazione:** `OPENCODE_DISABLE_PROJECT_CONFIG=1 opencode`, correggi e riavvia. Per vedere la configurazione che OpenCode ha davvero caricato: `opencode debug config`.
 - **L'agent ha scritto troppo o ha rovinato una nota:** `git diff` mostra cosa è cambiato, `git restore "percorso"` riporta la nota all'ultimo commit. Senza git, la versione di prima è in `.opencode/originali/`. Conviene fare un commit prima di `/rivedi` e di `/dividi`.
 - **Un'immagine in un `<div>` non si vede:** controlla che il nome in `src` sia identico a quello del file. Se è giusto e non si vede lo stesso, vedi `LEGGIMI.md`.
