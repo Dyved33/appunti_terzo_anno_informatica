@@ -5,19 +5,26 @@
     "openrouter": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } },
     "ollama": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } }
   },
-  "default_agent": "appunti",
+  "default_agent": "plan",
   "instructions": [
     ".opencode/stile.md",
     ".opencode/regole.md"
   ],
   "agents": {
-    "title": { "model": "opencode/glm-5.3-flash-free" },
-    "compaction": { "model": "opencode/nemotron-3-ultra-free" },
-    "plan": {
+    "appunti": {
       "mode": "primary",
-      "model": "opencode/glm-5.3-flash-free",
+      "model": "opencode/nemotron-3-ultra-free",
       "permissions": [
-        { "action": "edit", "resource": "*", "effect": "deny" }
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+        { "action": "subagent", "resource": "revisore", "effect": "allow" }
+      ]
+    },
+    "revisore": {
+      "mode": "all",
+      "model": "opencode/nemotron-3-ultra-free",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "subagent", "resource": "*", "effect": "deny" }
       ]
     }
   },
@@ -30,7 +37,7 @@
       "package": "@plannotator/opencode@latest",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
-    "@azumag/opencode-rate-limit-fallback@2.1.1"
+    "@azumag/opencode-rate-limit-fallback@2.1.0"
   ],
   "mcp": {
     "servers": {

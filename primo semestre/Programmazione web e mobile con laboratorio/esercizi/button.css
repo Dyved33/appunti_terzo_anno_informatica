@@ -1,12 +1,142 @@
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 50px;
+}
+
+.first {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 30px;
+  justify-items: center;
+}
+
+.second {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   justify-items: center;
 }
 
 button {
-  border-radius: 20px;
+  border: transparent;
+  border-radius: 50px;
   width: 15em;
   height: 3em;
+  color: white;
+  font-size: 1.5em;
+  font-weight: 900;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.099);
+}
+
+.one {
+  background: linear-gradient(
+    to right,
+    rgb(83, 139, 191),
+    rgb(113, 224, 220),
+    rgb(151, 255, 151)
+  );
+}
+
+.two {
+  background: linear-gradient(
+    to right,
+    rgb(233, 125, 9),
+    rgb(232, 162, 69),
+    rgb(229, 85, 45)
+  );
+}
+
+.three {
+  background: linear-gradient(
+    to right,
+    rgb(52, 56, 162),
+    rgb(59, 68, 197),
+    rgb(14, 17, 170)
+  );
+}
+
+.four {
+  background: linear-gradient(
+    to right,
+    rgb(232, 94, 117),
+    rgb(215, 77, 77),
+    rgb(230, 30, 90)
+  );
+}
+
+.five {
+  background: linear-gradient(
+    to right,
+    rgb(17, 91, 14),
+    rgb(60, 170, 40),
+    rgb(151, 255, 151)
+  );
+}
+
+.six {
+  background: linear-gradient(
+    to right,
+    rgb(93, 154, 19),
+    rgb(84, 187, 24),
+    rgb(228, 245, 40)
+  );
+}
+
+.seven {
+  background: linear-gradient(to right, blue, violet, purple);
+}
+
+.eight {
+  background: linear-gradient(
+    to right,
+    rgb(6, 10, 47),
+    rgb(5, 4, 35),
+    rgb(40, 52, 85)
+  );
+}
+
+.nine {
+  background: linear-gradient(
+    to right,
+    rgb(72, 155, 232),
+    rgb(41, 106, 139),
+    rgb(31, 60, 133)
+  );
+}
+
+.ten {
+  background: linear-gradient(
+    to right,
+    pink,
+    rgb(224, 113, 198),
+    rgb(165, 49, 95)
+  );
+}
+
+.eleven {
+  background: linear-gradient(
+    to right,
+    rgb(200, 37, 26),
+    rgb(228, 38, 28),
+    rgb(234, 49, 24)
+  );
+}
+
+.particular {
+  margin-top: 100px;
+  background: linear-gradient(to right, blue, purple,violet);
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.518);
+  transition: all 0.3s;
+}
+
+.particular:hover {
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.389);
+}
+
+.particular:active {
+  box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.262);
 }
