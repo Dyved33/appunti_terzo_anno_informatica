@@ -4,21 +4,91 @@
     "type": "split",
     "children": [
       {
-        "id": "8f0c4dca0e116b3c",
+        "id": "e3880fc480788802",
         "type": "tabs",
         "children": [
           {
-            "id": "ba59d2a553f18174",
+            "id": "4544ccdd0d49e0f7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "primo semestre/Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
+                "file": "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 7-Protocolli di routing"
+              "title": "Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi"
+            }
+          },
+          {
+            "id": "4b153b0a95ba6fc8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero"
+            }
+          },
+          {
+            "id": "073b37107fb149d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 3-Ricerca su grafo"
+            }
+          },
+          {
+            "id": "8b132cd7c780d734",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 4-Ricerca informata, euristiche e algoritmo A*"
+            }
+          },
+          {
+            "id": "63aeeedc7a8232f9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 5-Ricerca con memoria limitata"
+            }
+          },
+          {
+            "id": "e4be2b9b1a102442",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning"
             }
           }
         ]
@@ -97,7 +167,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 293.5,
+    "width": 362.5,
     "collapsed": true
   },
   "right": {
@@ -266,11 +336,24 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "ba59d2a553f18174",
+  "active": "4544ccdd0d49e0f7",
   "lastOpenFiles": [
+    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+    "primo semestre/Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
+    "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
+    "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
+    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
+    "primo semestre/Introduzione sicurezza /Approfondimento chiavi SSH private e pubbliche.md",
+    "primo semestre/Introduzione sicurezza /00 Indice - Introduzione sicurezza.md",
+    "Pasted image 20261026223134.png",
+    "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/pwm_lezione9.pdf",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 9-Introduzione a JavaScript.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/images/operatori-particolari-48.png",
+    "primo semestre/Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.css",
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.html",
-    "primo semestre/Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 6-UDP e TCP e routing.md",
     "primo semestre/Introduzione sicurezza /Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
     "[!note].md",
@@ -282,15 +365,11 @@
     "primo semestre/Architettura reti e internet/protocolli/images/codifica_pixels_immagine.jpg",
     "primo semestre/Architettura reti e internet/protocolli/images/slide-27.png",
     "primo semestre/Architettura reti e internet/protocolli/images/slide-81.png",
-    "primo semestre/Architettura reti e internet/protocolli/images/slide-10.png",
-    "primo semestre/Architettura reti e internet/protocolli/images/codice_ascii.jpg",
     "primo semestre/Architettura reti e internet/internet/images",
     "primo semestre/Architettura reti e internet/protocolli/images",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 8-Accessibilità e CSS3 avanzato.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione.md",
     "primo semestre/Introduzione sicurezza /Lezione 6-Esercitazione Wireshark.md",
-    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
-    "primo semestre/Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 5-Serie di Fourier, filtri e modulazione.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md",
@@ -298,21 +377,12 @@
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 6-UDP, TCP e Routing.md",
     "primo semestre/Introduzione IA/6-Games.pdf",
-    "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
     "primo semestre/Introduzione sicurezza /Lezione 6- esercitazione wireshark.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/nullAlgebraRel.pdf",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 266755.crdownload",
     "primo semestre/Architettura reti e internet/internet/oggi.pdf",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 6-Cancellazione e aggiornamento di una BD, il DML e le politiche di reazione.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
-    "primo semestre/Architettura reti e internet/internet/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
-    "primo semestre/Architettura reti e internet/internet/Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete.md",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 4-Reti mesh, protocolli e segnali.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 9-.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/groupBy.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 4614.crdownload",
-    "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
-    "primo semestre/Architettura reti e internet/internet/ArchitetturaRetiDef_I_d.pdf"
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/groupBy.pdf"
   ]
 }

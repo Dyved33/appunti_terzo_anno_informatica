@@ -6,4 +6,4 @@
 - [[Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS|Packet filter, proxy gateway, ambienti di rete e IDS]] — Regole e limiti dei packet filter, stateful inspection, proxy applicativi e dedicati, architetture DMZ, VPN, switch e IDS (HIDS e NIDS)
 - [[Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS|IDS, ambienti di rete, configurazioni dei firewall e TLS]] — Collocazione degli IDS e dei server, split DNS, screened host con bastion host single-homed e dual-homed, screened subnet, TLS e SSH
 - [[Lezione 6-Esercitazione Wireshark|Esercitazione Wireshark]] — Packet sniffer, capture vs display filter, follow TCP stream, export objects, decifratura TLS, statistiche e analisi forense
-- [[Lezione 7|Chiavi SSH private e pubbliche]] — Approfondimento: differenza tra chiave privata e pubblica nell'autenticazione SSH tra client e server
+- [[Approfondimento chiavi SSH private e pubbliche|Chiavi SSH private e pubbliche]] — Approfondimento: differenza tra chiave privata e pubblica nell'autenticazione SSH tra client e server

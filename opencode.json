@@ -13,7 +13,6 @@
   "agents": {
     "appunti": {
       "mode": "primary",
-      "model": "opencode/nemotron-3-ultra-free",
       "permissions": [
         { "action": "subagent", "resource": "*", "effect": "deny" },
         { "action": "subagent", "resource": "revisore", "effect": "allow" }
@@ -21,7 +20,6 @@
     },
     "revisore": {
       "mode": "all",
-      "model": "opencode/nemotron-3-ultra-free",
       "permissions": [
         { "action": "edit", "resource": "*", "effect": "deny" },
         { "action": "subagent", "resource": "*", "effect": "deny" }
