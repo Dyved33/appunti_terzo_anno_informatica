@@ -2,15 +2,9 @@
 
 ## Alpha-Beta Quiz
 
-Le slide 29-30 propongono due quiz sull'alpha-beta pruning. Il testo delle slide è solo il titolo; il contenuto è nelle immagini allegate.
-
-> [!example] Alpha-Beta Quiz 1
-> ![[Pasted image 20261028163246.png|30%]]
-
-> [!example] Alpha-Beta Quiz 2
-> ![[Pasted image 20261028163303.png|30%]]
-
-> [!todo] Verificare il contenuto dei due quiz Alpha-Beta: le immagini non restituiscono testo via OCR, leggere a mano dal PDF. Spostare le 4 immagini `Pasted image 20261028163246.png`, `20261028163303.png`, `20261028163758.png`, `20261028164702.png` dalla radice di `primo semestre/` in `images/` perché i link funzionino.
+> [!example] 
+> ![[Pasted image 20261028163246.png|500]]
+> ![[Pasted image 20261028163303.png|500]]
 
 ## Limite di profondità: depth-limited search
 
@@ -25,11 +19,8 @@ La garanzia di gioco ottimale viene meno. Aumentare il numero di plies fa una gr
 
 Si usa l'**iterative deepening** per ottenere un algoritmo *anytime*, che restituisce sempre una risposta e può migliorarla se ha più tempo. Una variante più robusta è tenere un limite di profondità fisso e, quando il tempo scade, restituire la mossa trovata nella ricerca più profonda completata; se si mantiene una tabella di transposizione tra i giri, i giri successivi sono più veloci e le valutazioni aiutano a ordinare meglio le mosse.
 
-![[slide-ia-32-32.png|30%]]
+![[slide-ia-32-32.png|500]]
 *Slide Limiting Depth: depth-limited search con funzione di valutazione al posto delle utilità terminali.*
-
-> [!todo] Verificare che l'immagine slide-ia-32-32.png corrisponda alla slide 32 (Limiting Depth).
-
 ## Funzioni di valutazione
 
 *Definizione:* una **funzione di valutazione** assegna un punteggio a una posizione non terminale in una ricerca depth-limited.
@@ -56,11 +47,7 @@ Esempio importante del tradeoff tra complessità delle feature e complessità co
 > [!info] In altre parole:
 > La funzione di valutazione stima l'utilità attesa di uno stato: per gli stati terminali coincide con l'utilità vera, per gli stati non terminali restituisce un valore compreso tra sconfitta e vittoria.
 
-
-
 ![[Pasted image 20261028163758.png|30%]]
-
-> [!todo] Verificare a quale slide corrisponde l'immagine già incollata `Pasted image 20261028163758.png`.
 
 ## Giochi con esiti incerti: expectimax
 
@@ -77,11 +64,6 @@ Idea: esiti incerti sono controllati dalla fortuna, non da un avversario.
 
 Nella ricerca adversarial (minimax) si assume il peggiore caso: l'avversario gioca sempre contro di noi. Con esiti incerti, invece, gli esiti sono mediati: si calcola l'utilità attesa, non il peggiore caso.
 
-![[slide-ia-37-37.png|30%]]
-*Slide Worst-Case vs Average Case: confronto tra minimax (peggiore caso) e expectimax (caso medio).*
-
-> [!todo] Verificare che slide-ia-37-37.png corrisponda alla slide 37.
-
 **Expectimax search:**
 
 L'**expectimax search** calcola il punteggio medio sotto gioco ottimale, invece del peggiore caso.
@@ -94,11 +76,7 @@ L'**expectimax search** calcola il punteggio medio sotto gioco ottimale, invece 
 ![[slide-ia-38-38.png|30%]]
 *Slide Expectimax Search: nodi MAX come minimax, nodi CHANCE come media pesata dei figli.*
 
-> [!todo] Verificare che slide-ia-38-38.png corrisponda alla slide 38.
-
 ![[Pasted image 20261028164702.png|30%]]
-
-> [!todo] Verificare a quale slide corrisponde l'immagine già incollata `Pasted image 20261028164702.png` (era associata al placeholder `//slide 38//`).
 
 **Pseudocodice expectimax:**
 
@@ -126,26 +104,22 @@ Esempio numerico:
 
 `v = (1/2)(8) + (1/3)(24) + (1/6)(-12) = 10`
 
-![[slide-ia-40-40.png|30%]]
+![[slide-ia-40-40.png|500]]
 *Slide Expectimax Pseudocode: definizione di value, max-value, exp-value e esempio con probabilità 1/2, 1/3, 1/6.*
-
-> [!todo] Verificare che slide-ia-40-40.png corrisponda alla slide 40.
 
 **Esempio expectimax:**
 
 Foglie: `3 12 9 2 4 6 15 6 0`
 
 > [!example] Expectimax Example
-> ![[slide-ia-41-41.png|30%]]
+> ![[slide-ia-41-41.png|500]]
 > Svolgimento: i valori delle foglie vengono mediati nei nodi CHANCE secondo le loro probabilità, poi propagati ai nodi MAX come massimo.
-
-> [!todo] Verificare che slide-ia-41-41.png corrisponda alla slide 41 (Expectimax Example).
 
 **Depth-limited expectimax:**
 
 Con profondità limitata, il valore vero dell'expectimax richiede molto lavoro da calcolare. Si ha quindi una stima del valore vero: ad esempio 400 e 300, oppure 492 e 362, a seconda della profondità.
 
-![[slide-ia-42-42.png|30%] ] *(immagine non estratta, slide 42)*
+![[Pasted image 20261028224418.png|500]]
 
 **Quali probabilità usare:**
 
@@ -182,10 +156,10 @@ L'**expectiminimax** tratta l'ambiente come un giocatore "random" extra che si m
 
 Storico dell'IA: TDGammon usa depth-2 search + funzione di valutazione molto buona + reinforcement learning: gioco di livello mondiale. Primo campione del mondo di IA in un gioco.
 
-![[slide-ia-46-46.png|30%]]
+![[slide-ia-46-46.png|500]]
 *Slide Example: Backgammon: lanci di dadi, branching factor, profondità 2, TDGammon.*
 
-> [!todo] Verificare che slide-ia-46-46.png corrisponda alla slide 46.
+
 
 ## Multi-agent utilities
 
@@ -200,10 +174,10 @@ Generalizzazione del minimax:
 
 Esempio di tuple: `1,6,6 7,1,2 6,1,2 7,2,1 5,1,7 1,5,2 7,7,1 5,2,5`
 
-![[slide-ia-47-47.png|30%]]
+![[slide-ia-47-47.png|5]] 00
 *Slide Multi-Agent Utilities: tuple di utilità per giochi non somma zero con più giocatori.*
 
-> [!todo] Verificare che slide-ia-47-47.png corrisponda alla slide 47.
+
 
 ## Difficoltà della ricerca fin qui
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>esercizio</title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="stile.css">
+    <script src="Script.js"></script>
+</head>
+<body>
+
+    <h2>Chiamata di funzione tramite bottone</h2>
+    <div class="container">
+        <img id="luce-img" src="immagini/luce-off.png" alt="luce-off">
+        <button onclick="accendiLuce()">Accendi la luce</button>
+    </div>
+
+    <hr>
+
+    <h2>Somma due numeri</h2>
+    <div>
+        <button onclick="somma(2,5)">Somma</button>
+        <span>2 + 5 = </span>
+        <span id="risualtato-somma"></span>
+    </div>
+
+    <hr>
+
+    <h2>Selezione</h2>
+    <div id="prova-sel">
+        <button onclick="provaSelezione()">Aggiungi paragrafo</button>
+        <p>Sono un paragrafo!</p>
+    </div>
+    
+    <hr>
+
+    <h2>Cambia testo</h2>
+    <div>
+        <button onclick="cambiaTesto()">Cambia il testo sotto</button>
+        <p id="testoA">Biancaneve</p>
+    </div>
+
+    <hr>
+
+    <h2>Modifica attributi</h2>
+    <div>
+        <p>
+            <button onclick="cambiaImmagine()">Cambia immagine</button>
+            <img id="paese" src="immagini/imm1.jpg" alt="paese">
+        </p>
+    </div>
+
+    <hr>
+
+    <h2>Modifica classi</h2>
+    <div>
+        <button id="bello1" class="bott-bello" onclick="sostituisciClasse()">Cambia classe</button>
+        <button id="bello2" class="bott-bello" onclick="toggleClasse()">Toggle classe</button>
+    </div>
+
+</body>
+</html>
