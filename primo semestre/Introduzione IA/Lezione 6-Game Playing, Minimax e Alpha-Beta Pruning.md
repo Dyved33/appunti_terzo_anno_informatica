@@ -199,8 +199,9 @@ Chiamata iniziale: `value(root, -∞, +∞)`.
 - Alpha-beta è un esempio semplice di **metareasoning** (calcolare cosa calcolare).
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261022182119.png" width="50%">
+  <img src="Pasted image 20261022182119.png" width="30%">
 </div>
+
 Slide Alpha-Beta Properties: riassume che il valore alla radice non cambia, i nodi intermedi possono avere valori incompleti, l'ordinamento perfetto dimezza l'esponente, e introduce il concetto di metareasoning.
 
 > [!info] Sintesi:
