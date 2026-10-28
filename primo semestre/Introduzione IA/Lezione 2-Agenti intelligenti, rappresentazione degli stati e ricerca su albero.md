@@ -240,7 +240,7 @@ La strategia è espandere **prima il nodo più profondo** (*expand a deepest nod
 - **Ottimalità:** **no.** Trova la soluzione "più a sinistra", cioè la prima incontrata, **indipendentemente dalla profondità e dal costo**.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261007162205.png" width="300">
+  <img src="Pasted image 20261007162205.png" width="30%">
 </div>
 
 > [!warning] DFS non è completo in presenza di cicli
@@ -257,7 +257,7 @@ La strategia è espandere **prima il nodo più superficiale** (*expand a shallow
 - **Ottimalità:** **solo se tutti i costi sono 1.** Con costi diversi trova la soluzione con meno *azioni*, non necessariamente quella più economica.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261007162652.png" width="300">
+  <img src="Pasted image 20261007162652.png" width="30%">
 </div>
 
 > [!example] La differenza tra "meno azioni" e "minore costo"
@@ -270,6 +270,7 @@ L'idea è ottenere il **vantaggio di spazio del DFS** (la fringe piccola) con il
 - Si esegue un DFS con **limite di profondità 1**: se non si trova una soluzione, si esegue un DFS con limite 2; poi con limite 3, e così via fino a trovare il goal.
 - **Obiezione:** non è uno spreco ridondante? In generale **no**, perché la maggior parte del lavoro di ciascun giro avviene al livello più profondo cercato, e quel livello non è mai stato esplorato prima. I livelli superiori vengono riesplorati, ma sono economici rispetto all'ultimo.
 
+*Osservazione:* che differenza c'è con una normale BFS? La differenza principale riguarda la memoria: BFS richiede $O(b^{d)}$ mentre l'IDS tiene solo il cammino corrente richiedendo $O(bd)$. Per il resto sono entrambi completi e ottimali e richiedono $O(b^{d)}$  in tempo 
 ### L'algoritmo: iterative deepening e depth-limited search
 
 Iterative deepening non è che una ripetizione di una ricerca *depth-limited*: a ogni giro chiama la stessa subroutine con un limite di profondità crescente.
@@ -318,7 +319,7 @@ function DEPTH-LIMITED-SEARCH(problem, ℓ) returns a node or failure or cutoff
 - **Ottimalità:** **sì**, è garantita (la dimostrazione si dà nella lezione successiva con $A^*$).
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261007164115.png" width="300">
+  <img src="Pasted image 20261007164115.png" width="30%">
 </div>
 
 > [!info] I passi di UCS:

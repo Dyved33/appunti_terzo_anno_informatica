@@ -52,6 +52,8 @@ In pratica si ottengono spesso risultati molto più vicini a $C^*$ che al limite
   </div>
 </div>
 
+> [!warning] Ricorda:
+> - $C^{*}$ = costo della soluzione ottima
 ## IDA* (Iterative Deepening A*)
 
 IDA* applica la strategia di *iterative deepening* ad A*: invece di una frontiera in memoria, esegue una serie di ricerche in profondità limitate da una soglia sul valore di $f$.
@@ -88,17 +90,17 @@ IDA* applica la strategia di *iterative deepening* ad A*: invece di una frontier
   <br>
   • Cancella il ramo fallito, memorizzando il miglior valore $f$ di quel ramo come <i>backed-up value</i> (valore di backup).
   <br><br>
-  <b>Traccia Romania (prima parte):</b> "Cost of the second choice after Sibiu" e "Cost of the second choice after Rimnicu". Dopo aver espanso Rimnicu Vilcea, il successore Pitesti ha $f=417$, ma la seconda scelta per Rimnicu è $415$. Il ramo da Rimnicu viene cancellato, $417$ registrato come valore di backup, e la ricerca continua da Fagaras (seconda scelta globale).
   </div>
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide5--09.png" style="width: 30%;">
+  <img src="slide5--09.png" style="width: 50%;">
 </div>
 
-Proseguimento della traccia RBFS (slide 9):
-- **(b)** Dopo essere tornati indietro a Sibiu ed espanso Fagaras: i successori mostrano i loro valori $f$ aggiornati (Sibiu 447, Arad 417, Oradea 646, ecc.). Il ramo da Fagaras non porta al goal in modo ottimale.
-- **(c)** Si torna indietro a Rimnicu Vilcea (la seconda scelta globale con $f=415$) ed espande Pitesti con $f=417$. Il valore $f=417$ diventa il nuovo *backed-up value* per quel ramo.
+Traccia Romania: 
+- Dopo aver espanso Rimnicu Vilcea, il successore Pitesti ha $f=417$, ma la seconda scelta per Rimnicu è $415$. Il ramo da Rimnicu viene cancellato, $417$ registrato come valore di backup, e la ricerca continua da Fagaras (seconda scelta globale).
+- Dopo essere tornati indietro a Sibiu ed espanso Fagaras: i successori mostrano i loro valori $f$ aggiornati (Sibiu 447, Arad 417, Oradea 646, ecc.). Il ramo da Fagaras non porta al goal in modo ottimale.
+- Si torna indietro a Rimnicu Vilcea (la seconda scelta globale con $f=415$) ed espande Pitesti con $f=417$. Il valore $f=417$ diventa il nuovo *backed-up value* per quel ramo.
 
 Questo illustra il meccanismo chiave: RBFS "ricorda" il miglior $f$ del ramo abbandonato e lo usa per decidere quando tornarci.
 
@@ -141,7 +143,7 @@ function RBFS(problem, node, f-limit) returns a solution or failure, and a new f
 
 ## SMA* (Simplified Memory-Bounded A*)
 
-SMA* è una semplificazione di A* a memoria limitata che **sfrutta tutta la memoria disponibile**. Quando la memoria si esaurisce, dimentica i nodi peggiori (con $f$ più alto) per fare spazio a quelli migliori.
+SMA* è una semplificazione di A* a memoria limitata che **sfrutta tutta la memoria disponibile** (limita la dimensione della coda di priorità). Quando la memoria si esaurisce, dimentica i nodi peggiori (con $f$ più alto) per fare spazio a quelli migliori.
 
 <div style="display: flex; justify-content: center;">
   <img src="slide5--12.png" style="width: 30%;">

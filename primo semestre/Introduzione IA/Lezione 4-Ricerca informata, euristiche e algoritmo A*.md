@@ -253,7 +253,7 @@ La consistenza rappresenta la disuguaglianza triangolare applicata ai costi euri
 1. **Monotonia della funzione di valutazione:** il valore di $f$ lungo qualsiasi cammino non decresce mai:
    $$f(n') = g(n') + h(n') = g(n) + c(n, a, n') + h(n') \ge g(n) + h(n) = f(n)$$
 2. **Espansione per contorni di f crescenti:** A\* espande i nodi in ordine strettamente non decrescente di $f$ (*f-contours*).
-3. **Ottimalità alla prima espansione (*Single State Expansion*):** la prima volta che uno stato viene estratto dalla frontiera, è garantito che sia stato raggiunto attraverso il cammino a costo minimo assoluto. Non è mai necessario riespandere uno stato già chiuso.
+3. **Ottimalità alla prima espansione (*Single State Expansion*):** la prima volta che uno stato viene estratto dalla frontiera, è garantito che sia stato raggiunto attraverso il cammino a costo minimo assoluto (perché $A^{*}$ usa coda di priorità sul nodo con costo minore g+h). Non è mai necessario riespandere uno stato già chiuso.
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">

@@ -32,11 +32,17 @@ Formalizzazione standard:
 - **Azioni** $A(s, p)$ — dipendono da stato e giocatore
 - **Funzione di transizione** $S \times A \to S$
 - **Test terminale** $S \to \{\text{true}, \text{false}\}$
-- **Utilità terminale** $S \times P \to \mathbb{R}$ — valore certo solo negli stati finali
+- **Utilità terminale** $S \times P \to \mathbb{R}$ — valore certo e assegnato solo negli stati finali (negli scacchi può valere solo +1, 0, -1)
 
-Una soluzione per un giocatore è una **policy** $\pi: S \to A$.
+Una soluzione per un giocatore è una **policy** $\pi: S \to A$ (funzione che associa a ogni stato un'azione o una distribuzione su azioni)
 
 *Definizione:* **Gioco a somma zero** = gli agenti hanno utilità opposte; si può ragionare su un unico valore che MAX massimizza e MIN minimizza.
+
+**MAX e MIN sono ruoli nell'albero di ricerca**, non necessariamente i nomi dei giocatori. I valori si misurano dal punto di vista di MAX:
+- MAX sceglie la mossa con il valore più alto.
+- MIN sceglie la mossa con il valore più basso per MAX, cioè la migliore per MIN.
+
+Per esempio, se `+1` indica una vittoria di MAX, `0` un pareggio e `−1` una sconfitta, MIN cercherà di portare il risultato verso `−1`.
 
 > [!info] In altre parole:
 > In un gioco a somma zero con informazione perfetta, il risultato dipende solo dalle scelte dei due giocatori: non c'è casualità né informazione nascosta.
@@ -64,7 +70,7 @@ I valori delle foglie indicano l'utilità dell'esito per MAX. Per valutare una p
 </div>
 La radice è lo stato iniziale; ogni livello aggiunge una mossa. Le foglie hanno valori 8, 2, 0, 2, 6, 4, 6. Risalgo scegliendo il massimo dei figli a ogni nodo: il valore indica il miglior esito che posso ottenere da quel punto.
 
-### Value of a State
+### Value of a State 
 <div style="display: flex; justify-content: center;">
   <img src="Pasted image 20261022171253.png" width="50%">
 </div>
@@ -91,7 +97,7 @@ L'albero del tris mostra quante posizioni possono nascere anche da poche mosse. 
 ## Minimax
 Minimax è l'algoritmo che sceglie la mossa migliore assumendo che entrambi i giocatori giochino in modo ottimale. Si applica ai giochi deterministici, a somma zero e con informazione perfetta.
 
-Il **valore minimax** di una posizione è l'esito che MAX può garantire contro le risposte migliori di MIN. Per calcolarlo, valuto prima le foglie e poi risalgo l'albero applicando `max` ai nodi MAX e `min` ai nodi MIN.
+Il **valore minimax** di una posizione è l'esito che MAX può garantire contro le risposte migliori di MIN. Minimax calcola questo valore: valuta prima le foglie, poi risale l'albero applicando `max` ai nodi MAX e `min` ai nodi MIN. A ogni turno, ciascun giocatore sceglie la mossa migliore per il proprio obiettivo.
 
 Algoritmo (ricorsivo):
 ```python
@@ -117,10 +123,10 @@ Equivalentemente:
 - $V(s) = \max_{s'} V(s')$ per nodi MAX
 - $V(s) = \min_{s'} V(s')$ per nodi MIN
 
-*Teorema:* Minimax è **ottimale contro un giocatore perfetto**. Se l'avversario non è ottimale, minimax non garantisce il massimo guadagno (ma non perde mai contro un razionale).
+*Teorema:* Minimax è **ottimale contro un giocatore perfetto**: garantisce a MAX il valore minimax, qualunque siano le mosse dell'avversario. Se quel valore corrisponde a una sconfitta forzata, l'algoritmo non può evitarla; se l'avversario commette errori, MAX può ottenere un risultato migliore.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261022172323.png" width="50%">
+  <img src="Pasted image 20261022172323.png" width="30%">
 </div>
 Slide Minimax: mostra la ricorsione max-value/min-value e la struttura dell'albero con valori terminali che risalgono.
 
@@ -130,6 +136,8 @@ Slide Minimax: mostra la ricorsione max-value/min-value e la struttura dell'albe
 > [!example] Minimax Example
 > ![[Pasted image 20261022173717.png]]
 > Esempio numerico: foglie con valori 3, 12, 8, 2, 4, 6, 14, 5, 2. MIN prende min(3,12,8)=3, min(2,4,6)=2, min(14,5,2)=2; MAX prende max(3,2,2)=3.
+
+I valori delle foglie sono espressi dal punto di vista di MAX. Ogni nodo MIN restituisce il valore più basso tra i propri figli: nell'esempio restituisce `3`, `2` e `2`. La radice MAX confronta questi risultati e sceglie `3`, il migliore che può garantirsi assumendo la risposta migliore di MIN.
 
 ## Efficienza Minimax
 - Tempo: $O(b^m)$ (come DFS esaustivo)
@@ -143,20 +151,20 @@ Slide Minimax: mostra la ricorsione max-value/min-value e la struttura dell'albe
 ## Alpha-Beta Pruning
 Alpha-beta calcola la stessa scelta di minimax, ma può interrompere l'esplorazione di rami che non cambierebbero la decisione alla radice.
 
-**Idea nel nodo MIN:** $\alpha$ è il valore che MAX ha già garantito con un'altra scelta lungo il percorso. Se MIN trova un figlio con valore $\le \alpha$, quel ramo non può battere l'alternativa di MAX: MIN potrebbe ottenere un valore uguale o ancora più basso. Quindi posso potare i figli restanti del nodo.
+**Idea nel nodo MIN:** $\alpha$ è il valore che MAX può già ottenere con un'altra scelta lungo il percorso. Se MIN trova un figlio con valore $\le \alpha$, quel ramo non può battere l'alternativa di MAX: MIN può far ottenere a MAX un valore uguale o ancora più basso. Si possono quindi potare i figli restanti del nodo.
 
-Simmetricamente, in un nodo MAX posso potare quando il valore raggiunto è almeno $\beta$, cioè l'opzione che MIN ha già a disposizione altrove.
+Simmetricamente, $\beta$ è il limite superiore che MIN può già garantire a MAX con un'altra scelta lungo il percorso. In un nodo MAX si può potare quando il valore raggiunto è almeno $\beta$: MAX può ottenere un valore uguale o più alto, quindi MIN non sceglierà quel ramo.
 
 Nel disegno, MAX ha già un'alternativa di valore $\alpha$. Se il nodo MIN trova un figlio che vale al massimo $\alpha$, MAX sceglierà l'alternativa già nota; non serve valutare gli altri figli di MIN.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261022181244.png" width="50%">
+  <img src="Pasted image 20261022181244.png" width="30%">
 </div>
 Slide Alpha-Beta Pruning: configurazione generale. MAX in alto, MIN al nodo $n$, $\alpha$ è il valore migliore per MAX sul percorso. Se $n \le \alpha$, potiamo i fratelli rimanenti di $n$.
 
 > [!example] Pruning
 > ![[Pasted image 20261022180017.png]]
-> MAX ha già un'alternativa di valore 3 ($\alpha=3$). In un altro ramo MIN trova un figlio di valore 2. Il valore del nodo MIN sarà quindi $\le 2$; poiché $2 \le 3$, MAX preferirà l'alternativa già nota. I figli restanti di MIN non possono cambiare la scelta e si potano. Il terzo ramo dell'immagine non soddisfa questa condizione e va esplorato.
+> MAX ha già un'alternativa di valore 3 ($\alpha=3$). In un altro ramo MIN trova un figlio di valore 2. Il valore del nodo MIN sarà quindi al massimo 2: MIN può scegliere quel figlio, mentre eventuali figli successivi potrebbero solo abbassare il valore. Poiché MAX ha già un'alternativa da 3, gli altri figli di MIN non possono cambiare la scelta e si potano. Il terzo ramo dell'immagine non soddisfa questa condizione e va esplorato.
 
 ### Implementazione Alpha-Beta
 $\alpha$: miglior opzione di MAX sul percorso alla radice  
@@ -184,7 +192,7 @@ Chiamata iniziale: `value(root, -∞, +∞)`.
 
 ### Proprietà Alpha-Beta Pruning
 - **Correttezza:** il pruning **non cambia** il valore minimax calcolato per la radice.
-- **Valori intermedi:** i nodi potati possono avere valori "sbagliati" (non completamente calcolati). *Importante:* i figli della radice potrebbero avere valori errati → la versione naïve non permette action selection diretta (serve completare la ricerca sui figli della radice).
+- **Valori intermedi:** un nodo potato può avere un valore solo parzialmente determinato, cioè un limite anziché il valore minimax esatto. La ricerca standard conserva comunque il valore corretto alla radice e permette di scegliere una mossa ottimale; non occorre ricalcolare tutti i rami potati.
 - **Ordinamento dei figli:** un buon ordinamento (provare prima le mosse migliori) massimizza il pruning.
   - Con **ordinamento perfetto**: complessità temporale $O(b^{m/2})$ → **raddoppia la profondità risolvibile**.
   - Anche con ordinamento perfetto, scacchi completa resta irraggiungibile.
@@ -198,5 +206,5 @@ Slide Alpha-Beta Properties: riassume che il valore alla radice non cambia, i no
 > [!info] Sintesi:
 > - Minimax: ricerca esaustiva, ottimale contro avversario perfetto, $O(b^m)$.
 > - Alpha-beta: stesso risultato di minimax, pota rami che non influenzano la radice, $O(b^{m/2})$ con ordinamento perfetto.
-> - I valori dei nodi potati sono incompleti; per scegliere l'azione alla radice serve completare i figli della radice.
+> - I valori dei nodi potati possono essere limiti incompleti; la scelta ottimale alla radice resta corretta.
 > - L'ordinamento delle mosse (euristiche, killer moves, hash tables) è cruciale per l'efficacia pratica.
