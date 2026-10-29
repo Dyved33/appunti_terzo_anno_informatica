@@ -9,3 +9,4 @@
 - [[Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione]] — Audience, sezione aurea e regola dei terzi, metafore visive e affordance, errori da evitare, organizzazione dei contenuti e gerarchia visiva
 - [[Lezione 8-Accessibilità e CSS3 avanzato|Accessibilità e CSS3 avanzato (ombre, gradienti, transform, transition, animation)]] — Leggibilità, tag semantici e attributi per accessibilità, ARIA, daltonismo; box-shadow, text-shadow, gradienti, transform, transition, animation
 - [[Lezione 9-Introduzione a JavaScript|Introduzione a JavaScript]] — Linguaggio lato client, manipolazione del DOM, eventi, richieste AJAX, dichiarazione variabili, funzioni, selettori e comportamenti inaspettati di JavaScript
+- [[Lezione 10|Strutture di controllo in JavaScript]] — Strutture di controllo, array, oggetti, eventi, `window.onload`, `preventDefault()`

@@ -35,11 +35,22 @@
       "package": "@plannotator/opencode@latest",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
-    "@azumag/opencode-rate-limit-fallback@2.1.0"
+    "@azumag/opencode-rate-limit-fallback@2.1.1"
   ],
   "mcp": {
     "servers": {
-      "obsidian-search": { "type": "remote", "url": "http://127.0.0.1:8848/mcp", "disabled": false }
+      "obsidian-search": { "type": "remote", "url": "http://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false }
+    }
+  },
+  "tools": {
+    "obsidian-search*": "deny"
+  },
+  "agent": {
+    "appunti": {
+      "tools": { "obsidian-search*": "allow" }
+    },
+    "revisore": {
+      "tools": { "obsidian-search*": "allow" }
     }
   },
   "compaction": {
@@ -68,12 +79,9 @@
     { "action": "edit", "resource": "*.md", "effect": "allow" },
     { "action": "edit", "resource": "*/esercizi/*", "effect": "deny" },
     { "action": "edit", "resource": "AGENTS.md", "effect": "deny" },
-    { "action": "edit", "resource": ".opencode/**", "effect": "deny" },
-    { "action": "edit", "resource": "prompt/Guida_Opencode.md", "effect": "deny" },
+    { "action": "edit", "resource": ".opencode/stile.md", "effect": "deny" },
     { "action": "edit", "resource": "prompt/prompt_chat.md", "effect": "deny" },
     { "action": "edit", "resource": "prompt/README.md", "effect": "deny" },
-    { "action": "edit", "resource": "CONFIG-CHANGES.md", "effect": "deny" },
-    { "action": "edit", "resource": "opencode.json", "effect": "deny" },
     { "action": "read", "resource": "*", "effect": "allow" },
     { "action": "read", "resource": "*.env", "effect": "deny" },
     { "action": "read", "resource": "*.env.*", "effect": "deny" },

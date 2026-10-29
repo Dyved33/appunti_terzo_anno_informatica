@@ -51,6 +51,41 @@ I modelli gratuiti e i relativi limiti cambiano. Nemotron 3.5 Super VL Free è t
 
 Il default vale per le nuove sessioni. Puoi cambiare modello con `/models` per la sessione corrente; il plugin riapplica il default alla successiva. Con tutti i free visibili puoi scegliere anche un modello fuori dalla catena di fallback.
 
+## Skill native (caricate on-demand)
+
+Le regole di scrittura sono divise su due livelli:
+
+- **`.opencode/regole.md`** (530 token): sintesi operativa, caricata a ogni sessione nel contesto statico. Va letta e applicata sempre.
+- **`.opencode/skills/`**: skill complete, caricate solo quando servono con il tool `skill`. Non pesano sul contesto statico.
+
+| Skill | File | Quando si usa |
+|---|---|---|
+| `no-ai-slop` | `.opencode/skills/no-ai-slop/SKILL.md` | prima di scrivere o rivedere una nota, per evitare parole e formule da stile IA |
+| `i-have-adhd` | `.opencode/skills/i-have-adhd/SKILL.md` | prima di scrivere o rivedere una nota, per l'impaginazione (un'idea per blocco, elenchi invece della prosa) |
+| `note-quality` | `.opencode/skills/note-quality/SKILL.md` | prima di chiudere una nota, per verificare che nulla del docente sia perso e che lo stile sia corretto |
+
+Le due skill già presenti in `~/.agents/skills/` e `~/.config/opencode/vendor/` restano valide come riferimento globale; quelle in `.opencode/skills/` sono la versione di progetto.
+
+## Per-agent MCP tools
+
+Il server MCP `obsidian-search` non è più globale: il suo schema tool viene inviato solo agli agenti che ne hanno bisogno (`appunti` e `revisore`). Negli altri turni il contesto statico è più leggero. Se un altro agente ha bisogno della ricerca semantica, chiedi di aggiungerlo alla sezione `agent` di `opencode.json`.
+
+## Nuovi plugin
+
+| Plugin | Scopo | Stato |
+|---|---|---|
+| `opencode-parser` | OCR e parsing di immagini e documenti | già installato |
+| `@tarquinen/opencode-dcp` | Potatura del contesto e deduplica chiamate | già installato, tarato in `.opencode/dcp.jsonc` |
+| `@plannotator/opencode` | Piano interattivo con Plannotator | già installato |
+| `@azumag/opencode-rate-limit-fallback` | Fallback automatico su modello secondario | già installato, versione 2.1.1 |
+Per installare un plugin mancante:
+
+```bash
+opencode plugin add <nome-plugin>
+```
+
+Poi riavvia OpenCode.
+
 ## Il fallback automatico
 
 Per gli errori riconosciuti dal plugin (429, quota esaurita, errori transitori), la richiesta prova il modello successivo della catena. Quando finisce la catena si ferma, senza ripartire in ciclo (`fallbackMode: "stop"`). Un `504 Gateway Timeout` generico non è garantito che venga riconosciuto: il timeout limita l'attesa, ma non assicura il passaggio al fallback. La configurazione unica è `~/.config/opencode/rate-limit-fallback.json`; non creare copie nel vault:
