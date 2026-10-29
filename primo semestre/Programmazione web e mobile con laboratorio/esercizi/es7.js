@@ -8,3 +8,7 @@ function aggiungi() {
 
     document.body.append(p);
 }
+
+function ciclo(){
+    
+}

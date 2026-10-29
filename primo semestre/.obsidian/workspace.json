@@ -4,39 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "108581142cf85296",
+        "id": "08b4777998ff34e1",
         "type": "tabs",
         "children": [
           {
-            "id": "0bf94faade3bdfa0",
+            "id": "ef32f80c4c5504e2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning"
-            }
-          },
-          {
-            "id": "61f017335cfa87c5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Introduzione IA/Lezione 7.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Lezione 7"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -219,32 +200,36 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "61f017335cfa87c5",
+  "active": "ef32f80c4c5504e2",
   "lastOpenFiles": [
-    "Pasted image 20261028164702.png",
-    "Pasted image 20261028163758.png",
+    "Introduzione IA/Lezione 8-.md",
+    "Introduzione sicurezza /Lezione 7-.md",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261029123531.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261029123416.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261029120809.png",
+    "Untitled.md",
+    "Programmazione web e mobile con laboratorio/Lezione 10.md",
+    "Pasted image 20261029123531.png",
+    "Pasted image 20261029123416.png",
+    "Pasted image 20261029120809.png",
+    "Architettura reti e internet/internet/Lezione 8-Telnet.md",
+    "Introduzione IA/esercitazioni/aimaLAB_lezione3.ipynb",
+    "Programmazione web e mobile con laboratorio/esercizi/immagini/luce-on.png",
+    "Programmazione web e mobile con laboratorio/esercizi/immagini/luce-off.png",
+    "Programmazione web e mobile con laboratorio/esercizi/immagini/imm2.jpg",
+    "Programmazione web e mobile con laboratorio/esercizi/immagini/imm1.jpg",
+    "Programmazione web e mobile con laboratorio/esercizi/immagini",
+    "Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "Introduzione IA/6-Games.pdf",
     "Introduzione IA/Unconfirmed 506585.crdownload",
-    "Pasted image 20261028163303.png",
-    "Pasted image 20261028163246.png",
-    "Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "Introduzione IA/Lezione 7.md",
     "Programmazione web e mobile con laboratorio/esercizi/eserciziJS.js",
     "Programmazione web e mobile con laboratorio/esercizi/eserciziJS.html",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261026155343.png",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261026150054.png",
-    "Programmazione web e mobile con laboratorio/images/Pasted image 20261026145528.png",
     "Programmazione web e mobile con laboratorio/esercizi/es7.js",
     "Programmazione web e mobile con laboratorio/esercizi/es7.html",
     "Programmazione web e mobile con laboratorio/Lezione 9.md",
     "Programmazione web e mobile con laboratorio/pwm_lezione9.pdf",
     "Programmazione web e mobile con laboratorio/Unconfirmed 226405.crdownload",
-    "Pasted image 20261026155343.png",
-    "Programmazione web e mobile con laboratorio/esercizi/script.html",
-    "Programmazione web e mobile con laboratorio/esercizi/script.js",
-    "Pasted image 20261026150054.png",
-    "Pasted image 20261026145528.png",
-    "Pasted image 20261026145400.png",
     "Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
     "Introduzione IA/Lezione 3-Ricerca su grafo.md",
     "Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
@@ -262,10 +247,6 @@
     "Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
     "Architettura reti e internet/protocolli/Lezione 5-Serie di Fourier, filtri e modulazione.md",
     "Architettura reti e internet/protocolli/Lezione 5-.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
-    "Introduzione sicurezza /Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
-    "Programmazione web e mobile con laboratorio/Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 10-.md"
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md"
   ]
 }
