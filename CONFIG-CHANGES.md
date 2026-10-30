@@ -17,6 +17,9 @@
 - `"@opencode-ai/plugin": "1.18.34"` → `"@opencode/cli": "latest"` in `.opencode/package.json`.
 - `opencode-obsidian-vault` NON installato: ridondante con il server MCP `obsidian-search` già presente.
 
+### Command (nuovo)
+- `chiudi-nota.md`: esegue in sequenza `controlla-perdite.py --salva`, `controlla-perdite.py`, `vault-audit.py --breve` e `@revisore` su una singola nota, restituendo un report unificato. Report-only, non modifica nulla.
+
 ## Da fare (non ancora applicato)
 
 - Valutare `piagentsync` (sincronizzazione configurazione tra vault). `echoes-vault-opencode` NON aggiunto: non ottimizza i token, anzi aggiunge contesto persistente.

@@ -207,6 +207,23 @@ Capisce da solo in quale caso si trova:
 
 Trova: link rotti, immagini mancanti, formule e blocchi di codice non chiusi, `<div>` non bilanciati, callout sbagliati, segnaposto non risolti, lezioni che mancano nell'indice, sintesi finale mancante, frontmatter e tag, titoli fuori convenzione, frasi tipiche da IA, `[!todo]` aperti, paragrafi molto lunghi.
 
+**`/chiudi-nota`** esegue in sequenza controllo perdite, controllo strutturale e revisore su una singola nota, restituendo un report unificato. Non modifica nulla: se qualcosa va sistemato, usa poi `/rivedi`.
+
+```
+/chiudi-nota "Primo semestre/SO/Lezione 5-Semafori, Messaggi.md"
+/chiudi-nota "Primo semestre/SO/Lezione 5-Semafori, Messaggi.md" "Primo semestre/SO/semafori.pdf"
+```
+
+Cosa fa, in ordine:
+
+1. Salva una copia di sicurezza della nota in `.opencode/originali/`;
+2. Esegue `controlla-perdite.py` e segnala formule, codice, immagini, numeri e righe del materiale non ritrovate nella nota;
+3. Esegue `vault-audit.py --breve` e segnala ERROR e WARN;
+4. Chiama il subagent `revisore` e segnala [ERRORE], [MANCA], [TAGLIA], [STILE], [FORMA];
+5. Chiude con un giudizio: `Nota corretta` / `Da correggere: N errori` / `Da completare: N perdite`.
+
+Usalo quando hai finito di scrivere una nota e vuoi verificare che nulla sia stato perso prima di considerarla chiusa.
+
 **`/slide`** mostra il testo di una pagina del materiale, per controllare con i propri occhi.
 
 ```
