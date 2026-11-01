@@ -2,7 +2,9 @@
 
 ## L'agente intelligente e il suo ambiente
 
-*Definizione:* un **agente intelligente** è l'entità che interagisce con il mondo esterno (*environment*) attraverso due categorie di interfacce: i <u>sensori</u>, con cui percepisce, e gli <u>attuatori</u>, con cui agisce (es. Aspirapolvere Roomba, termostato intelligente, rilevatori di fumo, [[Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi#Sistemi basati su documenti e sistemi agentici|Agentic AI]] che eseguono autonomamente task multi-step)
+*Definizione:* un **agente intelligente** interagisce con il mondo esterno (*environment*) attraverso due interfacce: i <u>sensori</u>, con cui percepisce, e gli <u>attuatori</u>, con cui agisce.
+
+Esempi di agenti: aspirapolvere Roomba, termostato intelligente, rilevatore di fumo e [[Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi#Sistemi basati su documenti e sistemi agentici|sistemi agentici]] che eseguono task in più passaggi.
 
 **Sensori:** dispositivi che acquisiscono dati dall'ambiente e li forniscono all'agente sotto forma di **percezioni**: telecamere, microfoni, lettura di file, messaggi di rete, output di uno strumento.
 
@@ -18,7 +20,7 @@ Il ciclo di interazione è continuo e ricorsivo: l'azione eseguita dall'attuator
                 (l'ambiente è stato modificato)
 ```
 
-L'ambiente non deve essere necessariamente digitale: può essere un ambiente fisico reale (un robot mobile che evita ostacoli), un ambiente software o una simulazione. La struttura del ciclo percezione-decisione-azione rimane invariata, variando unicamente la tipologia di sensori e attuatori impiegati.
+L'ambiente può essere fisico (per esempio, un robot mobile che evita ostacoli), software o simulato. Il ciclo percezione-decisione-azione resta invariato; cambia il tipo di sensori e attuatori.
 
 **Le quattro proprietà dell'ambiente:** la difficoltà di progettazione e risoluzione di un agente razionale dipende dalla combinazione di quattro dimensioni tassonomiche.
 
@@ -95,7 +97,7 @@ Un esempio classico è la ricerca del percorso ottimale tra città sulla rete st
 
 ## Lo stato del mondo e lo stato di ricerca
 
-La progettazione efficiente di un problema di ricerca richiede di separare le informazioni ridondanti da quelle essenziali:
+Per progettare efficientemente un problema di ricerca, separo le informazioni essenziali da quelle ridondanti:
 
 - **Stato del mondo (*world state*):** include ogni minimo dettaglio dell'ambiente operativo.
 - **Stato di ricerca (*search state*):** trattiene unicamente i dettagli strettamente necessari alla formulazione del piano, astraendo le variabili ininfluenti.
@@ -138,7 +140,7 @@ Il confronto combinatorio illustra l'esplosione dello spazio degli stati all'aum
   <img src="lec02_state_space_graph.png" width="600">
 </div>
 
-Due proprietà distintive: ogni stato del problema compare **una e una sola volta** nel grafo, e per problemi di scala reale il grafo completo è troppo vasto per essere costruito o memorizzato esplicitamente, resta un modello concettuale di riferimento.
+Nel grafo ogni stato compare **una sola volta**. Nei problemi reali il grafo completo è spesso troppo vasto da costruire o memorizzare: resta un modello concettuale di riferimento.
 
 **Albero di ricerca** (*search tree*): è la struttura gerarchica che rappresenta i piani ipotetici ("cosa se", *what if*) e le rispettive conseguenze.
 
@@ -150,7 +152,7 @@ Due proprietà distintive: ogni stato del problema compare **una e una sola volt
   <img src="lec02_search_tree_concept.png" width="600">
 </div>
 
-Come il grafo, nella maggior parte dei problemi l'albero completo non può essere costruito davvero.
+Anche l'albero completo, nella maggior parte dei problemi, è troppo vasto da costruire.
 
 ### Confronto fondamentale: grafo e albero
 
@@ -161,7 +163,7 @@ La distinzione tra grafo dello spazio degli stati e albero di ricerca è un card
 </div>
 
 > [!important] Nodi dell'albero e cammini del grafo:
-> **Ogni singolo nodo dell'albero di ricerca corrisponde a un intero percorso (*path*) nel grafo dello spazio degli stati.** Poiché uno stesso stato può essere raggiunto attraverso molteplici cammini distinti, la stessa configurazione può comparire replicata in più nodi dell'albero. Il grafo resta un modello formale: in pratica se ne istanzia *on demand* solo la porzione raggiunta durante la ricerca, e sempre nel minimo necessario.
+> **Ogni nodo dell'albero di ricerca corrisponde a un percorso (*path*) nel grafo dello spazio degli stati.** Uno stesso stato può essere raggiunto con percorsi diversi e quindi comparire in più nodi dell'albero. Durante la ricerca si istanzia *on demand* solo la porzione raggiunta.
 
 | Proprietà | Grafo dello spazio degli stati | Albero di ricerca |
 | :--- | :--- | :--- |
@@ -209,29 +211,33 @@ I nodi foglia non ancora espansi, evidenziati con tratteggio verde, costituiscon
 > [!important] Il quesito centrale della ricerca:
 > **Quale nodo presente nella frontiera (*fringe*) deve essere scelto ed espanso per primo?**
 
-La scelta della politica di estrazione dalla fringe determina le proprietà algoritmiche e differenzia le strategie di:
+La politica con cui si estrae un nodo dalla fringe determina le proprietà dell'algoritmo. Distingue:
 
 - **Ricerca non informata (*uninformed search*):** operano sfruttando unicamente la struttura dello spazio degli stati, es. *depth-first search* tramite stack LIFO, *breadth-first search* tramite coda FIFO, *uniform cost search* tramite coda di priorità su costo cumulato.
 - **Ricerca informata (*informed search*):** guidano l'esplorazione mediante funzioni euristiche informative dirette verso il goal, es. *greedy best-first*, $A^*$.
 
 ## I criteri di valutazione di un algoritmo di ricerca
 
-Prima di confrontare le strategie servono quattro proprietà. Ogni algoritmo viene valutato su quattro domande: quali nodi espande, quanto tempo richiede, quanto spazio occupa la fringe, e se è completo e ottimale.
+Confronto gli algoritmi in base a quattro proprietà: quali nodi espandono, quanto tempo richiedono, quanta memoria occupano e se sono completi e ottimali.
 
 - **Completezza:** l'algoritmo garantisce di trovare una soluzione *se e solo se* una soluzione esiste?
 - **Ottimalità:** l'algoritmo garantisce di trovare il percorso di *minor costo*, non una soluzione qualsiasi?
 - **Complessità temporale:** quanti nodi espande, quindi quanto tempo impiega.
 - **Complessità spaziale:** quanti nodi deve tenere contemporaneamente, quindi quanta memoria occupa.
 
-Per esprimere tempo e spazio in funzione della forma dell'albero servono due parametri: il **fattore di ramificazione $b$** (*branching factor*), il numero di figli che ogni nodo genera in media, e la **profondità massima $m$**, il livello più profondo raggiungibile. L'albero cresce a potenza di $b$: al livello 0 c'è $1$ nodo, al livello 1 ci sono $b$ nodi, al livello 2 ci sono $b^2$ nodi, e così via fino a $b^m$ all'ultimo livello. Il numero totale di nodi dell'intero albero è quindi una serie geometrica:
+Per esprimere tempo e spazio in funzione dell'albero servono due parametri:
+- il **fattore di ramificazione $b$** (*branching factor*), cioè il numero medio di figli per nodo;
+- la **profondità massima $m$**, cioè il livello più profondo raggiungibile.
+
+Al livello 0 c'è 1 nodo, al livello 1 ci sono $b$ nodi, al livello 2 $b^2$, fino a $b^m$ all'ultimo livello. Il numero totale di nodi è quindi la serie geometrica:
 
 $$1 + b + b^2 + \dots + b^m = O(b^m)$$
 
-Il numero di nodi al livello $k$ è $b^k$: a ogni passo la ramificazione moltiplica il totale per $b$. Per questo la crescita è **esponenziale** in profondità, ed è il parametro $b$ a fare la differenza in pratica.
+Il livello $k$ contiene $b^k$ nodi: a ogni passo il fattore di ramificazione moltiplica il totale per $b$. La crescita è quindi **esponenziale** nella profondità.
 
 ## Depth-First Search (DFS)
 
-La strategia è espandere **prima il nodo più profondo** (*expand a deepest node first*), e l'implementazione mantiene la fringe come uno **stack LIFO** (*last in, first out*), così che l'ultimo nodo generato è il primo ad essere estratto. Espanso un nodo, i suoi figli vengono impilati in cima e il successivo ad essere estratto è l'ultimo inserito: la ricerca procede a zigzag, scendendo in profondità su un ramo prima di risalire.
+La strategia espande **prima il nodo più profondo** (*expand a deepest node first*). La fringe è uno **stack LIFO** (*last in, first out*): i figli vengono impilati in cima e l'ultimo inserito è il primo estratto. La ricerca scende lungo un ramo prima di risalire.
 
 - **Quali nodi espande:** un **prefisso sinistro** dell'albero (*some left prefix of the tree*); potrebbe arrivare a processare l'albero intero.
 - **Complessità temporale:** se $m$ è finita, impiega $O(b^m)$.
@@ -248,7 +254,7 @@ La strategia è espandere **prima il nodo più profondo** (*expand a deepest nod
 
 ## Breadth-First Search (BFS)
 
-La strategia è espandere **prima il nodo più superficiale** (*expand a shallowest node first*), e l'implementazione mantiene la fringe come una **coda FIFO** (*first in, first out*): il primo nodo generato è il primo ad essere estratto. L'effetto è che tutti i nodi di un livello vengono espansi prima di passare al livello successivo.
+La strategia espande **prima il nodo più superficiale** (*expand a shallowest node first*). La fringe è una **coda FIFO** (*first in, first out*): il primo nodo generato è il primo estratto. Si espandono tutti i nodi di un livello prima di passare al successivo.
 
 - **Quali nodi espande:** processa **tutti i nodi al di sopra della soluzione più superficiale**.
 - **Complessità temporale:** indicando con $s$ la profondità della soluzione più superficiale, impiega $O(b^s)$.

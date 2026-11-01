@@ -45,7 +45,7 @@ L'algoritmo opera in modo **iterativo**: aggiorna i parametri, ricalcola l'error
 > [!important] Generalizzazione, non memorizzazione
 > L'obiettivo del machine learning è la **generalizzazione**, non la pura memorizzazione dei dati. Per questo il modello si addestra sul *training set*, ma <u>le prestazioni vanno verificate su un insieme disgiunto di dati mai visti durante il training</u>, il **test set**: è ciò che previene l'**overfitting**, il sovradattamento.
 
-**Complessità del modello:** per risolvere compiti complessi servono modelli con un elevato numero di parametri, cioè una *capacità rappresentativa* elevata, che richiedono però moli massicce di dati di addestramento per evitare l'instabilità o il sovradattamento (*overfitting*).
+**Complessità del modello:** per risolvere compiti complessi servono modelli con molti parametri e quindi un'elevata *capacità rappresentativa*. Per evitare instabilità o sovradattamento (*overfitting*), questi modelli richiedono grandi quantità di dati di addestramento.
 
 **Distribuzione di probabilità:** il modello assegna una probabilità a ogni possibile risposta dello spazio di output. L'obiettivo dell'addestramento è incrementare progressivamente la massa di probabilità associata alla risposta attesa, il *target*.
 
@@ -80,13 +80,13 @@ dove $P \in (0, 1]$ è la probabilità che il modello assegna alla risposta atte
   <img src="Pasted image 20260930175214.png" width="600">
 </div>
 
-- **Spazio dei parametri:** ogni coordinata $(m, q)$ sulla superficie corrisponde a un modello specifico, una precisa retta nel piano dei dati.
-- **Gradiente** $\nabla \mathcal{L}$: vettore delle derivate parziali che indica la direzione di massima salita della loss. L'ottimizzazione procede nella direzione opposta, cioè in discesa del gradiente (*gradient descent*).
-- **Learning rate** $\eta$: iperparametro che determina l'ampiezza dello spostamento, la lunghezza del passo, nello spazio dei parametri a ogni iterazione:
+- **Spazio dei parametri:** ogni coordinata $(m, q)$ sulla superficie corrisponde a un modello specifico, cioè a una retta precisa nel piano dei dati.
+- **Gradiente** $\nabla \mathcal{L}$: vettore delle derivate parziali che indica la direzione di massima salita della loss. L'ottimizzazione procede nella direzione opposta, in discesa del gradiente (*gradient descent*).
+- **Learning rate** $\eta$: iperparametro che determina la lunghezza del passo nello spazio dei parametri a ogni iterazione:
 
 $$\theta^{(t+1)} = \theta^{(t)} - \eta \nabla \mathcal{L}(\theta^{(t)})$$
 
-<u>Il ciclo di addestramento completo si compone di quattro fasi.</u>
+Il ciclo di addestramento completo si compone di quattro fasi:
 
 1. **Predizione** (*forward pass*): calcolo delle uscite del modello a partire dagli esempi di input.
 2. **Calcolo della loss**: valutazione numerica dell'errore rispetto alle risposte attese.
@@ -95,7 +95,7 @@ $$\theta^{(t+1)} = \theta^{(t)} - \eta \nabla \mathcal{L}(\theta^{(t)})$$
 
 A convergenza raggiunta i parametri vengono **fissati**, il modello entra in fase di **inferenza**.
 
-Lo stesso principio matematico, forward pass, loss, gradiente e aggiornamento, si applica invariato alle **reti neurali profonde**: cambia la scala, da 2 parametri a centinaia di milioni o miliardi connessi in architetture stratificate.
+Lo stesso ciclo — forward pass, loss, gradiente e aggiornamento — si applica alle **reti neurali profonde**. Cambia la scala: da 2 parametri si passa a centinaia di milioni o miliardi di parametri connessi in architetture stratificate.
 
 ## Dai classificatori ai large language model
 
@@ -110,7 +110,7 @@ Nel pre-addestramento l'LLM impara a prevedere il token successivo (*next-token 
 
 La supervisione umana può intervenire in seguito per adattare il modello alle istruzioni, alle preferenze e a compiti conversazionali o specifici.
 
-**Dal testo ai numeri:** i modelli elaborano esclusivamente vettori numerici, e il passaggio dal linguaggio naturale alla rappresentazione numerica si articola in tre stadi.
+**Dal testo ai numeri:** i modelli elaborano vettori numerici. Il passaggio dal linguaggio naturale alla rappresentazione numerica si articola in tre stadi.
 
 ```
 [ Testo Grezzo ] ──► [ Tokenizzazione (Sub-word) ] ──► [ Vettori di Embedding ] ──► [ Modello ]

@@ -137,8 +137,6 @@ Slide Minimax: mostra la ricorsione max-value/min-value e la struttura dell'albe
 > ![[Pasted image 20261022173717.png]]
 > Esempio numerico: foglie con valori 3, 12, 8, 2, 4, 6, 14, 5, 2. MIN prende min(3,12,8)=3, min(2,4,6)=2, min(14,5,2)=2; MAX prende max(3,2,2)=3.
 
-I valori delle foglie sono espressi dal punto di vista di MAX. Ogni nodo MIN restituisce il valore più basso tra i propri figli: nell'esempio restituisce `3`, `2` e `2`. La radice MAX confronta questi risultati e sceglie `3`, il migliore che può garantirsi assumendo la risposta migliore di MIN.
-
 ## Efficienza Minimax
 - Tempo: $O(b^m)$ (come DFS esaustivo)
 - Spazio: $O(bm)$ (solo il percorso corrente)
@@ -151,16 +149,14 @@ I valori delle foglie sono espressi dal punto di vista di MAX. Ogni nodo MIN res
 ## Alpha-Beta Pruning
 Alpha-beta calcola la stessa scelta di minimax, ma può interrompere l'esplorazione di rami che non cambierebbero la decisione alla radice.
 
-**Idea nel nodo MIN:** $\alpha$ è il valore che MAX può già ottenere con un'altra scelta lungo il percorso. Se MIN trova un figlio con valore $\le \alpha$, quel ramo non può battere l'alternativa di MAX: MIN può far ottenere a MAX un valore uguale o ancora più basso. Si possono quindi potare i figli restanti del nodo.
+**Potatura in un nodo MIN:** $\alpha$ è il valore che MAX può già ottenere con un'altra scelta lungo il percorso. Se MIN trova un figlio con valore $\le \alpha$, MIN può far ottenere a MAX un valore uguale o più basso. Gli altri figli di MIN non possono migliorare l'esito per MAX e si possono potare.
 
-Simmetricamente, $\beta$ è il limite superiore che MIN può già garantire a MAX con un'altra scelta lungo il percorso. In un nodo MAX si può potare quando il valore raggiunto è almeno $\beta$: MAX può ottenere un valore uguale o più alto, quindi MIN non sceglierà quel ramo.
-
-Nel disegno, MAX ha già un'alternativa di valore $\alpha$. Se il nodo MIN trova un figlio che vale al massimo $\alpha$, MAX sceglierà l'alternativa già nota; non serve valutare gli altri figli di MIN.
+**Potatura in un nodo MAX:** $\beta$ è il limite superiore che MIN può già garantire a MAX con un'altra scelta lungo il percorso. Se MAX raggiunge un valore almeno pari a $\beta$, può potare: MIN non sceglierà quel ramo.
 
 <div style="display: flex; justify-content: center;">
   <img src="Pasted image 20261022181244.png" width="30%">
 </div>
-Slide Alpha-Beta Pruning: configurazione generale. MAX in alto, MIN al nodo $n$, $\alpha$ è il valore migliore per MAX sul percorso. Se $n \le \alpha$, potiamo i fratelli rimanenti di $n$.
+Slide Alpha-Beta Pruning: configurazione generale. MAX è in alto, MIN al nodo $n$ e $\alpha$ è il valore migliore già ottenibile da MAX sul percorso. Se $n \le \alpha$, si potano i figli rimanenti di $n$.
 
 > [!example] Pruning
 > ![[Pasted image 20261022180017.png]]

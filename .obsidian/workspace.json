@@ -8,31 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d1cd3865368d90c1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning"
-            }
-          },
-          {
             "id": "2f4f7cbfac9a4e51",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax)"
+              "title": "New tab"
             }
           }
         ]
@@ -280,7 +262,7 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "d1cd3865368d90c1",
+  "active": "2f4f7cbfac9a4e51",
   "lastOpenFiles": [
     "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
     "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",

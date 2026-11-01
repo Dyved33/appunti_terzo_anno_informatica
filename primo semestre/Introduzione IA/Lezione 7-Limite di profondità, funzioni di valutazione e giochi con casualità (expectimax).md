@@ -1,84 +1,68 @@
 # Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax)
 
-## Alpha-Beta Quiz
+## Alpha-beta quiz
 
-> [!example] 
+> [!example]
 > ![[Pasted image 20261028163246.png|500]]
 > ![[Pasted image 20261028163303.png|500]]
 
-## Limite di profondità: depth-limited search
+## Ricerca con limite di profondità
 
-*Definizione:* il **depth-limited search** è una variante della ricerca su albero di gioco in cui, invece di espandere fino alle foglie terminali, ci si ferma a una profondità prefissa e si sostituiscono le utilità terminali con una funzione di valutazione per le posizioni non terminali.
+*Definizione:* la **ricerca a profondità limitata** (*depth-limited search*) interrompe l'esplorazione dell'albero a una profondità prefissata e usa una funzione di valutazione per stimare il valore delle posizioni non terminali raggiunte.
 
-- Problema: nei giochi realistici non si possono ricercare le foglie.
-- Soluzione: cercare solo fino a una profondità limitata nell'albero; al posto delle utilità terminali si usa una funzione di valutazione per le posizioni non terminali.
+Nei giochi realistici non è possibile espandere l'albero fino agli stati terminali. Si cerca quindi solo fino a una profondità limitata e, al posto delle utilità terminali, si usa una funzione di valutazione per le posizioni non terminali.
 
-Esempio pratico: si hanno 100 secondi a disposizione e si possono esplorare 10.000 nodi al secondo, quindi 1 milione di nodi per mossa. Con alpha-beta si arriva a circa la profondità 8, sufficiente per un programma di scacchi decente.
+Con 100 secondi a disposizione e una velocità di 10.000 nodi al secondo, si possono esplorare un milione di nodi per mossa. Con alpha-beta si arriva circa alla profondità 8, sufficiente per un programma di scacchi decente.
 
-La garanzia di gioco ottimale viene meno. Aumentare il numero di plies fa una grande differenza sulla qualità del gioco.
+La garanzia di gioco ottimale viene meno. Aumentare il numero di *plies* (mezze mosse) può migliorare molto la qualità del gioco.
 
-Si usa l'**iterative deepening** per ottenere un algoritmo *anytime*, che restituisce sempre una risposta e può migliorarla se ha più tempo. Una variante più robusta è tenere un limite di profondità fisso e, quando il tempo scade, restituire la mossa trovata nella ricerca più profonda completata; se si mantiene una tabella di transposizione tra i giri, i giri successivi sono più veloci e le valutazioni aiutano a ordinare meglio le mosse.
+**Iterative deepening:** ripete la ricerca con limiti di profondità crescenti e costituisce un algoritmo *anytime*: restituisce sempre una risposta, che può migliorare se è disponibile più tempo. Una variante più robusta mantiene un limite di profondità fisso e, allo scadere del tempo, restituisce la mossa della ricerca più profonda completata.
+
+Se la tabella di trasposizione viene mantenuta fra le iterazioni, quelle successive possono essere più veloci; le valutazioni già calcolate aiutano anche a ordinare meglio le mosse.
 
 ![[slide-ia-32-32.png|500]]
-*Slide Limiting Depth: depth-limited search con funzione di valutazione al posto delle utilità terminali.*
+*Slide Limiting Depth: la ricerca si ferma a una profondità prefissata e usa una funzione di valutazione al posto delle utilità terminali.*
+
 ## Funzioni di valutazione
 
-*Definizione:* una **funzione di valutazione** assegna un punteggio a una posizione non terminale in una ricerca depth-limited.
+*Definizione:* una **funzione di valutazione** assegna un punteggio a una posizione non terminale in una ricerca a profondità limitata.
 
-- Funzione ideale: restituisce il vero valore minimax della posizione.
-- Nella pratica: tipicamente una **funzione lineare pesata di feature**:
+La funzione ideale restituisce il vero valore minimax della posizione. Nella pratica si usa spesso una somma lineare pesata di feature:
 
-  $$EVAL(s) = w_1 \cdot f_1(s) + w_2 \cdot f_2(s) + \dots + w_n \cdot f_n(s)$$
+$$EVAL(s) = w_1 \cdot f_1(s) + w_2 \cdot f_2(s) + \dots + w_n \cdot f_n(s)$$
 
-  dove ogni $f_i$ è una feature della posizione (es. "numero di bianchi regine") e ogni $w_i$ è un peso (quanto conta quella feature). I pesi sono normalizzati così che il valore stia sempre tra la sconfitta (0) e la vittoria (+1).
+Ogni $f_i$ è una feature della posizione e ogni $w_i$ è il peso che ne indica l'importanza. Per esempio, una feature può essere $f_1(s) = (\text{numero di regine bianche} - \text{numero di regine nere})$, con feature analoghe per gli altri pezzi. I pesi sono normalizzati affinché il valore resti fra la sconfitta (0) e la vittoria (+1).
 
-- Esempio di feature: `f1(s) = (num white queens – num black queens)`, e analogamente per altre piece.
+Una buona funzione di valutazione deve:
+- essere veloce da calcolare, così da lasciare più tempo alla ricerca;
+- essere fortemente correlata con le effettive probabilità di vittoria;
+- essere applicata a posizioni **quiescenti**, cioè senza una mossa pendente, come una cattura, che farebbe oscillare molto la valutazione.
 
-Requisiti di una buona funzione di valutazione:
-
-1. Deve essere veloce da calcolare (tutto il punto è cercare più in fretta).
-2. Deve essere fortemente correlata con le probabilità effettive di vincita.
-3. Va applicata solo a posizioni **quiescenti**, cioè posizioni in cui non c'è una mossa pendente (come una cattura) che farebbe oscillare selvaggiamente la valutazione.
-
-Le funzioni di valutazione sono sempre imperfette. Più in profondità nell'albero la funzione di valutazione è "sepolta", minore è la qualità della funzione di valutazione che conta.
-
-Esempio importante del tradeoff tra complessità delle feature e complessità computazionale.
-
-> [!info] In altre parole:
-> La funzione di valutazione stima l'utilità attesa di uno stato: per gli stati terminali coincide con l'utilità vera, per gli stati non terminali restituisce un valore compreso tra sconfitta e vittoria.
+Le funzioni di valutazione sono sempre imperfette. Più la valutazione è in profondità nell'albero, meno la sua qualità incide sul risultato. Questo mostra il compromesso fra complessità delle feature e costo computazionale.
 
 ![[Pasted image 20261028163758.png|30%]]
 
-## Giochi con esiti incerti: expectimax
+## Giochi con esiti incerti
 
-**Perché l'incertezza:**
+L'incertezza serve a modellare eventi casuali del mondo e a costruire algoritmi efficienti basati su campionamento casuale, come *Monte Carlo Tree Search*.
 
-Perché ci interessiamo a incertezza e randomicità?
+Gli esiti incerti possono dipendere da:
+- casualità esplicita, come il lancio di dadi;
+- avversari imprevedibili, come i fantasmi che reagiscono a caso;
+- azioni che possono fallire, come le ruote di un robot che slittano.
 
-- Vogliamo modellare eventi randomici che accadono nel mondo.
-- Costruire algoritmi efficienti con sampling random (es. Monte Carlo Tree Search).
+Nella ricerca avversaria (*minimax*) si assume il caso peggiore: l'avversario gioca sempre contro di noi. Con esiti incerti controllati dalla sorte, invece, si considerano i risultati medi.
 
-Idea: esiti incerti sono controllati dalla fortuna, non da un avversario.
+## Ricerca expectimax
 
-**Worst-case vs average-case:**
+L'**expectimax** calcola il punteggio medio atteso assumendo gioco ottimale nei nodi decisionali. I nodi MAX funzionano come in minimax; nei nodi CHANCE l'esito è incerto e si calcola l'utilità attesa come media pesata dei valori dei figli.
 
-Nella ricerca adversarial (minimax) si assume il peggiore caso: l'avversario gioca sempre contro di noi. Con esiti incerti, invece, gli esiti sono mediati: si calcola l'utilità attesa, non il peggiore caso.
+Nel backup dei valori, i nodi CHANCE calcolano la media pesata e i nodi MAX scelgono il massimo. In seguito, i problemi con esiti incerti saranno formalizzati come *Markov Decision Process* (MDP).
 
-**Expectimax search:**
+![[slide-ia-38-38.png|500]]
+*Slide Expectimax Search: i nodi MAX scelgono il massimo, i nodi CHANCE calcolano l'utilità attesa.*
 
-L'**expectimax search** calcola il punteggio medio sotto gioco ottimale, invece del peggiore caso.
-
-- I nodi MAX funzionano come in minimax.
-- I nodi CHANCE sono come i nodi MIN, ma l'esito è incerto: si calcola l'utilità attesa, cioè la media pesata (expectation) dei valori dei figli, ponderata per le probabilità.
-- Il backup dei valori risale dalle foglie: **media nei nodi CHANCE**, **massimo nei nodi decisionali (MAX)**.
-- In seguito si formalizzano questi problemi come *Markov Decision Process* (MDP).
-
-![[slide-ia-38-38.png|30%]]
-*Slide Expectimax Search: nodi MAX come minimax, nodi CHANCE come media pesata dei figli.*
-
-![[Pasted image 20261028164702.png|30%]]
-
-**Pseudocodice expectimax:**
+![[Pasted image 20261028164702.png|500]]
 
 ```python
 def value(state):
@@ -100,101 +84,78 @@ def exp-value(state):
     return v
 ```
 
-Esempio numerico:
+Per esempio, se gli esiti hanno probabilità $1/2$, $1/3$ e $1/6$ e valori rispettivamente 8, 24 e −12:
 
-`v = (1/2)(8) + (1/3)(24) + (1/6)(-12) = 10`
+$$v = (1/2)(8) + (1/3)(24) + (1/6)(-12) = 10$$
 
 ![[slide-ia-40-40.png|500]]
-*Slide Expectimax Pseudocode: definizione di value, max-value, exp-value e esempio con probabilità 1/2, 1/3, 1/6.*
+*Slide Expectimax Pseudocode: pseudocodice e calcolo dell'utilità attesa.*
 
-**Esempio expectimax:**
+**Esempio:** le foglie hanno valori `3, 12, 9, 2, 4, 6, 15, 6, 0`.
 
-Foglie: `3 12 9 2 4 6 15 6 0`
-
-> [!example] Expectimax Example
+> [!example]
 > ![[slide-ia-41-41.png|500]]
-> Svolgimento: i valori delle foglie vengono mediati nei nodi CHANCE secondo le loro probabilità, poi propagati ai nodi MAX come massimo.
+> I valori delle foglie vengono mediati nei nodi CHANCE secondo le probabilità, poi propagati ai nodi MAX come massimo.
 
-**Depth-limited expectimax:**
-
-Con profondità limitata, il valore vero dell'expectimax richiede molto lavoro da calcolare. Si ha quindi una stima del valore vero: ad esempio 400 e 300, oppure 492 e 362, a seconda della profondità.
+**Expectimax a profondità limitata:** il valore expectimax vero può richiedere molto lavoro di calcolo. La ricerca a profondità limitata ne fornisce una stima: per esempio, 400 e 300 oppure 492 e 362, a seconda della profondità.
 
 ![[Pasted image 20261028224418.png|500]]
 
-**Quali probabilità usare:**
+## Probabilità dei nodi CHANCE
 
-Nell'expectimax search si ha un modello probabilistico di come si comporterà l'avversario (o l'ambiente) in ogni stato:
+Expectimax usa un modello probabilistico del comportamento dell'avversario o dell'ambiente in ogni stato. Il modello può essere una distribuzione uniforme, come nel lancio di un dado, oppure sofisticato e costoso da calcolare.
 
-- Il modello può essere una distribuzione uniforme (es. lancio di un dado).
-- Il modello può essere sofisticato e richiedere molto calcolo.
-- Si ha un chance node per ogni esito fuori dal nostro controllo: avversario o ambiente.
-- Il modello potrebbe dire che le azioni avversarie sono probabili!
+Si introduce un nodo CHANCE per ogni esito fuori dal nostro controllo, dovuto all'avversario o all'ambiente. Il modello può assegnare probabilità elevate anche ad azioni avversarie. Per ora si assume che ogni nodo CHANCE fornisca le probabilità della distribuzione sui suoi esiti.
 
-Per ora, si assume che ogni chance node arrivi "magicamente" con le probabilità che specificano la distribuzione sui suoi esiti.
+Una credenza probabilistica sull'azione di un altro agente non implica che quell'agente stia lanciando monete.
 
-Avere una credenza probabilistica sull'azione di un altro agente non significa che l'agente stia lanciando monete.
+**Quiz sulle probabilità informate:** supponiamo che l'avversario esegua minimax a profondità 2, segua il risultato l'80% delle volte e si muova a caso nel restante 20%. Quale ricerca usare?
 
-**Quiz: probabilità informate:**
+La risposta è expectimax. Per calcolare le probabilità di ogni nodo CHANCE bisogna simulare l'avversario; il calcolo diventa rapidamente molto lento. È ancora più costoso simulare l'avversario mentre simula noi, tranne nel caso di minimax, che può collassare tutto in un unico albero di gioco.
 
-Si sa che l'avversario esegue effettivamente un minimax di profondità 2, usando il risultato l'80% delle volte, e si muove a caso altrimenti.
+## Expectiminimax e backgammon
 
-**Domanda:** quale tree search si deve usare?
+L'**expectiminimax** tratta l'ambiente come un giocatore casuale aggiuntivo, che si muove dopo ogni agente MAX o MIN. Ogni nodo calcola la combinazione appropriata dei valori dei figli.
 
-**Risposta:** Expectimax. Per calcolare le probabilità di ogni chance node bisogna simulare l'avversario. Questo diventa molto lento molto in fretta. Ancora peggio se si deve simulare l'avversario che simula noi… tranne che per minimax, che ha la proprietà di collassare tutto in un unico albero di gioco.
+Nel backgammon i lanci dei dadi aumentano il fattore di diramazione:
+- due dadi producono 36 combinazioni, ma solo 21 lanci distinti, perché, per esempio, 6–5 equivale a 5–6;
+- i sei doppi, da 1–1 a 6–6, hanno probabilità $1/36$ ciascuno;
+- gli altri 15 lanci distinti hanno probabilità $1/18$ ciascuno;
+- il backgammon ha di solito circa 20 mosse legali, ma in alcune situazioni può arrivare a 4000, con i doppi.
 
-## Mixed layer types e backgammon
+La complessità dell'expectiminimax è $O(b^m \cdot n^m)$, dove $n$ è il numero di lanci distinti. Nel backgammon $n=21$ e $b \approx 20$. La stima riportata per profondità 2 è $20 \times (21 \times 20)^3 \approx 1{,}2 \times 10^9$.
 
-Esempio: **Backgammon**.
+All'aumentare della profondità, diminuisce la probabilità di raggiungere un dato nodo: l'utilità della ricerca si riduce e il limite di profondità è meno dannoso, ma il pruning è più difficile.
 
-L'**expectiminimax** tratta l'ambiente come un giocatore "random" extra che si muove dopo ogni agente min/max. Ogni nodo calcola la combinazione appropriata dei suoi figli.
-
-- I lanci di dadi aumentano il branching factor: con 2 dadi ci sono 36 combinazioni ma solo 21 lanci distinti (6–5 equivale a 5–6). I sei doppi (1–1 attraverso 6–6) hanno probabilità 1/36 ciascuno; gli altri 15 lanci distinti hanno probabilità 1/18 ciascuno.
-- Backgammon ha di solito circa 20 mosse legali, ma in alcune situazioni può arrivare a 4000 (per i doppi).
-- Complessità dell'expectiminimax: $O(b^m \cdot n^m)$ dove $n$ è il numero di lanci distinti. In backgammon $n=21$ e $b \approx 20$.
-- Profondità 2 = 20 × (21 × 20)³ ≈ 1,2 × 10⁹.
-- All'aumentare della profondità, la probabilità di raggiungere un dato nodo di ricerca si restringe. Quindi l'utilità della ricerca diminuisce: limitare la profondità è meno dannoso, ma il pruning è più difficile.
-
-Storico dell'IA: TDGammon usa depth-2 search + funzione di valutazione molto buona + reinforcement learning: gioco di livello mondiale. Primo campione del mondo di IA in un gioco.
+TDGammon usa una ricerca a profondità 2, una funzione di valutazione molto buona e *reinforcement learning*. Ha raggiunto un livello di gioco mondiale ed è stato il primo campione del mondo di IA in un gioco.
 
 ![[slide-ia-46-46.png|500]]
-*Slide Example: Backgammon: lanci di dadi, branching factor, profondità 2, TDGammon.*
+*Slide Example: Backgammon: lanci di dadi, fattore di diramazione, profondità 2 e TDGammon.*
 
+## Utilità per più agenti
 
+Se il gioco non è a somma zero o ha più giocatori, si generalizza minimax:
+- gli stati terminali hanno tuple di utilità;
+- anche i valori dei nodi sono tuple;
+- ogni giocatore massimizza la propria componente;
+- possono emergere dinamicamente cooperazione e competizione.
 
-## Multi-agent utilities
+Esempi di tuple: `(1,6,6)`, `(7,1,2)`, `(6,1,2)`, `(7,2,1)`, `(5,1,7)`, `(1,5,2)`, `(7,7,1)`, `(5,2,5)`.
 
-Cosa succede se il gioco non è a somma zero, o ha più giocatori?
+![[slide-ia-47-47.png|500]]
+*Slide Multi-Agent Utilities: tuple di utilità per giochi non a somma zero con più giocatori.*
 
-Generalizzazione del minimax:
+## Difficoltà della ricerca
 
-- I terminali hanno tuple di utilità.
-- I valori dei nodi sono anch'essi tuple di utilità.
-- Ogni giocatore massimizza la propria componente.
-- Possono nascere cooperazione e competizione dinamicamente.
+Anche con alpha-beta pruning e profondità limitata, un fattore di diramazione grande resta un problema. Nel caso migliore alpha-beta ha complessità temporale $b^{m/2}$:
+- negli scacchi, con $b=35$ e profondità 8, $35^{8/2} \approx 1$ milione di nodi; profondità 8 è già buona;
+- nel Go, con $b=300$ e profondità 8, $300^{8/2} \approx 8$ miliardi di nodi.
 
-Esempio di tuple: `1,6,6 7,1,2 6,1,2 7,2,1 5,1,7 1,5,2 7,7,1 5,2,5`
-
-![[slide-ia-47-47.png|5]] 00
-*Slide Multi-Agent Utilities: tuple di utilità per giochi non somma zero con più giocatori.*
-
-
-
-## Difficoltà della ricerca fin qui
-
-Anche con alpha-beta pruning e profondità limitata, un branching factor grande resta un problema (ricordare la complessità temporale nel migliore caso `b^(m/2)`):
-
-- Possibile per scacchi: con alpha-beta, 35^(8/2) ≈ 1 milione; profondità 8 è già buona.
-- Difficile per Go: 300^(8/2) ≈ 8 miliardi.
-
-Limitare la profondità richiede di progettare buone funzioni di valutazione:
-
-- Non è una soluzione generale: serve una nuova funzione di valutazione per ogni nuovo problema.
-- Una funzione di valutazione sbagliata può rendere le soluzioni inefficienti o distorte.
-- Il trend nell'IA è preferire metodi generali e meno tweaking umano.
+La ricerca a profondità limitata richiede funzioni di valutazione ben progettate. Non è una soluzione generale: serve una nuova funzione per ogni problema, e una funzione sbagliata può rendere la ricerca inefficiente o distorcere i risultati. Una tendenza nell'IA è preferire metodi generali che richiedano meno interventi manuali.
 
 > [!info] Sintesi:
-> - Depth-limited search: si ferma a una profondità prefissa e usa una funzione di valutazione al posto delle utilità terminali; perde la garanzia di ottimalità, iterative deepening dà un algoritmo anytime.
-> - Funzioni di valutazione: somma pesata di feature, sempre imperfette, più contano in profondità bassa.
-> - Expectimax: nodi MAX come minimax, nodi CHANCE come media pesata dei figli per esiti incerti controllati dalla fortuna.
-> - Backgammon / expectiminimax: agente casuale extra, branching factor alto, TDGammon primo campione del mondo IA.
-> - Multi-agent utilities: tuple di utilità, ogni giocatore massimizza la propria componente, cooperazione e competizione dinamica.
+> - La ricerca a profondità limitata usa una funzione di valutazione alle posizioni non terminali; perde la garanzia di gioco ottimale, mentre iterative deepening fornisce risposte via via migliori.
+> - Le funzioni di valutazione sono stime imperfette; la loro qualità conta meno quando sono più in profondità nell'albero.
+> - Expectimax applica il massimo ai nodi MAX e la media pesata ai nodi CHANCE.
+> - Expectiminimax aggiunge nodi casuali; backgammon mostra il costo del branching e TDGammon combina ricerca, valutazione e apprendimento.
+> - Nei giochi multi-agente i valori sono tuple e ogni giocatore massimizza la propria componente.
