@@ -4,17 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "39a1d4d9c415d6ee",
+        "id": "d517b29a69f84676",
         "type": "tabs",
         "children": [
           {
-            "id": "8f66d23f50823047",
+            "id": "d1cd3865368d90c1",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning"
+            }
+          },
+          {
+            "id": "2f4f7cbfac9a4e51",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax)"
             }
           }
         ]
@@ -93,7 +111,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 586.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -261,20 +280,25 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "c1467e7ef2db6b6c",
+  "active": "d1cd3865368d90c1",
   "lastOpenFiles": [
+    "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
+    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 10-Strutture di controllo in JavaScript.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 9-Introduzione a JavaScript.md",
+    "CONFIG-CHANGES.md",
+    "primo semestre/Introduzione sicurezza /Lezione 7-Posta elettronica.md",
+    "primo semestre/Introduzione sicurezza /Approfondimento chiavi SSH private e pubbliche.md",
+    "primo semestre/Architettura reti e internet/internet/Lezione 8-Telnet.md",
     "primo semestre/Introduzione IA/images/Pasted image 20261028224418.png",
     "primo semestre/Introduzione IA/images/Pasted image 20261028164702.png",
     "primo semestre/Introduzione IA/images/Pasted image 20261028163758.png",
     "primo semestre/Introduzione IA/images/Pasted image 20261028163303.png",
     "primo semestre/Introduzione IA/images/Pasted image 20261028163246.png",
     "primo semestre/Pasted image 20261028224418.png",
-    "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
     "Pasted image 20261028224418.png",
     "primo semestre/Introduzione IA/6-Games.pdf",
-    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "primo semestre/Introduzione IA/Lezione 7.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 9-Introduzione a JavaScript.md",
     "primo semestre/Programmazione web e mobile con laboratorio/images/Pasted image 20261026223134.png",
     "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
     "primo semestre/Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
@@ -282,7 +306,6 @@
     "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
     "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
     "Untitled.md",
-    "primo semestre/Introduzione sicurezza /Approfondimento chiavi SSH private e pubbliche.md",
     "primo semestre/Introduzione sicurezza /00 Indice - Introduzione sicurezza.md",
     "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
     "primo semestre/Programmazione web e mobile con laboratorio/pwm_lezione9.pdf",
@@ -294,7 +317,6 @@
     "primo semestre/Introduzione sicurezza /Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
     "[!note].md",
     "primo semestre/Architettura reti e internet/protocolli/images/slide-12.png",
-    "primo semestre/Architettura reti e internet/protocolli/images/codice_ascii_extended.jpg",
     "primo semestre/Architettura reti e internet/internet/images",
     "primo semestre/Architettura reti e internet/protocolli/images",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 8-Accessibilità e CSS3 avanzato.md",
@@ -302,9 +324,6 @@
     "primo semestre/Introduzione sicurezza /Lezione 6-Esercitazione Wireshark.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 5-Serie di Fourier, filtri e modulazione.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 6-Font, icone e teoria del colore.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/nullAlgebraRel.pdf",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 266755.crdownload",
     "primo semestre/Architettura reti e internet/internet/oggi.pdf",

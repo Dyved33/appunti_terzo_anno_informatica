@@ -35,7 +35,7 @@ Usi comuni:
 > ```
 > ```Javascript
 > function accendiLuce() { 
-> 	document.getElementById("luce-img").src = "immagini/luce-on.png"; 
+>   document.getElementById("luce-img").src = "immagini/luce-on.png";
 > }
 > ```
 
@@ -128,18 +128,18 @@ Esempio che mostra la differenza tra HTMLCollection dinamica e NodeList statica:
 
 ```javascript
 function provaSelezione() {
-    const parByTagName = document.getElementsByTagName("p");
-    const parQuerySelector = document.querySelectorAll("p");
+  const parByTagName = document.getElementsByTagName("p");
+  const parQuerySelector = document.querySelectorAll("p");
 
-    console.log("Prima - getElementsByTagName:", parByTagName);
-    console.log("Prima - querySelectorAll:", parQuerySelector);
+  console.log("Prima - getElementsByTagName:", parByTagName);
+  console.log("Prima - querySelectorAll:", parQuerySelector);
 
-    const newP = document.createElement("p");
-    newP.textContent = "Ciao, sono un altro paragrafo!";
-    document.body.appendChild(newP);
+  const newP = document.createElement("p");
+  newP.textContent = "Ciao, sono un altro paragrafo!";
+  document.body.appendChild(newP);
 
-    console.log("Dopo - getElementsByTagName:", parByTagName);
-    console.log("Dopo - querySelectorAll:", parQuerySelector);
+  console.log("Dopo - getElementsByTagName:", parByTagName);
+  console.log("Dopo - querySelectorAll:", parQuerySelector);
 }
 ```
 
@@ -207,7 +207,10 @@ La colonna "Nodi Element" contiene solo elementi HTML; la colonna "Tutti i nodi"
 - textContent: consente di ottenere o impostare il testo all'interno di un elemento HTML. Non interpreta eventuali tag HTML
 
 ```javascript
-const elemento = document.getElementById("testoA"); console.log("Testo prima:", elemento.textContent); elemento.textContent = "La bella addormentata"; console.log("Testo dopo:", elemento.textContent);
+const elemento = document.getElementById("testoA"); 
+console.log("Testo prima:", elemento.textContent); 
+elemento.textContent = "La bella addormentata"; 
+console.log("Testo dopo:", elemento.textContent);
 ```
 
 - className: consente di ottenere o impostare il valore dell'attributo class di un elemento HTML. Sovrascrive le classi esistenti
@@ -227,13 +230,15 @@ elemento.classList.toggle("bott-bello-bis");
 - setAttribute: imposta il valore di un attributo specificato di un elemento
 
 ```javascript
-const img = document.getElementById("paese"); img.setAttribute("src", "immagini/imm2.jpg");
+const img = document.getElementById("paese"); 
+img.setAttribute("src", "immagini/imm2.jpg");
 ```
 
 - getAttribute: ottiene il valore di un attributo
 
 ```javascript
-const img = document.getElementById("paese"); img.getAttribute("src");
+const img = document.getElementById("paese"); 
+img.getAttribute("src");
 ```
 
 ## Proprietà .value
@@ -247,7 +252,9 @@ const img = document.getElementById("paese"); img.getAttribute("src");
 - `elemento.style.property = "valore"`: cambia lo stile in linea di un elemento
 
 ```javascript
-let elemento = document.getElementById("mio-div"); elemento.style.backgroundColor = "#c00083"; elemento.style.fontSize = "2em";
+let elemento = document.getElementById("mio-div"); 
+elemento.style.backgroundColor = "#c00083"; 
+elemento.style.fontSize = "2em";
 ```
 
 - setAttribute e classList: per manipolare style e le classi
@@ -258,7 +265,7 @@ let elemento = document.getElementById("mio-div"); elemento.style.backgroundColo
 - el.insertBefore(node, refNode): inserisce newNode prima di refNode
 - el.replaceChild(newNode, oldNode): sostituisce oldNode con newNode
 
-> [!example] Esercizio — inserimento nel DOM (slide 30)
+> [!example] Esercizio — inserimento nel DOM 
 >
 > HTML:
 >

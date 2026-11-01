@@ -96,8 +96,6 @@ Metodi utili - ricerca:
 > let check = arr.includes("B"); // true
 > let risultato = arr.find(el => el > "C"); // D
 > ```
-
-> [!example]
 > ![[Pasted image 20261029120809.png|500]]
 
 Metodi utili - ordinamento:
