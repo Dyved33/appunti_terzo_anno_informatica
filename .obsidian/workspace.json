@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d517b29a69f84676",
+        "id": "12108b517faca19e",
         "type": "tabs",
         "children": [
           {
-            "id": "2f4f7cbfac9a4e51",
+            "id": "915846c2c336f285",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -93,8 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -262,8 +261,10 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "2f4f7cbfac9a4e51",
+  "active": "915846c2c336f285",
   "lastOpenFiles": [
+    "primo semestre/Introduzione IA/pseudocodiciI.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/ripassoI.md",
     "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
     "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 10-Strutture di controllo in JavaScript.md",
@@ -304,8 +305,6 @@
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 8-Accessibilità e CSS3 avanzato.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione.md",
     "primo semestre/Introduzione sicurezza /Lezione 6-Esercitazione Wireshark.md",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 5-Serie di Fourier, filtri e modulazione.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/nullAlgebraRel.pdf",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 266755.crdownload",
     "primo semestre/Architettura reti e internet/internet/oggi.pdf",

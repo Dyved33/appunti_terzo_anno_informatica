@@ -2,28 +2,32 @@
 
 Gli operatori prendono una o due relazioni e restituiscono una relazione. L'algebra relazionale è procedurale: una query descrive le operazioni da eseguire. Le operazioni si possono comporre, usando il risultato di un operatore come argomento di quello successivo.
 
-Negli esempi useremo queste relazioni:
+Negli esempi principali useremo questi schemi:
 
 - `Impiegati(Matricola, Cognome, Dipartimento, Stipendio)`
 - `Progetti(CodiceP, NomeP, Dipartimento)`
 - `Lavora(Matricola, CodiceP, Ore)`
+- `Dipartimenti(CodiceD, NomeD)`
+- `Sedi(CodiceS, Città)` e `SediAttive(CodiceS, Città)`
 - `Fornisce(F, P)` e `Prodotto(P)`
+
+Ogni schema elenca gli attributi delle tuple; quando mostriamo righe, useremo valori coerenti con questi attributi. Nella sezione sul calcolo relazionale useremo anche `Employee(Fname, Lname, Bdate, Address)` e `Department(Dnumber, Dname)`, come nella notazione della lezione.
 
 ## Ridenominazione
 
-`ρ` cambia il nome della relazione e/o quello dei suoi attributi. È utile per rendere espliciti i nomi, evitare ambiguità o preparare operazioni tra relazioni.
+`ρ` cambia il nome della relazione e/o quello dei suoi attributi, senza modificare i valori delle tuple. È utile per rendere espliciti i nomi, evitare ambiguità o preparare operazioni tra relazioni.
 
 ```text
 ρ Dip(CodiceD → Dipartimento)(Dipartimenti)
 ```
 
-Il risultato si chiama `Dip` e il suo attributo `CodiceD` diventa `Dipartimento`. La ridenominazione non cambia le tuple.
+Il risultato si chiama `Dip`; il suo attributo `CodiceD` prende il nome `Dipartimento`. I valori e il numero delle tuple restano invariati. In questo esempio, `CodiceD` deve appartenere allo schema della relazione rinominata.
 
 ## Operatori insiemistici
 
-Unione, intersezione e differenza richiedono relazioni **compatibili all'unione**: stesso numero di attributi e domini corrispondenti uguali. Gli attributi del risultato prendono i nomi dal primo operando. Le relazioni sono insiemi, quindi una tupla ripetuta compare una volta sola.
+Unione, intersezione e differenza richiedono relazioni **compatibili all'unione**: stesso numero di attributi e domini corrispondenti uguali, nello stesso ordine. I nomi degli attributi possono essere diversi; il risultato usa quelli del primo operando. Le relazioni sono insiemi, quindi una tupla ripetuta compare una volta sola.
 
-Poniamo `Milano = σ Città='Milano'(Sedi)` e `Roma = σ Città='Roma'(Sedi)`. Poiché hanno lo stesso schema:
+Poniamo `Milano = σ Città='Milano'(Sedi)` e `Roma = σ Città='Roma'(Sedi)`. Entrambe hanno schema `(CodiceS, Città)`, quindi sono compatibili all'unione:
 
 | Operatore | Significato | Esempio |
 | --- | --- | --- |
@@ -35,17 +39,17 @@ L'intersezione è derivabile: `r ∩ s = r \\ (r \\ s)`.
 
 ## Prodotto cartesiano
 
-`r × s` abbina ogni tupla di `r` con ogni tupla di `s`. Gli attributi dei due schemi devono essere disgiunti; se hanno lo stesso nome, si rinominano prima. Se `r` ha 3 tuple e `s` ne ha 4, il prodotto ha 12 tuple.
+`r × s` abbina ogni tupla di `r` con ogni tupla di `s`. Gli schemi devono avere attributi disgiunti; se hanno attributi omonimi, si rinominano prima per distinguere le colonne. Se `r` ha 3 tuple e `s` ne ha 4, il prodotto ha `3 × 4 = 12` tuple.
 
 ```text
 Impiegati × Progetti
 ```
 
-Forma tutte le coppie impiegato-progetto, anche quelle senza relazione logica. Di solito il prodotto cartesiano si combina con una selezione per ottenere un join.
+Forma tutte le coppie impiegato-progetto, anche quelle senza relazione logica. Per esempio, ogni impiegato viene accoppiato a ogni progetto. Di solito il prodotto cartesiano si combina con una selezione per tenere solo le coppie collegate da una condizione: questa è la costruzione del θ-join.
 
 ## Selezione
 
-`σ_F(r)` mantiene le tuple di `r` per cui la condizione `F` è vera. Non elimina attributi.
+`σ_F(r)` mantiene le tuple di `r` per cui la condizione `F` è vera. Non elimina né riordina attributi: il risultato conserva lo schema di `r`.
 
 Le condizioni atomiche confrontano un attributo con un altro (`A θ B`) o con una costante (`A θ c`), usando `=`, `≠`, `<`, `≤`, `>` o `≥`. Si combinano con `∧`, `∨` e `¬`.
 
@@ -57,7 +61,7 @@ Seleziona gli impiegati del dipartimento di Informatica con stipendio superiore 
 
 ## Proiezione
 
-`π_Y(r)` conserva soltanto gli attributi in `Y`. Le tuple che diventano uguali dopo aver tolto le altre colonne si riducono a una sola.
+`π_Y(r)` conserva soltanto gli attributi in `Y`. Le tuple che diventano uguali dopo aver tolto le altre colonne si riducono a una sola, perché una relazione è un insieme e non contiene duplicati.
 
 ```text
 π Cognome, Stipendio (Impiegati)
@@ -71,7 +75,7 @@ Restituisce cognome e stipendio, senza duplicati. Se serve filtrare e poi scegli
 
 ## Join (concatenazione)
 
-Il join combina tuple collegate da una condizione. In generale gli attributi dei due schemi vanno distinti; se necessario, si rinominano prima.
+Il join combina tuple collegate da una condizione. Per il θ-join, i nomi degli attributi dei due operandi devono essere distinguibili; se coincidono, si rinominano prima. La condizione specifica quali coppie del prodotto cartesiano mantenere.
 
 ### θ-join ed equijoin
 
@@ -87,31 +91,31 @@ Un **equijoin** è un θ-join la cui condizione contiene solo uguaglianze.
 Impiegati ⋈ Impiegati.Matricola=Lavora.Matricola Lavora
 ```
 
-Abbina ogni impiegato alle sue righe di lavoro; nel risultato `Matricola` appare due volte. Per esempio, una condizione come `Impiegati.Stipendio > Progetti.Budget` è un θ-join (confronto `>`).
+Abbina ogni impiegato alle righe di `Lavora` con la stessa matricola; nel risultato la matricola compare in entrambe le colonne. Anche una condizione con un confronto diverso dall'uguaglianza, per esempio `Impiegati.Stipendio > Lavora.Ore`, definisce un θ-join, purché gli attributi confrontati abbiano domini confrontabili.
 
 ### Join naturale
 
-`r ⋈ s` abbina tuple con uguali valori sugli attributi comuni e lascia una sola copia di tali attributi nel risultato. Se non ci sono attributi in comune, coincide con il prodotto cartesiano.
+`r ⋈ s` abbina tuple che hanno valori uguali su **tutti** gli attributi comuni e lascia una sola copia di ciascuno di questi attributi nel risultato. Se non ci sono attributi in comune, coincide con il prodotto cartesiano.
 
 ```text
 Impiegati ⋈ Lavora
 ```
 
-Le due relazioni condividono `Matricola`: il join combina ogni impiegato con le sue righe in `Lavora` e presenta `Matricola` una volta sola. Il join naturale è comodo quando gli attributi comuni rappresentano davvero la stessa informazione; nomi uguali per caso possono produrre abbinamenti indesiderati.
+Le due relazioni condividono `Matricola`: il join combina ogni impiegato con le sue righe in `Lavora` e presenta `Matricola` una volta sola. Se una matricola compare in `Impiegati` ma non in `Lavora`, quella tupla non compare nel risultato. Il join naturale è adatto quando gli attributi comuni rappresentano davvero la stessa informazione; nomi uguali per caso possono produrre abbinamenti indesiderati.
 
 Il join è derivabile da prodotto cartesiano e selezione; il join naturale è derivabile anche da equijoin e proiezione, eliminando la copia degli attributi comuni.
 
 ## Raggruppamento e funzioni aggregate
 
-La notazione `Y ℱ_listaFun(r)` raggruppa le tuple con gli stessi valori sugli attributi `Y` e calcola le funzioni aggregate indicate su ciascun gruppo. Ogni gruppo produce una tupla con gli attributi di raggruppamento e i risultati. Le funzioni trattate sono `SUM`, `AVG`, `MAX`, `MIN` e `COUNT`.
+La notazione `Y ℱ_listaFun(r)` raggruppa le tuple con gli stessi valori sugli attributi `Y` e calcola le funzioni aggregate indicate su ciascun gruppo. Ogni gruppo produce una tupla con gli attributi di raggruppamento e i risultati delle funzioni. Le funzioni trattate sono `SUM`, `AVG`, `MAX`, `MIN` e `COUNT`; a ciascun risultato va assegnato un nome di attributo.
 
 ```text
 Dipartimento ℱ_{AVG(Stipendio), COUNT(Matricola)}(Impiegati)
 ```
 
-Produce una riga per dipartimento, con stipendio medio e numero di impiegati. I risultati delle funzioni diventano attributi, a cui si assegna un nome.
+Produce una riga per ogni dipartimento presente in `Impiegati`, con il valore medio degli stipendi e il numero di matricole. Le colonne aggregate del risultato vanno nominate, per esempio `MediaStipendio` e `NumeroImpiegati`.
 
-Si può omettere `Y`: le funzioni sono calcolate su tutta la relazione, come su un unico gruppo.
+Si può omettere `Y` (oppure indicare l'insieme vuoto `∅`): le funzioni sono calcolate su tutta la relazione, considerata come un unico gruppo.
 
 ```text
 ∅ ℱ_{AVG(Stipendio), MAX(Stipendio)}(Impiegati)
@@ -121,7 +125,7 @@ Restituisce lo stipendio medio e quello massimo complessivi.
 
 ## Join esterni
 
-I join esterni conservano le tuple che un join normale scarterebbe perché non hanno una controparte. Le colonne mancanti vengono completate con `NULL`.
+I join esterni conservano anche le tuple che un join normale scarterebbe perché non hanno una controparte. Per ogni tupla senza corrispondenza, le colonne provenienti dall'altro operando vengono completate con `NULL`.
 
 | Operatore | Tuple sempre mantenute |
 | --- | --- |
@@ -129,11 +133,11 @@ I join esterni conservano le tuple che un join normale scarterebbe perché non h
 | Join esterno destro `⟖` | Tutte quelle del secondo operando |
 | Join esterno completo `⟗` | Tutte quelle di entrambi gli operandi |
 
-Esempio: `Impiegati ⟕ Lavora` conserva anche gli impiegati che non hanno progetti; per loro gli attributi provenienti da `Lavora` valgono `NULL`. Il join esterno destro conserva invece anche le righe di lavoro prive di una controparte in `Impiegati`; quello completo conserva entrambe le categorie.
+Esempio: `Impiegati ⟕ Lavora` conserva anche gli impiegati che non hanno righe in `Lavora`; per loro `CodiceP` e `Ore` valgono `NULL`. Il join esterno destro conserva anche le righe di lavoro prive di una controparte in `Impiegati`; quello completo conserva entrambe le categorie di tuple senza corrispondenza.
 
 ## Divisione
 
-`r ÷ s` trova i valori del primo operando associati a **tutte** le tuple del secondo. Se `r` ha schema `X`, `s` ha schema `Y` e `Y ⊂ X`, il risultato ha gli attributi `X \\ Y`. La divisione esprime una condizione di quantificazione universale.
+`r ÷ s` trova i valori del primo operando associati a **tutte** le tuple del secondo. Se `r` ha schema `X`, `s` ha schema `Y` e `Y ⊂ X`, il risultato ha gli attributi `X \\ Y`. La divisione esprime una condizione di quantificazione universale: ogni valore restituito deve essere associato, in `r`, a ciascuna tupla di `s`.
 
 Esempio con `Fornisce(F, P)`:
 
@@ -150,7 +154,7 @@ e `Prodotto(P) = {P1, P2}`:
 Fornisce ÷ Prodotto
 ```
 
-Restituisce `{F1}`, perché F1 fornisce tutti i prodotti elencati in `Prodotto`. F2 e F3 non li forniscono tutti.
+Restituisce `{F1}`, perché F1 fornisce sia P1 sia P2, cioè tutti i prodotti presenti in `Prodotto`. F2 non fornisce P2 e F3 non fornisce né P1 né P2, quindi non soddisfano la condizione universale.
 
 La divisione si può derivare dagli operatori di base. Sia `Z = X \\ Y`:
 
@@ -161,18 +165,18 @@ T2(Z)  ← πZ(U \\ r)
 Ris(Z) ← T1 \\ T2
 ```
 
-`U` contiene tutte le combinazioni possibili; `T2` individua i valori di `Z` che mancano almeno una combinazione richiesta. Tolti questi da `T1`, restano quelli validi per tutte le tuple di `s`.
+`T1` contiene i possibili valori candidati di `Z`. `U` contiene tutte le combinazioni tra quei valori e le tuple di `s`; `T2` individua i candidati per cui manca almeno una combinazione richiesta. Tolti questi da `T1`, restano quelli validi per tutte le tuple di `s`.
 
 ## Valori nulli
 
-Per selezione e join i confronti che coinvolgono `NULL` usano una logica a tre valori: vero (`V`), falso (`F`) e indefinito (`?`). Un confronto come `Città='Milano'` vale `?` se `Città` è `NULL`. La selezione mantiene solo le tuple per cui la condizione vale `V`; scarta sia `F` sia `?`.
+Nella semantica estesa trattata a lezione, selezione e join valutano i confronti che coinvolgono `NULL` con una logica a tre valori: vero (`V`), falso (`F`) e indefinito (`?`). Un confronto come `Città='Milano'` vale `?` se `Città` è `NULL`. La selezione mantiene solo le tuple per cui la condizione vale `V`; scarta sia `F` sia `?`.
 
 ```text
 σ Città IS NULL(Impiegati)
 σ Stipendio IS NOT NULL(Impiegati)
 ```
 
-`IS NULL` e `IS NOT NULL` permettono di verificare esplicitamente la presenza del valore nullo. Gli altri confronti (`=`, `≠`, `<`, `≤`, `>` e `≥`) con un operando nullo restituiscono `?`; anche la negazione di `?` resta `?`.
+`IS NULL` e `IS NOT NULL` permettono di verificare esplicitamente se un attributo contiene `NULL`; queste condizioni restituiscono `V` o `F`. Gli altri confronti (`=`, `≠`, `<`, `≤`, `>` e `≥`) con un operando nullo restituiscono `?`; anche la negazione di `?` resta `?`.
 
 Per gli operatori booleani valgono, tra le altre, queste regole:
 
@@ -188,7 +192,7 @@ Quindi `Città='Milano' ∨ Stipendio>2200` può essere vera anche se uno dei du
 
 Nel join la condizione deve essere vera perché le tuple si combinino. Perciò un confronto con `NULL` non abbina le tuple; anche il join naturale non combina due tuple che hanno entrambe `NULL` sull'attributo comune.
 
-Proiezione, unione, intersezione e differenza trattano `NULL` come un valore confrontabile sintatticamente: due tuple con `NULL` nelle stesse posizioni sono considerate uguali ai fini di questi operatori. Questo criterio è distinto dai confronti logici usati da selezione e join.
+Secondo la convenzione adottata nella lezione, proiezione, unione, intersezione e differenza confrontano le tuple in modo sintattico: due tuple con `NULL` nelle stesse posizioni sono considerate uguali ai fini di questi operatori. Questo criterio è distinto dai confronti logici usati da selezione e join: non significa che il predicato `NULL = NULL` valga `V`.
 
 ## Lezione 11: calcolo relazionale su tuple
 
@@ -240,7 +244,7 @@ Qui `d` e `t` sono libere. Invece:
 
 ### Esempio
 
-Per ottenere data di nascita e indirizzo dell'impiegata Lia Bo:
+Per ottenere data di nascita e indirizzo dell'impiegata Lia Bo, consideriamo una variabile `t` che rappresenta una tupla di `Employee`. La formula la limita alle tuple con nome e cognome richiesti; la target list seleziona poi i due attributi da restituire:
 
 ```text
 { t.Bdate, t.Address |
