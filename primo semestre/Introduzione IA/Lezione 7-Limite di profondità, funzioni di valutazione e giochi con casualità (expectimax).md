@@ -1,10 +1,14 @@
-# Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax)
+\# Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax)
 
 ## Alpha-beta quiz
 
-> [!example]
+> [!example] Primo albero
 > ![[Pasted image 20261028163246.png|500]]
+> La radice è MAX. Se sceglie `a`, MIN prende $\min(10,8)=8$; se sceglie `d`, MIN prende $\min(4,50)=4$. MAX sceglie `a` e garantisce 8.
+
+> [!example] Potatura nel secondo albero
 > ![[Pasted image 20261028163303.png|500]]
+> Nel ramo sinistro i nodi MAX valgono $\max(10,6)=10$ e $\max(100,8)=100$; MIN sceglie 10. Alla radice si ha quindi $\alpha=10$. Nel ramo destro, il primo nodo MAX vale $\max(1,2)=2$. MIN può già scegliere 2, perciò il ramo destro vale al massimo 2. Poiché $2 \leq \alpha$, MAX sceglierà il ramo sinistro: le foglie `20` e `4` si possono potare.
 
 ## Ricerca con limite di profondità
 
@@ -27,11 +31,15 @@ Se la tabella di trasposizione viene mantenuta fra le iterazioni, quelle success
 
 *Definizione:* una **funzione di valutazione** assegna un punteggio a una posizione non terminale in una ricerca a profondità limitata.
 
+`EVAL(s)` riceve lo stato `s` (la posizione corrente) e ne stima il valore usando caratteristiche ricavate da quella posizione. Si applica alle foglie non terminali dove la ricerca si ferma: non calcola il valore dai figli. I valori stimati vengono poi propagati verso la radice con le regole MAX, MIN o CHANCE.
+
 La funzione ideale restituisce il vero valore minimax della posizione. Nella pratica si usa spesso una somma lineare pesata di feature:
 
 $$EVAL(s) = w_1 \cdot f_1(s) + w_2 \cdot f_2(s) + \dots + w_n \cdot f_n(s)$$
 
 Ogni $f_i$ è una feature della posizione e ogni $w_i$ è il peso che ne indica l'importanza. Per esempio, una feature può essere $f_1(s) = (\text{numero di regine bianche} - \text{numero di regine nere})$, con feature analoghe per gli altri pezzi. I pesi sono normalizzati affinché il valore resti fra la sconfitta (0) e la vittoria (+1).
+
+Le feature descrivono aspetti della posizione (per esempio il materiale o la disposizione dei pezzi); i pesi stabiliscono quanto ciascun aspetto contribuisce alla stima. Feature e pesi dipendono dal gioco e possono essere progettati a mano oppure appresi. La somma pesata di `EVAL(s)` combina quindi caratteristiche dello stato, mentre la media pesata di un nodo CHANCE combina i valori dei possibili esiti secondo le loro probabilità.
 
 Una buona funzione di valutazione deve:
 - essere veloce da calcolare, così da lasciare più tempo alla ricerca;
@@ -56,6 +64,8 @@ Nella ricerca avversaria (*minimax*) si assume il caso peggiore: l'avversario gi
 ## Ricerca expectimax
 
 L'**expectimax** calcola il punteggio medio atteso assumendo gioco ottimale nei nodi decisionali. I nodi MAX funzionano come in minimax; nei nodi CHANCE l'esito è incerto e si calcola l'utilità attesa come media pesata dei valori dei figli.
+
+MAX confronta il valore di tutti i suoi figli: se un figlio è un nodo CHANCE, usa il valore atteso già calcolato per quel nodo. In expectimax non ci sono nodi MIN. **Expectiminimax** estende minimax ai giochi con casualità: MAX prende il massimo, MIN il minimo e CHANCE la media pesata dei valori dei figli.
 
 Nel backup dei valori, i nodi CHANCE calcolano la media pesata e i nodi MAX scelgono il massimo. In seguito, i problemi con esiti incerti saranno formalizzati come *Markov Decision Process* (MDP).
 
@@ -125,7 +135,7 @@ Nel backgammon i lanci dei dadi aumentano il fattore di diramazione:
 
 La complessità dell'expectiminimax è $O(b^m \cdot n^m)$, dove $n$ è il numero di lanci distinti. Nel backgammon $n=21$ e $b \approx 20$. La stima riportata per profondità 2 è $20 \times (21 \times 20)^3 \approx 1{,}2 \times 10^9$.
 
-All'aumentare della profondità, diminuisce la probabilità di raggiungere un dato nodo: l'utilità della ricerca si riduce e il limite di profondità è meno dannoso, ma il pruning è più difficile.
+All'aumentare della profondità, ogni singola sequenza di lanci rappresenta una frazione più piccola delle possibilità complessive: il contributo di una foglia lontana pesa meno sul valore atteso. Per questo il limite di profondità può essere meno dannoso che nei giochi deterministici. Però il numero di nodi cresce rapidamente e il pruning è più difficile: per calcolare una media pesata corretta, in genere bisogna considerare tutti gli esiti casuali.
 
 TDGammon usa una ricerca a profondità 2, una funzione di valutazione molto buona e *reinforcement learning*. Ha raggiunto un livello di gioco mondiale ed è stato il primo campione del mondo di IA in un gioco.
 
@@ -139,6 +149,8 @@ Se il gioco non è a somma zero o ha più giocatori, si generalizza minimax:
 - anche i valori dei nodi sono tuple;
 - ogni giocatore massimizza la propria componente;
 - possono emergere dinamicamente cooperazione e competizione.
+
+Con tre giocatori, per esempio, `(3, 1, 5)` assegna utilità 3 al primo, 1 al secondo e 5 al terzo per quell'esito. Al proprio turno ciascun giocatore sceglie la mossa che massimizza la propria componente della tupla. I valori delle componenti sono definiti dall'utilità degli esiti per ciascun giocatore.
 
 Esempi di tuple: `(1,6,6)`, `(7,1,2)`, `(6,1,2)`, `(7,2,1)`, `(5,1,7)`, `(1,5,2)`, `(7,7,1)`, `(5,2,5)`.
 
