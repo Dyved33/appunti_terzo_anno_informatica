@@ -2,7 +2,7 @@
 
 Schema di ripasso ricavato dalle domande del primo esonero e dagli appunti delle lezioni. `problem` espone lo stato iniziale, il test del goal, le azioni applicabili, il risultato di un'azione e il costo della transizione. Un nodo conserva almeno stato, genitore, azione, costo del cammino `g` e profondità.
 
-Il PDF `algorithms.pdf` presenta lo schema best-first e `EXPAND` (fig. 3.7), BFS e UCS (fig. 3.9), IDS (fig. 3.12), RBFS (fig. 3.22), Minimax (fig. 5.3) e Alpha-Beta (fig. 5.7). Qui sono riportati in forma uniforme con la notazione degli appunti.
+I blocchi in inglese corrispondenti a `algorithms.pdf` riprendono gli algoritmi delle figure 3.7, 3.9, 3.12, 3.22, 5.3 e 5.7. `TREE-SEARCH`, DFS, A*, IDA* e SMA* sono integrazioni dagli appunti e non compaiono nelle figure del PDF.
 
 ## Mappa rapida
 
@@ -28,30 +28,29 @@ La ricerca su albero usa una frontiera e può visitare più volte lo stesso stat
 Best-first è lo schema generale: `f` determina la priorità nella coda e `reached` conserva il miglior cammino trovato per ogni stato.
 
 ```text
-BEST-FIRST-SEARCH(problem, f)
-    root ← nodo(problem.initial)
-    frontier ← coda di priorità ordinata per f(root)
-    reached ← {problem.initial: root}
-    mentre frontier non è vuota:
-        node ← estrai il nodo con f minimo
-        se node ≠ reached[node.state]: continua  // voce superata da un cammino migliore
-        se GOAL-TEST(node.state): restituisci node
-        per ogni child in EXPAND(problem, node):
-            s ← child.state
-            se s non è in reached oppure child.g < reached[s].g:
+function BEST-FIRST-SEARCH(problem, f) returns a solution node or failure
+    node ← NODE(STATE=problem.INITIAL)
+    frontier ← a priority queue ordered by f, with node as an element
+    reached ← a lookup table, with one entry with key problem.INITIAL and value node
+    while not IS-EMPTY(frontier) do
+        node ← POP(frontier)
+        if problem.IS-GOAL(node.STATE) then return node
+        for each child in EXPAND(problem, node) do
+            s ← child.STATE
+            if s is not in reached or child.PATH-COST < reached[s].PATH-COST then
                 reached[s] ← child
-                inserisci child in frontier
-    restituisci failure
+                add child to frontier
+    return failure
 
-EXPAND(problem, node)
-    // Restituisce un nodo figlio per ogni azione applicabile.
-    per ogni azione applicabile a node.state:
-        s' ← RESULT(node.state, azione)
-        g' ← node.g + ACTION-COST(node.state, azione, s')
-        genera nodo(state=s', parent=node, action=azione, g=g')
+function EXPAND(problem, node) yields nodes
+    s ← node.STATE
+    for each action in problem.ACTIONS(s) do
+        s' ← problem.RESULT(s, action)
+        cost ← node.PATH-COST + problem.ACTION-COST(s, action, s')
+        yield NODE(STATE=s', PARENT=node, ACTION=action, PATH-COST=cost)
 ```
 
-Con UCS si passa `f(n) = g(n)`; con A* si passa `f(n) = g(n) + h(n)`. Best-first dà quindi lo schema comune: cambiando la funzione di priorità cambia l'ordine di visita.
+Con UCS si passa `f(n) = path-cost(n)`; A* usa lo stesso schema con `f(n) = g(n) + h(n)`.
 
 ```text
 TREE-SEARCH(problem, frontier)
@@ -68,19 +67,20 @@ TREE-SEARCH(problem, frontier)
 ## BFS e DFS
 
 ```text
-BREADTH-FIRST-SEARCH(problem)
-    root ← nodo(problem.initial)
-    se GOAL-TEST(root.state): restituisci root
-    frontier ← coda FIFO contenente root
-    reached ← {root.state}
-    mentre frontier non è vuota:
-        node ← estrai dalla testa di frontier
-        per ogni child in EXPAND(problem, node):
-            se GOAL-TEST(child.state): restituisci child
-            se child.state non è in reached:
-                aggiungi child.state a reached
-                accoda child in frontier
-    restituisci failure
+function BREADTH-FIRST-SEARCH(problem) returns a solution node or failure
+    node ← NODE(problem.INITIAL)
+    if problem.IS-GOAL(node.STATE) then return node
+    frontier ← a FIFO queue, with node as an element
+    reached ← {problem.INITIAL}
+    while not IS-EMPTY(frontier) do
+        node ← POP(frontier)
+        for each child in EXPAND(problem, node) do
+            s ← child.STATE
+            if problem.IS-GOAL(s) then return child
+            if s is not in reached then
+                add s to reached
+                add child to frontier
+    return failure
 ```
 
 ```text
@@ -107,25 +107,23 @@ La frontiera BFS è FIFO e visita per livelli; quella DFS è LIFO e scende lungo
 La ricerca a profondità limitata distingue `cutoff` (il limite ha impedito di proseguire) da `failure` (frontiera esaurita). IDS ripete DFS con limiti crescenti.
 
 ```text
-ITERATIVE-DEEPENING-SEARCH(problem)
-    per limit ← 0, 1, 2, ...:
-        result ← DEPTH-LIMITED-SEARCH(problem, limit)
-        se result ≠ cutoff:
-            restituisci result
+function ITERATIVE-DEEPENING-SEARCH(problem) returns a solution node or failure
+    for depth = 0 to ∞ do
+        result ← DEPTH-LIMITED-SEARCH(problem, depth)
+        if result ≠ cutoff then return result
 
-DEPTH-LIMITED-SEARCH(problem, limit)
-    restituisci VISIT(nodo(problem.initial), 0)
-
-VISIT(node, depth)
-    se GOAL-TEST(node.state): restituisci node
-    se depth = limit: restituisci cutoff
-    cutoff_seen ← falso
-    per ogni child in EXPAND(problem, node):
-        result ← VISIT(child, depth + 1)
-        se result è una soluzione: restituisci result
-        se result = cutoff: cutoff_seen ← vero
-    se cutoff_seen: restituisci cutoff
-    altrimenti: restituisci failure
+function DEPTH-LIMITED-SEARCH(problem, ℓ) returns a node or failure or cutoff
+    frontier ← a LIFO queue (stack) with NODE(problem.INITIAL) as an element
+    result ← failure
+    while not IS-EMPTY(frontier) do
+        node ← POP(frontier)
+        if problem.IS-GOAL(node.STATE) then return node
+        if DEPTH(node) > ℓ then
+            result ← cutoff
+        else if not IS-CYCLE(node) do
+            for each child in EXPAND(problem, node) do
+                add child to frontier
+    return result
 ```
 
 IDS è completa e ottimale con costi unitari; richiede `O(b^d)` tempo e `O(bd)` spazio. Riesplora i livelli più alti a ogni iterazione, ma concentra il lavoro sul livello più profondo.
@@ -137,20 +135,8 @@ IDS è completa e ottimale con costi unitari; richiede `O(b^d)` tempo e `O(bd)` 
 UCS usa una coda di priorità ordinata per costo del cammino `g`. Il goal test avviene all'estrazione, quando il suo costo è il minimo tra quelli ancora in frontiera.
 
 ```text
-UNIFORM-COST-SEARCH(problem)
-    frontier ← coda di priorità con nodo iniziale a priorità 0
-    best-g ← {iniziale: 0}
-    mentre frontier non è vuota:
-        node ← estrai il nodo con g minimo
-        se node.g > best-g[node.state]: continua
-        se GOAL-TEST(node.state): restituisci node
-        per ogni child in EXPAND(problem, node):
-            new-g ← node.g + COST(node, child)
-            se child.state non è in best-g oppure new-g < best-g[child.state]:
-                best-g[child.state] ← new-g
-                child.g ← new-g
-                inserisci child con priorità new-g
-    restituisci failure
+function UNIFORM-COST-SEARCH(problem) returns a solution node or failure
+    return BEST-FIRST-SEARCH(problem, PATH-COST)
 ```
 
 È completa e ottimale se i costi degli archi sono positivi e limitati inferiormente da `ε > 0`. Tempo e spazio sono esponenziali nella profondità efficace, circa `O(b^(1 + floor(C*/ε)))`.
@@ -208,6 +194,7 @@ CONTOUR-DFS(path, g, bound)
             result ← CONTOUR-DFS(path, g + COST(node, child), bound)
             rimuovi child da path
             se result è una soluzione: restituisci result
+            se result = failure: continua
             min-excess ← min(min-excess, result)
     se min-excess = +∞: restituisci failure
     restituisci min-excess
@@ -222,25 +209,22 @@ Con euristica ammissibile è ottimo; usa `O(bd)` spazio, ma può riespandere gli
 RBFS esplora ricorsivamente il ramo con `f` più basso e limita la ricerca col valore della seconda alternativa migliore. Quando abbandona un ramo, ne conserva il valore `f` aggiornato (*backed-up value*).
 
 ```text
-RECURSIVE-BEST-FIRST-SEARCH(problem)
-    root ← nodo iniziale
-    root.f ← h(root.state)
-    result, _ ← RBFS(problem, root, +∞)
-    restituisci result
+function RECURSIVE-BEST-FIRST-SEARCH(problem) returns a solution or failure
+    solution, fvalue ← RBFS(problem, NODE(problem.INITIAL), ∞)
+    return solution
 
-RBFS(problem, node, f-limit)
-    se GOAL-TEST(node.state): restituisci node, node.f
-    successors ← EXPAND(problem, node)
-    se successors è vuoto: restituisci failure, +∞
-    per ogni s in successors:
-        s.f ← max(s.g + h(s.state), node.f)
-    ripeti:
-        ordina successors per f crescente
-        best ← successore con f minore
-        se best.f > f-limit: restituisci failure, best.f
-        alternative ← f del secondo successore migliore, oppure +∞
+function RBFS(problem, node, f-limit) returns a solution or failure, and a new f-cost limit
+    if problem.IS-GOAL(node.STATE) then return node
+    successors ← LIST(EXPAND(node))
+    if successors is empty then return failure, ∞
+    for each s in successors do        // update f with value from previous search
+        s.f ← max(s.PATH-COST + h(s), node.f)
+    while true do
+        best ← the node in successors with lowest f-value
+        if best.f > f-limit then return failure, best.f
+        alternative ← the second-lowest f-value among successors
         result, best.f ← RBFS(problem, best, min(f-limit, alternative))
-        se result ≠ failure: restituisci result, best.f
+        if result ≠ failure then return result, best.f
 ```
 
 RBFS è ottimale con euristica ammissibile e usa `O(bd)` spazio. Può riespandere più volte nodi dimenticati, quindi il tempo dipende dalla qualità dell'euristica e dai cambi di ramo migliore.
@@ -291,26 +275,28 @@ Questo è uno schema operativo: la gestione dei collegamenti e dei valori di bac
 Si applica a giochi deterministici, a somma zero e con informazione perfetta. MAX massimizza il valore; MIN lo minimizza. Le foglie hanno l'utilità degli esiti.
 
 ```text
-MINIMAX-SEARCH(game, state)
-    player ← PLAYER-TO-MOVE(state)
-    value, move ← MAX-VALUE(game, state, player)
-    restituisci move
+function MINIMAX-SEARCH(game, state) returns an action
+    player ← game.TO-MOVE(state)
+    value, move ← MAX-VALUE(game, state)
+    return move
 
-MAX-VALUE(game, state, player)
-    se TERMINAL(state): restituisci UTILITY(state, player), nessuna mossa
-    v ← -∞
-    per ogni azione a in ACTIONS(state):
-        v2, _ ← MIN-VALUE(game, RESULT(state, a), player)
-        se v2 > v: v, move ← v2, a
-    restituisci v, move
+function MAX-VALUE(game, state) returns a (utility, move) pair
+    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
+    v ← −∞
+    for each a in game.ACTIONS(state) do
+        v2, a2 ← MIN-VALUE(game, game.RESULT(state, a))
+        if v2 > v then
+            v, move ← v2, a
+    return v, move
 
-MIN-VALUE(game, state, player)
-    se TERMINAL(state): restituisci UTILITY(state, player), nessuna mossa
+function MIN-VALUE(game, state) returns a (utility, move) pair
+    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
     v ← +∞
-    per ogni azione a in ACTIONS(state):
-        v2, _ ← MAX-VALUE(game, RESULT(state, a), player)
-        se v2 < v: v, move ← v2, a
-    restituisci v, move
+    for each a in game.ACTIONS(state) do
+        v2, a2 ← MAX-VALUE(game, game.RESULT(state, a))
+        if v2 < v then
+            v, move ← v2, a
+    return v, move
 ```
 
 Minimax è ottimale contro un avversario perfetto, ma esplora l'albero fino agli esiti terminali: tempo `O(b^m)`, spazio `O(bm)` con ricerca depth-first. Con fattore di ramificazione e profondità elevati diventa impraticabile.
@@ -322,32 +308,32 @@ Minimax è ottimale contro un avversario perfetto, ma esplora l'albero fino agli
 Alpha-beta restituisce la stessa scelta di Minimax. `α` è il miglior valore già garantito a MAX sul percorso; `β` è il miglior limite già garantito a MIN. Si interrompe l'esplorazione quando `v ≥ β` in MAX o `v ≤ α` in MIN.
 
 ```text
-ALPHA-BETA-SEARCH(game, state)
-    player ← PLAYER-TO-MOVE(state)
-    value, move ← MAX-VALUE(game, state, player, -∞, +∞)
-    restituisci move
+function ALPHA-BETA-SEARCH(game, state) returns an action
+    player ← game.TO-MOVE(state)
+    value, move ← MAX-VALUE(game, state, −∞, +∞)
+    return move
 
-MAX-VALUE(game, state, player, α, β)
-    se TERMINAL(state): restituisci UTILITY(state, player), nessuna mossa
-    v ← -∞
-    per ogni azione a in ACTIONS(state):
-        v2, _ ← MIN-VALUE(game, RESULT(state, a), player, α, β)
-        se v2 > v: v, move ← v2, a
-        α ← max(α, v)
-        se v ≥ β: restituisci v, move
-    restituisci v, move
+function MAX-VALUE(game, state, α, β) returns a (utility, move) pair
+    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
+    v ← −∞
+    for each a in game.ACTIONS(state) do
+        v2, a2 ← MIN-VALUE(game, game.RESULT(state, a), α, β)
+        if v2 > v then
+            v, move ← v2, a
+            α ← MAX(α, v)
+        if v ≥ β then return v, move
+    return v, move
 
-MIN-VALUE(game, state, player, α, β)
-    se TERMINAL(state): restituisci UTILITY(state, player), nessuna mossa
+function MIN-VALUE(game, state, α, β) returns a (utility, move) pair
+    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
     v ← +∞
-    per ogni azione a in ACTIONS(state):
-        v2, _ ← MAX-VALUE(game, RESULT(state, a), player, α, β)
-        se v2 < v: v, move ← v2, a
-        β ← min(β, v)
-        se v ≤ α: restituisci v, move
-    restituisci v, move
-
-Chiamata iniziale: MAX-VALUE(game, root, player, -∞, +∞)
+    for each a in game.ACTIONS(state) do
+        v2, a2 ← MAX-VALUE(game, game.RESULT(state, a), α, β)
+        if v2 < v then
+            v, move ← v2, a
+            β ← MIN(β, v)
+        if v ≤ α then return v, move
+    return v, move
 ```
 
 Il pruning non cambia il valore minimax alla radice. L'ordine di visita dei figli influenza quanti rami si potano: nel caso migliore, con ordinamento perfetto, il tempo scende a `O(b^(m/2))`; lo spazio resta `O(bm)`.

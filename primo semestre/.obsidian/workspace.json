@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "83e7ffda9d9dff5d",
+        "id": "2546bed3e44058b3",
         "type": "tabs",
         "children": [
           {
-            "id": "694257ca16ad0289",
+            "id": "177111d5336fc516",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 318.5,
-    "collapsed": true
+    "width": 318.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -204,10 +203,10 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "694257ca16ad0289",
+  "active": "177111d5336fc516",
   "lastOpenFiles": [
-    "Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
     "Introduzione IA/pseudocodiciI.md",
+    "Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
     "Architettura reti e internet/protocolli/images/parte_6-27.png",
     "Architettura reti e internet/protocolli/images/parte_6-21.png",
     "Architettura reti e internet/protocolli/images/parte_6-26.png",
