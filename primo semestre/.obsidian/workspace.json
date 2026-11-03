@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "5d414fb63c7bf288",
+        "id": "83e7ffda9d9dff5d",
         "type": "tabs",
         "children": [
           {
-            "id": "88def7717beaa27f",
+            "id": "694257ca16ad0289",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Introduzione IA/pseudocodiciI.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "pseudocodiciI"
             }
           }
         ]
@@ -79,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 356.5,
+    "width": 318.5,
     "collapsed": true
   },
   "right": {
@@ -200,31 +204,36 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "88def7717beaa27f",
+  "active": "694257ca16ad0289",
   "lastOpenFiles": [
+    "Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
+    "Introduzione IA/pseudocodiciI.md",
+    "Architettura reti e internet/protocolli/images/parte_6-27.png",
+    "Architettura reti e internet/protocolli/images/parte_6-21.png",
+    "Architettura reti e internet/protocolli/images/parte_6-26.png",
+    "Architettura reti e internet/protocolli/images/parte_6-25.png",
+    "Architettura reti e internet/protocolli/images/parte_6-20.png",
+    "Architettura reti e internet/protocolli/images/parte_6-24.png",
+    "Architettura reti e internet/protocolli/images/parte_6-19.png",
+    "Architettura reti e internet/protocolli/images/parte_6-17.png",
+    "Architettura reti e internet/protocolli/images/parte_6-14.png",
+    "Architettura reti e internet/protocolli/images/parte_6-12.png",
+    "Basi di dati e sistemi informativi con laboratorio/esoneroI/ripassoI.md",
+    "Basi di dati e sistemi informativi con laboratorio/esoneroI/risposte.md",
+    "Architettura reti e internet/protocolli/parte_6.pdf",
+    "Architettura reti e internet/protocolli/Unconfirmed 218375.crdownload",
+    "Basi di dati e sistemi informativi con laboratorio/ripassoI.md",
+    "Basi di dati e sistemi informativi con laboratorio/esoneroI/primoCompitinoNovembre2024.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/esoneroI",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 12-Join di Tabelle.md",
+    "Basi di dati e sistemi informativi con laboratorio/lezione4.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 12-.md",
+    "Basi di dati e sistemi informativi con laboratorio/Unconfirmed 82591.crdownload",
     "Programmazione web e mobile con laboratorio/Lezione 11-Servizi Google.md",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/stile/stile.css",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/stile",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/img1.jpg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/wheel.jpeg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/logo.png",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/s2.jpg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/s3.jpg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/g6.jpg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/g4.jpg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/s1.jpg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/g5.jpg",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img/g1.jpg",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/img",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/script/script4.js",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/script/script3.js",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/script/script2.js",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/script/script1.js",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/script",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/products.html",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/esercitazione 4/pwm_esercitazione4/index.html",
-    "Basi di dati e sistemi informativi con laboratorio/ripassoI.md",
-    "Introduzione IA/pseudocodiciI.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
@@ -241,11 +250,6 @@
     "Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
     "Introduzione IA/Lezione 3-Ricerca su grafo.md",
     "Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
-    "Introduzione sicurezza /Lezione 7.md",
-    "Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
-    "Architettura reti e internet/internet/Lezione 6-UDP e TCP.md",
-    "Architettura reti e internet/internet/Lezione 7.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 11-.md",
-    "Introduzione sicurezza /Lezione 6- esercitazione wireshark.md"
+    "Introduzione sicurezza /Lezione 7.md"
   ]
 }

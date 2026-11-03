@@ -5,3 +5,4 @@
 - [[Lezione 3-Tipi di connessione e topologie di rete|Tipi di connessione e topologie di rete]]
 - [[Lezione 4-Reti mesh, protocolli e segnali|Reti mesh, protocolli e segnali]]
 - [[Lezione 5-Serie di Fourier, filtri e modulazione|Serie di Fourier, filtri e modulazione]]
+- [[Lezione 6-PCM, campionamento e modulazioni digitali|PCM, campionamento e modulazioni digitali]]
