@@ -4,20 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "12108b517faca19e",
+        "id": "5218bb6bd755bdff",
         "type": "tabs",
         "children": [
           {
-            "id": "915846c2c336f285",
+            "id": "6606c685fac65ca0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/esoneri/domande_primo_esonero.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "domande_primo_esonero"
+            }
+          },
+          {
+            "id": "cd4eaf54b5a28c73",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Introduzione IA/esoneri/pseudocodici 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "pseudocodici 1"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -93,7 +112,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 230.5,
+    "collapsed": true
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -261,53 +281,52 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "915846c2c336f285",
+  "active": "cd4eaf54b5a28c73",
   "lastOpenFiles": [
-    "primo semestre/Introduzione IA/pseudocodiciI.md",
+    "primo semestre/Introduzione IA/esoneri/domande_primo_esonero.md",
+    "primo semestre/Introduzione IA/esoneri/pseudocodici 1.md",
+    "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
+    "primo semestre/Introduzione IA/esoneri/domande_secondoEsonero_IntroAI.pdf",
+    "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
+    "primo semestre/Introduzione IA/domande_primo_esonero.md",
+    "primo semestre/Introduzione IA/esoneri/algorithms.pdf",
+    "primo semestre/Introduzione IA/esoneri",
+    "primo semestre/Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
+    "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
+    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/risposte.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/ripassoI.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/primoCompitinoNovembre2024.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 12-Join di Tabelle.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p24-24.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p22-22.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p19-19.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p17-17.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p14-14.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p06-06.png",
+    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-27.png",
+    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-26.png",
+    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-25.png",
+    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-24.png",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/ripassoI.md",
     "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
-    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 10-Strutture di controllo in JavaScript.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 9-Introduzione a JavaScript.md",
     "CONFIG-CHANGES.md",
     "primo semestre/Introduzione sicurezza /Lezione 7-Posta elettronica.md",
     "primo semestre/Introduzione sicurezza /Approfondimento chiavi SSH private e pubbliche.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 8-Telnet.md",
-    "primo semestre/Introduzione IA/images/Pasted image 20261028224418.png",
-    "primo semestre/Introduzione IA/images/Pasted image 20261028164702.png",
-    "primo semestre/Introduzione IA/images/Pasted image 20261028163758.png",
-    "primo semestre/Introduzione IA/images/Pasted image 20261028163303.png",
-    "primo semestre/Introduzione IA/images/Pasted image 20261028163246.png",
-    "primo semestre/Pasted image 20261028224418.png",
-    "Pasted image 20261028224418.png",
     "primo semestre/Introduzione IA/6-Games.pdf",
     "primo semestre/Introduzione IA/Lezione 7.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/images/Pasted image 20261026223134.png",
-    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
-    "primo semestre/Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
-    "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
-    "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
-    "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
     "Untitled.md",
     "primo semestre/Introduzione sicurezza /00 Indice - Introduzione sicurezza.md",
     "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
     "primo semestre/Programmazione web e mobile con laboratorio/pwm_lezione9.pdf",
-    "primo semestre/Programmazione web e mobile con laboratorio/images/operatori-particolari-48.png",
-    "primo semestre/Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.css",
     "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.html",
-    "primo semestre/Architettura reti e internet/internet/Lezione 6-UDP e TCP e routing.md",
-    "primo semestre/Introduzione sicurezza /Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
-    "[!note].md",
-    "primo semestre/Architettura reti e internet/protocolli/images/slide-12.png",
-    "primo semestre/Architettura reti e internet/internet/images",
-    "primo semestre/Architettura reti e internet/protocolli/images",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 8-Accessibilità e CSS3 avanzato.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 7-Design dei contenuti web: composizione visiva, metafore e organizzazione.md",
-    "primo semestre/Introduzione sicurezza /Lezione 6-Esercitazione Wireshark.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/nullAlgebraRel.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Unconfirmed 266755.crdownload",
-    "primo semestre/Architettura reti e internet/internet/oggi.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/groupBy.pdf"
+    "primo semestre/Architettura reti e internet/internet/images"
   ]
 }

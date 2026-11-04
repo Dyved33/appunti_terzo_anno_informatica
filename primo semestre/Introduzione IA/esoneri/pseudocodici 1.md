@@ -69,14 +69,13 @@ TREE-SEARCH(problem, frontier)
 ```text
 function BREADTH-FIRST-SEARCH(problem) returns a solution node or failure
     node ← NODE(problem.INITIAL)
-    if problem.IS-GOAL(node.STATE) then return node
     frontier ← a FIFO queue, with node as an element
     reached ← {problem.INITIAL}
     while not IS-EMPTY(frontier) do
         node ← POP(frontier)
+        if problem.IS-GOAL(node.STATE) then return node
         for each child in EXPAND(problem, node) do
             s ← child.STATE
-            if problem.IS-GOAL(s) then return child
             if s is not in reached then
                 add s to reached
                 add child to frontier
@@ -86,19 +85,22 @@ function BREADTH-FIRST-SEARCH(problem) returns a solution node or failure
 ```text
 DEPTH-FIRST-SEARCH(problem)
     root ← nodo(problem.initial)
+    se GOAL-TEST(root.state): restituisci root
     frontier ← stack LIFO contenente root
     reached ← {root.state}
     mentre frontier non è vuota:
         node ← estrai dalla cima di frontier
-        se GOAL-TEST(node.state): restituisci node
         per ogni child in EXPAND(problem, node):
             se child.state non è in reached:
+                se GOAL-TEST(child.state): restituisci child
                 aggiungi child.state a reached
                 inserisci child in frontier
     restituisci failure
 ```
 
 La frontiera BFS è FIFO e visita per livelli; quella DFS è LIFO e scende lungo un ramo. Nei grafi, segnare gli stati raggiunti evita cicli e duplicati. BFS trova una soluzione se esiste a profondità finita ed è ottimale quando tutti i passi hanno costo uguale; richiede tempo e spazio esponenziali, circa `O(b^d)`. DFS usa `O(bm)` spazio e `O(b^m)` tempo; senza controllo dei cicli può non essere completa e non è ottimale.
+
+In questa variante BFS controlla il goal quando estrae il nodo dalla coda; DFS lo controlla quando genera un successore, prima di inserirlo nello stack. Sono convenzioni del pseudocodice adottato: la strategia di frontiera resta la differenza che determina l'ordine di visita.
 
 **Promemoria:** BFS = *prima i più vicini*; DFS = *prima il ramo più profondo*. FIFO conserva l'ordine di arrivo; LIFO riprende dall'ultimo nodo inserito.
 
@@ -145,26 +147,38 @@ function UNIFORM-COST-SEARCH(problem) returns a solution node or failure
 
 ## A*
 
-A* ordina la frontiera per `f(n) = g(n) + h(n)`, dove `g` è il costo già sostenuto e `h` la stima del costo rimanente. Il goal test si fa quando il nodo viene estratto.
+A* ordina la frontiera per `f(n) = g(n) + h(n)`: `g(n)` è il costo del cammino già percorso, `h(n)` stima il costo che resta. A ogni passo estrae il nodo con `f` minore e controlla allora il goal.
 
 ```text
-A*-GRAPH-SEARCH(problem, h)
-    frontier ← coda di priorità con nodo iniziale a priorità h(initial)
-    best-g ← {initial: 0}
-    mentre frontier non è vuota:
-        node ← estrai il nodo con f = g + h minimo
-        se node.g > best-g[node.state]: continua
-        se GOAL-TEST(node.state): restituisci node
-        per ogni child in EXPAND(problem, node):
+function A*-GRAPH-SEARCH(problem, h) returns a solution node or failure
+    root ← NODE(problem.INITIAL, g=0)
+    frontier ← coda di priorità vuota, ordinata per f(n) = g(n) + h(n)
+    INSERT(frontier, root, priority=h(root.STATE))
+    best-g ← {root.STATE: 0}               // miglior costo g trovato per ogni stato
+
+    while frontier non è vuota:
+        node ← POP(frontier)               // estrae il nodo con f minimo
+
+        if node.g > best-g[node.STATE]:    // voce superata da un cammino migliore
+            continue
+
+        if problem.IS-GOAL(node.STATE):    // il goal si controlla all'estrazione
+            return node
+
+        for each child in EXPAND(problem, node):
             new-g ← node.g + COST(node, child)
-            se child.state non è in best-g oppure new-g < best-g[child.state]:
-                best-g[child.state] ← new-g
+            s ← child.STATE
+            if s non è in best-g oppure new-g < best-g[s]:
+                best-g[s] ← new-g
                 child.g ← new-g
-                inserisci child con priorità new-g + h(child.state)
-    restituisci failure
+                INSERT(frontier, child, priority=new-g + h(s))
+
+    return failure
 ```
 
-Con euristica ammissibile (`h(n) ≤ h*(n)`), A* su albero è ottimale; su grafo è ottimale con euristica consistente, oppure riaprendo gli stati quando si trova un costo `g` migliore. È completo con costi positivi e condizioni finite usuali; nel caso peggiore tempo e spazio sono esponenziali, `O(b^d)`. Con `h = 0` coincide con UCS.
+`best-g[s]` conserva il costo minore trovato finora per raggiungere lo stato `s`. Se si trova un cammino più economico, A* aggiorna il valore e inserisce una nuova voce in coda; quella vecchia, se verrà estratta, viene ignorata dal controllo `node.g > best-g[node.STATE]`.
+
+Con euristica ammissibile (`h(n) ≤ h*(n)`), A* su albero è ottimale; su grafo è ottimale con euristica consistente, oppure riaprendo gli stati quando si trova un costo `g` migliore, come fa questo schema. È completo con costi positivi e condizioni finite usuali; nel caso peggiore tempo e spazio sono esponenziali, `O(b^d)`. Con `h = 0` coincide con UCS.
 
 **Promemoria:** UCS guarda solo ciò che è già costato (`g`); A* aggiunge una previsione (`h`). Se `h = 0`, la previsione non contribuisce e resta UCS.
 
@@ -210,7 +224,7 @@ RBFS esplora ricorsivamente il ramo con `f` più basso e limita la ricerca col v
 
 ```text
 function RECURSIVE-BEST-FIRST-SEARCH(problem) returns a solution or failure
-    solution, fvalue ← RBFS(problem, NODE(problem.INITIAL), ∞)
+    solution, fvalue ← RBFS(problem, NODE(problem.initial), ∞)
     return solution
 
 function RBFS(problem, node, f-limit) returns a solution or failure, and a new f-cost limit
@@ -275,29 +289,25 @@ Questo è uno schema operativo: la gestione dei collegamenti e dei valori di bac
 Si applica a giochi deterministici, a somma zero e con informazione perfetta. MAX massimizza il valore; MIN lo minimizza. Le foglie hanno l'utilità degli esiti.
 
 ```text
-function MINIMAX-SEARCH(game, state) returns an action
-    player ← game.TO-MOVE(state)
-    value, move ← MAX-VALUE(game, state)
-    return move
+def value(state):
+    if terminal(state): return utility(state)
+    if player(state) == MAX: return max_value(state)
+    else: return min_value(state)
 
-function MAX-VALUE(game, state) returns a (utility, move) pair
-    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
-    v ← −∞
-    for each a in game.ACTIONS(state) do
-        v2, a2 ← MIN-VALUE(game, game.RESULT(state, a))
-        if v2 > v then
-            v, move ← v2, a
-    return v, move
+def max_value(state):
+    v = -inf
+    for s in successors(state):
+        v = max(v, value(s))
+    return v
 
-function MIN-VALUE(game, state) returns a (utility, move) pair
-    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
-    v ← +∞
-    for each a in game.ACTIONS(state) do
-        v2, a2 ← MAX-VALUE(game, game.RESULT(state, a))
-        if v2 < v then
-            v, move ← v2, a
-    return v, move
+def min_value(state):
+    v = +inf
+    for s in successors(state):
+        v = min(v, value(s))
+    return v
 ```
+
+`value` restituisce il valore della posizione, non la mossa. Alla radice MAX valuta i successori e sceglie la mossa col valore più alto.
 
 Minimax è ottimale contro un avversario perfetto, ma esplora l'albero fino agli esiti terminali: tempo `O(b^m)`, spazio `O(bm)` con ricerca depth-first. Con fattore di ramificazione e profondità elevati diventa impraticabile.
 
@@ -305,36 +315,34 @@ Minimax è ottimale contro un avversario perfetto, ma esplora l'albero fino agli
 
 ## Alpha-Beta Pruning
 
-Alpha-beta restituisce la stessa scelta di Minimax. `α` è il miglior valore già garantito a MAX sul percorso; `β` è il miglior limite già garantito a MIN. Si interrompe l'esplorazione quando `v ≥ β` in MAX o `v ≤ α` in MIN.
+Alpha-beta calcola lo stesso valore di Minimax, ma interrompe la ricerca quando i figli restanti non possono cambiare la scelta. `α` è il miglior valore trovato da MAX sul percorso; `β` è il miglior valore trovato da MIN.
 
 ```text
-function ALPHA-BETA-SEARCH(game, state) returns an action
-    player ← game.TO-MOVE(state)
-    value, move ← MAX-VALUE(game, state, −∞, +∞)
-    return move
+function VALUE(game, state, α, β) returns a utility
+    if game.IS-TERMINAL(state) then return game.UTILITY(state)
+    if game.TO-MOVE(state) = MAX then
+        return MAX-VALUE(game, state, α, β)
+    else
+        return MIN-VALUE(game, state, α, β)
 
-function MAX-VALUE(game, state, α, β) returns a (utility, move) pair
-    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
+function MAX-VALUE(game, state, α, β) returns a utility
     v ← −∞
-    for each a in game.ACTIONS(state) do
-        v2, a2 ← MIN-VALUE(game, game.RESULT(state, a), α, β)
-        if v2 > v then
-            v, move ← v2, a
-            α ← MAX(α, v)
-        if v ≥ β then return v, move
-    return v, move
+    for each successor in SUCCESSORS(game, state) do
+        v ← MAX(v, VALUE(game, successor, α, β))
+        if v ≥ β then return v             // β-cutoff
+        α ← MAX(α, v)
+    return v
 
-function MIN-VALUE(game, state, α, β) returns a (utility, move) pair
-    if game.IS-TERMINAL(state) then return game.UTILITY(state, player), null
+function MIN-VALUE(game, state, α, β) returns a utility
     v ← +∞
-    for each a in game.ACTIONS(state) do
-        v2, a2 ← MAX-VALUE(game, game.RESULT(state, a), α, β)
-        if v2 < v then
-            v, move ← v2, a
-            β ← MIN(β, v)
-        if v ≤ α then return v, move
-    return v, move
+    for each successor in SUCCESSORS(game, state) do
+        v ← MIN(v, VALUE(game, successor, α, β))
+        if v ≤ α then return v             // α-cutoff
+        β ← MIN(β, v)
+    return v
 ```
+
+Chiamata iniziale: `VALUE(game, state, −∞, +∞)`. Questo codice restituisce il valore della posizione. Per scegliere una mossa, MAX confronta i valori dei successori della radice e prende il più alto.
 
 Il pruning non cambia il valore minimax alla radice. L'ordine di visita dei figli influenza quanti rami si potano: nel caso migliore, con ordinamento perfetto, il tempo scende a `O(b^(m/2))`; lo spazio resta `O(bm)`.
 
@@ -347,3 +355,48 @@ Il pruning non cambia il valore minimax alla radice. L'ordine di visita dei figl
 - **Completezza:** se trova una soluzione quando ne esiste una.
 - **Ottimalità:** se restituisce la soluzione di costo minimo, con quali ipotesi.
 - **Complessità:** tempo e spazio; definire `b` (ramificazione), `d` (profondità della soluzione), `m` (profondità massima), `C*` (costo ottimo) ed `ε` (costo minimo positivo di un arco).
+
+## Struttura comune della ricerca su frontiera
+
+Questo schema raccoglie i passaggi condivisi da BFS, DFS, UCS e A*. Per ricavare un algoritmo specifico, inserisci la sua struttura e le sue regole nei punti indicati.
+
+```text
+RICERCA(problem)
+    root ← nodo con stato problem.initial
+    [INIZIALIZZAZIONE]
+    inserisci root nella frontiera
+    reached ← {root.state: root}                 // per la ricerca su grafo
+
+    mentre frontier non è vuota:
+        node ← estrai il nodo scelto dalla strategia
+
+        [GOAL TEST]
+        controlla node all'estrazione,
+        oppure controlla child alla generazione prima di inserirlo;
+        con DFS controlla root prima di inserirlo nello stack
+
+        per ogni child in EXPAND(problem, node):
+            se child.state non è già stato raggiunto,
+               oppure child offre un cammino migliore:
+                [EVENTUALE GOAL TEST ALLA GENERAZIONE]
+                aggiorna reached[child.state] ← child
+                inserisci child in frontier secondo la strategia
+
+    restituisci failure
+```
+
+Per comporre il codice, scegli le parti corrispondenti:
+
+| Algoritmo | Frontiera e scelta del nodo | Goal test e gestione dei raggiunti |
+|---|---|---|
+| BFS | Coda FIFO; estrae il nodo più vecchio | All'estrazione; aggiunge ogni stato a `reached` quando lo inserisce in coda |
+| DFS | Stack LIFO; estrae l'ultimo inserito | Alla generazione del successore, prima di inserirlo nello stack; aggiunge lo stato a `reached` prima dell'inserimento |
+| UCS | Coda di priorità per `g(n)` minimo | All'estrazione; aggiorna `reached` se trova un cammino a costo minore |
+| A* | Coda di priorità per `f(n) = g(n) + h(n)` minimo | All'estrazione; aggiorna il miglior `g` e riapre uno stato se trova un cammino migliore |
+| IDS | Ripete DFS con limite di profondità crescente | Usa il controllo di DFS e tiene conto di `cutoff`; in genere controlla i cicli nel cammino corrente |
+| IDA* | Ripete DFS con soglia `f = g + h` crescente | Controlla il limite `f` prima di proseguire e aggiorna la soglia col minimo superamento |
+
+`EXPAND` calcola i successori applicando le azioni e registra genitore, azione e costo del cammino. In ricerca su albero si omette `reached`, ma possono essere riesplorati stati già incontrati. RBFS e SMA* condividono l'espansione dei nodi, ma hanno regole ricorsive o di memoria che richiedono uno schema separato.
+
+> [!tip] Ricorda
+> **Nodo estratto:** BFS, UCS e A* controllano il goal all'estrazione. **Nodo generato:** in questa variante DFS controlla il goal prima dell'inserimento nello stack. Poi identifica l'algoritmo dalla frontiera: FIFO, LIFO o priorità.
