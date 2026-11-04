@@ -41,7 +41,9 @@ function BEST-FIRST-SEARCH(problem, f) returns a solution node or failure
                 reached[s] ← child
                 add child to frontier
     return failure
+```
 
+```text
 function EXPAND(problem, node) yields nodes
     s ← node.STATE
     for each action in problem.ACTIONS(s) do

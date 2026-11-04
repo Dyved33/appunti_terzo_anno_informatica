@@ -35,8 +35,7 @@
               "title": "pseudocodici 1"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -281,10 +280,10 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "cd4eaf54b5a28c73",
+  "active": "6606c685fac65ca0",
   "lastOpenFiles": [
-    "primo semestre/Introduzione IA/esoneri/domande_primo_esonero.md",
     "primo semestre/Introduzione IA/esoneri/pseudocodici 1.md",
+    "primo semestre/Introduzione IA/esoneri/domande_primo_esonero.md",
     "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
     "primo semestre/Introduzione IA/esoneri/domande_secondoEsonero_IntroAI.pdf",
     "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
