@@ -151,3 +151,82 @@ blockquote {
 .cell p {
   text-align: center;
 }
+
+#form1 {
+  display: flex;
+  margin: 2em auto;
+  width: 80%;
+  gap: 0em 2em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#form1 p {
+  width: calc(20% -2em);
+  text-align: left;
+}
+
+#form1 label {
+  font-size: 0.9em;
+}
+
+#form1 input,
+#form1 select {
+  color: var(--colorD);
+  border: 1px solid var(--colorD);
+  padding: 0.4em;
+  width: calc(100% - 0.8em - 2px);
+}
+
+#sub-but:hover {
+  background-color: var(--colorE);
+  border: 1px solid var(--colorE);
+}
+
+table {
+  width: 80%;
+  margin: 4em auto 0;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  border: 1px solid var(--colorF);
+  border-bottom: 1px solid var(--colorC);
+}
+
+tr:nth-child(even)/*seleziona l'ennesimo figlio, oppure i figli even o odd*/ {
+  background-color: var(--colorB);
+}
+
+th {
+  background-color: var(--colorF);
+  color: var(--colorA);
+  padding: 1em;
+}
+
+tr:hover {
+  background-color: var(--colorC);
+}
+
+td {
+  width: 25%;
+  padding: 1em;
+  border-right: 1px solid var(--colorC);
+  border-left: 1px solid var(--colorC);
+}
+
+#slideshow-container {
+  width: 100%;
+  margin-top: 3em;
+  border-radius: 40%;
+  cursor: w-resize;
+  overflow: hidden; /*questo container genitore nasconde ciò che esce dal border-radius*/
+}
+
+#slideshow-track {
+  display: flex;
+  transition: 0.9s ease-in-out;
+}
+
+.slide {
+  width: 50%;
+  margin-right: 2em;
+}

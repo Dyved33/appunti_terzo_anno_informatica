@@ -1,4 +1,165 @@
-# Ripasso I - Algebra relazionale
+# Ripasso 
+
+## SQL: definizione di schemi e vincoli
+
+Il **DDL** definisce e modifica gli oggetti dello schema della base di dati. `CREATE TABLE` definisce lo schema di una relazione, ne crea un'istanza inizialmente vuota e specifica attributi, domini e vincoli.
+
+I sottolinguaggi nominati negli appunti sono: DDL per definizioni (`CREATE`, `ALTER`, `DROP`), DML per dati e interrogazioni (`INSERT`, `UPDATE`, `DELETE`, `SELECT`), DCL per privilegi (`GRANT`, `REVOKE`) e TCL per transazioni (`COMMIT`, `ROLLBACK`, `SAVEPOINT`, `SET TRANSACTION`).
+
+### Chiavi nel modello relazionale
+
+Per uno schema `R(X)`, un insieme di attributi `K ⊆ X` è una **superchiave** se valori uguali su `K` identificano la stessa tupla. È una **chiave candidata** se è una superchiave minimale: togliendo un attributo qualsiasi perde la proprietà di identificazione. Una superchiave può contenere attributi ridondanti; ogni insieme che contiene una chiave candidata è a sua volta superchiave. La **chiave primaria** è la chiave candidata scelta per identificare le tuple e non ammette valori `NULL`.
+
+Una chiave esterna collega una relazione referente `R` a una relazione referenziata `S`. Nella notazione del corso, `CE: A → S(B)` richiede che ogni valore non nullo di `A` compaia in `S(B)`; gli attributi referenziati devono identificare univocamente le tuple. Per una chiave esterna composta, si confrontano le liste ordinate degli attributi corrispondenti. I valori `NULL` nella chiave esterna non costituiscono riferimenti pendenti; `NOT NULL` può imporre che il riferimento sia obbligatorio.
+
+```sql
+CREATE TABLE <nome_tabella> (
+    <colonna> <dominio> [DEFAULT <valore>] [<vincolo_colonna> ...],
+    ...,
+    <vincolo_tabella>
+);
+```
+
+I vincoli riferiti a una sola colonna possono seguire la sua definizione; quelli su più colonne si dichiarano come vincoli di tabella. Una chiave esterna semplice può anche essere scritta direttamente sulla colonna:
+
+```sql
+<colonna> <dominio> REFERENCES <tabella_referenziata> [(<colonna_referenziata>)]
+    [ON DELETE <azione>] [ON UPDATE <azione>]
+```
+
+I vincoli intrarelazionali principali sono:
+
+| Vincolo | Effetto |
+| --- | --- |
+| `NOT NULL` | Il valore deve essere presente. |
+| `UNIQUE (A, ...)` | I valori dell'attributo o della combinazione di attributi non si ripetono. |
+| `PRIMARY KEY (A, ...)` | Identifica le tuple; implica unicità e non nullità. Ogni tabella ha una sola chiave primaria, anche composta. |
+| `CHECK (condizione)` | Ogni tupla deve rispettare la condizione. |
+
+`UNIQUE(A, B)` vincola la coppia: non vieta che `A` o `B` si ripetano singolarmente. Una chiave primaria composta si dichiara a livello di tabella:
+
+```sql
+CREATE TABLE Iscrizione (
+    Studente INTEGER NOT NULL,
+    Corso INTEGER NOT NULL,
+    DataIscrizione DATE,
+    PRIMARY KEY (Studente, Corso)
+);
+```
+
+Una **chiave esterna** collega una tabella referente (interna) a una tabella referenziata (esterna). I valori non nulli della chiave esterna devono comparire in una chiave primaria o in un vincolo `UNIQUE` della tabella referenziata. Si può dichiarare su una colonna oppure come vincolo di tabella; la seconda forma serve anche per chiavi composte.
+
+```sql
+CREATE TABLE Dipartimento (
+    Codice INTEGER PRIMARY KEY,
+    Nome VARCHAR(40) UNIQUE
+);
+
+CREATE TABLE Impiegato (
+    Matricola INTEGER PRIMARY KEY,
+    Dipartimento INTEGER,
+    FOREIGN KEY (Dipartimento) REFERENCES Dipartimento (Codice)
+);
+```
+
+L'altra forma di chiave esterna, utile anche per attributi composti, è `FOREIGN KEY (<colonne>) REFERENCES <tabella> (<colonne>)`, con le eventuali clausole `ON DELETE` e `ON UPDATE`.
+
+Quando una modifica o cancellazione nella tabella referenziata viola l'integrità referenziale, `ON DELETE` e `ON UPDATE` specificano la reazione. Le politiche trattate sono `NO ACTION` (rifiuta l'operazione se il vincolo resta violato), `CASCADE` (propaga la modifica o cancellazione), `SET NULL` e `SET DEFAULT` (assegnano tali valori alla chiave esterna, che deve poterli accettare). La scelta dipende dal significato dei dati; `CASCADE` può propagare la cancellazione alle righe dipendenti.
+
+### Schemi e domini
+
+```sql
+CREATE SCHEMA <nome_schema> [AUTHORIZATION <proprietario>];
+
+CREATE DOMAIN <nome_dominio> [AS] <tipo_base>
+    [DEFAULT <valore>] [NOT NULL]
+    [CONSTRAINT <nome_vincolo>] [CHECK (<condizione>)];
+```
+
+In `CHECK` di un dominio, `VALUE` indica il valore da controllare. I domini usati più spesso nelle definizioni sono `CHAR(n)` e `VARCHAR(n)` per stringhe, `SMALLINT` e `INTEGER` per interi, `NUMERIC(p,s)` per decimali esatti, `REAL` e `DOUBLE PRECISION` per approssimati, `DATE`, `TIME`, `TIMESTAMP`, `INTERVAL` e `BOOLEAN`.
+
+### Modificare e rimuovere definizioni
+
+```sql
+ALTER TABLE <tabella> ADD [COLUMN] <colonna> <tipo> [<vincoli>];
+ALTER TABLE <tabella> DROP [COLUMN] <colonna> [{RESTRICT | CASCADE}];
+ALTER TABLE <tabella> ALTER [COLUMN] <colonna> SET DEFAULT <valore>;
+ALTER TABLE <tabella> ALTER [COLUMN] <colonna> DROP DEFAULT;
+ALTER TABLE <tabella> ADD CONSTRAINT <definizione_vincolo>;
+ALTER TABLE <tabella> DROP CONSTRAINT <nome_vincolo> [{RESTRICT | CASCADE}];
+
+DROP SCHEMA <nome_schema> [{RESTRICT | CASCADE}];
+DROP TABLE <nome_tabella> [{RESTRICT | CASCADE}];
+DROP DOMAIN <nome_dominio> [{RESTRICT | CASCADE}];
+
+ALTER DOMAIN <nome_dominio> {
+    SET DEFAULT <valore> | DROP DEFAULT |
+    ADD <vincolo_dominio> | DROP <nome_vincolo>
+};
+```
+
+Per `DROP`, `RESTRICT` impedisce la rimozione quando esistono dipendenze; `CASCADE` rimuove o modifica anche gli oggetti dipendenti secondo il tipo di oggetto. Per `ALTER TABLE`, la rinomina di tabella o colonna mostrata negli appunti è un'estensione PostgreSQL: `ALTER TABLE ... RENAME TO ...` e `ALTER TABLE ... RENAME COLUMN ... TO ...`.
+
+### Modificare i dati
+
+`INSERT`, `UPDATE` e `DELETE` fanno parte del DML. Se si omette la lista di colonne in `INSERT`, i valori seguono l'ordine di definizione; le colonne omesse ricevono `NULL` o il loro `DEFAULT`, se ammessi.
+
+```sql
+INSERT INTO <tabella> [(<colonna> [, ...])]
+VALUES (<valore> [, ...]);
+
+UPDATE <tabella>
+SET <colonna> = <espressione> [, ...]
+[WHERE <predicato>];
+
+DELETE FROM <tabella>
+[WHERE <predicato>];
+```
+
+Senza `WHERE`, `UPDATE` modifica tutte le tuple e `DELETE` le cancella tutte.
+
+### Interrogare: `SELECT`
+
+```sql
+SELECT [ALL | DISTINCT] {* | <espressione> [AS <nome>]} [, ...]
+FROM <tabella> [[AS] <alias>] [, ...]
+[WHERE <predicato>]
+[GROUP BY <espressione> [, ...]]
+[HAVING <predicato>]
+[{UNION | INTERSECT | EXCEPT [ALL]} <altra_query>]
+[ORDER BY <espressione> [ASC | DESC] [, ...]];
+```
+
+`SELECT` sceglie colonne o espressioni; `ALL` è il default e conserva i duplicati, `DISTINCT` li elimina. `FROM` indica le relazioni e gli alias; elencare più tabelle con virgole forma il prodotto cartesiano. `WHERE` filtra le righe prima del raggruppamento; `GROUP BY` forma gruppi; `HAVING` filtra i gruppi. `ORDER BY` ordina il risultato (`ASC` è crescente, `DESC` decrescente). Per l'ordinamento si possono indicare più espressioni.
+
+Le funzioni aggregate trattate sono `SUM`, `AVG`, `MAX`, `MIN` e `COUNT`. Senza `GROUP BY` operano sull'intero risultato come un unico gruppo; con `GROUP BY` producono un risultato per ciascun gruppo. `WHERE` filtra le tuple prima del calcolo, `HAVING` filtra i gruppi dopo il calcolo.
+
+```sql
+SELECT <attributi_di_gruppo>, <funzione>(<attributo>) AS <nome_risultato>
+FROM <tabella>
+[WHERE <predicato_sulle_tuple>]
+GROUP BY <attributi_di_gruppo> [, ...]
+[HAVING <predicato_sui_gruppi>];
+```
+
+Un predicato può usare confronti (`=`, `<>`, `!=`, `<`, `<=`, `>`, `>=`), `BETWEEN`, `IN`, `LIKE`, `IS NULL`, `IS NOT NULL`, `IS [NOT] DISTINCT FROM`, e gli operatori logici `AND`, `OR`, `NOT`. In `LIKE`, `_` rappresenta un carattere e `%` una sequenza qualsiasi. La concatenazione di stringhe usa `||`; sono trattate anche funzioni come `LOWER`, `UPPER` e `CHARLENGTH`. I confronti con `NULL` seguono la logica a tre valori: `WHERE` mantiene solo le righe per cui il predicato è `TRUE`.
+
+Per combinare tabelle, oltre alla forma con virgole e predicato in `WHERE`, si può scrivere il join esplicitamente:
+
+```sql
+FROM R1 CROSS JOIN R2
+FROM R1 [INNER] JOIN R2 ON <predicato>
+FROM R1 [INNER] JOIN R2 USING (<colonne_comuni>)
+FROM R1 NATURAL [INNER] JOIN R2
+FROM R1 {LEFT | RIGHT | FULL} [OUTER] JOIN R2
+     {ON <predicato> | USING (<colonne_comuni>)}
+```
+
+`ON` specifica la condizione; `USING` indica le colonne comuni e ne presenta una sola copia; `NATURAL JOIN` abbina automaticamente tutte le colonne omonime. `INNER JOIN` conserva le sole coppie abbinate. I join esterni mantengono tutte le righe del lato sinistro, destro o di entrambi; le colonne mancanti sono completate con `NULL`. Gli alias sono necessari per distinguere le due copie in una *self-join*.
+
+Le operazioni `UNION`, `INTERSECT` ed `EXCEPT` combinano risultati con lo stesso numero di colonne e tipi compatibili nella stessa posizione. Senza `ALL` eliminano i duplicati; con `ALL` li conservano. In SQL le righe duplicate sono ammesse nei risultati, a differenza delle relazioni dell'algebra relazionale, che sono insiemi.
+
+## Algebra relazionale
 
 Gli operatori prendono una o due relazioni e restituiscono una relazione. L'algebra relazionale è procedurale: una query descrive le operazioni da eseguire. Le operazioni si possono comporre, usando il risultato di un operatore come argomento di quello successivo.
 
@@ -194,9 +355,17 @@ Nel join la condizione deve essere vera perché le tuple si combinino. Perciò u
 
 Secondo la convenzione adottata nella lezione, proiezione, unione, intersezione e differenza confrontano le tuple in modo sintattico: due tuple con `NULL` nelle stesse posizioni sono considerate uguali ai fini di questi operatori. Questo criterio è distinto dai confronti logici usati da selezione e join: non significa che il predicato `NULL = NULL` valga `V`.
 
-## Lezione 11: calcolo relazionale su tuple
+## Calcolo relazionale su tuple
 
 Il calcolo relazionale su tuple è un linguaggio di interrogazione **dichiarativo**: specifica quali proprietà deve avere il risultato, senza descrivere la sequenza di operazioni per costruirlo. L'algebra relazionale è procedurale. I due linguaggi hanno lo stesso potere espressivo; un linguaggio con questo potere si dice relazionalmente completo. Il calcolo relazionale è una base formale di SQL, che include anche funzionalità ulteriori, come aggregazioni, ordinamento e aggiornamenti.
+
+### Collegamento con la teoria degli insiemi
+
+Una relazione è un insieme di tuple. In notazione insiemistica, `{x | P(x)}` indica l'insieme degli elementi `x` per cui la proprietà `P(x)` è vera. Il calcolo su tuple usa la stessa idea: `{T | C}` raccoglie i valori di `T` per cui la formula `C` è vera. La condizione `R(t)` limita la variabile alle tuple effettivamente presenti nella relazione `R`.
+
+I connettivi logici corrispondono alle operazioni tra insiemi definiti da proprietà: `P ∨ Q` seleziona l'unione dei casi, `P ∧ Q` l'intersezione, `¬P` il complemento rispetto al dominio considerato. I quantificatori descrivono insiemi di testimoni: `∃x P(x)` afferma che l'insieme degli `x` che soddisfano `P` non è vuoto; `∀x P(x)` afferma che tutti gli elementi del dominio soddisfano `P`. L'implicazione si può riscrivere con i connettivi ammessi: `P → Q` equivale a `¬P ∨ Q`.
+
+La stessa lettura si vede nell'algebra relazionale: `∪`, `∩` e `\\` sono unione, intersezione e differenza di insiemi di tuple; la selezione costruisce il sottoinsieme che soddisfa un predicato; la proiezione costruisce l'insieme dei valori delle colonne scelte e perciò elimina i duplicati. La divisione esprime una condizione universale (“associato a tutte le tuple richieste”). SQL riprende queste idee, ma normalmente conserva righe duplicate, salvo `DISTINCT` o l'uso di operatori insiemistici senza `ALL`.
 
 ### Forma di una query
 

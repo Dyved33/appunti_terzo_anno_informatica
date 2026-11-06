@@ -8,16 +8,16 @@ I blocchi in inglese corrispondenti a `algorithms.pdf` riprendono gli algoritmi 
 
 Per riconoscere un algoritmo, guarda prima **come sceglie il prossimo nodo**. La frontiera contiene i nodi generati ma non ancora espansi.
 
-| Algoritmo | Come sceglie il prossimo nodo | Cosa tenere a mente |
-|---|---|---|
-| BFS | Il più vecchio nella coda FIFO | Completa; ottimale con passi di costo uguale |
-| DFS | L'ultimo inserito nello stack LIFO | Scende in profondità; nella ricerca su albero usa memoria lineare nella profondità |
-| UCS | Il nodo con `g` minore | Conta il costo già sostenuto |
-| A* | Il nodo con `g + h` minore | Costo già sostenuto più stima del costo rimanente |
-| IDS | DFS, ripetuta con limite di profondità crescente | La memoria resta contenuta, i livelli alti si ripetono |
-| IDA* | DFS, ripetuta con soglia `g + h` crescente | Come IDS, ma la soglia riguarda il costo stimato |
-| RBFS | Il successore con `f` minore, entro un limite | Ricorda il valore del ramo sospeso |
-| SMA* | La foglia con `f` minore, entro la memoria disponibile | Se serve spazio dimentica la foglia peggiore e ne salva il valore nel genitore |
+| Algoritmo | Come sceglie il prossimo nodo                          | Cosa tenere a mente                                                                |
+| --------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| BFS       | Il più vecchio nella coda FIFO                         | Completa; ottimale con passi di costo uguale                                       |
+| DFS       | L'ultimo inserito nello stack LIFO                     | Scende in profondità; nella ricerca su albero usa memoria lineare nella profondità |
+| UCS       | Il nodo con `g` minore                                 | Conta il costo già sostenuto                                                       |
+| A*        | Il nodo con `g + h` minore                             | Costo già sostenuto più stima del costo rimanente                                  |
+| IDS       | DFS, ripetuta con limite di profondità crescente       | La memoria resta contenuta, i livelli alti si ripetono                             |
+| IDA*      | DFS, ripetuta con soglia `g + h` crescente             | Come IDS, ma la soglia riguarda il costo stimato                                   |
+| RBFS      | Il successore con `f` minore, entro un limite          | Ricorda il valore del ramo sospeso                                                 |
+| SMA*      | La foglia con `f` minore, entro la memoria disponibile | Se serve spazio dimentica la foglia peggiore e ne salva il valore nel genitore     |
 
 `g` è il costo del cammino dall'inizio al nodo; `h` stima il costo dal nodo al goal; `f = g + h` è il costo stimato della soluzione passando per quel nodo.
 
