@@ -4,35 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "5218bb6bd755bdff",
+        "id": "930af9d1e17b805e",
         "type": "tabs",
         "children": [
           {
-            "id": "6606c685fac65ca0",
+            "id": "eb2e41e93ecf0ec9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Introduzione IA/esoneri/domande_primo_esonero.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "domande_primo_esonero"
-            }
-          },
-          {
-            "id": "cd4eaf54b5a28c73",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Introduzione IA/esoneri/pseudocodici 1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "pseudocodici 1"
+              "title": "New tab"
             }
           }
         ]
@@ -111,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 230.5,
+    "width": 408.5,
     "collapsed": true
   },
   "right": {
@@ -280,8 +262,16 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "6606c685fac65ca0",
+  "active": "eb2e41e93ecf0ec9",
   "lastOpenFiles": [
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esercizi_algebra&calcolo_relazionale.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esonero2025.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/compitino1B20232024.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esonero2023.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esercizi_algebra.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/primoCompitinoNovembre2024.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esonero2024.pdf",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/eserciziBDparte0.pdf",
     "primo semestre/Introduzione IA/esoneri/pseudocodici 1.md",
     "primo semestre/Introduzione IA/esoneri/domande_primo_esonero.md",
     "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
@@ -296,8 +286,6 @@
     "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/risposte.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/ripassoI.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/primoCompitinoNovembre2024.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 12-Join di Tabelle.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p24-24.png",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p22-22.png",
@@ -318,14 +306,9 @@
     "primo semestre/Introduzione sicurezza /Lezione 7-Posta elettronica.md",
     "primo semestre/Introduzione sicurezza /Approfondimento chiavi SSH private e pubbliche.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 8-Telnet.md",
-    "primo semestre/Introduzione IA/6-Games.pdf",
     "primo semestre/Introduzione IA/Lezione 7.md",
     "Untitled.md",
     "primo semestre/Introduzione sicurezza /00 Indice - Introduzione sicurezza.md",
-    "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/pwm_lezione9.pdf",
-    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.css",
-    "primo semestre/Programmazione web e mobile con laboratorio/esercizi/button.html",
-    "primo semestre/Architettura reti e internet/internet/images"
+    "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md"
   ]
 }
