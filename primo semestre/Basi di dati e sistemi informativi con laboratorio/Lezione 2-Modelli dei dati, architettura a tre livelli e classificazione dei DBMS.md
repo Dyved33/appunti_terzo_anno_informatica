@@ -153,10 +153,3 @@ Il grafo illustra un'applicazione accademica nel modello reticolare: l'entità `
 
 **Modello ibrido relazionale ad oggetti (ORDBMS).** Estende l'architettura relazionale classica con le funzionalità del paradigma ad oggetti: supporto a tipi di dato complessi e strutturati definiti dall'utente, costruttori di tipo (array, collezioni), ereditarietà tra tabelle e incapsulamento di funzioni. Trend affermatosi nella seconda metà degli anni '90 a partire dall'avvento di piattaforme pionieristiche quali *Informix Universal Server*. I concetti sono standardizzati formalmente all'interno di **SQL:1999 (SQL3)** e integrati stabilmente nei principali motori DBMS enterprise (Oracle Database a partire da 8i/10g, IBM DB2, PostgreSQL).
 
-> [!info] Sintesi:
-> - Un modello dei dati descrive struttura e operazioni; si classificano in concettuali (ER), implementabili o logici e fisici.
-> - Schema e istanza sono le due facce del sistema: lo schema è l'intensione statica, l'istanza l'estensione dinamica; uno stato è valido se soddisfa tutti i vincoli dello schema.
-> - L'architettura ANSI/SPARC separa schema esterno, concettuale e interno, con mappature tra i livelli, e dà indipendenza logica (dal concettuale verso l'alto) e fisica (dall'interno verso l'alto).
-> - DDL, SDL e VDL definiscono; il DML interroga e aggiorna, in modalità stand-alone, embedded o tramite API, dichiarativo (*set-oriented*) o procedurale (*record-oriented*).
-> - I modelli tradizionali sono gerarchico (1:N, DL/1, IMS) e reticolare (CODASYL 1971, N:M con padri multipli); il relazionale di Codd (1970) è dominante e ha introdotto SQL.
-> - Gli emergenti sono l'OODBMS e l'ORDBMS, standardizzato in SQL:1999.

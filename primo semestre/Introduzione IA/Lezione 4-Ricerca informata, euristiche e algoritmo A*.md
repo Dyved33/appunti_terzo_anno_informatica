@@ -287,22 +287,43 @@ La dimostrazione formale si articola per assurdo:
    $$f(p) \le f(n) < f(n') \implies f(p) < f(n')$$
 6. Poiché $f(p) < f(n')$, la coda di priorità avrebbe dovuto estrarre $p$ prima di $n'$, contraddicendo l'assunzione che $n'$ sia stato estratto per primo. Dunque il primo cammino espanso verso qualsiasi stato è sempre quello a costo minimo.
 
-## Complementi dal libro di testo
+## Implementazione dal libro di testo: A* e le sue varianti
 
-> [!info]
-> Il libro di testo completa la ricerca informata con alcune varianti dell'algoritmo A*:
-> - **Weighted A\***: usa $f(n) = g(n) + W \cdot h(n)$ con $W > 1$ per pesare di più l'euristica. Espande molti meno nodi (nell'esempio del libro 7 volte di meno) ma non è ottimo: il costo della soluzione è al più $W \cdot C^*$. È detta *somewhat-greedy search*.
-> - **Ricerca a memoria limitata:** quando la memoria non basta a conservare tutta la frontiera:
->   - *Beam search:* mantiene in frontiera solo i $k$ nodi migliori a ogni livello; rapida ma incompleta e subottima.
->   - *Iterative-deepening A\** (IDA*): itera aumentando progressivamente la soglia sul valore di $f$; ottiene i vantaggi di A* senza memorizzare il reached set, riespandendo però alcuni stati.
->   - *Recursive best-first search* (RBFS): best-first con spazio lineare, usa valori di $f$ di backup (*backed-up*) dei nodi lungo il cammino; ottimo se $h$ è ammissibile.
->   - *SMA\**: semplificazione di A* a memoria limitata che sfrutta tutta la memoria disponibile, dimenticando i nodi peggiori quando serve spazio.
-> - **Pattern databases:** per generare euristiche ammissibili si precalcolano i costi esatti delle soluzioni di sottoproblemi (*pattern*) e li si memorizza in una tabella; le *disjoint pattern databases* combinano i costi di sottoproblemi disgiunti.
+Il libro di testo (AIMA, Cap. 3) presenta **A*** come una ricerca su grafo che espande i nodi in ordine di valore $f(n) = g(n) + h(n)$ crescente, dove $g(n)$ è il costo del cammino dallo stato iniziale a $n$ e $h(n)$ è l'euristica che stima il costo restante fino al goal. Come per UCS si usa una coda di priorità, ma ora la priorità è $f$ invece del solo $g$: in questo modo la ricerca è guidata verso il goal e non esplora più in tutte le direzioni. A* è completo e ottimale se l'euristica $h$ è **ammissibile** (non sovrastima mai il costo reale), ed espone il minor numero di nodi fra tutti gli algoritmi ottimali per quell'euristica.
+
+```
+A_Stella
+node <- NODO(problema.STATO_INIZIALE)
+if problema.test_obiettivo(node.stato): return node
+frontiera <- coda_di_priorita_contenente(node) ordinato su f = g + h
+esplorato <- insieme_vuoto()
+while frontiera non e' vuota:
+    node <- estrai_minimo_f(frontiera)
+    if problema.test_obiettivo(node.stato): return node
+    esplorato.aggiungi(node.stato)
+    for child in node.esproandi(problema):
+        if child.stato non in esplorato:
+            if child.stato non in frontiera:
+                frontiera.aggiungi(child)
+            else if f(child) < f_del_nodo_già_in_frontiera:
+                sostituisci_quel_nodo_con(child)
+return fallimento
+```
+
+Il libro discute poi diverse varianti utili a seconda dei vincoli:
+
+- **Weighted A\*** usa $f(n) = g(n) + W \cdot h(n)$ con $W > 1$, pesando l'euristica più del costo accumulato. Si comporta in modo più *greedy*, espande molti meno nodi (nell'esempio del libro 7 volte di meno) ma perde l'ottimalità: il costo della soluzione è al più $W \cdot C^*$.
+- **Ricerca a memoria limitata:** quando la memoria non basta a conservare tutta la frontiera:
+  - *Beam search:* tiene in frontiera solo i $k$ nodi migliori a ogni livello; è rapida ma incompleta e subottima.
+  - *Iterative-deepening A\** (IDA*): ripete ricerche in profondità limitata su soglie di $f$ crescenti; ottiene i vantaggi di A* senza memorizzare il reached set, riespandendo però alcuni stati.
+  - *Recursive best-first search* (RBFS): best-first a spazio lineare, ricorda solo la seconda scelta migliore e i valori di backup dei rami abbandonati; ottimo se $h$ è ammissibile.
+  - *SMA\**: semplificazione di A* a memoria limitata che sfrutta tutta la memoria disponibile, dimenticando i nodi con $f$ più alto quando serve spazio.
+- **Pattern databases:** per costruire euristiche ammissibili si precalcolano i costi esatti delle soluzioni di sottoproblemi e li si memorizzano in una tabella; le *disjoint pattern databases* combinano i costi di sottoproblemi disgiunti.
 
 > [!info] Sintesi:
-> - Uniform Cost Search espande in base al costo accumulato $g(n)$ ed è ottima ma cieca; Greedy Best-First minimizza $h(n)$ ma è subottima.
-> - A\* combina i costi ponendo $f(n) = g(n) + h(n)$ ed esegue il test dell'obiettivo esclusivamente al momento dell'estrazione del nodo.
-> - Su albero, A\* è ottimo se l'euristica è ammissibile ($0 \le h(n) \le h^*(n)$); euristiche ammissibili si ricavano risolvendo problemi rilassati.
-> - Dati più euristiche ammissibili non dominanti, il loro massimo puntuale è ammissibile e domina tutte le singole componenti.
-> - Nella ricerca su grafo è necessario memorizzare nel reached set le coppie `(stato, costo)` per non perdere cammini ottimi riscoperti successivamente.
-> - L'euristica consistente ($h(n) - h(n') \le c(n, a, n')$) garantisce che i valori di $f$ siano non decrescenti e che ogni stato sia espanso una sola volta al costo minimo.
+> - A* espande i nodi in ordine di f = g + h crescente, guidando la ricerca verso il goal.
+> - È completo e ottimale se l'euristica h è ammissibile (non sovrastima il costo reale).
+> - Espone il minor numero di nodi fra gli algoritmi ottimali per un'euristica data.
+> - Weighted A* scambia un po' di ottimalità per molta meno memoria e meno nodi espansi.
+> - Quando la memoria scarseggia si usano IDA*, RBFS o SMA*, che esplorano con spazio lineare o limitato.
+

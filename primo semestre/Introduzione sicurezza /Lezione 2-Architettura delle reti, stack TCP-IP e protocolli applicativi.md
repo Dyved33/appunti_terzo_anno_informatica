@@ -633,10 +633,8 @@ L'unità massima di trasmissione (**MTU**) è la massima quantità di dati che u
 > [!info]
 > La LAN è tipicamente organizzata a stella, con al centro un hub o uno switch.
 
-> [!info] Sintesi:
-> - Un protocollo definisce formato, ordine dei messaggi e azioni dei nodi; TCP/IP astrae un canale logico end-to-end dove la distanza fisica conta solo come latenza.
-> - La pila ha cinque livelli con PDU distinti (messaggio, segmento, datagramma, frame, bit); ogni livello aggiunge o toglie il suo header e i router ispezionano fino al livello link/rete.
-> - Le socket collegano i processi in user space al kernel; una connessione è una 5-tupla e le porte sono well-known, registered o ephemeral.
-> - TCP è affidabile e orientato alla connessione, UDP è best-effort: la scelta dipende da tolleranza alle perdite, banda e latenza richieste, ma Internet non garantisce consegna, ordine, ritardo massimo né banda.
-> - Il livello di rete instrada i datagrammi: ogni interfaccia ha un IP univoco, le sottoreti condividono un prefisso, i datagrammi grandi sono frammentati secondo l'MTU e riassemblati a destinazione, e ARP risolve gli IP in indirizzi MAC.
-> - HTTP è stateless e i cookie (`Secure`, `HttpOnly`, `SameSite`) reintroducono lo stato proteggendo il token; HTTPS aggiunge TLS su porta 443; FTP usa due connessioni; SMTP è push con SPF, DKIM e DMARC; DNS risolve i nomi su UDP 53 e checksum e CRC rilevano solo errori accidentali.
+## Complementi dal libro di testo
+
+Il libro di testo (Stallings, *Network Security Essentials*) non tratta l'architettura di rete di base di questa lezione (stack TCP/IP, livelli, protocolli), ma si concentra sugli aspetti di sicurezza. I concetti del suo primo capitolo — servizi di sicurezza secondo l'architettura OSI X.800, meccanismi di sicurezza e attacchi passivi e attivi — si applicano comunque a ogni livello della pila: authentication, access control, data confidentiality, data integrity, nonrepudiation e availability sono servizi che ogni strato può fornire, e i meccanismi (encipherment, digital signature, access control, authentication exchange ecc.) sono gli strumenti per realizzarli. I protocolli visti finora possono quindi essere letti anche in termini di quali servizi di sicurezza offrono nativamente e di quali meccanismi servirebbe aggiungere per proteggerli. Per esempio, IPsec può fornire confidentiality e integrity al livello di rete, TLS al livello di trasporto, S/MIME e PGP al livello applicativo; il meccanismo di encipherment è quello usato in tutti i casi, eventualmente combinato con firme digitali per autenticazione e integrità.
+
+

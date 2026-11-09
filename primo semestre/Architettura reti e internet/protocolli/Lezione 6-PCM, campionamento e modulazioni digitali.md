@@ -186,8 +186,4 @@ Riassumendo:
 - un valore EVM% di 0,10 (10%) rappresenta un segnale peggiore rispetto ad un altro con EVM% di 0,05 (5%);
 - un valore EVM di −10 dB rappresenta un segnale peggiore rispetto ad un altro con EVM di −20 dB.
 
-> [!info] Sintesi:
-> - Il PCM si basa su tre fasi: campionamento (fc = 8 kHz in telefonia PSTN, sopra il minimo di Nyquist 2f2 = 6,8 kHz), quantizzazione (uniforme, $M = 2^n$ livelli, passo $q = Vpp/M$, errore varianza $q^2/12$) e codifica (8 bit per canale, 32 canali a 2,048 Mbit/s nel PCM europeo).
-> - Le modulazioni digitali principali sono ASK (ampiezza, sensibile al rumore), FSK (frequenza, usata in V21/V23 e GSM), PSK (fase, con BPSK a 0°/180° e 4-PSK/QPSK a 4 fasi).
-> - I diagrammi a costellazione rappresentano il segnale sul piano IQ; il vettore errore misura lo scostamento dal punto teorico e l'EVM ne esprime la qualità in percentuale o in dB (più negativo = migliore).
-> - Nel PCM europeo 30 canali sono vocali utili e 2 sono di servizio (sincronismo e controllo).
+

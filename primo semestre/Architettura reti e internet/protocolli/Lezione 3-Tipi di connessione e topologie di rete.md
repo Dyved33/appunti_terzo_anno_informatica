@@ -153,10 +153,4 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
   </div>
 </div>
 
-> [!info] Sintesi:
-> - Il collegamento point-to-point unisce due DTE su linea dedicata; in quello multi-punto il canale è condiviso fra più DTE, a turni o in uso simultaneo.
-> - Secondo la dimensione fisica le reti sono WAN, LAN, MAN e wireless: la LAN non supera 1 o 2 Km e usa un solo mezzo trasmissivo, la WAN collega DTE lontani con velocità dai 1200 bit/sec ai Tbit/sec.
-> - Le WLAN sono LAN senza fili che usano lo spettro radio al posto del cavo; la velocità dipende dallo standard (Wi-Fi 5 a 3,5 Gbps teorici, Wi-Fi 6 a 9,6 Gbps) e cambia fra banda 2,4 e 5 GHz.
-> - Le topologie cercano massima stabilità, alto rendimento e minimizzazione dei costi: albero, dorsale, stella, anello e maglia completa.
-> - Nella dorsale il cavo faceva da backbone con terminazioni da 40 o 50 Ohm e connettori BNC; nella stella il nodo centrale fa da backbone; nella maglia completa i collegamenti sono N(N-1)/2.
-> - Le reti mesh wireless sono auto-configuranti multi-hop: i nodi inoltrano i dati e in tempo reale scelgono il percorso ottimale.
+

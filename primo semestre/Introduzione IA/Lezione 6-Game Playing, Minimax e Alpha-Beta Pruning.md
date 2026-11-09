@@ -200,8 +200,47 @@ Chiamata iniziale: `value(root, -∞, +∞)`.
 
 Slide Alpha-Beta Properties: riassume che il valore alla radice non cambia, i nodi intermedi possono avere valori incompleti, l'ordinamento perfetto dimezza l'esponente, e introduce il concetto di metareasoning.
 
+## Implementazione dal libro di testo: minimax e alpha-beta
+
+Il libro di testo (AIMA, Cap. 5) formalizza minimax come una ricorsione che assegna a ogni stato il suo valore minimax: in uno stato terminale vale l'utilità; in uno stato MAX vale il massimo dei valori dei successori; in uno stato MIN vale il minimo. La mossa ottima alla radice è quella che porta allo stato successore con il valore minimax più alto.
+
+```
+Minimax_Decision
+restituisci argmax su a in Azioni(stato_iniziale) di MINIMAX(risultato(stato_iniziale, a))
+
+MINIMAX(stato):
+    se stato e' terminale: restituisci utilita(stato)
+    se stato e' MAX: restituisci max su successori di MINIMAX(successore)
+    se stato e' MIN: restituisci min su successori di MINIMAX(successore)
+```
+
+**Alpha-beta** calcola lo stesso valore di minimax ma pota i rami che non possono cambiare la decisione alla radice. Tiene due limiti, alpha (il valore migliore che MAX puo' gia' garantire lungo il percorso) e beta (il valore migliore che MIN puo' gia' garantire). In un nodo MAX, se il valore raggiunto e' >= beta, si interrompe (beta-cutoff): MIN non sceglierebbe mai quel ramo. In un nodo MIN, se il valore raggiunto e' <= alpha, si interrompe (alpha-cutoff): MAX ha gia' un'alternativa migliore. Il pruning non cambia il valore alla radice, ma con un buon ordinamento dei figli (mosse migliori prima) la complessita' scende da O(b^m) a O(b^(m/2)).
+
+```
+Alpha_Beta_Search
+restituisci argmax su a in Azioni(stato_iniziale) di MIN-VALORE(risultato(stato_iniziale, a), -inf, +inf)
+
+MAX-VALORE(stato, alpha, beta):
+    v = -inf
+    per ogni successore s:
+        v = max(v, MIN-VALORE(s, alpha, beta))
+        se v >= beta: restituisci v      # beta-cutoff
+        alpha = max(alpha, v)
+    restituisci v
+
+MIN-VALORE(stato, alpha, beta):
+    v = +inf
+    per ogni successore s:
+        v = min(v, MAX-VALORE(s, alpha, beta))
+        se v <= alpha: restituisci v      # alpha-cutoff
+        beta = min(beta, v)
+    restituisci v
+```
+
 > [!info] Sintesi:
-> - Minimax: ricerca esaustiva, ottimale contro avversario perfetto, $O(b^m)$.
-> - Alpha-beta: stesso risultato di minimax, pota rami che non influenzano la radice, $O(b^{m/2})$ con ordinamento perfetto.
-> - I valori dei nodi potati possono essere limiti incompleti; la scelta ottimale alla radice resta corretta.
-> - L'ordinamento delle mosse (euristiche, killer moves, hash tables) è cruciale per l'efficacia pratica.
+> - Minimax sceglie la mossa che garantisce il valore minimax assumendo che l'avversario giochi ottimamente.
+> - MAX massimizza, MIN minimizza: i valori risalgono dalle foglie alla radice.
+> - Alpha-beta calcola lo stesso valore di minimax ma pota i rami irrilevanti con i limiti alpha e beta.
+> - Il pruning non cambia il risultato alla radice; un buon ordinamento dei figli dimezza l'esponente della complessita'.
+> - Con profondita' limitata si usa una funzione di valutazione EVAL al posto delle utilita' terminali.
+

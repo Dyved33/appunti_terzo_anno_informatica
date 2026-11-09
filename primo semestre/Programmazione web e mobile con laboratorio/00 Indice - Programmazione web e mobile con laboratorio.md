@@ -11,3 +11,4 @@
 - [[Lezione 9-Introduzione a JavaScript|Introduzione a JavaScript]] — Linguaggio lato client, manipolazione del DOM, eventi, richieste AJAX, dichiarazione variabili, funzioni, selettori e comportamenti inaspettati di JavaScript
 - [[Lezione 10-Strutture di controllo in JavaScript|Strutture di controllo in JavaScript]] — Strutture di controllo, array, oggetti, eventi, `window.onload`, `preventDefault()`
 - [[Lezione 11-Servizi Google|Servizi Google]] — Google Charts, Google Maps, Calendar JavaScript API e altri servizi Google
+- [[Lezione 12-Node.js e NPM|Node.js e NPM]] — Ambiente di esecuzione Node.js, NPM, moduli, pacchetti, server HTTP, Express.js e API REST

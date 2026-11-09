@@ -355,10 +355,3 @@ CREATE TABLE genitori (
 );
 ```
 
-> [!info] Sintesi:
-> - SQL nasce da SEQUEL (IBM, 1974) ed è standard *de facto* dal 1983: SQL-86, SQL-92, SQL-99 e SQL:2003; SQL-92 ha tre livelli di aderenza (Entry, Intermediate, Full).
-> - SQL comprende DDL, DML, DCL, TCL ed embedded SQL, e si usa su un'architettura client-server in cui schema, istanza e catalogo caratterizzano la base di dati.
-> - `CREATE SCHEMA` partiziona logicamente la base di dati e si crea con `AUTHORIZATION`; in PostgreSQL gli oggetti non qualificati finiscono in `public`.
-> - `CREATE TABLE` definisce schema, istanza vuota, attributi, domini, default e vincoli; `CREATE DOMAIN` definisce domini utente e in `CHECK` il valore da validare si indica con `VALUE`.
-> - I vincoli intrarelazionali sono `NOT NULL`, `UNIQUE`, `PRIMARY KEY` e `CHECK`; quelli interrelazionali sono le chiavi esterne, con `REFERENCES` su colonna e `FOREIGN KEY` su tabella, e l'attributo referenziato deve essere `PRIMARY KEY` o `UNIQUE`.
-> - `psql` è il client a riga di comando di PostgreSQL, con i meta-comandi `\d`, `\dt`, `\l`, `\i`, `\g`, `\x`; PostgreSQL è un ORDBMS open source nato da *Postgres* (Berkeley, 1977).

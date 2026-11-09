@@ -23,7 +23,7 @@ Gli elementi HTML si classificano in base al loro comportamento sintattico e al 
 
 **Tag vuoti o auto-chiudenti** (*void*, *empty tags*): elementi che non racchiudono contenuti interni e non possiedono un tag di chiusura esplicito; il loro comportamento è governato dagli attributi.
 
-- `<img>`: inclusione di immagini. Richiede gli attributi obbligatori `src`, il percorso relativo o assoluto del file immagine, e `alt`, testo alternativo descrittivo, fondamentale per l'accessibilità (screen reader) e per l'ottimizzazione SEO.
+- ``: inclusione di immagini. Richiede gli attributi obbligatori `src`, il percorso relativo o assoluto del file immagine, e `alt`, testo alternativo descrittivo, fondamentale per l'accessibilità (screen reader) e per l'ottimizzazione SEO.
 
 ```html
 <img src="fiore.jpg" alt="Girasole in campo">
@@ -38,7 +38,7 @@ Gli elementi HTML si classificano in base al loro comportamento sintattico e al 
 
 - `<span>`: contenitore inline generico e privo di semantica, impiegato per isolare porzioni di testo al fine di applicare stili CSS mirati.
 - `<a>`: definisce un collegamento ipertestuale verso altre pagine o ancore interne mediante l'attributo `href`.
-- `<img>`: si comporta di default come elemento inline, posizionandosi lungo il flusso del testo senza forzare il ritorno a capo.
+- ``: si comporta di default come elemento inline, posizionandosi lungo il flusso del testo senza forzare il ritorno a capo.
 
 ## La struttura di un documento HTML5
 
@@ -165,7 +165,7 @@ I motori dei browser analizzano ed eseguono le regole CSS seguendo l'ordine sequ
 - `background-size`: dimensionamento dell'immagine: `cover` ridimensiona affinché copra interamente la superficie del contenitore, ritagliando le parti eccedenti se le proporzioni differiscono; `contain` ridimensiona l'immagine per farla rientrare interamente nel contenitore, senza ritagli o deformazioni.
 - `background-attachment`: determina se lo sfondo scorre solidale con il resto della pagina (`scroll`) oppure rimane fisso rispetto alla viewport durante lo scrolling (`fixed`).
 
-| Caratteristica | Tag `<img>` (HTML) | Proprietà `background-image` (CSS) |
+| Caratteristica | Tag `` (HTML) | Proprietà `background-image` (CSS) |
 | :--- | :--- | :--- |
 | **Scopo primario** | Parte integrante del contenuto semantico del documento | Scopo puramente decorativo ed estetico |
 | **Accessibilità** | Elevata: supporta l'attributo `alt` letto dagli screen reader | Nulla per impostazione predefinita: il contenuto dello sfondo non è esposto, ma può essere reso disponibile applicando `role="img"` e un `aria-label` all'elemento con lo sfondo |
@@ -174,12 +174,3 @@ I motori dei browser analizzano ed eseguono le regole CSS seguendo l'ordine sequ
 | **Posizionamento** | Segue il normale flusso strutturale del documento (inline) | Flessibile e posizionabile liberamente con `background-position` |
 | **Ripetizione** | Non ripetibile (singola istanza nel DOM) | Configurabile e ripetibile tramite `background-repeat` |
 | **Ruolo nel layout** | Elemento fisico del DOM che occupa spazio nel flusso | Risiede sullo strato di sfondo, dietro a tutti i contenuti |
-
-> [!info] Sintesi:
-> - HTML5 è oggi curato dal WHATWG e introduce tag semantici, multimedia nativo e progettazione mobile-first.
-> - I tag sono contenitori (`<div>`, `<p>`, `<section>`) o vuoti (`<img>`, `<input>`, `<hr>`), di blocco o inline: conta il significato semantico più dell'aspetto.
-> - Lo scheletro di una pagina è `<!DOCTYPE html>`, `<html lang>`, `<head>` con `charset`, `title` e `<link>`, e `<body>`.
-> - Gli stili vanno nei file CSS: `<strong>`, `<q>`, `<blockquote>` e `<br>` hanno significati precisi e `<br>` non serve per impaginare.
-> - Le liste sono `<ol>`, `<ul>` e `<dl>` e si annidano; una regola CSS è selettore più blocco di dichiarazioni.
-> - Le unità `px` sono assolute, `em` e `%` relative; l'ereditarietà propaga le proprietà tipografiche e a parità di specificità vale l'ultima regola dichiarata.
-> - Gli sfondi si governano con `background-*`; `<img>` è contenuto accessibile e indicizzabile, `background-image` è pura decorazione.

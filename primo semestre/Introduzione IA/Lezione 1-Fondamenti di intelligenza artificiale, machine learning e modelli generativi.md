@@ -190,11 +190,35 @@ La discriminante fra un'architettura documentale convenzionale e un sistema agen
 
 <u>Un sistema informativo con accesso a basi di dati o documenti non costituisce necessariamente un agente.</u> La natura agentica è determinata dalla capacità del modello di scegliere in autonomia percorsi, strumenti e criteri di arresto su più passi iterativi.
 
+## Implementazione dal libro di testo: l'agente di apprendimento
+
+Il libro di testo (AIMA, Cap. 2) descrive l'**agente di apprendimento** come l'estensione dell'agente intelligente visto a lezione: un agente che non si limita a percepire e agire, ma migliora il proprio comportamento col tempo. L'agente è composto da quattro componenti:
+
+- **elemento di performance:** sceglie l'azione da eseguire date le percezioni, tramite gli attuatori (il ciclo percezione-decisione-azione descritto a lezione);
+- **critico:** osserva l'esito delle azioni e lo confronta con uno standard di prestazione, restituendo un feedback;
+- **elemento di apprendimento:** usa il feedback del critico per modificare l'elemento di performance, così che le azioni future siano più efficaci;
+- **generatore di problemi:** propone azioni di esplorazione per raccogliere nuove esperienze invece di ripetere sempre le stesse scelte.
+
+```
+Agente_Di_Apprendimento
+loop:
+    percepzione <- ricevi_percezione()
+    azione <- elemento_di_performance(percepzione)
+    esegui(azione)
+    feedback <- critico(azione, stato_dell'ambiente)
+    elemento_di_apprendimento(elemento_di_performance, feedback)
+    azione_esplorativa <- generatore_di_problemi()
+    if azione_esplorativa != nullo:
+        azione <- azione_esplorativa
+```
+
+Un agente che percepisce, agisce, valuta il risultato e si modifica di conseguenza è già un sistema capace di apprendere dall'esperienza: è la base su cui si costruiscono i sistemi agentici più evoluti della [[Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero|Lezione 2]].
+
 > [!info] Sintesi:
-> - L'IA comprende il machine learning, che comprende il deep learning, che comprende l'IA generativa: la differenza è chi fornisce le regole, il programmatore o i dati.
-> - L'addestramento determina i parametri del modello iterativamente e si ferma a convergenza o per *early stopping*; l'obiettivo è generalizzare, verificata sul test set.
-> - La loss misura la discrepanza fra predizione e target; con la cross-entropy $-\ln(P)$ una $P \to 1$ dà loss 0 e una $P \to 0$ la fa divergere.
-> - L'ottimizzazione segue la direzione opposta al gradiente, con passo determinato dal learning rate, in quattro fasi: predizione, loss, gradiente, aggiornamento.
-> - Un LLM è un classificatore multi-classe il cui target è il token successivo, appreso per auto-supervisione; embedding e Transformer rendono possibile il parallelismo.
-> - Il fatto di generare si ottiene dallo scegliere un token dalla distribuzione di probabilità, in modo greedy o per campionamento; RAG e sistemi agentici aggiungono fonti esterne e autonomia sui passi.
+> - IA, Machine Learning, Deep Learning e IA generativa formano una gerarchia di sottoinsiemi.
+> - L'addestramento minimizza una loss su dati di input e risposte attese, con generalizzazione verificata sul test set.
+> - Il Transformer elabora tutti i token in parallelo tramite self-attention e genera in modo autoregressivo.
+> - RAG rende le risposte verificabili e aggiornabili senza riaddestrare il modello.
+> - Un sistema è agentico quando sceglie autonomamente quali tool usare e quando fermarsi.
+
 

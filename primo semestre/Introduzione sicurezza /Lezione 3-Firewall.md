@@ -250,17 +250,8 @@ Spettro di location e topologie:
 
 ## Sintesi
 
-> [!info] Sintesi:
-> - Il firewall controlla il flusso di traffico tra reti con livelli di sicurezza diversi, ma è l'ultima linea di difesa e non protegge le singole macchine.
-> - È un insieme di componenti (firewall, IDS, scanner antivirus, personal firewall) e può offrire servizi add-on come NAT, DHCP, VPN e filtraggio di contenuto.
-> - La difesa perimetrale concentra gli ingressi in un'unica porta e si basa su una politica *default deny* (più sicura) o *default permit* (più usabile).
-> - Quattro tipi principali:
->   - **Packet-filtering**: decide su header IP/TCP/UDP; veloce, semplice, trasparente; non esamina dati applicativi, logging limitato, vulnerabile a spoofing e misconfigurazioni.
->   - **Stateful inspection**: mantiene tabella connessioni TCP stabilite; permette traffico di ritorno solo per sessioni registrate; alcuni tracciano sequence numbers e ispezionano dati app limitati (FTP, SIP).
->   - **Application-level gateway (proxy)**: relè a livello 7; interrompe connessione end-to-end; esamina comandi applicativi, logging dettagliato; overhead significativo, supporta solo app implementate.
->   - **Circuit-level gateway (proxy di circuito)**: due connessioni TCP, rilancia segmenti senza esaminare contenuto; decide quali connessioni ammettere; overhead minore del proxy applicativo; esempio SOCKS v5 (porta 1080).
-> - **Bastion host**: sistema indurito (hardened) che ospita proxy; SO sicuro, solo servizi essenziali, proxy indipendenti, audit dettagliato, esecuzione come utente non privilegiato, filesystem read-only.
-> - **Host-based firewall**: su server/host per protezione tailored, indipendente da topologia, layer aggiuntivo.
-> - **Personal firewall**: su workstation/PC; nega inbound non autorizzato, monitora outbound per malware; stealth mode, logging, filtro per applicazioni firmate.
-> - **Architetture**: DMZ (external + internal firewall), VPN (IPsec su firewall o router), distributed firewall (stand-alone + host-based + central management).
-> - Topologie: host-resident, screening router, single bastion inline/T, double bastion inline/T, distributed.
+## Complementi dal libro di testo
+
+Il libro dedica un capitolo ai firewall, definendo le loro caratteristiche e obiettivi secondo BELL94b: tutto il traffico da dentro a fuori e viceversa deve passare attraverso il firewall; solo il traffico autorizzato dalla politica locale può passare; il firewall stesso deve essere immune da penetrazione. Un firewall fornisce un unico punto di controllo, una piattaforma per funzioni di monitoraggio, NAT e gestione, e può supportare IPsec e VPN. Tra i limiti, non protegge dagli attacchi che bypassano il firewall, dalle minacce interne, dalle WLAN e dai dispositivi portatili che escono dalla rete. I tipi principali sono packet filtering, stateful inspection, application-level gateway e circuit-level gateway, ciascuno con una politica di default (discard o forward) e vantaggi e limitazioni diverse. Il libro sottolinea anche che un firewall può essere un singolo host o un insieme di più sistemi cooperanti, e che la politica di accesso si esprime su indirizzi IP, protocolli e porte; il *single choke point* è ciò che rende il firewall efficace anche come piattaforma di monitoraggio e logging.
+
+

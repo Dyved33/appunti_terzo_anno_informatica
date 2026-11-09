@@ -296,10 +296,4 @@ Esempio, elenco dei corsi con i relativi insegnanti mediante un equi-join su `pe
 SELECT * FROM persona, corso WHERE persona.idpersona = corso.idinsegnante;
 ```
 
-> [!info] Sintesi:
-> - Il `SELECT` è l'istruzione di interrogazione del DML e si compone di 7 clausole, 5 opzionali: `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `UNION`/`INTERSECT`/`EXCEPT`, `ORDER BY`.
-> - La clausola `SELECT` sceglie e rinomina le colonne del risultato (proiezione), con `*`, `ALL` (default) e `DISTINCT` per eliminare i duplicati, e ammette espressioni come `voto + 2` o concatenazioni con `||`.
-> - La clausola `FROM` elenca le tabelle e ne costruisce la tabella intermedia come prodotto cartesiano; gli alias servono a qualificare le colonne ed è forzato usarli nella self-join.
-> - La clausola `WHERE` filtra le tuple con logica a tre valori, usando operatori logici, di comparazione (`BETWEEN`, `IS NULL`, `IS [NOT] DISTINCT FROM`), matematici, su stringhe (`LIKE`, `IN`) e su data/ora.
-> - La clausola `ORDER BY` ordina il risultato per una o più colonne, in ordine ascendente (`ASC`) o discendente (`DESC`).
-> - Gli operatori dell'algebra relazionale (proiezione, selezione, prodotto cartesiano, θ-join) si traducono direttamente in query `SELECT`.
+

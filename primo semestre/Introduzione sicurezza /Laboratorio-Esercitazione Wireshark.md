@@ -135,14 +135,3 @@ Wireshark può decifrare TLS se hai le chiavi:
 
 ## Sintesi
 
-> [!info] Sintesi:
-> - Wireshark = packet sniffer con GUI, open source, live capture (promiscuous mode) + analisi file pcap.
-> - Usi: troubleshooting rete, security auditing, debug protocolli, analisi forense post-incidente.
-> - Feature: import/export formati, capture/display filters, Follow Stream (ricostruzione flusso), Export Objects (estrazione file), decifratura TLS con chiavi.
-> - **Capture filter** (BPF) = scarta durante cattura, meno overhead; **Display filter** (sintassi Wireshark) = nasconde in GUI, dati restano nel file.
-> - Operatori display filter: `== != > < >= <=`, `and/or/not`, `contains`, `matches`, `in {...}`.
-> - Statistics: Conversations (top talkers), Endpoints, Protocol Hierarchy, IO Graphs, Flow Graph, Expert Info.
-> - Follow TCP Stream = riassembla flusso applicativo bidirezionale (ASCII/Hex/Raw).
-> - Export Objects = salva file da HTTP, SMB, SMTP, ecc.
-> - HTTPS decifrabile con `SSLKEYLOGFILE` (browser) o chiave privata server (solo RSA, no FS).
-> - Wireshark è **passivo**: non blocca, non modifica, non è firewall/IDS.

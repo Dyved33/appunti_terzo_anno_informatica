@@ -347,10 +347,4 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
   </div>
 </div>
 
-> [!info] Sintesi:
-> - Gli standard, codificati *de jure* o affermatisi *de facto*, definiscono le caratteristiche fisiche e operative degli apparati e rendono interoperabile hardware di costruttori diversi.
-> - IEEE sviluppa gli standard 802 su interfaccia fisica, formato dei dati, controllo d'errore e di flusso; CCITT-ITU emana raccomandazioni per periodo quadriennale, come la serie V per i modem; l'ISO ha concepito il modello OSI.
-> - Il modello ISO/OSI è un impianto concettuale per l'interconnessione dei sistemi, rimasto quasi solo teorico (X.400, X.500), che introduce i concetti di sistema e applicazione.
-> - L'architettura a livelli divide il problema in sette livelli: ogni livello usa i servizi di quello inferiore ed eroga i propri al superiore, comunicando tramite le interfacce SAP; entità omologhe dialogano con un protocollo, e i dati passano da N-PDU a (N-1)-SDU aggiungendo le informazioni di controllo (N-1)-PCI.
-> - Il livello fisico specifica connessioni e segnali (RS232, V.24, V.35, SONET/SDH) e si appoggia ai mezzi trasmissivi.
-> - I mezzi trasmissivi sono il doppino (UTP/STP, connettore RJ45, categorie fino a Cat 8), il cavo coassiale (50 e 75 ohm, thick/thin), la fibra ottica (core, cladding, multimodale o monomodale) e le connessioni wireless (TV, WiFi, Bluetooth, telefonia mobile).
+

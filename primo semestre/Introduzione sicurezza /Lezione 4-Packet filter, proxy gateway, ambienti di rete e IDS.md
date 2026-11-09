@@ -147,20 +147,9 @@ Dislocato in punti strategici della rete, monitora i pacchetti in transito anali
 
 ## Complementi dal libro di testo
 
-> [!info]
-> Il libro di testo approfondisce il rilevamento delle intrusioni e alcune varianti architetturali dei firewall:
-> - **Tecniche di rilevamento delle intrusioni:**
->   - *Statistical anomaly detection:* raccoglie dati sul comportamento normale degli utenti e costruisce un profilo statistico; un'attività che devia dal profilo è segnalata. Le metriche includono contatori, gauge (misure puntuali), interval timer e utilizzo delle risorse; i test includono media e deviazione standard, multivariato, processo di Markov, serie temporali e operazionale.
->   - *Rule-based detection:* confronta il comportamento osservato con regole che descrivono attacchi noti (*penetration/signature identification*) o comportamenti anomali (*anomaly detection*).
-> - **Distributed intrusion detection:** architettura con un gestore centrale e più agenti locali (HIDS/NIDS) che gli inviano segnalazioni.
-> - **Honeypot:** sistemi esca (*decoy*) progettati per attirare gli attaccanti lontano dai sistemi critici; non hanno valore produttivo, quindi qualsiasi interazione con essi è sospetta. Si collocano fuori dal firewall esterno (individuano attacchi esterni), in DMZ (protetta dal firewall interno) o all'interno (individuano attacchi interni, ma se compromessi possono attaccare la rete interna).
-> - **Bastion host:** piattaforma irrobustita (*hardened*) individuata dall'amministratore come punto critico della sicurezza, su cui ospitare un gateway applicativo; esegue una versione sicura del SO, solo i servizi necessari, proxy indipendenti l'uno dall'altro e autenticazione aggiuntiva richiesta agli utenti.
-> - **Configurazioni con bastion host:** single bastion inline/T e double bastion inline/T (DMZ tra due bastion firewall).
+Il libro approfondisce il rilevamento delle intrusioni e alcune varianti architetturali dei firewall. Le tecniche di rilevamento si dividono in due famiglie. La *statistical anomaly detection* raccoglie dati sul comportamento normale degli utenti e costruisce un profilo statistico: un'attività che devia dal profilo viene segnalata. Le metriche includono contatori, gauge (misure puntuali), interval timer e utilizzo delle risorse; i test spaziano da media e deviazione standard all'analisi multivariata, ai processi di Markov, alle serie temporali e ai test operazionali. La *rule-based detection* confronta invece il comportamento osservato con regole che descrivono attacchi noti (identificazione tramite signature o penetrazione) oppure comportamenti anomali.
 
-> [!info] Sintesi:
-> - I packet filter controllano indirizzi IP, porte e flag di livello 3 e 4: sono veloci e trasparenti ma privi di autenticazione utente.
-> - Gli stateful inspection firewall mantengono una tabella di stato per autorizzare solo i pacchetti in risposta a connessioni già aperte.
-> - Gli application-proxy gateway operano a livello 7 interrompendo la connessione diretta end-to-end ed eseguendo ispezione granulare sui comandi.
-> - La DMZ isola i server esposti a Internet dalla rete interna protetta, impedendo accessi diretti verso la LAN in caso di compromissione.
-> - Gli switch isolano il traffico di livello 2, richiedendo il port mirroring per consentire il monitoraggio da parte dei Network IDS.
-> - Gli IDS cooperano con i firewall per bloccare attacchi in tempo reale, distinguendosi in HIDS (sull'host) e NIDS (sulla rete).
+Il *distributed intrusion detection* si basa su un gestore centrale e su più agenti locali (HIDS o NIDS) che gli inviano le segnalazioni. Gli *honeypot* sono sistemi esca, senza valore produttivo, progettati per attirare gli attaccanti lontano dai sistemi critici: qualsiasi interazione con essi è sospetta e possono essere collocati fuori dal firewall esterno (per individuare attacchi esterni), in DMZ (protetta dal firewall interno) o all'interno (per individuare attacchi interni, con il rischio che, se compromessi, vengano usati per attaccare la rete interna).
+
+Il *bastion host* è una piattaforma irrobustita individuata dall'amministratore come punto critico, su cui ospitare un gateway applicativo; esegue una versione sicura del SO, solo i servizi necessari, proxy indipendenti l'uno dall'altro e richiede autenticazione aggiuntiva agli utenti. Le configurazioni con bastion host sono il single bastion inline/T e il double bastion inline/T, con una DMZ tra due bastion firewall.
+

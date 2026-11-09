@@ -179,9 +179,27 @@ SMA* è una semplificazione di A* a memoria limitata che **sfrutta tutta la memo
 | **Weighted A*** | $O(b^d)$      | No ($c \le W \cdot C^*$) | Più veloce, subottimo controllato                      |
 | **Beam Search** | $O(k)$        | No                       | Mantiene solo $k$ migliori per livello; incompleto     |
 
+## Implementazione dal libro di testo: IDA* e SMA*
+
+Il libro di testo (AIMA, Cap. 3, sez. 3.5) propone due varianti di A* pensate per quando la memoria non basta a tenere tutta la frontiera.
+
+**IDA* (Iterative Deepening A*)** applica l'idea dell'iterative deepening ad A*: invece di mantenere una frontiera in memoria, esegue una serie di ricerche in profondità, ciascuna limitata da una soglia sul valore di $f$. Si parte con soglia $h(\text{iniziale})$; a ogni iterazione si esplora esaustivamente entro il limite corrente, e se non si trova il goal si alza la soglia al valore $f$ minimo tra i nodi appena oltre il confine. IDA* usa memoria lineare nella profondità ($O(bd)$), non serve il reached set, ma tra un'iterazione e l'altra scarta quasi tutte le informazioni e può riespandere più volte gli stessi stati.
+
+```
+IDA_Stella
+soglia <- h(stato_iniziale)
+loop:
+    result, nuovo_limite <- ricerca_in_profondita_limitata(problema, soglia)
+    if result != fallimento: return result
+    soglia <- nuovo_limite
+```
+
+**SMA* (Simplified Memory-Bounded A*)** è l'opposto: invece di usare poca memoria, ne usa quanta ne è disponibile. Espande sempre il nodo migliore come A*, ma quando la memoria si esaurisce rimuove il nodo con $f$ più alto (il meno promettente) per fare spazio, memorizzandone il valore di backup nel genitore così che, se quel ramo diventa di nuovo promettente, l'algoritmo sappia quanto valeva. SMA* è completo e ottimale se la memoria basta a contenere il cammino ottimo e $h$ è ammissibile; è la scelta pratica quando si ha un budget di memoria fisso.
+
 > [!info] Sintesi:
-> - A* è ottimo ma richiede spazio esponenziale; le varianti a memoria limitata sacrificano tempo (riespansioni) o ottimalità per stare in memoria lineare o costante
-> - IDA* usa iterative deepening su $f$: lineare in spazio, ma riparte da zero ogni iterazione
-> - RBFS è best-first ricorsivo con spazio lineare: ricorda la seconda scelta migliore via *backed-up values*
-> - SMA* sfrutta tutta la memoria disponibile, scartando i nodi con $f$ più alto e memorizzando il loro valore nel genitore
-> - Weighted A* accelera la ricerca pesando $h$ con $W>1$: soluzione entro $W \cdot C^*$, in pratica molto più vicina a $C^*$
+> - IDA* esplora per soglie di f crescenti con memoria lineare O(bd), ma riespande stati e scarta informazioni tra un'iterazione e l'altra.
+> - RBFS è best-first ricorsivo a spazio lineare, ricorda solo la seconda scelta e i valori di backup.
+> - SMA* usa tutta la memoria disponibile, dimenticando i nodi con f più alto e tenendo traccia del loro valore di backup.
+> - A* è ottimale ma richiede memoria esponenziale O(b^d); le varianti a memoria limitata scambiano qualcosa in tempo per stare nello spazio.
+> - Weighted A* e beam search rinunciano all'ottimalita' per guadagnare velocita'.
+

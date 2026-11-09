@@ -252,10 +252,8 @@ SSH1 forniva il login remoto sicuro al posto di telnet; SSH2 ne corregge i difet
 - *user authentication:* autentica l'utente presso il server;
 - *connection protocol:* suddivide il tunnel cifrato in più canali logici (*multiplexing*).
 
-> [!info] Sintesi:
-> - Il network-based IDS cerca firme d'attacco nel traffico: copre più macchine di un host-based IDS, ma non ricostruisce firme su più pacchetti, vuole il *port mirroring* ed è bersaglio di DoS.
-> - Il DNS: split DNS (nomi interni ed esterni su due server), UDP per l'user lookup, TCP per lo zone transfer.
-> - I server esterni stanno sulla external DMZ, quelli interni sulla internal DMZ, e vanno isolati perché un attacco non si propaghi.
-> - La firewall policy nasce da una risk analysis e da una matrice del traffico; fra le regole, bloccare ICMP in ingresso, SNMP da sorgenti non autenticate, pacchetti RFC 1918 e *directed broadcast address*.
-> - Le tre configurazioni: screened host single-homed, dual-homed (bastion con due interfacce, unico passaggio fra internet e rete privata) e screened subnet (due router, subnet isolata: la più sicura, con la rete interna invisibile).
-> - TLS: record protocol (frammenta, comprime, MAC, cifra con chiave simmetrica, header) e handshake, che autentica e negozia il master secret. SSH sostituisce telnet e realizza tunnel.
+## Complementi dal libro di testo
+
+Il libro tratta i firewall e il TLS nei suoi capitoli dedicati. Per quanto riguarda i firewall, ribadisce che il loro compito è controllare il traffico tra reti con livelli di sicurezza diversi, costituendo l'ultima linea di difesa perimetrale e non una protezione delle singole macchine. La difesa perimetrale concentra gli ingressi in un unico punto e si basa su una politica default deny o default permit. Per il TLS, il libro descrive il record protocol (che frammenta, comprime, applica il MAC e cifra con una chiave simmetrica, aggiungendo un header) e l'handshake, che autentica le parti e negozia il master secret: sono gli stessi meccanismi su cui si basa la protezione delle connessioni qui trattata. Il libro descrive anche le topologie con bastion host — screened host single-homed, dual-homed (bastion con due interfacce) e screened subnet (due router con subnet isolata) — e sottolinea che il TLS è alla base di HTTPS sulla porta 443.
+
+

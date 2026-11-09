@@ -55,7 +55,6 @@ Testo.
 - Dentro una sezione, per separare i sotto-argomenti usa l'etichetta in grassetto a inizio paragrafo (`**Grafo di un automa:**`), non un titolo.
 - Titoli senza numeri, senza grassetto, senza emoji, con la sola iniziale maiuscola.
 - Niente righe `---` tra le sezioni e niente sezione di navigazione in fondo.
-- La nota si chiude sempre con un callout `> [!info] Sintesi:`: da 3 a 6 punti, una riga ciascuno, con ciò che della lezione va ricordato. Niente frasi nuove e niente formule lunghe. È l'ultima cosa della nota e ce n'è una sola.
 
 ## Etichette
 

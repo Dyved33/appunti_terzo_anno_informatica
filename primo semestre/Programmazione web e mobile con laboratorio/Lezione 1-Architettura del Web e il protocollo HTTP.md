@@ -123,10 +123,3 @@ Una volta ricevuta la risposta HTTP dal server, il motore del browser avvia la p
 >
 > Mantenere i tre ambiti disaccoppiati garantisce manutenibilità, modularità e pulizia del codice.
 
-> [!info] Sintesi:
-> - Il WWW è un servizio informativo distribuito su Internet, costruito su HTML, HTTP e URL, con struttura ipertestuale.
-> - Il Web è client-server: il browser è il client che implementa nativamente HTTP e gestisce il download delle risorse.
-> - HTTP è stateless e gira su TCP; HTTPS aggiunge TLS con cifratura e integrità. Cookie e sessioni sopperiscono al vincolo di statelessness.
-> - La richiesta è metodo, path, header e body; la risposta è status code, header e body; `GET`, `PUT` e `DELETE` sono idempotenti, `POST` no.
-> - L'URL è schema, dominio, porta, path, query string e fragment; il DNS traduce il nome dell'host in IP con cache locale, server TLD e server autoritativo.
-> - Il rendering costruisce DOM, CSSOM e render tree, quindi esegue JavaScript; HTML, CSS e JavaScript restano tre responsabilità separate.

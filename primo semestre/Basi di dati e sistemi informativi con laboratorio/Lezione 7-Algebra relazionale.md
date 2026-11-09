@@ -176,10 +176,3 @@ $$r \bowtie s = \{t \cup t' \mid t \in r \wedge t' \in s \wedge t[Z] = t'[Z]\}$$
   <img src="slide-74.png" style="width: 30%;">
 </div>
 
-> [!info] Sintesi:
-> - L'algebra relazionale è un linguaggio procedurale di operatori unari e binari su istanze di relazioni; è il fondamento formale del modello relazionale e la base per l'ottimizzazione delle interrogazioni nei RDBMS.
-> - Gli operatori si dividono in insiemistici (unione, intersezione, differenza, prodotto cartesiano) e propriamente relazionali (ridenominazione, selezione, proiezione, join, divisione); intersezione, join e divisione sono derivabili dagli altri.
-> - La ridenominazione $\rho$ cambia nome di relazione e attributi; unione, intersezione e differenza richiedono schemi compatibili all'unione (stesso grado e stessi domini).
-> - Il prodotto cartesiano combina ogni tupla di $r$ con ogni tupla di $s$, richiedendo attributi disgiunti.
-> - La selezione $\sigma_F$ estrae le tuple che soddisfano una formula proposizionale $F$; la proiezione $\pi_Y$ estrae i valori su un sottoinsieme di attributi $Y$.
-> - Il θ-join $r \bowtie_F s = \sigma_F(r \times s)$ combina le tuple di due relazioni che soddisfano $F$; l'equijoin è il caso di sole uguaglianze e il join naturale elimina gli attributi comuni ripetuti.

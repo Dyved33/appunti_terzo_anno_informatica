@@ -403,10 +403,4 @@ Gli elementi di sezione non hanno funzione di layout (il loro posizionamento è 
 > * `<address>` non va usato per l'indirizzo di una persona citata: in quel caso si usa `<cite>`.
 > * I tag di sezione non sostituiscono `<main>`, che delimita il contenuto primario e univoco della pagina.
 
-> [!info] Sintesi:
-> - `<video>` e `<audio>` condividono `src`, `controls`, `autoplay`, `loop` e `muted` (`poster`, `width` e `height` sono propri di `<video>`); il MIME type si dichiara su `<source>`, l'autoplay con audio è bloccato senza `muted` e su mobile serve `playsinline`. `<source>` dà sorgenti alternative con fallback e `preload` governa il precaricamento.
-> - `<a>` usa `href`, `target`, `title` e `download`; i fragment puntano agli `id` e `target="_blank"` va protetto da `rel="noopener noreferrer"`.
-> - `<div>` è block e `<span>` inline, ma il layout si governa con `display`, non con il tag.
-> - `column-*` crea colonne, `float` avvolge il testo e `clear` interrompe l'avvolgimento; `position` distingue `static`, `relative`, `absolute`, `fixed` e `sticky`, con `z-index` per l'impilamento; `table`, Flexbox e Grid si distinguono per numero di assi e governo delle dimensioni, e `place-items`/`justify-content`/`align-items` centrano il contenuto.
-> - Il layout responsive si ottiene con `<meta name="viewport">` e media query, con approccio mobile first e `rem`, `%`, `vw` e `clamp()` al posto dei pixel fissi.
-> - I tag semantici di sezione (`header`, `nav`, `main`, `section`, `article`, `aside`, `address`, `footer`) danno struttura a crawler e tecnologie assistive.
+

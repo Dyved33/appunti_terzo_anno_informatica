@@ -174,9 +174,3 @@ Le forme normali si susseguono per inclusione:
 - **3FN:** in 2FN e per ogni dipendenza funzionale non triviale $X \rightarrow A$ vale che $X$ è superchiave oppure $A$ è attributo primo, cioè appartenente a una chiave candidata.
 - **BCNF:** in 3NF e per ogni dipendenza funzionale non triviale $X \rightarrow A$, $X$ è sempre superchiave; elimina le dipendenze funzionali non banali il cui determinante non è superchiave, che la 3FN tollera quando l'attributo determinato è primo.
 
-> [!info] Sintesi:
-> - I vincoli di integrità si distinguono in intrinseci al modello, basati sullo schema (DDL), non esprimibili sullo schema e dipendenze funzionali.
-> - Intrarelazionali: di dominio, su più valori della stessa tupla, di non nullità e di univocità `UNI:Y`; interrelazionali: integrità referenziale tramite chiavi esterne semplici `CE: A → S(B)` o composte.
-> - Superchiave = insieme con `UNI`; chiave candidata = superchiave minimale; chiave primaria = la candidata scelta, che non ammette `NULL` per il **vincolo di integrità dell'entità**.
-> - Inserimento può violare ogni vincolo, cancellazione solo l'integrità referenziale, gestita con rifiuto, propagazione in cascata o `SET NULL`; modifica è cancellazione più inserimento.
-> - Le dipendenze funzionali servono a valutare la progettazione e guidano la normalizzazione in 1FN, 2NF, 3NF e BCNF, con perdita di join nulla e preservazione delle dipendenze.

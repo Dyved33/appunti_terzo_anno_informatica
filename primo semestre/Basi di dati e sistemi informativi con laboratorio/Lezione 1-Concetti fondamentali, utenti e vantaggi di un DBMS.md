@@ -114,9 +114,3 @@ L'approccio basato su DBMS comporta costi vivi e un sovraccarico (*overhead*) si
 - requisiti di calcolo in tempo reale (*hard real-time*) così stringenti da risultare incompatibili con le latenze introdotte dai moduli del DBMS;
 - contesti operativi con accesso strettamente monoutente, in cui non sussiste alcuna necessità di condivisione simultanea o concorrenza sui dati.
 
-> [!info] Sintesi:
-> - La base di dati rappresenta il mini-mondo con dati logicamente coerenti e per uno scopo preciso; il DBMS ne facilita definizione, costruzione, manipolazione e condivisione.
-> - Le quattro funzionalità principali sono definire, costruire, manipolare (interrogare, aggiornare, accedere da applicazioni) e condividere la BD.
-> - Rispetto ai file piatti il DBMS è autodescrittivo (catalogo di sistema e metadati), separa programmi e dati, offre viste multiple e controlla la concorrenza con transazioni ACID.
-> - Gli attori sono progettisti, DBA, utenti finali (occasionali, parametrici, esperti, indipendenti), analisti e programmatori.
-> - I vantaggi sono 14: dalla ridondanza controllata alle economie di scala; tra i costi, licenze, formazione e overhead prestazionale rendono il DBMS sproporzionato su applicazioni semplici, hard real-time o monoutente.

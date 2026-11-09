@@ -187,10 +187,3 @@ Intorno agli anni quaranta nacque l'esigenza di aumentare il numero di collegame
 
 Lo schema del PCM telefonico europeo a 32 canali consente di far transitare su un solo cavo coassiale 30 telefonate contemporaneamente senza che interferiscano fra loro e indirizzarle, in ricezione, ciascuna all'utente richiesto. Dei 32 canali multiplexati, 30 sono canali vocali e 2 sono di servizio.
 
-> [!info] Sintesi:
-> - La serie di Fourier scompone un segnale periodico in sinusoidi; più armoniche = approssimazione migliore
-> - Quattro tipi di filtri: passa-basso, passa-alto, passa-banda, elimina-banda (notch)
-> - Modulazione: converte segnale digitale per trasmissione in banda limitata (AM, FM, PM, impulsiva)
-> - AM: varia ampiezza, sensibile al rumore; FM: varia frequenza, più robusta; PM: varia fase, portante stabile
-> - Modulazioni impulsive: PAM (ampiezza), PWM (larghezza), PPM (posizione), PCM (codificata, standard telefonico)
-> - PCM europeo: 32 canali multiplexati (30 vocali + 2 servizio) su singolo cavo coassiale

@@ -108,10 +108,4 @@ I colori distinguono le tre categorie della legenda (Confusion, Convention, Stan
 
 Le frecce indicano il percorso di lettura (1 → 2 → 3, 1 → 4, 4 → 5, 4 → 6).
 
-> [!info] Sintesi:
-> - L'audience viene prima di tutto: decide cosa scrivere e come.
-> - Composizione: sezione aurea (numero aureo 1,618) per dimensionare colonne e caratteri, regola dei terzi (griglia 3 x 3) per posizionare i soggetti.
-> - Metafore visive e affordance fanno capire un contenuto prima del testo, perché sul web l'attenzione è più breve che sulla stampa.
-> - Errori da evitare: pdf per la lettura online, colore dei link visitati, testo non scansionabile, caratteri a dimensione fissa, elementi che sembrano pubblicità, ignoranza degli standard.
-> - Organizzazione: raccogliere i contenuti, assegnarli alle pagine, nominare bene le voci di menu, dare a ogni pagina una struttura logica.
-> - Gerarchia visiva: dimensione, colore, posizione e spaziatura guidano lo sguardo.
+

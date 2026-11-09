@@ -274,10 +274,4 @@ Ciascun livello elabora e scambia una propria specifica unità di dati denominat
      - **Livello 3 (Network):** esamina l'indirizzo IP di destinazione nell'header del pacchetto, consulta la propria tabella di instradamento (*routing table*), seleziona l'interfaccia di uscita ottimale (*forwarding*) e re-incapsula il pacchetto in una nuova trama di livello 2 adatta al link successivo.
    - I nodi intermedi sono **del tutto trasparenti rispetto ai livelli 4-7**: non ispezionano né modificano i dati di trasporto o di applicazione, garantendo la netta separazione tra il trasporto dati dell'utente e l'infrastruttura di instradamento.
 
-> [!info] Sintesi:
-> - I fattori della convergenza telematica sono telecomunicazioni, micro e nano-tecnologie, sensori, software avanzato e integrazione hardware e software in tempo reale.
-> - La comunicazione dati è lo scambio formale di informazioni: servono sorgente, mezzo trasmissivo e destinatario, più un sistema di comunicazione coerente.
-> - Shannon-Weaver descrive la trasmissione con sette elementi, dal messaggio al destinatario, con il rumore come perturbazione e il feedback che chiude il ciclo; i limiti di velocità sono dati da Nyquist e da Shannon, e FDM, TDM, WDM e CDM multiplexano più canali su un solo mezzo.
-> - Un protocollo specifica sintassi, semantica e temporizzazione; standardizzarli per l'interoperabilità è compito di ISO, IEEE, IETF, ITU, ICANN e W3C.
-> - Ogni livello ha una PDU propria: data, segmento, pacchetto, trama, bit; ISO/OSI ha sette livelli, TCP/IP quattro, con i livelli 5 e 6 di OSI confluiti nell'application layer.
-> - Solo gli host eseguono lo stack completo: i router stanno sotto il livello di rete e inoltrano i pacchetti salto a salto senza toccare i dati di trasporto.
+

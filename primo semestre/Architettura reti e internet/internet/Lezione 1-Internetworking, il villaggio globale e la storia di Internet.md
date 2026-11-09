@@ -158,11 +158,3 @@ Le slide riportano l'evoluzione topografica della rete attraverso le mappe Inter
 - Nella prima metà del 2021 il **64% di tutto il traffico Internet era automatizzato**: il 39% proveniva da bot cattivi e il 25% da bot buoni. Gli esseri umani hanno rappresentato il restante 36%.
 - Nel primo trimestre del 2021 i dispositivi mobili, esclusi i tablet, hanno generato il 54,8% del traffico globale dei siti web.
 
-> [!info] Sintesi:
-> - Internet è l'infrastruttura che ha reso superflui tempo e spazio ed è un evento culturale prima che tecnologico.
-> - Internetworking è l'interconnessione di reti eterogenee in un'unica infrastruttura, caratterizzata da apertura e crescita esponenziale.
-> - Nel villaggio globale la ricerca usa infrastrutture come GARR, le aziende intranet ed e-commerce, le amministrazioni CAD, dematerializzazione e FLOSS.
-> - Le origini: Licklider e il Galactic Network (1962), Kleinrock sul packet switching (1961), la prima WAN fra MIT e California (1965), la prima connessione UCLA-SRI (1969).
-> - ARPANET (1968-73) porta il packet switching e gli RFC; dal 1983 TCP/IP sostituisce NCP e nasce il DNS.
-> - Dal 1985 NSFNET a 56 Kbps, poi T1 e T3, dà il boom; nel 1989 nasce il WWW e nel 1991 la NSF toglie i vincoli commerciali.
-> - La definizione FNC del 24 ottobre 1995 è lo spazio di indirizzi univoco su IP, la suite TCP/IP e i servizi che ci si appoggiano.

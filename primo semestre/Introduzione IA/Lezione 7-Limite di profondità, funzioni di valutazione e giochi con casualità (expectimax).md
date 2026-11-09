@@ -165,9 +165,30 @@ Anche con alpha-beta pruning e profondità limitata, un fattore di diramazione g
 
 La ricerca a profondità limitata richiede funzioni di valutazione ben progettate. Non è una soluzione generale: serve una nuova funzione per ogni problema, e una funzione sbagliata può rendere la ricerca inefficiente o distorcere i risultati. Una tendenza nell'IA è preferire metodi generali che richiedano meno interventi manuali.
 
+## Implementazione dal libro di testo: expectimax con profondità limitata
+
+Il libro di testo (AIMA, Cap. 17) estende minimax ai giochi con esiti incerti introducendo i nodi **CHANCE**: in un nodo MAX si prende il massimo dei figli come sempre, ma in un nodo CHANCE il valore è la media pesata dei valori dei figli secondo le loro probabilità. Quando la ricerca si ferma a una profondità prefissata, invece dell'utilità terminale si usa una funzione di valutazione EVAL(stato).
+
+```
+Expectimax
+valore(stato):
+    se stato e' terminale: restituisci utilita(stato)
+    se il prossimo agente e' MAX: restituisci max-succ(valore)
+    se il prossimo agente e' CHANCE: restituisci exp-succ(valore)
+
+exp-succ(stato):
+    v = 0
+    per ogni successore s con probabilita' p:
+        v += p * valore(s)
+    restituisci v
+```
+
+A profondità limitata le foglie non terminali ricevono EVAL(s), una stima del valore della posizione, e i valori vengono poi propagati verso la radice con max nei nodi MAX e media pesata nei nodi CHANCE. Questo permette di gestire giochi con dadi, carte coperte o avversari imprevedibili, anche se il numero di nodi cresce rapidamente (nell'expectiminimax il fattore di ramificazione si moltiplica per il numero di esiti casuali).
+
 > [!info] Sintesi:
-> - La ricerca a profondità limitata usa una funzione di valutazione alle posizioni non terminali; perde la garanzia di gioco ottimale, mentre iterative deepening fornisce risposte via via migliori.
-> - Le funzioni di valutazione sono stime imperfette; la loro qualità conta meno quando sono più in profondità nell'albero.
-> - Expectimax applica il massimo ai nodi MAX e la media pesata ai nodi CHANCE.
-> - Expectiminimax aggiunge nodi casuali; backgammon mostra il costo del branching e TDGammon combina ricerca, valutazione e apprendimento.
-> - Nei giochi multi-agente i valori sono tuple e ogni giocatore massimizza la propria componente.
+> - A profondità limitata la ricerca si ferma prima del goal e usa una funzione di valutazione EVAL.
+> - Una buona EVAL è veloce, correlata con la probabilita' di vittoria e applicata a posizioni quiescenti.
+> - Expectimax gestisce l'incertezza con nodi CHANCE che calcolano l'utilita' attesa come media pesata.
+> - Expectiminimax combina MAX (massimo), MIN (minimo) e CHANCE (media pesata) nello stesso albero.
+> - Il backgammon è il caso classico: i lanci dei dadi moltiplicano il fattore di ramificazione.
+

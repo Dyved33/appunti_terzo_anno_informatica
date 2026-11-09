@@ -90,10 +90,3 @@ I colori comunicano emozioni, identità del brand e influenzano le interazioni d
 - **Nero:** eleganza, potenza.
 - **Bianco:** purezza, semplicità.
 
-> [!info] Sintesi:
-> - **Font e icone:** scegliere font leggibili e compatibili con i browser, differenziando titolo, sottotitoli e testo; usare icone coerenti da librerie scalabili (Font Awesome, Material Icons).
-> - **Colori:** comunicano emozioni e identità del brand; assicurare contrasto sufficiente e mantenere uno schema coerente in tutte le pagine.
-> - **Modelli di colore:** RGB per display, CMYK per stampa, HSL per tonalità/saturazione/luminosità; i colori in esadecimale sono rappresentati da tre coppie di cifre (00-FF).
-> - **Ruota dei colori e armonie:** complementari, analoghi, triadici e tetradici; tipi di palette (monocromatici, acromatici, complementari, contrastanti).
-> - **Scelta dei colori:** definire l'identità del brand, comprendere il target, rispecchiare i contenuti, trovare armonie, testare la leggibilità e usare strumenti online.
-> - **Significati:** blu (fiducia/professionalità), verde (natura/benessere), verde scuro (finanza), rosso (passione/urgenza), giallo (gioia/creatività), arancione (energia/entusiasmo), rosa (femminilità/autenticità), viola (lusso/mistero/arte), nero (eleganza/potenza), bianco (purezza/semplicità).

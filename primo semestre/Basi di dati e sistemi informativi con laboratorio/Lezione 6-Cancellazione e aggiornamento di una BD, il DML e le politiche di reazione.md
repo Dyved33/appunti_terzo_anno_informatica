@@ -359,9 +359,4 @@ CREATE TABLE frequenza (
   PRIMARY KEY (idstudente, idcorso));
 ```
 
-> [!info] Sintesi:
-> - `DROP SCHEMA`, `DROP TABLE` e `DROP DOMAIN` cancellano gli oggetti dello schema con `RESTRICT` (default, rifiuta se ci sono dipendenze) o `CASCADE` (cancella le dipendenze).
-> - `ALTER TABLE` aggiunge e toglie colonne, modifica i default, aggiunge e toglie vincoli; `RENAME` è estensione PostgreSQL; `ALTER DOMAIN` modifica default e vincoli di un dominio.
-> - Il DML è fatto da `INSERT`, `UPDATE`, `DELETE` (modifica) e `SELECT` (interrogazione): senza `WHERE`, `DELETE` cancella tutte le tuple e `UPDATE` le modifica tutte.
-> - Le politiche di reazione spostano il rispetto dell'integrità referenziale dal programmatore alla definizione dello schema.
-> - Le quattro politiche sono *cascade*, *set null*, *set default* e *no action* (default), specificate con `ON UPDATE` o `ON DELETE` nella chiave esterna.
+

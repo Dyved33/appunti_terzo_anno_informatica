@@ -183,10 +183,3 @@ PING 141.250.233.1 (141.250.233.1): 56 data bytes
 > [!warning] Attenzione:
 > il test di Ne.Me.Sys non si può fare se si è connessi a una VPN (rete privata virtuale).
 
-> [!info] Sintesi:
-> - Il numero di bit per elemento dipende dalla natura del dato: un'immagine a colori ne richiede più di una in bianco e nero.
-> - I codici più usati sono ASCII a 7 bit, ASCII extended ed EBCDIC a 8 bit e Unicode.
-> - I flussi trasmissivi sono simplex, half duplex e full duplex, secondo il grado di bidirezionalità consentito.
-> - DTE è il terminale, DCE l'apparato che adatta il segnale al canale, CPE l'apparato di pertinenza dell'utente.
-> - Una rete si valuta su affidabilità, sicurezza e prestazioni; ritardo, tempo di risposta e throughput misurano le prestazioni.
-> - `ping` verifica la raggiungibilità e il packet loss, `traceroute` mostra il cammino dei pacchetti, gli speed test misurano la velocità reale: speedtest.net, speed.cloudflare.com che misura anche il jitter, NetIndex per le statistiche e Ne.Me.Sys di Agcom, l'unico a valore ufficiale.

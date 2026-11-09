@@ -104,9 +104,34 @@ def depth_search_graph(problem: Problem) -> Node:
 > [!warning] Attenzione:
 > La DFS non ha condizioni di ottimalità.
 
+## Implementazione dal libro di testo: ricerca a costo uniforme (UCS)
+
+BFS e DFS esplorano senza tenere conto dei costi delle azioni. Il libro di testo (AIMA, Cap. 3) introduce la **ricerca a costo uniforme (UCS)**, che espande per primo il nodo a costo cumulato più basso, usando una coda di priorità ordinata sul costo del cammino dallo stato iniziale. UCS esplora lo spazio a "contori di costo" sempre più ampi attorno allo stato iniziale e si ferma non appena estrae un nodo che supera il goal test: in quel momento il cammino trovato è garantito a costo minimo.
+
+```
+Uniform_Cost_Search
+node <- NODO(problema.STATO_INIZIALE)
+frontiera <- coda_di_priorita_contenente(node) ordinato su costo_cumulato
+esplorato <- insieme_vuoto()
+while frontiera non e' vuota:
+    node <- estrai_minimo_costo(frontiera)
+    if problema.test_obiettivo(node.stato): return node
+    esplorato.aggiungi(node.stato)
+    for child in node.esproandi(problema):
+        if child.stato non in esplorato:
+            if child.stato non in frontiera:
+                frontiera.aggiungi(child)
+            else if costo_cumulato(child) < costo_del_nodo_già_in_frontiera:
+                sostituisci_quel_nodo_con(child)
+return fallimento
+```
+
+UCS è **completo** (trova una soluzione se esiste, purché i costi siano positivi) e **ottimale** (restituisce il cammino di costo minore). Il prezzo è che esplora in ogni direzione, senza alcuna informazione sulla posizione del goal: è proprio il limite che A* supererà aggiungendo l'euristica h.
+
 > [!info] Sintesi:
-> - Nodo e stato sono distinti: il nodo codifica il percorso dentro l'albero, lo stato è la configurazione nello spazio degli stati; la soluzione è la lista di azioni, il percorso la lista di nodi.
-> - Gli algoritmi su grafo tengono un insieme `explored` degli stati già visti, che evita di riespandere lo stesso stato e gestisce i cicli.
-> - BFS: frontiera FIFO (`deque` + `popleft`), goal test anticipato sul figlio generato.
-> - DFS: frontiera LIFO (lista + `pop`), goal test sul nodo estratto, esplora in profondità.
-> - La DFS non ha condizioni di ottimalità.
+> - BFS esplora per livelli ed è completo e ottimale solo se tutti i costi sono uguali a 1.
+> - DFS scende in profondità, usa poca memoria ma non è completo su grafi ciclici né ottimale.
+> - La ricerca su grafo aggiunge un set esplorato per evitare di riespandere gli stessi stati.
+> - UCS espande prima il nodo a costo cumulato minimo; è completo e ottimale con costi positivi.
+> - UCS esplora in tutte le direzioni: senza una guida verso il goal può essere molto dispendioso.
+

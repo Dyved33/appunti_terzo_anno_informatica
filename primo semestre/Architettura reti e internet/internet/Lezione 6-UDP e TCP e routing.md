@@ -344,10 +344,4 @@ Tutti i router:
 - Ricevono i routing updates
 - Ricalcolano i percorsi ottimali sulla base delle loro informazioni.
 
-> [!info] Sintesi:
-> - UDP: trasporto connectionless, portnumber, header minimo, checksum opzionale
-> - TCP: trasporto affidabile con connessione, socket, finestra scorrevole, three-way handshake
-> - Routing: percorso ottimale con metric e next hop, livello 3 ISO/OSI
-> - Routing table: decisioni basate sulla parte rete dell'IP; `netstat -nr` su Unix
-> - Tre tipi di routing: minimale, statico, dinamico; il dinamico prevale sullo statico
-> - Dal Core System al core routing: distance-vector e link-state distribuiscono gli aggiornamenti
+

@@ -158,9 +158,4 @@ Per il $\theta$-join valgono le stesse regole per la valutazione della condizion
 >
 > In generale: **qualsiasi confronto θ (<, >, ≤, ≥, =, ≠) dove uno degli operandi è null restituisce ?**, e la tupla viene esclusa dal join perché la condizione non risulta vera.
 
-> [!info] Sintesi:
-> - La divisione $\div$ è derivata e binaria, la controparte della quantificazione universale: dà le tuple del primo operando valide per tutte le tuple del secondo, ed è definita su $X \setminus Y$.
-> - Derivazione: proiezione su $Z$, universo $U = T_1 \times S$, esclusione delle tuple da non ammettere $T_2 = \pi_Z(U \setminus R)$, risultato $T_1 \setminus T_2$.
-> - Proiezione, unione, intersezione e differenza ignorano i null; l'uguaglianza fra null è puramente sintattica.
-> - Selezione e join usano una logica a tre valori (V, F, ?): un predicato con null dà ? e la tupla è scartata, perché $\sigma_F$ tiene solo le tuple con $F = V$; `IS NULL` e `IS NOT NULL` servono a lavorare sui null.
-> - Nel join naturale due tuple con null su un attributo in comune non vengono combinate: la condizione di join non risulta vera.
+

@@ -265,9 +265,4 @@ function drawChart() {
 - Google Pay API: pagamenti digitali
 - reCAPTCHA: protezione spam
 
-> [!info] Sintesi:
-> - Google Charts: libreria JavaScript gratuita per creare grafici e visualizzazioni interattive basati su DataTable.
-> - Ogni tipo di grafico usa una classe diversa (PieChart, BarChart, GeoChart, ColumnChart, Gauge, Timeline) con il suo pacchetto da caricare.
-> - Gli eventi dei grafici (ready, select, onmouseover, onmouseout, error) si ascoltano con google.visualization.events.addListener.
-> - Google Maps e Calendar si incorporano con iframe (embedding) o con le JavaScript API, che richiedono un account Google Cloud e una API Key.
-> - Altri servizi: Analytics, Custom Search, Sign-In, AdSense, Drive API, Dialogflow, Pay API, reCAPTCHA.
+

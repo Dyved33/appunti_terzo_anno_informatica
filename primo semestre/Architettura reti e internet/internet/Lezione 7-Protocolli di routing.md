@@ -677,9 +677,4 @@ B      170.171.251.0/24 [20/0] via 151.99.49.1, 3w0d
 > [!example] Internet routing table
 > ![[images/slide-107.png|500]]
 
-> [!info] Sintesi:
-> - AS: dominio di routing di una stessa organizzazione; ASN (asplain/asdot) identifica univocamente gli AS, divisi in multihomed, stub e transit
-> - IGP all'interno dell'AS (OSPF, RIP), EGP tra AS (BGP)
-> - OSPF: link-state con LSA, aree e backbone (area 0), Dijkstra, tipi di router e pacchetti Hello/DB description/LS update
-> - RIP: distance-vector Bellman-Ford, massimo 15 hop, update ogni 30s su UDP 520, tecniche anti-loop (split horizon, hold down, poison reverse, triggered update)
-> - BGP: EGP tra AS sulla porta TCP 179, politiche di routing, 5 messaggi (Open, Update, Notification, Keep-alive, Refresh), eBGP e iBGP
+

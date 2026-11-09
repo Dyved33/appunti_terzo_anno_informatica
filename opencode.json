@@ -35,11 +35,11 @@
       "package": "@plannotator/opencode@latest",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
-    "@azumag/opencode-rate-limit-fallback@2.1.1"
+    "@azumag/opencode-rate-limit-fallback@2.1.0"
   ],
   "mcp": {
     "servers": {
-      "obsidian-search": { "type": "remote", "url": "http://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false }
+      "obsidian-search": { "type": "remote", "url": "http://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false, "pool": true }
     }
   },
   "tools": {
@@ -125,6 +125,7 @@
     { "action": "shell", "resource": "git log*", "effect": "allow" },
     { "action": "shell", "resource": "git show*", "effect": "allow" },
     { "action": "shell", "resource": "obsidian-mcp-search status*", "effect": "allow" },
+    { "action": "mcp.use", "resource": "obsidian-search*", "effect": "allow" },
     { "action": "shell", "resource": "*env*", "effect": "deny" },
     { "action": "webfetch", "resource": "*", "effect": "allow" },
     { "action": "websearch", "resource": "*", "effect": "allow" },

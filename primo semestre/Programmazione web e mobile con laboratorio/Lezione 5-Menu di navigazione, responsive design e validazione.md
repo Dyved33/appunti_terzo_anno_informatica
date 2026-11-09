@@ -172,9 +172,4 @@ Esempi di validatori:
 - HTML5: https://validator.w3.org/
 - CSS3: https://jigsaw.w3.org/css-validator/
 
-> [!info] Sintesi:
-> - Il menu di navigazione sposta tra le sezioni del sito: deve indicare la sezione attiva, essere navigabile da tastiera, responsive e coerente.
-> - Il responsive design adatta il layout a dimensioni e risoluzioni diverse usando unità relative, layout flessibile e media query.
-> - Le media query applicano stili in base a condizioni: `max-width`/`min-width`, orientamento e tipo di media (`screen`, `print`).
-> - Il meta viewport controlla dimensioni e scala dell'area visibile, con unità scalabili come % ed em.
-> - La validazione W3C garantisce la conformità; il codice non conforme causa problemi di rendering, accessibilità, SEO e manutenzione.
+

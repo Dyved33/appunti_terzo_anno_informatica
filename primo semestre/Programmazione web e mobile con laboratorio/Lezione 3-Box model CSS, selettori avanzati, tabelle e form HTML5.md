@@ -279,11 +279,3 @@ button.submit-btn {
 }
 ```
 
-> [!info] Sintesi:
-> - Il box model è content, padding, border e margin; `padding` e `margin` in shorthand si leggono in senso orario dall'alto e `border-radius` dall'angolo in alto a sinistra.
-> - I margini verticali adiacenti si fondono nel maggiore dei due; in orizzontale la somma delle misure non deve superare la viewport, per evitare lo scroll orizzontale.
-> - I selettori sono di tag, ID e classe; i combinatori sono discendente `A B`, figlio `A > B`, fratello adiacente `A + B` e fratello generale `A ~ B`; le liste si stilano con `list-style-*` e le virgolette di `<q>` con `quotes`.
-> - Le tabelle sono solo per dati tabulari: `border-collapse: collapse` unifica i bordi, `colspan` e `rowspan` uniscono celle e le celle coperte da uno span non si ripetono.
-> - `<form>` ha `action` e `method` (`GET` in query string, `POST` nel body); `<label for>` va collegato all'`id` del campo e le label cliccabili spostano il focus.
-> - `<input type>` determina validazione e aspetto, `checkbox` e `radio` si raggruppano con `name`, `<button>` ammette contenuto annidato, `<select>`, `<datalist>`, `<fieldset>`/`<legend>` e `<textarea>` completano i controlli.
-> - `required` e `placeholder` gestiscono la validazione, `linear-gradient` gli sfondi dei pulsanti.

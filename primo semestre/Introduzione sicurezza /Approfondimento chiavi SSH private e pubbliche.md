@@ -8,7 +8,4 @@
 
 In SSH client-server, al primo contatto il server invia una sfida crittografica; il client la firma con la chiave privata e il server verifica con la chiave pubblica. Copiando solo la chiave pubblica sul server (es. con `ssh-copy-id`) si abilita l'accesso senza password, più sicuro perché evita gli attacchi brute-force.
 
-> [!info] Sintesi:
-> - Chiave privata: resta sul client, firma la sfida di autenticazione, mai condivisa
-> - Chiave pubblica: va sul server in authorized_keys, verifica la firma del client
-> - L'autenticazione a chiave evita gli attacchi brute-force sulle password
+

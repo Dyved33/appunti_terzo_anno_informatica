@@ -206,10 +206,4 @@ La tabella grande ha quattro colonne: livello, protocolli ed esempi di funzioni,
 
 Il confronto finale fra i due modelli: i livelli Application, Presentation e Session dell'OSI corrispondono alla **Application** del TCP/IP, che raccoglie i protocolli di servizio DHCP, DNS, FTP, HTTP, HTTPS, POP, SMTP, SSH; il Transport OSI si divide in **TCP** e **UDP**; il Network corrisponde alla parte **Internet** con gli indirizzi IPv4 e IPv6; il Data Link e il Physical diventano **Network Access**, basato sull'indirizzo MAC.
 
-> [!info] Sintesi:
-> - Internet è definita dall'RFC 1122 come rete globale di reti; l'IP invia datagram indipendenti fra host identificati da indirizzo, senza connessioni né circuiti virtuali, e il cammino lo decide il routing dinamico.
-> - L'infrastruttura va dal PC e dagli apparati CPE dell'utente al local loop, al data center e ai servizi dell'ISP, poi al backbone con NAP e peering, fino ai data center del contenuto online.
-> - La governance è meritocratica: IANA gestisce spazio di indirizzi, nomi a dominio, ASN e numeri di protocollo e li delega ai cinque RIR regionali, ICANN coordina i RIR; IETF sviluppa gli standard, IESG li esamina, ISOC li promulga, RFC Editor li forma, IRTF cura la ricerca.
-> - I grafici IPv4 mostrano che lo spazio disponibile è praticamente esaurito (0,16 /8 o meno per RIR), mentre quello IPv6 è ancora abbondante.
-> - L'intranet usa le tecnologie Internet dentro l'organizzazione (router, VPN, controllo accessi), l'extranet le espone in Internet mettendo i server non critici nella DMZ.
-> - Il modello ISO/OSI ha sette livelli, dal Fisico all'Applicazione; nel TCP/IP i tre livelli più alti si fondono in Application e i due bassi in Network Access.
+

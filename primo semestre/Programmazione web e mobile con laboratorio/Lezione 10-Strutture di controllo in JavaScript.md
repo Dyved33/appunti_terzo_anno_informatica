@@ -251,9 +251,4 @@ Esempi:
 - Blocca il menu standard del browser al click destro.
 - Inibisce tasti speciali come backspace, F5 e tab.
 
-> [!info] Sintesi:
-> - Le strutture di controllo (`if`, `switch`, `for`, `while`) guidano il flusso del programma in base a condizioni.
-> - Gli array sono oggetti dinamici con indici numerici e metodi di manipolazione, ricerca, ordinamento e iterazione.
-> - Gli oggetti memorizzano coppie chiave-valore; `this` punta all'oggetto stesso.
-> - Gli eventi si gestiscono preferibilmente con `addEventListener`; `window.onload` aspetta il caricamento completo, `preventDefault()` blocca il comportamento predefinito.
-> - Le proprietà evento JS (`onclick`, `onsubmit`, `onload`, …) mappano ai nomi evento (`click`, `submit`, `load`, …).
+

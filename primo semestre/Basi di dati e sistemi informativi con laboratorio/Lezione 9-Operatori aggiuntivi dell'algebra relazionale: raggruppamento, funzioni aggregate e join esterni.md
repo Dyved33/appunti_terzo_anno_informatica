@@ -50,8 +50,3 @@ Esistono tre varianti:
 
 **Join esterno completo.** Include nel risultato tutte le tuple del primo e del secondo operando, eventualmente estendendole con valori NULL.
 
-> [!info] Sintesi:
-> - Gli operatori aggiuntivi ampliano l'algebra relazionale per esprimere query utili nei DBMS.
-> - Il raggruppamento $Y\ \mathcal{F}_{\langle listaFun\rangle}(r)$ partiziona le tuple per $Y$ e calcola funzioni aggregate (SUM, AVG, MAX, MIN, COUNT) per gruppo.
-> - Se $Y$ è vuoto, le funzioni aggregate sono calcolate sull'intera relazione.
-> - I join esterni (sinistro, destro, completo) mantengono le tuple senza controparte, estendendole con NULL.

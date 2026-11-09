@@ -312,10 +312,4 @@ Simboli speciali utilizzati per eseguire operazioni su valori e variabili.
 ## Comportamenti inaspettati
 ![[Pasted image 20261026223134.png]]
 
-> [!info] Sintesi:
-> - JavaScript è un linguaggio lato client che modifica HTML e CSS in tempo reale e gestisce eventi e richieste AJAX
-> - Si collega un file esterno con `<script src="..."></script>`; metterlo in fondo al body evita di bloccare il rendering
-> - `var` ha ambito globale o di funzione; `let` ha ambito di blocco e `const` impedisce la riassegnazione del binding
-> - Le basi comprendono funzioni, DOM, operatori, strutture di controllo, array, oggetti ed eventi
-> - Gli elementi si selezionano con `getElementById`, `getElementsByTagName`, `querySelector` e `querySelectorAll`, e si modificano con le operazioni sul DOM
-> -  `NaN` non è uguale a sé stesso e un array vuoto è truthy
+

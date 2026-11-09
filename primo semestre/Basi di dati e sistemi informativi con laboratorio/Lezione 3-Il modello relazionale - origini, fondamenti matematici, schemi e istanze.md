@@ -166,10 +166,3 @@ $$
 | **Schema di relazione** | Struttura / DDL dell'intestazione | Definizione del tracciato record |
 | **Istanza di relazione** | Insieme corrente di righe popolate | Contenuto del file su disco |
 
-> [!info] Sintesi:
-> - Codd teorizza il modello relazionale nel 1970 per ottenere indipendenza logica e fisica dei dati; oggi è il paradigma dominante, alla base del linguaggio SQL.
-> - Rispetto a gerarchico e reticolare, le associazioni sono *value-based* e non con puntatori fisici, e il modello ha basi formali in teoria degli insiemi e logica del primo ordine.
-> - La relazione matematica è un sottoinsieme del prodotto cartesiano dei domini: il grado è il numero di domini, la cardinalità il numero di tuple.
-> - Nel modello le tuple non sono ordinate e gli attributi sono nominati; `NULL` indica valore sconosciuto, inesistente o omesso.
-> - Schema di relazione $R(X)$ e istanza $r(R) = \{t_1, \dots, t_k\}$; schema di base di dati $\mathcal{B}$ e istanza $b = \{r_1, \dots, r_m\}$ con vincoli $\mathcal{I}$.
-> - In pratica relazione è tabella, tupla è riga, attributo è colonna, dominio è il tipo di dato della colonna, e l'istanza è il contenuto corrente del file.

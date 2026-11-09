@@ -371,10 +371,3 @@ La proprietà `perspective` sull'elemento padre dà profondità alle trasformazi
 
 *La figura: esempio completo di `@keyframes` con scalata e cambio colore, applicato all'hover di un bottone.*
 
-> [!info] Sintesi:
-> - Leggibilità: titoli, paragrafi brevi, font ≥1em, contrasto, spazio tra paragrafi.
-> - Accessibilità: struttura semantica (`<header>`, `<nav>`, `<main>`, `<footer>`, `<label>`), attributi `alt`, `tabindex`, `role`, `:focus`, ARIA (`aria-label`, `aria-labelledby`, `aria-describedby`); daltonismo: non usare solo il colore, aggiungere icone/testo, testare con simulatori.
-> - Ombre: `box-shadow` e `text-shadow` con offset, blur, spread, color; multiple ombre separate da virgola.
-> - Gradient: `linear-gradient(direction, color-stop...)` e `radial-gradient(shape at position, color-stop...)`.
-> - Transform: `translate`, `rotate`, `scale`, `skew` in un'unica proprietà; `perspective` sul padre per 3D.
-> - Transition / Animation: `transition` per animare cambi di proprietà (duration, timing, delay); `@keyframes` + `animation` per animazioni complesse a step.

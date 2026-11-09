@@ -197,10 +197,4 @@ Le traduzioni degli operatori insiemistici in SQL:
 
 *Figura – Esempio di UNION ALL sulle tabelle S e R.*
 
-> [!info] Sintesi:
-> - In SQL si scrivono join espliciti nella clausola `FROM`: `CROSS`, `INNER`, `LEFT/RIGHT/FULL OUTER`, `NATURAL JOIN`.
-> - Il join naturale $R_1 \bowtie R_2$ collega tuple su attributi con lo stesso nome (`NATURAL JOIN` o `JOIN ... USING`).
-> - Il theta join $R_1 \bowtie_{\exp} R_2 \equiv \sigma_{\exp}(R_1 \times R_2)$ si scrive con `JOIN ... ON`.
-> - Il `CROSS JOIN` realizza il prodotto cartesiano.
-> - I join esterni (sinistro, destro, completo) preservano le tuple senza controparte, estendendole con `NULL`.
-> - `UNION`, `INTERSECT`, `EXCEPT [ALL]` traducono unione, intersezione e differenza; il risultato è privo di duplicati salvo `ALL`.
+

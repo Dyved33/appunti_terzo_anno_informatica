@@ -369,6 +369,36 @@ Note a piè di pagina:
 
 *Osservazione:* **Depth-Limited** è la DFS con tetto di profondità $\ell$ (la subroutine `DEPTH-LIMITED-SEARCH` di iterative deepening): è incompleta e non ottimale da sola, serve come ciclo interno. **Iterative Deepening** la ripete con $\ell$ crescente e recupera completezza e ottimalità di BFS restando $O(bd)$ in spazio. **Bidirectional** parte contemporaneamente dallo stato iniziale e dal goal e i due fronti si incontrano a metà strada, per questo il tempo scende a $O(b^{d/2})$.
 
+## Implementazione dal libro di testo: ricerca su grafo (GRAPH-SEARCH)
+
+La lezione ha presentato l'albero di ricerca e il grafo dello spazio degli stati. Il libro di testo (AIMA, Cap. 3) propone una ricerca generica su **grafo** che, a differenza della ricerca su albero, tiene traccia degli stati già raggiunti per non riespanderli e non restare intrappolati nei cicli. L'algoritmo mantiene due strutture: la *frontiera* (i nodi generati ma non ancora espansi) e l'insieme *esplorato* (gli stati già processati). A ogni passo si estrae un nodo dalla frontiera, si verifica se è il goal e, se non lo è, lo si espande generando i figli; un figlio entra in frontiera solo se il suo stato non è né esplorato né già in frontiera.
+
+```
+Ricerca_Su_Grafo
+node <- NODO(problema.STATO_INIZIALE)
+if problema.test_obiettivo(node.stato): return node
+frontiera <- coda_contenente(node)
+esplorato <- insieme_vuoto()
+while frontiera non e' vuota:
+    node <- estrai(frontiera)
+    esplorato.aggiungi(node.stato)
+    for child in node.esproandi(problema):
+        if child.stato non in esplorato and child.stato non in frontiera:
+            if problema.test_obiettivo(child.stato): return child
+            esplorato.aggiungi(child.stato)
+            frontiera.aggiungi(child)
+return fallimento
+```
+
+La strategia di ricerca dipende solo da come si estrae il nodo dalla frontiera: stack LIFO dà DFS, coda FIFO dà BFS, coda di priorità sul costo cumulato dà UCS, sul valore $f = g + h$ dà A*.
+
+> [!info] Sintesi:
+> - Un agente razionale sceglie l'azione che massimizza il valore atteso della misura di prestazione.
+> - Lo stato può essere atomico, fattorizzato o strutturato; la scelta influenza la trattabilità della ricerca.
+> - Un problema di ricerca è definito da stati, funzione di successore, stato iniziale, test di obiettivo e piano.
+> - La ricerca su grafo evita cicli con un set esplorato; la strategia (DFS, BFS, UCS, A*) dipende dalla struttura della frontiera.
+> - UCS è completo e ottimale se i costi sono positivi, ma esplora in tutte le direzioni senza una guida verso il goal.
+
 ## Questione della stima
 
 Il concetto di **stima** è introdotto per guidare la ricerca verso la soluzione in modo efficiente, evitando l'esplorazione inutile di percorsi non promettenti. A differenza di algoritmi come quello di Dijkstra, che esplora tutte le direzioni, si utilizza una **funzione euristica** che stima il costo rimanente dal nodo corrente all'obiettivo, permettendo all'algoritmo di dare priorità ai nodi che sembrano portare più rapidamente alla meta. 
@@ -379,10 +409,4 @@ $f = g + h$, con $h$ l'euristica. La funzione $f$ quindi dipende:
 - da una buona stima (possono esistere diverse euristiche)
 - dal costo: deve essere poco costosa da calcolare
 
-> [!info] Sintesi:
-> - L'agente percepisce con i sensori e agisce con gli attuatori; è razionale se massimizza il valore atteso della misura di prestazione $U$, e l'ambiente si giudica per osservabilità, determinismo, granularità e ostilità.
-> - Lo stato si rappresenta in modo atomico, fattorizzato o strutturato; il problema di ricerca è la quadrupla $(S, f, S_0, \text{goal test})$ e il goal test si verifica solo sullo stato finale del piano.
-> - World state e search state si distinguono per astrazione (Pac-Man: $120 \times 2^{30} \approx 1.29 \times 10^{11}$ contro 120 stati); è l'esplosione combinatoria degli stati il vero collo di bottiglia.
-> - Nel grafo ogni stato compare una volta sola, nell'albero ogni nodo è un intero cammino e gli stessi stati si ripetono: i cicli rendono l'albero infinito, per questo la ricerca tiene una *fringe* e sceglie quale nodo espandere per primo.
-> - DFS espande il nodo più profondo (LIFO, $O(b^m)$ in tempo e $O(bm)$ in spazio, completo solo senza cicli, mai ottimale), BFS il più superficiale (FIFO, $O(b^d)$, ottimale solo con costi unitari); iterative deepening ripete DFS con limiti crescenti per unire spazio di DFS e tempo di BFS.
-> - UCS espande il nodo a costo cumulato minimo con coda di priorità: completo e ottimale, $O(b^{1+\lfloor C^*/\varepsilon\rfloor})$, ma esplora in ogni direzione senza sapere dove sia il goal; la tabella di confronto legge completezza, ottimalità, tempo e spazio di tutti gli algoritmi.
+

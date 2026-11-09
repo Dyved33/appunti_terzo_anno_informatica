@@ -392,9 +392,4 @@ Esempio:
 
 *Definizione:* È definito negli RFC 966, RFC 1112, RFC 1122, RFC 1812, RFC 2236, RFC 2715, RFC 2933, RFC 3228.
 
-> [!info] Sintesi:
-> - L'IP consegna datagram in best-effort e senza connessione, con header che riporta versione, lunghezza, TTL, protocollo, checksum e indirizzi sorgente/destinazione.
-> - Un indirizzo IPv4 è su 32 bit, diviso in rete e host, e si articola in 5 classi con indirizzi speciali, privati (RFC 1918) e link-local (RFC 3927).
-> - Il subnetting suddivide una rete con una subnet mask più restrittiva, stabilita dal piano di indirizzamento; il supernetting fa il percorso inverso.
-> - ARP traduce indirizzo IP in indirizzo fisico con richiesta broadcast e cache soft state; RARP fa l'inverso per le workstation diskless.
-> - ICMP segnala anomalie di routing e verifica la raggiungibilità; con il multicast i datagram arrivano a gruppi di host, gestiti da IGMP.
+

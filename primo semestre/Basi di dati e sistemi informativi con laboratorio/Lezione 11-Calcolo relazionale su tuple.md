@@ -94,12 +94,3 @@ In pratica: si considerano tutte le possibili assegnazioni di tuple alle variabi
 
 ---
 
-> [!info] Sintesi:
-> - Il calcolo relazionale su tuple è **dichiarativo**, non procedurale, ed è la base formale di SQL.
-> - Ha lo stesso potere espressivo dell'algebra relazionale di base → **linguaggio relazionale completo**.
-> - Un'espressione è $\{T \mid C\}$: $T$ = attributi da restituire (target list), $C$ = condizione (formula).
-> - Gli **atomi** sono di tre tipi: appartenenza a relazione ($R(t)$), confronto tra attributi ($t_i.A \;\theta\; t_j.B$), confronto con costante ($t.A \;\theta\; c$).
-> - Le **formule** si costruiscono induttivamente con $\land, \lor, \lnot, \exists, \forall$.
-> - Una variabile è **legata** se quantificata ($\exists t$, $\forall t$), altrimenti **libera**; in $\{T \mid C\}$ le variabili di $T$ devono essere libere in $C$.
-> - Semantica: $\exists t F$ vera se $F$ vera per almeno una tupla; $\forall t F$ vera se $F$ vera per tutte le tuple.
-> - Il risultato di $\{T \mid C\}$ sono le tuple che soddisfano $C$.

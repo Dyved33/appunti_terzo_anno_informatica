@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "bb4f2ec6144741e1",
+        "id": "2b15c5f2ba60703a",
         "type": "tabs",
         "children": [
           {
-            "id": "d363d477bb4bbbc9",
+            "id": "4a3caf116ba2b538",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architettura reti e internet/internet/Lezione 10-.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 10-"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 436.5
+    "width": 200
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -203,53 +199,53 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "d363d477bb4bbbc9",
+  "active": "be179a439a2a1fa6",
   "lastOpenFiles": [
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261026150054.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261026145528.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261026155343.png",
+    "Programmazione web e mobile con laboratorio/images/slide-34.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261109144900.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261109165930.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261109164418.png",
+    "Programmazione web e mobile con laboratorio/images/Pasted image 20261109153424.png",
+    "Pasted image 20261109165930.png",
+    "Pasted image 20261109164418.png",
+    "Introduzione sicurezza /Lezione 7-PGP, DNSSEC e autenticazione del dominio.md",
+    "Programmazione web e mobile con laboratorio/Lezione 12-Node.js e NPM.md",
+    "Introduzione IA/lezioni/TEST_WRITE.md",
+    "Introduzione IA/lezioni",
+    "Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+    "Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
+    "Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
+    "Introduzione sicurezza /Lezione 6-Posta elettronica.md",
+    "Pasted image 20261109153647.png",
+    "Programmazione web e mobile con laboratorio/esercizi/app.js",
+    "Introduzione sicurezza /Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS.md",
+    "Introduzione sicurezza /prompt.txt",
+    "Introduzione sicurezza /CH08 NetSec6e.pdf",
+    "Introduzione sicurezza /lu6096893qt0f.tmp",
+    "Introduzione sicurezza /CH08 NetSec6e.pptx",
+    "Architettura reti e internet/internet/Lezione 10-.md",
     "Basi di dati e sistemi informativi con laboratorio/esonero 1/ripasso.md",
     "Basi di dati e sistemi informativi con laboratorio/esonero 1/primoCompitinoNovembre2024.pdf",
     "Basi di dati e sistemi informativi con laboratorio/esonero 1/nov25.sql",
     "Basi di dati e sistemi informativi con laboratorio/esonero 1/nov24.sql",
     "Basi di dati e sistemi informativi con laboratorio/esonero 1/nov23.sql",
-    "Basi di dati e sistemi informativi con laboratorio/esonero 1/esercizi_algebra.pdf",
-    "Basi di dati e sistemi informativi con laboratorio/esonero 1/compitino1B20232024.pdf",
-    "Basi di dati e sistemi informativi con laboratorio/esonero 1/eserciziBDparte0.pdf",
-    "Basi di dati e sistemi informativi con laboratorio/esonero 1/compitino1_10Novembre2025.pdf",
-    "Basi di dati e sistemi informativi con laboratorio/esonero 1",
     "Architettura reti e internet/internet/Lezione 9-DNS.md",
-    "Architettura reti e internet/internet/Lezione 10-.md",
     "Basi di dati e sistemi informativi con laboratorio/esoneroI/ripasso.md",
-    "Basi di dati e sistemi informativi con laboratorio/esoneroI/esercizi_algebra.pdf",
     "Basi di dati e sistemi informativi con laboratorio/esoneroI/risposte.md",
     "Introduzione sicurezza /Laboratorio-.md",
-    "Introduzione sicurezza /Lezione 6-Posta elettronica.md",
     "Introduzione sicurezza /Laboratorio-Esercitazione Wireshark.md",
     "Introduzione IA/esoneri/domande_primo_esonero.md",
     "Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
     "Introduzione IA/esoneri/pseudocodici 1.md",
     "Introduzione IA/pseudocodiciI.md",
     "Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
-    "Architettura reti e internet/protocolli/images/parte_6-27.png",
-    "Architettura reti e internet/protocolli/images/parte_6-21.png",
-    "Architettura reti e internet/protocolli/images/parte_6-26.png",
-    "Architettura reti e internet/protocolli/images/parte_6-25.png",
-    "Architettura reti e internet/protocolli/images/parte_6-20.png",
-    "Architettura reti e internet/protocolli/images/parte_6-24.png",
-    "Architettura reti e internet/protocolli/images/parte_6-19.png",
-    "Architettura reti e internet/protocolli/images/parte_6-17.png",
-    "Architettura reti e internet/protocolli/images/parte_6-14.png",
-    "Architettura reti e internet/protocolli/images/parte_6-12.png",
     "Basi di dati e sistemi informativi con laboratorio/ripassoI.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 12-Join di Tabelle.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 12-.md",
     "Programmazione web e mobile con laboratorio/Lezione 11-Servizi Google.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 9-Operatori aggiuntivi dell'algebra relazionale: raggruppamento, funzioni aggregate e join esterni.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 8-DML di SQL.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 7-Algebra relazionale.md",
-    "Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
-    "Introduzione IA/Lezione 8-.md",
-    "Introduzione sicurezza /Lezione 7-.md",
-    "Untitled.md",
-    "Programmazione web e mobile con laboratorio/Lezione 10.md"
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 11-Calcolo relazionale su tuple.md"
   ]
 }

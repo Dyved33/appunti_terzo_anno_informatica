@@ -162,10 +162,4 @@ Si può aggiungere che per un segnale elettrico si può anche parlare di spettro
 
 La larghezza di banda è l'intervallo delle frequenze contenute in un segnale composto. Se un segnale trasmette da 300 Hz a 3400 Hz, la sua larghezza di banda sarà 3400 − 300 = 3100 Hz.
 
-> [!info] Sintesi:
-> - Le reti mesh wireless sono auto-configuranti e multi-hop e tollerano i guasti meglio delle Wi-Fi: il guasto di un nodo non isola tutti gli utenti sotto di esso.
-> - I protocolli governano il colloquio tra DTE/DCE: gestiscono il flusso e gli scambi, correggono gli errori, sincronizzano e danno struttura formale ai dati. Si dividono in ambito primario/secondario, ibrido e peer-to-peer.
-> - RTS/CTS è un handshake basato sull'interfaccia RS-232; Xon/Xoff regola il flusso tra computer e terminale tramite due codici ASCII.
-> - ARQ è full duplex e a finestra scorrevole: con Go-back-N un frame danneggiato fa ritrasmettere N frame, col metodo selettivo solo i frame danneggiati.
-> - Lo strato fisico adatta i segnali al trasporto, convertendoli in un altro segnale digitale o in un segnale analogico (modulazione).
-> - Un segnale sinusoidale segue $u = U\sin(\omega t + \varphi)$; frequenza $f$, periodo $T = 1/f$, lunghezza d'onda $\lambda = c/f$; spettro e larghezza di banda descrivono le frequenze contenute.
+

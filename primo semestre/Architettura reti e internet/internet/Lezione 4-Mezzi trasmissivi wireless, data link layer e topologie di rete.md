@@ -198,10 +198,4 @@ L'architettura **IBM 3270** rappresenta lo standard industriale storicamente dom
 - presso la sede periferica, il modem locale si interfaccia a una **Control Unit remota** (come i controller IBM serie 3174/3274);
 - la Control Unit remota gestisce il multiplexing e controlla un cluster di terminali video (display IBM 3278/3279) e stampanti locali, inviando i pacchetti strutturati a blocchi di schermata verso il calcolatore centrale.
 
-> [!info] Sintesi:
-> - I mezzi trasmissivi wireless consentono comunicazioni senza vincoli fisici, offrendo flessibilità, risparmio infrastrutturale e copertura di aree remote.
-> - Il livello Data Link (livello 2) gestisce framing, controllo dell'errore, controllo di flusso e accesso al mezzo (sottolivelli LLC e MAC in IEEE 802).
-> - La topologia di rete definisce la disposizione fisica e logica dei nodi secondo i modelli della teoria dei grafi.
-> - La topologia a bus condivide un unico canale terminato; la topologia a stella isola i guasti tramite apparato centrale; l'anello fa circolare i dati in un percorso chiuso.
-> - Nelle reti locali moderne, la topologia fisica a stella si combina con logiche a bus (Ethernet su hub) o ad anello (MAU in Token Ring/FDDI).
-> - Le prime architetture WAN (anni '50 e sistema IBM 3270) si basavano su elaborazione centralizzata su mainframe, modem e unità di controllo remote per terminali.
+
