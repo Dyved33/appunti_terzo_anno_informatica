@@ -30,13 +30,13 @@
   "formatter": false,
   "plugins": [
     "opencode-parser",
-    "@tarquinen/opencode-dcp@latest",
     {
-      "package": "@plannotator/opencode@latest",
+      "package": "@plannotator/opencode@0.28.59",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
     "@azumag/opencode-rate-limit-fallback@2.1.0"
   ],
+  "skills": [".opencode/skills"],
   "mcp": {
     "servers": {
       "obsidian-search": { "type": "remote", "url": "http://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false, "pool": true }
@@ -57,6 +57,7 @@
     "auto": true,
     "keep": { "tokens": 12000 }
   },
+  "subagent_depth": 1,
   "experimental": { "todo": true },
   "watcher": {
     "ignore": [
@@ -132,5 +133,8 @@
     { "action": "subagent", "resource": "*", "effect": "allow" },
     { "action": "question", "resource": "*", "effect": "allow" },
     { "action": "todowrite", "resource": "*", "effect": "allow" }
-  ]
+  ],
+  "permission": {
+    "skill": { "i-have-adhd": "allow" }
+  }
 }

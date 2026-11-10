@@ -12,3 +12,4 @@
 - [[Lezione 10-L'operatore di divisione e i valori nulli nell'algebra relazionale|L'operatore di divisione e i valori nulli nell'algebra relazionale]]
 - [[Lezione 11-Calcolo relazionale su tuple|Calcolo relazionale su tuple]]
 - [[Lezione 12-Join di Tabelle|Join di Tabelle]]
+- [[Lezione 13-Gruppi, funzioni d'aggregazione, GROUP BY e HAVING|Gruppi, funzioni d'aggregazione, GROUP BY e HAVING]]
