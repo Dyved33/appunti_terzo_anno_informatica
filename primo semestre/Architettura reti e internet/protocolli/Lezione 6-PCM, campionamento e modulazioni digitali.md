@@ -108,9 +108,7 @@ Quest'ultima condizione, assolutamente necessaria, è richiesta per il corretto 
 Questo tipo di modulazione è stata usata nei primi modem, V21 e V23 molto lenti rispetto a quelli odierni, ed è tuttora usata nei ponti radio e nelle trasmissioni fra cellulari del tipo GSM.
 
 > [!example] FSK Full Duplex su una linea telefonica
-> <div style="display: flex; justify-content: center;">
->   <img src="parte_6-17.png" width="500">
-> </div>
+> ![[parte_6-17.png|500]]
 > FSK Full Duplex su una linea telefonica: spettri dei segnali trasmessi in direzioni opposte su una linea voce (rame), con frequenze 1070, 1270, 2025, 2225 Hz.
 
 ### PSK (Phase-Shift Keying)
@@ -185,5 +183,3 @@ Riassumendo:
 
 - un valore EVM% di 0,10 (10%) rappresenta un segnale peggiore rispetto ad un altro con EVM% di 0,05 (5%);
 - un valore EVM di −10 dB rappresenta un segnale peggiore rispetto ad un altro con EVM di −20 dB.
-
-
