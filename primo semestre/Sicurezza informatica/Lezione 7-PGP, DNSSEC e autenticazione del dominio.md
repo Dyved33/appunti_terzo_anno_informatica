@@ -1,4 +1,4 @@
-# PGP, DNSSEC e autenticazione del dominio (SPF, DMARC)
+ # PGP, DNSSEC e autenticazione del dominio (SPF, DMARC)
 
 ## Installare S/MIME in Thunderbird
 
@@ -55,7 +55,6 @@ Lo schema mostra i componenti coinvolti nel flusso DNS: *zone file*, server mast
 
 > [!example] Vulnerabilità del DNS:
 > Il DNS è soggetto ad attacchi come corruzione dei dati, usurpazione del server master, usurpazione della cache, inquinamento della cache (*cache pollution*) e data spoofing, aggiornamenti non autorizzati e alterazione dei dati di zona. Questi attacchi motivano l'introduzione di DNSSEC.
-> ![[slide-45-45.png|300]]
 
 ## DNSSEC
 

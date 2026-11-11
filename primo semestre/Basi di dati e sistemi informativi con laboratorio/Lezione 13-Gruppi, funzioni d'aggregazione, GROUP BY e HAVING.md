@@ -1,9 +1,6 @@
 # Gruppi, funzioni d'aggregazione, GROUP BY e HAVING
 
 Le query di SQL viste finora estraggono informazioni su singole tuple, eventualmente tramite join. Si passa ora alle informazioni di sintesi su gruppi di tuple, mediante le funzioni d'aggregazione e le clausole `GROUP BY` e `HAVING` del comando `SELECT`.
-
-Esempi dal docente: il titolare del corso di logica; il numero di insegnanti che tengono almeno un corso.
-
 ## Funzioni d'aggregazione
 
 Lo standard SQL mette a disposizione una serie di funzioni d'aggregazione (o 'di colonna').

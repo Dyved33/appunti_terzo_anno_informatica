@@ -8,7 +8,7 @@ Un messaggio di posta segue questa catena:
 
 **Protocolli di accesso:** POP3 (*Post Office Protocol*, TCP 110) è semplice: l'utente si autentica con username e password e può scaricare (*retrieve*) e cancellare (*delete*) i messaggi. IMAP (*Internet Message Access Protocol*, TCP 143) è più complesso, offre un'autenticazione più forte e funzioni aggiuntive.
 
-![[slide-04-04.png|300]]
+![[slide-04-04.png|500]]
 
 L'architettura della posta Internet è definita da **RFC 5598** (*Internet Mail Architecture*) e si basa su due mondi: il *user world* (i MUA degli utenti) e il *transfer world* (il *Message Handling Service*, MHS, composto dagli MTA). Il MHS accetta un messaggio da un utente e lo consegna a uno o più altri utenti, creando un ambiente virtuale di scambio MUA-to-MUA. Ogni dominio amministrativo di posta (*Administrative Management Domain*, ADMD) — per esempio un dipartimento con un mail relay locale, l'IT di un'azienda o un ISP — può avere politiche operative e decisioni basate sulla fiducia diverse.
 
@@ -20,7 +20,7 @@ L'architettura della posta Internet è definita da **RFC 5598** (*Internet Mail 
 
 SMTP (*Simple Mail Transfer Protocol*, RFC 821 del 1982, oggi RFC 5321) incapsula un messaggio di posta in una busta e lo inoltra attraverso molti MTA da origine a destinazione. È un protocollo client-server basato su testo: il client (mittente) contatta il server (next-hop recipient), invia una serie di comandi ASCII per descrivere il messaggio da inviare e poi trasmette il messaggio stesso; il server risponde con un codice di ritorno per ogni comando.
 
-![[slide-07-07.png|300]]
+![[slide-07-07.png|500]]
 
 Nell'esempio, il client apre la sessione con `HELO`, indica mittente e destinatari con `MAIL FROM` e `RCPT TO`, poi invia il messaggio con `DATA`. Il server rifiuta `Green` con `550 No such user here`, ma accetta `Jones` e `Brown` con `250 OK`. Il corpo termina con `<CRLF>.<CRLF>` e la sessione con `QUIT`.
 
@@ -74,7 +74,7 @@ Le contromisure combinano STARTTLS (che cifra la connessione SMTP), cifratura, f
 
 **Firma digitale:** il mittente calcola l'hash del testo del messaggio e lo cifra con la propria chiave privata. Il destinatario verifica la firma con la chiave pubblica del mittente, contenuta nel certificato. Se la verifica riesce, il destinatario è sicuro dell'identità del mittente e dell'integrità del messaggio (non ripudio).
 
-Nella pratica (slide del libro), l'autenticazione è fornita tramite firma digitale: si usa più comunemente RSA con SHA-256. Il mittente genera un messaggio, SHA-256 produce un digest di 256 bit, il digest viene cifrato con RSA usando la chiave privata del mittente e allegato al messaggio insieme alle informazioni identificative del firmatario. Il destinatario usa RSA con la chiave pubblica del mittente per decifrare e recuperare il digest, genera un nuovo digest del messaggio e li confronta: se coincidono, il messaggio è accettato come autentico.
+Nella pratica, l'autenticazione è fornita tramite firma digitale: si usa più comunemente RSA con SHA-256. Il mittente genera un messaggio, SHA-256 produce un digest di 256 bit, il digest viene cifrato con RSA usando la chiave privata del mittente e allegato al messaggio insieme alle informazioni identificative del firmatario. Il destinatario usa RSA con la chiave pubblica del mittente per decifrare e recuperare il digest, genera un nuovo digest del messaggio e li confronta: se coincidono, il messaggio è accettato come autentico.
 
 **Cifratura:** il messaggio viene cifrato con una chiave simmetrica casuale (*content-encryption key*) usata una sola volta per quel messaggio; la chiave stessa viene cifrata con la chiave pubblica RSA del destinatario e allegata al messaggio. Il destinatario usa la propria chiave privata per recuperare la content-encryption key e decifrare il messaggio. Più comunemente si usa AES con chiave a 128 bit in modalità CBC.
 
@@ -144,5 +144,3 @@ Esistono certificati S/MIME gratuiti, per esempio tramite il portale di Actalis 
 ## Complementi dal libro di testo
 
 Il capitolo 8 del libro di testo (*Electronic Mail Security*) copre l'architettura della posta Internet (RFC 5598, *user world* e *transfer world*, ADMD), i formati MIME (RFC 5322 per i contenuti, RFC 2045-2049 per MIME, i cinque campi di intestazione, i content type e i transfer encoding), le minacce e le mitigazioni, S/MIME e PGP. S/MIME si basa sulla *Cryptographic Message Syntax* (RFC 5652) con i content type Data, SignedData, EnvelopedData e CompressedData; usa RSA con SHA-256 per la firma e AES-128 CBC per la cifratura, con la content-encryption key cifrata con la chiave pubblica del destinatario; gestisce i certificati X.509 tramite CA e offre servizi avanzati come le ricevute firmate, le etichette di sicurezza, le mailing list sicure e i signing certificates (RFC 2634). PGP offre funzionalità equivalenti ma si differenzia per la certificazione delle chiavi (web of trust invece delle CA) e per la distribuzione delle chiavi. SP 800-177 raccomanda S/MIME piuttosto che PGP per la maggiore fiducia nel sistema CA di verifica delle chiavi pubbliche.
-
-

@@ -8,13 +8,31 @@
         "type": "tabs",
         "children": [
           {
-            "id": "eb2e41e93ecf0ec9",
+            "id": "5e5f728ada3dd937",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 6-PCM, campionamento e modulazioni digitali"
+            }
+          },
+          {
+            "id": "e2a4f3dd3edeee96",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "primo semestre/Programmazione web e mobile con laboratorio/Lezione 11-Servizi Google.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 11-Servizi Google"
             }
           }
         ]
@@ -93,8 +111,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 408.5,
-    "collapsed": true
+    "width": 323.5
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -262,53 +279,53 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "eb2e41e93ecf0ec9",
+  "active": "5e5f728ada3dd937",
   "lastOpenFiles": [
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esercizi_algebra&calcolo_relazionale.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esonero2025.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/compitino1B20232024.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esonero2023.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esercizi_algebra.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/primoCompitinoNovembre2024.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/esonero2024.pdf",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esonero 1/eserciziBDparte0.pdf",
-    "primo semestre/Introduzione IA/esoneri/pseudocodici 1.md",
-    "primo semestre/Introduzione IA/esoneri/domande_primo_esonero.md",
-    "primo semestre/Introduzione IA/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
-    "primo semestre/Introduzione IA/esoneri/domande_secondoEsonero_IntroAI.pdf",
-    "primo semestre/Introduzione IA/Lezione 3-Ricerca su grafo.md",
-    "primo semestre/Introduzione IA/domande_primo_esonero.md",
-    "primo semestre/Introduzione IA/esoneri/algorithms.pdf",
-    "primo semestre/Introduzione IA/esoneri",
-    "primo semestre/Introduzione IA/Lezione 5-Ricerca con memoria limitata.md",
-    "primo semestre/Introduzione IA/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
-    "primo semestre/Introduzione IA/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
-    "primo semestre/Introduzione IA/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/risposte.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/esoneroI/ripassoI.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 12-Join di Tabelle.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p24-24.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p22-22.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p19-19.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p17-17.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p14-14.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/lezione4-p06-06.png",
-    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-27.png",
-    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-26.png",
-    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-25.png",
-    "primo semestre/Architettura reti e internet/protocolli/images/parte_6-24.png",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 11-Servizi Google.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 7-EVM, modulazioni digitali e limiti di trasmissione.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/ripassoI.md",
-    "primo semestre/Introduzione IA/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 10-Strutture di controllo in JavaScript.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 9-Introduzione a JavaScript.md",
-    "CONFIG-CHANGES.md",
-    "primo semestre/Introduzione sicurezza /Lezione 7-Posta elettronica.md",
-    "primo semestre/Introduzione sicurezza /Approfondimento chiavi SSH private e pubbliche.md",
-    "primo semestre/Architettura reti e internet/internet/Lezione 8-Telnet.md",
-    "primo semestre/Introduzione IA/Lezione 7.md",
-    "Untitled.md",
-    "primo semestre/Introduzione sicurezza /00 Indice - Introduzione sicurezza.md",
-    "primo semestre/Introduzione IA/00 Indice - Introduzione IA.md"
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 12-Node.js e NPM.md",
+    "primo semestre/Sicurezza informatica/Lezione 7-PGP, DNSSEC e autenticazione del dominio.md",
+    "primo semestre/Sicurezza informatica/Lezione 6-Posta elettronica.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 13-Gruppi, funzioni d'aggregazione, GROUP BY e HAVING.md",
+    "primo semestre/Sicurezza informatica/wireshark/03_conversazione_http.pcap",
+    "primo semestre/Sicurezza informatica/wireshark/02_estrai_immagine.pcap",
+    "primo semestre/Sicurezza informatica/wireshark/01_credenziali_ftp.pcap",
+    "primo semestre/Sicurezza informatica/wireshark",
+    "primo semestre/Sicurezza informatica/prompt.txt",
+    "primo semestre/Sicurezza informatica/image/slide-50-50.png",
+    "primo semestre/Sicurezza informatica/image/slide-45-46.png",
+    "primo semestre/Sicurezza informatica/image/slide-45-45.png",
+    "primo semestre/Sicurezza informatica/image/slide-44-44.png",
+    "primo semestre/Sicurezza informatica/image/slide-43-43.png",
+    "primo semestre/Sicurezza informatica/image/slide-24-24.png",
+    "primo semestre/Sicurezza informatica/image/slide-14-14.png",
+    "primo semestre/Sicurezza informatica/image/slide-07-07.png",
+    "primo semestre/Sicurezza informatica/image/slide-04-04.png",
+    "primo semestre/Sicurezza informatica/image/slide-03-03.png",
+    "primo semestre/Sicurezza informatica/image",
+    "primo semestre/Sicurezza informatica/Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
+    "primo semestre/Sicurezza informatica/Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS.md",
+    "primo semestre/Sicurezza informatica/Lezione 3-Firewall.md",
+    "primo semestre/Sicurezza informatica/Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
+    "primo semestre/Sicurezza informatica/Lezione 1-Fondamenti di sicurezza informatica e protezione dei sistemi.md",
+    "primo semestre/Sicurezza informatica/Laboratorio-Esercitazione Wireshark.md",
+    "primo semestre/Sicurezza informatica/CH08 NetSec6e.pptx",
+    "primo semestre/Sicurezza informatica/CH08 NetSec6e.pdf",
+    "primo semestre/Sicurezza informatica/Approfondimento chiavi SSH private e pubbliche.md",
+    "primo semestre/Sicurezza informatica/00 Indice - Introduzione sicurezza.md",
+    "primo semestre/Sicurezza informatica",
+    "primo semestre/Intelligenza artificiale/lezioni/TEST_WRITE.md",
+    "primo semestre/Intelligenza artificiale/esoneri/pseudocodici 1.md",
+    "primo semestre/Intelligenza artificiale/esoneri/domande_secondoEsonero_IntroAI.pdf",
+    "primo semestre/Intelligenza artificiale/esoneri/domande_primo_esonero.md",
+    "primo semestre/Intelligenza artificiale/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
+    "primo semestre/Intelligenza artificiale/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
+    "primo semestre/Intelligenza artificiale/Lezione 5-Ricerca con memoria limitata.md",
+    "primo semestre/Intelligenza artificiale/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
+    "primo semestre/Intelligenza artificiale/Lezione 3-Ricerca su grafo.md",
+    "primo semestre/Intelligenza artificiale/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
+    "primo semestre/Intelligenza artificiale/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
+    "primo semestre/Intelligenza artificiale/00 Indice - Introduzione IA.md"
   ]
 }
