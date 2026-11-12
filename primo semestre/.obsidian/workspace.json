@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "39b67f79b4f44176",
+        "id": "4750e58c4820c3f6",
         "type": "tabs",
         "children": [
           {
-            "id": "35516b0ba1322ccb",
+            "id": "a01b707b597a7af9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Intelligenza artificiale/Lezione 8-.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 8-"
+              "title": "New tab"
             }
           }
         ]
@@ -204,8 +200,10 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "35516b0ba1322ccb",
+  "active": "a01b707b597a7af9",
   "lastOpenFiles": [
+    "Intelligenza artificiale/Lezione 8-Introduzione al Machine Learning.md",
+    "Architettura reti e internet/internet/Lezione 11-.md",
     "Intelligenza artificiale/images/Pasted image 20261111182043.png",
     "Intelligenza artificiale/images/Pasted image 20261111181013.png",
     "Intelligenza artificiale/images/Pasted image 20261111180948.png",
@@ -216,10 +214,8 @@
     "Intelligenza artificiale/images/Pasted image 20261111180634.png",
     "Intelligenza artificiale/images/Pasted image 20261111174416.png",
     "Intelligenza artificiale/images/Pasted image 20261111174354.png",
-    "Intelligenza artificiale/images/Pasted image 20261111174024.png",
     "Intelligenza artificiale/chap3_basic_classification.pdf",
     "Intelligenza artificiale/Unconfirmed 33987.crdownload",
-    "Intelligenza artificiale/Lezione 8-.md",
     "Intelligenza artificiale/01_introduction_ML.pdf",
     "Intelligenza artificiale/Unconfirmed 868997.crdownload",
     "Architettura reti e internet/protocolli/parte_7.pdf",

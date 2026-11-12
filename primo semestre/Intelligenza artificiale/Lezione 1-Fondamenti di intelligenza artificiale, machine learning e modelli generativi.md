@@ -25,7 +25,7 @@ $$\text{IA Generativa} \subseteq \text{Deep Learning} \subseteq \text{Machine Le
 └─────────────────────────────────────────────────────────────┘
 ```
 
-- **Machine Learning (ML):** sottoinsieme dell'IA basato su algoritmi che apprendono pattern e relazioni matematiche direttamente dai dati, senza essere programmati con regole rigide.
+- **Machine Learning (ML):** sottoinsieme dell'IA basato su algoritmi che apprendono pattern e relazioni matematiche direttamente dai dati, senza essere programmati con regole rigide. Vedi la [[Lezione 8-Introduzione al Machine Learning|Introduzione al Machine Learning e alberi di decisione per la classificazione]] per i tipi di apprendimento e gli alberi di decisione.
 - **Deep Learning (DL):** branca del machine learning basata su reti neurali artificiali multi-strato con un elevato numero di parametri.
 - **IA generativa:** sistemi di deep learning progettati per generare nuovi contenuti, testo, codice, immagini, audio o azioni, a partire da distribuzioni di probabilità apprese.
 

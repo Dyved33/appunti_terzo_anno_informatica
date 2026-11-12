@@ -7,3 +7,4 @@
 - [[Lezione 5-Ricerca con memoria limitata|Ricerca con memoria limitata: IDA*, RBFS e SMA*]]
 - [[Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning|Game Playing, Minimax e Alpha-Beta Pruning]]
 - [[Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax)|Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax)]]
+- [[Lezione 8-Introduzione al Machine Learning|Introduzione al Machine Learning e alberi di decisione per la classificazione]]
