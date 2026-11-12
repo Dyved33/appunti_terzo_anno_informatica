@@ -38,7 +38,6 @@ function cambiaImmagine() {
     img.setAttribute("src", "immagini/imm2.jpg");
 }
 
-
 function sostituisciClasse() {
     const elemento = document.getElementById("bello1");
     elemento.className = "bott-bello-bis";

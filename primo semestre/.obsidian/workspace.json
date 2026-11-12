@@ -11,10 +11,14 @@
             "id": "a01b707b597a7af9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/internet/Lezione 11-.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 11-"
             }
           }
         ]
@@ -79,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 439.5,
-    "collapsed": true
+    "width": 439.5
   },
   "right": {
     "id": "046686d2950f5d8c",
