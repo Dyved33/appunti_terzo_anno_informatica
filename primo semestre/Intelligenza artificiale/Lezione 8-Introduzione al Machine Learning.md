@@ -310,39 +310,6 @@ Approccio *greedy*: i nodi con una distribuzione di classe più pura sono prefer
 
 ![[Pasted image 20261111181013.png]]
 
-## Confronto tra misure di impurità
-
-![[Pasted image 20261111182043.png]]
-
-Sono state introdotte le misure di impurità del nodo (Gini Index, Entropy, Misclassification error) e il criterio del *gain* ($P - M$), ma i calcoli numerici dettagliati per ogni attributo non sono stati trattati a lezione.
-
-## Problema del gran numero di partizioni
-Le misure di impurità dei nodi tendono a preferire split che generano un elevato numero di partizioni, ciascuna piccola ma pura. Per esempio, un attributo come *Customer ID* può ottenere l'information gain più alto perché l'entropia di tutti i figli risulta zero, pur non essendo realmente predittivo.
-
-## Gain Ratio
-Il **Gain Ratio** corregge questo limite dividendo l'Information Gain per lo *Split Information*, cioè l'entropia della partizionamento:
-
-$$GainRatio = \frac{Gain}{SplitInfo}, \qquad SplitInfo = -\sum_{i=1}^{k} \frac{n_i}{n} \log \frac{n_i}{n}$$
-
-dove $n_i$ è il numero di record nella partizione $i$ e $n$ il totale dei record. Una partizione ad alta entropia (molte partizioni piccole) viene quindi penalizzata. Il Gain Ratio è usato nell'algoritmo C4.5 ed è stato progettato per superare lo svantaggio dell'Information Gain.
-
-## Alberi di decisione: vantaggi e svantaggi
-
-*Vantaggi:*
-- Economici da costruire.
-- Estremamente veloci nel classificare record sconosciuti.
-- Facili da interpretare per alberi di piccole dimensioni.
-- Robusti al rumore, specialmente quando si impiegano metodi per evitare l'overfitting.
-- Possono gestire facilmente attributi ridondanti o irrilevanti (a meno che gli attributi non interagiscano).
-
-*Svantaggi:*
-- Lo spazio degli alberi di decisione possibili è esponenzialmente grande: gli approcci greedy spesso non riescono a trovare il miglior albero.
-- Non tengono conto delle interazioni tra attributi.
-- Ogni confine di decisione coinvolge un singolo attributo.
-
-## Interazioni tra attributi e confini di decisione
-Alcuni attributi diventano informativi solo in combinazione con altri (*interazioni tra attributi*): individualmente possono avere un'entropia elevata, ma insieme determinano la classe. Inoltre, poiché ogni test di un albero di decisione coinvolge un singolo attributo, i confini di decisione sono box allineati agli assi dello spazio degli attributi; rappresentare confini obliqui o diagonali richiede di impilare molti di questi box.
-
 ## Capitolo finale dal libro di testo: apprendimento degli alberi di decisione (AIMA, Cap. 19.3)
 
 Un **albero di decisione** è una rappresentazione di una funzione che mappa un vettore di valori di attributo in un singolo valore di output, una "decisione". L'albero prende una decisione eseguendo una sequenza di test, partendo dalla radice e seguendo il ramo appropriato fino a raggiungere una foglia. Ogni nodo interno corrisponde a un test sul valore di uno degli attributi di input, i rami dal nodo sono etichettati con i possibili valori dell'attributo e i nodi foglia specificano il valore restituito dalla funzione.

@@ -1,0 +1,1545 @@
+                  Data  Mining  
+      Classification:  Basic  Concepts  and  
+                  Techniques
+
+               Lecture  Notes  for  Chapter  3
+
+    Introduction  to  Data  Mining,  2nd Edition
+                              by
+              Tan,  Steinbach,  Karpatne,  Kumar
+
+
+
+
+ 2/14/18                  Introduction  to  Data  Mining,  2nd Edition   1
+
+
+
+
+Classification:  Definition
+
+● Given  a  collection  of  r ecords  ( training  set  )
+    – Each  record  is  by  characterized  by  a  tuple  
+      (x,y),  where  x is  the  attribute  set  and  y is  the  
+      class  label
+           u x:  attribute,  predictor,  i ndependent  variable,  i nput
+
+           u y:  class,  response,  d ependent  variable,  o utput
+
+
+
+● Task:
+    – Learn  a  model  that  maps  each  attribute  set  x
+      into  one  of  the  predefined  class  labels  y
+
+ 2/14/18                  Introduction  to  Data  Mining,  2nd Edition   2
+Examples  of  Classification  Task
+
+      Task                                               Attribute  set,  x                             Class  label,  y
+
+Categorizing   Features  extracted  from   spam  or  non-­spam
+email          email  message  header  
+messages       and  content
+Identifying                                  Features  extracted  from   malignant  or  benign  
+tumor  cells                                 MRI  scans                  cells
+
+
+Cataloging                                   Features  extracted  from   Elliptical,  spiral,  or  
+galaxies                                     telescope  images           irregular-­shaped  
+                                                                         galaxies
+
+  2/14/18                                                Introduction  to  Data  Mining,  2nd Edition                      3
+
+
+
+
+General  Approach  for  Building  
+Classification  Model
+               Tid     Attrib1      Attrib2     Attrib3     Class  
+                                                                                        Learning
+               1       Yes         Large        125K        No  
+                                                                                        algorithm
+               2       No          Medium       100K        No  
+
+               3       No          Small        70K         No  
+
+               4       Yes         Medium       120K        No  
+                                                                            Induction
+               5       No          Large        95K         Yes  
+
+               6       No          Medium       60K         No  
+
+               7       Yes         Large        220K        No                             Learn  
+               8       No          Small        85K         Yes                            Model
+               9       No          Medium       75K         No  
+
+               10      No          Small        90K         Yes  
+                                                                                                              Model
+        10  
+
+
+
+
+                               Training  Set
+                                                                                           Apply  
+               Tid     Attrib1      Attrib2     Attrib3     Class                          Model
+               11      No          Small        55K         ?  
+
+               12      Yes         Medium       80K         ?  
+
+               13      Yes         Large        110K        ?              Deduction
+               14      No          Small        95K         ?  
+
+               15      No          Large        67K         ?  
+        10  
+
+
+
+
+                                Test  Set
+
+  2/14/18                                                Introduction  to  Data  Mining,  2nd Edition                      4
+             Classification  Techniques
+
+             ● Base  Classifiers
+                      – Decision  Tree  based  Methods
+                      – Rule-­based  Methods
+                      – Nearest-­neighbor
+                      – Neural  Networks
+                      – Deep  Learning
+                      – Naïve  Bayes  and  Bayesian  Belief  Networks
+                      – Support  Vector  Machines
+
+             ● Ensemble  Classifiers
+                      – Boosting,  Bagging,  Random  F orests
+                2/14/18                            Introduction  to  Data  Mining,  2nd Edition                           5
+
+
+
+
+             Example  of  a  Decision  Tree
+
+
+                                                                                                    Splitting  Attributes
+               Home        Marital     Annual   Defaulted  
+        ID  
+               Owner       Status      Income   Borrower  
+       1       Yes        Single       125K     No                                            Home  
+       2       No         Married      100K     No                                            Owner
+                                                                                  Yes                      No
+       3       No         Single       70K      No  
+       4       Yes        Married      120K     No                               NO                        MarSt
+       5       No         Divorced   95K        Yes                                        Single,   Divorced        Married
+       6       No         Married      60K      No  
+                                                                                                  Income             NO
+       7       Yes        Divorced   220K       No  
+                                                                                     <  80K                 >  80K
+       8       No         Single       85K      Yes  
+       9       No         Married      75K      No                                       NO                YES
+       10   No            Single       90K      Yes  
+10  
+
+
+
+
+                       Training  Data                                              Model:    Decision  Tree
+
+                2/14/18                            Introduction  to  Data  Mining,  2nd Edition                           6
+             Another  Example  of  Decision  Tree
+
+
+                                                                                               MarSt       Single,  
+                                                                     Married                             Divorced
+               Home           Marital     Annual   Defaulted  
+        ID  
+               Owner          Status      Income   Borrower  
+                                                                          NO                              Home  
+       1       Yes           Single       125K     No  
+                                                                                                 Yes      Owner         No
+       2       No            Married      100K     No  
+       3       No            Single       70K      No                                             NO                    Income
+       4       Yes           Married      120K     No                                                      <  80K                 >  80K
+       5       No            Divorced   95K        Yes  
+                                                                                                                NO               YES
+       6       No            Married      60K      No  
+       7       Yes           Divorced   220K       No  
+       8       No            Single       85K      Yes  
+       9       No            Married      75K      No                   There  could   be  more  than   one  tree  that  
+       10   No               Single       90K      Yes  
+                                                                        fits  the  same  data!
+10  
+
+
+
+
+                2/14/18                              Introduction  to  Data  Mining,  2nd Edition                                  7
+
+
+
+
+             Apply  Model  to  Test  Data
+                                                                                        Test  Data
+                       Start  from  the  root  o f  tree.
+                                                                                        Home        Marital     Annual   Defaulted  
+                                                                                        Owner       Status      Income   Borrower  
+                                                                                        No         Married      80K       ?  
+                                   Home  
+                                                                                 10  
+
+
+
+
+                       Yes         Owner           No
+
+                  NO                               MarSt
+                                   Single,   Divorced               Married
+
+                                          Income                   NO
+                          <  80K                      >  80K
+
+                               NO                   YES
+
+
+
+
+                2/14/18                              Introduction  to  Data  Mining,  2nd Edition                                  8
+Apply  Model  to  Test  Data
+                                                                   Test  Data
+                                                                           Home       Marital     Annual   Defaulted  
+                                                                           Owner      Status      Income   Borrower  
+                                                                          No         Married      80K      ?  
+                    Home  
+                                                                   10  
+
+
+
+
+     Yes            Owner      No
+
+   NO                          MarSt
+                Single,   Divorced             Married
+
+                      Income                  NO
+           <  80K                >  80K
+
+             NO                YES
+
+
+
+
+ 2/14/18                        Introduction  to  Data  Mining,  2nd Edition                                         9
+
+
+
+
+Apply  Model  to  Test  Data
+                                                                   Test  Data
+                                                                          Home        Marital     Annual   Defaulted  
+                                                                          Owner       Status      Income   Borrower  
+                                                                            No       Married      80K      ?  
+                    Home                                    10  
+
+
+
+
+     Yes            Owner      No
+
+   NO                          MarSt
+                Single,   Divorced             Married
+
+                      Income                  NO
+           <  80K                >  80K
+
+             NO                YES
+
+
+
+
+ 2/14/18                        Introduction  to  Data  Mining,  2nd Edition                                        10
+Apply  Model  to  Test  Data
+                                                                   Test  Data
+                                                                   Home       Marital     Annual   Defaulted  
+                                                                   Owner      Status      Income   Borrower  
+                                                                   No        Married      80K      ?  
+                    Home                                    10  
+
+
+
+
+     Yes            Owner      No
+
+   NO                          MarSt
+                Single,   Divorced             Married
+
+                      Income                  NO
+           <  80K                >  80K
+
+             NO                YES
+
+
+
+
+ 2/14/18                        Introduction  to  Data  Mining,  2nd Edition                                11
+
+
+
+
+Apply  Model  to  Test  Data
+                                                                   Test  Data
+                                                                   Home       Marital     Annual   Defaulted  
+                                                                   Owner      Status      Income   Borrower  
+                                                                   No        Married      80K      ?  
+                    Home  
+                                                            10  
+
+
+
+
+     Yes            Owner      No
+
+   NO                          MarSt
+                Single,   Divorced             Married  
+
+                      Income                  NO
+           <  80K                >  80K
+
+             NO                YES
+
+
+
+
+ 2/14/18                        Introduction  to  Data  Mining,  2nd Edition                                12
+Apply  Model  to  Test  Data
+                                                                                           Test  Data
+                                                                                           Home        Marital     Annual   Defaulted  
+                                                                                           Owner       Status      Income   Borrower  
+                                                                                           No         Married      80K         ?  
+                              Home                                                  10  
+
+
+
+
+     Yes                      Owner                    No
+
+   NO                                              MarSt
+                             Single,   Divorced                        Married                              Assign  Defaulted  to  
+                                                                                                              “No”
+                                   Income                             NO
+              <  80K                                       >  80K
+
+                      NO                                YES
+
+
+
+
+ 2/14/18                                                Introduction  to  Data  Mining,  2nd Edition                                    13
+
+
+
+
+Decision  Tree  Classification  Task
+
+              Tid     Attrib1      Attrib2     Attrib3      Class  
+                                                                                               Tree
+              1       Yes         Large        125K         No                               Induction
+              2       No          Medium       100K         No                               algorithm
+              3       No          Small        70K          No  
+
+              4       Yes         Medium       120K         No  
+                                                                           Induction
+              5       No          Large        95K          Yes  
+
+              6       No          Medium       60K          No  
+
+              7       Yes         Large        220K         No                                    Learn  
+              8       No          Small        85K          Yes                                   Model
+              9       No          Medium       75K          No  
+
+              10      No          Small        90K          Yes  
+                                                                                                                           Model
+       10  
+
+
+
+
+                         Training  Set
+                                                                                                  Apply                    Decision  
+              Tid     Attrib1      Attrib2     Attrib3      Class  
+                                                                                                  Model                    Tree
+              11      No          Small        55K          ?  
+
+              12      Yes         Medium       80K          ?  
+
+              13      Yes         Large        110K         ?  
+                                                                          Deduction
+              14      No          Small        95K          ?  
+
+              15      No          Large        67K          ?  
+       10  
+
+
+
+
+                               Test  Set
+
+ 2/14/18                                                Introduction  to  Data  Mining,  2nd Edition                                    14
+Decision  Tree  Induction
+
+● Many  Algorithms:
+       – Hunt’s  Algorithm  (one  of  the  earliest)
+       – CART
+       – ID3,  C4.5
+       – SLIQ,SPRINT
+
+
+
+
+    2/14/18                     Introduction  to  Data  Mining,  2nd Edition                                               15
+
+
+
+
+General  Structure  of  Hunt’s  Algorithm
+                                                                                  Home       Marital     Annual   Defaulted  
+●    Let  Dt be  the  set  o f  training                                   ID  
+                                                                                  Owner      Status      Income   Borrower  
+     records  that  reach  a   n ode  t                                   1       Yes       Single       125K     No  
+                                                                          2       No        Married      100K     No  
+                                                                          3       No        Single       70K      No  
+●    General  P rocedure:
+                                                                          4       Yes       Married      120K     No  
+       – If  Dt contains  records  that                                   5       No        Divorced   95K        Yes  
+
+         belong  the  same  class  yt,                                    6       No        Married      60K      No  
+
+         then  t  is  a  leaf  n ode                                      7       Yes       Divorced   220K       No  
+                                                                          8       No        Single       85K      Yes  
+         labeled  a s  yt
+                                                                          9       No        Married      75K      No  
+       – If  Dt contains  records  that                                   10   No           Single       90K      Yes  
+
+         belong  to  more  than  o ne  
+                                                                   10  
+
+
+
+
+                                                                                                         Dt
+         class,  u se  a n  a ttribute  test  
+         to  split  the  d ata  into  smaller  
+         subsets.  Recursively  a pply                                                          ?
+         the  p rocedure  to  e ach  
+         subset.
+
+    2/14/18                     Introduction  to  Data  Mining,  2nd Edition                                               16
+    Hunt’s  Algorithm
+                                                                                                                     Home       Marital     Annual   Defaulted  
+                                                                         Home                                 ID  
+                                                                                                                     Owner      Status      Income   Borrower  
+                                                                         Owner
+                                                                                                             1       Yes       Single       125K     No  
+                                                                   Yes             No
+         Defaulted = No                                                                                      2       No        Married      100K     No  
+                                                       Defaulted = No          Defaulted = No                3       No        Single       70K      No  
+                 (7,3)
+                                                          (3,0)                    (4,3)                     4       Yes       Married      120K     No  
+
+                  (a)                                                    (b)                                 5       No        Divorced   95K        Yes  
+                                                                                                             6       No        Married      60K      No  
+                                                                                                             7       Yes       Divorced   220K       No  
+                                                                       Home
+                                                                       Owner                                 8       No        Single       85K      Yes  
+
+             Home                                                Yes             No                          9       No        Married      75K      No  
+             Owner                                                                                           10   No           Single       90K      Yes  
+                                                      Defaulted = No           Marital
+       Yes               No
+                                                                                                      10  
+
+
+
+
+                                                                               Status
+                                                         (3,0) Single,                    Married
+Defaulted = No       Marital                                     Divorced
+                     Status
+                                                                   Annual                 Defaulted = No
+ (3,0) Single,                  Married
+      Divorced                                                     Income
+                                                                                              (3,0)
+     Defaulted = Yes           Defaulted = No             <  80K                >=  80K
+
+                                                     Defaulted = No         Defaulted = Yes
+        (1,3)                      (3,0)
+                                                         (1,0)                  (0,3)
+                  (c)                                                    (d)
+        2/14/18                                 Introduction  to  Data  Mining,  2nd Edition                                                         17
+
+
+
+
+    Hunt’s  Algorithm
+                                                                                                                     Home       Marital     Annual   Defaulted  
+                                                                         Home                                 ID  
+                                                                                                                     Owner      Status      Income   Borrower  
+                                                                         Owner
+                                                                                                             1       Yes       Single       125K     No  
+                                                                   Yes             No
+         Defaulted = No                                                                                      2       No        Married      100K     No  
+                                                       Defaulted = No          Defaulted = No                3       No        Single       70K      No  
+                 (7,3)
+                                                          (3,0)                    (4,3)                     4       Yes       Married      120K     No  
+
+                  (a)                                                    (b)                                 5       No        Divorced   95K        Yes  
+                                                                                                             6       No        Married      60K      No  
+                                                                                                             7       Yes       Divorced   220K       No  
+                                                                       Home
+                                                                       Owner                                 8       No        Single       85K      Yes  
+
+             Home                                                Yes             No                          9       No        Married      75K      No  
+             Owner                                                                                           10   No           Single       90K      Yes  
+                                                      Defaulted = No           Marital
+       Yes               No
+                                                                                                      10  
+
+
+
+
+                                                                               Status
+                                                         (3,0) Single,                    Married
+Defaulted = No       Marital                                     Divorced
+                     Status
+                                                                   Annual                 Defaulted = No
+ (3,0) Single,                  Married
+      Divorced                                                     Income
+                                                                                              (3,0)
+     Defaulted = Yes           Defaulted = No             <  80K                >=  80K
+
+                                                     Defaulted = No         Defaulted = Yes
+        (1,3)                      (3,0)
+                                                         (1,0)                  (0,3)
+                  (c)                                                    (d)
+        2/14/18                                 Introduction  to  Data  Mining,  2nd Edition                                                         18
+    Hunt’s  Algorithm
+                                                                                                                     Home       Marital     Annual   Defaulted  
+                                                                         Home                                 ID  
+                                                                                                                     Owner      Status      Income   Borrower  
+                                                                         Owner
+                                                                                                             1       Yes       Single       125K     No  
+                                                                   Yes             No
+         Defaulted = No                                                                                      2       No        Married      100K     No  
+                                                       Defaulted = No          Defaulted = No                3       No        Single       70K      No  
+                 (7,3)
+                                                          (3,0)                    (4,3)                     4       Yes       Married      120K     No  
+
+                  (a)                                                    (b)                                 5       No        Divorced   95K        Yes  
+                                                                                                             6       No        Married      60K      No  
+                                                                                                             7       Yes       Divorced   220K       No  
+                                                                       Home
+                                                                       Owner                                 8       No        Single       85K      Yes  
+
+             Home                                                Yes             No                          9       No        Married      75K      No  
+             Owner                                                                                           10   No           Single       90K      Yes  
+                                                      Defaulted = No           Marital
+       Yes               No
+                                                                                                      10  
+
+
+
+
+                                                                               Status
+                                                         (3,0) Single,                    Married
+Defaulted = No       Marital                                     Divorced
+                     Status
+                                                                   Annual                 Defaulted = No
+ (3,0) Single,                  Married
+      Divorced                                                     Income
+                                                                                              (3,0)
+     Defaulted = Yes           Defaulted = No             <  80K                >=  80K
+
+                                                     Defaulted = No         Defaulted = Yes
+        (1,3)                      (3,0)
+                                                         (1,0)                  (0,3)
+                  (c)                                                    (d)
+        2/14/18                                 Introduction  to  Data  Mining,  2nd Edition                                                         19
+
+
+
+
+    Hunt’s  Algorithm
+                                                                                                                     Home       Marital     Annual   Defaulted  
+                                                                         Home                                 ID  
+                                                                                                                     Owner      Status      Income   Borrower  
+                                                                         Owner
+                                                                                                             1       Yes       Single       125K     No  
+                                                                   Yes             No
+         Defaulted = No                                                                                      2       No        Married      100K     No  
+                                                       Defaulted = No          Defaulted = No                3       No        Single       70K      No  
+                 (7,3)
+                                                          (3,0)                    (4,3)                     4       Yes       Married      120K     No  
+
+                  (a)                                                    (b)                                 5       No        Divorced   95K        Yes  
+                                                                                                             6       No        Married      60K      No  
+                                                                                                             7       Yes       Divorced   220K       No  
+                                                                       Home
+                                                                       Owner                                 8       No        Single       85K      Yes  
+
+             Home                                                Yes             No                          9       No        Married      75K      No  
+             Owner                                                                                           10   No           Single       90K      Yes  
+                                                      Defaulted = No           Marital
+       Yes               No
+                                                                                                      10  
+
+
+
+
+                                                                               Status
+                                                         (3,0) Single,                    Married
+Defaulted = No       Marital                                     Divorced
+                     Status
+                                                                   Annual                 Defaulted = No
+ (3,0) Single,                  Married
+      Divorced                                                     Income
+                                                                                              (3,0)
+     Defaulted = Yes           Defaulted = No             <  80K                >=  80K
+
+                                                     Defaulted = No         Defaulted = Yes
+        (1,3)                      (3,0)
+                                                         (1,0)                  (0,3)
+                  (c)                                                    (d)
+        2/14/18                                 Introduction  to  Data  Mining,  2nd Edition                                                         20
+Design  Issues  of  Decision  Tree  Induction
+
+● How  should  training  r ecords  be  split?
+    – Method  for  specifying  test  condition  
+           u depending  o n  a ttribute  types
+
+    – Measure  for  evaluating  the  goodness  of  a  test  
+      condition
+
+● How  should  the  splitting  procedure  stop?
+    – Stop  splitting  if  all  the  records  belong  to  the  
+      same  class  or  have  identical  attribute  values
+    – Early  termination  
+ 2/14/18                 Introduction  to  Data  Mining,  2nd Edition   21
+
+
+
+
+Methods  for  Expressing  Test  Conditions
+
+● Depends  on  attribute  types
+    – Binary
+    – Nominal
+    – Ordinal
+    – Continuous
+
+● Depends  on  number  of  ways  to  split
+    – 2-­way  split
+    – Multi-­way  split
+
+ 2/14/18                 Introduction  to  Data  Mining,  2nd Edition   22
+Test  Condition  for  Nominal  Attributes
+
+●    Multi-­way  split:
+                                                                                      Marital
+     – Use  as  many  partitions  as                                                  Status
+       distinct  values.  
+
+                                                         Single                      Divorced               Married
+
+●    Binary  split:
+     – Divides  values  into  two  subsets
+
+                                         Marital                           Marital                         Marital
+                                         Status                            Status                          Status
+                                                          OR                                OR
+
+
+                                 {Married}     {Single,          {Single}            {Married,      {Single,        {Divorced}
+                                              Divorced}                              Divorced}      Married}
+
+    2/14/18            Introduction  to  Data  Mining,  2nd Edition                                                 23
+
+
+
+
+Test  Condition  for  Ordinal  Attributes
+
+●    Multi-­way  split:                                                         Shirt
+                                                                                Size
+
+     – Use  as  many  partitions  
+       as  distinct  values
+                                                         Small
+                                                                         Medium         Large        Extra  Large
+
+
+
+●    Binary  split:                                           Shirt
+                                                              Size
+                                                                                                 Shirt
+                                                                                                 Size
+
+     – Divides  values  into  two  
+        subsets
+     – Preserve  order                              {Small,
+                                                    Medium}
+                                                                     {Large,
+                                                                     Extra  Large}
+                                                                                         {Small} {Medium,  Large,
+                                                                                                   Extra  Large}
+
+        property  among                                      Shirt
+        attribute  values                                    Size
+                                                                                                This  grouping  
+                                                                                                violates  order  
+                                                                                                property
+
+                                                   {Small,      {Medium,
+                                                   Large}       Extra  Large}
+    2/14/18            Introduction  to  Data  Mining,  2nd Edition                                                 24
+Test  Condition  for  Continuous  Attributes
+
+
+       Annual                                                         Annual
+       Income                                                        Income?
+       >  80K?
+                                                    <  10K                          >  80K
+     Yes        No
+
+                                                     [10K,25K)        [25K,50K)   [50K,80K)
+
+
+       (i)  Binary  split                                    (ii)  Multi-­way  split
+
+
+
+
+ 2/14/18                    Introduction  to  Data  Mining,  2nd Edition                      25
+
+
+
+
+Splitting  Based  on  Continuous  Attributes
+
+● Different  ways  of  handling
+    – Discretization to  form  an  ordinal  categorical  
+      attribute
+            Ranges  can  be  found  by  equal  interval  bucketing,  
+           equal  frequency  bucketing  (percentiles),  or  
+           clustering.
+           u Static  – discretize  o nce  a t  the  beginning
+
+           u Dynamic  – repeat  at  each  n ode
+
+
+
+    – Binary  Decision:  (A  <  v)  or  (A  ≥ v)
+           u consider  a ll  p ossible  splits  and  finds  the  best  cut
+
+           u can  be  more  compute  intensive
+ 2/14/18                    Introduction  to  Data  Mining,  2nd Edition                      26
+How  to  determine  the  Best  Split
+
+
+
+Before  Splitting:  10  r ecords  of  class  0,
+                   10  records  of  class  1
+
+
+
+
+           Gender                              Car                                       Customer
+                                              Type                                          ID
+
+      Yes         No              Family               Luxury                      c1                      c20
+                                                                                        c10     c11
+                                           Sports
+       C0:  6   C0:  4            C0:  1      C0:  8      C0:  1          C0:  1   ... C0:  1     C0:  0   ... C0:  0
+       C1:  4   C1:  6            C1:  3      C1:  0      C1:  7          C1:  0       C1:  0     C1:  1       C1:  1
+
+                     Which   test  condition   is  the  best?
+ 2/14/18                          Introduction  to  Data  Mining,  2nd Edition                                    27
+
+
+
+
+How  to  determine  the  Best  Split
+
+● Greedy  approach:  
+    – Nodes  with  purer class  distribution  are  
+      preferred
+
+● Need  a  measure  of  node  impurity:
+
+
+                         C0:  5                                            C0:  9
+                         C1:  5                                            C1:  1
+
+            High   degree  of  impurity                            Low   degree  of  impurity
+
+
+
+
+ 2/14/18                          Introduction  to  Data  Mining,  2nd Edition                                    28
+Measures  of  Node  Impurity
+
+● Gini  Index
+                      GINI (t ) = 1 − ∑[ p( j | t )]2
+                                                   j
+
+
+● Entropy
+                      Entropy(t ) = −∑ p( j | t ) log p( j | t )
+                                                            j
+
+
+
+
+● Misclassification  error
+
+
+                      Error (t ) = 1 − max P (i | t )           i
+
+
+
+
+ 2/14/18                Introduction  to  Data  Mining,  2nd Edition   29
+
+
+
+
+Finding  the  Best  Split
+
+1.   Compute  impurity  measure  (P)  before  splitting
+2.   Compute  impurity  measure  (M)  after  splitting
+           ●   Compute  impurity  measure  of  each  child  node
+           ●   M  is  the  weighted  impurity  of  children
+3.   Choose  the  attribute  test  condition  that  
+     produces  the  highest  gain
+                   Gain  =  P  – M
+
+     or  equivalently,  lowest  impurity  measure  after  
+     splitting  (M)  
+
+ 2/14/18                Introduction  to  Data  Mining,  2nd Edition   30
+     Finding  the  Best  Split
+                            Before  Splitting:                 C0         N00  
+                                                                                                  P
+                                                               C1         N01  
+                                                            
+
+
+
+
+                          A?                                                                           B?
+        Yes                                   No                                         Yes                             No
+
+      Node N1                         Node N2                                      Node N3                       Node N4
+
+     C0          N10                  C0        N20                               C0           N30               C0       N40  
+     C1          N11                  C1        N21                               C1           N31               C1       N41  
+                                                                                                              
+
+
+                                                                              
+
+
+  
+
+
+
+
+        M11                                  M12                                         M21                            M22
+
+
+                          M1                                                                           M2
+                                         Gain  =  P  – M1        vs            P  – M2
+            2/14/18                          Introduction  to  Data  Mining,  2nd Edition                                31
+
+
+
+
+     Measure  of  Impurity:  GINI
+
+      ● Gini  Index  for  a  given  n ode  t  :
+
+
+                                       GINI (t ) = 1 − ∑[ p( j | t )]2
+                                                                      j
+
+                      (NOTE:  p( j | t) is  the  relative  frequency  o f  class  j  a t  n ode  t).
+
+               – Maximum  (1  -­ 1/nc)  when  records  are  equally  
+                 distributed  among  all  classes,  implying  least  
+                 interesting  information
+               – Minimum  (0.0)  when  all  records  belong  to  one  class,  
+                 implying  most  interesting  information
+
+
+
+
+            2/14/18                          Introduction  to  Data  Mining,  2nd Edition                                32
+Measure  of  Impurity:  GINI
+
+● Gini  Index  for  a  given  n ode  t  :
+
+
+                                    GINI (t ) = 1 − ∑[ p( j | t )]2
+                                                                j
+
+                    (NOTE:  p( j | t) is  the  relative  frequency  o f  class  j  a t  n ode  t).
+
+             – For  2-­class  problem  (p,  1  – p):
+                    u GINI  =  1  – p 2 – (1  – p)2 =  2 p  (1-­p)
+
+
+
+                     C1      0           C1         1               C1      2           C1    3
+                     C2      6           C2         5               C2      4           C2    3
+                     Gini=0.000         Gini=0.278                  Gini=0.444         Gini=0.500
+
+
+
+
+          2/14/18                       Introduction  to  Data  Mining,  2nd Edition                 33
+
+
+
+
+Computing  Gini  Index  of  a  Single  Node
+
+                                  GINI (t ) = 1 − ∑[ p( j | t )]2
+                                                            j
+
+
+             C1             0           P(C1)  =  0 /6  =  0          P(C2)  =  6 /6  =  1
+             C2             6           Gini  =  1  – P(C1)2  – P(C2)2 =  1   – 0  – 1  =  0  
+  
+
+
+
+
+             C1             1            P(C1)  =  1 /6                    P(C2)  =  5 /6
+             C2             5            Gini  =  1  – (1/6)2  – (5/6)2 =  0 .278
+       
+
+
+
+
+             C1             2            P(C1)  =  2 /6                    P(C2)  =  4 /6
+             C2             4            Gini  =  1  – (2/6)2  – (4/6)2 =  0 .444
+       
+
+
+
+
+          2/14/18                       Introduction  to  Data  Mining,  2nd Edition                 34
+Computing  Gini  Index  for  a  Collection  of  
+Nodes
+●    When  a  node  p  is  split  into  k  partitions  (children)
+                                                   k
+                                             n
+                           GINI split = ∑ i GINI (i )
+                                        i =1 n
+
+     where,         ni =  number  of  records  at  child  i,
+                    n =  number  of  records  at  parent  node  p.
+
+
+●    Choose  the  attribute  that  minimizes  weighted  average  
+     Gini  index  of  the  children
+
+●    Gini  index  is  used  in  decision  tree  algorithms  such  as  
+     CART,  SLIQ,  SPRINT
+    2/14/18                   Introduction  to  Data  Mining,  2nd Edition                       35
+
+
+
+
+Binary  Attributes:  Computing  GINI  Index
+
+● Splits  into  two  partitions
+
+● Effect  of  Weighing  p artitions:  
+     – Larger  and  Purer  Partitions  are  sought  for.
+                                                                                        Parent  
+                                              B?                                 C1        7  
+                            Yes                                 No               C2        5  
+                                                                                Gini  =  0.486  
+                           Node N1                       Node N2
+Gini(N1)  
+=  1  – (5/6)2  – (1/6)2                      N1   N2                  Weighted   Gini  of  N1  N2
+=  0.278  
+                                       C1     5    2                   =  6/12  *   0.278  +  
+Gini(N2)                               C2     1    4                      6/12  *   0.444
+=  1  – (2/6)2  – (4/6)2                                               =  0.361
+                                       Gini=0.361  
+=  0.444                            
+
+
+
+
+                                                                    Gain  =  0.486  – 0.361  =  0.125
+
+    2/14/18                   Introduction  to  Data  Mining,  2nd Edition                       36
+     Categorical   Attributes:  Computing  Gini  Index
+
+     ● For  each  distinct  value,  gather  counts  for  each  class  i n  
+       the  dataset
+     ● Use  the  count  matrix  to  make  d ecisions
+
+
+              Multi-way split                                                      Two-way split
+                                                                            (find best partition of values)
+
+                         CarType                                              CarType                                  CarType  
+               Family   Sports   Luxury                                   {Sports,                                              {Family,
+                                                                                     {Family}                      {Sports}    
+                                                                          Luxury}                                               Luxury}  
+     C1            1         8         1                           C1        9           1                  C1        8             2  
+     C2            3         0         7                           C2        7           3                  C2        0            10  
+  
+     Gini                 0.163                            
+                                                                   Gini          0.468              
+                                                                                                            Gini          0.167  
+
+
+
+                                    Which   of  these  is  the  best?
+
+         2/14/18                             Introduction  to  Data  Mining,  2nd Edition                                          37
+
+
+
+
+     Continuous  Attributes:  Computing  Gini  Index
+
+     ● Use  Binary  Decisions  b ased  o n  o ne             ID
+                                                                   Home   Marital   Annual  
+                                                                  Owner   Status   Income  
+                                                                                             Defaulted  
+       value
+                                                             1   Yes      Single     125K    No  
+     ● Several  Choices  for  the  splitting  value          2   No       Married   100K     No  
+        – Number  o f  p ossible  splitting  values   3   No              Single     70K     No  
+           =  Number  o f  d istinct  values                 4   Yes      Married   120K     No  
+
+     ● Each  splitting  value  h as  a   count  matrix       5   No       Divorced   95K     Yes  
+
+       associated  with  it                                  6   No       Married   60K      No  
+                                                             7   Yes      Divorced   220K    No  
+        – Class  counts  in  e ach  o f  the                 8   No       Single     85K     Yes  
+           partitions,  A   <  v  and  A   ≥ v               9   No       Married   75K      No  
+     ● Simple  method  to  choose  b est  v                  10   No      Single     90K     Yes  
+
+        – For  each  v,  scan  the  d atabase  to  
+                                                                                        10  
+
+
+
+
+                                                                         Annual   Income  ?
+           gather  count  matrix  a nd  compute  
+           its  Gini  index
+                                                                           ≤  80 >  80
+        – Computationally  Inefficient!  
+           Repetition  o f  work.                        Defaulted   Yes     0        3
+                                                                                   Defaulted   No                3       4
+
+         2/14/18                             Introduction  to  Data  Mining,  2nd Edition                                          38
+ Continuous  Attributes:  Computing  Gini  Index...
+
+   ●    For  efficient  computation:  for  e ach  a ttribute,
+         – Sort  the  a ttribute  o n  values
+         – Linearly  scan  these  values,  e ach  time  u pdating  the  count  matrix  
+           and  computing  g ini  index
+         – Choose  the  split  p osition  that  h as  the  least  g ini  index
+
+
+                   Cheat           No            No                 No           Yes             Yes                Yes             No              No             No                No  
+                                                                                                    Annual  Income  
+Sorted  Values                     60               70              75              85              90              95              100         120                125               220  
+Split  Positions         
+                               55            65              72              80              87              92              97             110            122             172         230  
+                             <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >  
+                    Yes      0       3     0     3         0     3         0     3         1     2         2     1         3     0      3      0       3       0       3       0      3      0  
+
+                     No      0       7     1     6         2     5         3     4         3     4         3     4         3     4      4      3       5       2       6       1      7      0  
+
+                   Gini      0.420         0.400           0.375           0.343           0.417           0.400           0.300        0.343          0.375           0.400          0.420  
+
+
+
+
+       2/14/18                                      Introduction  to  Data  Mining,  2nd Edition                                                                                            39
+
+
+
+
+ Continuous  Attributes:  Computing  Gini  Index...
+
+   ●    For  efficient  computation:  for  e ach  a ttribute,
+         – Sort  the  a ttribute  o n  values
+         – Linearly  scan  these  values,  e ach  time  u pdating  the  count  matrix  
+           and  computing  g ini  index
+         – Choose  the  split  p osition  that  h as  the  least  g ini  index
+
+
+                   Cheat           No            No                 No           Yes             Yes                Yes             No              No             No                No  
+                                                                                                    Annual  Income  
+Sorted  Values                     60               70              75              85              90              95              100         120                125               220  
+Split  Positions         
+                               55            65              72              80              87              92              97             110            122             172         230  
+                             <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >  
+                    Yes      0       3     0     3         0     3         0     3         1     2         2     1         3     0      3      0       3       0       3       0      3      0  
+
+                     No      0       7     1     6         2     5         3     4         3     4         3     4         3     4      4      3       5       2       6       1      7      0  
+
+                   Gini      0.420         0.400           0.375           0.343           0.417           0.400           0.300        0.343          0.375           0.400          0.420  
+
+
+
+
+       2/14/18                                      Introduction  to  Data  Mining,  2nd Edition                                                                                            40
+ Continuous  Attributes:  Computing  Gini  Index...
+
+   ●    For  efficient  computation:  for  e ach  a ttribute,
+         – Sort  the  a ttribute  o n  values
+         – Linearly  scan  these  values,  e ach  time  u pdating  the  count  matrix  
+           and  computing  g ini  index
+         – Choose  the  split  p osition  that  h as  the  least  g ini  index
+
+
+                   Cheat           No            No                 No           Yes             Yes                Yes             No              No             No                No  
+                                                                                                    Annual  Income  
+Sorted  Values                     60               70              75              85              90              95              100         120                125               220  
+Split  Positions         
+                               55            65              72              80              87              92              97             110            122             172         230  
+                             <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >  
+                    Yes      0       3     0     3         0     3         0     3         1     2         2     1         3     0      3      0       3       0       3       0      3      0  
+
+                     No      0       7     1     6         2     5         3     4         3     4         3     4         3     4      4      3       5       2       6       1      7      0  
+
+                   Gini      0.420         0.400           0.375           0.343           0.417           0.400           0.300        0.343          0.375           0.400          0.420  
+
+
+
+
+       2/14/18                                      Introduction  to  Data  Mining,  2nd Edition                                                                                            41
+
+
+
+
+ Continuous  Attributes:  Computing  Gini  Index...
+
+   ●    For  efficient  computation:  for  e ach  a ttribute,
+         – Sort  the  a ttribute  o n  values
+         – Linearly  scan  these  values,  e ach  time  u pdating  the  count  matrix  
+           and  computing  g ini  index
+         – Choose  the  split  p osition  that  h as  the  least  g ini  index
+
+
+                   Cheat           No            No                 No           Yes             Yes                Yes             No              No             No                No  
+                                                                                                    Annual  Income  
+Sorted  Values                     60               70              75              85              90              95              100         120                125               220  
+Split  Positions         
+                               55            65              72              80              87              92              97             110            122             172         230  
+                             <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >  
+                    Yes      0       3     0     3         0     3         0     3         1     2         2     1         3     0      3      0       3       0       3       0      3      0  
+
+                     No      0       7     1     6         2     5         3     4         3     4         3     4         3     4      4      3       5       2       6       1      7      0  
+
+                   Gini      0.420         0.400           0.375           0.343           0.417           0.400           0.300        0.343          0.375           0.400          0.420  
+
+
+
+
+       2/14/18                                      Introduction  to  Data  Mining,  2nd Edition                                                                                            42
+ Continuous  Attributes:  Computing  Gini  Index...
+
+   ●    For  efficient  computation:  for  e ach  a ttribute,
+         – Sort  the  a ttribute  o n  values
+         – Linearly  scan  these  values,  e ach  time  u pdating  the  count  matrix  
+           and  computing  g ini  index
+         – Choose  the  split  p osition  that  h as  the  least  g ini  index
+
+
+                   Cheat           No            No                 No           Yes                 Yes              Yes             No              No             No                No  
+                                                                                                     Annual  Income  
+Sorted  Values                     60               70              75              85                90              95              100         120                125               220  
+Split  Positions         
+                               55            65              72              80              87                92              97             110            122             172         230  
+                             <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >   <=   >  
+                    Yes      0       3     0     3         0     3         0     3         1         2       2     1         3     0      3      0       3       0       3       0      3      0  
+
+                     No      0       7     1     6         2     5         3     4         3         4       3     4         3     4      4      3       5       2       6       1      7      0  
+
+                   Gini      0.420         0.400           0.375           0.343           0.417             0.400           0.300        0.343          0.375           0.400          0.420  
+
+
+
+
+       2/14/18                                      Introduction  to  Data  Mining,  2nd Edition                                                                                              43
+
+
+
+
+   Measure  of  Impurity:  Entropy
+
+● Entropy  at  a  given  node  t:
+
+                             Entropy(t ) = −∑ p( j | t ) log p( j | t )                          j
+
+
+
+
+            (NOTE:  p( j | t) is  the  relative  frequency  o f  class  j  a t  n ode  t).
+
+            u Maximum  (log  n c)  when  records  a re  equally  d istributed  
+               among  all  classes  implying  least  information
+            u Minimum  (0.0)  when  a ll  records  b elong  to  one  class,  
+               implying  most  information
+
+
+       – Entropy  based  computations  are  quite  similar  to  
+         the  GINI  index  computations
+       2/14/18                                      Introduction  to  Data  Mining,  2nd Edition                                                                                              44
+          Computing  Entropy  of  a  Single  Node
+
+                        Entropy(t ) = −∑ p( j | t ) log p( j | t )
+                                                               j                            2
+
+
+
+
+              C1         0                 P(C1)  =  0 /6  =  0          P(C2)  =  6 /6  =  1
+              C2         6                 Entropy  =  – 0  log  0 – 1  log  1   =  – 0  – 0  =  0  
+  
+
+
+
+
+               C1        1                 P(C1)  =  1 /6                    P(C2)  =  5 /6
+               C2        5                 Entropy  =  – (1/6)  log2 (1/6) – (5/6)  log2 (1/6)  =  0 .65
+       
+
+
+
+
+               C1        2                 P(C1)  =  2 /6                    P(C2)  =  4 /6
+               C2        4                 Entropy  =  – (2/6)  log2 (2/6) – (4/6)  log2 (4/6)  =  0 .92
+       
+
+
+
+
+              2/14/18                       Introduction  to  Data  Mining,  2nd Edition               45
+
+
+
+
+          Computing  Information  Gain  After  Splitting
+
+          ●    Information  Gain:  
+                                                            ⎛ n              ⎞  k
+                        GAIN               = Entropy ( p) − ⎜ ∑ Entropy (i ) ⎟        i
+
+
+                                                            ⎝ n
+                                   split                                         i =1
+                                                                              ⎠
+                               Parent  Node,  p   is  split  into  k  p artitions;;
+                               n i is  number  o f  records  in  p artition  i
+
+
+                – Choose  the  split  that  achieves  most  reduction  
+                  (maximizes  GAIN)
+
+                – Used  in  the  ID3  and  C4.5  decision  tree  algorithms
+
+
+              2/14/18                       Introduction  to  Data  Mining,  2nd Edition               46
+Problem  with  large  number  of  partitions
+
+● Node  impurity  m easures  tend  to  prefer  splits  that  
+     result  in  large  number  of  partitions,  each  being  
+     small  but  pure
+      Gender                                     Car                                          Customer
+                                                Type                                             ID
+
+Yes             No                  Family               Luxury                         c1                        c20
+                                                                                             c10     c11
+                                             Sports
+ C0:  6       C0:  4                C0:  1      C0:  8       C0:  1          C0:  1     ... C0:  1     C0:  0     ... C0:  0
+ C1:  4       C1:  6                C1:  3      C1:  0       C1:  7          C1:  0         C1:  0     C1:  1         C1:  1
+
+
+
+
+       – Customer  ID  has  highest  information  gain  
+         because  entropy  for  all  the  children  is  zero
+    2/14/18                              Introduction  to  Data  Mining,  2nd Edition                                     47
+
+
+
+
+Gain  Ratio
+
+●     Gain  Ratio:  
+
+                                          GAIN                    n    n                                    k
+GainRATIO =                                        SplitINFO = − ∑ log
+                                                          Split                                                     i          i
+
+                                         SplitINFO
+                            split
+
+                                                                  n    n                                   i =1
+
+
+
+
+                Parent  Node,  p  is  s plit  into  k   partitions
+                ni is  t he  number  of  records  in  partition  i
+
+        – Adjusts  Information  Gain  b y  the  e ntropy  o f  the  p artitioning  
+          (SplitINFO).  
+                u Higher  entropy  partitioning  (large  number  of  s mall  partitions)  is  
+                   penalized!
+        – Used  in  C4.5  a lgorithm
+        – Designed  to  o vercome  the  d isadvantage  o f  Information  Gain
+
+    2/14/18                              Introduction  to  Data  Mining,  2nd Edition                                     48
+     Gain  Ratio
+
+     ●      Gain  Ratio:  
+
+                                               GAIN                    n    n                                       k
+      GainRATIO =                                       SplitINFO = − ∑ log
+                                                                    Split                                                 i              i
+
+                                              SplitINFO
+                                split
+
+                                                                       n    n                                      i =1
+
+
+
+
+                    Parent  Node,  p  is  s plit  into  k   partitions
+                    ni is  t he  number  of  records  in  partition  i
+
+
+                         CarType                                           CarType                                  CarType  
+               Family   Sports   Luxury                                {Sports,                                              {Family,
+                                                                                  {Family}                      {Sports}    
+                                                                       Luxury}                                               Luxury}  
+     C1            1         8          1                       C1        9           1                  C1        8             2  
+     C2            3         0          7                       C2        7           3                  C2        0            10  
+  
+     Gini                 0.163                         
+                                                                Gini          0.468              
+                                                                                                         Gini          0.167  
+
+              SplitINFO  =  1.52                                 SplitINFO  =  0.72                       SplitINFO  =  0.97
+
+
+         2/14/18                              Introduction  to  Data  Mining,  2nd Edition                                      49
+
+
+
+
+     Measure  of  Impurity:  Classification   Error
+
+     ● Classification  error  at  a  node  t  :
+
+
+                         Error (t ) = 1 − max P(i | t )                       i
+
+
+
+
+              – Maximum  (1  -­ 1/nc)  when  records  are  equally  
+                distributed  among  all  classes,  implying  least  
+                interesting  information
+              – Minimum  (0)  when  all  records  belong  to  one  class,  
+                implying  most  interesting  information
+
+
+
+
+         2/14/18                              Introduction  to  Data  Mining,  2nd Edition                                      50
+          Computing  Error  of  a  Single  Node
+
+                     Error (t ) = 1 − max P(i | t )        i
+
+
+
+            C1        0       P(C1)  =  0 /6  =  0          P(C2)  =  6 /6  =  1
+            C2        6       Error  =  1  – max  (0,  1)  =  1  – 1  =  0   
+  
+
+
+
+
+            C1        1       P(C1)  =  1 /6                    P(C2)  =  5 /6
+            C2        5       Error  =  1  – max  (1/6,  5 /6)  =  1   – 5/6  =  1 /6
+       
+
+
+
+
+            C1        2       P(C1)  =  2 /6                    P(C2)  =  4 /6
+            C2        4       Error  =  1  – max  (2/6,  4 /6)  =  1   – 4/6  =  1 /3
+       
+
+
+
+
+           2/14/18             Introduction  to  Data  Mining,  2nd Edition             51
+
+
+
+
+          Comparison  among  Impurity  Measures
+
+          For  a  2-­class  problem:
+
+
+
+
+           2/14/18             Introduction  to  Data  Mining,  2nd Edition             52
+Misclassification  Error  vs  Gini  Index
+
+                                           A?                                               Parent  
+                                                                                     C1       7  
+                          Yes                                   No
+                                                                                     C2       3  
+                        Node N1                           Node N2                    Gini  =  0.42  
+
+
+
+Gini(N1)                                        N1   N2  
+=  1  – (3/3)2  – (0/3)2                                                     Gini(Children)  
+                                       C1       3     4                      =  3/10  *  0   
+=  0  
+                                       C2       0     3                      +  7/10  *  0 .489
+Gini(N2)                                Gini=0.342                           =  0.342
+=  1  – (4/7)2  – (3/7)2
+                                   
+
+
+
+
+=  0.489                                                                     Gini  improves  but  
+                                                                             error  remains  the  
+                                                                             same!!
+
+   2/14/18                            Introduction  to  Data  Mining,  2nd Edition                     53
+
+
+
+
+Misclassification  Error  vs  Gini  Index
+
+                                           A?                                               Parent  
+                                                                                     C1       7  
+                          Yes                                   No
+                                                                                     C2       3  
+                        Node N1                           Node N2                    Gini  =  0.42  
+
+
+
+                  N1   N2                                      N1   N2  
+          C1      3     4                               C1     3     4  
+          C2      0     3                               C2     1     2  
+       
+          Gini=0.342                                 
+                                                        Gini=0.416  
+
+
+             Misclassification  error  for  all  three  cases  =  0.3  !  
+
+
+   2/14/18                            Introduction  to  Data  Mining,  2nd Edition                     54
+Decision  Tree  Based  Classification
+● Advantages:
+       – Inexpensive  to  construct
+       – Extremely  fast  at  classifying  unknown  records
+       – Easy  to  interpret  for  small-­sized  trees
+       – Robust  to  noise  (especially  when  methods  to  avoid  
+         overfitting  are  employed)
+       – Can  easily  handle   redundant  or  irrelevant  attributes  (unless  
+         the  attributes  are  interacting)
+● Disadvantages:  
+       – Space  of  possible  decision  trees  is  exponentially  large.  
+         Greedy  approaches  are  often  unable   to  find  the  best  tree.
+       – Does  not  take  into  account  interactions  between  attributes
+       – Each  decision  boundary  involves  only  a  single  attribute
+    2/14/18                Introduction  to  Data  Mining,  2nd Edition                       55
+
+
+
+
+Handling  interactions
+
+                                          +  :  1000  instances           Entropy   (X)  :  0.99  
+                                                                          Entropy   (Y)  :  0.99
+                                          o  :  1000  i nstances
+Y
+
+
+
+
+                   X  
+
+
+
+
+    2/14/18                Introduction  to  Data  Mining,  2nd Edition                       56
+  Handling  interactions
+
+                                      +  :  1000  instances                 Entropy   (X)  :  0.99  
+                                                                            Entropy   (Y)  :  0.99
+                                      o  :  1000  i nstances                Entropy   (Z)  :  0.98
+  Y
+                                      Adding   Z  as  a  noisy              Attribute  Z  will  be  
+                                      attribute  generated                  chosen   for  splitting!
+                                      from  a  uniform  
+                                      distribution
+                X  
+
+
+
+
+ Z                                                Z
+
+
+
+
+                X                                                            Y
+      2/14/18          Introduction  to  Data  Mining,  2nd Edition                            57
+
+
+
+
+Limitations   of  single   attribute-­based  decision   boundaries
+
+
+
+
+                                                                      Both positive  (+) and  
+                                                                      negative  (o) classes  
+                                                                      generated  from  
+                                                                      skewed  Gaussians  
+                                                                      with  centers  a t  (8,8)  
+                                                                      and  (12,12)  
+                                                                      respectively.    
+
+
+
+
+      2/14/18          Introduction  to  Data  Mining,  2nd Edition                            58
+

@@ -44,7 +44,7 @@ I cinque campi di intestazione MIME sono:
 
 I formati di contenuto MIME (tabella 8.1 del libro) distinguono tra *content type* e *content subtype* (per esempio `text/plain`, `text/html`, `image/jpeg`, `application/pdf`, `audio/basic`, `video/mpeg`, `message/rfc822`, `multipart/mixed`). I *transfer encodings* (tabella 8.2 del libro) permettono di rappresentare dati binari in ASCII stampabile: *7-bit*, *quoted-printable* e *base64* (ogni gruppo di tre ottetti di dati binari è mappato in quattro caratteri ASCII).
 
-**Forme canonica e nativa:** molti sistemi di posta accettano solo blocchi di testo ASCII. S/MIME (e in generale MIME) offrono il servizio di convertire un flusso binario grezzo a 8 bit in un flusso di caratteri ASCII stampabili attraverso la *7-bit encoding*, tipicamente basata su Base64.
+**Forme canonica e nativa:** molti sistemi di posta accettano solo blocchi di testo ASCII. I *transfer encoding* di MIME servono a rappresentare dati binari in ASCII stampabile: la *7-bit encoding* indica l'assenza di encoding (dati già ASCII su righe corte), mentre *base64* è quella che converte effettivamente un flusso binario a 8 bit in caratteri ASCII stampabili.
 
 Un messaggio MIME ha due possibili forme di rappresentazione. La *canonical form* è il formato standardizzato per l'uso tra sistemi: l'intero corpo, incluso il contenuto out-of-band come le lunghezze dei record e gli attributi dei file, viene convertito in una forma canonica universale, e la conversione può riguardare il set di caratteri, l'audio o la compressione. La *native form* è invece il formato peculiare del sistema locale: il corpo è creato nel formato nativo, con il set di caratteri nativo e le convenzioni locali di fine riga.
 
@@ -78,7 +78,7 @@ Nella pratica, l'autenticazione è fornita tramite firma digitale: si usa più c
 
 **Cifratura:** il messaggio viene cifrato con una chiave simmetrica casuale (*content-encryption key*) usata una sola volta per quel messaggio; la chiave stessa viene cifrata con la chiave pubblica RSA del destinatario e allegata al messaggio. Il destinatario usa la propria chiave privata per recuperare la content-encryption key e decifrare il messaggio. Più comunemente si usa AES con chiave a 128 bit in modalità CBC.
 
-**Compatibilità:** per rispettare la restrizione dei sistemi di posta che accettano solo blocchi ASCII, S/MIME converte il flusso binario a 8 bit in caratteri ASCII stampabili tramite 7-bit encoding (tipicamente Base64).
+**Compatibilità:** per rispettare la restrizione dei sistemi di posta che accettano solo blocchi ASCII, S/MIME converte il flusso binario a 8 bit in caratteri ASCII stampabili tramite base64.
 
 **Compressione:** S/MIME offre la possibilità di comprimere un messaggio, risparmiando spazio in trasmissione e archiviazione. La compressione può essere applicata in qualsiasi ordine rispetto a firma e cifratura, con le linee guida RFC 5751: la compressione di dati binari cifrati è scoraggiata (non comprimerebbero significativamente), mentre i dati cifrati in Base64 potrebbero trarne beneficio; se si usa un algoritmo di compressione lossy con firma, occorre comprimere prima e firmare dopo.
 
@@ -143,4 +143,14 @@ Esistono certificati S/MIME gratuiti, per esempio tramite il portale di Actalis 
 
 ## Complementi dal libro di testo
 
-Il capitolo 8 del libro di testo (*Electronic Mail Security*) copre l'architettura della posta Internet (RFC 5598, *user world* e *transfer world*, ADMD), i formati MIME (RFC 5322 per i contenuti, RFC 2045-2049 per MIME, i cinque campi di intestazione, i content type e i transfer encoding), le minacce e le mitigazioni, S/MIME e PGP. S/MIME si basa sulla *Cryptographic Message Syntax* (RFC 5652) con i content type Data, SignedData, EnvelopedData e CompressedData; usa RSA con SHA-256 per la firma e AES-128 CBC per la cifratura, con la content-encryption key cifrata con la chiave pubblica del destinatario; gestisce i certificati X.509 tramite CA e offre servizi avanzati come le ricevute firmate, le etichette di sicurezza, le mailing list sicure e i signing certificates (RFC 2634). PGP offre funzionalità equivalenti ma si differenzia per la certificazione delle chiavi (web of trust invece delle CA) e per la distribuzione delle chiavi. SP 800-177 raccomanda S/MIME piuttosto che PGP per la maggiore fiducia nel sistema CA di verifica delle chiavi pubbliche.
+Il capitolo 8 del libro di testo (*Electronic Mail Security*) copre gli stessi argomenti di questa lezione: l'architettura della posta Internet (RFC 5598, con il mondo utente e il mondo di trasferimento), i formati MIME, le minacce alla posta e le mitigazioni, S/MIME e PGP. Gran parte di questo contenuto è già presente negli appunti sopra, quindi qui si riporta solo ciò che il libro aggiunge o precisa rispetto a quanto già detto.
+
+Per quanto riguarda S/MIME, il libro sottolinea che si basa sulla *Cryptographic Message Syntax* (RFC 5652) e che SP 800-177 raccomanda l'uso di S/MIME piuttosto che di PGP, per la maggiore fiducia nel sistema CA di verifica delle chiavi pubbliche. PGP offre funzionalità equivalenti (firma e cifratura) ma si differenzia per la certificazione delle chiavi (web of trust invece delle CA) e per la distribuzione delle chiavi: questi aspetti sono trattati nel dettaglio nella lezione successiva.
+
+> [!info] Sintesi:
+> - Il messaggio di posta segue la catena MUA -> MSA -> MTA -> MDA -> MUA (SMTP per il trasferimento).
+> - MIME estende RFC 5322 con cinque campi di header e transfer encoding per contenuti non testuali.
+> - S/MIME aggiunge firma digitale e cifratura con certificati X.509 rilasciati da una CA (Cryptographic Message Syntax, RFC 5652).
+> - PEC è il sistema italiano con valore legale di ricevuta di consegna, senza cifratura end-to-end necessaria.
+> - DKIM firma il messaggio a nome del dominio con chiave pubblica nel DNS (RFC 6376).
+> - Il libro raccomanda S/MIME su PGP (SP 800-177) per la fiducia nel sistema CA; PGP usa invece il web of trust.

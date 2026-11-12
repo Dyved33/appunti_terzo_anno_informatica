@@ -48,11 +48,11 @@ Un modulo è un blocco di codice isolabile che serve a:
 ## NPM - Installare Pacchetti
 - Installazione locale — `npm install`
   - Scarica il modulo nella directory corrente da cui si esegue il comando
-  - Utilizzabile SOLO dalla directory del progetto via `require()`
+  - Utilizzabile solo dalla directory del progetto via `require()`
   - Servono da "librerie" (`Express`, `Mongoose`, …)
-- Installazione globale — `npm install --g`
+- Installazione globale — `npm install -g`
   - Scarica il modulo all'interno di una directory di sistema
-  - Utilizzabile da QUALSIASI directory, ma SOLO da console
+  - Utilizzabile da qualsiasi directory, ma solo da console
   - Servono come "strumenti" (`Nodemon`, `Vite`, …)
 
 ## NPM - Funzionalità
@@ -111,7 +111,7 @@ function saluta(nome) {
 module.exports = { saluta };
 ```
 
-5. Utilizzare il modulo
+4. Utilizzare il modulo
 
 ```js
 const mioModulo = require("./mio-modulo");
@@ -122,7 +122,7 @@ console.log(mioModulo.saluta('Giorgio'));
 - È un modulo core (preinstallato)
 - Fornisce funzionalità per la gestione di server e client `HTTP`
 - Utile per costruire applicazioni web e API RESTful
-- Il metodo `createServer`:
+- La funzione `createServer`:
   - Consente di creare un server che può rispondere a richieste `HTTP`
   - Fornisce metodi per gestire le richieste `HTTP` in entrata (`req`)
   - Impostare le intestazioni e il corpo delle risposte `HTTP` (`res`)
@@ -150,6 +150,41 @@ console.log(mioModulo.saluta('Giorgio'));
 }
 ```
 
+## Esempio pratico: server HTTP con le rotte di `esercizi/app.js`
+
+Il file `esercizi/app.js` contiene un server completo costruito con il modulo `http`: mappa ogni URL a un file HTML (`/`, `/about`, `/contact`) e restituisce il contenuto di `404.html` con codice `200` per tutto il resto, in ascolto sulla porta 3000.
+
+```js
+const http = require('http');
+const fs = require('fs');
+const server = http.createServer((req, res) => {
+    let filePath = '';
+    if (req.url === '/') {
+        filePath = 'index.html';
+    } else if (req.url === '/about') {
+        filePath = 'about.html';
+    } else if (req.url === '/contact') {
+        filePath = 'contact.html';
+    } else {
+        filePath = '404.html';
+    }
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Errore interno del server');
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(content);
+        }
+    });
+});
+server.listen(3000, () => {
+    console.log('Server in ascolto su http://localhost:3000');
+});
+```
+
+`fs.readFile` legge il file in modo asincrono: non blocca l'esecuzione e passa il contenuto (o l'errore) alla callback. Il server risponde con `200` e il contenuto HTML se la lettura riesce, altrimenti con `500`.
+
 ## Riavvio automatico
 - Installare il pacchetto `nodemon` `` `npm install --save-dev nodemon` ``
 - Aggiornare `package.json`
@@ -158,7 +193,7 @@ console.log(mioModulo.saluta('Giorgio'));
 {
   ...,
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "dev": "nodemon index.js"
   },
   ...
@@ -239,8 +274,32 @@ fs.rmdir('nuova_cartella', err => {
 });
 ```
 
+## Esempio pratico: scrittura e lettura di un file da `esercizi/app.js`
+
+Il file `esercizi/app.js` scrive un file con `fs.writeFile` e lo legge subito dopo con `fs.readFile`, entrambe in modo asincrono.
+
+```js
+fs.writeFile('file.txt', 'Ciao, mondo!', err => {
+    if (err) {
+        console.error('Errore nella scrittura:', err);
+    } else {
+        console.log('Scrittura completata!');
+    }
+});
+
+fs.readFile('file.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Errore nella lettura:', err);
+        return;
+    }
+    console.log(data);
+});
+```
+
+Nota: nel file originale di esercizio appare `s.readFile` per refuso di battitura; la forma corretta è `fs.readFile`, come mostrato sopra.
+
 ## Express.js
-*Definizione:* `Express.js` è un framework web per `Node.js`.
+*Definizione:* `[[Lezione 13-Express.js, middleware e esercizi pratici|Express.js]]` è un framework web per `Node.js`.
 - Progettato per creare applicazioni web e API
 - Consente di aggiungere funzionalità (logging, autenticazione, …) tramite middleware
 - Supporta un sistema di routing per gestire le richieste `HTTP` in base a vari percorsi e metodi (`GET`, `POST`, `PUT`, `DELETE`, …)
@@ -275,7 +334,7 @@ fs.rmdir('nuova_cartella', err => {
   - I dati vengono inviati nel corpo della richiesta `HTTP` (non visibili direttamente)
   - Non è idempotente (chiamate ripetute possono causare effetti collaterali)
 
-> [!example] Esempio CON `Express.js`
+> [!example] Esempio con `Express.js`
 > ```js
 > const express = require('express');
 > const app = express();
@@ -304,7 +363,7 @@ fs.rmdir('nuova_cartella', err => {
 
 > [!info] `` `app.use` `` mi dice che sto usando un middleware
 
-> [!example] Esempio SENZA `Express.js`
+> [!example] Esempio senza `Express.js`
 > ```js
 > const http = require('http');
 > const hostname = '127.0.0.1';
@@ -345,6 +404,8 @@ fs.rmdir('nuova_cartella', err => {
 - `res.cookie(name, value, [options])`: imposta un cookie
 - `res.clearCookie(name, [options])`: rimuove un cookie
 
+> [!info] `res.cookie`, `res.clearCookie` e `req.cookies` richiedono il middleware `cookie-parser` (vedi [[Lezione 13-Express.js, middleware e esercizi pratici|lezione 13]]).
+
 ## `req.params` vs `req.query`
 La differenza principale tra `req.params` e `req.query` in `Express.js` riguarda il modo in cui i dati vengono passati nell'URL.
 
@@ -363,18 +424,6 @@ La differenza principale tra `req.params` e `req.query` in `Express.js` riguarda
 - `req.method`: restituisce il metodo `HTTP` della richiesta
 - `req.ip`: restituisce l'indirizzo IP del client
 
-## Middleware in Express.js
-- È una funzione che intercetta e gestisce le richieste HTTP prima che raggiungano la loro destinazione finale 
-- Può eseguire operazioni come l'autenticazione, la gestione degli errori, il logging, ecc. 
-- Un middleware ha accesso a: 
-	- `req`: l’oggetto richiesta 
-	- `res`: l’oggetto risposta 
-	- `next`: funzione che passa il controllo al middleware successivo
+> [!info]
+> `__dirname` è una variabile globale in Node.js che rappresenta il percorso assoluto della cartella in cui si trova il file attualmente in esecuzione
 
-### Tipi di Middleware
-- Built-in Middleware (già inclusi in Express.js) 
-	- `express.static()`: per servire file statici 
-	- `express.json()` : per elaborare richieste con corpo JSON 
-	- `express.urlencoded()`: per elaborare dati nei form 
-- Custom Middleware (scritti manualmente) 
-- Third-Party Middleware (moduli esterni)

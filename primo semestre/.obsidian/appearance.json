@@ -1,4 +1,5 @@
 {
   "baseFontSizeAction": true,
-  "nativeMenus": true
+  "nativeMenus": true,
+  "showRibbon": true
 }

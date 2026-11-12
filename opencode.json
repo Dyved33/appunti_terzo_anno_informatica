@@ -31,7 +31,7 @@
   "plugins": [
     "opencode-parser",
     {
-      "package": "@plannotator/opencode@0.28.59",
+      "package": "@plannotator/opencode@0.28.61",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
     "@azumag/opencode-rate-limit-fallback@2.1.0"

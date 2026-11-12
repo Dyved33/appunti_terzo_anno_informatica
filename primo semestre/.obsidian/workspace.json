@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4750e58c4820c3f6",
+        "id": "9ffc63b48a045c93",
         "type": "tabs",
         "children": [
           {
-            "id": "a01b707b597a7af9",
+            "id": "63e7d3458f80b734",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architettura reti e internet/internet/Lezione 11-.md",
+                "file": "Intelligenza artificiale/Lezione 9.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 11-"
+              "title": "Lezione 9"
             }
           }
         ]
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 439.5
+    "width": 447.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -203,20 +203,31 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "a01b707b597a7af9",
+  "active": "63e7d3458f80b734",
   "lastOpenFiles": [
+    "Intelligenza artificiale/Lezione 9.md",
+    "Intelligenza artificiale/images/Screenshot From 2026-11-12 17-52-03.png",
+    "Intelligenza artificiale/images/Pasted image 20261112175535.png",
+    "Intelligenza artificiale/images/Pasted image 20261112175520.png",
+    "Intelligenza artificiale/images/Pasted image 20261112175455.png",
+    "Intelligenza artificiale/images/Pasted image 20261112175442.png",
+    "Intelligenza artificiale/images/Pasted image 20261112175151.png",
+    "Intelligenza artificiale/images/Pasted image 20261112175114.png",
+    "Intelligenza artificiale/images/Pasted image 20261112175042.png",
+    "Intelligenza artificiale/images/Pasted image 20261112174910.png",
+    "Intelligenza artificiale/images/Pasted image 20261112174833.png",
     "Intelligenza artificiale/Lezione 8-Introduzione al Machine Learning.md",
+    "Programmazione web e mobile con laboratorio/Lezione 13-Express.js, middleware e esercizi pratici.md",
+    "Programmazione web e mobile con laboratorio/pwm_lezione13.pdf",
+    "Sicurezza informatica/Lezione 8.md",
+    "Sicurezza informatica/Untitled 1.md",
+    "Programmazione web e mobile con laboratorio/Lezione 13-.md",
+    "Programmazione web e mobile con laboratorio/Lezione 13-Node.js 2-Express.js e middleware.md",
+    "Programmazione web e mobile con laboratorio/Unconfirmed 178751.crdownload",
+    "Programmazione web e mobile con laboratorio/esercizi/es5server.js",
+    "Programmazione web e mobile con laboratorio/Unconfirmed 846859.crdownload",
+    "Programmazione web e mobile con laboratorio/Lezione 12-Node.js e NPM.md",
     "Architettura reti e internet/internet/Lezione 11-.md",
-    "Intelligenza artificiale/images/Pasted image 20261111182043.png",
-    "Intelligenza artificiale/images/Pasted image 20261111181013.png",
-    "Intelligenza artificiale/images/Pasted image 20261111180948.png",
-    "Intelligenza artificiale/images/Pasted image 20261111180846.png",
-    "Intelligenza artificiale/images/Pasted image 20261111180833.png",
-    "Intelligenza artificiale/images/Pasted image 20261111180822.png",
-    "Intelligenza artificiale/images/Pasted image 20261111180700.png",
-    "Intelligenza artificiale/images/Pasted image 20261111180634.png",
-    "Intelligenza artificiale/images/Pasted image 20261111174416.png",
-    "Intelligenza artificiale/images/Pasted image 20261111174354.png",
     "Intelligenza artificiale/chap3_basic_classification.pdf",
     "Intelligenza artificiale/Unconfirmed 33987.crdownload",
     "Intelligenza artificiale/01_introduction_ML.pdf",
@@ -227,10 +238,6 @@
     "Intelligenza artificiale/esoneri/pseudocodici 1.md",
     "Intelligenza artificiale/esoneri/domande_secondoEsonero_IntroAI.pdf",
     "Intelligenza artificiale/esoneri/domande_primo_esonero.md",
-    "Intelligenza artificiale/esoneri/algorithms.pdf",
-    "Intelligenza artificiale/esercitazioni/aimaLAB_lezione3.ipynb",
-    "Intelligenza artificiale/esercitazioni/aimaLAB_lezione2__TODO.ipynb",
-    "Intelligenza artificiale/esercitazioni/aimaLAB_lezione1_TODO.ipynb",
     "Intelligenza artificiale/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
     "Intelligenza artificiale/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "Intelligenza artificiale/Lezione 5-Ricerca con memoria limitata.md",
@@ -242,14 +249,6 @@
     "Sicurezza informatica/Lezione 7-PGP, DNSSEC e autenticazione del dominio.md",
     "Sicurezza informatica/Lezione 6-Posta elettronica.md",
     "Sicurezza informatica/Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
-    "Sicurezza informatica/Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS.md",
-    "Sicurezza informatica/Lezione 3-Firewall.md",
-    "Sicurezza informatica/Lezione 2-Architettura delle reti, stack TCP-IP e protocolli applicativi.md",
-    "Sicurezza informatica/Lezione 1-Fondamenti di sicurezza informatica e protezione dei sistemi.md",
-    "Sicurezza informatica/Laboratorio-Esercitazione Wireshark.md",
-    "Sicurezza informatica/Approfondimento chiavi SSH private e pubbliche.md",
-    "Sicurezza informatica/00 Indice - Introduzione sicurezza.md",
-    "Architettura reti e internet/protocolli/Lezione 7-.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 13-Gruppi, funzioni d'aggregazione, GROUP BY e HAVING.md"
+    "Sicurezza informatica/Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS.md"
   ]
 }

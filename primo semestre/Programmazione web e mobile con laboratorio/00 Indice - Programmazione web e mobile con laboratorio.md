@@ -12,3 +12,4 @@
 - [[Lezione 10-Strutture di controllo in JavaScript|Strutture di controllo in JavaScript]] — Strutture di controllo, array, oggetti, eventi, `window.onload`, `preventDefault()`
 - [[Lezione 11-Servizi Google|Servizi Google]] — Google Charts, Google Maps, Calendar JavaScript API e altri servizi Google
 - [[Lezione 12-Node.js e NPM|Node.js e NPM]] — Ambiente di esecuzione Node.js, NPM, moduli, pacchetti, server HTTP, Express.js e API REST
+- [[Lezione 13-Express.js, middleware e esercizi pratici|Express.js, middleware e esercizi pratici]] — Routing pratico, middleware (404, logging, cookie-parser), `express.static`, HTML statico vs dinamico, Esercizi 1-5

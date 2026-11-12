@@ -1,4 +1,4 @@
- # PGP, DNSSEC e autenticazione del dominio (SPF, DMARC)
+# PGP, DNSSEC e autenticazione del dominio (SPF, DMARC)
 
 ## Installare S/MIME in Thunderbird
 
@@ -19,8 +19,6 @@ La chiave privata deve essere protetta con cura: se viene compromessa, un attacc
 **PGP** (Pretty Good Privacy) è un protocollo di sicurezza per la posta elettronica alternativo a S/MIME, con funzionalità essenzialmente equivalenti (firma digitale e cifratura dei messaggi). È stato creato da Phil Zimmerman e implementato come prodotto rilasciato per la prima volta nel 1991, reso disponibile gratuitamente e divenuto popolare per l'uso personale. Il protocollo PGP iniziale era proprietario e usava alcuni algoritmi di cifratura con restrizioni di proprietà intellettuale.
 
 Le due differenze significative tra S/MIME e OpenPGP riguardano la **certificazione delle chiavi** e la **distribuzione delle chiavi**. S/MIME si affida al sistema delle Certification Authority (CA) e ai certificati X.509; PGP adotta invece un modello di *web of trust*, in cui gli utenti firmano le chiavi pubbliche degli altri utenti che conoscono personalmente, creando una rete di fiducia decentralizzata.
-
-SP 800-177 raccomanda l'uso di S/MIME piuttosto che di PGP per la maggiore fiducia nel sistema CA di verifica delle chiavi pubbliche.
 
 ## DNS
 
@@ -133,12 +131,27 @@ Un'email in entrata è considerata "DMARC Aligned" se il nome di dominio dell'in
 
 ## Argomenti del capitolo 8
 
-Il capitolo 8 del libro di testo (*Electronic Mail Security*) copre l'architettura della posta Internet, i formati MIME, le minacce e le mitigazioni, S/MIME, Pretty Good Privacy (PGP), DNS, DNSSEC, DANE, SPF, DKIM e DMARC. S/MIME e PGP offrono funzionalità essenzialmente equivalenti e si differenziano per certificazione e distribuzione delle chiavi. DNSSEC protegge i record DNS con firme digitali (RRSIG, DNSKEY, DS, NSEC/NSEC3), DANE vincola i certificati X.509 ai nomi DNS senza bisogno di una CA, SPF autorizza gli IP di invio dei messaggi, DKIM firma criticograficamente i messaggi a livello di dominio e DMARC allinea il dominio `From` con SPF/DKIM aggiungendo un sistema di report. Tutte queste estensioni provvedono alla protezione dei trasferimenti su Internet con dati firmati con chiavi pubbliche e all'autenticazione dei messaggi tra name server e resolver.
+Il capitolo 8 del libro di testo (*Electronic Mail Security*) copre l'architettura della posta Internet, i formati MIME, le minacce e le mitigazioni, S/MIME, Pretty Good Privacy (PGP), DNS, DNSSEC, DANE, SPF, DKIM e DMARC. S/MIME e PGP offrono funzionalità essenzialmente equivalenti e si differenziano per certificazione e distribuzione delle chiavi. DNSSEC protegge i record DNS con firme digitali (RRSIG, DNSKEY, DS, NSEC/NSEC3), DANE vincola i certificati X.509 ai nomi DNS senza bisogno di una CA, SPF autorizza gli IP di invio dei messaggi, DKIM firma crittograficamente i messaggi a livello di dominio e DMARC allinea il dominio `From` con SPF/DKIM aggiungendo un sistema di report. Tutte queste estensioni provvedono alla protezione dei trasferimenti su Internet con dati firmati con chiavi pubbliche e all'autenticazione dei messaggi tra name server e resolver.
 
 ## Estensioni di sicurezza del DNS
 
-Le estensioni per la sicurezza provvedono alla protezione dei trasferimenti su Internet: i dati vengono firmati con chiavi pubbliche (SIG, KEY) e l'assenza di dati DNS è notificata (NXT). La protezione per i trasferimenti DNS locali autentica i messaggi tra name server e resolver (TSIG), inclusi i trasferimenti di zona tra server primari e secondari. L'infrastruttura a chiave pubblica (PKI) distribuisce chiavi pubbliche per altri protocolli di sicurezza (KEY) e diversi tipi di certificati (CERT).
+Le estensioni di sicurezza del DNS proteggono i trasferimenti su Internet firmando i dati con chiavi pubbliche: i record DNSSEC sono DNSKEY (chiave pubblica di zona), RRSIG (firma crittografica), DS (Delegation Signer per la catena di autenticazione) e NSEC/NSEC3 (denial-of-existence). La PKI distribuisce chiavi pubbliche per altri protocolli di sicurezza e diversi tipi di certificati.
 
 ## Complementi dal libro di testo
 
-Il capitolo 8 del libro di testo tratta in dettaglio l'architettura della posta Internet definita da RFC 5598, con il mondo utente (MUA) e il mondo di trasferimento (MHS/MTA), gli ADMD e i protocolli di accesso alla posta (SMTP per l'invio, POP3/IMAP per la ricezione). I formati di messaggio seguono RFC 5322 per i contenuti e MIME (RFC 2045-2049) per i contenuti multimediali, con i cinque campi di intestazione MIME, i content type e i transfer encoding (7-bit, quoted-printable, base64). Le minacce alla posta (alterazione, spoofing, cache poisoning, aggiornamenti non autorizzati) sono mitigate dalle firme digitali, dalla cifratura e dall'autenticazione del dominio. Il capitolo confronta S/MIME e PGP, introduce DNS e DNSSEC con i nuovi resource record (RRSIG, DNSKEY, DS, NSEC/NSEC3, CDNSKEY/CDS; RFC 4033-4035), DANE per l'autenticazione dei certificati TLS senza CA (RFC 6698), SPF per l'autorizzazione degli IP mittenti (RFC 7208) e DMARC per l'allineamento del dominio mittente e il report (RFC 7489).
+Il capitolo 8 del libro di testo (*Electronic Mail Security*) dedica ampio spazio proprio agli argomenti di questa lezione: PGP, DNSSEC, DANE, SPF, DKIM e DMARC. Di seguito si riporta ciò che il libro aggiunge rispetto a quanto già presente negli appunti sopra.
+
+**PGP e il web of trust:** PGP, creato da Phil Zimmerman nel 1991 e oggi standardizzato come OpenPGP (RFC 4880), offre le stesse funzionalità di S/MIME (firma e cifratura) ma si differenzia in due punti. Per la certificazione delle chiavi, S/MIME usa certificati X.509 rilasciati da Certification Authority, mentre in PGP gli utenti firmano le chiavi pubbliche dei contatti che conoscono personalmente, costruendo una rete di fiducia decentralizzata chiamata *web of trust*. Per la distribuzione, PGP non allega la chiave pubblica del mittente a ogni messaggio: il destinatario deve ottenerla separatamente, per esempio dai *key server* pubblici, che però non fanno alcun controllo (non c'è *vetting*), quindi spetta al web of trust decidere se fidarsi di una chiave. Per questo SP 800-177 raccomanda S/MIME piuttosto che PGP, per la maggiore fiducia nel sistema CA di verifica delle chiavi pubbliche.
+
+**DNSSEC:** il libro ricorda che il DNS si compone di quattro elementi — *domain name space*, database, name server e resolver — e che gli MTA lo usano per trovare il server MX del destinatario. DNSSEC protegge i record DNS con firme digitali (RRSIG, DNSKEY, DS, NSEC/NSEC3, CDNSKEY/CDS; RFC 4033-4035), firmando l'intero RRSet anziché i singoli record.
+
+**DANE:** DANE (RFC 6698) vincola i certificati X.509 ai nomi DNS usando il record TLSA, che definisce quattro *usage models*: PKIX-TA (si fida di una CA specifica per autenticare il certificato del servizio), PKIX-EE (si fida di un certificato entità specifico), DANE-TA (il dominio dichiara una propria CA come trust anchor) e DANE-EE (il dominio emette certificati senza coinvolgere una CA esterna). Il campo Selector indica se confrontare l'intero certificato o solo la chiave pubblica, mentre il Matching Type specifica se il confronto è esatto o tramite hash SHA-256/SHA-512. DANE si usa con SMTP su STARTTLS per impedire il downgrade della connessione cifrata, e per S/MIME tramite il record SMIMEA, che associa i certificati ai nomi di dominio.
+
+**SPF, DKIM e DMARC:** SPF (RFC 7208) permette a un dominio di dichiarare, tramite un record TXT DNS, quali IP sono autorizzati a inviare posta per suo conto; il destinatario controlla il record e applica tre regole: se non c'è nessun record SPF si accetta, se il record ha errori di formattazione si accetta, altrimenti si usano i meccanismi e i modificatori del record per decidere. DKIM (RFC 6376) firma crittograficamente il messaggio a nome del dominio firmatario, pubblicando la chiave pubblica nel DNS. DMARC (RFC 7489) sta sopra SPF e DKIM: standardizza come il destinatario esegue l'autenticazione, richiede che il dominio `From` dell'intestazione (RFC 5322) sia allineato con il dominio firmato da DKIM o con il dominio autenticato da SPF, e aggiunge un sistema di report perché SPF e DKIM da soli non dicono al mittente se le sue policy funzionano né se un messaggio senza firma DKIM è autentico o contraffatto.
+
+> [!info] Sintesi:
+> - PGP offre firma e cifratura come S/MIME ma usa il web of trust per certificare le chiavi e key server senza vetting per distribuirle.
+> - DNSSEC firma gli RRSet DNS (RRSIG, DNSKEY, DS, NSEC/NSEC3) per garantire autenticità e integrità dei record.
+> - DANE (TLSA) lega certificati X.509 ai nomi DNS con quattro usage models, evitando il downgrade su STARTTLS.
+> - SPF (record TXT) dichiara gli IP autorizzati a inviare posta per un dominio; DKIM (RFC 6376) firma il messaggio a livello di dominio.
+> - DMARC (RFC 7489) allinea il dominio From con SPF/DKIM e aggiunge un sistema di report sull'efficacia delle policy.

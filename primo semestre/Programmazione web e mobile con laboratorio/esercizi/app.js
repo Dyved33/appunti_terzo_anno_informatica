@@ -76,3 +76,46 @@ s.readFile('file.txt', 'utf8', (err, data) => {
     }
     console.log(data);
 });
+
+//Gestione errore 404
+//const express = require('express');
+//const app = express();
+//const PORT = 3000;
+//app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+//app.get('/about', (req, res) => res.sendFile(__dirname + '/about.html'));
+//app.get('/contact', (req, res) => res.sendFile(__dirname + '/contact.html'));
+//// Middleware per gestire errori 404 (pagina non trovata)
+//app.use((req, res) => {
+//    res.status(404).sendFile(__dirname + '/404.html');
+//});
+//app.listen(PORT, () => {
+//    console.log(`Server in ascolto su http://localhost:${PORT}`);
+//});
+//
+//Aggiungere un middleware che, ad ogni richiesta ricevuta dal server, stampa il metodo HTTP, l'URL della richiesta e la durata 
+//dell’operazione. Questo middleware deve essere dichiarato prima delle altre route, altrimenti non verrebbe eseguito per le 
+//richieste già gestite. Altri middleware (ad esempio quello per gli errori 404) devono esseredichiarati dopo le route per gestire 
+//ciò che non è stato intercettato prima
+// Middleware per loggare il metodo HTTP, l'URL e la durata della richiesta
+//app.use((req, res, next) => {
+//    const start = Date.now(); // Tempo di inizio
+//    res.on('finish', () => { // Eseguito quando la risposta viene inviata
+//        const duration = Date.now() - start;
+//        console.log(`${req.method} ${req.url} - ${duration}ms`);
+//    });
+//    next();
+//});
+
+//Invece di gestire ogni rotta manualmente con res.sendFile(),     usare express.static() per gestire i file statici. 
+//Express.js cercherà i file direttamente nella cartella public/ senza bisogno di dichiarare ogni route
+//const express = require('express');
+//const app = express();
+//const PORT = 3000;
+//app.use(express.static(__dirname + '/public'));
+//app.use((req, res) => {
+//    res.status(404).sendFile(__dirname + '/public/404.html');
+//});
+//app.listen(PORT, () => {
+//    console.log(`Server in ascolto su http://localhost:${PORT}`);
+//});
+
