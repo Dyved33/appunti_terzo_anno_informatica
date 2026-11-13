@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "236840204bdba52a",
+        "id": "b7b02abee8667245",
         "type": "tabs",
         "children": [
           {
-            "id": "6a5ec41ea343fc59",
+            "id": "8c51071ec795194a",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -261,8 +261,10 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "6a5ec41ea343fc59",
+  "active": "8c51071ec795194a",
   "lastOpenFiles": [
+    "primo semestre/Architettura reti e internet/internet/Lezione 12-.md",
+    "primo semestre/Intelligenza artificiale/Lezione 9-Misure di impurità e criteri di split negli alberi di decisione.md",
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 11-Servizi Google.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md",
     "primo semestre/Architettura reti e internet/protocolli/Lezione 7-EVM, modulazioni digitali e limiti di trasmissione.md",
@@ -306,8 +308,6 @@
     "primo semestre/Intelligenza artificiale/Lezione 5-Ricerca con memoria limitata.md",
     "primo semestre/Intelligenza artificiale/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
     "primo semestre/Intelligenza artificiale/Lezione 3-Ricerca su grafo.md",
-    "primo semestre/Intelligenza artificiale/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
-    "primo semestre/Intelligenza artificiale/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
-    "primo semestre/Intelligenza artificiale/00 Indice - Introduzione IA.md"
+    "primo semestre/Intelligenza artificiale/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md"
   ]
 }

@@ -1,9 +1,9 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "providers": {
-    "opencode": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } },
-    "openrouter": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } },
-    "ollama": { "settings": { "headerTimeout": 60000, "chunkTimeout": 90000, "timeout": 180000 } }
+    "opencode": { "settings": { "headerTimeout": 30000, "chunkTimeout": 60000, "timeout": 60000 } },
+    "openrouter": { "settings": { "headerTimeout": 30000, "chunkTimeout": 60000, "timeout": 60000 } },
+    "ollama": { "settings": { "headerTimeout": 30000, "chunkTimeout": 60000, "timeout": 60000 } }
   },
   "default_agent": "plan",
   "instructions": [
@@ -15,7 +15,15 @@
       "mode": "primary",
       "permissions": [
         { "action": "subagent", "resource": "*", "effect": "deny" },
-        { "action": "subagent", "resource": "revisore", "effect": "allow" }
+        { "action": "subagent", "resource": "revisore", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.py", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.js", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.ts", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.cpp", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.c", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.java", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.html", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/**/*.css", "effect": "allow" }
       ]
     },
     "revisore": {
@@ -31,7 +39,7 @@
   "plugins": [
     "opencode-parser",
     {
-      "package": "@plannotator/opencode@0.28.61",
+      "package": "@plannotator/opencode@0.30.0",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
     "@azumag/opencode-rate-limit-fallback@2.1.0"
@@ -39,23 +47,25 @@
   "skills": [".opencode/skills"],
   "mcp": {
     "servers": {
-      "obsidian-search": { "type": "remote", "url": "http://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false, "pool": true }
+      "obsidian-search": { "type": "remote", "url": "https://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false, "pool": true },
+      "fetch": { "type": "local", "command": ["mcp-server-fetch"], "disabled": false }
     }
   },
   "tools": {
-    "obsidian-search*": "deny"
+    "obsidian-search*": "deny",
+    "fetch*": "deny"
   },
   "agent": {
     "appunti": {
-      "tools": { "obsidian-search*": "allow" }
+      "tools": { "obsidian-search*": "allow", "fetch*": "allow" }
     },
     "revisore": {
-      "tools": { "obsidian-search*": "allow" }
+      "tools": { "obsidian-search*": "allow", "fetch*": "allow" }
     }
   },
   "compaction": {
     "auto": true,
-    "keep": { "tokens": 12000 }
+    "keep": { "tokens": 18000 }
   },
   "subagent_depth": 1,
   "experimental": { "todo": true },
@@ -127,6 +137,7 @@
     { "action": "shell", "resource": "git show*", "effect": "allow" },
     { "action": "shell", "resource": "obsidian-mcp-search status*", "effect": "allow" },
     { "action": "mcp.use", "resource": "obsidian-search*", "effect": "allow" },
+    { "action": "mcp.use", "resource": "fetch*", "effect": "allow" },
     { "action": "shell", "resource": "*env*", "effect": "deny" },
     { "action": "webfetch", "resource": "*", "effect": "allow" },
     { "action": "websearch", "resource": "*", "effect": "allow" },

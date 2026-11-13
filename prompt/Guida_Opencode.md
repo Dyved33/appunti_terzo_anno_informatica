@@ -63,12 +63,17 @@ Le regole di scrittura sono divise su due livelli:
 | `no-ai-slop` | `.opencode/skills/no-ai-slop/SKILL.md` | prima di scrivere o rivedere una nota, per evitare parole e formule da stile IA |
 | `i-have-adhd` | `.opencode/skills/i-have-adhd/SKILL.md` | prima di scrivere o rivedere una nota, per l'impaginazione (un'idea per blocco, elenchi invece della prosa) |
 | `note-quality` | `.opencode/skills/note-quality/SKILL.md` | prima di chiudere una nota, per verificare che nulla del docente sia perso e che lo stile sia corretto |
+| `opencode-compact` | `.opencode/skills/opencode-compact/SKILL.md` | per comprimere trascrizioni o testi grezzi lunghi riducendo l'uso di token |
+| `opencode-qa` | `.opencode/skills/opencode-qa/SKILL.md` | per generare callout di domande e risposte di autoverifica per l'esame |
 
 Le due skill già presenti in `~/.agents/skills/` e `~/.config/opencode/vendor/` restano valide come riferimento globale; quelle in `.opencode/skills/` sono la versione di progetto.
 
 ## Per-agent MCP tools
 
-Il server MCP `obsidian-search` non è più globale: il suo schema tool viene inviato solo agli agenti che ne hanno bisogno (`appunti` e `revisore`). Negli altri turni il contesto statico è più leggero. Se un altro agente ha bisogno della ricerca semantica, chiedi di aggiungerlo alla sezione `agent` di `opencode.json`.
+I server MCP non sono globali per tutti i turni: il loro schema tool viene inviato solo agli agenti autorizzati (`appunti` e `revisore`). Negli altri turni il contesto statico rimane leggero:
+
+- **`obsidian-search`**: ricerca semantica locale nel vault su porta 8848 (protocollo sicuro `https://`).
+- **`fetch`**: server MCP locale (`mcp-server-fetch`) per estrarre documentazioni ufficiali online, RFC e pagine web convertite direttamente in Markdown compatto, senza residui HTML.
 
 ## Nuovi plugin
 
