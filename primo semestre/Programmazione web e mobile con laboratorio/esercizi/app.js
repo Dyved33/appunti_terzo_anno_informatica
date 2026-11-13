@@ -15,7 +15,7 @@
 //
 //    console.log("Guess the number among 1 and 10:\n")
 //
-//    ProcessingInstruction.stdin.on("data", function (input) {//.on è un listner
+//    ProcessingInstruction.stdin.on("data", function (input) {//.on è un listener
 //        const guess = parseInt(input);
 //
 //        if (guess === randomNumber) {
@@ -24,18 +24,19 @@
 //        } else if (guess < randomNumber) {
 //            console.log("Too low, try again\n");
 //        } else if (guess > randomNumber) {
-//            console.log("Too low, try again\n");
+//            console.log("Too high, try again\n");
 //        } else {
 //            console.log("Please enter a valid number\n");
 //        }
 //    });
 //}
 
-const http = require('http');
-const fs = require('fs');
-const server = http.createServer((req, res) => {
+const http = require('http'); //per creare il server
+const fs = require('fs'); //per leggere e scrivere file
+
+const server = http.createServer((req, res) => {// req è la risposta del client e res è la risposta del server
     let filePath = '';
-    // Mappa dei percorsi
+    // Mappa dei percorsi per il routing manuale
     if (req.url === '/') {
         filePath = 'index.html';
     } else if (req.url === '/about') {
@@ -69,7 +70,7 @@ fs.writeFile('file.txt', 'Ciao, mondo!', err => {
     }
 });
 
-s.readFile('file.txt', 'utf8', (err, data) => {
+fs.readFile('file.txt', 'utf8', (err, data) => {
     if (err) {
         console.error('Errore nella lettura:', err);
         return;
@@ -77,13 +78,14 @@ s.readFile('file.txt', 'utf8', (err, data) => {
     console.log(data);
 });
 
-//Gestione errore 404
+//Server con Express
 //const express = require('express');
 //const app = express();
 //const PORT = 3000;
 //app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
 //app.get('/about', (req, res) => res.sendFile(__dirname + '/about.html'));
 //app.get('/contact', (req, res) => res.sendFile(__dirname + '/contact.html'));
+//
 //// Middleware per gestire errori 404 (pagina non trovata)
 //app.use((req, res) => {
 //    res.status(404).sendFile(__dirname + '/404.html');
@@ -91,7 +93,8 @@ s.readFile('file.txt', 'utf8', (err, data) => {
 //app.listen(PORT, () => {
 //    console.log(`Server in ascolto su http://localhost:${PORT}`);
 //});
-//
+
+
 //Aggiungere un middleware che, ad ogni richiesta ricevuta dal server, stampa il metodo HTTP, l'URL della richiesta e la durata 
 //dell’operazione. Questo middleware deve essere dichiarato prima delle altre route, altrimenti non verrebbe eseguito per le 
 //richieste già gestite. Altri middleware (ad esempio quello per gli errori 404) devono esseredichiarati dopo le route per gestire 
@@ -106,7 +109,8 @@ s.readFile('file.txt', 'utf8', (err, data) => {
 //    next();
 //});
 
-//Invece di gestire ogni rotta manualmente con res.sendFile(),     usare express.static() per gestire i file statici. 
+
+//Invece di gestire ogni rotta manualmente con res.sendFile(), usare express.static() per gestire i file statici. 
 //Express.js cercherà i file direttamente nella cartella public/ senza bisogno di dichiarare ogni route
 //const express = require('express');
 //const app = express();
