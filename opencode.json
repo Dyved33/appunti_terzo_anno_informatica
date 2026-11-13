@@ -39,7 +39,7 @@
   "plugins": [
     "opencode-parser",
     {
-      "package": "@plannotator/opencode@0.30.0",
+      "package": "@plannotator/opencode@0.28.61",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
     },
     "@azumag/opencode-rate-limit-fallback@2.1.0"
@@ -47,7 +47,7 @@
   "skills": [".opencode/skills"],
   "mcp": {
     "servers": {
-      "obsidian-search": { "type": "remote", "url": "https://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false, "pool": true },
+      "obsidian-search": { "type": "remote", "url": "http://127.0.0.1:8848/mcp", "protocol": "auto", "disabled": false, "pool": true },
       "fetch": { "type": "local", "command": ["mcp-server-fetch"], "disabled": false }
     }
   },
