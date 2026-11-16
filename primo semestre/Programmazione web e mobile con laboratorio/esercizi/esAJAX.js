@@ -1,32 +1,32 @@
 const express = require("express");
 const fs = require("fs");
-const path = require("path");
-
 const app = express();
 const port = 3000;
-const fileColori = path.join(__dirname, "colori.txt");
 
-app.use(express.json());
+const file = "colori.txt";
+
 app.use(express.static("public"));
+app.use(express.json());
 
-app.post("/api/colore", (req, res) => {
+// Route per salvare un colore
+app.post("/write-color", (req, res) => {
     const { colore } = req.body;
-    if (!colore) {
-        return res.status(400).json({ errore: "Colore non specificato" });
-    }
-    fs.appendFileSync(fileColori, colore + "\n");
-    res.json({ messaggio: "Colore salvato", colore });
+    fs.appendFile(file, colore + "\n", err => {
+        if (err) return res.status(500).send("Errore nel salvataggio");
+        res.status(200).send("Colore salvato");
+    });
 });
 
-app.get("/api/colore", (req, res) => {
-    let ultimo = null;
-    if (fs.existsSync(fileColori)) {
-        const righe = fs.readFileSync(fileColori, "utf-8").split("\n").filter(Boolean);
-        ultimo = righe[righe.length - 1];
-    }
-    res.json({ colore: ultimo });
+// Route GET per recuperare l'ultimo colore
+app.get("/read-color", (req, res) => {
+    fs.readFile(file, "utf-8", (err, data) => {
+        if (err) return res.status(500).send("Errore nella lettura");
+        const righe = data.trim().split("\n");
+        const ultimo = righe[righe.length - 1];
+        res.json({ colore: ultimo });
+    });
 });
 
 app.listen(port, () => {
-    console.log("Server attivo su http://localhost:" + port);
+    console.log("Server in ascolto su http://localhost:" + port);
 });
