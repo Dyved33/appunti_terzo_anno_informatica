@@ -8,16 +8,28 @@ RFC 1636, *"Security in the Internet Architecture"*, è stato emesso nel 1994 da
 
 L'IAB ha incluso autenticazione e cifratura come funzionalità necessarie nella prossima generazione di IP (IPv6). La specifica IPsec esiste ora come un insieme di standard Internet.
 
+IPsec permette al sistema di scegliere i protocolli di sicurezza, gli algoritmi per i servizi richiesti e le chiavi crittografiche necessarie. I servizi elencati da RFC 4301 sono controllo degli accessi, integrità senza connessione, autenticazione dell'origine, rifiuto dei pacchetti ripetuti (integrità parziale della sequenza), confidenzialità e confidenzialità limitata del flusso di traffico.
+
+## Documenti IPsec
+L'architettura IPsec è descritta da RFC 4301; AH da RFC 4302; ESP da RFC 4303. I documenti IKE descrivono la gestione delle chiavi; la specifica principale citata nelle slide è RFC 7296 per IKEv2. Altri documenti definiscono gli algoritmi crittografici, le funzioni pseudocasuali (PRF), lo scambio di chiavi e aspetti di policy, gestione e MIB.
+
 ## Applicazioni di IPsec
 IPsec fornisce la capacità di proteggere le comunicazioni attraverso LAN, WAN private e pubbliche, e Internet.
 
 Esempi:
-- connettività sicura tra succedanei su Internet;
+- connettività sicura tra sedi aziendali su Internet;
 - accesso remoto sicuro su Internet;
 - connettività extranet e intranet con partner;
 - sicurezza del commercio elettronico.
 
 *Caratteristica principale di IPsec:* può cifrare e/o autenticare tutto il traffico a livello IP. Così tutte le applicazioni distribuite (remote logon, client/server, e-mail, file transfer, Web access) possono essere protette.
+
+## Vantaggi e uso nel routing
+Se IPsec è implementato su un firewall o router, può proteggere tutto il traffico che attraversa il perimetro. Il traffico interno all'azienda non subisce l'elaborazione aggiuntiva. Se il firewall è l'unico accesso da Internet e tutto il traffico esterno usa IP, l'applicazione di IPsec sul firewall è difficile da aggirare.
+
+IPsec opera sotto il livello di trasporto ed è trasparente alle applicazioni e agli utenti: non richiede modifiche al software dei client o dei server, formazione degli utenti né distribuzione di chiavi per singolo utente. Può anche proteggere utenti singoli, ad esempio lavoratori remoti o sottoreti virtuali per applicazioni sensibili.
+
+Nel routing, IPsec può autenticare gli annunci dei router, verificare l'identità dei router con cui si stabilisce o mantiene una relazione di vicinato, autenticare i messaggi di redirect e impedire la contraffazione degli aggiornamenti di routing.
 
 ## Quali strumenti usa IPsec
 IPsec garantisce segretezza, autenticazione e integrità.
@@ -47,8 +59,9 @@ In qualsiasi pacchetto IP, la SA è univocamente identificata dall'Indirizzo di 
 
 ![[Pasted image 20261116101715.png|500]]
 
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261116112033.png" width="500">
+<div style="text-align: center;">
+  <img src="image/Pasted image 20261116112033.png" width="500">
+  <p>Figura 9.2: architettura IPsec.</p>
 </div>
 
 ## Security Association Database (SAD)
@@ -94,12 +107,12 @@ Parte dell'SA: serve a selezionare l'SA in un SAD.
 
 Padding (riempimento): necessario per certi tipi di crypto.
 
-Header ESP, Trailer ESP, Authenticator ESP: MAC del pacchetto contenente questo AH, lunghezza del padding, 24 (numero di sequenza dell'AH all'interno dell'SA).
+L'header ESP contiene SPI e numero di sequenza; il trailer contiene Pad Length e Next Header. L'Authenticator (ICV) è il MAC calcolato sul pacchetto ESP. Il numero di sequenza è a 32 bit e appartiene alla SA.
 
 ### Encapsulating Security Payload (ESP)
 Usato per cifrare il Payload Data, Padding, Pad Length e Next Header fields. Se l'algoritmo richiede dati di sincronizzazione crittografica, questi dati possono essere trasportati esplicitamente all'inizio del campo Payload Data.
 
-Un campo ICG (Integrity Check Value) è presente solo se il servizio di integrità è selezionato ed è fornito da un algoritmo di integrità separato o da un algoritmo di modalità combinata che usa un ICV. L'ICV è computato dopo che la cifratura è stata eseguita. Questo ordine di elaborazione facilita la riduzione dell'impatto di attacchi DoS. Poiché l'ICV non è protetto dalla cifratura, un algoritmo di integrità con chiave deve essere impiegato per computare l'ICV.
+Un campo ICV (Integrity Check Value) è presente solo se il servizio di integrità è selezionato ed è fornito da un algoritmo di integrità separato o da un algoritmo di modalità combinata che usa un ICV. L'ICV è calcolato dopo la cifratura. Questo ordine riduce l'impatto degli attacchi DoS. Poiché l'ICV non è protetto dalla cifratura, per calcolarlo si deve usare un algoritmo di integrità con chiave.
 
 Il campo Padding serve a diversi scopi:
 
@@ -115,7 +128,7 @@ Il campo Padding serve a diversi scopi:
 **Tunnel Mode:** fornisce protezione all'intero pacchetto IP. Usato quando uno o entrambi gli estremi di un'associazione di sicurezza (SA) sono un security gateway. Un numero di host su reti dietro firewall possono impegnarsi in comunicazioni sicure senza implementare IPsec. ESP in tunnel mode cifra e opzionalmente autentica l'intero pacchetto IP interno, includendo l'intestazione IP interna. AH in tunnel mode autentica l'intero pacchetto IP interno e l'intestazione IP esterna.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261116111844.png" width="500">
+  <img src="image/Pasted image 20261116111844.png" width="500">
 </div>
 
 ![[Pasted image 20261116104938.png|500]]
@@ -179,19 +192,19 @@ Può servire combinare (sovrapporre) molteplici tunnel. Ogni tunnel può avere p
 - **Tipo 3/4 di combinazioni SA: tipo 1 & tipo 2.** Combinazione di tipo 1 punto-punto e combinazione di tipo 2 fra intermediari.
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261116111900.png" width="500">
+  <img src="image/Pasted image 20261116111900.png" width="500">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261116111943.png" width="500">
+  <img src="image/Pasted image 20261116111943.png" width="500">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261116111954.png" width="500">
+  <img src="image/Pasted image 20261116111954.png" width="500">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261116112010.png" width="500">
+  <img src="image/Pasted image 20261116112010.png" width="500">
 </div>
 
 ![[Pasted image 20261116111624.png|500]]
@@ -215,8 +228,8 @@ Il protocollo predefinito di gestione automatizzata delle chiavi di IPsec. Consi
 ### Caratteristiche della determinazione delle chiavi IKE2
 L'algoritmo è caratterizzato da cinque importanti caratteristiche:
 
-1. Impiega un meccanismo noto come *cookies* per contrastare attacchi di clogging (DoS). Lo scambio di cookie richiede che ogni parte invii un ack. Un oppositore può solo forzare un utente a generare un ack ma non a fare costosi calcoli (esponenziazione modulare Diffie-Hellman). Il cookie deve dipendere dalla parte specifica (per evitare mascheramento). I cookie sono connessi a qualche informazione segreta locale. La generazione e verifica dei cookie devono essere veloci.
-2. Permette alle due parti di negoziare un "group"; questo, in sostanza, specifica i parametri globali dello scambio chiavi Diffie-Hellman. L'uso di una veloce hash (MD5) su IP e UDP sorgente e destinazione e un nonce segreto locale.
+1. Impiega *cookie* per contrastare gli attacchi di clogging (DoS). Lo scambio richiede che ciascuna parte invii un riscontro: un oppositore può costringere il sistema a generare il riscontro, ma non a eseguire subito i costosi calcoli dell'esponenziazione modulare Diffie-Hellman. Il cookie dipende dalla parte specifica e da informazioni segrete locali; generarlo e verificarlo deve essere veloce. La slide descrive il calcolo con un hash rapido (MD5) sugli indirizzi IP e sulle porte UDP sorgente e destinazione, insieme a un nonce segreto locale.
+2. Permette alle due parti di negoziare un *group*, che specifica i parametri globali dello scambio chiavi Diffie-Hellman.
 3. Usa *nonces* per garantire contro attacchi di replay.
 4. Permette lo scambio dei valori di chiave pubblica Diffie-Hellman.
 5. Autentica lo scambio Diffie-Hellman per contrastare attacchi man-in-the-middle.
@@ -305,5 +318,30 @@ IKEv2 definisce scambi iniziali (4 messaggi per stabilire la prima SA), CREATE_C
 
 ### Suite crittografiche
 RFC 4308 definisce due suite: VPN-A (3DES-CBC, HMAC-SHA1-96, gruppo DH 1024-bit MODP) e VPN-B (AES-CBC 128-bit, AES-XCBC-MAC-96, gruppo DH 2048-bit MODP). RFC 6379 definisce la NSA Suite B con AES-GCM, HMAC-SHA-256/384 e gruppi ECP.
+
+> [!info] IPsec-v3 e IPsec-v2
+> *IPsec-v3* è il nome usato dalla roadmap IETF per l'architettura di [RFC 4301](https://www.rfc-editor.org/rfc/rfc4301.html), che sostituisce IPsec-v2, definita da [RFC 2401](https://www.rfc-editor.org/rfc/rfc2401.html). Non è una nuova versione di IP né un singolo protocollo: IPsec è una famiglia di standard per AH, ESP, le SA e la gestione delle chiavi. RFC 4301 resta il documento base dell'architettura, aggiornato da RFC successive.
+>
+> La revisione incorpora l'esperienza d'implementazione e chiarisce punti ambigui o incompleti di IPsec-v2. La nuova architettura descrive in modo più preciso il trattamento del traffico e le interazioni fra le basi dati, per adattarsi a più scenari e semplificare l'implementazione.
+>
+> | IPsec-v2 (RFC 2401) | IPsec-v3 (RFC 4301 e documenti associati) |
+> |---|---|
+> | Modello di elaborazione meno dettagliato; la selezione delle policy era meno flessibile. | Modello di elaborazione rivisto; separa inoltro e selezione SPD, con cache SPD per alcuni flussi. |
+> | SPD con selettori meno flessibili. | Selettori SPD più flessibili, inclusi intervalli di indirizzi e porte e tipi/codici ICMP. |
+> | Non prevedeva la PAD nell'architettura. | Aggiunge la Peer Authorization Database (PAD), che collega autenticazione dei peer, gestione delle SA e SPD. |
+> | AH obbligatorio da implementare. | AH facoltativo; ESP aggiunge algoritmi combinati di cifratura e integrità ed estende il formato/elaborazione per supportarli. |
+> | Numeri di sequenza a 32 bit. | Aggiunge gli Extended Sequence Numbers (ESN) a 64 bit. |
+>
+> La transizione non sostituisce l'idea di IPsec: aggiorna l'architettura e i protocolli associati sulla base dell'esperienza, con policy più espressive, elaborazione più chiara e supporto migliore a nuovi scenari. [RFC 6071 §2.2](https://www.rfc-editor.org/rfc/rfc6071.html#section-2.2), [RFC 4301 §13](https://www.rfc-editor.org/rfc/rfc4301.html#section-13)
+
+> [!info] IKEv1 e IKEv2
+> Prima di IKEv2, IKEv1 era definito da tre documenti distinti: RFC 2407 (IPsec DOI), RFC 2408 (ISAKMP) e RFC 2409 (IKE). IKEv1 combinava la negoziazione di fase 1 e fase 2 e offriva più tipi di scambio, con dettagli distribuiti in documenti che potevano risultare ambigui o contraddittori.
+>
+> IKEv2 riunisce la specifica in un protocollo coerente e riduce gli scambi iniziali a un unico scambio di quattro messaggi (due andate/ritorni), che può negoziare anche una prima Child SA. Le richieste hanno risposte e numeri di sequenza; il responder può rimandare i calcoli costosi finché l'iniziatore non dimostra di poter ricevere i messaggi all'indirizzo dichiarato, riducendo l'esposizione ad attacchi di amplificazione e DoS. La revisione integra il supporto per NAT traversal, EAP e acquisizione di indirizzi, semplifica la negoziazione e corregge debolezze crittografiche. IKEv2 non è compatibile con IKEv1: i peer devono concordare una versione supportata.
+>
+> Oggi RFC 7296 è lo standard IKEv2, aggiornato da RFC successive; RFC 9395 ha spostato IKEv1 in stato *Historic* e ne documenta la deprecazione. [RFC 7296, Appendice A](https://www.rfc-editor.org/rfc/rfc7296.html#appendix-A), [RFC 9395](https://www.rfc-editor.org/rfc/rfc9395.html)
+
+> [!info] *Nonce*
+> Un *nonce* è un valore generato per uno scambio e non riutilizzato. I peer lo inseriscono nei messaggi e lo verificano per legarli allo scambio corrente e riconoscere messaggi riprodotti.
 
 

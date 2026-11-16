@@ -97,14 +97,32 @@ window.onload = function () {
 
 *Definizione:* `await` sospende l'esecuzione fino a quando la promise è risolta. Può essere usato solo dentro una funzione `async`, non blocca tutto il programma ma solo la funzione corrente, ed è zucchero sintattico per `.then()`.
 
-Nell'esempio sopra, `await fetch("/api/message")` aspetta che la richiesta HTTP sia completata e arrivi la risposta, mentre `await res.json()` aspetta che il corpo della risposta venga letto e decodificato.
+Nell'esempio sopra, `await fetch("/api/message")` aspetta che la richiesta HTTP sia completata e arrivi la risposta dal server, mentre `await res.json()` aspetta che il corpo della risposta venga letto e decodificato.
 
 ## express.json()
 *Definizione:* `express.json()` è un **built-in middleware** di Express.js che consente di leggere e interpretare il corpo delle richieste HTTP (ad esempio i dati inviati da una form). Senza di esso, Express non può accedere direttamente a `req.body`.
 
 Alternativa: `express.urlencoded()` per `application/x-www-form-urlencoded` (il formato predefinito per le form).
 
-Altri built-in: `express.urlencoded()`.
+## Esempio con express.json()
+
+**Node.js**
+
+```js
+const express = require("express"); const app = express(); const port = 3000; // Middleware per interpretare JSON app.use(express.json()); app.use(express.static(“public")); app.post("/api/submit", (req, res) => { const { nome, email, eta, messaggio, citta } = req.body; const response = { messaggio: "Grazie per la tua iscrizione, " + nome + "!<br>" + "Email: " + email + "<br>" + "Età: " + eta + "<br>" + "Città: " + citta + "<br>" + "Messaggio: " + messaggio }; res.json(response); }); app.listen(port, () => { console.log("Server attivo su http://localhost:" + port); });
+```
+
+**HTML**
+
+```html
+... <form id="form" action="/api/submit" method=“POST"> <label for="nome">Nome:</label><br> <input type="text" id="nome" name="nome" required /> <label for="email">Email:</label><br> <input type="email" id="email" name="email" required /> <label for="eta">Età:</label><br> <input type="number" id="eta" name="eta" required /> <label for="messaggio">Messaggio:</label><br> <textarea id="messaggio" name="messaggio" required></textarea> <label for="citta">Città:</label><br> <input type="text" id="citta" name="citta" required /> <button type=“submit">Invia</button> </form> ...
+```
+
+**Javascript**
+
+```js
+... const data = { nome: document.getElementById("nome").value, email: document.getElementById("email").value, eta: document.getElementById("eta").value, citta: document.getElementById("citta").value, messaggio: document.getElementById("messaggio").value }; try { const res = await fetch("/api/submit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }); const result = await res.json(); risposta.textContent = result.messaggio; } catch (error) { console.error("Errore:", error); risposta.textContent = "C'è stato un errore durante l'invio"; } ... 
+```
 
 ## Parametri della fetch
 - `method`: `"POST"` specifica il metodo HTTP utilizzato nella richiesta.
@@ -127,12 +145,3 @@ In molti casi, l'overhead introdotto da questi strumenti supera i benefici. Seco
 - Non includere librerie solo per funzionalità minime.
 - Ridurre peso e numero di risorse, caricando solo ciò che serve.
 - Evitare tracciamenti e analytics superflui.
-
-## Esercizio
-Il PDF della lezione propone un esercizio con due funzionalità:
-1. **Invio colore**: l'utente specifica un colore in una form; il colore viene inviato al server tramite POST e il server lo appende a un file di testo.
-2. **Recupero ultimo colore**: l'utente clicca un bottone che invia una richiesta GET al server; il server restituisce l'ultimo colore salvato e il client lo usa per ricolorare lo sfondo della pagina.
-
-Lo svolgimento completo è in `[[esercizi/eserciziAJAX.js|eserciziAJAX.js]]`.
-
-

@@ -4,77 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "d663f31b4c479a66",
+        "id": "73f309f7c569be4d",
         "type": "tabs",
         "children": [
           {
-            "id": "e30b018d5c0399ce",
+            "id": "04d8537cf174b222",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Programmazione web e mobile con laboratorio/Lezione 14-AJAX.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 14-AJAX"
-            }
-          },
-          {
-            "id": "a1ef84bc91c61f2d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Lezione 14-Progettazione concettuale e modello ER"
-            }
-          },
-          {
-            "id": "d27ec5912a0aec2c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Sicurezza informatica/Lezione 8-IP Security.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Lezione 8-IP Security"
-            }
-          },
-          {
-            "id": "2db01afb8ff22a01",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Sicurezza informatica/Laboratorio/SSH.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "SSH"
-            }
-          },
-          {
-            "id": "645c7d817c7beda8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Sicurezza informatica/Laboratorio/IDS&IDPS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "IDS&IDPS"
+              "title": "New tab"
             }
           }
         ]
@@ -144,25 +84,13 @@
               "icon": "lucide-file",
               "title": "New tab"
             }
-          },
-          {
-            "id": "15b4c282b6b9ccc7",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "primo semestre/Programmazione web e mobile con laboratorio/pwm_lezione14.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "pwm_lezione14"
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 728.5
+    "width": 264.5
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -330,18 +258,25 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "e30b018d5c0399ce",
+  "active": "04d8537cf174b222",
   "lastOpenFiles": [
-    "primo semestre/Programmazione web e mobile con laboratorio/pwm_lezione14.pdf",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 14-AJAX.md",
     "primo semestre/Sicurezza informatica/Lezione 8-IP Security.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
-    "primo semestre/Sicurezza informatica/Laboratorio/SSH.md",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-85.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-82.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-81.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-76.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-75.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-74.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-73.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-68.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-67.png",
+    "primo semestre/Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-61.png",
     "primo semestre/Sicurezza informatica/Laboratorio/IDS&IDPS.md",
-    "primo semestre/Sicurezza informatica/image/Pasted image 20261116101735.png",
+    "primo semestre/Sicurezza informatica/Laboratorio/SSH.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 14-AJAX.md",
+    "primo semestre/Programmazione web e mobile con laboratorio/pwm_lezione14.pdf",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/BDlezioneERChap3.pdf",
-    "primo semestre/Programmazione web e mobile con laboratorio/images/Pasted image 20261116125428.png",
-    "Pasted image 20261116125428.png",
     "primo semestre/Sicurezza informatica/Laboratorio/Untitled.md",
     "primo semestre/Sicurezza informatica/Laboratorio/Lezione 8.md",
     "primo semestre/Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
@@ -352,13 +287,6 @@
     "primo semestre/Sicurezza informatica/SSH.pptx",
     "primo semestre/Sicurezza informatica/Unconfirmed 626417.crdownload",
     "primo semestre/Sicurezza informatica/Lezione 9.md",
-    "Pasted image 20261116112033.png",
-    "Pasted image 20261116112010.png",
-    "Pasted image 20261116111954.png",
-    "Pasted image 20261116111943.png",
-    "Pasted image 20261116111900.png",
-    "Pasted image 20261116111844.png",
-    "Pasted image 20261116111817.png",
     "primo semestre/Sicurezza informatica/CH09 NetSec6e.ppt",
     "primo semestre/Sicurezza informatica/CH09 NetSec6e.ppt.pptx",
     "proposta.md",

@@ -11,6 +11,17 @@ Il problema nella pratica era proprio che Telnet e remote shell (rsh) mandavano 
 
 Il principale client/server per SSH è **OpenSSH**, un progetto open source mantenuto dagli sviluppatori di OpenBSD.
 
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-02-01.png" width="500">
+</div>
+
+<div style="text-align: center;">
+  <img src="images/SSH-slide-03-01.png" width="500">
+  <p>Sessione Telnet osservata in Wireshark: il testo del login e i comandi sono leggibili nella cattura.</p>
+</div>
+
+
+
 ## SSH server setup
 
 ```sh
@@ -48,11 +59,27 @@ La verifica dell'autenticazione solitamente non è necessariamente affidata a de
 TOFU consiste nel fatto che, quando ci connettiamo da client per la prima volta a un server OpenSSH, il server ci manda la sua chiave pubblica. Il nostro client OpenSSH verifica se abbiamo già questa chiave pubblica salvata in locale (in `~/.ssh/known_hosts`); se sì, continuiamo. Altrimenti, se non abbiamo salvato la chiave pubblica del server in locale, ci dà una schermata in cui ci dice che non riesce a verificare l'autenticità del server, e ci chiede se vogliamo aggiungere la chiave pubblica del server tra quelle verificate.
 
 ## Autenticazione del client verso il server
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-08-01.png" width="500">
+</div>
+
+
 Un client si può autenticare in tre principali modi al server:
 
 1. **Password based authentication:** il client specifica username e password come un normale login. Non c'è nessun controllo di chiavi crittografiche.
-2. **Public Key authentication:** il server ha una cartella in locale (`~/.ssh/authorized_keys`), con la lista delle chiavi pubbliche dei client autorizzati. Il server manda una *challenge* (un numero random) al client che la deve cifrare con la sua chiave privata. Il client risponde e il server così può verificare l'autenticità del client.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-10-01.png" width="500">
+</div>
+
+
+2. **Public Key authentication:** il server ha una cartella in locale (`~/.ssh/authorized_keys`), con la lista delle chiavi pubbliche dei client autorizzati. La slide descrive una *challenge* (un numero casuale) che il client cifra con la chiave privata; nel protocollo SSH standard il client firma invece una richiesta legata alla sessione con la chiave privata, e il server verifica la firma con la chiave pubblica. La chiave privata non viene inviata.
 3. **Host based:** più raro. Suppone che su un host ci siano vari utenti e che quindi, invece di creare account diversi per ogni utente, l'autenticazione è dell'host e non degli utenti dell'host.
+
+> [!todo] La slide chiama “cifratura della challenge” l'autenticazione a chiave pubblica; RFC 4252 descrive una firma della richiesta. Verificare con il docente se intendeva la firma.
+
+Riferimenti: [RFC 4252 §7](https://www.rfc-editor.org/rfc/rfc4252.html#section-7) descrive la firma del client; [RFC 4253 §8](https://www.rfc-editor.org/rfc/rfc4253.html#section-8) descrive la chiave host e la firma del server nello scambio di chiavi.
 
 ## Public Key authentication
 Sul client, generiamo coppia di chiavi:
@@ -74,6 +101,20 @@ Facciamo login SSH specificando il percorso in locale della chiave privata:
 ```sh
 ssh -i ~/.ssh/id_rsa osboxes@192.168.1.58
 ```
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-12-01.png" width="500">
+</div>
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-13-01.png" width="500">
+</div>
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-13-02.png" width="500">
+</div>
+
+
 
 ## Port forwarding
 
@@ -98,6 +139,12 @@ Poi sulla nostra macchina possiamo runnare MSSQL su `localhost` e ci reindirizza
 
 La destinazione può anche essere sul server stesso: `ssh -N -L 8080:127.0.0.1:80 utente@server`. Tutte le richieste che arrivano alla nostra macchina nella porta che abbiamo scelto verranno inoltrate alla destinazione tramite il server SSH.
 
+
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-15-01.png" width="500">
+</div>
+
 ### Remote Port Forwarding
 Il **Remote port forwarding** è l'opposto del local port forwarding: questa volta tutto ciò che il server riceve a una determinata porta verrà forwardato a una porta nel nostro client.
 
@@ -111,12 +158,28 @@ Esempio: `ssh -R 0.0.0.0:8080:server:8080 sshUser@public_facing_srv`.
 
 Si può usare per esporre sia servizi in locale (sulla nostra stessa macchina) che per esporre l'accesso a una macchina raggiungibile da noi, es. in rete locale.
 
+
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-17-01.png" width="500">
+</div>
+
 ### Remote port forwarding con Ngrok
 Dato che non abbiamo un server interfacciato con l'esterno, se vogliamo testare l'utilità del remote port forwarding usiamo **ngrok**.
 
 Ngrok è un servizio di remote port forwarding che ci assegna temporaneamente un dominio pubblico e ce lo forwarda a una porta sulla nostra macchina remota.
 
 Con questo comando stiamo dicendo a ngrok di forwardare traffico HTTP alla nostra port 456 locale. Quindi ad esempio eseguiamo un server HTTP (una pagina web semplice) e facciamola girare sulla port 456 locale. Ngrok ci darà un link per contattarlo da rete esterna.
+
+
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-18-01.png" width="500">
+</div>
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-19-01.png" width="500">
+</div>
 
 ### Dynamic Port Forwarding
 Il **Dynamic port forwarding** è simile al local port forwarding, ovvero ci permette di raggiungere altre destinazioni tramite il server specificato, tuttavia ci permette di scegliere una destinazione diversa per ogni connessione, senza specificarla nel comando.
@@ -132,6 +195,12 @@ Praticamente la porta locale 1080 diventa un proxy SOCKS5 e un programma la usa.
 Facendo X11 forwarding, il server SSH invia al client SSH la finestra GUI al client. È molto utile per eseguire applicazioni GUI sul server remoto ma avere la GUI nel client locale.
 
 Ad esempio vogliamo sviluppare/compilare su una certa macchina che ha tutto setupato ma vogliamo forwardare Visual Studio Code sulla nostra macchina così possiamo scrivere codice comodamente.
+
+
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/SSH-slide-22-01.png" width="500">
+</div>
 
 [[Approfondimento chiavi SSH private e pubbliche|Chiavi SSH private e pubbliche]]
 

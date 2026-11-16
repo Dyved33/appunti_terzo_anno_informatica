@@ -1,5 +1,15 @@
 # IDS e IDPS
 
+<div style="display: flex; justify-content: center;">
+  <img src="images/IDS-slide-01-01.png" width="500">
+</div>
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/IDS-slide-01-02.png" width="500">
+</div>
+
+
+
 ## IDS — Intrusion Detection System
 Un **IDS** (*Intrusion Detection System*) è un sistema che identifica e analizza tempestivamente i potenziali incidenti di sicurezza.
 
@@ -221,11 +231,12 @@ Sintassi generale: azione protocollo IP_sorgente porta_sorgente direzione IP_des
 ### Analisi del contenuto HTTP
 Opzioni di ispezione dei campi e corrispondenza del payload nelle regole Suricata:
 
-- `flow:established,to_server`: seleziona l'URI normalizzato della richiesta HTTP da analizzare (traffico di connessioni stabilite diretto al server).
+- `flow:established`: seleziona traffico appartenente a connessioni stabilite.
+- `to_server`: limita l'ispezione al traffico diretto al server.
 - `http.uri`: seleziona l'URI normalizzato della richiesta HTTP da analizzare.
 - `content:"/admin"`: cerca questa specifica sequenza all'interno del campo selezionato.
 - `http.method`: permette di verificare il metodo della richiesta (es. GET o POST).
-- `http.user-agent`: permette di controllare l'intestazione User-Agent del client.
+- `http.user_agent`: permette di controllare l'intestazione User-Agent del client.
 
 > [!info] Comportamento del pattern matching
 > La regola precedente riconosce anche `/administrator`: il pattern viene matchato come sottostringa.

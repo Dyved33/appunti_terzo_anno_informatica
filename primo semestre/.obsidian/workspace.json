@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "9ffc63b48a045c93",
+        "id": "767b92ed0d06a313",
         "type": "tabs",
         "children": [
           {
-            "id": "63e7d3458f80b734",
+            "id": "43603c84ae1a8a7f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Intelligenza artificiale/Lezione 9.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 9"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 447.5
+    "width": 359.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -203,19 +199,24 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "63e7d3458f80b734",
+  "active": "43603c84ae1a8a7f",
   "lastOpenFiles": [
+    "Sicurezza informatica/Laboratorio/IDS&IDPS.md",
+    "Sicurezza informatica/Laboratorio/SSH.md",
+    "Sicurezza informatica/Lezione 8-IP Security.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
+    "Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-93.png",
+    "Sicurezza informatica/Laboratorio/images/IDS-slide-01-02.png",
+    "Sicurezza informatica/Laboratorio/images/IDS-slide-01-01.png",
+    "Sicurezza informatica/Laboratorio/images/SSH-slide-22-01.png",
+    "Sicurezza informatica/Laboratorio/images/SSH-slide-19-01.png",
+    "Sicurezza informatica/Laboratorio/images/SSH-slide-18-01.png",
+    "Sicurezza informatica/Laboratorio/images/SSH-slide-17-01.png",
+    "Sicurezza informatica/Laboratorio/images/SSH-slide-15-01.png",
+    "Sicurezza informatica/Laboratorio/images/SSH-slide-13-02.png",
+    "Sicurezza informatica/Laboratorio/images/SSH-slide-13-01.png",
+    "Sicurezza informatica/Laboratorio/images",
     "Intelligenza artificiale/Lezione 9.md",
-    "Intelligenza artificiale/images/Screenshot From 2026-11-12 17-52-03.png",
-    "Intelligenza artificiale/images/Pasted image 20261112175535.png",
-    "Intelligenza artificiale/images/Pasted image 20261112175520.png",
-    "Intelligenza artificiale/images/Pasted image 20261112175455.png",
-    "Intelligenza artificiale/images/Pasted image 20261112175442.png",
-    "Intelligenza artificiale/images/Pasted image 20261112175151.png",
-    "Intelligenza artificiale/images/Pasted image 20261112175114.png",
-    "Intelligenza artificiale/images/Pasted image 20261112175042.png",
-    "Intelligenza artificiale/images/Pasted image 20261112174910.png",
-    "Intelligenza artificiale/images/Pasted image 20261112174833.png",
     "Intelligenza artificiale/Lezione 8-Introduzione al Machine Learning.md",
     "Programmazione web e mobile con laboratorio/Lezione 13-Express.js, middleware e esercizi pratici.md",
     "Programmazione web e mobile con laboratorio/pwm_lezione13.pdf",
@@ -236,7 +237,6 @@
     "Architettura reti e internet/protocolli/Lezione 7-EVM, modulazioni digitali e limiti di trasmissione.md",
     "Intelligenza artificiale/lezioni/TEST_WRITE.md",
     "Intelligenza artificiale/esoneri/pseudocodici 1.md",
-    "Intelligenza artificiale/esoneri/domande_secondoEsonero_IntroAI.pdf",
     "Intelligenza artificiale/esoneri/domande_primo_esonero.md",
     "Intelligenza artificiale/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
     "Intelligenza artificiale/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
@@ -245,10 +245,6 @@
     "Intelligenza artificiale/Lezione 3-Ricerca su grafo.md",
     "Intelligenza artificiale/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
     "Intelligenza artificiale/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
-    "Intelligenza artificiale/00 Indice - Introduzione IA.md",
-    "Sicurezza informatica/Lezione 7-PGP, DNSSEC e autenticazione del dominio.md",
-    "Sicurezza informatica/Lezione 6-Posta elettronica.md",
-    "Sicurezza informatica/Lezione 5-IDS, ambienti di rete, configurazioni dei firewall e TLS.md",
-    "Sicurezza informatica/Lezione 4-Packet filter, proxy gateway, ambienti di rete e IDS.md"
+    "Intelligenza artificiale/00 Indice - Introduzione IA.md"
   ]
 }
