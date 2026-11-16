@@ -16,22 +16,6 @@
 - Con `NPM`, è possibile installare i moduli necessari per un progetto con un singolo comando
 - Facilita l'installazione, l'aggiornamento e la gestione di librerie e moduli in un progetto
 - Utilizza un vasto registro online che contiene migliaia di pacchetti disponibili gratuitamente
-
-## Primo Script Node.js
-- Creare un nuovo file con estensione `.js` (es: `app.js`)
-- Scrivere un semplice script, ad esempio `` `console.log("Ciao, mondo!");` ``
-- Per eseguire lo script:
-  - aprire il terminale
-  - navigare alla directory che contiene il file `app.js`
-  - eseguire il comando `` `node app.js` ``
-
-## Analisi del frammento `process.stdin.on(...)`
-- `` `process` `` è un oggetto globale in `Node.js` che gestisce il processo corrente
-- `` `stdin` `` è uno dei flussi predefiniti accessibili tramite `` `process` `` (input utente da tastiera)
-- `` `on()` `` è un metodo usato per ascoltare eventi su un oggetto. In questo caso, stiamo ascoltando l'evento `` `data` `` su `` `process.stdin` ``
-- L'evento `data` viene emesso ogni volta che l'utente inserisce dati e preme invio
-- Quando ciò accade, i dati inseriti dall'utente vengono passati come argomento alla funzione di callback `` `function (input) {...}` ``
-
 ## Moduli
 Un modulo è un blocco di codice isolabile che serve a:
 - mantenere il codice organizzato
@@ -299,7 +283,7 @@ fs.readFile('file.txt', 'utf8', (err, data) => {
 Nota: nel file originale di esercizio appare `s.readFile` per refuso di battitura; la forma corretta è `fs.readFile`, come mostrato sopra.
 
 ## Express.js
-*Definizione:* `[[Lezione 13-Express.js, middleware e esercizi pratici|Express.js]]` è un framework web per `Node.js`.
+*Definizione:*  è un framework web per `Node.js`.
 - Progettato per creare applicazioni web e API
 - Consente di aggiungere funzionalità (logging, autenticazione, …) tramite middleware
 - Supporta un sistema di routing per gestire le richieste `HTTP` in base a vari percorsi e metodi (`GET`, `POST`, `PUT`, `DELETE`, …)

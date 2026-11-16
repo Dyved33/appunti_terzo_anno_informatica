@@ -30,6 +30,9 @@ Il principio di funzionamento degli strumenti che misurano l'EVM è però simile
 
 A seconda dello strumento, l'EVM può essere riportato in forma sintetica tabellare, in valore percentuale o in dB, oppure come grafico della sua evoluzione nel dominio del tempo al quale è associato il valore dell'EVM di ogni simbolo. Inoltre, alcuni strumenti riportano solo informazioni sul modulo del vettore errore, mentre altri sono in grado di analizzare anche la fase del vettore errore. Gli strumenti più sofisticati presentano spesso l'analisi dell'EVM insieme ad altri "domini" per comprendere meglio i fenomeni di modulazione.
 
+> [!info] Demodulare
+> Demodulare un segnale significa estrarre l'informazione originale(voce, dati, immagini) dalla portante ad alta frequenza su cui era stata sovrapposta. Questo processo riconverte il segnale modulato nella sua forma originale a bassa frequenza, permettendone la comprensione e l'elaborazione finale
+
 <div style="text-align: center;">
   <img src="parte_7-slide-05.png" width="500" alt="Immagine" />
   <p>Strumenti di misura dell'EVM e principio di funzionamento.</p>

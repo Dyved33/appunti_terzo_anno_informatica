@@ -16,6 +16,7 @@
       "permissions": [
         { "action": "subagent", "resource": "*", "effect": "deny" },
         { "action": "subagent", "resource": "revisore", "effect": "allow" },
+        { "action": "shell", "resource": "python3 .opencode/scripts/*", "effect": "allow" },
         { "action": "edit", "resource": "*/esercizi/**/*.py", "effect": "allow" },
         { "action": "edit", "resource": "*/esercizi/**/*.js", "effect": "allow" },
         { "action": "edit", "resource": "*/esercizi/**/*.ts", "effect": "allow" },

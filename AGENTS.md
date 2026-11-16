@@ -37,7 +37,7 @@ Le note sono solo dentro `primo semestre/`: cerca, greppa e indicizza lì, non n
 
 | Cosa | Come |
 |---|---|
-| Leggere slide e PDF | `python3 .opencode/scripts/leggi-slide.py FILE [pagine]` (le pagine immagine vengono lette con Docling/OCR) |
+| Leggere PDF, presentazioni e documenti | `python3 .opencode/scripts/leggi-slide.py FILE [pagine]`; PDF e presentazioni con pagine immagine passano da Docling/OCR (italiano e inglese). Supporta anche documenti Office, fogli di calcolo, EPUB, HTML e immagini; per i formati senza pagine usa il documento intero. |
 | Cercare una lezione per argomento | server MCP `obsidian-search` (tool `search`), oppure `python3 .opencode/scripts/vault-audit.py` per la struttura |
 | Foto di una slide | chiedi all'utente se farla (`pdftoppm*` chiede conferma); se sì: `pdftoppm -png -r 150 -f N -l N "FILE" "images/slide"` e leggi la descrizione con `tesseract "images/slide-NN.png" stdout -l it`; se no: vai oltre |
 | Controllo strutturale | `python3 .opencode/scripts/vault-audit.py [percorso]` |

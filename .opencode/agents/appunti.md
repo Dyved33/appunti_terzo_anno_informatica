@@ -34,7 +34,7 @@ Se l'utente chiede modifiche, il piano ritorna con i numeri di riga: invia solo 
    - `python3 .opencode/scripts/leggi-slide.py FILE` elenca le pagine
    - `python3 .opencode/scripts/leggi-slide.py FILE 28` oppure `19-21` oppure `tutto`
    - `python3 .opencode/scripts/leggi-slide.py FILE --cerca "testo"`
-   Se un PDF o un PPTX è fatto di pagine immagine, lo script le legge da solo con Docling (OCR); su file lunghi lo salta e te lo segnala, e allora usa la foto della slide.
+   Supporta PDF, PPT/PPTX, DOC/DOCX, XLS/XLSX, ODT/ODS/ODP, RTF, EPUB, HTML, CSV, Markdown, testo e immagini. Per PDF e presentazioni usa Docling sulle pagine immagine o sui contenuti misti, con OCR italiano e inglese; sopra 300 pagine segnala che l'OCR è stato saltato. Per i documenti senza paginazione stabile usa `tutto` o `--cerca`.
 5. Il libro di testo del corso, se esiste, sta in `libri/<nome del corso>.pdf`: non è una fonte di default, quindi non prenderne nulla senza il consenso dell'utente (regola 11 di `AGENTS.md`). Si legge sempre con `python3 .opencode/scripts/libri.py` (o il command `/libro`):
    - `libri.py indice FILE` sommario del libro
    - `libri.py pagina FILE 28` oppure `19-21`

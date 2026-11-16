@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Legge il testo del materiale del docente (PDF, PPTX, PPT) una pagina alla volta.
+"""Legge il testo di PDF, presentazioni e documenti comuni.
 
 Uso:
   leggi-slide.py FILE                  elenco delle pagine con la prima riga di ognuna
@@ -9,11 +9,12 @@ Uso:
   leggi-slide.py FILE --cerca "testo"  pagine in cui compare il testo
 
 Non scrive nulla nel vault. I .ppt vengono convertiti in una cartella temporanea.
+Docling gestisce anche DOCX, XLSX, ODT, ODP, RTF, EPUB, HTML e altri formati.
 
-Se un PDF o un PPTX non hanno testo estraibile (sono pagine immagine), il testo
-viene letto con Docling (OCR), quando il file non è troppo lungo. Per forzare
-Docling su file lunghi: LEGGI_SLIDE_DOCLING_FORZA=1. Per cambiare la soglia di
-pagine: LEGGI_SLIDE_DOCLING_LIMITE=N (default 60).
+Se PDF o presentazioni hanno pagine senza testo, Docling prova a recuperarle
+con OCR anche quando solo una parte del documento è scansionata. L'OCR usa
+italiano e inglese. Per forzare Docling su qualunque PDF: LEGGI_SLIDE_DOCLING_FORZA=1.
+Per cambiare la soglia di pagine: LEGGI_SLIDE_DOCLING_LIMITE=N (default 300).
 """
 import hashlib
 import os
@@ -105,11 +106,12 @@ def pagine_ppt(path):
     return pagine_pdf(pdf)
 
 
-LIMITE_DOCLING = int(os.environ.get("LEGGI_SLIDE_DOCLING_LIMITE", "60"))
+LIMITE_DOCLING = int(os.environ.get("LEGGI_SLIDE_DOCLING_LIMITE", "300"))
 
 
 def pagine_docling(path):
     try:
+        from docling.datamodel.pipeline_options import OcrAutoOptions, PdfPipelineOptions
         from docling.document_converter import DocumentConverter
     except ImportError:
         print(
@@ -117,7 +119,20 @@ def pagine_docling(path):
             file=sys.stderr,
         )
         return None
-    doc = DocumentConverter().convert(path).document
+    opzioni = PdfPipelineOptions()
+    opzioni.do_ocr = True
+    opzioni.ocr_options = OcrAutoOptions(lang=["iso:it", "iso:en"])
+    from docling.datamodel.base_models import InputFormat
+    from docling.document_converter import PdfFormatOption
+
+    converter = DocumentConverter(format_options={
+        InputFormat.PDF: PdfFormatOption(pipeline_options=opzioni),
+    })
+    try:
+        doc = converter.convert(path).document
+    except Exception as e:
+        print(f"[{os.path.basename(path)}] Docling non ha letto il file: {e}", file=sys.stderr)
+        return None
     per_pagina = {}
     for voce in doc.iterate_items():
         item = voce[0] if isinstance(voce, tuple) else voce
@@ -133,7 +148,12 @@ def pagine_docling(path):
         if testo.strip():
             per_pagina.setdefault(prov[0].page_no, []).append(testo.strip())
     tot = doc.num_pages() if hasattr(doc, "num_pages") else (max(per_pagina) if per_pagina else 0)
-    return ["\n\n".join(per_pagina.get(n, [])) for n in range(1, tot + 1)]
+    if per_pagina:
+        return ["\n\n".join(per_pagina.get(n, [])) for n in range(1, tot + 1)]
+    # DOCX/EPUB/fogli di calcolo spesso non hanno una paginazione stabile.
+    # Restituisci il documento come un'unica unità invece di dichiararlo vuoto.
+    markdown = doc.export_to_markdown().strip()
+    return [markdown] if markdown else []
 
 
 def maggior_parte_vuota(pagine):
@@ -147,24 +167,33 @@ def carica(path):
     if ext == ".pdf":
         pagine = pagine_pdf(path)
     elif ext == ".pptx":
-        pagine = pagine_pptx(path)
+        # Docling conserva meglio la struttura delle slide e può leggere
+        # contenuti misti testo/immagini. Se non è disponibile, fallback XML.
+        pagine = pagine_docling(path)
+        if pagine is None:
+            pagine = pagine_pptx(path)
     elif ext == ".ppt":
         return pagine_ppt(path)
+    elif ext in {".docx", ".doc", ".xlsx", ".xls", ".odt", ".ods", ".odp", ".rtf", ".epub", ".html", ".htm", ".csv", ".md", ".txt", ".png", ".jpg", ".jpeg", ".tiff", ".tif", ".bmp"}:
+        pagine = pagine_docling(path)
+        if pagine is None:
+            esci("questo formato richiede Docling: installalo nell'ambiente Python usato da OpenCode")
     else:
-        esci(f"formato non supportato: {ext} (ammessi: .pdf, .pptx, .ppt)")
+        esci(f"formato non supportato: {ext}; consulta i formati Docling supportati")
 
-    if maggior_parte_vuota(pagine):
+    ha_pagine_senza_testo = any(not p.strip() for p in pagine)
+    if ext == ".pdf" and ha_pagine_senza_testo:
         if len(pagine) <= LIMITE_DOCLING or os.environ.get("LEGGI_SLIDE_DOCLING_FORZA") == "1":
             print(
                 f"[{os.path.basename(path)}] il testo non è estraibile: provo Docling, può richiedere tempo...",
                 file=sys.stderr,
             )
             alternativo = pagine_docling(path)
-            if alternativo and not maggior_parte_vuota(alternativo):
+            if alternativo and any(p.strip() for p in alternativo):
                 return alternativo
         else:
             print(
-                f"[{os.path.basename(path)}] {len(pagine)} pagine senza testo: Docling saltato (file lungo). "
+                f"[{os.path.basename(path)}] {len(pagine)} pagine: OCR Docling saltato (oltre la soglia). "
                 "Usa la foto delle slide oppure forza con LEGGI_SLIDE_DOCLING_FORZA=1.",
                 file=sys.stderr,
             )

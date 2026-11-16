@@ -88,7 +88,7 @@ Migliorare sul compito $T$, rispetto a una metrica di performance $P$, sulla bas
 
 - **Apprendimento supervisionato** (*inductive learning*): dati di training + output desiderati (etichette)
 - **Apprendimento non supervisionato**: dati di training (senza output desiderati)
-- **Apprendimento semi-supervisionato**: dati di training + poche output desiderate
+- **Apprendimento semi-supervisionato**: dati di training + pochi output desiderati
 - **Apprendimento per rinforzamento**: ricompense da una sequenza di azioni
 
 ## Apprendimento supervisionato: regressione
@@ -186,7 +186,7 @@ Ogni algoritmo di ML ha tre componenti:
 - Dividi e conquista (*Divide and Conquer*): Decision tree induction, Rule learning
 - Calcolo evolutivo (*Evolutionary Computation*): Genetic Algorithms (GA), Genetic Programming (GP), Neuro-evolution
 
-## Evaluazione
+## Valutazione
 
 - Accuracy
 - Precision e recall
