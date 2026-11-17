@@ -14,3 +14,4 @@
 - [[Lezione 12-Join di Tabelle|Join di Tabelle]]
 - [[Lezione 13-Gruppi, funzioni d'aggregazione, GROUP BY e HAVING|Gruppi, funzioni d'aggregazione, GROUP BY e HAVING]]
 - [[Lezione 14-Progettazione concettuale e modello ER|Progettazione concettuale e modello ER]] — Modello ER, entità, attributi, chiavi, relazioni, cardinalità, partecipazione, entità deboli, fasi di progettazione
+- [[Lezione 15-Subquery e interrogazioni nidificate|Subquery e interrogazioni nidificate]] — Subquery, predicati IN/ANY/ALL/EXISTS, subquery correlate, divisione relazionale, aggiornamento dati, CHECK

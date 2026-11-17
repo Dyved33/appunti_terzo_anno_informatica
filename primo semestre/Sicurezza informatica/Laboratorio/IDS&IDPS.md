@@ -51,12 +51,6 @@ Bilanciamento tra falsi positivi e falsi negativi nella configurazione IDPS.
 > - **Falso positivo:** un evento legittimo segnalato come minaccia.
 > - **Falso negativo:** una minaccia reale non rilevata.
 > Se abbassiamo la soglia di rilevamento, possono aumentare i falsi positivi. Un falso positivo in modalità IPS può portare al blocco di traffico legittimo.
-
-### Domande
-1. Cos'è un falso positivo e cos'è un falso negativo?
-2. Se abbassiamo la soglia di rilevamento, quali errori potrebbero aumentare?
-3. Quale conseguenza può avere un falso positivo in modalità IPS?
-
 ## Raccomandazioni IDPS
 Linee guida per la protezione dei sistemi di rilevamento e la scelta delle architetture:
 
@@ -108,14 +102,6 @@ Analisi dello stato delle connessioni e rilevamento delle violazioni di protocol
 > *Vantaggi:* rilevamento e ispezione; attacchi nuovi (rileva minacce sconosciute segnalando sequenze fuori standard); check singoli (verifica comandi individuali, es. lunghezza massima argomenti).
 > *Standardizzazione:* modelli & standard; RFC e vendor (profili basati su standard ufficiali ed implementazioni note); discrepanze (pratiche reali diverse dallo standard possono generare imprecisioni).
 > *Limiti:* criticità & limiti; prestazioni e punti ciechi (carico CPU molto pesante computazionalmente per la complessità dell'analisi); attacchi leciti (non rileva minacce che rispettano il protocollo, es. DDoS).
-
-### Domande: quale tecnica usereste?
-Per ogni caso: quale tecnica è più adatta? Quale limite rimane?
-
-1. Un allegato contiene una sequenza di byte già nota come malevola.
-2. Un account passa da 10 a 1.000 login falliti al giorno.
-3. Un client FTP invia RETR prima dell'autenticazione.
-
 ## Componenti di un IDPS
 Architettura dei moduli principali e rete di gestione dedicata:
 
@@ -144,12 +130,6 @@ Classificazione dei sistemi di rilevamento delle intrusioni:
 - **Wireless:** analizzano il traffico wireless per intercettare minacce sui relativi protocolli. Non rilevano attività sospette nei livelli superiori (TCP/UDP).
 - **NBA (Network Behavior Analysis):** esaminano il tipico flusso di rete per identificare anomalie e generare report dettagliati in caso di traffico inusuale.
 - **Host Based:** monitorano le caratteristiche di un singolo host, analizzando i log del SO (creazione file, esecuzione programmi, ecc.) e agendo di conseguenza.
-
-### Domande: rete e host
-Un attaccante modifica un file di sistema senza generare traffico di rete.
-
-1. Quale tipo di IDPS può osservare meglio questa attività? Quali dati dovrebbe raccogliere?
-
 ## Network Based IDPS
 ### Componenti tipiche
 Architettura dei sensori per Network-Based IDPS.
@@ -306,5 +286,4 @@ suricata -V
 sudo suricata --build-info
 sudo systemctl stop suricata
 ```
-
 

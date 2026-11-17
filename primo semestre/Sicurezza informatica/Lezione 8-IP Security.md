@@ -254,7 +254,7 @@ A e B concordano i parametri pubblici α e β.
 
 ![[Pasted image 20261116111817.png|500]]
 
-![[Lezione 7-PGP, DNSSEC e autenticazione del dominio|Lezione 7]]
+[[Lezione 7-PGP, DNSSEC e autenticazione del dominio|Lezione 7]]
 
 ## Capitolo finale dal libro — IP Security (Capitolo 9)
 
@@ -343,5 +343,3 @@ RFC 4308 definisce due suite: VPN-A (3DES-CBC, HMAC-SHA1-96, gruppo DH 1024-bit 
 
 > [!info] *Nonce*
 > Un *nonce* è un valore generato per uno scambio e non riutilizzato. I peer lo inseriscono nei messaggi e lo verificano per legarli allo scambio corrente e riconoscere messaggi riprodotti.
-
-

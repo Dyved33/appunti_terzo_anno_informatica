@@ -7,3 +7,4 @@
 - [[Lezione 5-Serie di Fourier, filtri e modulazione|Serie di Fourier, filtri e modulazione]]
 - [[Lezione 6-PCM, campionamento e modulazioni digitali|PCM, campionamento e modulazioni digitali]]
 - [[Lezione 7-EVM, modulazioni digitali e limiti di trasmissione|EVM, modulazioni digitali e limiti di trasmissione]]
+- [[Lezione 8-Limiti di velocità, codifica di linea e controllo degli errori|Limiti di velocità, codifica di linea e controllo degli errori]] — Throughput, latenza, jitter; baud vs bps; trasmissione asincrona/sincrona; codifiche NRZ, RZ, Manchester, AMI; scrambling 2B1Q; trasmissione orientata al carattere e al bit; controllo errori VRC, LRC, CRC

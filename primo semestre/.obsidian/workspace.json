@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "767b92ed0d06a313",
+        "id": "c950640f342ef7a1",
         "type": "tabs",
         "children": [
           {
-            "id": "43603c84ae1a8a7f",
+            "id": "b1dfe7b03b569ea3",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -79,7 +79,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 359.5
+    "width": 515.5,
+    "collapsed": true
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -199,12 +200,21 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "43603c84ae1a8a7f",
+  "active": "b1dfe7b03b569ea3",
   "lastOpenFiles": [
+    "Untitled.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 15-Subquery e interrogazioni nidificate.md",
+    "Architettura reti e internet/reti/Lezione 8-Limiti di velocità, codifica di linea e controllo degli errori.md",
+    "Architettura reti e internet/reti/Lezione 8-.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 15-.md",
+    "Basi di dati e sistemi informativi con laboratorio/lezione6.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/BDlezioneERChap3.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
     "Sicurezza informatica/Laboratorio/IDS&IDPS.md",
     "Sicurezza informatica/Laboratorio/SSH.md",
     "Sicurezza informatica/Lezione 8-IP Security.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
+    "Architettura reti e internet/reti/parte_8.pdf",
+    "Architettura reti e internet/reti/Unconfirmed 438764.crdownload",
     "Basi di dati e sistemi informativi con laboratorio/Images/ER-PDF-93.png",
     "Sicurezza informatica/Laboratorio/images/IDS-slide-01-02.png",
     "Sicurezza informatica/Laboratorio/images/IDS-slide-01-01.png",
@@ -230,10 +240,6 @@
     "Programmazione web e mobile con laboratorio/Lezione 12-Node.js e NPM.md",
     "Architettura reti e internet/internet/Lezione 11-.md",
     "Intelligenza artificiale/chap3_basic_classification.pdf",
-    "Intelligenza artificiale/Unconfirmed 33987.crdownload",
-    "Intelligenza artificiale/01_introduction_ML.pdf",
-    "Intelligenza artificiale/Unconfirmed 868997.crdownload",
-    "Architettura reti e internet/protocolli/parte_7.pdf",
     "Architettura reti e internet/protocolli/Lezione 7-EVM, modulazioni digitali e limiti di trasmissione.md",
     "Intelligenza artificiale/lezioni/TEST_WRITE.md",
     "Intelligenza artificiale/esoneri/pseudocodici 1.md",
@@ -241,10 +247,6 @@
     "Intelligenza artificiale/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
     "Intelligenza artificiale/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
     "Intelligenza artificiale/Lezione 5-Ricerca con memoria limitata.md",
-    "Intelligenza artificiale/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md",
-    "Intelligenza artificiale/Lezione 3-Ricerca su grafo.md",
-    "Intelligenza artificiale/Lezione 2-Agenti intelligenti, rappresentazione degli stati e ricerca su albero.md",
-    "Intelligenza artificiale/Lezione 1-Fondamenti di intelligenza artificiale, machine learning e modelli generativi.md",
-    "Intelligenza artificiale/00 Indice - Introduzione IA.md"
+    "Intelligenza artificiale/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md"
   ]
 }
