@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c950640f342ef7a1",
+        "id": "ce01c2bae0a05cde",
         "type": "tabs",
         "children": [
           {
-            "id": "b1dfe7b03b569ea3",
+            "id": "3954a0a2ba73beef",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -79,8 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 515.5,
-    "collapsed": true
+    "width": 515.5
   },
   "right": {
     "id": "046686d2950f5d8c",
@@ -200,8 +199,13 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "b1dfe7b03b569ea3",
+  "active": "3954a0a2ba73beef",
   "lastOpenFiles": [
+    "Architettura reti e internet/internet/Lezione 7-Protocolli di routing.md",
+    "Architettura reti e internet/internet/Lezione 8-Telnet.md",
+    "Architettura reti e internet/internet/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
+    "Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
+    "Architettura reti e internet/internet/ArchitetturaRetiDef_I_i.pdf",
     "Untitled.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 15-Subquery e interrogazioni nidificate.md",
     "Architettura reti e internet/reti/Lezione 8-Limiti di velocità, codifica di linea e controllo degli errori.md",
@@ -239,14 +243,9 @@
     "Programmazione web e mobile con laboratorio/Unconfirmed 846859.crdownload",
     "Programmazione web e mobile con laboratorio/Lezione 12-Node.js e NPM.md",
     "Architettura reti e internet/internet/Lezione 11-.md",
-    "Intelligenza artificiale/chap3_basic_classification.pdf",
     "Architettura reti e internet/protocolli/Lezione 7-EVM, modulazioni digitali e limiti di trasmissione.md",
     "Intelligenza artificiale/lezioni/TEST_WRITE.md",
     "Intelligenza artificiale/esoneri/pseudocodici 1.md",
-    "Intelligenza artificiale/esoneri/domande_primo_esonero.md",
-    "Intelligenza artificiale/Lezione 7-Limite di profondità, funzioni di valutazione e giochi con casualità (expectimax).md",
-    "Intelligenza artificiale/Lezione 6-Game Playing, Minimax e Alpha-Beta Pruning.md",
-    "Intelligenza artificiale/Lezione 5-Ricerca con memoria limitata.md",
-    "Intelligenza artificiale/Lezione 4-Ricerca informata, euristiche e algoritmo A*.md"
+    "Intelligenza artificiale/esoneri/domande_primo_esonero.md"
   ]
 }
