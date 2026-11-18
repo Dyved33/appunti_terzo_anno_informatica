@@ -7,3 +7,8 @@
 - [[Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP)|IP, indirizzamento IPv4, subnetting e protocolli ARP, ICMP, IGMP]]
 - [[Lezione 6-UDP e TCP e routing|UDP, TCP e routing]]
 - [[Lezione 7-Protocolli di routing|Protocolli di routing: OSPF, RIP e BGP]]
+- [[Lezione 8-Telnet, SSH e FTP|Telnet, SSH e FTP]]
+- [[Lezione 9-DNS|Domain Name System (DNS)]]
+- [[Lezione 10-NIS e NFS|Network Information Service (NIS) e Network File System (NFS)]]
+- [[Lezione 11-SNMP e DHCP|SNMP, DHCP e NAT]]
+- [[Lezione 12-IPv6|IPv6]]

@@ -8,20 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d3c19f1f7c8b004e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "primo semestre/Intelligenza artificiale/Lezione 10-.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Lezione 10-"
-            }
-          },
-          {
             "id": "6821491423c09c28",
             "type": "leaf",
             "state": {
@@ -63,7 +49,8 @@
               "title": "Lezione 5-Serie di Fourier, filtri e modulazione"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -130,26 +117,12 @@
               "icon": "lucide-file",
               "title": "New tab"
             }
-          },
-          {
-            "id": "81d8c143dc989168",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "primo semestre/Intelligenza artificiale/chap3_overfitting.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "chap3_overfitting"
-            }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 837.5,
-    "collapsed": true
+    "width": 627.5
   },
   "right": {
     "id": "1cc9c87d106f4b1d",
@@ -317,8 +290,31 @@
       "copilot:Open Copilot Agent Chat": false
     }
   },
-  "active": "d3c19f1f7c8b004e",
+  "active": "4eea3a57a74097af",
   "lastOpenFiles": [
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 10-NIS e NFS.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 8-Telnet, SSH e FTP.md",
+    "primo semestre/Architettura reti e internet/protocolli/prompt.txt",
+    "primo semestre/Architettura reti e internet/protocolli/dns e nis.pdf",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 10-nis.md",
+    "primo semestre/Architettura reti e internet/reti/Lezione 4-Reti mesh, protocolli e segnali.md",
+    "primo semestre/Architettura reti e internet/protocolli/snmp.pdf",
+    "primo semestre/Architettura reti e internet/protocolli/snmp e dhcp.pdf",
+    "primo semestre/Architettura reti e internet/reti/Lezione 3-Tipi di connessione e topologie di rete.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 7-Protocolli di routing.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 8-Telnet.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 12-IPv6.md",
+    "primo semestre/Architettura reti e internet/protocolli/ipv6.pdf",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 9-DNS.md",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 11-SNMP e DHCP.md",
+    "primo semestre/Architettura reti e internet/protocolli/dns.pdf",
+    "primo semestre/Architettura reti e internet/protocolli/Unconfirmed 748434.crdownload",
+    "primo semestre/Architettura reti e internet/protocolli/Unconfirmed 935551.crdownload",
+    "primo semestre/Architettura reti e internet/protocolli/telnet,ssh,ftp.pdf",
+    "primo semestre/Architettura reti e internet/protocolli/Unconfirmed 72698.crdownload",
+    "primo semestre/Architettura reti e internet/protocolli/Lezione 11-SNTP e DHCP.md",
+    "primo semestre/Intelligenza artificiale/Lezione 10-Overfitting, valutazione dei classificatori e classi sbilanciate.md",
+    "primo semestre/Intelligenza artificiale/Dataset Iris.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/images/slide-74.png",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/images/slide-73.png",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/images/slide-64.png",
@@ -329,24 +325,10 @@
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/images/lezione4-p19-19.png",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/images/lezione4-p17-17.png",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/images/lezione4-p14-14.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/images/lezione4-p06-06.png",
-    "primo semestre/Basi di dati e sistemi informativi con laboratorio/images",
-    "primo semestre/Sicurezza informatica/images",
-    "primo semestre/Intelligenza artificiale/esercitazioni/decisionTrees_iris_dataset_start.ipynb",
-    "primo semestre/Architettura reti e internet/protocolli/ArchitetturaRetiDef_I_m.pdf",
-    "primo semestre/Architettura reti e internet/protocolli/Unconfirmed 82412.crdownload",
-    "primo semestre/Architettura reti e internet/protocolli/ArchitetturaRetiDef_I_l.pdf",
-    "primo semestre/Architettura reti e internet/protocolli/Unconfirmed 75727.crdownload",
-    "primo semestre/Architettura reti e internet/protocolli/ArchitetturaRetiDef_I_k.pdf",
-    "primo semestre/Architettura reti e internet/protocolli/ArchitetturaRetiDef_I_j.pdf",
-    "primo semestre/Architettura reti e internet/protocolli/Unconfirmed 960997.crdownload",
-    "primo semestre/Intelligenza artificiale/Lezione 10-.md",
-    "primo semestre/Architettura reti e internet/reti/Lezione 3-Tipi di connessione e topologie di rete.md",
     "primo semestre/Architettura reti e internet/reti/Lezione 5-Serie di Fourier, filtri e modulazione.md",
     "Proposta.md",
     "primo semestre/Architettura reti e internet/reti/Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni.md",
     "primo semestre/Architettura reti e internet/reti/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
-    "primo semestre/Architettura reti e internet/reti/Lezione 4-Reti mesh, protocolli e segnali.md",
     "primo semestre/Sicurezza informatica/Lezione 8-IP Security.md",
     "primo semestre/Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
     "primo semestre/Sicurezza informatica/Laboratorio/IDS&IDPS.md",
@@ -354,16 +336,7 @@
     "primo semestre/Programmazione web e mobile con laboratorio/Lezione 14-AJAX.md",
     "primo semestre/Sicurezza informatica/Laboratorio/Untitled.md",
     "primo semestre/Sicurezza informatica/Laboratorio/Lezione 8.md",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 7-Protocolli di routing.md",
     "primo semestre/Sicurezza informatica/Lezione 9.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 13-Express.js, middleware e esercizi pratici.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 12-Node.js e NPM.md",
-    "primo semestre/Intelligenza artificiale/Lezione 9-Misure di impurità e criteri di split negli alberi di decisione.md",
-    "primo semestre/Intelligenza artificiale/Lezione 8-Introduzione al Machine Learning.md",
-    "primo semestre/Sicurezza informatica/Lezione 7-PGP, DNSSEC e autenticazione del dominio.md",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 7-EVM, modulazioni digitali e limiti di trasmissione.md",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 12-.md",
-    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 11-Servizi Google.md",
-    "primo semestre/Architettura reti e internet/protocolli/Lezione 6-PCM, campionamento e modulazioni digitali.md"
+    "primo semestre/Programmazione web e mobile con laboratorio/Lezione 13-Express.js, middleware e esercizi pratici.md"
   ]
 }
