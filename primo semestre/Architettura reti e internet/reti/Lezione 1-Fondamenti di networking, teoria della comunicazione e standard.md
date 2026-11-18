@@ -67,6 +67,23 @@ Formulato originariamente da Claude Shannon dei Bell Laboratories e da Warren We
 
 **Banda base e banda larga.** In banda base il segnale digitale modula direttamente il canale e il suo spettro comprende le frequenze da zero in su: il mezzo trasmette un solo segnale per volta e serve la linea come conduttore unico, quindi il costo resta basso ma la capacità è limitata dalla banda del mezzo. In banda larga il segnale digitale modula una **portante analogica** sinusoidale e può essere collocato in una banda di frequenze anche lontana da zero: lo stesso mezzo può allora trasportare più canali contemporaneamente, ciascuno nella propria banda, ed è questa la base delle trasmissioni modulate su radio, televisione e telefonia e delle reti via cavo e in fibra ottica.
 
+> [!info] Per capire:
+> Nella trasmissione in banda base il segnale digitale viene trasmesso direttamente sul mezzo trasmissivo, senza essere modulato su una portante sinusoidale ad alta frequenza.
+> 
+> Dal punto di vista frequenziale, il suo spettro è di tipo **passa-basso**: comprende componenti a partire da 0 Hz (componente continua) fino a frequenze superiori. Nella pratica, la banda è limitata dalle caratteristiche del segnale e del canale trasmissivo.
+> 
+> Nella trasmissione in banda larga il segnale digitale viene utilizzato per modulare una **portante analogica sinusoidale**. In altre parole, i bit vengono codificati modificando una o più caratteristiche della portante, come ampiezza, frequenza o fase.
+> 
+> Questa operazione permette di spostare lo spettro del segnale in una banda di frequenze anche lontana da 0 Hz. In questo modo, lo stesso mezzo trasmissivo può essere suddiviso in più bande di frequenza, ognuna delle quali trasporta un canale indipendente. Si possono quindi trasmettere più comunicazioni contemporaneamente sullo stesso mezzo, senza che occupino la stessa banda.
+> 
+> **Differenza tra segnale analogico e digitale:**
+> 
+> - **Segnale analogico:** varia in modo continuo nel tempo e può assumere infiniti valori all'interno di un intervallo (es. voce registrata da un microfono).
+>     
+> - **Segnale digitale:** assume valori discreti, generalmente rappresentati attraverso due livelli (0 e 1), per codificare le informazioni.
+>     
+> Analogico e digitale descrivono il tipo di segnale; banda base e banda larga descrivono invece il metodo di trasmissione.
+
 **Il teorema di Nyquist-Shannon.** La velocità di trasmissione è limitata da due fattori indipendenti: il **teorema di Nyquist** fissa il massimo numero di simboli trasmissibili al secondo in una banda di larghezza $B$, e con $M$ livelli di ampiezza la velocità è $2B \log_2 M$; il **teorema di Shannon** fissa il limite dovuto al rumore, $C = B \log_2 (1 + S/N)$ con $S/N$ il rapporto segnale/rumore, in bit al secondo.
 
 **Campionamento e quantizzazione.** Per trasformare un segnale analogico in numeri si campiona il segnale a una frequenza almeno doppia della sua frequenza massima (criterio di Nyquist), si quantizza ogni campione in uno dei $2^b$ livelli di un quantizzatore a $b$ bit e infine si codificano i livelli in bit. La quantizzazione introduce un errore tanto più piccolo quanti più bit si usano, a fronte di una velocità in bit proporzionale a $b$.
@@ -131,7 +148,7 @@ La piramide articola la conoscenza in quattro stadi ascendenti:
 ## I protocolli di rete e gli standard internazionali
 
 ### Il concetto di protocollo
-<u>Un **protocollo di rete** è un insieme formale di regole, formati e convenzioni condivise che stabiliscono le modalità con cui due o più entità devono comunicare.</u>
+<u>Un <b>protocollo di rete</b> è un insieme formale di regole, formati e convenzioni condivise che stabiliscono le modalità con cui due o più entità devono comunicare.</u>
 
 Un protocollo specifica in modo deterministico:
 - **Cosa si scambia (Sintassi e Semantica):**

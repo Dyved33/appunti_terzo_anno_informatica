@@ -29,9 +29,9 @@ I router che instradano messaggi all'interno dello stesso AS sono detti *Interio
 - Gli Exterior Router eseguono un Exterior Gateway Protocol (EGP)
 
 > [!example] Esempio di connessione multihomed, considerando degli asplain
-> ![[images/slide-031.png|500]]
+> ![[slide-031.png|500]]
 
-![[images/slide-032.png|500]]
+![[slide-032.png|500]]
 
 ## Routing statico e routing dinamico
 
@@ -49,11 +49,11 @@ I router che instradano messaggi all'interno dello stesso AS sono detti *Interio
 
 > [!example] Esempio di routing statico ottimale
 > Ogni rete ha soltanto una possibile route.
-> ![[images/slide-034.png|500]]
+> ![[slide-034.png|500]]
 
 > [!example] Esempio nel quale è necessario il routing dinamico
 > Ci sono più percorsi possibili per raggiungere una rete.
-> ![[images/slide-035.png|500]]
+> ![[slide-035.png|500]]
 
 ## Interior Gateway Protocol
 
@@ -61,7 +61,7 @@ Lo scambio di informazioni di routing all'interno di un AS avviene tramite un me
 
 N.B.: se un AS si connette al resto del mondo, un router nell'AS deve usare un protocollo EGP per annunciare la raggiungibilità della rete ad altri AS.
 
-![[images/Pasted image 20261023110854.png|500]]
+![[Pasted image 20261023110854.png|500]]
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
@@ -96,7 +96,7 @@ L'OSPF backbone è responsabile di distribuire informazioni di routing tra aree.
 
 > [!example] Esempio di OSPF gerarchico:
 > Le aree 1, 2 e 3 condividono il backbone dell'AS; i router di confine collegano le aree e consentono lo scambio delle informazioni di routing.
-![[images/Pasted image 20261023111642.png|500]]
+![[Pasted image 20261023111642.png|500]]
 
 Le aree possono essere definite in modo tale che il backbone non sia continuo: in tal caso la continuità può essere realizzata mediante *virtual-links*. Questo permette ai gestori della rete di definire una topologia logica differente da quella fisica. I virtual-links vengono definiti tra i backbone router che condividono link con aree non-backbone e funzionano come se fossero link diretti. OSPF può apprendere informazioni da altri exterior gateway protocol, interior gateway protocol, o mediante istruzioni di configurazione.
 
@@ -120,7 +120,7 @@ Quando un router viene avviato mediante messaggi di tipo HELLO inviati su tutte 
 - *Database description:* comunica gli aggiornamenti che conosce
 - *Link state request:* richiesta di informazioni di stato ai neighbor routers
 
-![[images/Pasted image 20261023112411.png|500]]
+![[Pasted image 20261023112411.png|500]]
 
 **OSPF Hello packet:** due router OSPF vicini si scambiano periodicamente questo pacchetto per verificare la reciproca raggiungibilità.
 - *ROUTER DEAD INTERVAL* indica il tempo trascorso il quale se il router vicino non risponde, è considerato inattivo
@@ -129,7 +129,7 @@ Quando un router viene avviato mediante messaggi di tipo HELLO inviati su tutte 
 
 **Formato dei messaggi di descrizione del database OSPF:** per inizializzare il loro topological database i router si scambiano dei messaggi di descrizione del database OSPF. Nello scambio uno funge da router principale (master), l'altro secondario (slave) e conferma la ricezione di ogni messaggio con una risposta.
 
-![[images/Pasted image 20261023112445.png|500]]
+![[Pasted image 20261023112445.png|500]]
 
 Poiché il messaggio può essere molto esteso, vengono utilizzati i bit I (impostato a 1 nel messaggio iniziale) e M (impostato a 1 nei messaggi che seguono). Il bit S indica se il messaggio è stato inviato ad un master (1) o a uno slave (0). *DATABASE SEQUENCE NUMBER* numera in sequenza i messaggi, in modo che il ricevente possa identificare eventuali messaggi persi. Il primo contiene un numero R casuale, i successivi interi sequenziali a partire da R. I campi da *Link AGE* a *Link LENGTH* descrivono un collegamento di rete. *Link TYPE* indica il tipo di collegamento:
 1. collegamento del router
@@ -140,18 +140,18 @@ Poiché il messaggio può essere molto esteso, vengono utilizzati i bit I (impos
 
 Dopo aver scambiato messaggi di descrizione del database con un vicino, un router può scoprire parti obsolete del suo database. Affinché il vicino gli risponda con gli aggiornamenti, il router invia un messaggio di richiesta dello stato dei collegamenti. Il vicino risponde con le informazioni aggiornate che ha.
 
-![[images/Pasted image 20261023112510.png|500]]
+![[Pasted image 20261023112510.png|500]]
 
 I router trasmettono in broadcast lo stato dei collegamenti con un messaggio di aggiornamento dello stato dei collegamenti.
 
-![[images/Pasted image 20261023112527.png|500]]
+![[Pasted image 20261023112527.png|500]]
 
 **Formato dell'intestazione usata nei messaggi sullo stato dei collegamenti OSPF:** l'intestazione dello stato dei collegamenti usa uno dei quattro possibili formati per descrivere i collegamenti del router ad una certa area, a una rete specifica, alle reti fisiche di una rete IP suddivisa in sottoreti ed infine a reti di altri siti.
 
-![[images/slide-052.png|500]]
+![[slide-052.png|500]]
 
 > [!example] OSPF: esempio
-> ![[images/Pasted image 20261023112607.png|500]]
+> ![[Pasted image 20261023112607.png|500]]
 
 > [!example] OSPF: esempio di configurazione
 > Router Matt:
@@ -235,10 +235,10 @@ Ogni router invia update ogni 30 secondi. Gli aggiornamenti contengono coppie di
 *Routing updates:* RIP invia questi messaggi a intervalli regolari o quando cambia la topologia della rete ai router confinanti. *RIP timers:* RIP mantiene i timer routing-update timer (30 sec, in genere), route timeout, route-flush timer. RIP mantiene solo le informazioni relative a best routes. RIP usa il protocollo [[Lezione 6-UDP e TCP e routing|UDP]] e la porta 520.
 
 > [!example] RIP packet format
-> ![[images/Pasted image 20261023115154.png|500]]
+> ![[Pasted image 20261023115154.png|500]]
 
 > [!example] RIP 2 packet format
-> ![[images/Pasted image 20261023115218.png|500]]
+> ![[Pasted image 20261023115218.png|500]]
 
 Campi del RIP 2 packet format:
 - *Command:* indica se il pacchetto è un comando oppure una risposta
@@ -259,19 +259,19 @@ Per evitare i problemi di convergenza lenta i router adottano alcune tecniche:
 - *poison reverse:* quando un collegamento scompare, il router che effettuava l'annuncio continua ad annunciarlo ancora per un certo tempo assegnandogli una distanza infinita. Questo va accompagnato al *triggered update*, che obbliga i router ad annunciare la scomparsa di route immediatamente senza attendere che i timer si azzerino
 
 > [!example]
-> ![[images/Pasted image 20261023115246.png|500]]
+> ![[Pasted image 20261023115246.png|500]]
 
 **RIP: schema di indirizzamento**
 
-![[images/Pasted image 20261023115307.png|500]]
+![[Pasted image 20261023115307.png|500]]
 
 > [!example] Esempio di configurazione
-> ![[images/Pasted image 20261023115329.png|500]]
+> ![[Pasted image 20261023115329.png|500]]
 
 **Inserimento di una dorsale OSPF in RIP**
 
 > [!example] Esempio di configurazione
-> ![[images/Pasted image 20261023115352.png|500]]
+> ![[Pasted image 20261023115352.png|500]]
 
 > [!example] Esempio di configurazione (Router A)
 > ```
@@ -314,11 +314,11 @@ offset-list [acl_num|name] {in|out} offset [type_number]
 
 **Timers**
 
-![[images/Pasted image 20261023115733.png|500]]
+![[Pasted image 20261023115733.png|500]]
 
 **Autenticazione (RIP 2)**
 
-![[images/Pasted image 20261023115751.png|500]]
+![[Pasted image 20261023115751.png|500]]
 
 Esempio di autenticazione MD5 tra i router RA e RB. Entrambi usano la key chain `ka1`, la chiave 1 con stringa `234` e abilitano l'autenticazione RIP sull'interfaccia seriale:
 
@@ -352,13 +352,13 @@ Un'architettura d'instradamento deve fornire un modo perché ciascun gruppo cont
 
 **Topologia tra Autonomous System:** lo schema rappresenta i router di confine e le sessioni BGP usate per scambiare informazioni di raggiungibilità tra AS.
 
-![[images/slide-084.png|500]]
+![[slide-084.png|500]]
 
-![[images/Pasted image 20261023115826.png|500]]
+![[Pasted image 20261023115826.png|500]]
 
 Se un router esterno ad un gruppo (R3) sceglie un router partecipante ad un gruppo (R1) come default router si generano inefficienze: R3 invierà a R1 anche il traffico destinato alla rete 2 invece che inviare i pacchetti direttamente a R2 (problema del salto extra). ICMP non aiuta perché tali info non possono essere scambiate con i router intermedi, ma solo alla sorgente.
 
-![[images/Pasted image 20261023115846.png|500]]
+![[Pasted image 20261023115846.png|500]]
 
 I router R1 e R2 sono peer BGP uno dell'altro e sono detti router di confine dei rispettivi Autonomous System. I router R1 e R2, attraverso BGP, annunciano la raggiungibilità delle reti dei propri AS all'esterno.
 
@@ -392,7 +392,7 @@ BGP effettua interdomain routing in reti TCP/IP. È un Exterior Gateway Protocol
 - reti multiconnesse (usate per il traffico in transito)
 - reti di transito (sono disponibili al transito di traffico di terze parti, sono spesso reti di tipo backbone)
 
-![[images/Pasted image 20261023115921.png|500]]
+![[Pasted image 20261023115921.png|500]]
 
 **BGP effettua inter-autonomous system routing:**
 - Avviene tra due o più router BGP appartenenti ad AS diversi
@@ -411,7 +411,7 @@ BGP effettua interdomain routing in reti TCP/IP. È un Exterior Gateway Protocol
 - Avviene tra due o più router BGP che scambiano traffico attraverso un AS che non esegue BGP
 - In un ambiente pass-through il traffico BGP non origina dentro l'AS in questione e non è destinato a nessun nodo interno dell'AS stesso
 
-![[images/Pasted image 20261023115949.png|500]]
+![[Pasted image 20261023115949.png|500]]
 
 BGP usa la porta TCP 179. Due router BGP formano tra loro una connessione TCP (peer o neighbor routers), si autenticano reciprocamente e scambiano messaggi per aprire e confermare i parametri di connessione. I due neighbor all'inizio si scambiano tutta la loro routing table, comunicando per ciascuna rete (in formato Classless Inter Domain Router (CIDR), cioè indirizzo IP/bit subnet mask) il prossimo hop. Successivamente vengono scambiati messaggi contenenti gli aggiornamenti sui percorsi modificati. BGP verifica continuamente che i partner e le reti stiano funzionando correttamente.
 
@@ -438,7 +438,7 @@ BGP usa una routing metric singola, che consiste in un numero in unità arbitrar
 **Header:** ciascun pacchetto BGP contiene un header la cui funzione principale è quella di identificare lo scopo del pacchetto in questione. Contiene un valore riconosciuto da entrambi i peers per contrassegnare l'inizio del messaggio (importante per la sincronizzazione e l'autenticazione, se attiva), la lunghezza del messaggio in bytes (min 19B, max 4096B), il tipo di messaggio (Open, Update, Notification, Keep-alive, Refresh) e il campo Data.
 
 > [!example] BGP: formato dei pacchetti - Header
-> ![[images/slide-095.png|500]]
+> ![[slide-095.png|500]]
 
 **Open message:** un open message BGP è costituito da un header e da:
 - *BGP version number*
@@ -451,7 +451,7 @@ BGP usa una routing metric singola, che consiste in un numero in unità arbitrar
 Un messaggio OPEN è confermato dal ricevimento di un messaggio KEEPALIVE.
 
 > [!example] BGP: Open message
-> ![[images/slide-096.png|500]]
+> ![[slide-096.png|500]]
 
 **Update message:** un update message BGP è costituito da un header e da:
 - *Lunghezza del campo withdrawn routes:* indica la lunghezza del campo
@@ -461,7 +461,7 @@ Un messaggio OPEN è confermato dal ricevimento di un messaggio KEEPALIVE.
 - Contiene la lista di prefissi IP riferiti alle route annunciate
 
 > [!example] BGP: Update message
-> ![[images/slide-097.png|500]]
+> ![[slide-097.png|500]]
 
 **Notification message:** un notification message BGP è costituito da un header e da:
 - Indica il tipo di errore: Message Header Error, Open Message Error, Update Message Error, Hold Time Expired, Finite State Machine Error, Cease
@@ -469,12 +469,12 @@ Un messaggio OPEN è confermato dal ricevimento di un messaggio KEEPALIVE.
 - Contiene dati relativi all'errore e ai sottocodici di errore. È un campo usato per diagnosticare la ragione del messaggio
 
 > [!example] BGP: Notification message
-> ![[images/slide-098.png|500]]
+> ![[slide-098.png|500]]
 
 **eBGP e iBGP:** si può distinguere tra eBGP (peers appartenenti ad AS diversi) e iBGP (peers appartenenti allo stesso AS).
 
 > [!example] eBGP e iBGP
-> ![[images/slide-099.png|500]]
+> ![[slide-099.png|500]]
 
 **Esempio:** tre router RTA, RTB e RTC configurati con BGP:
 
@@ -494,7 +494,7 @@ router bgp 200
 ```
 
 > [!example] BGP: esempio
-> ![[images/slide-100.png|500]]
+> ![[slide-100.png|500]]
 
 Output di `show ip bgp neighbors`:
 
@@ -511,7 +511,7 @@ Output di `show ip bgp neighbors`:
 ```
 
 > [!example] BGP: esempio
-> ![[images/slide-101.png|500]]
+> ![[slide-101.png|500]]
 
 **Esempio con loopback interf.:**
 
@@ -527,7 +527,7 @@ RTB#
 ```
 
 > [!example] BGP: esempio con loopback interf.
-> ![[images/slide-102.png|500]]
+> ![[slide-102.png|500]]
 
 **eBGP multihop:**
 
@@ -543,7 +543,7 @@ RTB#
 ```
 
 > [!example] eBGP multihop
-> ![[images/slide-103.png|500]]
+> ![[slide-103.png|500]]
 
 **Esempio su router Cisco** — `show ip bgp summary`:
 
@@ -564,7 +564,7 @@ Neighbor         V     AS MsgRcvd MsgSent   TblVer   InQ OutQ Up/Down   State/Pf
 ```
 
 > [!example] Esempio su router Cisco
-> ![[images/slide-104.png|500]]
+> ![[slide-104.png|500]]
 
 `show ip bgp neighbors` su router reale:
 
@@ -597,7 +597,7 @@ Enqueued packets for retransmit: 0, input: 0   mis-ordered: 0 (0 bytes)
 ```
 
 > [!example] Esempio su router Cisco (i)
-> ![[images/slide-105.png|500]]
+> ![[slide-105.png|500]]
 
 Continuazione dell'output (connection details):
 
@@ -627,7 +627,7 @@ Sent: 246410 (retransmit: 865, fastretransmit: 0), with data: 89340, total data
 ```
 
 > [!example] Esempio su router Cisco (ii)
-> ![[images/slide-106.png|500]]
+> ![[slide-106.png|500]]
 
 **Internet routing table** — `show ip route`:
 
@@ -675,6 +675,6 @@ B      170.171.251.0/24 [20/0] via 151.99.49.1, 3w0d
 ```
 
 > [!example] Internet routing table
-> ![[images/slide-107.png|500]]
+> ![[slide-107.png|500]]
 
 

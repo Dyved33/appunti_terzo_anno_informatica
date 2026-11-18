@@ -64,7 +64,7 @@ Il ruolo di ciascun apparato lungo il canale è definito da una classe di sigle 
 
 - **DTE** (*Data Terminal Equipment*): il dispositivo informatico che permette la comunicazione dati, per esempio un computer, e nel quale risiede l'applicazione utente.
 - **DCE** (*Data Circuit Terminating Equipment*, anche *Data Communication Equipment*): per connettersi alla linea serve un DCE, che converte i segnali nella forma migliore per l'invio sul canale, per esempio un modem.
-- **CPE** (*Customer Premises Equipment*): quando serve un dispositivo di pertinenza dell'utente, di solito inserito nella sua abitazione, per esempio reti ISDN, wireless o *voice over IP*, si parla di CPE.
+- **CPE** (*Customer Premises Equipment*): quando serve un dispositivo di pertinenza dell'utente, di solito inserito nella sua abitazione, per esempio reti ISDN, wireless o *voice over IP*, si parla di CPE. Quindi si tratta di un insieme di apparati installati presso la sede del client per connettersi alla rete del provider (es router e modem).
 
 **La rete di comunicazione:** il percorso fra due DTE non è l'unico elemento in gioco. La rete di comunicazione si interpone fra i due DTE e ne media il collegamento, ed è il DCE l'apparato che adatta il segnale alla forma migliore per l'invio su di essa.
 
@@ -79,7 +79,7 @@ Il ruolo di ciascun apparato lungo il canale è definito da una classe di sigle 
 
 ## Le reti e il loro mondo
 
-<u>Si parla di **rete** intendendo un insieme di dispositivi connessi da canali di comunicazione.</u> Una rete presenta uno o più **nodi** capaci di inviare o ricevere dati, generati o ricevuti, da altri dispositivi o da altri nodi.
+<u>Si parla di <b>rete</b> intendendo un insieme di dispositivi connessi da canali di comunicazione.</u> Una rete presenta uno o più **nodi** capaci di inviare o ricevere dati, generati o ricevuti, da altri dispositivi o da altri nodi.
 
 L'organizzazione delle funzioni computazionali si articola in due modelli:
 
@@ -115,7 +115,7 @@ La bontà di una rete si valuta su tre aspetti: <u>affidabilità, sicurezza e pr
 
 Le prestazioni dipendono anche da fattori strutturali e non solo dalle misure stesse: il numero di DTE presenti sulla rete, la tipologia dei mezzi trasmissivi utilizzati e l'efficienza del software che gestisce la comunicazione.
 
-**La banda:** banda passante di frequenze utilizzabile per la trasmissione di segnale su un canale. Essendo legata alla quantità d'informazione inviabile nell'unità di tempo, si può definire come <u>la velocità massima alla quale è possibile trasmettere informazioni</u>. Da qui i due termini:
+**La banda:** banda passante di frequenze utilizzabili per la trasmissione di segnale su un canale. Essendo legata alla quantità d'informazione inviabile nell'unità di tempo, si può definire come <u>la velocità massima alla quale è possibile trasmettere informazioni</u>. Da qui i due termini:
 
 - **Broadband:** tecnologie che forniscono collegamenti di velocità notevolmente superiore alla normale linea telefonica.
 - **Digital divide:** la disparità fra zone che dispongono o meno di accesso alla banda larga.
