@@ -83,7 +83,7 @@ Regole di compressione e formattazione:
    2001:0:1234::D0:ABCD:532
    ```
    > [!warning] Attenzione:
-   > Il simbolo `::` può comparire **al massimo una volta** all'interno di un indirizzo IPv6. Usarlo due volte renderebbe ambigua la determinazione del numero esatto di zeri omessi nei due blocchi.
+   > Il simbolo `::` può comparire **al massimo una volta** all'interno di un indirizzo IPv6. Usarlo due volte renderebbe ambigua la determinazione del numero esatto di zeri omessi nei due blocchi. Non è valida ad esempio la notazione: `2001::1234::C1C0:ABCD:876`.
 
 Esempi di compressione notevoli:
 - `FF02:0:0:0:0:0:0:1` $\rightarrow$ `FF02::1`
@@ -114,7 +114,7 @@ L'Interface Identifier può essere assegnato manualmente oppure autogenerato a p
 
 ### Tipologie di indirizzi Unicast
 
-- **Unspecified Address (`::/128`):** formato da soli zeri. Indica l'assenza formale di un indirizzo IP; impiegato come IP sorgente temporaneo durante la fase di bootstrap o durante la verifica di unicità dell'indirizzo (*Duplicate Address Detection*, DAD). La notazione `::/0` indica la rotta predefinita (*default route*).
+- **Unspecified Address (`::/128`, o `0:0:0:0:0:0:0:0`):** formato da soli zeri (analogo a `0.0.0.0` in IPv4). Indica l'assenza formale di un indirizzo IP; impiegato come IP sorgente temporaneo nella richiesta iniziale DHCP o durante la verifica di unicità dell'indirizzo (*Duplicate Address Detection*, DAD). La notazione `::/0` indica la rotta predefinita (*default route*).
 - **Loopback Address (`::1/128`):** formato da 127 bit a zero e l'ultimo bit a 1. Identifica la macchina locale (analogo a `127.0.0.1` in IPv4). Si verifica la corretta funzionalità dello stack locale tramite:
   ```bash
   ping6 ::1
@@ -205,6 +205,36 @@ Modalità operative:
 <div style="display: flex; justify-content: center;">
   <img src="slide-ipv6-34.png" width="500">
 </div>
+
+## Meccanismi di transizione e coesistenza con IPv4
+
+Poiché la transizione globale da IPv4 a IPv6 non può avvenire con un passaggio istantaneo (*flag day*), sono adottati tre approcci di coesistenza:
+- **Dual Stack:** approccio standard corrente in cui router e host eseguono contemporaneamente entrambi gli stack di protocollo (IPv4 e IPv6) sulle medesime interfacce fisiche.
+- **Tunneling:** incapsulamento dei pacchetti IPv6 all'interno di normali datagrammi IPv4 per consentire il transito attraverso porzioni di infrastruttura legacy non ancora abilitate a IPv6.
+- **Traduzione (NAT64 / DNS64):** permette a reti composte esclusivamente da host IPv6 (es. moderne reti radiomobili) di comunicare direttamente con server rimasti solo IPv4:
+  - *NAT64:* funge da gateway di traduzione a livello di rete e trasporto, mappando lo spazio di indirizzi IPv4 a 32 bit all'interno di un intervallo di prefisso IPv6 dedicato.
+  - *DNS64:* server DNS che intercetta le richieste di record `AAAA` e, se sono presenti unicamente record `A` IPv4 per quel dominio, sintetizza al volo un indirizzo `AAAA` instradabile verso il gateway NAT64.
+
+## Proposta sperimentale IPv8 (draft-thain-ipv8-00)
+
+*Definizione:* Internet-Draft individuale (aprile 2026, J. Thain, One Limited) che propone una suite di rete unificata e gestita, alternativa sia a IPv4 che alla transizione IPv6.
+
+*Caratteristiche architetturali della proposta:*
+- **Indirizzamento a 64 bit (`r.r.r.r` + `h.h.h.h`):** suddivisione dell'indirizzo in 32 bit di *Routing Prefix* (codificato dall'Autonomous System Number - ASN) e 32 bit di *Host Address*.
+- **Piena retrocompatibilità al 100% con IPv4:** se il prefisso di routing vale `0.0.0.0`, l'indirizzo equivale a un indirizzo IPv4 standard, eliminando l'obbligo di riscrittura delle applicazioni legacy. Ciascun ASN riceve $2^{32}$ indirizzi host (circa 4,29 miliardi).
+- **Prefissi di routing riservati:** `127.0.0.0/8` riservato per prefissi di zona interni (*Internal Zone Prefix*, non instradabili all'esterno); `100.0.0.0/8` riservato per peering regionale (RINE).
+- **Zone Server integrato:** nodo di controllo ridondato (active/active) che centralizza:
+  - *DHCP8:* rilascio contestuale dell'indirizzo e degli endpoint di DNS8, NTP8, logging e policy con un singolo scambio *Discover/Response*.
+  - *OAuth8 (OAuth2/JWT):* autorizzazione di ogni apparato tramite token crittografici JWT validati localmente (< 1 ms).
+  - *Update8:* aggiornamento controllato del software di rete dei primi 4 livelli ISO/OSI e blocco delle comunicazioni verso host non risolti tramite DNS8.
+- **Sicurezza multilivello:**
+  - *Isolamento Est-Ovest (traffico interno):* ACL8 a tre livelli (firmware NIC, gateway Zone Server e porte switch con VLAN gestite via OAuth2) per impedire il movimento laterale.
+  - *Controllo Nord-Sud (traffico esterno):* verifica in uscita dell'esistenza di una recente risoluzione DNS8 (blocco di malware con IP hardcoded) e validazione del prefisso di destinazione sul database WHOIS8 contro attacchi di BGP hijacking.
+- **Ottimizzazione del routing globale:**
+  - Tabella BGP8 limitata strutturalmente a una singola voce per ASN (circa 175.000 voci contro le oltre 900.000 attuali di BGP4), con prefisso minimo `/16`.
+  - Protocolli BGP8, OSPF8 e IS-IS8 basati su una metrica a 32 bit determinata da 7 parametri telemetrici: RTT, perdita pacchetti, finestra di congestione TCP, stabilità della sessione, capacità del link, policy economica e distanza geografica.
+
+*Osservazione:* in quanto documento *draft-thain-ipv8-00*, si tratta di una bozza individuale sperimentale e non di uno standard adottato o ratificato dall'IETF.
 
 ## Confronto sinottico finale: IPv4 vs IPv6
 

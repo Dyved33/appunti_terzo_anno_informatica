@@ -4,7 +4,7 @@
   "pruneNotification": "minimal",
   "turnProtection": {
     "enabled": true,
-    "turns": 3
+    "turns": 4
   },
   "experimental": {
     "allowSubAgents": true,
@@ -12,12 +12,12 @@
   },
   "compress": {
     "mode": "range",
-    "maxContextLimit": 120000,
-    "minContextLimit": 60000,
-    "nudgeFrequency": 3,
+    "maxContextLimit": 100000,
+    "minContextLimit": 50000,
+    "nudgeFrequency": 2,
     "iterationNudgeThreshold": 10,
     "nudgeForce": "soft",
-    "protectUserMessages": false,
+    "protectUserMessages": true,
     "showCompression": false
   },
   "strategies": {

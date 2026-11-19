@@ -62,10 +62,9 @@ Molti algoritmi usano una strategia greedy: partono da un modello $M$, costruisc
 
 > [!example] Variabili rumorose
 > Un esperimento aggiunge a $X$ e $Y$ 100 variabili rumorose generate da una distribuzione uniforme e usa il 30% dei dati per il training e il 70% per il test. Le due immagini mettono a confronto l'uso delle sole variabili $X$ e $Y$ con l'aggiunta delle 100 variabili: quelle casuali offrono molti split che possono adattarsi al training senza aiutare sulle osservazioni nuove.
-> <div style="display: flex; justify-content: center; gap: 12px;">
->   <img src="Pasted image 20261118163355.png" width="500">
->   <img src="Pasted image 20261118163406.png" width="500">
-> </div>
+> ![[Pasted image 20261118163355.png|500]]
+> ![[Pasted image 20261118163406.png|500]]
+
 
 L'overfitting produce alberi più complessi del necessario. L'errore di training non è una buona stima della prestazione su record mai visti; occorrono metodi che stimino l'errore di generalizzazione.
 
