@@ -12,6 +12,7 @@ Per stimare la capacità di generalizzazione, training e test devono rappresenta
 
 > [!example] Dataset a due classi
 > Il materiale mostra 10 400 punti: 5 200 positivi, di cui 5 000 generati da una distribuzione gaussiana centrata in $(10,10)$ e 200 punti rumorosi aggiunti, e 5 200 negativi generati da una distribuzione uniforme. Il 10% dei dati viene usato per il training e il 90% per il test. La nuvola centrale rende riconoscibile la classe positiva, mentre i punti rumorosi possono indurre il modello a inseguire dettagli casuali.
+> 
 > ![[Pasted image 20261118162900.png|500]]
 
 **Numero di nodi negli alberi:** aumentando i nodi, l'errore di training diminuisce. Un albero con pochi nodi produce regioni ampie e può non distinguere bene i dati; un albero molto grande crea confini più frastagliati e può isolare singoli esempi. Le immagini confrontano un albero con 4 nodi e uno con 50 nodi: il secondo segue più da vicino anche i punti anomali.
@@ -58,10 +59,11 @@ Se 50 analisti fanno ciascuno 10 previsioni casuali e si sceglie quello con più
 $$P(\text{almeno uno})=1-(1-0{,}0547)^{50}=0{,}9399.$$
 La probabilità sale al 93,99% perché si seleziona il risultato migliore fra molte prove, anche se tutte le previsioni sono casuali.
 
-Molti algoritmi usano una strategia greedy: partono da un modello $M$, costruiscono un'alternativa $M'=M\cup\gamma$ aggiungendo una componente (per esempio una condizione di split) e la conservano se il miglioramento $\Delta(M,M')$ supera una soglia $\alpha$. Se $\gamma$ viene scelta fra molte alternative $\Gamma=\{\gamma_1,\gamma_2,\ldots,\gamma_k\}$, una componente irrilevante può apparire utile per caso e finire nel modello.
+Molti algoritmi usano una strategia greedy: partono da un modello $M$, costruiscono un'alternativa $M'=M\cup\gamma$ aggiungendo una componente (dove $\gamma$ è un componente da aggiungere al modello come una test condition di un decision tree) e la conservano se il miglioramento $\Delta(M,M')$ supera una soglia $\alpha$. Se $\gamma$ viene scelta fra molte alternative $\Gamma=\{\gamma_1,\gamma_2,\ldots,\gamma_k\}$, una componente irrilevante può apparire utile per caso e finire nel modello.
 
 > [!example] Variabili rumorose
 > Un esperimento aggiunge a $X$ e $Y$ 100 variabili rumorose generate da una distribuzione uniforme e usa il 30% dei dati per il training e il 70% per il test. Le due immagini mettono a confronto l'uso delle sole variabili $X$ e $Y$ con l'aggiunta delle 100 variabili: quelle casuali offrono molti split che possono adattarsi al training senza aiutare sulle osservazioni nuove.
+> 
 > ![[Pasted image 20261118163355.png|500]]
 > ![[Pasted image 20261118163406.png|500]]
 
@@ -74,7 +76,7 @@ La selezione del modello avviene durante la costruzione e serve a limitare la co
 
 **Validation set:** si divide il training set in due parti. Il training set serve a costruire il modello; il validation set a stimarne l'errore di generalizzazione e a scegliere il modello. Il validation set non è il test set, che va tenuto da parte per la valutazione finale. Lo svantaggio della divisione è che rimangono meno dati per l'addestramento.
 
-**Rasoio di Occam e penalità di complessità:** fra due modelli con errori di generalizzazione simili si preferisce quello più semplice, perché un modello complesso ha più possibilità di adattarsi accidentalmente al rumore.
+**Rasoio di Occam e penalità di complessità:** fra due modelli con errori di generalizzazione simili si preferisce quello più semplice, perché un modello complesso ha più possibilità di adattarsi accidentalmente al rumore (errori nei dati).
 $$E_{gen}(M)=E_{train}(M,D_{train})+\alpha\,C(M),$$
 dove $C(M)$ misura la complessità e $\alpha$ ne regola il peso.
 
@@ -87,9 +89,10 @@ dove $err(T)$ è il tasso di errore sui record di training, $N_{train}$ è il nu
 > $$e_{gen}(T_L)=\frac{4}{24}+1\cdot\frac{7}{24}=\frac{11}{24}\approx0{,}458,$$
 > $$e_{gen}(T_R)=\frac{6}{24}+1\cdot\frac{4}{24}=\frac{10}{24}\approx0{,}417.$$
 > $T_L$ classifica meglio il training set, ma la stima penalizzata favorisce $T_R$, che è più semplice.
+> 
 > ![[Pasted image 20261118163531.png|500]]
-
-**Stima per ri-sostituzione:** usa l'errore di training come stima ottimistica dell'errore di generalizzazione. È ottimistica perché il modello è stato costruito proprio su quegli esempi.
+> 
+> **Stima per ri-sostituzione:** usa l'errore di training come stima ottimistica dell'errore di generalizzazione. È ottimistica perché il modello è stato costruito proprio su quegli esempi.
 
 **Minimum Description Length (MDL):** sceglie il modello che minimizza il costo complessivo di codifica:
 $$Cost(M,D)=Cost(D\mid M)+\lambda Cost(M).$$
@@ -137,6 +140,7 @@ Lo scopo della valutazione è stimare le prestazioni del classificatore su dati 
 
 > [!example] Cross-validation a 3 fold
 > Nell'immagine, il dataset è diviso in $S_1,S_2,S_3$. In ciascuna delle tre esecuzioni una partizione diversa è il test set e le altre due sono il training set.
+> 
 > ![[Pasted image 20261118163945.png|500]]
 
 ## Classi sbilanciate
@@ -180,6 +184,8 @@ Le misure alternative sono:
 
 In un test visto come verifica di un'ipotesi nulla, $\alpha$ è la probabilità di rifiutare l'ipotesi nulla quando è vera: errore di tipo I, corrispondente a un falso positivo. $\beta$ è la probabilità di accettarla quando è falsa: errore di tipo II, corrispondente a un falso negativo.
 
+![[Pasted image 20261119225330.png|500]]
+
 I confronti delle slide mostrano che due modelli possono avere la stessa accuratezza ma comportarsi diversamente sulla classe rara. Per esempio, con 50 positivi e 50 negativi, il modello A ha $TP=40$, $FN=10$, $FP=10$, $TN=40$: precisione, richiamo, F e accuratezza valgono tutti $0{,}8$, mentre $TPR/FPR=4$. Il modello B ha gli stessi $TP$ e $FN$, ma $FP=1000$ e $TN=4000$: accuratezza circa $0{,}8$, richiamo $0{,}8$, precisione circa $0{,}04$ e F circa $0{,}08$. Lo sbilanciamento modifica precisione e F anche quando TPR e FPR restano uguali.
 
 Nel caso B, con 5 000 negativi e 50 positivi, il classificatore mantiene $TP=40$, $FN=10$, $FP=1000$ e $TN=4000$: precisione circa $0{,}038$, TPR $0{,}8$, FPR $0{,}2$, F circa $0{,}07$ e accuratezza circa $0{,}8$. Il rapporto TPR/FPR vale 4 come nel caso A, ma la precisione è molto più bassa perché i falsi positivi sono numerosi rispetto ai positivi reali.
@@ -213,7 +219,7 @@ Le immagini successive mostrano come cambiano la matrice di confusione e il punt
 > ![[Pasted image 20261118170645.png|500]]
 > ![[Pasted image 20261118170714.png|500]]
 
-Per tracciare una curva ROC il classificatore deve assegnare un punteggio continuo a ciascun record. Si ordinano i record in ordine decrescente di punteggio, si applica una soglia per ciascun punteggio distinto e si contano $TP,FP,TN,FN$. Poi, per ogni soglia, si calcolano $TPR=TP/(TP+FN)$ e $FPR=FP/(FP+TN)$. Molti classificatori possono fornire punteggi continui: alberi, classificatori basati su regole, reti neurali, classificatori bayesiani, $k$-nearest neighbors e SVM.
+Per tracciare una curva ROC il classificatore deve assegnare un punteggio continuo a ciascun record. Si ordinano i record in ordine decrescente di punteggio (dalla classe più probabilmente positiva alla meno), si applica una soglia per ciascun punteggio distinto e si contano $TP,FP,TN,FN$. Poi, per ogni soglia, si calcolano $TPR=TP/(TP+FN)$ e $FPR=FP/(FP+TN)$. Molti classificatori possono fornire punteggi continui: alberi, classificatori basati su regole, reti neurali, classificatori bayesiani, $k$-nearest neighbors e SVM.
 
 | Istanza | Punteggio | Classe reale |
 |---:|---:|:---:|

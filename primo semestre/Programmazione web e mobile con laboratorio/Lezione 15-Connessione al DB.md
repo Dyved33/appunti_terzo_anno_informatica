@@ -174,7 +174,7 @@ app.get("/users", async (req, res) => {
 - `.promise()` serve per usare `await` con `.execute()`
 - `.release()` rilascia la connessione
 
-## Transazioni
+## Transactions
 *Definizione:* Una transazione è un'unità di lavoro atomica che raggruppa una o più operazioni di db in un'unica operazione logica.
 
 Le transazioni garantiscono che tutte le operazioni siano eseguite con successo o nessuna di esse venga applicata in caso di errore.
@@ -222,10 +222,3 @@ app.post("/registration", async (req, res) => {
 - `await connection.commit()` rende permanenti le modifiche una volta che tutte le operazioni della transazione sono state completate con successo
 - `await connection.rollback()` annulla tutte le modifiche effettuate se si verifica un errore durante la transazione
 - `connection.release()` rilascia la connessione al termine della transazione e la restituisce al pool
-
-> [!info] Sintesi:
-> - Per connettersi a un db in Node.js si installa la libreria specifica (mysql2 per MySQL), si configurano le credenziali, si apre la connessione e si eseguono le query.
-> - `mysql.createConnection()` apre una singola connessione persistente; `connection.execute()` esegue query parametrizzate con placeholder `?`.
-> - La connessione globale va bene per pochi casi, quella isolata è sicura per la concorrenza ma costosa, quella condivisa ha solo apparenti vantaggi.
-> - Il connection pool mantiene connessioni attive e riutilizzabili; si configura con `waitForConnections`, `connectionLimit`, `queueLimit`, si usa `.promise()` con `await` e si rilascia con `.release()`.
-> - Una transazione raggruppa più operazioni in un'unità atomica: `beginTransaction`, `execute`, `commit` o `rollback`, poi `release`.

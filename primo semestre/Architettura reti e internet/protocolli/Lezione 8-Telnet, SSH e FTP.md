@@ -68,6 +68,11 @@ I comandi nel flusso dati sono introdotti dal byte speciale `IAC` (*Interpret As
 - Esegue un singolo comando su un host remoto e restituisce direttamente lo standard output e lo standard error sulla finestra del terminale locale.
 - Condivide lo stesso modello di autenticazione debole basato su indirizzo IP e file di configurazione utente.
 
+**Port forwarding:**
+- E' una nuova funzionalità implementata da ssh (secure shell)
+- E' simile al Network Address Translation (NAT)
+- Permette di istradare connessioni TCP in un canale cifrato
+
 ## Remote desktop
 
 Protocolli per l'accesso remoto a sistemi con interfaccia grafica a finestre (GUI). Consentono di visualizzare lo schermo remoto e inoltrare gli input di mouse e tastiera attraverso la rete:
@@ -131,6 +136,17 @@ Nel trasferimento dati, il ruolo di chi effettua la connessione TCP si inverte a
   3. È il client a iniziare la connessione dati collegandosi dalla propria porta locale verso la porta $P$ aperta sul server.
   4. Risolve le problematiche legate a firewall e NAT lato client, poiché entrambe le connessioni (controllo e dati) sono originate in uscita dal client verso il server.
 
+> [!info] Uso interattivo di FTP
+> - All'inizio in protocollo FTP era usato da linea di comando:
+> 	- L'utente invoca il client e specifica il server remoto
+> 	- L'Utente si collega e immette la password
+> 	- L'Utente specifica una serie di richieste
+> 	- L'Utente chiude la connessione
+> - Oggi:
+> 	- Gran parte delle richieste FTP originano da browser
+> 	- L'Utente specifica la URL o click sul link
+> 	- Il Browser usa FTP per contattare il server remoto ed ottiene: la lista dei files e l'utente seleziona il file per il download
+
 ### Comandi FTP principali
 
 - **Controllo accesso:**
@@ -164,6 +180,12 @@ Nelle specifiche RFC 959 le credenziali e i dati viaggiano in chiaro. RFC 2228 i
 - `CONF`: comando per trasferire dati con livello di sicurezza *Confidential*.
 - `ENC`: comando per trasferire dati con livello di sicurezza *Private*.
 - Strumenti operativi: su Linux si utilizzano client a canale cifrato come `sftp` e `scp` (basati su SSH); su Windows strumenti come WinSCP o PSFTP.
+
+### Sicurezza di telnet e FTP
+
+- Presentano l’inconveniente che il traffico attraversa la rete in chiaro, pertanto si presta a violazioni di dati sensibili (login, password, dati sensibili in generale)
+- Meglio utilizzare le versioni che utilizzano ssh (Secure Shell) e scp (Secure Copy), che scambiano i dati in modo cifrato. Queste procedure generano un maggior carico computazionale sia sul server che sul client. Molti software che implementano ambienti client di questi servizi hanno la possibilità di usare la versione sicura
+- I socket ssh e scp in genere sono lasciati aperti sui firewall
 
 ## Protocollo TFTP
 
@@ -254,10 +276,3 @@ Funzionalità che consente di incapsulare e instradare qualsiasi connessione TCP
 - **Local port forwarding (`-L`):** il client SSH apre una porta locale e inoltra tutto il traffico ricevuto verso una specifica porta dell'host remoto passando per il tunnel SSH.
 - **Remote port forwarding (`-R`):** il server SSH apre una porta remota e inoltra le connessioni in ingresso verso una porta accessibile dal client.
 - **Dynamic port forwarding (`-D`):** configura il client SSH come server proxy SOCKS locale, consentendo a browser e applicazioni di instradare dinamicamente qualsiasi traffico TCP attraverso la macchina remota.
-
-> [!info] Sintesi:
-> - Telnet (porte 23 TCP) e FTP (porta 21 controllo, porta 20 dati) trasferiscono comandi e credenziali in chiaro e sono obsoleti per scopi di accesso remoto.
-> - FTP prevede modalità attiva (server contatta il client) e passiva (client contatta il server, risolvendo i vincoli di NAT e firewall).
-> - TFTP opera su UDP (porta 69) per il boot di macchine diskless e configurazione di dispositivi di rete senza autenticazione.
-> - La crittografia simmetrica garantisce velocità ed efficienza; quella asimmetrica fornisce confidenzialità, autenticazione e firma digitale senza richiedere la condivisione preliminare di una chiave segreta.
-> - OpenSSH (SSH2) sostituisce completamente Telnet, rlogin, rsh e FTP (tramite SFTP e SCP) garantendo autenticazione a chiavi asimmetriche (`authorized_keys`, `known_hosts`), integrità HMAC e tunneling di porte TCP.
