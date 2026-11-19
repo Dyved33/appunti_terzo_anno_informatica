@@ -51,7 +51,7 @@ Per trasmissione asincrona si intende una trasmissione non governata da un parti
 La linea viene mantenuta in stato idle quando non vengono trasmesse informazioni (inviando ripetutamente il segnale 1), e, prima dell'invio di dati significativi, viene inviato uno start-bit che consente di riportare in fase il sistema ricevitore. Il ricevitore mantiene l'attenzione al canale per la durata del carattere, fino allo stop-bit: se dopo quest'ultimo non ci sono altri segnali da ricevere, il ricevitore torna in stato di riposo fino al successivo start-bit.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-11.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-11.png" width="500" alt="Immagine" />
   <p>Trasmissione asincrona: start-bit, stop-bit e stato idle.</p>
 </div>
 
@@ -66,7 +66,7 @@ I dispositivi si temporizzano secondo un segnale di clock che dal trasmettitore 
 Vi sono varie alternative per la propagazione del segnale di temporizzazione: ad esempio, inviando su linee separate il segnale di clock e il messaggio (soluzione sconsigliata), oppure ricavando il clock in base al segnale ricevuto, oppure ancora ricavando il clock in base a un circuito di aggancio di fase, chiamato PLL (Phase-Locked Loop; si tratta della soluzione più usata). Una delle tecniche di sincronizzazione è il codice bipolare alternato chiamato AMI (Alternate Mark Inversion).
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-13.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-13.png" width="500" alt="Immagine" />
   <p>Trasmissione sincrona: clock master-slave e sincronismo di carattere SYN.</p>
 </div>
 
@@ -81,7 +81,7 @@ Lo stato digitale "1" è rappresentato con un segnale alto. Lo stato digitale "0
 Questo metodo è facilmente ottenibile e non richiede circuiti complicati, anche perché non si tratta di una vera e propria codifica, visto che i dati vengono passati direttamente come tali in uscita. Si ha inoltre un'alta robustezza agli errori, anche se lunghe stringhe di "0" o di "1" potrebbero causare la perdita del sincronismo.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-16.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-16.png" width="500" alt="Immagine" />
   <p>Codifica NRZ: livello alto per 1, livello basso per 0.</p>
 </div>
 
@@ -100,7 +100,7 @@ Questo provoca un necessario raddoppio della banda necessaria a trasmettere l'in
 Come nell'RZ, in questo metodo lunghe stringhe di "0" o "1" non causano la perdita del sincronismo. Inoltre, lavorando con solo due livelli, viene garantita un'alta robustezza agli errori. La codifica Manchester richiede un circuito più complicato rispetto a quelli per l'RZ e l'NRZ.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-18.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-18.png" width="500" alt="Immagine" />
   <p>Codifica Manchester: transizione a metà bit per 0 e per 1.</p>
 </div>
 
@@ -109,7 +109,7 @@ Come nell'RZ, in questo metodo lunghe stringhe di "0" o "1" non causano la perdi
 Il codice AMI è un codice a tre livelli di tensione (+V, 0, −V) ed è ottenuto dal codice RZ lasciando inalterato lo zero ed associando allo stato logico 1 alternativamente dapprima un valore +V e successivamente un valore −V. Questo codice viene utilizzato nella trasmissione PCM (Pulse Code Modulation) americana.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-20.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-20.png" width="500" alt="Immagine" />
   <p>Codifica AMI: tre livelli di tensione, 1 alternato +V e −V.</p>
 </div>
 
@@ -122,7 +122,7 @@ Il flusso di bit trasmesso su una coppia è sottoposto a precedente operazione d
 La codifica 2B1Q è utilizzata in ISDN (Integrated Services Digital Network) per l'accesso BASE e nelle reti HDSL (High data rate Digital Subscriber Line). Lo scrambling è utile per mantenere attiva la linea, utilizzando codici che possono mantenere il segnale costante.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-21.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-21.png" width="500" alt="Immagine" />
   <p>Scrambling e codifica 2B1Q per ISDN e HDSL.</p>
 </div>
 
@@ -135,7 +135,7 @@ In assenza dei bit di start e di stop, la sincronizzazione di carattere è otten
 La figura mostra in (a) che la sincronizzazione di trama è ottenuta, come per il caso asincrono, racchiudendo il blocco da trasmettere entro una coppia di caratteri STX–ETX. Una volta che il ricevitore ha conseguito il sincronismo di bit, entra in una modalità di ricerca, verificando se l'allineamento di 8 bit consecutivi corrisponde al carattere SYN, ed in caso negativo ripete il tentativo bit a bit. Una volta individuato il SYN, il ricevitore ha conseguito l'allineamento sul carattere ed inizia ad aspettare il carattere STX, che indica l'inizio della trama, la quale è terminata da un ETX.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-24.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-24.png" width="500" alt="Immagine" />
   <p>Sincronismo di trama con caratteri SYN, STX e ETX.</p>
 </div>
 
@@ -154,7 +154,7 @@ La figura mostra in (a) un esempio di trama, ed in (b) la soluzione del bit stuf
 Ora i dati trasmessi non devono essere necessariamente in numero multiplo della lunghezza di carattere, ed ogni qualvolta sono presenti 5 bit pari ad 1 consecutivi, il trasmettitore inserisce forzatamente un bit pari a 0. In tal modo, quando il ricevitore osserva un bit pari a 0 preceduto da 5 bit pari ad 1 consecutivi, lo rimuove, conseguendo così la trasparenza dai dati e permettendo il corretto rilevamento del flag byte di fine trama. Ovviamente, la procedura di bit stuffing/destuffing è applicata solamente al contenuto della trama.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-27.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-27.png" width="500" alt="Immagine" />
   <p>Trama orientata al bit e bit stuffing per trasparenza.</p>
 </div>
 
@@ -201,7 +201,7 @@ Il checksum è calcolabile come segue:
 Dove G(x) è il divisore (generator polynomial), xʳ · M(x) il dividendo, Q(x) il quoziente e R(x) il resto (remainder) usato come checksum.
 
 <div style="text-align: center;">
-  <img src="parte_8-slide-35.png" width="500" alt="Immagine" />
+  <img src="images/parte_8-slide-35.png" width="500" alt="Immagine" />
   <p>CRC: dividendo, divisore, quoziente e resto (checksum).</p>
 </div>
 

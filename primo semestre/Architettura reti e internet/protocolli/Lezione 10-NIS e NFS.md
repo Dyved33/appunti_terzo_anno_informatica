@@ -13,7 +13,7 @@ Consente a grandi comunità di utenti di spostarsi da un host all'altro della re
 Risulta fondamentale per la creazione di cluster di calcolo e applicazioni distribuite, permettendo una gestione centralizzata e una notazione uniforme per l'accesso a file e risorse indipendentemente dal singolo nodo su cui viene eseguito il processo.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-dns-47.png" width="500">
+  <img src="images/slide-dns-47.png" width="500">
 </div>
 
 ### NIS Maps
@@ -66,7 +66,7 @@ NIS converte i principali file di configurazione ASCII di UNIX in database indic
 *Definizione:* protocollo per file system distribuito progettato da Sun Microsystems per consentire la condivisione trasparente di file e cartelle su rete IP. Gli utenti e i programmi applicativi manipolano i file residenti su un server remoto utilizzando le medesime chiamate di sistema (`open`, `read`, `write`, `close`) impiegate per il disco fisso locale.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-dns-55.png" width="500">
+  <img src="images/slide-dns-55.png" width="500">
 </div>
 
 ### Architettura: RPC e XDR
@@ -74,7 +74,7 @@ NIS converte i principali file di configurazione ASCII di UNIX in database indic
 NFS è implementato appoggiandosi a due sottosistemi indipendenti di supporto che nascondono la complessità del canale di comunicazione:
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-dns-64.png" width="500">
+  <img src="images/slide-dns-64.png" width="500">
 </div>
 
 1. **Remote Procedure Call (RPC):** astrazione di programmazione distribuita. Consente a un programma client di invocare una procedura remota su un server come se fosse una funzione locale. Il meccanismo RPC si occupa di impacchettare i parametri (*marshaling*), spedire il messaggio sulla rete via TCP o UDP, attendere la risposta ed estrarre i valori di ritorno (*unmarshaling*).

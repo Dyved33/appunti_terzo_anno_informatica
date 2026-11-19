@@ -15,7 +15,7 @@ Sequenza di etichette (*labels*) separate dal carattere punto (`.`), lette da si
 - Lunghezza massima complessiva dell'FQDN: 255 byte.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-dns-04.png" width="500">
+  <img src="images/slide-dns-04.png" width="500">
 </div>
 
 ### Classificazione dei Top-Level Domains (TLD)
@@ -55,7 +55,7 @@ Quando un client richiede la risoluzione di un nome non presente nella memoria c
 - **Risoluzione iterativa:** se il server interrogato non è autoritativo per la zona, restituisce al chiamante l'indirizzo del server DNS gerarchicamente più vicino (un *referral*), delegando al client o al resolver locale il compito di effettuare l'interrogazione successiva.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-dns-13.png" width="500">
+  <img src="images/slide-dns-13.png" width="500">
 </div>
 
 ### Passaggi della ricerca ricorsiva (es. `mail.unipg.it`)
@@ -125,7 +125,7 @@ Formato generale di un Resource Record:
 - `data`: informazioni associate al record.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-dns-27.png" width="500">
+  <img src="images/slide-dns-27.png" width="500">
 </div>
 
 ### Record SOA (Start of Authority)

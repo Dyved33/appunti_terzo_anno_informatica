@@ -20,7 +20,7 @@ E ricordando le proprietà dei logaritmi:
 È facile intuire come valori sempre più negativi di EVM siano migliori.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-02.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-02.png" width="500" alt="Immagine" />
   <p>Definizione del decibel e proprietà del logaritmo applicate all'EVM.</p>
 </div>
 
@@ -34,7 +34,7 @@ A seconda dello strumento, l'EVM può essere riportato in forma sintetica tabell
 > Demodulare un segnale significa estrarre l'informazione originale(voce, dati, immagini) dalla portante ad alta frequenza su cui era stata sovrapposta. Questo processo riconverte il segnale modulato nella sua forma originale a bassa frequenza, permettendone la comprensione e l'elaborazione finale
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-05.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-05.png" width="500" alt="Immagine" />
   <p>Strumenti di misura dell'EVM e principio di funzionamento.</p>
 </div>
 
@@ -52,7 +52,7 @@ Naturalmente un segnale DPSK, avendo lo stesso andamento di un segnale PSK, cons
 - $11 = -90^\circ$ (o $+270^\circ$)
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-07.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-07.png" width="500" alt="Immagine" />
   <p>Confronto tra PSK e DPSK: salti di fase vs valori assoluti.</p>
 </div>
 
@@ -61,7 +61,7 @@ Naturalmente un segnale DPSK, avendo lo stesso andamento di un segnale PSK, cons
 Combinando la modulazione ASK e la PSK, si ottiene la modulazione di ampiezza in quadratura, chiamata così perché si può ottenere modulando in ampiezza due portanti della stessa frequenza, sommate in quadratura di fase (cioè sfasate di $90^\circ$); permettendo una codifica multilivello molto spinta, è utilizzata per trasmissioni veloci.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-08.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-08.png" width="500" alt="Immagine" />
   <p>Rappresentazione dell'EVM su diversi domini di analisi.</p>
 </div>
 
@@ -74,12 +74,12 @@ Per effettuare una modulazione 16-QAM si fa variare la fase della portante (con 
 L'ampiezza relativa al segnale modulato nelle varie fasi è descritta nelle raccomandazioni V.29 del C.C.I.T.T. e riportata nella tabella della prossima pagina.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-10.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-10.png" width="500" alt="Immagine" />
   <p>Definizione di modulazione QAM come combinazione di ASK e PSK.</p>
 </div>
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-11.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-11.png" width="500" alt="Immagine" />
   <p>Diagrammi temporali di codifica 16-QAM: variazione di ampiezza e fase.</p>
 </div>
 
@@ -90,12 +90,12 @@ Il primo diagramma temporale rappresenta la codifica 0010 0011. Il primo quadrib
 È anch'essa una modulazione bidimensionale, che risulta dalla combinazione di due PAM modulate con portanti seno e coseno (ortogonali fra di loro). La 64-QAM è usata nell'ADSL.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-12.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-12.png" width="500" alt="Immagine" />
   <p>Definizione di modulazione 64-QAM.</p>
 </div>
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-13.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-13.png" width="500" alt="Immagine" />
   <p>Schema della modulazione 64-QAM.</p>
 </div>
 
@@ -104,7 +104,7 @@ Il primo diagramma temporale rappresenta la codifica 0010 0011. Il primo quadrib
 La modulazione binaria con memoria può essere rappresentata come una macchina a due stati $S_0$ e $S_1$; allo stato $S_0$ è associato il livello $-A$, mentre allo stato $S_1$ è associato il livello $+A$ (supponendo di avere un segnale PAM). Il bit 0 non fa cambiare stato, mentre il bit 1 fa cambiare stato. L'andamento temporale del segnale può essere rappresentato con un diagramma a "traliccio" (in inglese, trellis).
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-14.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-14.png" width="500" alt="Immagine" />
   <p>Macchina a due stati e diagramma traliccio (Trellis) della codifica binaria con memoria.</p>
 </div>
 
@@ -132,7 +132,7 @@ $$dB = 20 \log_{10}\left(\frac{V_1}{V_2}\right)$$
 dove $V_1$ è la tensione iniziale del mezzo trasmissivo, mentre $V_2$ quella finale.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-17.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-17.png" width="500" alt="Immagine" />
   <p>Tabella di interpretazione dei valori di attenuazione su ADSL classica.</p>
 </div>
 
@@ -145,7 +145,7 @@ Esempio di interpretazione: attenuazione su ADSL "classica" (fino a 8 Mbps in do
 - oltre 60 dB: pessimo, disconnessioni frequenti
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-18.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-18.png" width="500" alt="Immagine" />
   <p>Attenuazione e rigenerazione del segnale.</p>
 </div>
 
@@ -154,12 +154,12 @@ Esempio di interpretazione: attenuazione su ADSL "classica" (fino a 8 Mbps in do
 *Definizione:* la distorsione è un cambiamento della forma del segnale, ed è tipica di un segnale costituito da varie frequenze. Ogni componente di un segnale può avere un suo ritardo all'arrivo, perciò si possono creare notevoli differenze tra la forma del segnale inviato e la forma del segnale giunto a destinazione. Essendo un disturbo intrinseco al sistema, svanisce quando questo è spento.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-19.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-19.png" width="500" alt="Immagine" />
   <p>Definizione di distorsione del segnale.</p>
 </div>
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-20.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-20.png" width="500" alt="Immagine" />
   <p>Interpretazione del segnale ricevuto con distorsione e soglia di riconoscimento.</p>
 </div>
 
@@ -172,7 +172,7 @@ Spesso viene utilizzato il rapporto segnale/rumore definito SNR (Signal to Noise
 $$SNR = \frac{P_{\text{segnale}}}{P_{\text{rumore}}}$$
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-22.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-22.png" width="500" alt="Immagine" />
   <p>Tabella di interpretazione dei valori di SNR su ADSL classica.</p>
 </div>
 
@@ -185,7 +185,7 @@ Esempio di interpretazione dei valori di SNR su ADSL "classica" (fino a 8 Mbps i
 - oltre 28 dB: eccellente, molto vicini alla centrale
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-23.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-23.png" width="500" alt="Immagine" />
   <p>Effetti del rumore e della distorsione sul segnale di partenza.</p>
 </div>
 
@@ -194,14 +194,14 @@ Esempio di interpretazione dei valori di SNR su ADSL "classica" (fino a 8 Mbps i
 *Definizione:* l'interferenza è la sovrapposizione di informazioni non desiderate che crea disturbo nella corretta interpretazione di informazione; solitamente per interferenza si intende la contaminazione da parte di segnali esterni.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-24.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-24.png" width="500" alt="Immagine" />
   <p>Definizione di interferenza.</p>
 </div>
 
 L'Interferenza ISI (Inter Symbol Interference) o Intersimbolica è invece causata dalle limitazioni della banda, e provoca un arrotondamento dei segnali rettangolari emessi da un DTE.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-25.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-25.png" width="500" alt="Immagine" />
   <p>Interferenza intersimbolica (ISI) e arrotondamento dei segnali.</p>
 </div>
 
@@ -222,7 +222,7 @@ dove $B$ è la larghezza di banda del segnale e $V$ il numero di livelli di tens
 In teoria, aumentando $V$ si potrebbe aumentare il data rate, ma nella pratica aumentando i livelli si riduce l'affidabilità della comunicazione.
 
 <div style="text-align: center;">
-  <img src="parte_7-slide-27.png" width="500" alt="Immagine" />
+  <img src="images/parte_7-slide-27.png" width="500" alt="Immagine" />
   <p>Teorema di Nyquist sul massimo data rate.</p>
 </div>
 

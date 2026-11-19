@@ -206,4 +206,6 @@ La tabella grande ha quattro colonne: livello, protocolli ed esempi di funzioni,
 
 Il confronto finale fra i due modelli: i livelli Application, Presentation e Session dell'OSI corrispondono alla **Application** del TCP/IP, che raccoglie i protocolli di servizio DHCP, DNS, FTP, HTTP, HTTPS, POP, SMTP, SSH; il Transport OSI si divide in **TCP** e **UDP**; il Network corrisponde alla parte **Internet** con gli indirizzi IPv4 e IPv6; il Data Link e il Physical diventano **Network Access**, basato sull'indirizzo MAC.
 
+> [!todo] Immagini sbagliate da sostituire: slide-062 (mostra formato pacchetto RIP, serve schema comunicazione ISP), slide-073 (mostra timer RIP, serve gerarchia provider Tier 1/2/3), slide-078 (mostra BGP, serve governance Internet), slide-095 (mostra header BGP, serve intranet VPN), slide-098 (mostra BGP Notification, serve DMZ extranet), slide-101 (mostra show ip bgp summary, serve modello OSI), slide-102 (mostra BGP loopback, serve tabella OSI/TCP-IP), slide-103 (mostra eBGP multihop, serve confronto OSI/TCP-IP). Le immagini corrette non esistono nelle cartelle images: estrarle dai pdf di riferimento.
+
 

@@ -347,4 +347,6 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
   </div>
 </div>
 
+> [!todo] Immagini sbagliate da sostituire: slide-104 (mostra show ip bgp summary, serve stack OSI vs TCP/IP), slide-105 (mostra show ip bgp neighbors, serve PDU/SDU/SAP interfaccia SAP), slide-106 (mostra Event Timers Cisco, serve incapsulamento PDU). Le immagini corrette non esistono nelle cartelle images: estrarle dai pdf di riferimento.
+
 

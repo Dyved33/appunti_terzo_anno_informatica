@@ -184,6 +184,8 @@ La chiusura della connessione TCP utilizza il flag FIN:
   <img src="images/slide-005.png" width="600">
 </div>
 
+> [!todo] Immagine mancante: `slide-005.png` non trovata né in `protocolli/images/` né in `reti/images/`. Il docente ha i pdf di riferimento: verificare se esiste o va rinominata.
+
 **Requisiti degli algoritmi di routing:** Gli algoritmi di routing devono possedere uno o più dei seguenti requisiti:
 - *Ottimali:* devono scegliere la migliore strada
 - *Semplici e con basso overhead:* farlo consumando meno risorse possibile

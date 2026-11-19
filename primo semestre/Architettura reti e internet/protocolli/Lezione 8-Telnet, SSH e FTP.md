@@ -10,7 +10,7 @@ Si basa sul protocollo di trasporto [[Lezione 6-UDP e TCP e routing|TCP]], garan
 - Appena connesso, l'utente può autenticarsi ed eseguire comandi sulla macchina remota esattamente come su un terminale locale.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-telnet-06.png" width="500">
+  <img src="images/slide-telnet-06.png" width="500">
 </div>
 
 Il servizio si basa su tre aspetti architetturali:
@@ -99,7 +99,7 @@ In una sessione FTP intervengono due processi distinti sia lato client che lato 
 - **Data Transfer Process (DTP):** gestisce il trasferimento effettivo dei blocchi dati del file.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-telnet-15.png" width="500">
+  <img src="images/slide-telnet-15.png" width="500">
 </div>
 
 Una sessione FTP utilizza due connessioni TCP indipendenti:
@@ -113,7 +113,7 @@ Una sessione FTP utilizza due connessioni TCP indipendenti:
 Nel trasferimento dati, il ruolo di chi effettua la connessione TCP si inverte a seconda della modalità:
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-telnet-16.png" width="500">
+  <img src="images/slide-telnet-16.png" width="500">
 </div>
 
 - **Modalità attiva (Active Mode):**
@@ -122,7 +122,7 @@ Nel trasferimento dati, il ruolo di chi effettua la connessione TCP si inverte a
   3. *Limite:* se il client si trova dietro un firewall o un router [[Lezione 11-SNMP e DHCP#Network Address Translation (NAT)|NAT]], la connessione in ingresso avviata dal server verso la porta interna del client viene respinta o bloccata.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-telnet-17.png" width="500">
+  <img src="images/slide-telnet-17.png" width="500">
 </div>
 
 - **Modalità passiva (Passive Mode):**
@@ -190,7 +190,7 @@ Ciascun interlocutore genera una coppia di chiavi matematicamente correlate:
 - *Algoritmi:* RSA, Diffie-Hellman (DH), Digital Signature Algorithm (DSA), crittografia a curve ellittiche (ECDSA/Ed25519).
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-telnet-28.png" width="500">
+  <img src="images/slide-telnet-28.png" width="500">
 </div>
 
 La crittografia asimmetrica risolve tre requisiti di sicurezza a seconda di quale chiave viene impiegata nella cifratura:
@@ -225,7 +225,7 @@ SSH memorizza le configurazioni e i certificati nella directory locale `$HOME/.s
 - Generazione chiavi: eseguita con il comando `ssh-keygen -t rsa` (o `-t ed25519`), che produce una coppia formata da chiave privata (`id_rsa`, con permessi `600`) e chiave pubblica (`id_rsa.pub`).
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-telnet-35.png" width="500">
+  <img src="images/slide-telnet-35.png" width="500">
 </div>
 
 ### Componenti della suite OpenSSH

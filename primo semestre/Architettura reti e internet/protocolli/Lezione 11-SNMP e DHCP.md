@@ -7,7 +7,7 @@
 Consente agli amministratori di sistema di controllare da remoto lo stato di salute dei dispositivi, raccogliere statistiche prestazionali, modificare parametri operativi e ricevere notifiche tempestive di guasti o anomalie prima che provochino l'interruzione dei servizi.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-snmp-06.png" width="500">
+  <img src="images/slide-snmp-06.png" width="500">
 </div>
 
 ### Architettura SNMP
@@ -36,7 +36,7 @@ La Structure of Management Information (SMI) definisce la semantica e la sintass
 - *Basic Encoding Rules (BER):* specifica come i dati ASN.1 vengono serializzati in byte sui pacchetti di rete secondo la tripletta ricorsiva `[Tipo, Lunghezza, Valore]` (TLV).
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-snmp-13.png" width="500">
+  <img src="images/slide-snmp-13.png" width="500">
 </div>
 
 ### Albero degli Object Identifiers (OID)
@@ -121,7 +121,7 @@ L'inizializzazione del client attraversa 4 fasi sequenziali scambiate in broadca
 - `DHCPINFORM`: inviato da un host che possiede già un indirizzo IP configurato staticamente ma necessita di richiedere solo parametri accessori (DNS, domini di ricerca).
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-snmp-40.png" width="500">
+  <img src="images/slide-snmp-40.png" width="500">
 </div>
 
 ### Macchina a stati finiti (FSM) del client DHCP
@@ -139,7 +139,7 @@ Stati di funzionamento:
 6. `REBINDING`: il client invia messaggi `DHCPREQUEST` in modalità *broadcast* a tutti i server DHCP della rete. Se un server risponde con `DHCPACK`, il client rinnova il lease e torna in `BOUND`; se il lease scade completamente senza alcuna risposta, o in caso di `DHCPNAK`, il client deve immediatamente cessare l'uso dell'indirizzo IP e ripartire dallo stato `INIT`.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-snmp-41.png" width="500">
+  <img src="images/slide-snmp-41.png" width="500">
 </div>
 
 ### Formato del messaggio DHCP
@@ -215,7 +215,7 @@ group {
 *Definizione:* meccanismo (RFC 1631) implementato tipicamente sui router di confine che interconnettono una rete privata locale con la rete pubblica Internet, effettuando la traslazione dinamica degli indirizzi IP.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-snmp-51.png" width="500">
+  <img src="images/slide-snmp-51.png" width="500">
 </div>
 
 ### Indirizzi IP privati (RFC 1918)

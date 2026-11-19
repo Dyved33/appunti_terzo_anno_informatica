@@ -29,7 +29,7 @@ L'intestazione IPv6 è stata ripulita da tutti i campi variabili e opzionali di 
 - Spariscono rispetto a IPv4: *IHL* (lunghezza variabile dell'header), *Identification*, *Flags*, *Fragment Offset*, *Header Checksum* e le opzioni variabili di coda.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-ipv6-06.png" width="500">
+  <img src="images/slide-ipv6-06.png" width="500">
 </div>
 
 ### Campi dell'header base IPv6
@@ -44,7 +44,7 @@ L'intestazione IPv6 è stata ripulita da tutti i campi variabili e opzionali di 
 8. **Destination Address (16 byte / 128 bit):** indirizzo IPv6 del nodo destinatario finale (o dell'eventuale router intermedio in caso di Routing Header).
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-ipv6-09.png" width="500">
+  <img src="images/slide-ipv6-09.png" width="500">
 </div>
 
 ### Extension Headers
@@ -104,7 +104,7 @@ L'architettura divide l'indirizzo Unicast globale in due porzioni canoniche da 6
 - **Interface Identifier / Host ID (ultimi 64 bit):** identifica in modo univoco la specifica interfaccia di rete dell'host.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-ipv6-20.png" width="500">
+  <img src="images/slide-ipv6-20.png" width="500">
 </div>
 
 L'Interface Identifier può essere assegnato manualmente oppure autogenerato a partire dal MAC address a 48 bit dell'interfaccia di rete tramite il formato **EUI-64**:
@@ -203,7 +203,7 @@ Modalità operative:
 - **Tunnel Mode (Network-to-Network / VPN):** l'intero pacchetto IPv6 originale (inclusa la sua intestazione) viene cifrato e incapsulato all'interno di un nuovo pacchetto IPv6 con un nuovo header esterno. Utilizzato per realizzare Virtual Private Network (VPN) tra router di confine, accessi remoti e collegamenti sicuri.
 
 <div style="display: flex; justify-content: center;">
-  <img src="slide-ipv6-34.png" width="500">
+  <img src="images/slide-ipv6-34.png" width="500">
 </div>
 
 ## Meccanismi di transizione e coesistenza con IPv4

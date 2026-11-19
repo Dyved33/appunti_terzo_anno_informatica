@@ -26,7 +26,7 @@ Le note sono solo dentro `primo semestre/`: cerca, greppa e indicizza lì, non n
 2. **Non si perde nulla.** Ogni informazione che sta negli appunti dell'utente, negli appunti grezzi o nel materiale del docente deve stare nella nota finale: all'esame va riportato ciò che ha detto il docente. Puoi sistemare lo stile, riordinare, correggere e aggiungere. Puoi togliere solo parole: riempitivi e ripetizioni della stessa informazione. Nel dubbio, tieni.
 3. **Il testo dell'utente comanda.** In una nota esistente modifica solo ciò che è sbagliato, poco chiaro, mancante o indicato da un segnaposto. Non riscrivere ciò che funziona.
 4. **Non creare file.** Le note delle lezioni le crea l'utente, tu le riempi: né note né codice. Unica eccezione l'indice del corso, se manca, e le foto delle slide che l'utente ha chiesto (tabella Strumenti). Se ti chiedono di scrivere un esercizio, il codice va nella risposta, in un blocco con l'etichetta del linguaggio, con il percorso `esercizi/` in cui salvarlo: tu non aprire quei file in scrittura.
-5. **Gli input non si toccano.** Mai modificare, rinominare, spostare o cancellare `.txt`, PDF, slide, immagini, i libri in `libri/` e i file in `esercizi/`.
+5. **Gli input non si toccano.** Mai modificare, rinominare, spostare o cancellare `.txt`, PDF, slide, immagini, i libri in `libri/` e i file in `esercizi/`. L'unica eccezione vale per lo spostamento delle immagini solo se lo richiedo io.
 6. **Niente frontmatter e niente tag.**
 7. **Fonti.** Prima il materiale del docente, poi il web per completare. Se si contraddicono vale il docente e lasci un `[!todo]`.
 8. **Git in sola lettura.** Commit e push li fa l'utente.

@@ -9,7 +9,7 @@ Per realizzare la tecnica PCM si effettuano tre operazioni a partire dal segnale
 - Codifica
 
 > [!example] Schema del PCM telefonico europeo a 32 canali
-> ![[parte_6-04.png|500]]
+> ![[images/parte_6-04.png|500]]
 > 
 > Partendo dal teorema di Shannon, si definisce la minima frequenza necessaria per campionare un segnale senza perdere informazione, ovvero frequenza di Nyquist o cadenza di Nyquist. La minima frequenza di campionamento è pari al doppio della banda. Il segnale telefonico viene dunque per prima cosa campionato, poi viene sostituito dalla sequenza di impulsi PAM, ottenuti come in figura.
 
@@ -79,7 +79,7 @@ I principali tipi di modulazione digitale sono:
 Nella modulazione ASK l'ampiezza della portante sinusoidale viene fatta variare in correlazione al segnale digitale modulante. Nel caso più semplice e più comune, in corrispondenza dello zero logico il segnale modulato ha ampiezza zero ed in corrispondenza dell'uno logico ha ampiezza pari a quella della portante non modulata. In questo caso si parla di modulazione **OOK** (*On-Off Keying*).
 
 <div style="display: flex; justify-content: center;">
-  <img src="parte_6-12.png" width="500">
+  <img src="images/parte_6-12.png" width="500">
 </div>
 
 Questo tipo di modulazione, derivato in maniera diretta dall'AM, è abbastanza semplice da realizzare ma non molto utilizzato per le trasmissioni dati a grande distanza a causa della sua notevole sensibilità al rumore.
@@ -91,7 +91,7 @@ Questo tipo di modulazione, di facile realizzazione sia nei modulatori che nei d
 Nella modulazione digitale di frequenza FSK ad ogni simbolo logico viene assegnata una frequenza di valore compreso all'interno della banda passante del mezzo trasmissivo.
 
 <div style="display: flex; justify-content: center;">
-  <img src="parte_6-14.png" width="500">
+  <img src="images/parte_6-14.png" width="500">
 </div>
 
 Ad esempio all'uno logico può essere assegnata una frequenza fA mentre allo zero una frequenza fB che solitamente è di valore maggiore rispetto a fA.
@@ -108,7 +108,7 @@ Quest'ultima condizione, assolutamente necessaria, è richiesta per il corretto 
 Questo tipo di modulazione è stata usata nei primi modem, V21 e V23 molto lenti rispetto a quelli odierni, ed è tuttora usata nei ponti radio e nelle trasmissioni fra cellulari del tipo GSM.
 
 > [!example] FSK Full Duplex su una linea telefonica
-> ![[parte_6-17.png|500]]
+> ![[images/parte_6-17.png|500]]
 > FSK Full Duplex su una linea telefonica: spettri dei segnali trasmessi in direzioni opposte su una linea voce (rame), con frequenze 1070, 1270, 2025, 2225 Hz.
 
 ### PSK (Phase-Shift Keying)
@@ -129,8 +129,8 @@ L'assegnazione di questi valori si può effettuare, ad esempio, in questo modo:
 | 0   | 180°   |
 
 <div style="display: flex; justify-content: center;">
-  <img src="parte_6-19.png" width="500">
-  <img src="parte_6-20.png" width="500">
+  <img src="images/parte_6-19.png" width="500">
+  <img src="images/parte_6-20.png" width="500">
 </div>
 
 La modulazione BPSK viene realizzata mediante il modulatore bilanciato con modulante numerica binaria: in tale modulatore quando il segnale modulante cambia stato (transizione 0-1 o 1-0) il segnale modulato cambia fase.
@@ -140,7 +140,7 @@ La modulazione BPSK viene realizzata mediante il modulatore bilanciato con modul
 Nella modulazione digitale a quattro fasi (denominata anche QPSK, quadrature PSK) i bit del segnale dati vengono riuniti in coppie (dibit) utilizzate per modulare in fase la portante sinusoidale.
 
 <div style="display: flex; justify-content: center;">
-  <img src="parte_6-21.png" width="500">
+  <img src="images/parte_6-21.png" width="500">
 </div>
 
 Nei modulatori il flusso di dati in ingresso viene suddiviso in dibit da un convertitore seriale/parallelo (registro); i due bit di ogni coppia generano due flussi separati, a velocità dimezzata rispetto a quella del segnale dati originario, che costituiscono i segnali modulanti inviati in ingresso a due modulatori bilanciati. Le due portanti di modulazione hanno medesima frequenza ma le loro fasi differiscono di 90° (per questo vengono dette in quadratura). In pratica la fase del segnale in uscita dal primo modulatore può assumere i valori 0° e 180°, mentre quella del segnale in uscita dal secondo assume i valori 90° e 270°. Infine le due portanti vengono sommate originando un segnale che può assumere quattro fasi diverse (45°, 135°, 225°, 315°).
@@ -152,8 +152,8 @@ Il circuito sfasatore ha il compito di sfasare di 90° il segnale portante. Al b
 È una rappresentazione teorica del segnale, utilizzata solamente per una comprensione dello stato del segnale. Il segnale trasmesso in digitale è suddiviso in due segnali modulati che non interferiscono tra di loro perché in quadratura, denominati I e Q (*In-fase* e *Quadratura*). Si crea un diagramma con un piano cartesiano i cui assi saranno I e Q. A seconda dello schema di modulazione prescelto, i punti in cui il vettore si può trovare assumono la forma di una costellazione con punti più o meno fitti nel diagramma IQ.
 
 <div style="display: flex; justify-content: center;">
-  <img src="parte_6-24.png" width="500">
-  <img src="parte_6-25.png" width="500">
+  <img src="images/parte_6-24.png" width="500">
+  <img src="images/parte_6-25.png" width="500">
 </div>
 
 Il problema è che, a causa del rumore o di altri fenomeni interferenti, nel momento della decisione da parte del ricevitore il vettore che rappresenta il segnale modulato ricevuto non si trova esattamente in uno dei punti della costellazione previsti teoricamente, ma un po' spostato da esso, tanto più spostato quanto più forti sono i disturbi o le non linearità della catena di trasmissione.
@@ -163,8 +163,8 @@ Il problema è che, a causa del rumore o di altri fenomeni interferenti, nel mom
 Il “vettore errore” rappresenta la differenza tra il punto teorico in cui si sarebbe dovuto trovare il segnale nel piano IQ nel momento della decisione del ricevitore e il punto reale in cui si trova quando viene visto dal ricevitore stesso.
 
 <div style="display: flex; justify-content: center;">
-  <img src="parte_6-26.png" width="500">
-  <img src="parte_6-27.png" width="500">
+  <img src="images/parte_6-26.png" width="500">
+  <img src="images/parte_6-27.png" width="500">
 </div>
 
 Il vettore errore, come tutti i vettori, può essere descritto e caratterizzato dal suo modulo e dalla sua fase. Ripetendo la stessa osservazione per ogni simbolo trasmesso, si può ricavare un vettore errore per ogni simbolo trasmesso.

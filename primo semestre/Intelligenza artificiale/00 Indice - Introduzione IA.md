@@ -10,4 +10,5 @@
 - [[Lezione 8-Introduzione al Machine Learning|Introduzione al Machine Learning e alberi di decisione per la classificazione]]
 - [[Lezione 9-Misure di impurità e criteri di split negli alberi di decisione|Misure di impurità e criteri di split negli alberi di decisione]]
 - [[Lezione 10-Overfitting, valutazione dei classificatori e classi sbilanciate|Overfitting, valutazione dei classificatori e classi sbilanciate]]
+- [[Lezione 11-k-NN|k-NN e Naive Bayes Classifier]]
 - [[Dataset Iris]]
