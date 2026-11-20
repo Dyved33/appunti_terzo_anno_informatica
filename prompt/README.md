@@ -124,7 +124,7 @@ Non è stato fatto, per non perdere qualità: troncare gli output degli strument
 | 10 | `→` nelle formule | nessuna conversione, nessun controllo |
 | 11 | solo `// ... //` | tolto `%% ... %%` ovunque |
 | 12 | trattino lungo, fonti web | solo INFO nell'audit; nessuna fonte citata |
-| 13 | sintesi a fine lezione | ogni nota si chiude con `> [!info] Sintesi:` (3-6 punti); l'audit segnala se manca |
+| 13 | sintesi a fine lezione | tolta: non è richiesta, l'agent non la aggiunge e l'audit non la segnala |
 | 14 | lunghezza | nessun limite di righe: `stile.md` chiede densità (ogni concetto una volta, spiegazione proporzionata alla difficoltà, tagliare parole e non contenuti). L'audit non segnala la lunghezza della nota, solo i singoli paragrafi oltre le 150 parole, come INFO |
 | 15 | configurazione e creazione dei file | l'agent non modifica la configurazione e non crea note |
 | 16 | revisore | una passata, solo con `/lezione` e `/rivedi` |
@@ -139,5 +139,5 @@ Si noti che con un sistema multi-agentico è conveniente avere file più piccoli
 - **SO:** 23 sezioni diventano 14 note. Una senza data ("Evoluzione hardware e multiprogrammazione").
 - **Linguaggi:** 26 sezioni diventano 23 note. Le prime 6 sezioni non hanno immagini e restano senza data, ognuna in un file suo: sono corte (da 8 a 105 righe), conviene unirle a mano in una o due lezioni.
 
-Le date sono quelle degli screenshot, quindi indicative: in Linguaggi alcune sono fuori ordine (per esempio "Analisi lessicale" 11/04 prima di "Grammatiche regolari" 09/04). Si correggono rinominando il file da Obsidian. Poi `/rivedi` una nota alla volta: asciuga, aggiunge la sintesi e riporta le parole prima e dopo. Fai un commit prima di cominciare.
+Le date sono quelle degli screenshot, quindi indicative: in Linguaggi alcune sono fuori ordine (per esempio "Analisi lessicale" 11/04 prima di "Grammatiche regolari" 09/04). Si correggono rinominando il file da Obsidian. Poi `/rivedi` una nota alla volta: asciuga e riporta le parole prima e dopo. Fai un commit prima di cominciare.
 

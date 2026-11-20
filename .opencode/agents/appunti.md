@@ -88,8 +88,7 @@ Fai questi passi ogni volta, senza che l'utente lo chieda:
 Questi passi si fanno una volta sola per nota: quando lo chiede un command (`/lezione`, `/rivedi`) o quando l'utente dice che la lezione è finita. Non farli dopo una modifica qualsiasi.
 
 1. **Libro di testo.** Se esiste `libri/<nome del corso>.pdf`, chiedi una volta con il tool `question` se integrarlo come complemento; non prenderne nulla prima del sì (regola 11 di `AGENTS.md`). Se l'utente acconsente, leggi il libro con `libri.py` (o `/libro`) e integralo come nel caso A.
-2. **Sintesi finale.** Scrivi o aggiorna il callout `> [!info] Sintesi:` in fondo alla nota.
-3. **Revisione.** Chiama il subagent `revisore` passandogli il percorso della nota e dei file di materiale usati, il libro compreso se integrato. Applica le correzioni che segnala. Una sola passata: non richiamarlo dopo le correzioni.
+2. **Revisione.** Chiama il subagent `revisore` passandogli il percorso della nota e dei file di materiale usati, il libro compreso se integrato. Applica le correzioni che segnala. Una sola passata: non richiamarlo dopo le correzioni.
 
 ## Limiti
 

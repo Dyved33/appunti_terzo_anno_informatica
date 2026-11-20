@@ -21,7 +21,7 @@ Lavoro su una nota:
 
 ```
 Leggi AGENTS.md e .opencode/stile.md e rispettali.
-Lavora sulla nota [PERCORSO]. Esegui i segnaposto // ... //, correggi gli errori e aggiungi ciò che manca usando il materiale del docente nella stessa cartella. Il testo già corretto e chiaro resta com'è e nessuna informazione va tolta. Chiudi la nota con il callout [!info] Sintesi. Non creare altri file.
+Lavora sulla nota [PERCORSO]. Esegui i segnaposto // ... //, correggi gli errori e aggiungi ciò che manca usando il materiale del docente nella stessa cartella. Il testo già corretto e chiaro resta com'è e nessuna informazione va tolta. Non creare altri file.
 Prima di modificare esegui python3 .opencode/scripts/controlla-perdite.py "[PERCORSO]" --salva. Alla fine esegui lo stesso comando senza --salva, rimetti ciò che risulta perso, poi esegui python3 .opencode/scripts/vault-audit.py "[PERCORSO]" e chiudi con un riepilogo di 5 righe al massimo.
 ```
 

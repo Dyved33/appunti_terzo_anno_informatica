@@ -1,6 +1,6 @@
 ---
 name: note-sintesi
-description: Sintesi finale densa e obbligatoria per ogni nota; niente introduzioni né chiusure
+description: Densità delle note: niente introduzioni, chiusure né sintesi finale
 license: MIT
 compatibility: opencode
 metadata:
@@ -10,9 +10,9 @@ metadata:
 
 # note-sintesi — densità e sintesi delle note
 
-## Obbligatorio in fondo a ogni nota
+## Niente sintesi finale
 
-La nota si chiude sempre con un callout `> [!info] Sintesi:` di 3-6 punti, una riga ciascuno, con ciò che della lezione va ricordato. È l'ultima cosa della nota e ce n'è una sola. Niente frasi nuove, niente formule lunghe, niente ripetizioni di ciò che è già detto sopra.
+La nota non si chiude con un callout di sintesi: non è richiesto e non si aggiunge. Se l'utente ne ha già scritto uno, resta com'è.
 
 ## Cosa non scrivere
 
@@ -27,8 +27,7 @@ La nota si chiude sempre con un callout `> [!info] Sintesi:` di 3-6 punti, una r
 - Un'idea per paragrafo, frase breve, verbi attivi.
 - Nomi, numeri, meccanismi concreti invece di astratti.
 - Se un contenuto non è sicuro: `[!todo]`, non inventare.
-- Il callout `> [!info] Sintesi:` non ripete il testo che lo precede: contiene solo i punti chiave da ricordare per l'esame.
 
 ## Verifica
 
-Applica anche la skill `note-quality` prima di chiudere: il callout di sintesi va presente, senza frontmatter, senza tag, senza date nel nome del file né nella nota.
+Applica anche la skill `note-quality` prima di chiudere: senza frontmatter, senza tag, senza date nel nome del file né nella nota.

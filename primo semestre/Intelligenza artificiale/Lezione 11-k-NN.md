@@ -96,31 +96,7 @@ Per evitare di dover calcolare la distanza rispetto a tutti gli oggetti del trai
 
 I *proximity graphs* sono grafi in cui due vertici sono connessi da un arco se e solo se soddisfano particolari requisiti geometrici. Rientrano in questa famiglia i *nearest neighbor graphs*, gli *minimum spanning trees*, le *Delaunay triangulations*, i *relative neighborhood graphs* e i *Gabriel graphs*.
 
-<div style="text-align: center;">
-  <img src="Pasted image 20261119175944.png" width="500" alt="Immagine" />
-  <p>Proximity graphs: un grafo in cui due vertici sono connessi da un arco se e solo se soddisfano particolari requisiti geometrici. Rientrano in questa famiglia i nearest neighbor graphs, i minimum spanning trees, le Delaunay triangulations, i relative neighborhood graphs e i Gabriel graphs. Riferimenti: G. T. Toussaint, "Proximity graphs for nearest neighbor decision rules: recent progress", Interface-2002; "Open problems in geometric methods for instance based learning", Discrete and Computational Geometry, 2003; "Geometric proximity graphs for improving nearest neighbor methods in instance-based learning and data mining", Int. J. Comput. Geometry Appl., 2005.</p>
-</div>
-
-<div style="text-align: center;">
-  <img src="Pasted image 20261119180020.png" width="500" alt="Immagine" />
-  <p>Proximity graphs: un grafo in cui due vertici sono connessi da un arco se e solo se soddisfano particolari requisiti geometrici. Rientrano in questa famiglia i nearest neighbor graphs, i minimum spanning trees, le Delaunay triangulations, i relative neighborhood graphs e i Gabriel graphs. Riferimenti: G. T. Toussaint, "Proximity graphs for nearest neighbor decision rules: recent progress", Interface-2002; "Open problems in geometric methods for instance based learning", Discrete and Computational Geometry, 2003; "Geometric proximity graphs for improving nearest neighbor methods in instance-based learning and data mining", Int. J. Comput. Geometry Appl., 2005.</p>
-</div>
-
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261119180103.png" width="500">
-</div>
-
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261119180113.png" width="500">
-</div>
-
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261119180125.png" width="500">
-</div>
-
-<div style="display: flex; justify-content: center;">
-  <img src="Pasted image 20261119180146.png" width="500">
-</div>
+Riferimenti: G. T. Toussaint, "Proximity graphs for nearest neighbor decision rules: recent progress", Interface-2002; "Open problems in geometric methods for instance based learning", Discrete and Computational Geometry, 2003; "Geometric proximity graphs for improving nearest neighbor methods in instance-based learning and data mining", Int. J. Comput. Geometry Appl., 2005.
 
 ## Capitolo dal libro: Instance-Based Learning e k-NN
 
@@ -259,7 +235,6 @@ $$P(X_i \mid Y_k) = \frac{|X_{ik}|}{N_{c_k}}$$
 dove $|X_{ik}|$ è il numero di istanze che hanno il valore dell'attributo $X_i$ e appartengono alla classe $Y_k$.
 
 Esempi dal training set:
-- $P(\text{Marital Status} = \text{Married} \mid \text{No}) = 4/7$
 - $P(\text{Refund} = \text{Yes} \mid \text{Yes}) = 0$
 - $P(\text{Refund} = \text{No} \mid \text{No}) = 4/7$
 - $P(\text{Refund} = \text{Yes} \mid \text{No}) = 3/7$
@@ -271,9 +246,9 @@ Esempi dal training set:
 - $P(\text{Marital Status} = \text{Divorced} \mid \text{Yes}) = 1/3$
 - $P(\text{Marital Status} = \text{Married} \mid \text{Yes}) = 0$
 
-**Attributi continuhi:**
+**Attributi continui:**
 
-Per attributi continuhi (come Taxable Income) si possono usare due approcci:
+Per attributi continui (come Taxable Income) si possono usare due approcci:
 
 1. **Discretization**: si partiziona il range in bin (intervalli). Ogni valore continuo viene sostituito con il valore del bin a cui appartiene. L'attributo passa da continuo a ordinale.
 
@@ -331,6 +306,8 @@ Esempio: si elimina il record Tid 7 (Yes, Divorced, 220K, No) dal training set. 
 - $P(\text{Marital Status} = \text{Single} \mid \text{Yes}) = 2/3$
 - $P(\text{Marital Status} = \text{Divorced} \mid \text{Yes}) = 1/3$
 - $P(\text{Marital Status} = \text{Married} \mid \text{Yes}) = 0/3$
+- Taxable Income, classe No: media campionaria = 91, varianza campionaria = 685
+- Taxable Income, classe Yes: media campionaria = 90, varianza campionaria = 25
 
 Per $X = (\text{Refund} = \text{Yes}, \text{Divorced}, 120\text{K})$:
 - $P(X \mid \text{No}) = \frac{2}{6} \times 0 \times 0.0083 = 0$
@@ -341,6 +318,8 @@ Entrambe le probabilità sono zero, quindi Naive Bayes non è in grado di classi
 ### Soluzioni al problema della zero-probability
 
 Si usano stime di probabilità diverse dalle semplici frazioni:
+
+La stima originale è $P(A_i \mid C) = \frac{N_{ic}}{N_c}$; le alternative sono:
 
 1. **Laplace smoothing**:
    $$P(A_i \mid C) = \frac{N_{ic} + 1}{N_c + c}$$
@@ -385,7 +364,7 @@ Con $A$ = attributi, $M$ = mammals, $N$ = non-mammals:
 
 $$P(A \mid M) = \frac{6}{7} \times \frac{6}{7} \times \frac{2}{7} \times \frac{2}{7} = 0.06$$
 
-$$P(A \mid N) = \frac{7}{13} \times \frac{7}{13} \times \frac{3}{13} \times \frac{4}{13} = 0.0042$$
+$$P(A \mid N) = \frac{1}{13} \times \frac{10}{13} \times \frac{3}{13} \times \frac{4}{13} = 0.0042$$
 
 Con $P(M) = 7/20$ e $P(N) = 13/20$:
 
@@ -403,6 +382,18 @@ Poiché $P(A \mid M) P(M) > P(A \mid N) P(N)$, l'esemplare sconosciuto con attri
 - L'assunzione di indipendenza potrebbe non valere per alcuni attributi. In tal caso si possono usare altre tecniche, come le *Bayesian Belief Networks* (BBN).
 
 ### Violazione dell'indipendenza condizionata
+
+Come si comporta Naive Bayes su dataset in cui gli attributi non sono indipendenti?
+
+<div style="text-align: center;">
+  <img src="Pasted image 20261119175944.png" width="500" alt="Immagine" />
+  <p>L'indipendenza condizionata degli attributi è violata</p>
+</div>
+
+<div style="text-align: center;">
+  <img src="Pasted image 20261119180020.png" width="500" alt="Immagine" />
+  <p>Naive Bayes può costruire confini decisionali obliqui</p>
+</div>
 
 L'indipendenza condizionata degli attributi è spesso violata. Esempio di tabella con attributi $X = 1, 2, 3, 4$ e classi $Y = 1, 2, 3, 4$:
 
@@ -425,13 +416,27 @@ Le *Bayesian Belief Networks* (BBN) forniscono una rappresentazione grafica dell
 
 2. Una *probability table* che associa ogni nodo ai suoi genitori immediati.
 
-Relazioni tra nodi:
-- Se $D$ è genitore di $C$, allora $C$ è figlio di $D$.
-- Se $B$ è discendente di $D$, allora $D$ è antenato di $A$.
+<div style="display: flex; justify-content: center;">
+  <img src="Pasted image 20261119180103.png" width="500">
+</div>
+
+Relazioni tra nodi, nel grafo qui sotto:
+- $D$ è genitore di $C$;
+- $A$ è figlio di $C$;
+- $B$ è discendente di $D$;
+- $D$ è antenato di $A$.
+
+<div style="display: flex; justify-content: center;">
+  <img src="Pasted image 20261119180113.png" width="500">
+</div>
 
 Un nodo in una Bayesian network è condizionalmente indipendente da tutti i suoi non-discendenti, se i suoi genitori sono noti.
 
 L'assunzione del Naive Bayes può essere vista come un caso particolare di BBN: $X_1, X_2, \dots, X_d$ sono indipendenti condizionatamente dato $y$ (la classe è l'unico genitore di tutti gli attributi).
+
+<div style="display: flex; justify-content: center;">
+  <img src="Pasted image 20261119180125.png" width="500">
+</div>
 
 ### Probability Tables
 
@@ -444,6 +449,10 @@ Nella BBN, la tabella di probabilità di un nodo dipende dai suoi genitori:
 ### Esempio completo di BBN
 
 Variabili: Exercise, Diet, Heart Disease, Chest Pain, Blood Pressure.
+
+<div style="display: flex; justify-content: center;">
+  <img src="Pasted image 20261119180146.png" width="500">
+</div>
 
 Probabilità prior:
 
@@ -465,6 +474,9 @@ Probabilità condizionate per Heart Disease (genitori: Exercise, Diet):
 | Healthy | No | 0.45 | 0.55 |
 | Unhealthy | Yes | 0.55 | 0.45 |
 | Unhealthy | No | 0.75 | 0.25 |
+
+> [!warning] Attenzione:
+> Nella slide le colonne sono etichettate E=Healthy/Unhealthy e D=Yes/No, cioè con i valori di Diet ed Exercise scambiati. Nell'inferenza qui sotto il caso $E = \text{No}, D = \text{Yes}$ corrisponde alla colonna E=Unhealthy, D=Yes (0.55 / 0.45).
 
 Probabilità condizionate per Chest Pain (genitore: Heart Disease):
 
@@ -502,3 +514,94 @@ Poiché $0.374 > 0.0009$, si classifica $X$ come **HD = Yes**.
 
 ## Capitolo finale dal libro di testo
 
+Dal libro di testo (Russell, Norvig, *Artificial Intelligence: A Modern Approach*, 4ª ed.): §19.7 per il k-NN, §12.6 e §20.2.2 per Naive Bayes, §13.1-13.2 per le reti bayesiane.
+
+### Modelli nearest neighbor
+
+**Lookup dei k vicini:** invece di cercare un esempio *uguale* alla query $x_q$ (come in una tabella), si cercano i $k$ esempi più vicini, indicati con $NN(k, x_q)$.
+- Classificazione: si prende il valore di output più frequente tra i vicini. Con $k = 3$ e output $\langle Yes, No, Yes \rangle$ la classe è Yes.
+- Nella classificazione binaria $k$ si sceglie di solito **dispari**, per evitare i pareggi.
+- Regressione: media o mediana dei $k$ vicini, oppure una regressione lineare sui soli vicini.
+
+**Overfitting e underfitting:** anche i metodi non parametrici ne soffrono. Nell'esempio del libro (dati sui terremoti) con $k = 1$ il confine decisionale insegue gli outlier (overfitting), con $k = 5$ è buono, con $k$ più grande si va in underfitting. Il $k$ migliore si sceglie con la cross-validation.
+
+**Distanza di Minkowski** (norma $L^p$):
+
+$$L^p(x_j, x_q) = \left( \sum_i |x_{j,i} - x_{q,i}|^p \right)^{1/p}$$
+
+- $p = 2$: distanza euclidea, adatta quando le dimensioni misurano proprietà simili (larghezza, altezza, profondità di un pezzo);
+- $p = 1$: distanza di Manhattan, adatta a dimensioni eterogenee (età, peso, sesso di un paziente);
+- attributi booleani: il numero di attributi su cui due punti differiscono è la **distanza di Hamming**.
+
+**Normalizzazione:** con i valori grezzi la distanza dipende dalle unità di misura (passare da metri a miglia in una sola dimensione cambia i vicini). Si calcolano media $\mu_i$ e deviazione standard $\sigma_i$ di ogni dimensione e si riscala $x_{j,i}$ in $(x_{j,i} - \mu_i)/\sigma_i$. La **distanza di Mahalanobis** tiene conto anche della covarianza tra le dimensioni.
+
+**Maledizione della dimensionalità:** in spazi con molte dimensioni i vicini più vicini non sono vicini. Con $N$ punti uniformi nell'ipercubo unitario a $n$ dimensioni, il lato medio $\ell$ dell'ipercubo che contiene i $k$ vicini è
+
+$$\ell = (k/N)^{1/n}$$
+
+Con $k = 10$ e $N = 1\,000\,000$: $\ell = 0{,}003$ in 2 dimensioni, il 2% del lato in 3, metà del lato in 17, il 94% in 200. Inoltre in 200 dimensioni oltre il 98% dei punti cade nel guscio esterno dell'1%: quasi tutti i punti sono outlier.
+
+> [!info] In altre parole:
+> Il k-NN funziona bene in poche dimensioni e con molti dati. Al crescere delle dimensioni il "vicinato" di $k$ punti diventa grande quasi quanto l'intero spazio e la decisione non è più locale.
+
+**k-d tree:** albero binario bilanciato su dati a $k$ dimensioni. A ogni nodo si dividono gli esempi sulla dimensione $i$ con il test $x_i \le m$, dove $m$ è la mediana; la dimensione si sceglie come $i \bmod n$ al livello $i$, oppure quella con la maggiore dispersione dei valori. Nella ricerca dei vicini, se la query è vicina al confine di divisione bisogna esplorare entrambi i rami. Conviene quando gli esempi sono molti più delle dimensioni (almeno $2^n$): fino a circa 10 dimensioni con migliaia di esempi, fino a 20 con milioni.
+
+**Locality-sensitive hashing (LSH):** risolve il problema dei vicini *approssimati*: se esiste un punto entro raggio $r$ da $x_q$, con alta probabilità se ne trova uno entro $c\,r$. Si usa una funzione hash $g(x)$ per cui punti vicini (distanza $< r$) hanno con alta probabilità lo stesso codice e punti lontani (distanza $> c\,r$) con bassa probabilità.
+1. Si creano $\ell$ proiezioni casuali (sottoinsiemi casuali dei bit) e $\ell$ tabelle hash $g_1(x), \dots, g_\ell(x)$.
+2. Si inseriscono tutti gli esempi in ogni tabella.
+3. Per una query si uniscono i bucket $g_i(x_q)$ di tutte le tabelle in un insieme di candidati $C$.
+4. Si calcola la distanza reale solo sui punti di $C$ e si restituiscono i $k$ più vicini.
+
+> [!example]
+> Su 13 milioni di immagini web a 512 dimensioni (Torralba et al., 2008) LSH esamina solo qualche migliaio di immagini per trovare i vicini: un'accelerazione di circa mille volte rispetto alla ricerca esaustiva o ai k-d tree.
+
+### Il modello Naive Bayes
+
+Quando una causa influenza direttamente più effetti, condizionalmente indipendenti data la causa, la distribuzione congiunta è
+
+$$P(Cause, Effect_1, \dots, Effect_n) = P(Cause) \prod_i P(Effect_i \mid Cause)$$
+
+"Naive" perché si usa anche quando gli effetti non sono davvero indipendenti data la causa. Il libro ricorda che questo uso è stato chiamato, con ironia, *idiot Bayes*.
+
+**Inferenza:** con gli effetti osservati $e$ e quelli non osservati $y$,
+
+$$P(Cause \mid e) = \alpha\, P(Cause) \prod_j P(e_j \mid Cause)$$
+
+perché la somma sugli effetti non osservati vale 1. Per ogni causa si moltiplica il prior per le probabilità degli effetti osservati e poi si normalizza ($\alpha$). Il costo è lineare nel numero di effetti osservati e non dipende da quelli non osservati.
+
+**Classificazione di testi:** la causa è la categoria dell'articolo (news, sport, economia, meteo, spettacoli), gli effetti sono le variabili $HasWord_i$.
+- $P(Category = c)$ = frazione dei documenti visti di categoria $c$ (es. 9% di articoli sul meteo → $0{,}09$);
+- $P(HasWord_i \mid Category)$ = frazione di documenti della categoria che contengono la parola (es. "stocks" nel 37% degli articoli di economia → $0{,}37$).
+
+> [!warning] Attenzione:
+> L'indipendenza delle parole è violata ("first quarter" compare più spesso di quanto dica il prodotto delle due probabilità). Le probabilità a posteriori risultano troppo vicine a 0 o a 1, cioè il modello è **troppo sicuro**, anche se l'ordinamento delle categorie resta spesso corretto. Dove contano i valori esatti delle probabilità (diagnosi medica) si preferiscono le reti bayesiane complete.
+
+**Probabilità zero:** una parola mai vista in una categoria non deve avere probabilità 0, perché lo zero annullerebbe tutto il prodotto: si riserva una piccola parte della probabilità alle parole mai viste. È lo stesso problema della zero-probability visto sopra. Lo *smoothing di Laplace* (*add-one smoothing*) nasce dal problema dell'alba: in $N$ giorni il sole non ha mai mancato di sorgere, ma la probabilità che non sorga domani non deve essere 0. Con un prior uniforme Laplace ottiene $1/(N+2)$: il 2 al denominatore perché gli esiti possibili sono due, l'1 al numeratore perché il prior li considera equiprobabili.
+
+**Apprendimento (§20.2.2):** la classe è la radice della rete e gli attributi $X_i$ sono le foglie. Con $n$ attributi booleani servono solo $2n + 1$ parametri, stimati per massima verosimiglianza senza alcuna ricerca:
+
+$$P(C \mid x_1, \dots, x_n) = \alpha\, P(C) \prod_i P(x_i \mid C)$$
+
+*Vantaggi:* scala bene su problemi molto grandi, gestisce bene dati rumorosi o mancanti, dà previsioni probabilistiche; la sua versione con boosting è tra gli algoritmi di apprendimento generali più efficaci.
+
+*Svantaggi:* l'indipendenza condizionata è raramente vera, e con molti attributi le probabilità diventano troppo vicine a 0 o a 1. Sul problema del ristorante impara meno bene di un albero di decisione, perché l'ipotesi vera (un albero) non è rappresentabile con un modello Naive Bayes.
+
+### Reti bayesiane
+
+*Definizione:* una **rete bayesiana** è un grafo orientato aciclico (DAG) in cui:
+1. ogni nodo è una variabile casuale, discreta o continua;
+2. un arco da $X$ a $Y$ rende $X$ **genitore** di $Y$;
+3. ogni nodo $X_i$ ha una distribuzione $P(X_i \mid Parents(X_i))$ che quantifica l'effetto dei genitori.
+
+L'arco indica di solito un'influenza diretta: le cause sono genitori degli effetti. Per un esperto è più facile decidere la topologia che specificare le probabilità.
+
+**Tabelle di probabilità condizionata (CPT):** ogni riga corrisponde a una combinazione di valori dei genitori (*conditioning case*) e somma a 1. Per una variabile booleana con $k$ genitori booleani servono $2^k$ probabilità indipendenti; un nodo senza genitori ha una sola riga, con il prior.
+
+> [!example]
+> Allarme antifurto (Pearl): *Burglary* ed *Earthquake* sono genitori di *Alarm*, che è genitore di *JohnCalls* e *MaryCalls*. John e Mary non percepiscono direttamente il furto, non notano i terremoti e non si accordano prima di chiamare.
+
+**Indipendenze nella rete:**
+- ogni variabile è condizionalmente indipendente dai suoi **non-discendenti**, dati i suoi genitori. Nell'esempio, *JohnCalls* è indipendente da *Burglary*, *Earthquake* e *MaryCalls* dato *Alarm*;
+- ogni variabile è condizionalmente indipendente da tutti gli altri nodi dato il suo **Markov blanket** = genitori, figli e genitori dei figli.
+
+Naive Bayes è la rete bayesiana in cui la classe è l'unico genitore di tutti gli attributi.

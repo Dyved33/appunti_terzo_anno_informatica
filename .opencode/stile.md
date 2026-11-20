@@ -33,7 +33,8 @@ Tre tipi di testo, e solo questi:
 - Grassetto a pioggia: va solo sul termine che viene definito, la prima volta.
 - Elenchi in cui ogni punto è "**Etichetta:** frase generica". Un elenco serve quando gli elementi sono davvero paralleli.
 - Callout con titoli come "Nota del Prof", "Approfondimento", "Contesto storico".
-- La stessa cosa detta due volte. L'unico riassunto ammesso è la sintesi in fondo alla nota.
+- La stessa cosa detta due volte.
+- Una sintesi o un riassunto in fondo alla nota: non è richiesta e non si aggiunge. Se l'utente l'ha già scritta, resta.
 
 ## Struttura della nota
 
@@ -44,10 +45,6 @@ Tre tipi di testo, e solo questi:
 Testo.
 
 **Sotto-argomento:** testo che continua sulla stessa riga.
-
-> [!info] Sintesi:
-> - punto chiave
-> - punto chiave
 ```
 
 - Un solo `#`, con il titolo. Niente frontmatter, niente tag.
@@ -77,13 +74,13 @@ Solo questi tipi, sempre in minuscolo:
 | Tipo | Uso |
 |---|---|
 | `[!example]` | esempio, esercizio svolto, immagine di un caso concreto. Di solito senza titolo. |
-| `[!info]` | spiegazione a parole di un passaggio formale (`In altre parole:`, `N.B.`) e sintesi finale della nota (`Sintesi:`) |
+| `[!info]` | spiegazione a parole di un passaggio formale (`In altre parole:`, `N.B.`) |
 | `[!important]` | la cosa che all'esame non si può sbagliare. Raro. |
 | `[!warning]` | errore tipico, caso limite. Titolo tipico: `Attenzione:` |
 | `[!tip]` | promemoria. Titolo tipico: `Ricorda` |
 | `[!todo]` | punto da rivedere. Vedi sotto. |
 
-Un callout non ripete il testo che lo precede. `[!info] Sintesi:` è riservato alla chiusura della nota; per spiegare a parole un passaggio formale difficile usa `[!info] In altre parole:`, in poche righe.
+Un callout non ripete il testo che lo precede. Per spiegare a parole un passaggio formale difficile usa `[!info] In altre parole:`, in poche righe.
 
 ## Formule e codice
 

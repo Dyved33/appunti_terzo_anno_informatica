@@ -289,21 +289,6 @@ def controlla(path, per_nome, radice):
         out.append(("ERROR", len(righe), f"<div> e </div> non bilanciati (differenza {div_aperti})"))
 
     parole_tot = sum(len(r.split()) for r in solo_testo)
-    if not indice and parole_tot > 50:
-        # la nota deve chiudersi con il callout [!info] Sintesi
-        ultimo = None
-        for n, riga in enumerate(solo_testo, 1):
-            if RE_CALLOUT.match(riga):
-                ultimo = n
-        chiude = False
-        if ultimo:
-            testa = solo_testo[ultimo - 1]
-            tipo = RE_CALLOUT.match(testa).group(1).strip().lower()
-            titolo = re.sub(r"[*_]", "", testa.split("]", 1)[1]).strip().lower()
-            resto = [r for r in solo_testo[ultimo:] if r.strip() and not r.lstrip().startswith(">")]
-            chiude = tipo == "info" and titolo.startswith("sintesi") and not resto
-        if not chiude:
-            out.append(("WARN", 0, "la nota non si chiude con il callout [!info] Sintesi:"))
     return out, parole_tot
 
 

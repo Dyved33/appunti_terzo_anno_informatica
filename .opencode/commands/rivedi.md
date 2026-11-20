@@ -12,7 +12,7 @@ Procedimento:
 
 1. Salva la copia della nota: `python3 .opencode/scripts/controlla-perdite.py "nota" --salva`. Poi chiama il subagent `revisore` sulla nota e sul materiale del docente che trovi nella stessa cartella.
 2. Se negli argomenti c'è `solo report`, fermati qui e riporta il suo elenco senza modificare nulla.
-3. Altrimenti applica le correzioni: prima gli `[ERRORE]` e i `[MANCA]`, poi i `[TAGLIA]` e gli `[STILE]`. Asciuga secondo il tuo caso D: si tolgono parole, mai informazioni. Se manca, aggiungi la sintesi finale.
+3. Altrimenti applica le correzioni: prima gli `[ERRORE]` e i `[MANCA]`, poi i `[TAGLIA]` e gli `[STILE]`. Asciuga secondo il tuo caso D: si tolgono parole, mai informazioni.
 4. Esegui `python3 .opencode/scripts/controlla-perdite.py "nota"`. Per ogni voce segnalata rileggi la copia salvata: se l'informazione nella nota manca, rimettila.
 5. Esegui `python3 .opencode/scripts/vault-audit.py` sulla nota e sistema ciò che dipende da te.
 6. Riepilogo in 5 righe al massimo: parole prima e dopo, cosa hai tolto e perché, esito del controllo perdite.

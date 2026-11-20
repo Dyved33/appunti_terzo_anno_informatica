@@ -14,7 +14,7 @@ Le reti sono classificate in base alla dimensione fisica:
 - Reti per applicazioni mobili (wireless).
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-ret-52.png" style="width: 30%;">
+  <img src="images/topologie-04.png" style="width: 30%;">
 </div>
 ## Reti wan
 le reti wan hanno le caratteristiche:
@@ -45,7 +45,7 @@ le reti WLAN sono LAN wireless (senza fili):
 La banda a 2,4 GHz offre una copertura più ampia ma è più lenta; la banda a 5 GHz è più veloce ma ha una copertura ridotta.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-07.png" style="width: 30%;">
+  <img src="images/topologie-07.png" style="width: 30%;">
 </div>
 
 ## Reti man
@@ -75,6 +75,10 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 - alto rendimento complessivo 
 - minimizzazione costi
 
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-ret-52.png" style="width: 60%;">
+</div>
+
 ## Rete ad albero
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
@@ -88,7 +92,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete a dorsale
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-13.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-13.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Collegamento multi punto, ambito LAN, rete broadcast su ethernet, caratterizzata da facilità di installazione. In pratica il cavo formava la spina dorsale fisica (<i>backbone</i>).
@@ -116,7 +120,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-ret-54.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-16.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Es.: Ethernet con topologia a stella - 100baseT e 1000baseT. Dove T indica l'introduzione del doppino ritorto non schermato UTP (Unshielded Twisted Pair) e cavi terminati con connettori plastici RJ45, l'hub divenne di fatto il nuovo backbone. Lavorare con i cavi di tipo UTP si dimostrò non solo molto più semplice ma talmente più produttivo, che l'UTP divenne ben presto lo standard indiscusso su tutte le nuove installazioni.
@@ -136,7 +140,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete a maglia (mesh)
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-18.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-18.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Tutti i nodi sono collegati tra di loro (maglia completa), con un fattore di costo pari a N(N-1)/2, poiché ogni nodo ha collegamento punto-a-punto con gli altri. Ogni apparato è allo stesso tempo in grado di trasmettere, ricevere e inoltrare dati.
@@ -146,13 +150,12 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Reti mesh
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-20.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-20.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Reti realizzate con combinazione di nodi fissi e mobili interconnessi tra di loro con link wireless per formare una rete auto-configurante multi-hop. Le apparecchiature utente hanno una parte attiva, potendo operare da terminali ma anche come router per altri nodi, estendendo copertura di rete. Grande affidabilità dovuta alla capacità di gestire in maniera dinamica il malfunzionamento sia di collegamenti radio che di componenti hardware della rete. Monitoraggio in tempo reale dei percorsi disponibili per raggiungere una determinata stazione, selezionando in tempo reale il percorso ottimale per raggiungerla.
   </div>
 </div>
 
-> [!todo] Immagini non trovate per: slide-07 (WLAN tecnologie wireless), slide-13 (dorsale), slide-18 (maglia completa), slide-20 (mesh). Le immagini attuali mostrano contenuti della lezione su Fourier/filtri/modulazione. Serve estrarre le slide corrette dai pdf di riferimento.
 
 

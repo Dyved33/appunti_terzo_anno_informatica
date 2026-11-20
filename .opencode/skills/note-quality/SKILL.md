@@ -32,7 +32,6 @@ Applica questa checklist a ogni nota prima di considerarla conclusa. Ogni voce v
 - [ ] I titoli non hanno Maiuscole Su Ogni Parola, non sono in grassetto, non hanno emoji, non sono numerati.
 - [ ] C'è un solo titolo `#` in testa alla nota.
 - [ ] I sotto-argomenti usano etichette in grassetto a inizio paragrafo, non titoli `###` a meno che non servano davvero.
-- [ ] C'è `> [!info] Sintesi:` in fondo alla nota, con 3-6 punti, una riga ciascuno.
 - [ ] Non c'è frontmatter `---`.
 - [ ] Non ci sono tag `#`.
 - [ ] Non c'è la data nel nome del file né nella nota.

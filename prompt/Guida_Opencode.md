@@ -156,7 +156,7 @@ Una cosa da tenere presente quando scrivi le richieste: **se chiedi "scrivi il t
 1. Crei tu la nota nella cartella del corso (es. `Lezione 3-Automi a pila.md`). Nella stessa cartella metti gli appunti grezzi (`.txt`, uno per lezione), le slide e, in `images/`, le immagini.
 2. Scrivi nella nota quello che hai, con i segnaposto `// ... //` dove serve.
 3. Per pianificare senza modifiche seleziona `plan`: Plannotator mostra il piano e l'agente non può modificare le note. Dopo l'approvazione passa ad `appunti` per eseguire il lavoro. Per le richieste normali `appunti` non apre Plannotator.
-4. A lezione conclusa lanci `/lezione`: completa la nota, ti chiede se integrare il libro di testo di `libri/` come complemento, scrive la sintesi finale, fa passare il revisore una volta e applica le correzioni.
+4. A lezione conclusa lanci `/lezione`: completa la nota, ti chiede se integrare il libro di testo di `libri/` come complemento, fa passare il revisore una volta e applica le correzioni.
 
 ## Niente si perde
 
@@ -210,7 +210,7 @@ Capisce da solo in quale caso si trova:
 /revisione "Primo semestre/Linguaggi"   # un corso
 ```
 
-Trova: link rotti, immagini mancanti, formule e blocchi di codice non chiusi, `<div>` non bilanciati, callout sbagliati, segnaposto non risolti, lezioni che mancano nell'indice, sintesi finale mancante, frontmatter e tag, titoli fuori convenzione, frasi tipiche da IA, `[!todo]` aperti, paragrafi molto lunghi.
+Trova: link rotti, immagini mancanti, formule e blocchi di codice non chiusi, `<div>` non bilanciati, callout sbagliati, segnaposto non risolti, lezioni che mancano nell'indice, frontmatter e tag, titoli fuori convenzione, frasi tipiche da IA, `[!todo]` aperti, paragrafi molto lunghi.
 
 **`/chiudi-nota`** esegue in sequenza controllo perdite, controllo strutturale e revisore su una singola nota, restituendo un report unificato. Non modifica nulla: se qualcosa va sistemato, usa poi `/rivedi`.
 
@@ -263,7 +263,7 @@ I percorsi con spazi vanno sempre tra virgolette.
 2. Controlla il piano. I gruppi seguono le immagini, quindi sono indicativi: le sezioni senza immagini restano gruppi a sé e vanno unite a mano se serve.
 3. Conferma: crea le note e l'indice nella stessa cartella. Il file unico resta intatto: archivialo o cancellalo tu quando hai controllato.
 4. Se un titolo o un nome non ti va, rinomina il file da Obsidian: i link dell'indice si aggiornano da soli.
-5. `/rivedi` su una nota alla volta. Ogni passata asciuga, aggiunge la sintesi finale e riporta le parole prima e dopo.
+5. `/rivedi` su una nota alla volta. Ogni passata asciuga e riporta le parole prima e dopo.
 
 ## Cosa scrivere nelle note
 
@@ -293,7 +293,7 @@ Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le imma
 
 **Todo.** `> [!todo] cosa va rivisto` segna un punto da controllare. L'agent prova a chiuderli a ogni passata e ne lascia di nuovi quando non è sicuro di qualcosa. `/revisione` li elenca tutti.
 
-**Sintesi.** Ogni nota si chiude con `> [!info] Sintesi:`, da 3 a 6 punti. La scrive l'agent con `/lezione` e `/rivedi`.
+**Sintesi.** Non è richiesta: l'agent non la aggiunge e l'audit non la segnala. Quelle già scritte restano.
 
 **Codice.** Lo snippet che serve alla teoria resta nella nota, in un blocco ```` ``` ````. Gli esercizi e le soluzioni complete stanno in `esercizi/`, col nome che dai tu: nella nota resta solo il pezzo rilevante con il wikilink `[[esercizi/es3.py|es3]]`. I file di `esercizi/` sono tuoi: l'agent non li apre in scrittura e, se gli chiedi un esercizio, te lo dà nella risposta e lo salvi tu.
 
