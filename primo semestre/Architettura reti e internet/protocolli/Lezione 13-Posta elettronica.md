@@ -5,6 +5,7 @@
 *Definizione:* il servizio di posta elettronica (o *e-mail*) è un'infrastruttura asincrona di scambio messaggi basata sulla cooperazione tra due moduli software distinti: il Mail User Agent e il programma di trasporto.
 
 <u>La gestione dei messaggi è ripartita tra l'interfaccia client lato utente e il demone di trasporto in esecuzione sui server</u>:
+
 - **Mail User Agent (MUA):** programma applicativo (es. Thunderbird, Pine, Elm, Eudora, Outlook) che costituisce l'interfaccia verso l'utente finale:
   - *Composizione:* creazione del messaggio conforme alla sintassi RFC 822 / RFC 5322 tramite editor di testo; gestione della rubrica e dell'indirizzario; compilazione automatica delle intestazioni (*Subject*, destinatario in risposta).
   - *Visualizzazione:* separazione dell'intestazione (*header*) dal corpo (*body*); interpretazione e salvataggio degli allegati; invocazione di visualizzatori di sistema per formati specifici (PDF, Postscript, PNG); archiviazione e catalogazione in cartelle.
@@ -45,6 +46,7 @@ FEATURE(`access_db', `hash /etc/mail/access')
 ```
 
 I parametri e i file di supporto regolano l'instradamento e le policy di sicurezza:
+
 - `/etc/mail/access`: tabella di controllo accessi indicizzata ad hash per filtrare accessi da domini, indirizzi o sottoreti IP:
   ```text
   cyberspammer.com   550 We don't accept mail from spammers
@@ -61,6 +63,23 @@ I parametri e i file di supporto regolano l'instradamento e le policy di sicurez
   - `MAILER-DAEMON: postmaster@mydom.it`: alias obbligatorio per notifiche di sistema.
   - `postmaster`, `abuse`, `cert`, `netman`: indirizzi amministrativi standard previsti da RFC 822.
   - `staff: joe@mydom.it, charlie@mydom.it, jane@mydom.it`: lista di distribuzione ad aggregazione di indirizzi.
+
+### RFC 822 e RFC 5322
+
+La struttura originaria di un messaggio email (RFC 822, aggiornato da RFC 5322) prevede una netta separazione tra intestazione (*header*) e corpo del testo (*body*), separati da una riga vuota (`<CRLF>`):
+
+- **Intestazioni standard obbligatorie e opzionali:**
+  - `Received:` catena di tracciamento inserita in testa da ogni MTA attraversato (server, indirizzo IP, timestamp).
+  - `Message-ID:` stringa alfanumerica globalmente univoca generata dal primo MTA (es. `<B00002222000@mailhost.dom.it>`).
+  - `Date:` marca temporale di composizione conforme a RFC (es. `Wed, 23 Oct 2000 10:22:00 +0100`).
+  - `From:` indirizzo di posta dell'utente mittente.
+  - `To:` destinatario primario.
+  - `Cc:` copia conoscenza (*Carbon Copy*).
+  - `Bcc:` copia conoscenza nascosta (*Blind Carbon Copy*, rimossa dall'header prima dell'invio ai destinatari ordinari).
+  - `Subject:` oggetto sintetico del messaggio.
+  - `Mime-Version:` intestazioni MIME.
+
+*Limiti strutturali di RFC 822:* il formato nativo imponeva l'uso esclusivo di caratteri ASCII a 7 bit (standard ANSI X3.4) e una lunghezza massima per riga di 1000 caratteri. Questo impediva il trasporto diretto di caratteri accentati (italiano, francese, tedesco), alfabeti non latini (greco, cirillico, ebraico), scritture ideografiche (cinese, giapponese) e file binari non strutturati a record (immagini, audio, eseguibili).
 
 ## Posta Elettronica Certificata (PEC)
 
@@ -87,28 +106,16 @@ I parametri e i file di supporto regolano l'instradamento e le policy di sicurez
 4. **Consegna:** il provider del destinatario deposita la busta di trasporto nella casella dell'utente e genera istantaneamente la *ricevuta di avvenuta consegna*.
 5. **Ricevuta di consegna:** inviata al mittente, firmata dal provider del destinatario; contiene l'orario esatto di immissione nella casella e l'intero messaggio recapitato in allegato, costituendo prova legale sia del recapito temporale che dell'intero contenuto trasmesso.
 
+![[Pasted image 20261120104951.png|500]]
+
 ## Formato dei messaggi e standard MIME
-
-### RFC 822 e RFC 5322
-
-La struttura originaria di un messaggio email (RFC 822, aggiornato da RFC 5322) prevede una netta separazione tra intestazione (*header*) e corpo del testo (*body*), separati da una riga vuota (`<CRLF>`):
-- **Intestazioni standard obbligatorie e opzionali:**
-  - `Received:` catena di tracciamento inserita in testa da ogni MTA attraversato (server, indirizzo IP, timestamp).
-  - `Message-ID:` stringa alfanumerica globalmente univoca generata dal primo MTA (es. `<B00002222000@mailhost.dom.it>`).
-  - `Date:` marca temporale di composizione conforme a RFC (es. `Wed, 23 Oct 2000 10:22:00 +0100`).
-  - `From:` indirizzo di posta dell'utente mittente.
-  - `To:` destinatario primario.
-  - `Cc:` copia conoscenza (*Carbon Copy*).
-  - `Bcc:` copia conoscenza nascosta (*Blind Carbon Copy*, rimossa dall'header prima dell'invio ai destinatari ordinari).
-  - `Subject:` oggetto sintetico del messaggio.
-
-*Limiti strutturali di RFC 822:* il formato nativo imponeva l'uso esclusivo di caratteri ASCII a 7 bit (standard ANSI X3.4) e una lunghezza massima per riga di 1000 caratteri. Questo impediva il trasporto diretto di caratteri accentati (italiano, francese, tedesco), alfabeti non latini (greco, cirillico, ebraico), scritture ideografiche (cinese, giapponese) e file binari non strutturati a record (immagini, audio, eseguibili).
 
 ### Standard MIME
 
 *Definizione:* estensione MIME (*Multipurpose Internet Mail Extensions*, RFC 1341, RFC 1521, RFC 2045-2049) del formato dei messaggi che consente il trasporto di dati arbitrari e multimediali senza alterare il funzionamento dei server di trasporto SMTP.
 
 L'adozione di MIME ha richiesto modifiche solo al software MUA (client), lasciando inalterati i protocolli di trasporto intermedi:
+
 - `MIME-Version:` indica la versione dello standard supportata (tipicamente `1.0`).
 - `Content-Description:` descrizione testuale in chiaro della natura del contenuto.
 - `Content-ID:` identificatore univoco del segmento MIME.
@@ -144,6 +151,8 @@ L'adozione di MIME ha richiesto modifiche solo al software MUA (client), lascian
 
 <u>Il protocollo opera secondo un modello *push* a passi rigorosamente bloccanti</u>: il mittente (*SMTP-sender*) invia un comando testuale per volta e resta in attesa del codice numerico di risposta del ricevente (*SMTP-receiver*) prima di emettere il passo successivo.
 
+![[Pasted image 20261120105100.png|500]]
+
 ### Comandi SMTP fondamentali
 
 | Comando | Sintassi | Descrizione operativa |
@@ -162,6 +171,7 @@ L'adozione di MIME ha richiesto modifiche solo al software MUA (client), lascian
 ### Codici di risposta numerici
 
 Le risposte del server sono composte da un codice a 3 cifre seguito da una stringa descrittiva:
+
 - **Codici 2xx (Successo):**
   - `211`: stato del sistema o risposta al comando di aiuto.
   - `214`: messaggio di aiuto per l'operatore umano.
@@ -266,6 +276,7 @@ Subject: Progetto
 ## Meccanismi di autenticazione del server e contrasto allo spoofing
 
 Il protocollo SMTP originario non prevede alcuna autenticazione del campo `MAIL FROM:` o delle intestazioni, consentendo a qualunque client di falsificare l'identità del mittente. L'autenticazione dell'origine viene demandata a record speciali pubblicati nel [[Lezione 9-DNS|DNS]]:
+
 - **Sender Policy Framework (SPF):** record `TXT` nel DNS del dominio mittente che elenca gli indirizzi IP o i blocchi di rete autorizzati a spedire email per conto di quel dominio. Il server ricevente verifica che l'indirizzo IP del socket TCP corrisponda a quelli autorizzati nel record SPF.
 - **DomainKeys Identified Mail (DKIM):** il server mittente firma crittograficamente con chiave privata un hash dell'header e del corpo del messaggio, inserendo la firma nell'header `DKIM-Signature`. Il server ricevente scarica la corrispondente chiave pubblica dal record `TXT` del DNS ed esegue la verifica crittografica di integrità e provenienza.
 - **DMARC (Domain-based Message Authentication, Reporting and Conformance):** unifica e coordina SPF e DKIM imponendo l'allineamento dei domini (*domain alignment*) e specificando al server ricevente la politica da applicare in caso di fallimento (`none`, `quarantine`, `reject`), generando report periodici di telemetria per il dominio titolare.
@@ -358,28 +369,32 @@ S: A001 OK Kerberos V4 authentication successful
 | **Organizzazione cartelle** | Monolitica (solo casella di arrivo locale) | Gerarchica su server (creazione, rinomina, spostamento cartelle) |
 | **Uso della banda** | Scarica sempre l'intero messaggio e gli allegati | Download modulare on-demand di header o singoli allegati MIME |
 
-## Sicurezza della posta elettronica: PGP e GnuPG
+## Sicurezza della posta elettronica: PGP e GnuPG (posta elettronica privata)
 
 *Definizione:* Pretty Good Privacy (PGP, ideato nel 1991 da Phil Zimmermann) e la sua implementazione standard libera **GnuPG** (GNU Privacy Guard, conforme a OpenPGP, RFC 4880) forniscono servizi crittografici end-to-end per confidenzialità, autenticazione dell'origine e non ripudio delle comunicazioni email.
 
 ### Modello a crittografia ibrida
 
 Per coniugare la sicurezza degli algoritmi a chiave pubblica con l'efficienza computazionale della crittografia simmetrica, PGP adotta un'architettura ibrida:
+
 - **Cifratura del messaggio:**
   1. Il mittente calcola l'impronta crittografica del testo in chiaro tramite funzione di hash (**MD5** o SHA).
   2. Genera una chiave simmetrica monouso valida solo per la transazione corrente (*session key*), prodotta da un generatore pseudo-casuale basato su eventi fisici (es. movimenti del mouse, intervalli di digitazione).
   3. Il testo del messaggio viene compresso tramite algoritmo ZIP (Ziv-Lempel) e cifrato con algoritmo a chiave simmetrica (es. **IDEA** o AES) usando la *session key*.
   4. La *session key* viene a sua volta cifrata usando la **chiave pubblica del destinatario** (algoritmo RSA).
   5. Il pacchetto risultante (messaggio cifrato simmetricamente + chiave di sessione cifrata) viene codificato in formato testuale Base64 per la trasmissione su canali di posta conformi a MIME.
+
 - **Decifratura da parte del destinatario:**
   1. Il destinatario riceve il blocco e usa la propria **chiave privata** per decifrare la *session key*.
   2. Con la *session key* in chiaro ottenuta decifra il corpo del messaggio.
   3. Decomprime il testo ed esegue la verifica dell'hash per accertarsi che il contenuto non sia stato manomesso.
+
 - **Firma digitale:** il mittente calcola l'hash del messaggio, lo cifra con la propria **chiave privata** e lo allega. Chiunque sia in possesso della chiave pubblica del mittente può decifrare la firma e confrontarla con l'hash ricalcolato, verificando l'autenticità della provenienza.
 
 ### Gestione dei portachiavi e Web of Trust
 
 Le chiavi crittografiche sono memorizzate localmente in due file distinti:
+
 - `pubring`: anello delle chiavi pubbliche (*public keyring*) appartenenti ai corrispondenti noti.
 - `privring`: anello delle chiavi private (*private keyring*) dell'utente, ciascuna protetta da una *passphrase*.
 
@@ -397,11 +412,3 @@ Le chiavi crittografiche sono memorizzate localmente in due file distinti:
 - Agli inizi degli anni '90 il governo degli Stati Uniti avviò un'indagine giudiziaria contro Phil Zimmermann per presunta violazione delle restrizioni sull'esportazione di materiale bellico (a causa della robustezza delle chiavi crittografiche a livello militare), contestando inoltre l'uso dell'algoritmo RSA protetto all'epoca da brevetto commerciale.
 - **Accordo di Wassenaar:** trattato internazionale siglato da diversi paesi che impone restrizioni sull'esportazione di tecnologie dual-use e crittografia forte (con restrizioni severe adottate in passato da vari stati, tra cui la Francia).
 - **Progetto Echelon:** infrastruttura di sorveglianza e intercettazione globale di comunicazioni radio ed elettroniche gestita dall'alleanza anglo-americana (NSA, GCHQ), che ha storicamente accelerato la diffusione popolare della crittografia forte a difesa della riservatezza individuale.
-
-> [!info] Sintesi:
-> - Il servizio email separa il client utente (MUA: composizione, visualizzazione, cancellazione) dal server di trasporto (MTA/Sendmail: instradamento, relaying, gestione alias e bounce).
-> - La PEC fornisce valore legale tramite ricevute firmate dai gestori (accettazione e avvenuta consegna con messaggio allegato), conservazione trentennale dei log e obbligo di canali sicuri.
-> - Lo standard MIME supera i limiti di RFC 822 (testo ASCII a 7 bit) introducendo intestazioni dedicate (`Content-Type`, `Content-Transfer-Encoding`) e codifiche per allegati binari (*base64*, overhead +33%) e testi accentati (*quoted-printable*).
-> - SMTP (TCP porta 25/587) è un protocollo *push* a comandi rigidi bloccanti (`HELO`, `MAIL FROM:`, `RCPT TO:`, `DATA`), risposte numeriche (2xx successo, 4xx errore temporaneo, 5xx errore fatale) e autenticazione d'origine via DNS (SPF, DKIM, DMARC).
-> - POP3 (porta 110) scarica e svuota la casella locale attraversando le fasi di *Authorization*, *Transaction* e *Update*; IMAP4 (porta 143) gestisce la posta sul server con sincronizzazione concorrente e flag di stato (`\Seen`, `\Answered`, `\Flagged`, `\Deleted`).
-> - PGP/GnuPG realizza la posta cifrata tramite crittografia ibrida: compressione, cifratura simmetrica del messaggio con *session key* monouso, cifratura asimmetrica della *session key* con chiave pubblica del destinatario e modello decentralizzato *Web of Trust*.
