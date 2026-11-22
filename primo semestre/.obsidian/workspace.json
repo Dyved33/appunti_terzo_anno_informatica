@@ -4,17 +4,161 @@
     "type": "split",
     "children": [
       {
-        "id": "a4244f631363360f",
+        "id": "5d9dc1cf4e53ec87",
         "type": "tabs",
         "children": [
           {
-            "id": "d1595c973a490daa",
+            "id": "1cfe8e95373a5ac7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 2-Elementi dell'infrastruttura, governance e modello OSI"
+            }
+          },
+          {
+            "id": "20b7a4684478c490",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi"
+            }
+          },
+          {
+            "id": "5a9af478c720c1e7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete"
+            }
+          },
+          {
+            "id": "34e65fdd88b18be1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP)"
+            }
+          },
+          {
+            "id": "2bee5f27faa2ea57",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 6-UDP e TCP e routing.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 6-UDP e TCP e routing"
+            }
+          },
+          {
+            "id": "2b72d0b39c94f4fb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 7-Protocolli di routing.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 7-Protocolli di routing"
+            }
+          },
+          {
+            "id": "8f1038fe0c285b2a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 8-Telnet, SSH e FTP.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 8-Telnet, SSH e FTP"
+            }
+          },
+          {
+            "id": "e66decff1dc62e35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 9-DNS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 9-DNS"
+            }
+          },
+          {
+            "id": "dd74ed9bb31b3491",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 10-NIS e NFS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 10-NIS e NFS"
+            }
+          },
+          {
+            "id": "6e910a0e3752c38b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 11-SNMP e DHCP.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 11-SNMP e DHCP"
+            }
+          },
+          {
+            "id": "dde38dbbc72c91b6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architettura reti e internet/protocolli/Lezione 12-IPv6.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 12-IPv6"
             }
           }
         ]
@@ -194,39 +338,46 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "audio-recorder:Start/stop recording": false,
       "zk-prefixer:Create new unique note": false,
-      "workspaces:Manage workspace layouts": false
+      "audio-recorder:Start/stop recording": false,
+      "workspaces:Manage workspace layouts": false,
+      "bases:Create new base": false
     }
   },
-  "active": "d1595c973a490daa",
+  "active": "1cfe8e95373a5ac7",
   "lastOpenFiles": [
-    "Architettura reti e internet/protocolli/Lezione 10-NIS e NFS.md",
+    "Architettura reti e internet/protocolli/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
+    "Architettura reti e internet/protocolli/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
+    "Architettura reti e internet/protocolli/Lezione 1-Internetworking, il villaggio globale e la storia di Internet.md",
     "Architettura reti e internet/protocolli/Lezione 12-IPv6.md",
-    "Architettura reti e internet/protocolli/Lezione 13-Posta elettronica.md",
-    "Pasted image 20261120105100.png",
-    "Pasted image 20261120104951.png",
     "Architettura reti e internet/protocolli/Lezione 11-SNMP e DHCP.md",
+    "Architettura reti e internet/protocolli/Lezione 10-NIS e NFS.md",
     "Architettura reti e internet/protocolli/Lezione 9-DNS.md",
-    "Pasted image 20261120091627.png",
+    "Architettura reti e internet/protocolli/Lezione 8-Telnet, SSH e FTP.md",
+    "Architettura reti e internet/protocolli/Lezione 7-Protocolli di routing.md",
+    "Architettura reti e internet/protocolli/Lezione 6-UDP e TCP e routing.md",
+    "Architettura reti e internet/protocolli/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
+    "Architettura reti e internet/protocolli/Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete.md",
     "Architettura reti e internet/reti/Lezione 5-Serie di Fourier, filtri e modulazione.md",
     "Architettura reti e internet/reti/Lezione 4-Reti mesh, protocolli e segnali.md",
     "Architettura reti e internet/reti/Lezione 3-Tipi di connessione e topologie di rete.md",
-    "Architettura reti e internet/protocolli/Lezione 8-Telnet, SSH e FTP.md",
+    "Architettura reti e internet/reti/images/topologie-20.png",
+    "Architettura reti e internet/reti/images/topologie-18.png",
+    "Architettura reti e internet/reti/images/topologie-16.png",
+    "Architettura reti e internet/reti/images/topologie-13.png",
+    "Architettura reti e internet/reti/images/topologie-07.png",
+    "Architettura reti e internet/reti/images/topologie-04.png",
+    "Architettura reti e internet/protocolli/Lezione 13-Posta elettronica.md",
+    "Pasted image 20261120105100.png",
+    "Pasted image 20261120104951.png",
+    "Pasted image 20261120091627.png",
     "Intelligenza artificiale/images/Pasted image 20261119225330.png",
     "Intelligenza artificiale/Lezione 11-k-NN.md",
     "Intelligenza artificiale/Lezione 10-Overfitting, valutazione dei classificatori e classi sbilanciate.md",
-    "Pasted image 20261119225330.png",
     "Programmazione web e mobile con laboratorio/Lezione 15-Connessione al DB.md",
     "Programmazione web e mobile con laboratorio/pwm_lezione15.pdf",
     "Programmazione web e mobile con laboratorio/esercizi/serverdb.js",
     "Programmazione web e mobile con laboratorio/esercizi/db.html",
-    "Intelligenza artificiale/images/Pasted image 20261119180146.png",
-    "Intelligenza artificiale/images/Pasted image 20261119180125.png",
-    "Intelligenza artificiale/images/Pasted image 20261119180113.png",
-    "Intelligenza artificiale/images/Pasted image 20261119180103.png",
-    "Intelligenza artificiale/images/Pasted image 20261119180020.png",
     "Intelligenza artificiale/chap4_naive_bayes.pdf",
     "Intelligenza artificiale/chap4_knn.pdf",
     "Architettura reti e internet/protocolli/posta elettronica.pdf",
@@ -238,14 +389,8 @@
     "Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
     "Architettura reti e internet/internet/ArchitetturaRetiDef_I_i.pdf",
     "Untitled.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 15-Subquery e interrogazioni nidificate.md",
-    "Architettura reti e internet/reti/Lezione 8-Limiti di velocità, codifica di linea e controllo degli errori.md",
-    "Architettura reti e internet/reti/Lezione 8-.md",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 15-.md",
     "Basi di dati e sistemi informativi con laboratorio/lezione6.pdf",
     "Basi di dati e sistemi informativi con laboratorio/BDlezioneERChap3.pdf",
-    "Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
-    "Sicurezza informatica/Laboratorio/IDS&IDPS.md",
     "Architettura reti e internet/reti/parte_8.pdf"
   ]
 }

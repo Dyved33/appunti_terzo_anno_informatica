@@ -45,6 +45,11 @@ La rete delle pubbliche amministrazioni, oggi AgID e in precedenza AIPA e poi Di
 
 A rendere Ethernet scalabile non è l'hub, ma lo **switch**: ogni porta è un dominio di collisione separato, lo switch impara gli indirizzi MAC dalla sorgente e inoltra i frame solo sulla porta della destinazione, eliminando di fatto le collisioni fra host.
 
+> [!info] Ricorda
+> L'**hub** è un dispositivo passivo di **Livello 1** (Fisico) che replica il segnale elettrico su **tutte le porte**, creando un unico dominio di collisione e condividendo la banda tra tutti i dispositivi.
+> 
+> Lo **switch** è un dispositivo attivo di **Livello 2** (Collegamento Dati) che legge gli **indirizzi MAC** e inoltra i dati **solo alla porta di destinazione**, offrendo banda dedicata, supporto al full-duplex e maggiore sicurezza.
+
 ### La logica a bus
 
 La **logica a bus** è il modo di trasmettere di Ethernet prima dello switch: tutte le stazioni sono collegate a un **unico mezzo fisico condiviso**, un solo cavo che le attraversa e sul quale il segnale di una stazione si propaga in entrambe le direzioni, con un terminatore a ciascuna estremità che lo assorbe per evitare riflessi.
@@ -53,7 +58,7 @@ La **logica a bus** è il modo di trasmettere di Ethernet prima dello switch: tu
 - **Prima di parlare si ascolta:** ogni stazione deve verificare che il canale sia libero (*carrier sense*) prima di trasmettere.
 - **Se due parlano insieme, il frame si distrugge:** le due trasmissioni si sovrappongono sulla linea e il segnale risultante è incomprensibile. È la **collisione**, che rende necessaria la ritrasmissione e occupa il canale, rallentando tutto il resto della rete.
 - **Come si gestisce:** con il protocollo **CSMA/CD**, *Carrier Sense Multiple Access with Collision Detection*: trasmissione 1-persistente, e in caso di collisione un segnale di *jamming* per allertare tutti, un *backoff* casuale con crescita esponenziale e poi un nuovo tentativo.
-- **Conseguenze:** la banda è condivisa, quindi si ripartisce fra le stazioni attive e il throughput cala all'aumentare del carico; anche la distanza massima è limitata dalle attenuazioni del segnale, per esempio circa 500 m nel 10BASE5 su cavo coassiale spesso e 185 m nel 10BASE2 su cavo sottile.
+- **Conseguenze:** la banda è condivisa, quindi si ripartisce fra le stazioni attive e il throughput (quantità di informazioni che passano con successo attraverso un sistema o una rete in un dato periodo di tempo) cala all'aumentare del carico; anche la distanza massima è limitata dalle attenuazioni del segnale, per esempio circa 500 m nel 10BASE5 su cavo coassiale spesso e 185 m nel 10BASE2 su cavo sottile.
 
 La logica a bus è quindi la spiegazione del limite di Ethernet: un dominio di collisione unico e condiviso. Lo **hub** la conserva, perché ripete il segnale su tutte le porte; lo **switch** la elimina, perché ogni porta diventa un dominio di collisione separato e i frame vengono inoltrati in base all'indirizzo MAC. Il confronto fra hub, bridge, switch e router è in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#La commutazione|la commutazione]].
 
@@ -118,6 +123,7 @@ Nello stesso periodo:
 
 La **Federal Networking Council (FNC)**, con risoluzione del 24 ottobre 1995, concorda la seguente definizione del termine *Internet*:
 
+> [!quote]
 > *"Internet" refers to the global information system that*
 > - *is logically linked together by a globally unique address space based on the Internet Protocol (IP) or its subsequent extensions/follow-ons;*
 > - *is able to support communications using the Transmission Control Protocol/Internet Protocol (TCP/IP) suite or its subsequent extensions/follow-ons, and/or other IP-compatible protocols; and*

@@ -14,8 +14,6 @@ I protagonisti di questa fase:
 - **YouTube**: fondata il 14 febbraio 2005 da tre ex dipendenti di PayPal (Steve Chen, Chad Hurley, Jawed Karim) per caricare, condividere e visualizzare video; acquisita da Google nel novembre 2006 per 1,65 miliardi di dollari. Dopo l'acquisizione è continuata a crescere rapidamente, con interfaccia intuitiva e una vasta gamma di contenuti caricati dagli utenti, ed è diventata il principale sito di condivisione video online.
 - **WhatsApp**: fondato nel 2009 da Jan Koum e Brian Acton, due ex dipendenti di Yahoo!, con l'idea di base di fornire una piattaforma di messaggistica istantanea che mandasse messaggi di testo via Internet anziché via SMS tradizionali, costosi specialmente per le comunicazioni internazionali; acquisito da Facebook nel febbraio 2014 per 19 miliardi di dollari. È una delle applicazioni di messaggistica più utilizzate al mondo, con miliardi di utenti che inviano messaggi, effettuano chiamate vocali e videochiamate e condividono contenuti multimediali ogni giorno; la sua influenza nella comunicazione mobile è stata enorme e continua a plasmare il modo in cui le persone interagiscono attraverso i loro dispositivi mobili.
 
-> [!todo] La slide riporta l'acquisizione di LinkedIn da parte di Microsoft nel 2016 a 26,2 milioni di dollari; il valore pubblico dell'operazione è 26,2 miliardi.
-
 ## Internet: definizione
 
 *Definizione:* Internet è una rete globale di reti che abilita i computer di ogni tipo a comunicare direttamente e in modo trasparente e a condividere servizi attraverso gran parte del mondo. Essendo un'infrastruttura di enorme importanza, capace di attivare così tante persone e organizzazioni, costituisce anche una fonte condivisa e globale di informazioni, conoscenza e senso di collaborazione e cooperazione fra comunità innumerevoli. È definita formalmente nell'**RFC 1122** (originariamente in RFC 760).
@@ -23,7 +21,7 @@ I protagonisti di questa fase:
 > [!info]
 > "Jon has been our North Star for decades ... He was the Internet's Boswell and its technical conscience." — Vint Cerf su Jon Postel (6 agosto 1943 – 16 ottobre 1998). Di Postel è anche il motto "Be liberal in what you accept, and conservative in what you send."
 
-**Internet Protocol (IP):** fornisce le funzioni necessarie per l'invio di un pacchetto di bit, chiamato *internet datagram*, da una sorgente a una destinazione usando un sistema interconnesso di reti.
+**Internet Protocol (IP):** fornisce le funzioni necessarie per l'invio di un pacchetto di bit, chiamato **internet datagram**, da una sorgente a una destinazione usando un sistema interconnesso di reti.
 
 - Sorgente e destinazione sono due **host**, cioè qualsiasi computer (PC, MacIntosh, workstation, server, mainframe), identificati ciascuno da un indirizzo a lunghezza fissa, l'**indirizzo IP**.
 - L'IP versione 4 fornisce anche i servizi di frammentazione e riassemblaggio dei datagram, quando la trasmissione avviene attraverso reti con capacità di trasporto di pacchetti più piccola del pacchetto originale (dovuto alle diverse tecnologie di rete del passato). IP versione 6 abolisce questo comportamento.
@@ -40,11 +38,11 @@ I protagonisti di questa fase:
   <img src="images/slide-062.png" style="width: 30%;">
 </div>
 
-Lo schema traccia il percorso completo di una comunicazione: si parte dalla postazione dell'utente (home o dial-in, web client, modem, LAN, apparati di casa) e dal *user's location*, si attraversa il collegamento fino ai POP e al data center dell'ISP e si arriva al lato del contenuto online (enterprise networks, web server, server applicativi con relativo firewall e apparati legacy).
+Per visualizzare il percorso completo di una comunicazione: si parte dalla postazione dell'utente (home o dial-in, web client, modem, LAN, apparati di casa) e dal *user's location*, si attraversa il collegamento fino ai POP e al data center dell'ISP e si arriva al lato del contenuto online (enterprise networks, web server, server applicativi con relativo firewall e apparati legacy).
 
 **User PC:** è un PC o un dispositivo mobile multimediale equipaggiato per ricevere e inviare ogni tipo di audio e video: scheda audio, microfono e casse; video e scheda grafica (GPU); videocamera e webcam; riconoscitori vocali.
 
-**CPE, gli apparati di casa dell'utente:** sono gli apparati localizzati in casa dell'utente per connettere il PC al *local loop*, detti **Customer Premise Equipment** (CPE) — il confronto con DTE e DCE è in [[Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni#Gli apparecchi della comunicazione: DTE, DCE e CPE|appunti di protocolli]].
+**CPE, gli apparati di casa dell'utente:** sono gli apparati localizzati in casa dell'utente per connettere il PC al *local loop*, detti **Customer Premise Equipment** (CPE) — il confronto con DTE e DCE è in [[Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni#Gli apparecchi della comunicazione: DTE, DCE e CPE|appunti di reti]].
 
 - Linea telefonica ADSL (ADSL Forum)
 - Fibra ottica (FTTH)
@@ -61,8 +59,6 @@ Nello schema il blocco comprende modem, scheda di rete (NIC), il collegamento Et
 - Satelliti e ponti radio
 - *Cable network*
 - *Electric power lines*
-
-Nella figura sono etichettate POTS, DSL e ADSL, *leased lines*, wireless, satellite, cavo e linee elettriche.
 
 **ISP's data center:** è il punto di accesso all'ISP, generalmente il data center centrale. Le connessioni vengono veicolate dalle centrali del fornitore dei servizi di ultimo miglio della rete di accesso (ad esempio Telecom) al fornitore di servizi che ha il diritto di vendere il servizio all'utente.
 
