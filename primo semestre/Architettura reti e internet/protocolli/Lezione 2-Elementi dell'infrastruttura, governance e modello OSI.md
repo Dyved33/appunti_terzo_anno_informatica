@@ -80,7 +80,7 @@ Nello schema il blocco comprende modem, scheda di rete (NIC), il collegamento Et
 
 **User services:** sono i servizi che gli utenti usano durante l'accesso a Internet — Domain Name Server (BIND), host di posta (Sendmail, Postfix), servizi speciali quali SSH, web hosting dell'utente. Questi server richiedono collegamenti veloci, processori potenti e grandi quantità di memoria, e devono essere *fault tolerant* e *load balanced*.
 
-**ISP backbone:** la dorsale dell'ISP interconnette i POP dell'ISP, ciascun ISP agli altri ISP e al contenuto online. Gli elementi sono *backbone providers*, *large circuits* (circuiti in fibra dei *carrier*), router, switch SONET/SDH, gigaswitch e *network access points*. I **NAP** (Neutral Access Point) sono punti di interconnessione fra ISP diversi per ottimizzare il traffico fra operatori; nella figura compaiono anche i collegamenti in *private peering* fra reti di grande capacità.
+**ISP backbone:** la dorsale dell'ISP interconnette i POP (point of presence, ovvero un punto di accesso fisico alla rete) dell'ISP, ciascun ISP agli altri ISP e al contenuto online. Gli elementi sono *backbone providers*, *large circuits* (circuiti in fibra dei *carrier*), router, switch SONET/SDH, gigaswitch e *network access points*. I **NAP** (Neutral Access Point) sono punti di interconnessione fra ISP diversi per ottimizzare il traffico fra operatori; nella figura compaiono anche i collegamenti in *private peering* fra reti di grande capacità.
 
 <div style="display: flex; justify-content: center;">
   <img src="images/slide-l2-072.png" style="width: 30%;">
