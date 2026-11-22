@@ -197,5 +197,3 @@ L'architettura **IBM 3270** rappresenta lo standard industriale storicamente dom
 - il collegamento a lungo raggio verso le filiali remote si realizza attraverso coppie di modem sincroni interfacciati alla rete di telecomunicazioni;
 - presso la sede periferica, il modem locale si interfaccia a una **Control Unit remota** (come i controller IBM serie 3174/3274);
 - la Control Unit remota gestisce il multiplexing e controlla un cluster di terminali video (display IBM 3278/3279) e stampanti locali, inviando i pacchetti strutturati a blocchi di schermata verso il calcolatore centrale.
-
-

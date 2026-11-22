@@ -310,7 +310,7 @@ Esempio:
 
 *Definizione:* Nel modello ISO/OSI, quando un pacchetto di livello 3 (Network) viene incapsulato in un protocollo di livello 2 (Data Link, in genere Ethernet), occorre inserire nell'header l'indirizzo Data Link.
 
-*Definizione:* Un host Internet può comunicare con un altro host solo se ne conosce l'indirizzo fisico del protocollo di rete locale (es.: indirizzo Ethernet).
+*Definizione:* Un host Internet può comunicare con un altro host solo se ne conosce l'indirizzo fisico del protocollo di rete locale (es.: indirizzo Ethernet o MAC address).
 
 *Definizione:* Se l'host destinatario appartiene alla stessa rete del mittente, occorre conoscerne l'indirizzo fisico; se appartiene ad altra rete, occorre conoscere l'indirizzo fisico del gateway.
 
@@ -341,6 +341,10 @@ Esempio:
 *Definizione:* Le workstation diskless hanno bisogno di caricare il sistema operativo e la configurazione da uno o più server, effettuando una richiesta broadcast con il protocollo RARP.
 
 *Definizione:* L'host spedisce la richiesta RARP a un server mediante un pacchetto broadcast in cui è evidenziato il MAC address dell'host mittente, e attende dallo stesso una risposta che include l'IP address a partire dall'indirizzo fisico trasmesso in fase di richiesta. Se la richiesta è ripetuta, rispondono anche i server secondari.
+
+> [!info] 
+> Ciò significa che se un utente non conosce il proprio indirizzo IP, ma conosce il proprio MAC address, può ricavarlo tramite questo protocollo mandando una richiesta RARP in broadcasta alla rete locale. Risponde un RARP server.
+> Oggi RARP è considerato obsoleto se confrontato con DHCP
 
 *Osservazione:* L'identificatore unico è l'indirizzo fisico della macchina.
 
@@ -391,5 +395,3 @@ Esempio:
 *Definizione:* IGMP provvede anche all'invio di datagram IP ad un gruppo di host. Esso richiede l'implementazione di IGMP e l'estensione di servizi IP e della rete locale al fine di gestire IP multicast.
 
 *Definizione:* È definito negli RFC 966, RFC 1112, RFC 1122, RFC 1812, RFC 2236, RFC 2715, RFC 2933, RFC 3228.
-
-

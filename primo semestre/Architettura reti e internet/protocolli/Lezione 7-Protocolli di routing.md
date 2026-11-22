@@ -49,10 +49,12 @@ I router che instradano messaggi all'interno dello stesso AS sono detti *Interio
 
 > [!example] Esempio di routing statico ottimale
 > Ogni rete ha soltanto una possibile route.
+> 
 > ![[images/slide-034.png|500]]
 
 > [!example] Esempio nel quale è necessario il routing dinamico
 > Ci sono più percorsi possibili per raggiungere una rete.
+> 
 > ![[images/slide-035.png|500]]
 
 ## Interior Gateway Protocol
@@ -96,6 +98,7 @@ L'OSPF backbone è responsabile di distribuire informazioni di routing tra aree.
 
 > [!example] Esempio di OSPF gerarchico:
 > Le aree 1, 2 e 3 condividono il backbone dell'AS; i router di confine collegano le aree e consentono lo scambio delle informazioni di routing.
+> 
 ![[images/Pasted image 20261023111642.png|500]]
 
 Le aree possono essere definite in modo tale che il backbone non sia continuo: in tal caso la continuità può essere realizzata mediante *virtual-links*. Questo permette ai gestori della rete di definire una topologia logica differente da quella fisica. I virtual-links vengono definiti tra i backbone router che condividono link con aree non-backbone e funzionano come se fossero link diretti. OSPF può apprendere informazioni da altri exterior gateway protocol, interior gateway protocol, o mediante istruzioni di configurazione.
@@ -676,5 +679,4 @@ B      170.171.251.0/24 [20/0] via 151.99.49.1, 3w0d
 
 > [!example] Internet routing table
 > ![[images/slide-107.png|500]]
-
 

@@ -238,7 +238,7 @@ Lo schema mostra la posizione della DMZ: la LAN interna, il firewall e il gatewa
 
 ## Modello di riferimento ISO/OSI
 
-Il confronto approfondito con TCP/IP e la struttura dei livelli sono in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#Modelli architetturali di riferimento: ISO/OSI e TCP/IP|Lezione 1 di protocolli]].
+Il confronto approfondito con TCP/IP e la struttura dei livelli sono in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#Modelli architetturali di riferimento: ISO/OSI e TCP/IP|Lezione 1 di reti]].
 
 *Definizione:* il modello ISO/OSI (Open Systems Interconnection) è un modello concettuale che definisce il modo in cui le reti inviano i dati dal mittente al destinatario. È utilizzato per descrivere ogni componente nell'ambito della comunicazione dei dati, in modo da permettere la definizione di regole e standard riguardo alle applicazioni e all'infrastruttura di rete. Il modello contiene sette livelli disposti concettualmente dal basso verso l'alto: **Fisico, Collegamento Dati, Rete, Trasporto, Sessione, Presentazione, Applicazione**.
 
@@ -249,7 +249,7 @@ Il confronto approfondito con TCP/IP e la struttura dei livelli sono in [[Lezion
 Lo schema mette in fila **End System A**, un **Transit System** e **End System B**: per ogni livello è disegnato il blocco relativo al protocollo (`Application protocol`, `Presentation protocol`, `Session protocol`, `Transport protocol`, `Network protocol`, `Datalink protocol`, `Physical protocol`) e, fra un livello e l'altro, l'*interface* che li mette in comunicazione sulla stessa macchina. Il transit system si occupa dei livelli di rete, mentre i livelli più alti restano fra i due sistemi terminali.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-l2-102.png" style="width: 30%;">
+  <img src="images/slide-l2-102.png" style="width: 50%;">
 </div>
 
 La tabella grande ha quattro colonne: livello, protocolli ed esempi di funzioni, apparato centrale e il corrispettivo modello DOD. In sintesi, livello per livello:

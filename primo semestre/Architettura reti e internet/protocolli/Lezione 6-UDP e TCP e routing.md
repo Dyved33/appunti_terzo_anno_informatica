@@ -343,5 +343,3 @@ Evita i problemi che si hanno quando un router trasmette informazioni errate.  I
 Tutti i router:
 - Ricevono i routing updates
 - Ricalcolano i percorsi ottimali sulla base delle loro informazioni.
-
-

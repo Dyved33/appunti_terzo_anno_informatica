@@ -10,7 +10,7 @@ Gli standard e il lavoro delle organizzazioni di standardizzazione sono stati fo
 
 Esistono standard *de jure*, cioè codificati da organismi nazionali o internazionali, e standard *de facto*, affermatisi per la massiccia adozione da parte degli utenti.
 
-Gli enti di standardizzazione internazionale sono descritti anche in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#Gli enti di standardizzazione internazionale|Lezione 1 (protocolli)]].
+Gli enti di standardizzazione internazionale sono descritti anche in [[Lezione 1-Fondamenti di networking, teoria della comunicazione e standard#Gli enti di standardizzazione internazionale|Lezione 1 (reti)]].
 
 ## Organizzazioni di standardizzazione
 
