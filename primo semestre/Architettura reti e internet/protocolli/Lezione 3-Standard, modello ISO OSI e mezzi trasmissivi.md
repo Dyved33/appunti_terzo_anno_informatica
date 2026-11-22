@@ -54,7 +54,7 @@ Il modello definisce un impianto concettuale sulla base del quale è possibile d
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-104.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-l3-104.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Lo schema accosta il modello OSI, con hub, switch e router collocati ai livelli bassi che competono loro, ai livelli concettuali del TCP/IP, dove le funzioni dei livelli alti si raccolgono in <i>Application</i> e quelle dei livelli bassi in <i>Network Interface</i>.
@@ -114,14 +114,14 @@ I livelli adiacenti comunicano attraverso le loro interfacce. Ogni livello è co
 La figura seguente mostra i dati che scendono lungo i livelli fino alla sequenza di bit trasmessa sul mezzo fisico.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-105.png" width="300">
+  <img src="images/slide-l3-105.png" width="300">
 </div>
 
 **PDU, SDU e PCI:** <u>lo scopo di ciascun livello è fornire servizi al livello superiore</u>, con cui comunica attraverso l'interfaccia detta SAP (*Service Access Point*). I dati N-PDU (*Protocol Data Unit*) generati da un protocollo di livello N, una volta attraversata l'interfaccia SAP tra il livello N e il livello N-1, diventano (N-1)-SDU (*Service Data Unit*); ogni livello N-1 aggiunge ai dati N-PDU ricevuti dal livello superiore N le informazioni di controllo (N-1)-PCI (*Protocol Control Information*).
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-106.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/slide-l3-106.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   L'incapsulamento progressivo: il messaggio dei livelli alti diventa messaggio TCP/UDP con l'header di trasporto, poi datagram IP con l'header di rete, infine frame di livello 2 con header e footer.
@@ -346,7 +346,4 @@ La comunicazione **wireless** prevede la trasmissione di informazioni a distanza
   L'evoluzione della telefonia mobile: 1G con voce analogica a 2,4 kbps, 2G con voce digitale e dati semplici a 64 kbps, 3G con mobile broadband a 2.000 kbps, 4G con trasmissione più veloce e migliore a 100.000 kbps, 5G con velocità fino a 1 Gbps per applicazioni nel mondo reale.
   </div>
 </div>
-
-> [!todo] Immagini sbagliate da sostituire: slide-104 (mostra show ip bgp summary, serve stack OSI vs TCP/IP), slide-105 (mostra show ip bgp neighbors, serve PDU/SDU/SAP interfaccia SAP), slide-106 (mostra Event Timers Cisco, serve incapsulamento PDU). Le immagini corrette non esistono nelle cartelle images: estrarle dai pdf di riferimento.
-
 

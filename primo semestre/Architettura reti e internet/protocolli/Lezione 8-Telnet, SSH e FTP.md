@@ -9,14 +9,28 @@ Si basa sul protocollo di trasporto [[Lezione 6-UDP e TCP e routing|TCP]], garan
 - **Server Telnet:** accetta la connessione di rete, inoltra i caratteri ricevuti al sistema operativo locale come se fossero digitati da una tastiera fisica locale, e invia l'output generato sulla connessione TCP verso il client.
 - Appena connesso, l'utente può autenticarsi ed eseguire comandi sulla macchina remota esattamente come su un terminale locale.
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-telnet-06.png" width="500">
-</div>
-
 Il servizio si basa su tre aspetti architetturali:
 1. **Network Virtual Terminal (NVT):** terminale virtuale con caratteristiche generali condivise. Ogni client o server traduce i caratteri e le sequenze di controllo native della propria piattaforma in quelle standard del NVT. Questo elimina la dipendenza da specifici terminali hardware o emulatori proprietari.
 2. **Opzioni negoziate:** meccanismo simmetrico che permette a client e server di negoziare estensioni funzionali della sessione Telnet (es. dimensione del terminale, modalità terminale a blocchi o a caratteri, echo locale/remoto). La negoziazione simmetrica richiede attenzione nell'implementazione per evitare cicli infiniti di richiesta e risposta.
 3. **Viste simmetriche:** ai due capi della comunicazione operano programmi software equivalenti anziché vincoli rigidi hardware (monitor e tastiera fisici).
+
+**Codici di controllo ASCII nell'NVT:** il terminale virtuale assegna un significato preciso ai caratteri di controllo ASCII:
+
+| Codice | Decimale | Significato |
+|---|---|---|
+| `NUL` | 0 | Nessuna operazione (nessun effetto sull'output) |
+| `BEL` (bell) | 7 | Segnale acustico o visivo (nessun movimento) |
+| `BS` (backspace) | 8 | Sposta a sinistra di un carattere |
+| `HT` (tab orizzontale) | 9 | Sposta alla tabulazione orizzontale successiva |
+| `LF` (line feed) | 10 | Sposta in basso (verticalmente) alla riga successiva |
+| `VT` (tab verticale) | 11 | Sposta alla tabulazione verticale successiva |
+| `FF` (form feed) | 12 | Sposta all'inizio della pagina successiva |
+| `CR` (carriage return) | 13 | Sposta al margine sinistro della riga corrente |
+| altri caratteri di controllo | – | Nessuna operazione |
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-telnet-06.png" width="500">
+</div>
 
 ### Funzioni di controllo NVT
 
@@ -97,6 +111,15 @@ Telnet e la suite `r*` (rlogin, rsh, rcp) trasmettono l'intero flusso dati in ch
 
 *Definizione:* protocollo applicativo per il trasferimento di file tra host in una rete TCP/IP, standardizzato da RFC 959. Basato su connessione TCP affidabile.
 
+**Ruoli di client e server:**
+- **Client:** contatta il server, specifica il file e la direzione del trasferimento (download/upload).
+- **Server:** mantiene un insieme di file nel disco locale, rimane in attesa di richieste di connessione e onora le richieste dei client.
+- **Caratteristiche:** accesso interattivo, specifica del formato (ASCII o EBCDIC), controllo dell'autenticazione (login e password).
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-telnet-16.png" width="500">
+</div>
+
 ### Architettura a doppia connessione
 
 In una sessione FTP intervengono due processi distinti sia lato client che lato server:
@@ -116,10 +139,6 @@ Una sessione FTP utilizza due connessioni TCP indipendenti:
 ### Modalità attiva e passiva
 
 Nel trasferimento dati, il ruolo di chi effettua la connessione TCP si inverte a seconda della modalità:
-
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-telnet-16.png" width="500">
-</div>
 
 - **Modalità attiva (Active Mode):**
   1. Il client apre una porta locale non privilegiata $N$ per la connessione dati e invia al server sulla connessione di controllo il comando `PORT IP,p1,p2` specificando il proprio indirizzo e la porta $N = p1 \times 256 + p2$.
@@ -220,8 +239,10 @@ La crittografia asimmetrica risolve tre requisiti di sicurezza a seconda di qual
 | Meccanismo | Cifratura eseguita con | Decifratura eseguita con | Riservatezza (*Confidentiality*) | Autenticazione (*Authentication*) | Non ripudio (*Non-repudiation*) |
 |---|---|---|---|---|---|
 | Cifratura convenzionale | Chiave pubblica del destinatario | Chiave privata del destinatario | Sì | No | No |
-| Firma digitale | Chiave privata del mittente | Chiave pubblica del mittente | No | Sì | Sì |
+| Firma digitale | Chiave privata del mittente | Chiave pubblica del mittente | No | No | Sì |
 | Firma e Cifratura combinate | Privata mittente + Pubblica destinatario | Privata destinatario + Pubblica mittente | Sì | Sì | Sì |
+
+> [!todo] Firma digitale e autenticazione: la slide del docente indica *Authentication: No* (riportato in tabella); le fonti comuni la considerano invece un meccanismo di autenticazione del mittente. Verificare a lezione.
 
 ## OpenSSH
 

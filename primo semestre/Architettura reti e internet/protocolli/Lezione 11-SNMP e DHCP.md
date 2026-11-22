@@ -18,6 +18,10 @@ L'architettura di gestione si compone di 5 elementi cardine:
 4. **Protocollo SNMP:** protocollo di trasporto applicativo che formalizza i messaggi di query, risposta e allarme asincrono.
 5. **Structure of Management Information (SMI):** standard che stabilisce le regole di denominazione, tipizzazione e codifica delle variabili memorizzate nella MIB.
 
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-snmp-06.png" width="500">
+</div>
+
 ### Evoluzione delle versioni
 
 - **SNMPv1 (RFC 1157):** prima versione standard; utilizza l'autenticazione tramite stringa di testo condivisa (*community string*) trasmessa in chiaro sulla rete (solitamente `public` per sola lettura e `private` per scrittura). Vulnerabile a intercettazione.
@@ -29,10 +33,6 @@ L'architettura di gestione si compone di 5 elementi cardine:
   - *Controllo accessi (VACM):* definizione granulare dei diritti di lettura/scrittura su porzioni dell'albero MIB per ciascun gruppo o utente.
 
 La grossa limitazione mostrata fino alla versione SNMPv2 riguarda la sicurezza (credenziali in chiaro). SNMPv3 è la versione più recente, che corregge queste limitazioni.
-
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-snmp-06.png" width="500">
-</div>
 
 ## Structure of Management Information (SMI)
 
@@ -93,6 +93,10 @@ Per identificare una specifica variabile foglia si concatena il cammino numerico
   - Etichetta: `iso.org.dod.internet.mgmt.mib.ip.ipInReceives`
   - OID numerico: `1.3.6.1.2.1.4.3` (istanza scalare `1.3.6.1.2.1.4.3.0`)
 
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-snmp-13.png" width="500">
+</div>
+
 ## Management Information Base (MIB)
 
 *Definizione:* ogni oggetto mantiene una serie di variabili SNMP che descrivono il suo stato. La collezione di tutti i possibili oggetti in una rete è chiamata **Management Information Base**, MIB.
@@ -145,10 +149,6 @@ Tutti i comandi di gestione sono codificati come operazioni di lettura o scrittu
 MIB è un insieme di variabili e la semantica per effettuare operazioni di lettura e scrittura su di esse.
 
 MIB II è definito nell'RFC 1213. Nel documento sono definiti 175 oggetti appartenenti ai gruppi visti, con gli oggetti suddivisi per gruppo. Per ciascun oggetto viene descritta la funzione.
-
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-snmp-13.png" width="500">
-</div>
 
 ## Messaggi e operazioni SNMP
 
@@ -205,10 +205,6 @@ L'inizializzazione del client attraversa 4 fasi sequenziali scambiate in broadca
 - `DHCPRELEASE`: inviato dal client per rinunciare volontariamente e liberare l'indirizzo IP prima della scadenza naturale del lease.
 - `DHCPINFORM`: inviato da un host che possiede già un indirizzo IP configurato staticamente ma necessita di richiedere solo parametri accessori (DNS, domini di ricerca).
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-snmp-40.png" width="500">
-</div>
-
 ### Macchina a stati finiti (FSM) del client DHCP
 
 Il comportamento temporale del client è descritto da una FSM con due timer cardine:
@@ -226,7 +222,7 @@ Stati di funzionamento:
 6. `REBINDING`: il client invia messaggi `DHCPREQUEST` in modalità *broadcast* a tutti i server DHCP della rete. Se un server risponde con `DHCPACK`, il client rinnova il lease e torna in `BOUND`; se il lease scade completamente senza alcuna risposta, o in caso di `DHCPNAK`, il client deve immediatamente cessare l'uso dell'indirizzo IP e ripartire dallo stato `INIT`.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-snmp-41.png" width="500">
+  <img src="images/slide-snmp-40.png" width="500">
 </div>
 
 ### Formato del messaggio DHCP
@@ -257,6 +253,10 @@ Il pacchetto ricalca la struttura fissa dell'header BOOTP:
 - *Opzione 15 (Domain Name).*
 - *Opzioni di livello Link e IP:* Interface MTU, Broadcast address, Ethernet encapsulation.
 - *Opzioni di livello TCP e Applicativo:* Default TTL, Keepalive interval, NIS domain name, NIS server list.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-snmp-41.png" width="500">
+</div>
 
 ### DHCP Relay Agent (RFC 1542)
 

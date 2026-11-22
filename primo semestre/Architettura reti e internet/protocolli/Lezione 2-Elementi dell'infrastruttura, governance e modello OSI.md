@@ -35,12 +35,16 @@ I protagonisti di questa fase:
 ## Elementi dell'infrastruttura
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-062.png" style="width: 30%;">
+  <img src="images/slide-l2-062.png" style="width: 30%;">
 </div>
 
 Per visualizzare il percorso completo di una comunicazione: si parte dalla postazione dell'utente (home o dial-in, web client, modem, LAN, apparati di casa) e dal *user's location*, si attraversa il collegamento fino ai POP e al data center dell'ISP e si arriva al lato del contenuto online (enterprise networks, web server, server applicativi con relativo firewall e apparati legacy).
 
 **User PC:** è un PC o un dispositivo mobile multimediale equipaggiato per ricevere e inviare ogni tipo di audio e video: scheda audio, microfono e casse; video e scheda grafica (GPU); videocamera e webcam; riconoscitori vocali.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-063.png" style="width: 30%;">
+</div>
 
 **CPE, gli apparati di casa dell'utente:** sono gli apparati localizzati in casa dell'utente per connettere il PC al *local loop*, detti **Customer Premise Equipment** (CPE) — il confronto con DTE e DCE è in [[Lezione 2-Codifica dei dati, flussi trasmissivi e valutazione delle prestazioni#Gli apparecchi della comunicazione: DTE, DCE e CPE|appunti di reti]].
 
@@ -51,6 +55,10 @@ Per visualizzare il percorso completo di una comunicazione: si parte dalla posta
 
 Nello schema il blocco comprende modem, scheda di rete (NIC), il collegamento Ethernet verso casa dell'utente e i *user services* locali (DNS, email, ecc.).
 
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-065.png" style="width: 30%;">
+</div>
+
 **Local loop (carrier):** è il collegamento che connette la casa dell'utente all'ISP.  Un **ISP** (Internet Service Provider) è un'azienda o organizzazione che fornisce l'**accesso a Internet** agli utenti finali, sia privati che aziendali, dietro pagamento di un abbonamento
 
 - Linee di comunicazione (ADSL)
@@ -60,14 +68,26 @@ Nello schema il blocco comprende modem, scheda di rete (NIC), il collegamento Et
 - *Cable network*
 - *Electric power lines*
 
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-067.png" style="width: 30%;">
+</div>
+
 **ISP's data center:** è il punto di accesso all'ISP, generalmente il data center centrale. Le connessioni vengono veicolate dalle centrali del fornitore dei servizi di ultimo miglio della rete di accesso (ad esempio Telecom) al fornitore di servizi che ha il diritto di vendere il servizio all'utente.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-069.png" style="width: 30%;">
+</div>
 
 **User services:** sono i servizi che gli utenti usano durante l'accesso a Internet — Domain Name Server (BIND), host di posta (Sendmail, Postfix), servizi speciali quali SSH, web hosting dell'utente. Questi server richiedono collegamenti veloci, processori potenti e grandi quantità di memoria, e devono essere *fault tolerant* e *load balanced*.
 
 **ISP backbone:** la dorsale dell'ISP interconnette i POP dell'ISP, ciascun ISP agli altri ISP e al contenuto online. Gli elementi sono *backbone providers*, *large circuits* (circuiti in fibra dei *carrier*), router, switch SONET/SDH, gigaswitch e *network access points*. I **NAP** (Neutral Access Point) sono punti di interconnessione fra ISP diversi per ottimizzare il traffico fra operatori; nella figura compaiono anche i collegamenti in *private peering* fra reti di grande capacità.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-073.png" style="width: 30%;">
+  <img src="images/slide-l2-072.png" style="width: 30%;">
+</div>
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-073.png" style="width: 30%;">
 </div>
 
 **La gerarchia dei provider:** la stessa architettura vista per livelli, dai provider più in alto fino agli utenti in fondo. In alto compaiono i **Tier 1 Networks** e i **Tier 2 Networks**; sotto i **Tier 3 Network**, che la figura divide in *multi-homed ISP*, collegati a più di un provider superiore, e *single-homed ISP*, collegati a un unico provider; in fondo gli **utenti Internet**, business e consumatori.
@@ -84,7 +104,7 @@ Nello schema il blocco comprende modem, scheda di rete (NIC), il collegamento Et
 ## Internet governance
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-078.png" style="width: 30%;">
+  <img src="images/slide-l2-078.png" style="width: 30%;">
 </div>
 
 Chi c'è dietro Internet e chi la governa? La figura riassume l'evoluzione del governo di Internet dal 1968 al 1996: dall'epoca di ARPANET sotto DARPA e DCA si passa alla fase NSF, poi alla transizione a TCP/IP e a un ambiente multiprotocolare, con i comitati ICCB e ICB, l'IAB, l'IETF e l'IRTF che compaiono negli anni Ottanta, e infine la Internet Society.
@@ -111,15 +131,61 @@ La governance di Internet è una struttura complessa ed estremamente meritocrati
 
 ### Amministrazione di Internet
 
-I grafici descrivono come è finito lo spazio di indirizzamento:
+I grafici descrivono come è finito lo spazio di indirizzamento.
 
-- **Indirizzi IPv4 gestiti da ciascun RIR**, in termini di blocchi /8: l'asse arriva a 60 e i valori leggibili nel grafico sono 53,10, 49,94 e 11,33, quindi nessun RIR supera le poche decine di /8.
-- **Spazio IPv4 ancora disponibile in ogni RIR**, sempre in /8: i valori sono bassissimi (0,16, 0,15, 0,08, 0,07, 0,02), cioè lo spazio libero è praticamente esaurito.
-- **Spazio IPv4 emesso dagli RIR per anno**, in /8, dal 2019 al 2023, con una serie per ciascun RIR: si continua a emettere poco, perché non ce n'è.
-- **Due torte sotto il titolo "How much has been allocated to the RIRs?"**: a sinistra l'**IPv4 address space**, diviso in riserva IETF, blocchi allocati agli RIR prima di ottobre 2006 e blocchi /18+ assegnati; a destra l'**IPv6 address space**, diviso in *link-scoped unicast* /10, *unique local unicast* /7, *multicast* /8 e *global unicast* /3, con la riserva IANA di 504 blocchi /12 e le allocazioni già effettuate ai RIR (prefissi 2a00::/11 per RIPE NCC, 2600::/12 per ARIN, 2400::/12 per APNIC, 2c00::/12 per AFRINIC).
-- **Prefissi IPv6 allocati per anno dagli RIR**, dal 2019 al 2023: migliaia di prefissi l'anno, a differenza dell'IPv4.
-- **Spazio IPv6 totale allocato** da ciascun RIR, in blocchi /32: i valori in grafico sono 185.966, 136.771, 105.803, 17.221 e 10.436 /32.
-- **ASN emessi per RIR** (distinzione fra ASN a 32 bit e a 16 bit), con le emissioni del 2023 per AFRINIC, APNIC, ARIN, LACNIC e RIPE NCC.
+**Indirizzi IPv4 gestiti da ciascun RIR**, in blocchi /8: ARIN 99,08, APNIC 53,10, RIPE NCC 49,94, LACNIC 11,33, AFRINIC 7,23.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-083.png" style="width: 30%;">
+</div>
+
+**Spazio IPv4 ancora disponibile in ogni RIR**, sempre in /8: APNIC 0,15, AFRINIC 0,07, ARIN, LACNIC e RIPE NCC 0. Lo spazio libero è praticamente esaurito.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-084.png" style="width: 30%;">
+</div>
+
+**Spazio IPv4 emesso dagli RIR per anno**, in /8, dal 2019 al 2023, con una serie per ciascun RIR: si continua a emettere poco, perché non ce n'è.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-085.png" style="width: 30%;">
+</div>
+
+**Tutto lo spazio IPv6: quanto è stato allocato agli RIR?** Il grafico scompone lo spazio in tre anelli:
+
+- **/0**, l'intero spazio IPv6: riserva IETF (/1, /2+), *link-scoped unicast* /10, *unique local unicast* /7, *multicast* /8 e *global unicast* /3.
+- **Global unicast /3**: riserva IANA di 504 blocchi /12, più una tabella con riserva IANA /12, riserva IETF /23, 6to4 /16 e blocchi allocati agli RIR prima di ottobre 2006 (/17, /18+).
+- **Allocazioni agli RIR**: 2a00::/11 per RIPE NCC, 2600::/11 per ARIN, 2400::/12 per APNIC, 2800::/12 per LACNIC, 2c00::/12 per AFRINIC.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-086.png" style="width: 30%;">
+</div>
+
+**Prefissi IPv6 allocati per anno dagli RIR**, dal 2019 al 2023: migliaia di prefissi l'anno, a differenza dell'IPv4.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-087.png" style="width: 30%;">
+</div>
+
+**Spazio IPv6 totale allocato** da ciascun RIR, in blocchi /32: RIPE NCC 185.966, ARIN 136.771, APNIC 105.803, LACNIC 17.221, AFRINIC 10.436.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-088.png" style="width: 30%;">
+</div>
+
+**ASN emessi da ciascun RIR nel 2023**, divisi fra ASN a 32 bit e a 16 bit:
+
+| RIR | 32 bit | 16 bit |
+|---|---|---|
+| AFRINIC | 185 | 10 |
+| APNIC | 1769 | 17 |
+| ARIN | 193 | 854 |
+| LACNIC | 582 | 24 |
+| RIPE NCC | 1862 | 447 |
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-l2-089.png" style="width: 30%;">
+</div>
 
 ### Standard di Internet
 
@@ -147,7 +213,7 @@ Prerequisiti per l'attivazione di una intranet aziendale:
 *Vantaggi:* con la intranet le tecnologie telematiche e i servizi di Internet si diffondono orizzontalmente e verticalmente nella struttura aziendale, divenendo momento di grande partecipazione, formazione e aggiornamento. Internet ha come periferica un computer e da qui origina la sua straordinaria capacità di trasmettere, integrare e rappresentare qualsiasi tipo di informazione; sono inoltre tecnologie che portano all'ottimizzazione e alla riduzione dei costi di comunicazione e marketing.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-095.png" style="width: 30%;">
+  <img src="images/slide-l2-095.png" style="width: 30%;">
 </div>
 
 Nello schema ci sono tre sedi (LAN sede A, LAN sede B, LAN sede C), ciascuna con il proprio router e il proprio firewall, che si collegano fra loro attraverso Internet usando tunnel **VPN**: è il caso tipico di una organizzazione multi-sede che estende la propria rete privata sopra la rete pubblica.
@@ -165,7 +231,7 @@ Con *extranet* si identificano le risorse hardware e software che realizzano la 
 Normalmente sono servizi posti in un'area in cui il controllo del firewall è più lasco, la **De-Militarized Zone** (DMZ): i server in quest'area non sono ritenuti critici e i servizi sono in genere replicati da server protetti.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-098.png" style="width: 30%;">
+  <img src="images/slide-l2-098.png" style="width: 30%;">
 </div>
 
 Lo schema mostra la posizione della DMZ: la LAN interna, il firewall e il gateway che fanno da confine, e l'area intermedia in cui stanno i server esposti verso l'esterno.
@@ -177,13 +243,13 @@ Il confronto approfondito con TCP/IP e la struttura dei livelli sono in [[Lezion
 *Definizione:* il modello ISO/OSI (Open Systems Interconnection) è un modello concettuale che definisce il modo in cui le reti inviano i dati dal mittente al destinatario. È utilizzato per descrivere ogni componente nell'ambito della comunicazione dei dati, in modo da permettere la definizione di regole e standard riguardo alle applicazioni e all'infrastruttura di rete. Il modello contiene sette livelli disposti concettualmente dal basso verso l'alto: **Fisico, Collegamento Dati, Rete, Trasporto, Sessione, Presentazione, Applicazione**.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-101.png" style="width: 30%;">
+  <img src="images/slide-l2-101.png" style="width: 30%;">
 </div>
 
 Lo schema mette in fila **End System A**, un **Transit System** e **End System B**: per ogni livello è disegnato il blocco relativo al protocollo (`Application protocol`, `Presentation protocol`, `Session protocol`, `Transport protocol`, `Network protocol`, `Datalink protocol`, `Physical protocol`) e, fra un livello e l'altro, l'*interface* che li mette in comunicazione sulla stessa macchina. Il transit system si occupa dei livelli di rete, mentre i livelli più alti restano fra i due sistemi terminali.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-102.png" style="width: 30%;">
+  <img src="images/slide-l2-102.png" style="width: 30%;">
 </div>
 
 La tabella grande ha quattro colonne: livello, protocolli ed esempi di funzioni, apparato centrale e il corrispettivo modello DOD. In sintesi, livello per livello:
@@ -197,11 +263,8 @@ La tabella grande ha quattro colonne: livello, protocolli ed esempi di funzioni,
 - **Physical (1)**: la struttura fisica (cavi, hub), codifica dei dati, attacco al mezzo fisico, tecnica di trasmissione, *baseband* o *broadband*, bit e volt.
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-103.png" style="width: 30%;">
+  <img src="images/slide-l2-103.png" style="width: 30%;">
 </div>
 
 Il confronto finale fra i due modelli: i livelli Application, Presentation e Session dell'OSI corrispondono alla **Application** del TCP/IP, che raccoglie i protocolli di servizio DHCP, DNS, FTP, HTTP, HTTPS, POP, SMTP, SSH; il Transport OSI si divide in **TCP** e **UDP**; il Network corrisponde alla parte **Internet** con gli indirizzi IPv4 e IPv6; il Data Link e il Physical diventano **Network Access**, basato sull'indirizzo MAC.
-
-> [!todo] Immagini sbagliate da sostituire: slide-062 (mostra formato pacchetto RIP, serve schema comunicazione ISP), slide-073 (mostra timer RIP, serve gerarchia provider Tier 1/2/3), slide-078 (mostra BGP, serve governance Internet), slide-095 (mostra header BGP, serve intranet VPN), slide-098 (mostra BGP Notification, serve DMZ extranet), slide-101 (mostra show ip bgp summary, serve modello OSI), slide-102 (mostra BGP loopback, serve tabella OSI/TCP-IP), slide-103 (mostra eBGP multihop, serve confronto OSI/TCP-IP). Le immagini corrette non esistono nelle cartelle images: estrarle dai pdf di riferimento.
-
 

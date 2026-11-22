@@ -9,16 +9,16 @@ Gli utenti memorizzano e utilizzano nomi simbolici (*hostname*), mentre i protoc
 
 Internet adotta una suddivisione gerarchica per **organizzazione**, indipendente dalla topologia fisica dei collegamenti: ciascuna organizzazione amministra la propria porzione di albero in piena autonomia.
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-dns-04.png" width="500">
-</div>
-
 **Nome a dominio pienamente qualificato (FQDN):**
 Sequenza di etichette (*labels*) separate dal carattere punto (`.`), lette da sinistra verso destra dal nodo foglia fino alla radice (es. `dmi.unipg.it.`, dove il punto finale rappresenta la radice ed è normalmente omesso nella digitazione comune):
 
 - Profondità massima dell'albero: 127 livelli.
 - Lunghezza massima di ciascuna etichetta: 63 byte (caratteri).
 - Lunghezza massima complessiva dell'FQDN: 255 byte.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/Pasted image 20261120091627.png" width="400">
+</div>
 
 ### Classificazione dei Top-Level Domains (TLD)
 
@@ -29,6 +29,10 @@ I domini di primo livello sono governati da ICANN (storicamente da IANA) e si su
 3. **Infrastrutturali:** dominio riservato `.arpa`, impiegato per la risoluzione inversa (*Reverse DNS*) e per parametri architetturali del routing Internet.
 
 *Domini riservati (RFC 2606):* per scopi di test e documentazione sono permanentemente riservati `.example`, `.invalid`, `.localhost`, `.test`.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-dns-04.png" width="500">
+</div>
 
 Si pensava (impropriamente) che senza l'aggiunta di nuovi nomi, il DNS sarebbe collassato. Ora il proliferare dei nomi sta creando grossi problemi legali. Diventa impossibile proteggere un brand in questo modo.
 

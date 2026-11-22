@@ -45,10 +45,6 @@ L'intestazione IPv6 è stata ripulita da tutti i campi variabili e opzionali di 
 7. **Source Address (16 byte / 128 bit):** indirizzo IPv6 del nodo mittente.
 8. **Destination Address (16 byte / 128 bit):** indirizzo IPv6 del nodo destinatario finale (o dell'eventuale router intermedio in caso di Routing Header).
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-ipv6-09.png" width="500">
-</div>
-
 ### Extension Headers
 
 Le opzioni in IPv6 non appesantiscono l'header principale: vengono inserite tra l'header base e il payload di trasporto concatenandole a lista collegata tramite il puntatore *Next Header*:
@@ -66,6 +62,10 @@ Le opzioni in IPv6 non appesantiscono l'header principale: vengono inserite tra 
 
 *Ordine raccomandato degli header nel pacchetto:*
 IPv6 Header $\rightarrow$ Hop-by-Hop Options $\rightarrow$ Destination Options (se Routing presente) $\rightarrow$ Routing $\rightarrow$ Fragment $\rightarrow$ Authentication Header (AH) $\rightarrow$ Encapsulating Security Payload (ESP) $\rightarrow$ Destination Options $\rightarrow$ Header di Livello Superiore (TCP/UDP).
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-ipv6-09.png" width="500">
+</div>
 
 ## Notazione e sintassi degli indirizzi IPv6
 
@@ -223,10 +223,6 @@ Modalità operative:
 - **Transport Mode (Host-to-Host):** solo il payload di livello superiore (TCP/UDP e dati) viene cifrato o autenticato; l'header IPv6 rimane invariato, consentendo il routing ordinario sui nodi pubblici intermedi.
 - **Tunnel Mode (Network-to-Network / VPN):** l'intero pacchetto IPv6 originale (inclusa la sua intestazione) viene cifrato e incapsulato all'interno di un nuovo pacchetto IPv6 con un nuovo header esterno. Utilizzato per realizzare Virtual Private Network (VPN) tra router di confine, accessi remoti e collegamenti sicuri.
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-ipv6-34.png" width="500">
-</div>
-
 ## Meccanismi di transizione e coesistenza con IPv4
 
 Poiché la transizione globale da IPv4 a IPv6 non può avvenire con un passaggio istantaneo (*flag day*), sono adottati tre approcci di coesistenza:
@@ -271,3 +267,7 @@ Poiché la transizione globale da IPv4 a IPv6 non può avvenire con un passaggio
 | **Configurazione indirizzo IP** | Manuale o tramite [[Lezione 11-SNMP e DHCP#Protocollo DHCP|DHCP]] | SLAAC (Stateless plug-and-play), DHCPv6, oppure manuale |
 | **Trasmissione Broadcast** | Presente nativamente | Totalmente assente; sostituito dal traffico Multicast scoped |
 | **Supporto alla sicurezza** | Opzionale e aggiunto a posteriori (IPsec applicato su IPv4) | Integrato nativamente tramite Extension Headers AH ed ESP |
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/slide-ipv6-34.png" width="500">
+</div>

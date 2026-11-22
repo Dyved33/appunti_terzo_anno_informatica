@@ -64,7 +64,7 @@ Le reti wireless sono reti di comunicazione mobili private o reti di comunicazio
 	- LTE (Long Term Evolution)
 
 <div style="display: flex; justify-content: center;">
-  <img src="images/slide-ret-44.png" style="width: 30%;">
+  <img src="images/topologie-10.png" style="width: 30%;">
 </div>
 
 Nello schema le tecnologie wireless sono riportate con le rispettive bande di frequenza: WAN a 400 e 800 MHz, IEEE 802.20 a 900 MHz, 2,5 e 3,6 GHz proposti, MAN, Wi-Fi mesh, WiMAX (802.16), MeshNetworks, wireless LAN Wi-Fi, Ethernet e UWB.
@@ -82,7 +82,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete ad albero
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-ret-56.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-12.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Stazioni a vari livelli: livello centrale di massima importanza; fornisce struttura semplice ma vulnerabile.
@@ -101,7 +101,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-ret-53.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-14.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Esempio di vecchio schema di ethernet LAN con cavo 10BASE-2, dove 10 = 10 Mb/s, chiamato <i>thin-net</i>. Queste reti richiedevano anche che una speciale terminazione (una impedenza da 40 o 50 Ohm) fosse installata alla fine dei segmenti del cavo. Se questi attacchi venivano accidentalmente rimossi o si guastavano, quell'intero segmento di rete smetteva di funzionare. Queste tecnologie cablate richiedevano giunti metallici di discrete dimensioni denominati connettori BNC.
@@ -111,7 +111,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete a stella
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-ret-54.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-15.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Ogni nodo è connesso con un collegamento punto-a-punto ad un dispositivo centrale, è simile alla rete ad albero. Risulta più economica di quella a maglia completa (<i>mesh</i>). Se un collegamento si interrompe, solo il nodo collegato ne subisce le conseguenze.
@@ -130,7 +130,7 @@ La topologia di una rete è la configurazione geometrica dei collegamenti fra i 
 ## Rete ad anello
 <div style="display: flex; align-items: flex-start; gap: 20px;">
   <div style="flex: 1;">
-    <img src="images/slide-ret-55.png" style="width: 100%; border-radius: 8px;">
+    <img src="images/topologie-17.png" style="width: 100%; border-radius: 8px;">
   </div>
   <div style="flex: 1.5;">
   Molto utilizzata in passato in ambito LAN, come <i>token ring</i> IEEE802.5: ogni nodo ha un collegamento punto-a-punto con solo due altri nodi (precedente e successivo). Trasmissione unidirezionale: ogni nodo ha un ripetitore che rigenera segnale; di facile installazione e configurazione, con semplice isolamento guasti; tuttavia se il collegamento principale si interrompe, la rete diventa non utilizzabile. Si noti che si può ovviare a quest'ultima eventualità prevedendo un secondo anello interno.
