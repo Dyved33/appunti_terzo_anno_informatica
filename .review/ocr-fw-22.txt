@@ -1,9 +1,0 @@
-Due filosofie
-
-° Default deny:
-
-* Tutto quello che non è espressamente ammesso è
-proibito
-° Default permit:
-* Tutto quello che non è espressamente proibito è
-ammesso

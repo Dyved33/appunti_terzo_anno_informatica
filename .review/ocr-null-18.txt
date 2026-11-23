@@ -1,8 +1,0 @@
-o e valori nulli
-
-Infine, la tabella di verita' le tabelle di verita’ nella logica a tre valori per
-gli operatori booleani sono:
-
-Raffaella Gentilini
-
-9/12

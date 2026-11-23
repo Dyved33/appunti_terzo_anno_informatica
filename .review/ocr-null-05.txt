@@ -1,3 +1,0 @@
-T,U, N, \ e valori nulli
-
-Raffaella Gentilini Basi di Dati 3/12

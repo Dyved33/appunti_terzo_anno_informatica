@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5d9dc1cf4e53ec87",
+        "id": "65738be9c89e12a7",
         "type": "tabs",
         "children": [
           {
-            "id": "8f1038fe0c285b2a",
+            "id": "6f9058b4e3b83385",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "e66decff1dc62e35",
+            "id": "7eb375b9c64ebc67",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,7 +36,7 @@
             }
           },
           {
-            "id": "dd74ed9bb31b3491",
+            "id": "6f9b19c2c7d4d3ea",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -50,7 +50,7 @@
             }
           },
           {
-            "id": "6e910a0e3752c38b",
+            "id": "956ad92a7542e627",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -64,7 +64,7 @@
             }
           },
           {
-            "id": "dde38dbbc72c91b6",
+            "id": "2ee320a6b8d2d52f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -139,7 +139,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 447.8203125,
+    "width": 266.5,
     "collapsed": true
   },
   "right": {
@@ -254,46 +254,39 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "zk-prefixer:Create new unique note": false,
+      "bases:Create new base": false,
       "audio-recorder:Start/stop recording": false,
-      "workspaces:Manage workspace layouts": false,
-      "bases:Create new base": false
+      "zk-prefixer:Create new unique note": false,
+      "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "8f1038fe0c285b2a",
+  "active": "6f9058b4e3b83385",
   "lastOpenFiles": [
-    "Architettura reti e internet/protocolli/Lezione 7-Protocolli di routing.md",
-    "Architettura reti e internet/protocolli/Lezione 6-UDP e TCP e routing.md",
-    "Architettura reti e internet/protocolli/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
     "Architettura reti e internet/protocolli/Lezione 12-IPv6.md",
     "Architettura reti e internet/protocolli/Lezione 11-SNMP e DHCP.md",
     "Architettura reti e internet/protocolli/Lezione 10-NIS e NFS.md",
     "Architettura reti e internet/protocolli/Lezione 9-DNS.md",
     "Architettura reti e internet/protocolli/Lezione 8-Telnet, SSH e FTP.md",
-    "Architettura reti e internet/protocolli/Lezione 4-Mezzi trasmissivi wireless, data link layer e topologie di rete.md",
-    "Architettura reti e internet/protocolli/Lezione 3-Standard, modello ISO OSI e mezzi trasmissivi.md",
-    "Architettura reti e internet/protocolli/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
-    "Architettura reti e internet/reti/images/topologie-17.png",
-    "Architettura reti e internet/reti/images/topologie-15.png",
-    "Architettura reti e internet/reti/images/topologie-14.png",
-    "Architettura reti e internet/reti/images/topologie-12.png",
-    "Architettura reti e internet/reti/images/topologie-10.png",
-    "Architettura reti e internet/protocolli/images/slide-l3-106.png",
-    "Architettura reti e internet/protocolli/images/slide-l3-105.png",
-    "Architettura reti e internet/protocolli/images/slide-l3-104.png",
-    "Architettura reti e internet/protocolli/images/slide-l2-103.png",
-    "Architettura reti e internet/protocolli/images/slide-l2-102.png",
-    "Architettura reti e internet/protocolli/Lezione 1-Internetworking, il villaggio globale e la storia di Internet.md",
+    "Architettura reti e internet/protocolli/Lezione 13-Posta elettronica.md",
+    "Pasted image 20261120105100.png",
+    "Pasted image 20261120104951.png",
+    "Pasted image 20261120091627.png",
     "Architettura reti e internet/reti/Lezione 5-Serie di Fourier, filtri e modulazione.md",
     "Architettura reti e internet/reti/Lezione 4-Reti mesh, protocolli e segnali.md",
     "Architettura reti e internet/reti/Lezione 3-Tipi di connessione e topologie di rete.md",
-    "Architettura reti e internet/protocolli/Lezione 13-Posta elettronica.md",
+    "Intelligenza artificiale/images/Pasted image 20261119225330.png",
     "Intelligenza artificiale/Lezione 11-k-NN.md",
     "Intelligenza artificiale/Lezione 10-Overfitting, valutazione dei classificatori e classi sbilanciate.md",
+    "Pasted image 20261119225330.png",
     "Programmazione web e mobile con laboratorio/Lezione 15-Connessione al DB.md",
     "Programmazione web e mobile con laboratorio/pwm_lezione15.pdf",
     "Programmazione web e mobile con laboratorio/esercizi/serverdb.js",
     "Programmazione web e mobile con laboratorio/esercizi/db.html",
+    "Intelligenza artificiale/images/Pasted image 20261119180146.png",
+    "Intelligenza artificiale/images/Pasted image 20261119180125.png",
+    "Intelligenza artificiale/images/Pasted image 20261119180113.png",
+    "Intelligenza artificiale/images/Pasted image 20261119180103.png",
+    "Intelligenza artificiale/images/Pasted image 20261119180020.png",
     "Intelligenza artificiale/chap4_naive_bayes.pdf",
     "Intelligenza artificiale/chap4_knn.pdf",
     "Architettura reti e internet/protocolli/posta elettronica.pdf",
@@ -304,8 +297,15 @@
     "Architettura reti e internet/internet/Lezione 5-Internet Protocol, indirizzamento IPv4, subnetting e protocolli di supporto (ARP, ICMP, IGMP).md",
     "Architettura reti e internet/internet/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
     "Architettura reti e internet/internet/ArchitetturaRetiDef_I_i.pdf",
+    "Untitled.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 15-Subquery e interrogazioni nidificate.md",
+    "Architettura reti e internet/reti/Lezione 8-Limiti di velocità, codifica di linea e controllo degli errori.md",
+    "Architettura reti e internet/reti/Lezione 8-.md",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 15-.md",
     "Basi di dati e sistemi informativi con laboratorio/lezione6.pdf",
     "Basi di dati e sistemi informativi con laboratorio/BDlezioneERChap3.pdf",
+    "Basi di dati e sistemi informativi con laboratorio/Lezione 14-Progettazione concettuale e modello ER.md",
+    "Sicurezza informatica/Laboratorio/IDS&IDPS.md",
     "Architettura reti e internet/reti/parte_8.pdf"
   ]
 }

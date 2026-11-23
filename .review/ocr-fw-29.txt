@@ -1,4 +1,0 @@
-Tipi di Firewalls
-
-* Packet-filtering routers
-* Application-proxy gateways
