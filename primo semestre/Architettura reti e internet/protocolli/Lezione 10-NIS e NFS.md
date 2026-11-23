@@ -15,10 +15,6 @@ NIS realizza un database di amministrazione che permette un controllo centralizz
 
 L'utilizzo di NIS è completamente trasparente per l'utente finale.
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-dns-47.png" width="500">
-</div>
-
 ### NIS Maps
 
 NIS converte i principali file di configurazione ASCII di UNIX in database indicizzati basati sul formato DBM/Berkeley DB, denominati **NIS Maps**. L'amministratore modifica i file in un unico punto centrale sul server, e le mappe binarie generate consentono ricerche veloci per chiave (es. per nome utente o per identificativo numerico).

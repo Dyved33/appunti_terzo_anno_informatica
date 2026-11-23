@@ -5,7 +5,7 @@
 Gli utenti memorizzano e utilizzano nomi simbolici (*hostname*), mentre i protocolli di rete identificano le interfacce tramite indirizzi IP numerici. L'associazione tra nomi e indirizzi può essere organizzata secondo due modelli:
 
 - **Spazio dei nomi piatto:** nomi costituiti da una singola stringa non strutturata. Non scala: richiede un'autorità centrale che garantisca l'univocità globale, generando colli di bottiglia e conflitti di denominazione.
-- **Spazio dei nomi gerarchico:** nomi strutturati ad albero invertito con radice convenzionale nulla `.`. La suddivisione può seguire la topologia fisica della rete oppure la struttura delle organizzazioni (indipendente dalle interconnessioni fisiche delle reti).
+- **Spazio dei nomi gerarchico:** nomi strutturati ad albero con radice convenzionale nulla `.`. La suddivisione può seguire la topologia fisica della rete oppure la struttura delle organizzazioni (indipendente dalle interconnessioni fisiche delle reti).
 
 Internet adotta una suddivisione gerarchica per **organizzazione**, indipendente dalla topologia fisica dei collegamenti: ciascuna organizzazione amministra la propria porzione di albero in piena autonomia.
 
@@ -391,9 +391,3 @@ dns.cineca.net.                                 2502            IN              
 3. **Ottimizzazione del traffico di rete:** massimizzazione dell'uso della memoria cache su resolver e server intermedi per ridurre la latenza e il traffico sui server di radice.
 4. **Unicità metodologica:** identico meccanismo sintattico e protocollare per risoluzione diretta e inversa.
 5. **Estensibilità:** supporto a nuove tipologie di record (IPv6, chiavi crittografiche DNSSEC) senza alterare l'architettura di base.
-
-> [!info] Sintesi:
-> - DNS traduce nomi simbolici in indirizzi IP attraverso uno spazio dei nomi gerarchico organizzato per organizzazione e gestito da ICANN/IANA.
-> - I zone file contengono i Resource Records (SOA, NS, A, AAAA, PTR, MX, CNAME); BIND è l'implementazione standard con demone `named` in ascolto sulla porta 53 (TCP/UDP).
-> - La risoluzione può essere ricorsiva (il server si fa carico di tutto) o iterativa (il server restituisce referral); i root name server (13, da A a M) sono il punto di partenza.
-> - Il resolver client si configura in `/etc/resolv.conf`; `dig`, `host` e `nslookup` sono gli strumenti di diagnosi.

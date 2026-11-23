@@ -236,13 +236,11 @@ Ciascun interlocutore genera una coppia di chiavi matematicamente correlate:
 
 La crittografia asimmetrica risolve tre requisiti di sicurezza a seconda di quale chiave viene impiegata nella cifratura:
 
-| Meccanismo | Cifratura eseguita con | Decifratura eseguita con | Riservatezza (*Confidentiality*) | Autenticazione (*Authentication*) | Non ripudio (*Non-repudiation*) |
-|---|---|---|---|---|---|
-| Cifratura convenzionale | Chiave pubblica del destinatario | Chiave privata del destinatario | Sì | No | No |
-| Firma digitale | Chiave privata del mittente | Chiave pubblica del mittente | No | No | Sì |
-| Firma e Cifratura combinate | Privata mittente + Pubblica destinatario | Privata destinatario + Pubblica mittente | Sì | Sì | Sì |
-
-> [!todo] Firma digitale e autenticazione: la slide del docente indica *Authentication: No* (riportato in tabella); le fonti comuni la considerano invece un meccanismo di autenticazione del mittente. Verificare a lezione.
+| Meccanismo                  | Cifratura eseguita con                   | Decifratura eseguita con                 | Riservatezza (*Confidentiality*) | Autenticazione (*Authentication*) | Non ripudio (*Non-repudiation*) |
+| --------------------------- | ---------------------------------------- | ---------------------------------------- | -------------------------------- | --------------------------------- | ------------------------------- |
+| Cifratura convenzionale     | Chiave pubblica del destinatario         | Chiave privata del destinatario          | Sì                               | No                                | No                              |
+| Firma digitale              | Chiave privata del mittente              | Chiave pubblica del mittente             | No                               | Sì                                | Sì                              |
+| Firma e Cifratura combinate | Privata mittente + Pubblica destinatario | Privata destinatario + Pubblica mittente | Sì                               | Sì                                | Sì                              |
 
 ## OpenSSH
 
