@@ -1,8 +1,8 @@
 import { Plugin } from "@opencode/plugin"
 
-// Preferisce, in ordine, i migliori modelli free noti per la scrittura delle
-// note. Vede solo i modelli presenti nel catalogo corrente di OpenCode, non i
-// saldi di credito dei provider.
+// Preferisce, in ordine, i modelli free noti per la scrittura delle note.
+// Lascia visibili gli altri modelli: il catalogo non espone saldo o quota
+// residua, quindi la gratuità va controllata nei dati di costo disponibili.
 const preferred = [
   ["opencode", "nemotron-3.5-super-vl-free"],
   ["opencode", "nemotron-3-ultra-free"],
@@ -29,11 +29,7 @@ export default Plugin.define({
         const isPreferred = preferred.some(
           ([providerID, modelID]) => providerID === model.providerID && modelID === model.id,
         )
-        if (!isPreferred || !free(model) || !model.capabilities.tools) {
-          editor.update(model.providerID, model.id, (draft) => {
-            draft.enabled = false
-          })
-        } else if (model.enabled) {
+        if (isPreferred && free(model) && model.capabilities.tools && model.enabled) {
           eligible.add(`${model.providerID}/${model.id}`)
         }
       }

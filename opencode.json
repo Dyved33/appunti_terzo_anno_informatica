@@ -16,22 +16,21 @@
       "permissions": [
         { "action": "subagent", "resource": "*", "effect": "deny" },
         { "action": "subagent", "resource": "revisore", "effect": "allow" },
+        { "action": "obsidian_search_*", "resource": "*", "effect": "allow" },
+        { "action": "fetch_*", "resource": "*", "effect": "allow" },
         { "action": "shell", "resource": "python3 .opencode/scripts/*", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.py", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.js", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.ts", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.cpp", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.c", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.java", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.html", "effect": "allow" },
-        { "action": "edit", "resource": "*/esercizi/**/*.css", "effect": "allow" }
+        { "action": "shell", "resource": "*python3 .opencode/scripts/dividi-appunti.py*--scrivi*", "effect": "ask" },
+        { "action": "edit", "resource": "primo semestre/**/*.md", "effect": "allow" },
+        { "action": "edit", "resource": "*/esercizi/*", "effect": "deny" }
       ]
     },
     "revisore": {
       "mode": "all",
       "permissions": [
         { "action": "edit", "resource": "*", "effect": "deny" },
-        { "action": "subagent", "resource": "*", "effect": "deny" }
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+        { "action": "obsidian_search_*", "resource": "*", "effect": "allow" },
+        { "action": "fetch_*", "resource": "*", "effect": "allow" }
       ]
     }
   },
@@ -39,6 +38,7 @@
   "formatter": false,
   "plugins": [
     "opencode-parser",
+    "@tarquinen/opencode-dcp@latest",
     {
       "package": "@plannotator/opencode@0.28.61",
       "options": { "workflow": "plan-agent", "planningAgents": ["plan"] }
@@ -54,25 +54,12 @@
       "fetch": { "type": "local", "command": ["mcp-server-fetch"], "disabled": false }
     }
   },
-  "tools": {
-    "obsidian-search*": "deny",
-    "fetch*": "deny"
-  },
-  "agent": {
-    "appunti": {
-      "tools": { "obsidian-search*": "allow", "fetch*": "allow" }
-    },
-    "revisore": {
-      "tools": { "obsidian-search*": "allow", "fetch*": "allow" }
-    }
-  },
   "compaction": {
     "auto": true,
-    "keep": { "tokens": 18000 },
-    "background": true
+    "keep": { "tokens": 12000 },
+    "background": false
   },
-  "subagent_depth": 1,
-  "experimental": { "todo": true },
+  "experimental": { "todo": true, "subagent_depth": 1 },
   "watcher": {
     "ignore": [
       "**/*.png",
@@ -91,7 +78,7 @@
     { "action": "external_directory", "resource": "*", "effect": "deny" },
     { "action": "doom_loop", "resource": "*", "effect": "deny" },
     { "action": "edit", "resource": "*", "effect": "deny" },
-    { "action": "edit", "resource": "*.md", "effect": "allow" },
+    { "action": "edit", "resource": "primo semestre/**/*.md", "effect": "allow" },
     { "action": "edit", "resource": "*/esercizi/*", "effect": "deny" },
     { "action": "edit", "resource": "AGENTS.md", "effect": "deny" },
     { "action": "edit", "resource": ".opencode/stile.md", "effect": "deny" },
@@ -140,8 +127,8 @@
     { "action": "shell", "resource": "git show*", "effect": "allow" },
     { "action": "shell", "resource": "obsidian-mcp-search status*", "effect": "allow" },
     { "action": "shell", "resource": "*env*", "effect": "deny" },
-    { "action": "mcp.use", "resource": "obsidian-search*", "effect": "allow" },
-    { "action": "mcp.use", "resource": "fetch*", "effect": "allow" },
+    { "action": "obsidian_search_*", "resource": "*", "effect": "deny" },
+    { "action": "fetch_*", "resource": "*", "effect": "deny" },
     { "action": "webfetch", "resource": "*", "effect": "allow" },
     { "action": "websearch", "resource": "*", "effect": "allow" },
     { "action": "subagent", "resource": "*", "effect": "allow" },

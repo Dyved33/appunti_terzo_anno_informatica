@@ -15,3 +15,4 @@
 - [[Lezione 13-Gruppi, funzioni d'aggregazione, GROUP BY e HAVING|Gruppi, funzioni d'aggregazione, GROUP BY e HAVING]]
 - [[Lezione 14-Progettazione concettuale e modello ER|Progettazione concettuale e modello ER]] — Modello ER, entità, attributi, chiavi, relazioni, cardinalità, partecipazione, entità deboli, fasi di progettazione
 - [[Lezione 15-Subquery e interrogazioni nidificate|Subquery e interrogazioni nidificate]] — Subquery, predicati IN/ANY/ALL/EXISTS, subquery correlate, divisione relazionale, aggiornamento dati, CHECK
+- [[Lezione 16-Traduzione del modello ER-EER in schemi relazionali|Traduzione del modello ER/EER in schemi relazionali]] — Traduzione costrutti ER ed EER in schemi relazionali (entità forti/deboli, associazioni 1:1, 1:N, M:N, attributi multivalore, n-arie, specializzazione/generalizzazione)

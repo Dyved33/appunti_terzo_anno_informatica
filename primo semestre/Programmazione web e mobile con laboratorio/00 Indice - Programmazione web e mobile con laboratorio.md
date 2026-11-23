@@ -15,3 +15,4 @@
 - [[Lezione 13-Express.js, middleware e esercizi pratici|Express.js, middleware e esercizi pratici]] — Routing pratico, middleware (404, logging, cookie-parser), `express.static`, HTML statico vs dinamico, Esercizi 1-5
 - [[Lezione 14-AJAX|Ajax — chiamate asincrone e fetch]] — Ajax, chiamate asincrone e fetch, `fetch`, `async`/`await`, `express.json()`
 - [[Lezione 15-Connessione al DB|Connessione al DB — mysql2, pool di connessioni e transazioni]] — Connessione al db con Node.js, libreria mysql2, connection pool e transazioni
+- [[Lezione 16-Gestione login|Gestione login (JWT e autenticazione)]] — Cookie vs sessione, JWT (header/payload/signature), funzione di login, pagine protette, logout, esercizio, problemi di sicurezza

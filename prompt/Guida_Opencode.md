@@ -2,14 +2,14 @@
 
 ## Avvio
 
-OpenCode va avviato dalla cartella generale degli appunti, quella che contiene `opencode.json`:
+Avvia OpenCode 2 (`opencode2`), non il vecchio binario `opencode` 1.x. In questa macchina `opencode2 --version` riporta `2.4.0`; `opencode --version` è il binario V1 e non accetta i permessi V2 di questo file.
 
 ```bash
 cd percorso/della/cartella/appunti
-opencode
+opencode2
 ```
 
-OpenCode 2 rilegge automaticamente `opencode.json` e i file in `.opencode/` quando cambiano; se un agent, un command o un plugin non si aggiorna, usa `/reload` oppure riavvia.
+Questa configurazione usa il formato OpenCode 2 (`plugins`, permessi V2 e plugin `@opencode/plugin`). OpenCode 2 rilegge automaticamente `opencode.json` e i file in `.opencode/` quando cambiano; se un agent, un command o un plugin non si aggiorna, usa `/reload` oppure riavvia.
 
 ## Come è organizzato
 
@@ -18,8 +18,8 @@ OpenCode 2 rilegge automaticamente `opencode.json` e i file in `.opencode/` quan
 | `AGENTS.md` | le poche regole che valgono sempre. Viene letto a ogni sessione |
 | `.opencode/stile.md` | come vanno scritte le note. Viene caricato a ogni sessione |
 | `.opencode/regole.md` | sintesi delle due skill di scrittura, caricata a ogni sessione |
-| `.opencode/agents/` | `appunti` per scrittura e `revisore` selezionabile come primario o invocabile come subagent |
-| `.opencode/plugins/free-model-router/` | abilita tutti i modelli gratuiti, disabilita quelli a pagamento e sceglie il default; non invia richieste di prova |
+| `.opencode/agents/` | `appunti` per l'esecuzione e `revisore` selezionabile come primario o invocabile come subagent; l'agent iniziale è il `plan` integrato |
+| `.opencode/plugins/free-model-router/` | sceglie come default il primo modello preferito che risulta gratuito e supporta gli strumenti; lascia visibili tutti gli altri modelli |
 | `.opencode/commands/` | i 7 command |
 | `.opencode/scripts/` | i 5 script: lettura slide, lettura libri, controllo strutturale, controllo perdite, divisione dei file unici |
 | `.opencode/dcp.jsonc` | come il plugin DCP pota il contesto della sessione |
@@ -34,16 +34,17 @@ Per cambiare lo stile delle note si modifica solo `.opencode/stile.md`.
 
 ## I modelli
 
-Non c'è un modello fisso in `opencode.json`: il plugin locale abilita tutti i modelli gratuiti del catalogo corrente e disabilita quelli a pagamento. La lista `preferred` in `.opencode/plugins/free-model-router/index.ts` serve solo a scegliere il default: non è più una whitelist. Il plugin non invia richieste di prova. Il catalogo non espone crediti residui o stato di salute in tempo reale: questi errori dipendono dal fallback.
+Il plugin locale preferisce un modello gratuito noto e compatibile con gli strumenti, ma lascia visibili tutti gli altri modelli: puoi sceglierne uno a pagamento o non presente nella lista. Il catalogo non espone crediti residui o stato di salute in tempo reale; la gratuità effettiva e la disponibilità dipendono dal provider.
 I modelli free senza supporto ai tool restano visibili, ma non vengono scelti come default.
 
 | Modello | A che cosa serve |
 |---|---|
 | `opencode/nemotron-3.5-super-vl-free` | default: scrive e rivede le note; supporta anche immagini e documenti |
-| `opencode/nemotron-3-ultra-free` | seconda scelta, disciplinata nell'uso dei tool; compattazione del contesto |
-| `opencode/glm-5.3-flash-free` | titolo della sessione e agent `plan`; modello flash, adatto ai compiti brevi |
-| `openrouter/*:free` | 21 modelli OpenRouter `:free`, tutti visibili e selezionabili |
-| `ollama/*` | 15 modelli locali, ultima risorsa offline e senza quota (GPU GTX 1050) |
+| `opencode/nemotron-3-ultra-free` | seconda scelta preferita, disciplinata nell'uso degli strumenti |
+| `openrouter/*:free` | modelli gratuiti OpenRouter disponibili nel catalogo corrente |
+| `ollama/*` | modelli locali disponibili, offline e senza quota (GPU GTX 1050) |
+
+`plan` e `appunti` usano il modello selezionato per la sessione: nel progetto non ci sono override di modello per agente, titolo o compattazione.
 
 Il free tier di OpenCode non chiede credenziali. OpenRouter ne chiede una (già salvata). Gli altri provider gratuiti si possono aggiungere con `bash ~/.config/opencode/scripts/connect-free-providers.sh`: per ogni provider il comando stampa il link per creare la key e poi la chiede.
 
@@ -81,12 +82,12 @@ I server MCP non sono globali per tutti i turni: il loro schema tool viene invia
 |---|---|---|
 | `opencode-parser` | OCR e parsing di immagini e documenti | già installato |
 | `@tarquinen/opencode-dcp` | Potatura del contesto e deduplica chiamate | già installato, tarato in `.opencode/dcp.jsonc` |
-| `@plannotator/opencode` | Piano interattivo con Plannotator | già installato |
-| `@azumag/opencode-rate-limit-fallback` | Fallback automatico su modello secondario | già installato, versione 2.1.1 |
+| `@plannotator/opencode@0.28.61` | Piano interattivo con Plannotator | versione fissata perché è quella verificata funzionante in questo setup |
+| `@azumag/opencode-rate-limit-fallback@2.1.0` | Fallback automatico su modello secondario | versione V2 dichiarata nel progetto |
 Per installare un plugin mancante:
 
 ```bash
-opencode plugin add <nome-plugin>
+opencode2 plugin add <nome-plugin>
 ```
 
 Poi riavvia OpenCode.
@@ -111,7 +112,7 @@ ollama/qwen2.5:3b
 
 Il passaggio conserva l'agente attivo, la sessione e il contesto e segue l'ordine statico qui sopra. Dopo un passaggio completo senza un modello utilizzabile, la richiesta si ferma: non riparte in ciclo e non resta in attesa fino a un'ora. I modelli scelti manualmente ma assenti dalla catena vengono ritentati sullo stesso modello dopo il cooldown (`otherModels: "wait"`, 30 secondi, con backoff crescente).
 
-`openrouter/openrouter/free` è il router gratuito di OpenRouter: sceglie un modello gratuito compatibile solo dentro OpenRouter. La classifica del plugin è una preferenza curata, non una misura di qualità o quota corrente; i modelli locali sono in fondo perché possono essere più lenti. La catena è gestita dal plugin `@azumag/opencode-rate-limit-fallback@2.1.1`.
+`openrouter/openrouter/free` è il router gratuito di OpenRouter: sceglie un modello gratuito compatibile solo dentro OpenRouter. La classifica del plugin è una preferenza curata, non una misura di qualità o quota corrente; i modelli locali sono in fondo perché possono essere più lenti. La catena è gestita dal plugin V2 `@azumag/opencode-rate-limit-fallback@2.1.0`.
 
 ## Token e contesto
 
@@ -155,7 +156,7 @@ Una cosa da tenere presente quando scrivi le richieste: **se chiedi "scrivi il t
 
 1. Crei tu la nota nella cartella del corso (es. `Lezione 3-Automi a pila.md`). Nella stessa cartella metti gli appunti grezzi (`.txt`, uno per lezione), le slide e, in `images/`, le immagini.
 2. Scrivi nella nota quello che hai, con i segnaposto `// ... //` dove serve.
-3. Per pianificare senza modifiche seleziona `plan`: Plannotator mostra il piano e l'agente non può modificare le note. Dopo l'approvazione passa ad `appunti` per eseguire il lavoro. Per le richieste normali `appunti` non apre Plannotator.
+3. Il flusso predefinito è `plan` → approvazione in Plannotator → `appunti`. Dopo l'approvazione seleziona `appunti` nella stessa sessione e chiedi di eseguire il piano approvato: piano e annotazioni restano nel contesto. Plannotator può cambiare agente solo nelle versioni e negli host che espongono l'API necessaria; se non lo fa, il passaggio manuale è quello previsto. Se avvii direttamente una richiesta con `appunti`, non apre Plannotator salvo tua richiesta.
 4. A lezione conclusa lanci `/lezione`: completa la nota, ti chiede se integrare il libro di testo di `libri/` come complemento, fa passare il revisore una volta e applica le correzioni.
 
 ## Niente si perde
@@ -172,7 +173,8 @@ Lo script confronta parole, non significati, e non controlla le slide fatte di s
 
 | Agent | Cosa fa | Come si usa |
 |---|---|---|
-| `appunti` | scrive e modifica le note. È quello attivo all'avvio | basta scrivere la richiesta |
+| `plan` | agente predefinito; analizza e pianifica senza modificare le note, con approvazione Plannotator | avvio normale della sessione |
+| `appunti` | esegue il piano approvato e scrive o modifica le note | selezionalo dopo l'approvazione; puoi anche avviarlo direttamente |
 | `revisore` | controlla una nota (correttezza, completezza, verbosità) e restituisce l'elenco delle correzioni. Non modifica nulla | primario selezionabile e subagent; parte con `/lezione`, oppure a mano con `@revisore` o `/revisore` |
 
 ## I command
@@ -307,7 +309,7 @@ Dentro un callout l'immagine resta `![[x.png|300]]`. Il modello non vede le imma
 - Può cercare sul web.
 - Non fa commit né push: restano a te.
 
-Queste restrizioni non sono solo scritte: sono imposte dal blocco `permissions` di `opencode.json`. `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `esercizi/`, `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` nega tutto tranne i comandi in allowlist qui sopra; `external_directory` gli impedisce di uscire dal vault.
+Queste restrizioni non sono solo scritte: sono imposte dal blocco `permissions` di `opencode.json`. `edit` nega tutto tranne i Markdown dentro `primo semestre/`; di conseguenza blocca anche esercizi, rollback, file di configurazione e prompt. `bash` nega tutto tranne i comandi in allowlist qui sopra; `external_directory` impedisce di uscire dal vault.
 
 ## Gli script, anche a mano
 

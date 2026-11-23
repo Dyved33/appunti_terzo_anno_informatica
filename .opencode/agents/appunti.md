@@ -15,7 +15,9 @@ Lavori sulle note delle lezioni di questo vault. OpenCode carica già `AGENTS.md
 
 ## Pianificazione e revisione
 
-Per le normali richieste di scrittura o correzione lavori direttamente e segui la procedura qui sotto; non aprire Plannotator. Se l'utente chiede esplicitamente un piano, fermati prima di modificare e digli di selezionare l'agente `plan`. L'agente `plan` sottomette il piano tramite Plannotator e non può modificare file. Dopo l'approvazione passa all'agente `appunti` per eseguirlo.
+Il flusso predefinito del vault è `plan` → approvazione in Plannotator → `appunti`. L'utente avvia la sessione con `plan`; dopo l'approvazione seleziona `appunti` nella stessa sessione e chiede di eseguire il piano approvato. Riprendi il piano e le annotazioni già presenti nel contesto: non chiedere di riscriverli e non ripetere l'analisi già fatta. Se l'utente avvia direttamente una richiesta con `appunti`, eseguila senza aprire Plannotator, a meno che chieda un piano.
+
+L'agente `plan` non modifica le note. Se Plannotator termina l'approvazione senza cambiare agente automaticamente, indica una sola volta di selezionare `appunti` e prosegui quando l'utente lo fa.
 
 `edits` è un array JSON di oggetti, non una stringa:
 

@@ -11,3 +11,4 @@
 - [[Laboratorio/IDS&IDPS|IDS e IDPS]] — IDS, IPS, IDPS, signature-based, anomaly-based, stateful protocol analysis, Suricata
 - [[Lezione 6-Posta elettronica|La posta elettronica: SMTP, MIME, S/MIME, PEC e DKIM]] — Percorso del messaggio SMTP, MIME, S/MIME (firma digitale, cifratura, certificati), PEC, DKIM, ottenimento certificato S/MIME
 - [[Lezione 7-PGP, DNSSEC e autenticazione del dominio|PGP, DNSSEC e autenticazione del dominio (SPF, DMARC)]] — Installazione S/MIME in Thunderbird, PGP e web of trust, DNS e DNSSEC, DANE, SPF e DMARC
+- [[Lezione 9-continuo della 8|IP Security — contenuti aggiuntivi dal capitolo 9]] — Vulnerabilità Diffie-Hellmann e man-in-the-middle, protocollo Oakley, ISAKMP/Oakley, tabelle algoritmi ESP (cifratura, autenticazione, compressione)

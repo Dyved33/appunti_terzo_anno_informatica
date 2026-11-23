@@ -60,7 +60,7 @@ In qualsiasi pacchetto IP, la SA è univocamente identificata dall'Indirizzo di 
 ![[Pasted image 20261116101715.png|500]]
 
 <div style="text-align: center;">
-  <img src="image/Pasted image 20261116112033.png" width="500">
+  <img src="Pasted image 20261116112033.png" width="500">
   <p>Figura 9.2: architettura IPsec.</p>
 </div>
 
@@ -128,7 +128,7 @@ Il campo Padding serve a diversi scopi:
 **Tunnel Mode:** fornisce protezione all'intero pacchetto IP. Usato quando uno o entrambi gli estremi di un'associazione di sicurezza (SA) sono un security gateway. Un numero di host su reti dietro firewall possono impegnarsi in comunicazioni sicure senza implementare IPsec. ESP in tunnel mode cifra e opzionalmente autentica l'intero pacchetto IP interno, includendo l'intestazione IP interna. AH in tunnel mode autentica l'intero pacchetto IP interno e l'intestazione IP esterna.
 
 <div style="display: flex; justify-content: center;">
-  <img src="image/Pasted image 20261116111844.png" width="500">
+  <img src="Pasted image 20261116111844.png" width="500">
 </div>
 
 ![[Pasted image 20261116104938.png|500]]
@@ -192,19 +192,19 @@ Può servire combinare (sovrapporre) molteplici tunnel. Ogni tunnel può avere p
 - **Tipo 3/4 di combinazioni SA: tipo 1 & tipo 2.** Combinazione di tipo 1 punto-punto e combinazione di tipo 2 fra intermediari.
 
 <div style="display: flex; justify-content: center;">
-  <img src="image/Pasted image 20261116111900.png" width="500">
+  <img src="Pasted image 20261116111900.png" width="500">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="image/Pasted image 20261116111943.png" width="500">
+  <img src="Pasted image 20261116111943.png" width="500">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="image/Pasted image 20261116111954.png" width="500">
+  <img src="Pasted image 20261116111954.png" width="500">
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <img src="image/Pasted image 20261116112010.png" width="500">
+  <img src="Pasted image 20261116112010.png" width="500">
 </div>
 
 ![[Pasted image 20261116111624.png|500]]

@@ -1,12 +1,11 @@
 # Prerequisiti
 
-npm install -g opencode-ai@latest                             # per installare l'ultima versione di opencode
-opencode plugin opencode-parser -g                            # per installare il parser che permette di scattare foto di documenti
+npm install -g @opencode/cli@latest                           # OpenCode 2, richiesto dal formato di opencode.json in questo vault
+opencode2 plugin check                                        # verifica i plugin configurati per il progetto
 sudo apt install tesseract-ocr tesseract-ocr-ita              # per installare il lettore di foto
 
-opencode plugin @tarquinen/opencode-dcp@latest                # riduce i token potando output vecchi e chiamate duplicate
-opencode plugin @plannotator/opencode@latest                  # revisione interattiva del piano, con annotazioni
-opencode plugin @azumag/opencode-rate-limit-fallback@2.1.1    # fallback automatico su modello secondario in caso di rate limit (429)
+# DCP, Plannotator e fallback sono dichiarati nel plugins array di opencode.json.
+# Plannotator resta bloccato a 0.28.61: aggiornalo solo dopo aver verificato il flusso plan → appunti.
 
 # Ollama (ultima risorsa offline: gira sulla GPU NVIDIA GTX 1050, pochi secondi per risposta con i modelli piccoli)
 ollama pull qwen2.5:3b                                        # modello bilanciato (~2 GB, entra nei 4 GB di VRAM)
@@ -42,21 +41,19 @@ pip install --user --break-system-packages docling "obsidian-mcp-search[server]"
 | `Guida_Opencode.md` | `Guida_Opencode.md` | riscritta sulla nuova struttura |
 | `prompt_chat.md` | `prompt_appunti.md`, `prompt_materiale.md` | prompt brevi per Antigravity e chat web |
 
-## I modelli: solo free, nessun provider a pagamento
+## Modello predefinito gratuito
 
-Nessun modello a pagamento; per i modelli locali serve solo Ollama, che parte da solo.
+Il router sceglie un modello gratuito preferito come default e lascia visibili gli altri modelli per la selezione manuale. La gratuità e le quote effettive dipendono dal provider. Per i modelli locali serve Ollama, che parte da solo.
 
 | Ruolo | Modello | Perché |
 |---|---|---|
-| default | `opencode/nemotron-3.5-super-vl-free` | primo della classifica del plugin: scrive e rivede le note e accetta anche immagini; `nemotron-3-ultra-free` è la seconda scelta, la più disciplinata nell'uso dei tool |
-| titolo sessione | `opencode/glm-5.3-flash-free` | modello flash, adatto ai compiti brevi |
-| piano (`plan`) | `opencode/glm-5.3-flash-free` | stesso modello del titolo: pianificazione senza modifiche, con Plannotator |
-| compattazione | `opencode/nemotron-3-ultra-free` | finestra da 1M token, riassume senza perdere i dettagli della nota |
-| ultima risorsa | `ollama/qwen2.5:3b` (in catena); gli altri modelli Ollama restano selezionabili | offline e senza quota, girano sulla GPU GTX 1050 |
+| default | primo modello preferito disponibile e gratuito | il router sceglie tra modelli con supporto agli strumenti; oggi la prima scelta configurata è `opencode/nemotron-3.5-super-vl-free` |
+| plan e appunti | modello attivo nella sessione | nessun override per agente: il cambio di agente dopo Plannotator conserva il modello e il contesto |
+| fallback locale | `ollama/qwen2.5:3b` (in catena) | offline e senza quota; gira sulla GPU GTX 1050 |
 
 **Catena di fallback** (`rate-limit-fallback.json`, 11 modelli): su quota esaurita o errore transitorio l'agent passa al successivo, tenendo l'agente attivo. Esaurita la catena si ferma (`fallbackMode: "stop"`), senza ripartire in ciclo; un modello scelto fuori dalla catena viene invece ritentato su sé stesso dopo il cooldown (`otherModels: "wait"`). L'ordine completo è nella guida; la catena contiene solo modelli free con supporto ai tool, e i modelli locali stanno in fondo perché più lenti.
 
-**Provider usati**: il free tier di OpenCode (9 modelli, nessuna key), OpenRouter (21 modelli `:free`, una key) e Ollama (15 modelli locali, nessuna key). In totale il plugin locale mostra 45 modelli gratuiti e nessun modello a pagamento. Gli altri provider gratuiti si collegano con `connect-free-providers.sh`; ogni key serve per un account separato, non c'è modo di aggirarlo.
+**Provider usati**: il free tier di OpenCode, OpenRouter e Ollama. Il router locale non filtra il catalogo: preferisce un modello gratuito noto come default, ma lascia selezionabili tutti gli altri modelli. Il numero dei modelli e le quote cambiano con i provider. Gli altri provider gratuiti si collegano con `connect-free-providers.sh`; ogni key serve per un account separato.
 
 **OmniRoute è in pausa.** Il plugin `@omniroute/opencode-plugin` (0.2.1) esporta la forma dei plugin di OpenCode 1.x (`{ id, server }`); OpenCode 2.x accetta solo `{ id, effect }` o `{ id, setup }` e rifiuta il caricamento con *"Plugin must export a default definition with an id and an effect or setup function"*. Il plugin è quindi incompatibile finché upstream non pubblica una 0.3.x, ed è stato tolto da `opencode.json`. Il pacchetto resta installato e il servizio `omniroute` non serve più: il suo archivio non contiene nessuna connessione a provider, quindi non darebbe modelli comunque.
 
@@ -74,7 +71,7 @@ Le leve usate:
 
 - **`.opencode/regole.md`**: le due skill (`no-ai-slop`, `i-have-adhd`) costavano 4,5k token a ogni richiesta e a ogni subagente; ora in `instructions` c'è una sintesi di 530 token e i file completi restano da leggere solo quando si scrive una nota (il prompt dell'agente lo dice già).
 - **DCP tarato** (`.opencode/dcp.jsonc`): pota anche nelle sessioni dei subagenti (`allowSubAgents`), lascia intatti gli ultimi 3 turni (`turnProtection`), e avvisa il modello prima che entri in un ciclo (`iterationNudgeThreshold` 10 invece di 15).
-- **`compaction.keep.tokens: 12000`**: dopo la compattazione resta il contesto utile invece di ricominciare da zero.
+- **`compaction.keep.tokens: 12000` e `background: false`**: conserva 12k token recenti e genera il riepilogo solo quando serve, evitando richieste di compattazione anticipate che potrebbero non essere usate.
 - **Il modello più disciplinato**: i token crescono col numero di chiamate di strumento, e i modelli free non sono uguali (vedi la guida).
 
 Non è stato fatto, per non perdere qualità: troncare gli output degli strumenti (`tool_output`), togliere `stile.md` dalle `instructions` (il DCP potrebbe comprimerlo via), rinunciare al server MCP `obsidian-search` o al plugin `parse`.
@@ -107,7 +104,7 @@ Non è stato fatto, per non perdere qualità: troncare gli output degli strument
 
 **`esercizi/` è tuo.** La cartella `esercizi/` di ogni corso contiene il codice scritto da te (`.py`, `.html`, `.sql`, sottocartelle per l'esame). È un input quanto le slide: l'agent la legge per collegarla dalle note ma non la modifica, e non esegue codice. Se gli chiedi un esercizio te lo dà nella risposta e lo salvi tu. `vault-audit.py` salta la cartella (i `.md` lì dentro non sono note) e `controlla-perdite.py` legge i file collegati dalla nota, così il codice spostato in `esercizi/` non risulta perso.
 
-**Permessi.** Il blocco `permissions` di `opencode.json` rende tecnico ciò che `AGENTS.md` chiede: `edit` nega tutto tranne i `.md`, con diniego esplicito per `AGENTS.md`, `.opencode/**`, `*/esercizi/*` (dopo `*.md`, perché vinca l'ultima regola che combina), `opencode.json`, `CONFIG-CHANGES.md` e i due file di `prompt/`; `bash` è in allowlist (i cinque script, `ls`, `grep`, `rg`, `wc`, `pdfinfo`, `pdftotext`, `tesseract`, git in lettura); `external_directory` impedisce di uscire dal vault. Chiedono conferma `pdftoppm` e `dividi-appunti.py --scrivi`.
+**Permessi.** Il blocco `permissions` di `opencode.json` nega tutte le modifiche tranne i Markdown sotto `primo semestre/`, in linea con `AGENTS.md`; gli esercizi, il rollback e la configurazione restano non modificabili. Nega anche la ricerca MCP e il fetch per tutti gli agenti, poi li abilita solo per `appunti` e `revisore`. `bash` è in allowlist per gli script e i comandi di lettura; `external_directory` impedisce di uscire dal vault. Chiedono conferma `pdftoppm` e `dividi-appunti.py --scrivi`.
 
 **Il bash non si blocca più a metà catena.** OpenCode controlla i permessi comando per comando, anche in una pipe: `script.py | head -40` valuta `script.py` *e* `head -40`, e se il secondo non è in allowlist la catena intera viene negata. Per questo in allowlist ci sono anche i destinatari delle pipe e gli operatori di una catena (`head`, `tail`, `cat`, `sort`, `uniq`, `cut`, `tr`, `jq`, `diff`, `basename`, `dirname`, `cd`, `pwd`, `which`, `echo`, `find`). Il prezzo è che questi programmi possono scrivere, quindi ci sono tre scudi, messi dopo perche valga l'ultima regola che combacia: `echo*>*` (niente file creati con una redirezione), `find* -delete*` e `find* -exec*` (niente cancellazioni né comandi arbitrari), `*env*` (niente `cat .env`, `printenv`). `sed`, `awk`, `tee`, `xargs` restano fuori: scrivono o eseguono, e gli input del vault non si toccano.
 
