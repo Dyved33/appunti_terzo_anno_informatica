@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "7722b6932ed95b43",
+        "id": "8681142e2aef2b7e",
         "type": "tabs",
         "children": [
           {
-            "id": "ad7fc61c86a41010",
+            "id": "492d3de79449fe43",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -200,10 +200,12 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "ad7fc61c86a41010",
+  "active": "492d3de79449fe43",
   "lastOpenFiles": [
     "Architettura reti e internet/protocolli/Lezione 12-IPv6.md",
     "Architettura reti e internet/protocolli/Lezione 11-SNMP e DHCP.md",
+    "Architettura reti e internet/reti/parte_9.pdf",
+    "Architettura reti e internet/reti/Unconfirmed 915299.crdownload",
     "Architettura reti e internet/protocolli/Lezione 10-NIS e NFS.md",
     "Architettura reti e internet/protocolli/Lezione 9-DNS.md",
     "Architettura reti e internet/protocolli/Lezione 8-Telnet, SSH e FTP.md",
@@ -216,12 +218,10 @@
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/MonsterArena/client/css",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/MonsterArena/client",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/MonsterArena/ESERCIZIO MA.md",
-    "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/MonsterArena",
     "Sicurezza informatica/Lezione 9-continuo della 8.md",
     "Programmazione web e mobile con laboratorio/Lezione 16-Gestione login.md",
     "Basi di dati e sistemi informativi con laboratorio/Lezione 16-Traduzione del modello ER-EER in schemi relazionali.md",
     "Basi di dati e sistemi informativi con laboratorio/images/bd-esempio-er-09.png",
-    "Basi di dati e sistemi informativi con laboratorio/BDlezioneProgLogicaChap7.pdf",
     "Sicurezza informatica/Lezione 8-IP Security.md",
     "Architettura reti e internet/protocolli/Lezione 2-Elementi dell'infrastruttura, governance e modello OSI.md",
     "Architettura reti e internet/reti/images/topologie-20.png",

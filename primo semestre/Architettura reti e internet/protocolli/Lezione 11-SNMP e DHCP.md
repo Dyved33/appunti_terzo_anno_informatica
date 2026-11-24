@@ -18,10 +18,6 @@ L'architettura di gestione si compone di 5 elementi cardine:
 4. **Protocollo SNMP:** protocollo di trasporto applicativo che formalizza i messaggi di query, risposta e allarme asincrono.
 5. **Structure of Management Information (SMI):** standard che stabilisce le regole di denominazione, tipizzazione e codifica delle variabili memorizzate nella MIB.
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-snmp-06.png" width="500">
-</div>
-
 ### Evoluzione delle versioni
 
 - **SNMPv1 (RFC 1157):** prima versione standard; utilizza l'autenticazione tramite stringa di testo condivisa (*community string*) trasmessa in chiaro sulla rete (solitamente `public` per sola lettura e `private` per scrittura). Vulnerabile a intercettazione.
@@ -92,10 +88,6 @@ Per identificare una specifica variabile foglia si concatena il cammino numerico
 - Variabile `ipInReceives` (pacchetti IP ricevuti):
   - Etichetta: `iso.org.dod.internet.mgmt.mib.ip.ipInReceives`
   - OID numerico: `1.3.6.1.2.1.4.3` (istanza scalare `1.3.6.1.2.1.4.3.0`)
-
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-snmp-13.png" width="500">
-</div>
 
 ## Management Information Base (MIB)
 
@@ -307,10 +299,6 @@ group {
 NAT è un servizio concepito per realizzare la conservazione degli indirizzi IP. È un servizio che permette a reti IP private di connettersi ad Internet. NAT viene eseguito da un router, che connette normalmente due reti, traducendo gli indirizzi della rete interna in indirizzi IP pubblici, ritornando al client la rispettiva risposta.
 
 NAT viene configurato in modo da convertire tutti gli indirizzi di una rete privata in un unico indirizzo pubblico. Questo fornisce un elemento di sicurezza molto robusto, perché nasconde la rete all'esterno.
-
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-snmp-51.png" width="500">
-</div>
 
 ### Indirizzi IP privati (RFC 1918)
 
