@@ -1,30 +1,14 @@
-# Architettura delle Reti -- Domande e ripasso
-
-Scheda di ripasso per l'esonero di Architettura delle Reti. Contiene
-spiegazioni, esempi, tabelle e diagrammi Mermaid (visualizzabili in
-Obsidian e in altri editor compatibili).
-
-------------------------------------------------------------------------
-
 ## 1. TCP -- Sequence Number
 
-Il **Sequence Number** è un campo dell'header TCP che identifica la
-posizione dei byte all'interno del flusso di dati trasmesso.
+Nel protocollo **TCP**, il **Sequence Number** (numero di sequenza) è un campo a **32 bit** presente nell'intestazione di ogni segmento che indica la posizione del **primo byte dei dati** (payload) all'interno del flusso di byte complessivo inviato da un host. ⁠
 
-TCP è un protocollo orientato al flusso di byte (*byte stream*), quindi
-non numera i segmenti, ma i singoli byte.
+Le sue funzioni principali sono:
 
-### Come funziona?
+- **Ordinamento dei dati**: Poiché i pacchetti possono arrivare fuori ordine o per percorsi diversi, il ricevente utilizza il Sequence Number per **reassemblare il flusso originale** nella corretta sequenza. ⁠
+- **Rilevamento perdite e duplicati**: Permette di identificare i segmenti mancanti (richiedendo ritrasmissioni) e di scartare i pacchetti duplicati. ⁠
+- **Controllo del flusso**: Definisce i confini della **finestra scorrevole**, aiutando a gestire la quantità di dati che il mittente può inviare prima di ricevere un riconoscimento. ⁠
 
-Immaginiamo che un host debba inviare 1000 byte, partendo dal Sequence
-Number 1000.
-
--   Primo segmento: Sequence Number = 1000, contiene 500 byte.
--   Secondo segmento: Sequence Number = 1500, contiene i successivi 500
-    byte.
-
-Il destinatario utilizza questi numeri per ricostruire correttamente il
-flusso di dati, anche se i segmenti arrivano fuori ordine.
+Il valore iniziale, chiamato **Initial Sequence Number (ISN)**, è scelto in modo **casuale** all'avvio della connessione per motivi di sicurezza (prevenire attacchi di hijacking) e non parte da zero. ⁠ Ogni volta che viene inviato un segmento, il Sequence Number viene incrementato del numero di byte di dati contenuti in quel segmento.
 
 ### E l'ACK Number?
 
@@ -267,10 +251,6 @@ quest'ultimo a occuparsi delle interrogazioni successive.
 
 ## 5. Configurazione resolver client
 
-La voce originale degli appunti era «Configurazione tesokver client»:
-probabilmente si riferisce alla **configurazione del DNS resolver
-client**.
-
 Se è questo l'argomento, si riferisce a come un dispositivo viene
 configurato per utilizzare un server DNS.
 
@@ -443,94 +423,3 @@ Attenzione: SLAAC e DHCPv6 possono anche coesistere. Inoltre, SLAAC non
 significa necessariamente assenza di DNS: le informazioni DNS possono
 essere distribuite attraverso i Router Advertisement (RDNSS) oppure
 DHCPv6.
-
-------------------------------------------------------------------------
-
-# Riepilogo per l'esonero
-
-Questi sono i concetti che è utile saper spiegare senza guardare gli
-appunti:
-
-  -----------------------------------------------------------------------
-  Argomento                           Concetto fondamentale
-  ----------------------------------- -----------------------------------
-  TCP Sequence Number                 Identifica il primo byte del
-                                      segmento nel flusso TCP
-
-  TCP ACK                             Indica il prossimo byte atteso
-
-  Routing Table                       Contiene le rotte verso le reti
-                                      raggiungibili
-
-  Next Hop                            Router successivo a cui inoltrare
-                                      il pacchetto
-
-  Longest Prefix Match                Seleziona la rotta più specifica
-
-  FTP Active                          Il server apre la connessione dati
-
-  FTP Passive                         Il client apre la connessione dati
-
-  DNS                                 Traduce nomi e restituisce Resource
-                                      Record
-
-  DNS ricorsivo                       Il resolver si occupa di trovare la
-                                      risposta finale
-
-  IPv6 Unicast                        Comunicazione verso una singola
-                                      interfaccia
-
-  SLAAC                               Configurazione automatica di IPv6
-                                      tramite Router Advertisement
-  -----------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-# Verifica della preparazione -- Mini test
-
-Prova a rispondere senza consultare la spiegazione. Le soluzioni sono
-riportate in fondo.
-
-### 1. In TCP, cosa indica ACK = 2500?
-
-A. Ho ricevuto il byte 2500.\
-B. Mi aspetto di ricevere il byte 2500.\
-C. Ho inviato 2500 segmenti.
-
-### 2. Un router non trova una rotta specifica. Cosa può utilizzare?
-
-A. La default route.\
-B. Il DNS.\
-C. Il Sequence Number.
-
-### 3. In FTP passivo, chi apre la connessione dati?
-
-A. Il server.\
-B. Il client.\
-C. Entrambi contemporaneamente.
-
-### 4. Chi effettua normalmente la ricerca ricorsiva DNS per conto del client?
-
-A. Il server autoritativo.\
-B. Il resolver DNS.\
-C. Il router di default.
-
-### 5. Quale messaggio IPv6 contiene il prefisso utilizzato da SLAAC?
-
-A. Router Advertisement.\
-B. TCP ACK.\
-C. DHCP Discover.
-
-## Soluzioni commentate
-
-1.  **B -- Mi aspetto di ricevere il byte 2500.** ACK indica il prossimo
-    byte atteso: tutti i byte precedenti sono stati ricevuti
-    correttamente.
-2.  **A -- La default route.** Viene utilizzata quando non esiste una
-    rotta più specifica.
-3.  **B -- Il client.** Il server comunica una porta in ascolto e il
-    client apre la connessione.
-4.  **B -- Il resolver DNS.** Il resolver contatta i server DNS
-    necessari e restituisce la risposta al client.
-5.  **A -- Router Advertisement.** Il router invia un Router
-    Advertisement con le informazioni necessarie alla configurazione.
