@@ -343,3 +343,7 @@ Evita i problemi che si hanno quando un router trasmette informazioni errate.  I
 Tutti i router:
 - Ricevono i routing updates
 - Ricalcolano i percorsi ottimali sulla base delle loro informazioni.
+
+> [!info]
+> La differenza fondamentale tra **Link State** e **Distance Vector** negli algoritmi di routing dinamico risiede nella **conoscenza della topologia** e nel **metodo di condivisione delle informazioni**. ⁠ I protocolli **Distance Vector** (come RIP) condividono la propria tabella di routing completa solo con i **vicini diretti** e utilizzando l'**algoritmo di Bellman-Ford**. Al contrario, i protocolli **Link State** (come OSPF) inviano informazioni sullo stato dei propri collegamenti a **tutti i router** della rete, permettendo a ciascuno di costruire una **mappa topologica completa** e calcolare i percorsi ottimali autonomamente tramite l'**algoritmo di Dijkstra**.
+
