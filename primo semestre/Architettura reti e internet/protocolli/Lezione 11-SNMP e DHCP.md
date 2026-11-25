@@ -1,4 +1,4 @@
-	# SNMP, DHCP e NAT
+# SNMP, DHCP e NAT
 
 ## Protocollo SNMP
 
