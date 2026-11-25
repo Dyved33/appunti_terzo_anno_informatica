@@ -176,6 +176,9 @@ Indirizzo sintatticamente identico a un indirizzo Unicast globale, ma assegnato 
 - Il protocollo di routing instradatore recapita il pacchetto all'interfaccia geograficamente e topologicamente più vicina (*one-to-nearest*).
 - Impiegato per individuare router di sottorete e per distribuire il carico di servizi infrastrutturali critici (come i Root Name Servers del [[Lezione 9-DNS|DNS]]).
 
+> [!info] Ricorda
+> **Unicast è una comunicazione one-to-one** tra un mittente e un singolo ricevitore specifico, utilizzata per il traffico standard come HTTP, email e SSH. Il **Multicast è una comunicazione one-to-many** che invia dati a un gruppo di dispositivi che hanno esplicitamente aderito al gruppo, efficiente per IPTV, streaming live e conferenze video. ⁠ Il **Anycast è una comunicazione one-to-nearest** che indirizza una richiesta al nodo più vicino (topologicamente) tra un gruppo di server che condividono lo stesso indirizzo IP, usato per DNS, CDN e mitigazione DDoS.
+
 ### Indirizzi riconosciuti da un host e regole di selezione
 
 Ogni host IPv6 mantiene attivi contemporaneamente molteplici indirizzi sulla medesima scheda di rete:
@@ -268,6 +271,3 @@ Poiché la transizione globale da IPv4 a IPv6 non può avvenire con un passaggio
 | **Trasmissione Broadcast** | Presente nativamente | Totalmente assente; sostituito dal traffico Multicast scoped |
 | **Supporto alla sicurezza** | Opzionale e aggiunto a posteriori (IPsec applicato su IPv4) | Integrato nativamente tramite Extension Headers AH ed ESP |
 
-<div style="display: flex; justify-content: center;">
-  <img src="images/slide-ipv6-34.png" width="500">
-</div>
