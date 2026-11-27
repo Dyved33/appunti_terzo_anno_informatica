@@ -83,7 +83,7 @@ nav ul li a:hover {
 > [!tip] Ricorda
 > Il gradiente lineare (*linear gradient*) si ottiene scegliendo un colore di inizio e uno di fine: il browser disegna la transizione tra i due.
 
-Un esempio affine è in [[esercizi/menuResponsive.html|menuResponsive]].
+Un esempio affine è in [[menuResponsive.html|menuResponsive]].
 
 ## Menu secondari
 La navigazione primaria non deve mai cambiare in tutto il sito, la secondaria invece cambia a seconda della pagina corrente.

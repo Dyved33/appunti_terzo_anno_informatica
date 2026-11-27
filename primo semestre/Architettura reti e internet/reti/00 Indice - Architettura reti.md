@@ -8,3 +8,4 @@
 - [[Lezione 6-PCM, campionamento e modulazioni digitali|PCM, campionamento e modulazioni digitali]]
 - [[Lezione 7-EVM, modulazioni digitali e limiti di trasmissione|EVM, modulazioni digitali e limiti di trasmissione]]
 - [[Lezione 8-Limiti di velocità, codifica di linea e controllo degli errori|Limiti di velocità, codifica di linea e controllo degli errori]] — Throughput, latenza, jitter; baud vs bps; trasmissione asincrona/sincrona; codifiche NRZ, RZ, Manchester, AMI; scrambling 2B1Q; trasmissione orientata al carattere e al bit; controllo errori VRC, LRC, CRC
+- [[Lezione 9-Multiplazione, modem e interfacce di collegamento|Multiplazione, modem e interfacce di collegamento]] — Multiplazione (FDM, WDM, TDM); modem (fonico, ISDN, xDSL, PLC, GPRS/UMTS/HSDPA/LTE, banda base); standard modem (V.21, V.29, V.32, V.34, V.90, V.92); ADSL; interfacce Centronics, RS232, USB, IEEE1394

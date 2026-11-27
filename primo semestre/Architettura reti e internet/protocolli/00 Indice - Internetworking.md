@@ -13,3 +13,4 @@
 - [[Lezione 11-SNMP e DHCP|SNMP, DHCP e NAT]]
 - [[Lezione 12-IPv6|IPv6]]
 - [[Lezione 13-Posta elettronica|Posta elettronica (SMTP, MIME, POP3, IMAP, PEC e PGP)]]
+- [[Lezione 14-SMTP e altro|Posta elettronica: SMTP, POP3, IMAP e PGP]] — SMTP (comandi, risposte, esempi di dialogo, Return-Path, Received), autenticazione server mail (SPF, DKIM, DMARC), POP3 (fasi AUTHORIZATION/TRANSACTION/UPDATE, comandi, porta 110), IMAP (system flag, stati, comandi di ricerca, porta 143), posta elettronica privata (GnuPG, PGP, Web of Trust, accordo di Wassenaar, Echelon)

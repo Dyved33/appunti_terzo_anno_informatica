@@ -116,20 +116,6 @@ const token = jwt.sign(payload, JWT_SECRET, {
 });
 ```
 
-## Area riservata
-
-```
-client           server
-                 /public
-
-                 /private
-
-                 db
-```
-
-- Utente con token valido: accede ai file nella cartella `/private`
-- Utente senza token o token invalido/scaduto: redirect
-
 ## Funzione di login
 
 ```js
@@ -162,7 +148,16 @@ app.post("/api/login", async (req, res) => {
 });
 ```
 
+- const payload = … prepara il payload da inserire nel JWT
+- `jwt.sign(payload, JWT_SECRET, {…})` genera il token
+	- Firmato con la chiave JWT_SECRET
+	- Usando algoritmo e altri parametri specificati
+- `res.cookie()` imposta un cookie con il token
+
 ## Accesso a pagine protette
+
+- Utente con token valido: accede ai le nella cartella `/private`
+- Utente senza token o token invalido/scaduto: `redirect`
 
 ```js
 function authenticateToken(req, res, next) {
@@ -187,7 +182,8 @@ app.use("/private", authenticateToken, express.static("private"));
 
 ## Logout
 
-`res.clearCookie("token")` cancella il cookie token dal browser: equivale a fare logout, poiché senza token il client non potrà più accedere alle risorse protette.
+- `authenticateToken` veri ca se l’utente è autenticato
+- `res.clearCookie("token")` cancella il cookie token dal browser: equivale a fare logout, poiché senza token il client non potrà più accedere alle risorse protette.
 
 ```js
 app.post("/api/logout", authenticateToken, (req, res) => {
@@ -198,17 +194,6 @@ app.post("/api/logout", authenticateToken, (req, res) => {
     });
 });
 ```
-
-## Esercizio
-
-Realizzare un'applicazione web composta da:
-
-1. Server web basato su Node.js ed Express
-2. Due tipi di risorse:
-   - Pagine pubbliche accessibili a tutti
-   - Pagine private, accessibili solo dopo login
-3. Login autenticato tramite JWT e memorizzato in cookie HttpOnly
-4. Le credenziali dell'utente devono essere verificate tramite db
 
 ## Problemi di sicurezza
 
