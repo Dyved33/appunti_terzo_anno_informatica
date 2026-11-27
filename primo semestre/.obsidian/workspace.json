@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9efce01cdf39a867",
+        "id": "180223b614489208",
         "type": "tabs",
         "children": [
           {
-            "id": "a390b14b666fed07",
+            "id": "645b8f85675e40b1",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -199,8 +199,10 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "a390b14b666fed07",
+  "active": "645b8f85675e40b1",
   "lastOpenFiles": [
+    "Architettura reti e internet/reti/parte_9.pdf",
+    "Architettura reti e internet/reti/Lezione 8-Limiti di velocità, codifica di linea e controllo degli errori.md",
     "Architettura reti e internet/protocolli/Lezione 12-IPv6.md",
     "Architettura reti e internet/protocolli/Lezione 11-SNMP e DHCP.md",
     "Architettura reti e internet/protocolli/Lezione 10-NIS e NFS.md",
@@ -220,7 +222,6 @@
     "Architettura reti e internet/reti/Lezione 1-Fondamenti di networking, teoria della comunicazione e standard.md",
     "Architettura reti e internet/domande.md",
     "Untitled.md",
-    "Architettura reti e internet/reti/parte_9.pdf",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/MonsterArena/client/js/index.js",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/MonsterArena/client/js/game.js",
     "Programmazione web e mobile con laboratorio/esercizi/esercitazioni/MonsterArena/client/css/style.css",
@@ -244,8 +245,6 @@
     "Architettura reti e internet/reti/images/topologie-14.png",
     "Architettura reti e internet/reti/images/topologie-13.png",
     "Architettura reti e internet/reti/images/topologie-12.png",
-    "Architettura reti e internet/reti/images/topologie-10.png",
-    "Architettura reti e internet/protocolli/Lezione 13-Posta elettronica.md",
-    "Intelligenza artificiale/Lezione 11-k-NN.md"
+    "Architettura reti e internet/reti/images/topologie-10.png"
   ]
 }
